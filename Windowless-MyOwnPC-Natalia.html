@@ -1,0 +1,111 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="What-Is-Red-2026-06-28.html">&larr; What-Is-Red-2026-06-28</a> · <a href="_doc_tracker_write.md">_doc_tracker_write &rarr;</a></span></div><!doctype html><html lang=ru><meta charset=utf-8>
+<title>Чёрные окошки на ноутбуке Наташи</title>
+<style>
+:root{color-scheme:light dark}
+body{font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;padding:28px;background:#0f1115;color:#e6e8ee}
+h1{font-size:22px;margin:0 0 4px} .sub{color:#9aa3b2;margin-bottom:22px}
+.card{background:#171a21;border:1px solid #262b36;border-radius:12px;padding:18px;margin-bottom:16px}
+.verdict{font-size:28px;margin:0 0 8px} ul{margin:8px 0 0 18px;color:#c7cdd8}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:7px 9px;border-bottom:1px solid #242833;text-align:left;vertical-align:top}
+th{color:#9aa3b2;font-weight:600} td.n{text-align:right;font-variant-numeric:tabular-nums}
+td.q{color:#b9c0cc} .ok{color:#5fd08a} .bad{color:#ff7b72} .mid{color:#e8c25f}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.kpi{background:#12151b;border:1px solid #262b36;border-radius:10px;padding:12px}
+.kpi .v{font-size:24px;font-variant-numeric:tabular-nums} .kpi .l{color:#9aa3b2;font-size:12px}
+.warn{background:#2a1f12;border-color:#5a4020}
+.act{background:#13251a;border-color:#2c5a3c}
+.note{color:#9aa3b2;font-size:12.5px;margin-top:6px} code{color:#c9d3e3}
+.big{font-size:17px;background:#0d1117;border:1px solid #2c5a3c;border-radius:8px;padding:10px 12px;display:inline-block;margin:8px 0}
+.wrap{overflow-x:auto}
+</style>
+<h1>Чёрные окошки — узел MyOwnPC-Natalia</h1>
+<div class=sub>посылка <code>windowless-20260806</code> с хаба A-2022BAYAREA · оператор Наташа ·
+замер 2026-08-06 20:53 → 20:59 · флот-стоп при замере НЕ активен</div>
+
+<div class="card act">
+<div class=verdict>⚠️ Сделано наполовину — жду один клик Наташи</div>
+<div>Скрыватель окон поставлен, живёт и доказан работой. Насовсем окна выключает второй слой,
+и только он требует прав администратора.</div>
+<div class=big>C:\Users\Huawei\.claude\scripts\fix_windowless.cmd → нажать «Да»</div>
+<div>Это уберёт <b>11</b> частых мигателей физически: окно не сможет появиться, а не будет гаситься
+после показа. Откат в любой момент: <code>revert_windowless.cmd</code>.</div>
+<div class=note>Что клик правда нужен — проверено, не предположено: смена режима задачи без
+администратора отвечает <code>Access is denied</code> (пробовали на <code>ack-watchdog</code>).</div>
+</div>
+
+<div class="card grid">
+<div class=kpi><div class=v class=ok>ДА</div><div class=l>скрыватель живёт (было: НЕТ)</div></div>
+<div class=kpi><div class=v class=ok>ДА</div><div class=l>в автозапуске (было: НЕТ)</div></div>
+<div class=kpi><div class=v>33</div><div class=l>активных задач в режиме Interactive</div></div>
+<div class=kpi><div class=v class=mid>11</div><div class=l>частых — тикают чаще раза в час</div></div>
+<div class=kpi><div class=v class=mid>64</div><div class=l>вспышек/час — ОЦЕНКА, не замер</div></div>
+<div class=kpi><div class=v class=ok>0</div><div class=l>окон реально показано за 4 мин наблюдения</div></div>
+</div>
+
+<div class=card>
+<b>Было → стало</b> (строка ИТОГ аудита, слово в слово)
+<table><tr><th>когда</th><th>строка</th></tr>
+<tr><td class=q>20:53 до</td><td class=q><code>interactive=33 frequent=11 flashes_per_hour=64 hider_alive=False hider_autostart=False</code></td></tr>
+<tr><td class=q>20:57 после</td><td class=q><code>interactive=33 frequent=11 flashes_per_hour=64 hider_alive=True hider_autostart=True</code></td></tr>
+</table>
+<div class=note>Оценка вспышек не сдвинулась и не должна была: её двигает только флип S4U,
+то есть клик Наташи. Скрыватель меняет не число окон, а то, видит ли их человек.</div>
+</div>
+
+<div class=card>
+<b>Оценка против замера — почему 64 может быть неправдой про этот узел</b>
+<div class=note>Аудит считает «сколько активных Interactive × как часто они тикают». Это не наблюдение
+за окнами. Прямой замер даёт журнал скрывателя: он записывает КАЖДОЕ погашенное окно.</div>
+<div class=wrap><table><tr><th>задача</th><th>отработала после старта скрывателя</th><th>окон показала</th></tr>
+<tr><td>inbox-ack-fast</td><td class=q>20:58:58</td><td class=ok>0</td></tr>
+<tr><td>Power-Thermal Logger</td><td class=q>20:56:56</td><td class=ok>0</td></tr>
+<tr><td>syncthing-guard</td><td class=q>20:56:56</td><td class=ok>0</td></tr>
+<tr><td class=q>подставное окно cmd.exe (наша проверка)</td><td class=q>20:55:38</td><td class=mid>3 события гашения за 0.2 сек</td></tr>
+</table></div>
+<div class=note>Эти задачи идут через <code>run_hidden.vbs</code> и окон не дают. Похоже, на ноутбуке
+Наташи реальных вспышек кратно меньше 64. Точное число даст журнал за сутки — он теперь пишется.
+Скрыватель при этом рабочий: подставное окно он поймал и погасил.</div>
+</div>
+
+<div class=card>
+<b>11 частых задач — тех, что уберёт клик</b>
+<div class=wrap><table><tr><th>задача</th><th class=n>раз в N минут</th><th>чем запускается</th></tr>
+<tr><td>inbox-ack-fast</td><td class=n>2</td><td class=q>wscript.exe</td></tr>
+<tr><td>Power-Thermal Logger</td><td class=n>5</td><td class=q>wscript.exe</td></tr>
+<tr><td>session-wait-watchdog</td><td class=n>15</td><td class=q>wscript.exe</td></tr>
+<tr><td>Claude Config Backup 15min</td><td class=n>15</td><td class=q>wscript.exe</td></tr>
+<tr><td>Claude Session Reaper</td><td class=n>15</td><td class=q>python.exe</td></tr>
+<tr><td>Proc Patrol</td><td class=n>30</td><td class=q>wscript.exe</td></tr>
+<tr><td>peer-watch</td><td class=n>30</td><td class=q>wscript.exe</td></tr>
+<tr><td>ack-watchdog</td><td class=n>30</td><td class=q>wscript.exe</td></tr>
+<tr><td>MCP Daemons Watchdog Nataly</td><td class=n>30</td><td class=q>wscript.exe</td></tr>
+<tr><td>ZoomUpdateTaskUser-…-1001</td><td class=n>60</td><td class=q>Zoom.exe</td></tr>
+<tr><td>liveness-map</td><td class=n>60</td><td class=q>pythonw.exe</td></tr>
+</table></div>
+</div>
+
+<div class="card warn">
+<b>Дефект посылки, найденный при установке: файл автозапуска с BOM не выполняется</b>
+<div>Первый прогон установщика честно упал: <code>FAIL: скрыватель не поднялся</code>.
+Корень — <code>Set-Content -Encoding UTF8</code> в PowerShell 5.1 пишет UTF-8 <b>с BOM</b>, а wscript
+на таком файле отказывается компилировать:</div>
+<div class=big style="border-color:#5a4020"><code>console-hider.vbs(1, 1) Microsoft VBScript compilation error: Invalid character</code></div>
+<div>Это зеркало известной грабли: у <code>.ps1</code> с кириллицей BOM <b>обязателен</b>,
+у <code>.vbs</code> — <b>запрещён</b>. Правило то же, знак противоположный, поэтому по памяти и не сработало.</div>
+<div class=note>Починено здесь: запись через <code>[IO.File]::WriteAllText(…, [Text.Encoding]::Default)</code>
+плюс проверка первых трёх байт сразу после записи — чтобы следующий узел получил внятный отказ,
+а не тихо неработающий автозапуск. Заказ на правку хабовской копии ушёл в шину: наш
+<code>~/.claude</code> — receive-only, правка тут живёт до первой хабовской версии.</div>
+</div>
+
+<div class=card>
+<b>Что осталось незакрытым</b>
+<ul>
+<li>клик UAC Наташи → перепрогон <code>/windowless</code> → цель <code>flashes_per_hour=0</code>;</li>
+<li>хаб должен вложить BOM-фикс в свою копию установщика, иначе на следующем узле повторится;</li>
+<li>стоит добавить в аудит вторую строку — реальные события гашения за час, рядом с оценкой.</li>
+</ul>
+<div class=note>Задача: <code>10-Tasks\task-2026-08-06-windowless-nataly-node.md</code> · скилл <code>/windowless</code></div>
+</div>
+</html>
