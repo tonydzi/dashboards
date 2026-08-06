@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Аудит альфы 27.07 — что из 10 идей уже стало задачей и сделано</title>
+<style>
+  :root{ --bg:#0f1115; --card:#171a21; --line:#272c36; --txt:#e8eaf0; --dim:#98a0b3;
+         --ok:#3fb950; --warm:#d29922; --cold:#f85149; --blue:#58a6ff; }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f7f9; --card:#fff; --line:#e2e5ea; --txt:#1a1d23; --dim:#5b6472; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--txt);
+       font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:20px}
+  .row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;min-width:150px}
+  .kpi b{display:block;font-size:26px;line-height:1.2}
+  .kpi span{color:var(--dim);font-size:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-left-width:4px;
+        border-radius:10px;padding:14px 16px;margin-bottom:12px}
+  .done{border-left-color:var(--ok)} .part{border-left-color:var(--warm)} .none{border-left-color:var(--cold)}
+  .t{font-weight:600;margin-bottom:6px}
+  .t .n{color:var(--dim);font-weight:400;margin-right:6px}
+  .badge{float:right;font-size:11px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--dim);white-space:nowrap}
+  .meta{color:var(--dim);font-size:13px;margin-top:6px}
+  .meta code{background:rgba(127,127,127,.14);padding:1px 5px;border-radius:4px;font-size:12px}
+  .next{margin-top:8px;font-size:13px;color:var(--blue)}
+  footer{color:var(--dim);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Alpha-Flow.html">Alpha-Flow &rarr;</a></span></div>
+<h1>Аудит альфы: 10 идей от 27.07 — во что превратились</h1>
+<div class="sub">Хаб A-2022BAYAREA · оператор Антон · 27 июля 2026, 15:42 · источники: 290 карточек <code>10-Tasks</code>, голосовой список задач (73), ROADMAP, alpha-backlog, память, живые артефакты</div>
+
+<div class="row">
+  <div class="kpi"><b style="color:var(--ok)">2</b><span>сделано / работает</span></div>
+  <div class="kpi"><b style="color:var(--warm)">6</b><span>частично, в работе</span></div>
+  <div class="kpi"><b style="color:var(--cold)">2</b><span>не начато</span></div>
+  <div class="kpi"><b>9 / 10</b><span>уже висят задачей в голосовом списке</span></div>
+</div>
+
+<div class="card" style="border-left-color:var(--blue)">
+  <span class="badge">🔎 сверка с параллельной сессией</span>
+  <div class="t">Сегодня же прошёл ВТОРОЙ аудит того же материала</div>
+  <div class="meta">Параллельная сессия разметила голосовой список задач (29 из 73 помечены). Вердикты по пересечению совпали, но её разметка дала мне две поправки (идеи 6 и 7 — не «не начато», а «частично») и один пропущенный артефакт (идея 10). Взамен моя разведка нашла то, чего нет у неё: волна DR ZB-01..05 по идее 9, которую она пометила «нигде не заведена».</div>
+  <div class="next">⚠️ Дефект разметки: три пункта помечены «✅ DONE», хотя означают «дубль — живёт в реестре как <open>» (#3744, #3812) либо ссылаются на карточку про другую тему (#3798). Список будет читаться как сделанный. Не правил руками: файл под параллельной сессией</div>
+</div>
+
+<div class="card done">
+  <span class="badge">✅ СДЕЛАНО · можно закрывать #59</span>
+  <div class="t"><span class="n">4</span>Grok CLI просит платный API, не подписку</div>
+  <div class="meta">Вопрос закрыт и вывод ОПРОВЕРГНУТ: Grok CLI ходит headless на подписке без <code>XAI_API_KEY</code> (0.2.106 на Mac16, 0.2.111 на узле Наташи). Рельса второго мнения переведена на <code>secondop.py t3 --engine grok</code>, браузер grok.com понижен до фолбэка. Канон CLAUDE.md §4.3 обновлён (v2.3.0, md5 efd339f3).</div>
+  <div class="meta">Закрытые карточки: <code>task-2026-07-21-secondop-grok-rail</code> · <code>task-2026-07-24-canon-43-grok-rail-cli</code> · <code>task-2026-07-25-deploy-sweep-secondop-grokcli</code></div>
+  <div class="next">Хвост: раскатка на пиров — <code>task-2026-07-24-grok-cli-rail-fleet-rollout</code> (open, PENDING на ZBook / Наташу / Руслану)</div>
+</div>
+
+<div class="card done">
+  <span class="badge">✅ МЕХАНИЗМ В ПРОДЕ · задачи не заводили</span>
+  <div class="t"><span class="n">3</span>YouTube устарел — движок майнинга видео</div>
+  <div class="meta">Идея уже воплощена рутиной, минуя список задач: ночной дрип <code>YT-Liked-Transcript-Drip</code> (01:00, идемпотентный, 0 LLM-токенов) тянет транскрипты ЛАЙКНУТЫХ видео. Польза доказана 23.07 на 30 транскриптах (385К символов): вскрываются сущности, которых нет в метаданных. Формат промоушена — атомарные ноты, длинные (&gt;3000 симв.) в RAG, короткие в мусор.</div>
+  <div class="next">Хвост: остаток ≈2259 видео качается дрипом; при упорном IpBlocked — эскалация на прокси (Tier-2, решает Антон)</div>
+</div>
+
+<div class="card part">
+  <span class="badge">🟡 ЧАСТИЧНО · заблокировано снаружи</span>
+  <div class="t"><span class="n">2</span>arXiv + GitHub как научная видимость</div>
+  <div class="meta">Сделано: статья Le Chatelier подана 23.07 (submit/7825136, cs.MA), сторож <code>arxiv_submit_watch.py</code> каждые 4 ч на хабе, табло PhD-Arxiv-Track живое, перелинковка на GitHub идёт треком Mission-2.</div>
+  <div class="meta">Не сделано: РИТМ «раз в неделю» не заведён — вторая статья не поставлена в очередь. Карточка <code>task-2026-07-25-arxiv-lechatelier-tail</code> = blocked внешней модерацией (окно анонса Вс 20:00 ET).</div>
+  <div class="next">Ждёт «+» Антона: письмо-закрытие Денису Саклакову (эндорс больше не нужен), черновик готов, не отправлено</div>
+</div>
+
+<div class="card part">
+  <span class="badge">🟡 ПРАКТИКА ЕСТЬ · гейта нет</span>
+  <div class="t"><span class="n">8</span>«0 searches done» = ленивый DeepResearch</div>
+  <div class="meta">Приём уже применяется руками: 26.07 канал ChatGPT в DR26-07-26-ZB-02 помечен <code>dead</code> именно по этому признаку и переделан через Web search. Раньше, 23.07, была карточка «проверить счётчик searches» (done).</div>
+  <div class="meta">Сегодня идея оформлена в задачу-гейт <code>task-2026-07-27-dr-fanout-citations-gate</code> (open): приёмка отчёта = citations&gt;0, иначе статус <code>degraded</code>, а не <code>collected</code>.</div>
+  <div class="next">Осталось: вписать правило в скилл <code>/dr-fanout</code> и научить сборщик считать источники</div>
+</div>
+
+<div class="card part">
+  <span class="badge">🟡 В РАБОТЕ · дедлайн 02.08</span>
+  <div class="t"><span class="n">9</span>Второй мозг на максималках: CRM и флот — его части</div>
+  <div class="meta">Идея стала волной из пяти разведок ZB-01..05 (фантастика · Харари · пантеон PKM · нейронаука памяти · аналоги Obsidian) — карточка <code>task-2026-07-26-dr-wave-second-brain-foundations</code>, state wip, review 02.08. Синтезирован 1 из 5 (ZB-02, Харари). Строка в ROADMAP есть.</div>
+  <div class="next">Не оформлено главное: продуктовое решение «не резать на продукты» (CRM + флот = части мозга) — нет Decision Memo, а это ставка, а не разведка</div>
+</div>
+
+<div class="card part">
+  <span class="badge">🟡 ТРЕК ЖИВЁТ · результат измерен отрицательно</span>
+  <div class="t"><span class="n">10</span>Аутрич через разбор чужого кода</div>
+  <div class="meta">Уже построено: канон issue-matching, радар <code>_Dashboards/LLM-Cookbook-Radar.html</code>, три сида в работе (Qwen-Agent #375/#737 · GCP generative-ai #2987 · xai-cookbook #18), карточка <code>task-2026-07-20-multivendor-radar-seeds</code> wip.</div>
+  <div class="meta">Замер 25.07: 8 наших PR — 0 мержей (память <code>cold-pr-into-silent-queue</code>). То есть холодный PR в глухую очередь не работает. Сверка добавила карточку, которой я не нашёл: <code>task-2026-07-27-devrel-outreach-response-watch</code> (open) — сторож ответов на аутрич.</div>
+  <div class="next">Идея 26.07 = ровно та коррекция, которой не хватает: входить не PR-ом, а разбором ИХ кода и просьбой о ревью нашего. Достойно отдельной карточки, сейчас её нет</div>
+</div>
+
+<div class="card none">
+  <span class="badge">🔴 НЕ НАЧАТО · задача #51 висит с 20.07</span>
+  <div class="t"><span class="n">1</span>Мобильный хаб сессий через Telegram</div>
+  <div class="meta">Частично покрыто соседним: с телефона уже можно одобрять (<code>approval.py</code> → чат 02) и читать шину 03, каталог сессий есть в <code>_Dashboards/Sessions-Catalog.html</code>. Но «нырнуть в живую сессию с телефона» не строили.</div>
+  <div class="next">Смежная открытая карточка: <code>task-2026-07-26-tg-gateway-shared-vs-per-session</code> — общий TG-шлюз вместо клиента на сессию (перед стройкой R+DR). Это фундамент как раз под такой пульт</div>
+</div>
+
+<div class="card none">
+  <span class="badge">🔴 НЕ НАЧАТО · задача #62 висит с 24.07</span>
+  <div class="t"><span class="n">5</span>Пошаговый план + code-execution экономят лимит</div>
+  <div class="meta">Знание в волте лежит (беседа ChatGPT от 24.07 импортирована), в прод не пошло ничего: code-execution не используется, замера экономии нет.</div>
+  <div class="next">Дёшево проверить shadow-first: один тяжёлый прогон в двух режимах и сравнить расход</div>
+</div>
+
+<div class="card part">
+  <span class="badge">🟡 ЧАСТИЧНО · половина уже есть · #64</span>
+  <div class="t"><span class="n">6</span>Единая «температура» для лидов, задач, альфы</div>
+  <div class="meta">Поправка после сверки: ресёрч температуры ЛИДОВ уже сделан (DR26-07-04-ZB-03, ещё до того, как ты надиктовал идею). Не сделано главное — распространение одной шкалы на задачи, альфу и проблемы; карточки в реестре нет, строки в alpha-backlog нет.</div>
+  <div class="next">Строить не с нуля: взять готовый DR по лидам и достроить шкалу вверх — это уже не R+DR, а один заход</div>
+</div>
+
+<div class="card part">
+  <span class="badge">🟡 СМЕЖНОЕ ЕСТЬ · само правило не записано · #66</span>
+  <div class="t"><span class="n">7</span>Ретро = таймбокс 5–10 минут</div>
+  <div class="meta">Проверено прямым поиском: слова «таймбокс» нет ни в скилле <code>/retro</code>, ни в <code>/tt</code>, ни в CLAUDE.md. Поправка после сверки: смежный канон построен — §9.2 про декомпозицию на сессии плюс <code>decision-decomposition-cut-quality-and-lifecycle</code> и скилл <code>/handoff</code>.</div>
+  <div class="next">Осталось ровно правило времени: «не влезли в 10 минут → выносим в отдельную сессию». Одна строка в скилл ретро. Заказанные тобой DR по QA-процессу и harness не размещены</div>
+</div>
+
+<footer>
+Метод: сопоставление 10 идей с 290 карточками реестра <code>10-Tasks</code> (по ключевым словам + чтение кандидатов), с голосовым списком задач (73 висячих), ROADMAP, alpha-backlog, памятью и живыми артефактами. Статус «сделано» ставился только там, где есть доказательство: закрытая карточка с outcome, работающая рутина или измеренный результат.
+</footer>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>🚀 arXiv-трек — табло</title>
+<style>
+  :root { --bg:#0f1220; --card:#1a1f35; --tx:#e8eaf6; --dim:#9aa3c7; --g:#4ade80; --y:#fbbf24; --o:#fb923c; --r:#f87171; }
+  body { background:var(--bg); color:var(--tx); font-family:Segoe UI,system-ui,sans-serif; margin:0; padding:24px; }
+  h1 { font-size:26px; margin:0 0 4px; } .sub { color:var(--dim); margin-bottom:20px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:14px; }
+  .card { background:var(--card); border-radius:12px; padding:16px 18px; }
+  .card h2 { font-size:16px; margin:0 0 10px; }
+  .row { display:flex; justify-content:space-between; gap:10px; padding:7px 0; border-bottom:1px solid #262c4a; font-size:14px; }
+  .row:last-child { border-bottom:none; }
+  .st { white-space:nowrap; font-weight:600; }
+  .g{color:var(--g)} .y{color:var(--y)} .o{color:var(--o)} .r{color:var(--r)}
+  .eli5 { background:#14203a; border-left:4px solid var(--y); border-radius:8px; padding:12px 16px; margin-top:20px; font-size:14px; line-height:1.5; }
+  .anton { background:#2a1f35; border-left:4px solid var(--r); border-radius:8px; padding:12px 16px; margin-top:14px; font-size:14px; }
+  code { background:#262c4a; padding:1px 5px; border-radius:4px; font-size:12px; }
+  a { color:#7dd3fc; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Approval-Clock.html">&larr; Approval-Clock</a> · <a href="Ask-Debt.html">Ask-Debt &rarr;</a></span></div>
+<h1>🚀 arXiv-трек — табло</h1>
+<div class="sub">Обновлено 14.07.2026 ~13:40 Lisbon · владелец: Claude (HP17) · цель: живой препринт к залпу W2 = 25.07</div>
+
+<div class="grid">
+  <div class="card"><h2>🔑 Аккаунт и механика</h2>
+    <div class="row"><span>Аккаунт arXiv (dzyatkovskiy.a2, создан 25.07.2025)</span><span class="st g">🟢 существует</span></div>
+    <div class="row"><span>Живой вход (Антон, 14.07) + сабмит 7825136 заведён, соглашения приняты</span><span class="st g">🟢 готово</span></div>
+    <div class="row"><span>Правила 2026: авто-endorsement по институтской почте отменён 21.01.2026</span><span class="st g">🟢 проверено живьём</span></div>
+    <div class="row"><span>Endorsement-коды: <b>cs.MA = ZHGJ6O · q-fin.GN = CLYFJT</b> (+на a2-почте)</span><span class="st g">🟢 ПОЛУЧЕНЫ 14.07</span></div>
+    <div class="row"><span>⭐ Домен: cs.MA эндорсит автор 3 любых cs.*-статей → ВСЕ топ-кандидаты проходят</span><span class="st g">🟢 пул расширен</span></div>
+  </div>
+
+  <div class="card"><h2>🎯 Эндорсеры</h2>
+    <div class="row"><span>Кандидаты (проверены arXiv API + Semantic Scholar)</span><span class="st g">🟢 6 квалифицированных</span></div>
+    <div class="row"><span>Порядок: Zargham → De Gasperis → Ballandies/Tessone → Frey</span><span class="st g">🟢 готов</span></div>
+    <div class="row"><span>Волна 1 (Zargham, De Gasperis, Ballandies+Tessone) + Волна 2 (8 Tier-1: Zhang, Chaffer, Saggese, Facchini, Castillo, Messias, Castelló, Akcin)</span><span class="st g">📤 11 отправлено 15.07, 0 баунсов</span></div>
+    <div class="row"><span>Волна 3 (Tier-2: Xu, Chitra, Heimbach, Kitzler, Diamandis…) — паттерн-адреса</span><span class="st y">🟡 при тишине 48ч, после проверки адресов</span></div>
+    <div class="row"><span>Ответы/endorse ловит утренний gmail-дайджест</span><span class="st y">🟡 ждём клика эндорсера</span></div>
+    <div class="row"><span>Таня (письмо от хаба 14.07 12:04)</span><span class="st y">🟡 ждём ответ</span></div>
+    <div class="row"><span>Соавторы/цитирующие как эндорсеры</span><span class="st r">❌ пусто (проверено: ни одного arXiv-профиля)</span></div>
+  </div>
+
+  <div class="card"><h2>📄 Статья 1 — Le Chatelier Tokenomics (первая!)</h2>
+    <div class="row"><span>LaTeX (q-fin.GN + cs.CR), abstract 1428/1920</span><span class="st g">🟢 готов</span></div>
+    <div class="row"><span>Патенты</span><span class="st g">🟢 не задевает</span></div>
+    <div class="row"><span>Сабмит</span><span class="st y">🟡 ждёт endorsement + руки Антона</span></div>
+  </div>
+
+  <div class="card"><h2>📄 Статья 2 — Homeostatic Governance</h2>
+    <div class="row"><span>LaTeX (cs.MA primary; план Б = cs.CY+cs.MA), abstract 1400/1920</span><span class="st g">🟢 готов</span></div>
+    <div class="row"><span>⚠️ Раскрывает 2 патент-кандидата (circuit-breaker + stability-score)</span><span class="st o">🟠 HOLD до решения</span></div>
+    <div class="row"><span>Вопрос Антону #e00ad06d в 02 POLICE: [А] provisional first / [Б] жертва EU/JP</span><span class="st y">🟡 ждёт ответа</span></div>
+  </div>
+
+  <div class="card"><h2>🔁 Конвейер зеркал (~20 опубликованных работ)</h2>
+    <div class="row"><span>Аудит политик (Open Policy Finder + сайты журналов)</span><span class="st g">🟢 готов: PhD-Mirror-Pipeline.md</span></div>
+    <div class="row"><span>Можно зеркалить чисто (MDPI, De Gruyter, IJACSA, CAD&amp;A, WJAETS, WJARR, ФРиБ, Shikshan)</span><span class="st g">🟢 8 работ</span></div>
+    <div class="row"><span>Нельзя сейчас (Инновации и инвестиции — эксклюзив до ~08.2026; JMER — copyright)</span><span class="st r">⛔ 2 работы</span></div>
+    <div class="row"><span>Спросить журнал (обе Scopus-статьи Economic Annals-XXI + BSU Ecology)</span><span class="st y">✉️ 3 работы</span></div>
+    <div class="row"><span>⚠️ E3S-статья 2023 (соавтор — Е.Н.) помечена RETRACTED в Crossref</span><span class="st r">🔴 не зеркалить, разобраться</span></div>
+    <div class="row"><span>Темп: по одной в неделю, не пакетом (анти-флаг модерации)</span><span class="st g">🟢 в чек-листе</span></div>
+  </div>
+
+  <div class="card"><h2>📁 Артефакты</h2>
+    <div class="row"><span>Табло/чек-лист: <code>05-Resources\PhD\PhD-Arxiv-Track.md</code></span><span class="st g">🟢</span></div>
+    <div class="row"><span>Кандидаты: <code>PhD-Endorsement-Candidates.md</code></span><span class="st g">🟢</span></div>
+    <div class="row"><span>Письма: <code>PhD-Endorsement-Letters.md</code></span><span class="st g">🟢</span></div>
+    <div class="row"><span>LaTeX: <code>05-Resources\PhD\arxiv-submission\...\main.tex</code> ×2</span><span class="st g">🟢</span></div>
+  </div>
+</div>
+
+<div class="anton"><b>🔴 От Антона нужно ровно 3 вещи:</b><br>
+1. Ответ на <b>#e00ad06d</b> в 02 POLICE (патенты: «+» = сначала provisional / «Б» = жертвуем EU/JP).<br>
+2. ~5 минут: войти на arxiv.org (пароль в <code>secrets\phd_accounts.env</code>), сгенерировать 2 endorsement-кода, кинуть в чат.<br>
+3. «+» на отправку писем эндорсерам.</div>
+
+<div class="eli5">🧒 <b>Простыми словами:</b> статьи готовы, «поручители» найдены, письма написаны. Осталось: ты отвечаешь на вопрос про патенты, заходишь на сайт за двумя кодами и говоришь «+» на письма. Дальше всё делаю я, а финальную кнопку «Submit» жмёшь ты.</div>
+</body>
+</html>

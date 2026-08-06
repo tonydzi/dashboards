@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hacker News — вписать почту в профиль antondz</title>
+<style>
+  :root{
+    --bg:#f4f4f2; --card:#fff; --ink:#1a1a1a; --muted:#5c5c5c; --line:#d8d8d4;
+    --hn-orange:#ff6600; --hn-bg:#f6f6ef; --hn-ink:#000;
+    --good:#1f7a3d; --warn:#b06000; --bad:#b3261e;
+    --hl:#ffd400;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#16181c; --card:#1e2126; --ink:#e9e9e6; --muted:#a0a4ab; --line:#333842; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:28px 18px 60px;background:var(--bg);color:var(--ink);
+       font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+  .wrap{max-width:880px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 6px}
+  .sub{color:var(--muted);margin:0 0 26px;font-size:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+        padding:20px;margin:0 0 22px}
+  .step{display:flex;align-items:center;gap:10px;margin:0 0 14px}
+  .num{flex:0 0 30px;height:30px;border-radius:50%;background:var(--hn-orange);color:#fff;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
+  .step h2{font-size:17px;margin:0}
+  .url{display:inline-block;font-family:ui-monospace,Consolas,monospace;font-size:13px;
+       background:rgba(255,102,0,.10);border:1px solid rgba(255,102,0,.35);
+       padding:5px 9px;border-radius:5px;margin:2px 0 12px;word-break:break-all}
+  .shot{background:var(--hn-bg);color:var(--hn-ink);border:1px solid #b9b9b0;border-radius:5px;
+        overflow-x:auto;font-family:Verdana,Geneva,sans-serif;font-size:13px}
+  .hnbar{background:var(--hn-orange);padding:3px 5px;display:flex;align-items:center;gap:6px;
+         font-size:12px;color:#000}
+  .hnlogo{border:1px solid #fff;width:16px;height:16px;display:inline-flex;align-items:center;
+          justify-content:center;font-weight:700;font-size:11px;background:var(--hn-orange);color:#fff}
+  .hnbody{padding:14px 12px}
+  table.hn{border-collapse:collapse}
+  table.hn td{padding:2px 6px 2px 0;vertical-align:top;font-size:13px}
+  table.hn td.k{color:#000;white-space:nowrap}
+  .fld{display:inline-block;border:1px solid #7a7a7a;background:#fff;color:#000;
+       padding:2px 4px;font-family:Verdana,sans-serif;font-size:12px;min-width:210px}
+  .fld.empty{color:#9a9a9a}
+  .btn{border:1px solid #7a7a7a;background:#ececec;color:#000;padding:2px 10px;font-size:12px;
+       display:inline-block;margin-top:8px}
+  .target{position:relative;outline:3px solid var(--hl);outline-offset:3px;border-radius:3px;
+          background:#fffbe0}
+  .arrow{color:var(--bad);font-weight:700;font-size:13px;white-space:nowrap;padding-left:8px}
+  .note{border-left:4px solid var(--hn-orange);padding:10px 14px;margin:14px 0 0;
+        background:rgba(255,102,0,.07);border-radius:0 6px 6px 0;font-size:14px}
+  .note.bad{border-left-color:var(--bad);background:rgba(179,38,30,.08)}
+  .note.good{border-left-color:var(--good);background:rgba(31,122,61,.08)}
+  .note b{display:block;margin-bottom:3px}
+  code{font-family:ui-monospace,Consolas,monospace;background:rgba(128,128,128,.15);
+       padding:1px 5px;border-radius:3px;font-size:13px}
+  .why{color:var(--muted);font-size:13.5px;margin:10px 0 0}
+  .foot{color:var(--muted);font-size:12.5px;text-align:center;margin-top:30px;line-height:1.7}
+  .kids{background:rgba(255,102,0,.09);border:1px dashed var(--hn-orange);border-radius:8px;
+        padding:14px 16px;margin-top:6px;font-size:14.5px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="HANDOFF-s6-devlog-lane-natalia.md">&larr; HANDOFF-s6-devlog-lane-natalia</a> · <a href="Hackernoon-Playbook.html">Hackernoon-Playbook &rarr;</a></span></div>
+<div class="wrap">
+
+  <h1>Вписать почту в профиль Hacker News</h1>
+  <p class="sub">Аккаунт <b>antondz</b> · делать на <b>хабе</b> (большой компьютер) · ~2 минуты · 27.07.2026</p>
+
+  <!-- ШАГ 1 -->
+  <div class="card">
+    <div class="step"><div class="num">1</div><h2>Войти в аккаунт</h2></div>
+    <div class="url">https://news.ycombinator.com/login</div>
+
+    <div class="shot">
+      <div class="hnbar"><span class="hnlogo">Y</span><b>Hacker News</b></div>
+      <div class="hnbody">
+        <div style="margin-bottom:4px"><b>Login</b></div>
+        <table class="hn">
+          <tr><td class="k">username:</td>
+              <td><span class="fld target">antondz</span></td>
+              <td class="arrow">← сюда antondz</td></tr>
+          <tr><td class="k">password:</td>
+              <td><span class="fld">••••••••••</span></td>
+              <td class="arrow">← Chrome подставит сам</td></tr>
+        </table>
+        <div class="btn">login</div>
+
+        <div style="margin-top:22px;padding-top:14px;border-top:1px dashed #b9b9b0;opacity:.55">
+          <div style="margin-bottom:4px"><b>Create Account</b></div>
+          <table class="hn">
+            <tr><td class="k">username:</td><td><span class="fld empty"></span></td></tr>
+            <tr><td class="k">password:</td><td><span class="fld empty"></span></td></tr>
+          </table>
+          <div class="btn">create account</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note bad"><b>⛔ Не трогай нижнюю форму «Create Account»</b>
+      Она на той же странице прямо под входом. Новый аккаунт = ноль лет истории = именно тот риск фильтра
+      Show HN, которого мы избежали. Нам нужна <b>верхняя</b> форма.</div>
+
+    <p class="why">Пароля я не знаю и подставить не могу: Chrome шифрует его привязкой к машине
+      (формат <code>v20</code>), наружу он не отдаётся — только сам Chrome подставит его в поле.</p>
+  </div>
+
+  <!-- ШАГ 2 -->
+  <div class="card">
+    <div class="step"><div class="num">2</div><h2>Убедиться, что вошёл</h2></div>
+    <p style="margin:0 0 10px">В правом верхнем углу появится твоё имя и карма:</p>
+
+    <div class="shot">
+      <div class="hnbar" style="justify-content:space-between">
+        <span style="display:flex;align-items:center;gap:6px">
+          <span class="hnlogo">Y</span><b>Hacker News</b>
+          <span style="font-size:11.5px">new | past | comments | ask | show | jobs | submit</span>
+        </span>
+        <span class="target" style="font-size:12px;padding:1px 4px">antondz (1)</span>
+      </div>
+      <div class="hnbody" style="color:#828282;font-size:12px">1. Показывать список новостей…</div>
+    </div>
+
+    <div class="note good"><b>✅ Видишь «antondz (1)» — вход сработал</b>
+      Единица — это карма. Мало, но аккаунту почти 6 лет, и возраст на HN важнее кармы.</div>
+
+    <div class="note bad"><b>❌ Пароль не подошёл — СТОП, не создавай новый аккаунт</b>
+      Напиши мне, разберёмся. Восстановление на HN возможно только через почту в профиле —
+      а её там как раз может не быть. Это и есть причина, по которой мы делаем шаг 3.</div>
+  </div>
+
+  <!-- ШАГ 3 -->
+  <div class="card">
+    <div class="step"><div class="num">3</div><h2>Вписать почту — главный шаг</h2></div>
+    <div class="url">https://news.ycombinator.com/user?id=antondz</div>
+    <p style="margin:0 0 10px">Откроется твой профиль. Когда ты вошёл под собой, поля становятся
+      редактируемыми. Нужна одна строка — <b>email</b>:</p>
+
+    <div class="shot">
+      <div class="hnbar" style="justify-content:space-between">
+        <span style="display:flex;align-items:center;gap:6px">
+          <span class="hnlogo">Y</span><b>Hacker News</b>
+        </span>
+        <span style="font-size:12px">antondz (1)</span>
+      </div>
+      <div class="hnbody">
+        <table class="hn">
+          <tr><td class="k">user:</td><td>antondz</td></tr>
+          <tr><td class="k">created:</td><td>September 16, 2020</td></tr>
+          <tr><td class="k">karma:</td><td>1</td></tr>
+          <tr><td class="k">about:</td>
+              <td><span class="fld empty" style="height:44px;display:inline-block"></span></td></tr>
+          <tr><td class="k"><b>email:</b></td>
+              <td><span class="fld target empty">&nbsp;</span></td>
+              <td class="arrow">← ВОТ СЮДА почту</td></tr>
+          <tr><td class="k">showdead:</td><td>no</td></tr>
+          <tr><td class="k">noprocrast:</td><td>no</td></tr>
+          <tr><td class="k">maxvisit:</td><td>20</td></tr>
+          <tr><td class="k">minaway:</td><td>180</td></tr>
+          <tr><td class="k">delay:</td><td>0</td></tr>
+        </table>
+        <div class="btn target">update</div>
+        <span class="arrow">← и нажать update</span>
+      </div>
+    </div>
+
+    <div class="note"><b>Какую почту вписать</b>
+      Рекомендую <code>*******vskiy.a@gmail.com</code> — твоя личная, и именно под ней Chrome залогинен
+      в этом профиле, аккаунт HN тоже личный (2020, крипто-эра). Если хочешь, чтобы аккаунт «принадлежал»
+      лаборатории — <code>**********department@gmail.com</code>. Главное: почта, которую ты реально читаешь.
+      На HN она не публичная, используется только для восстановления пароля.</div>
+
+    <div class="note bad"><b>Зачем это вообще</b>
+      Если в поле <b>email</b> пусто — восстановить пароль на HN <b>невозможно</b>, техподдержки-кнопки нет.
+      Аккаунт 2020 года, пароль ни разу не переиспользовался с тех пор. Одна очистка Chrome — и шестилетний
+      аккаунт потерян навсегда, а вместе с ним преимущество «не свежерег» для Show HN.</div>
+  </div>
+
+  <!-- ПРЕДУПРЕЖДЕНИЕ ПРО ЗАЛП -->
+  <div class="card">
+    <div class="step"><div class="num" style="background:var(--bad)">!</div>
+      <h2>Отдельно — когда пойдёт Show HN</h2></div>
+    <div class="note bad" style="margin-top:0"><b>Не голосуем командой</b>
+      HN автоматически ловит «кольца голосования». Если наши синхронно наголосуют за пост —
+      это самый быстрый способ потерять и аккаунт, и домен в выдаче. Растаскивание по времени не спасает.
+      Ноль организованных голосов и апвоутов друг другу.</div>
+    <p class="why">Постим строго с <b>хаба</b> (правило постоянного IP). Дату Show HN называет Наташа,
+      публикация — после её ОК и «+» Антона.</p>
+  </div>
+
+  <div class="kids">
+    🧒 <b>Простыми словами:</b> у нас есть ключ от домика, но у домика нет запасного выхода.
+    Заходим внутрь ключом (шаги 1–2) и вешаем на стенку записку со своим адресом (шаг 3).
+    Если ключ когда-нибудь потеряется, по этой записке сделают новый. Без записки — домик закрыт навсегда.
+  </div>
+
+  <div class="foot">
+    Аккаунт подтверждён живьём: HN API — <code>antondz</code>, created 2020-09-16, karma 1,
+    1 сабмишн #24488960.<br>
+    Сохранённый вход найден в Chrome ноута ZBOOKG8 (профиль Default), origin
+    <code>news.ycombinator.com/submitlink</code>.<br>
+    Скриншоты выше — точные макеты страниц HN, не фото экрана: залогиненную страницу может открыть только ты.
+  </div>
+
+</div>
+</body>
+</html>

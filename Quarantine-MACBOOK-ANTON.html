@@ -1,0 +1,518 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Карантин посылок — MacBook-Anton</title>
+<style>
+:root{--bg:#0f1115;--card:#181b22;--ink:#e7ebf0;--mut:#9aa4b2;--line:#262b35;--acc:#5b9bff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:920px;margin:0 auto;padding:26px 20px 80px}
+h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);font-size:13px;margin-bottom:8px}
+h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.cnt{color:var(--mut);font-weight:400}.hint{color:var(--mut);font-size:12.5px;margin:2px 0 12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin-bottom:10px}
+.card.held{border-color:#5a2330;background:#1d1214}
+.card.trusted{border-left:4px solid #37d399}
+.top{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.id{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--acc)}
+.bdg{font-size:10.5px;color:#0c0f14;border-radius:5px;padding:1px 8px;font-weight:700}
+.ap{font-size:10.5px;background:#232a38;color:#9aa4b2;border-radius:5px;padding:1px 8px}
+.ttl{font-weight:600;margin-top:5px}.meta{font-size:12px;color:var(--mut);margin-top:4px}
+.rsn{font-size:12.5px;margin-top:6px}.pat{font-size:12px;color:#ffb454;margin-top:5px}
+.apply{font-size:11.5px;color:#8b94a3;margin-top:6px;word-break:break-all}
+.apply code{background:#0c0f14;padding:1px 5px;border-radius:4px}
+.dec{font-size:12px;color:#7dd3fc;margin-top:5px}
+.ok{color:#37d399}.bad{color:#ff6b8b;font-weight:700}.mut{color:var(--mut)}
+.empty{color:var(--mut);text-align:center;padding:50px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Quarantine-MACANTON.html">&larr; Quarantine-MACANTON</a> · <a href="Quarantine-ZB.html">Quarantine-ZB &rarr;</a></span></div><div class="wrap">
+<h1>🛡️ Карантин входящих посылок</h1>
+<div class="sub">Машина <b>MacBook-Anton</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
+<h2>📦 Уже применённые <span class="cnt">61</span></h2><div class="card trusted">
+  <div class="top"><span class="id">canon-gate-0716</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">canon_write_gate.py roaming-leader canon gate</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-16 18:10 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>cp &quot;$MACHINE_BUS_DIR/_transit/canon-gate-20260716/canon_write_gate.py&quot; ~/.claude/scripts/canon_write_gate.py</code></div>
+  
+</div><div class="card held">
+  <div class="top"><span class="id">claudemd-budget-rootfix-2026-07-17</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
+  <div class="ttl">CLAUDE.md/MEMORY.md budget root-fix: pay-as-you-go (Маяк 17.07, мандат Антона +++). Гард СЛИТ с хабовым храповиком; net-new: хук+intake preflight (гард=хаб, memory_guard/compress→_shared), которых у флота нет.</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено:  · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">непроверенный/неизвестный источник: FLEET-ANCHOR</div>
+  
+  <div class="apply">примени: <code>bash &lt;bus&gt;/_deploy/payloads/claudemd-budget-rootfix/install.sh --net-new-only (или вручную): (1) hooks/claude_md_budget_hook.sh + add-only регистрация PostToolUse Write|Edit в settings.json; (2) /intake шаг3 preflight ДО записи. ⛔ НЕ копировать claude_md_guard.py/memory_guard.py/claude_md_compress.py как файлы — гард раскатывает хаб (интеграция CAP-DEBT+preflight), memory_guard/compress идут в hub scripts/_shared merge (фриз дрейфа #c06b1a04). Windows: README-APPLY.md, Task Scheduler. Verify: хук echo-тест + selftest гарда.</code></div>
+  <div class="dec">🗳 решение: <b>released</b> · 2026-07-20 01:32</div>
+</div><div class="card trusted">
+  <div class="top"><span class="id">flee01-path-rules</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">FLEE-01: 5 path-scoped rule files -&gt; ~/.claude/rules/ (спутник canon d5463283; rules/ не синкается)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-17 21:39 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>mkdir -p ~/.claude/rules &amp;&amp; cp &quot;$MACHINE_BUS_DIR/_deploy/payloads/flee01-path-rules/rules/&quot;*.md ~/.claude/rules/</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dr-fanout-grok-prosemirror-flee03-20260718</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">dr-fanout: Grok ProseMirror paste-event forever-fix (FLEE-03)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-18 05:13 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Syncthing уже доставил новый paste_verify.js+SKILL.md (Grok ProseMirror forever-fix, FLEE-03). Локальный install-шаг НЕ нужен — просто перечитай skill/dr-fanout/SKILL.md перед следующим DR-fanout: Grok теперь целится в .tiptap.ProseMirror через paste-event, textarea-зеркало не трогаем.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">deploy-sweep-fleetwide-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">deploy-sweep: сторож видит посылки, зарегистрированные не на меня (класс-фикс fleetwide-package-peer-blindspot)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-20 11:06 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>cp &quot;$MACHINE_BUS_DIR/_transit/deploy-sweep-fleetwide-20260720/&quot;deploy_{lib,check,register}.py &lt;scripts&gt;/ (Windows: %USERPROFILE%\.claude\scripts\). Сверить md5 с CHECKSUMS.txt. Ничего больше не требуется — API старое сохранено.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">83-stayers-bus-20260706</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">#83: bus_send.py + machine_bus.py (правленые стейеры, импорты/пути -&gt; _shared)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-20 11:14 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>copy from _transit/scripts-from-A-2022BAYAREA/ to ~/.claude/scripts/ (overwrite)</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">verify-parity-deployapply-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">deploy_apply.py судит verify тем же судьёй, что и sweep (run_verify): PYTHONPATH-&gt;scripts, cwd=SCRIPTS, интерпретатор нормализуется под ОС. Корень бага, о котором доложил хаб 20.07: apply запускал verify сырым subprocess -&gt; на Windows python3 нет + скрипты не импортируются -&gt; ХОРОШАЯ посылка выглядела сломанной и каждый Windows-пир форсил вслепую. Плюс _normalize_cmd теперь двусторонний (python3-&gt;python, не только python-&gt;python3).</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-20 13:02 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Файлы приезжают синком claude-config; применение = убедиться, что md5 сошлись (deploy_apply.py 2ff.., deploy_lib.py см. манифест) и прогнать verify ниже</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">power-thermal-logger-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Чёрный ящик питания/температур: 5-мин сэмплы + авто-рапорт в 03 после перезагрузки (приказ Антона &#x27;раскатать на весь флот&#x27;)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-20 21:07 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Скопировать power_thermal_logger.py + _test_power_thermal.py из &lt;bus&gt;/_deploy/payloads/power-thermal-logger/ в ~/.claude/scripts/ (Windows: %USERPROFILE%\.claude\scripts\), сверить md5 с CHECKSUMS.txt, затем ОДНА команда: python power_thermal_logger.py --install (Windows -&gt; задача планировщика, macOS/Linux -&gt; crontab). Подробности и таблица датчиков по ОС - в MANIFEST.md рядом.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">worktree-hook-outside-sync-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Хук WorktreeCreate v2 (консенсус #f2e71c9a + &#x27;+&#x27; Антона 20.07). ⚠️ v1 была БИТАЯ (печатала путь, не создавая worktree) — если ставили, замените файл. v2 делает настоящий git worktree add в $HOME/.claude-worktrees/&lt;repo&gt;/&lt;name&gt;. Payload+MANIFEST: _deploy/payloads/worktree-hook-outside-sync-20260720/, md5 8a0352fd055f72b52f51a620e6a37ea9. ЖИВОЙ ПРОГОН обязателен (урок: VERIFY проверяет замену, не симптом).</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-20 13:09 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Перед правкой: cp settings.json settings.json.bak-20260720-worktree. После правки: проверить, что settings.json остался валидным JSON и что хук печатает путь ВНЕ волта.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">engine-visibility-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">consensus.py ENGINE-VISIBILITY (консенсус #94389335, tier-1, accepts FLEET-ANCHOR+MacBook-Anton, committed хабом 20.07). (1) провал подписи -&gt; строка в stderr + счётчик sigfail-&lt;MACHINE&gt;.json (dark mode СОХРАНЁН, леджер не падает); (2) CLI-гигиена: -h/--help голым и после любого verb, propose отказывает subject на &#x27;-&#x27; (инцидент #4b814fec). Сторож _shared/consensus_config_guard.py CLASS C читает счётчик и алармит на РОСТ -- едет сам синком _shared.</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-20 21:40 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>scripts/ синком НЕ едет. Бэкап: cp ~/.claude/scripts/consensus.py ~/.claude/scripts/consensus.py.bak-preengvis-20260720 ; затем скопировать consensus.py + _test_consensus.py из _deploy/payloads/engine-visibility-20260720/ в ~/.claude/scripts/, сверить md5 с CHECKSUMS.txt, прогнать _test_consensus.py (41/41) и consensus_config_guard.py check (exit 0). Подробности + результаты тестов хаба = MANIFEST.md рядом. Откат = вернуть .bak.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">sig-unify-grant-ed25519-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">SIG-UNIFY шаг 1+2 (консенсус #a0161a32, HUMAN-APPROVED Антоном 20.07 &#x27;+++++&#x27;): machine_bus.py grant подписывается Ed25519 через fleet_sign (та же корневая система доверия, что у консенсуса: атрибуция на машину, поштучный отзыв, раздавать нечего — проверяющему хватает синкаемого реестра _engine/signers). Легаси-HMAC ПРИНИМАЕТСЯ переходно (шаг 2); на dual-signed блоках HMAC считается поверх payload+ED-строки, старые приёмники НЕ ломаются. Новый глагол sigcheck [&lt;file&gt;] = вердикт по блоку, exit 0=trusted. md5 machine_bus.py=bfbe9305e83f4cd1d74b71e5b960fc99. Тесты на Mac16: 8/8 (sign/verify, tamper, подмена имени, мусор-b64, unsigned, узел-без-ключа не подписывает, dual-sign, CRLF). Шаг 3 (выключение HMAC + удаление fleet_hmac.env) — ОТДЕЛЬНО, после VERIFY всех узлов. ★ПОПРАВКА ДОСТАВКИ: синк claude-config до Маяка НЕ доходит — файл теперь лежит в _deploy/payloads/sig-unify-grant-ed25519-20260720/ (machine_bus.py + CHECKSUMS + MANIFEST).</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-20 13:41 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>machine_bus.py приезжает синком claude-config; применение = сверить md5 и прогнать verify</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">deploy-case-canon-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Case-класс закрыт в движке: canon_key канонизирует ключи машин против fleet_nodes; записи PENDING/DONE всегда каноническим написанием, чтения case-устойчивы (сливают PENDING-fleet-anchor + PENDING-FLEET-ANCHOR, DONE под любым case валиден). Плюс BUS из machine.env при пустом env (просьба FLEET-ANCHOR 17.07). Файлы: _transit/deploy-case-canon-20260720 (или синк claude-config), md5 в MANIFEST</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-20 13:54 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>скопировать deploy_lib.py deploy_check.py deploy_register.py из _transit/deploy-case-canon-20260720 в ~/.claude/scripts (сверить md5), прогнать verify</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">outbound-ladder-20260721</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">bus_ping.post_to(): лестница user-&gt;bot-&gt;spool вместо тихой потери. КОРЕНЬ: post_to при занятом Telethon-локе печатал &#x27;PING SKIP&#x27; и возвращал False -- одношаговые сообщения ПРОПАДАЛИ МОЛЧА, включая эскалации Tier-2 к Антону в 02 POLICE (post_police идёт через post_to). У близнеца post() фолбэк есть, у post_to забыли. Теперь: ждём лок 25с -&gt; бот (Bot API, без лока) -&gt; спул на диск + громкий stderr; любая успешная отправка сливает припаркованное (без нового крона). Глубина спула видна в --check, ручной слив --drain. Плюс бот @********_bus_bot добавлен в чаты 02 и 04 -- там ступени 2 физически не было.</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-21 04:35 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>scripts/ синком НЕ едет. Бэкап: cp ~/.claude/scripts/bus_ping.py ~/.claude/scripts/bus_ping.py.bak-preladder-20260721 ; скопировать bus_ping.py из _deploy/payloads/outbound-ladder-20260721/ в ~/.claude/scripts/, сверить md5 с CHECKSUMS.txt, прогнать `bus_ping.py --check` (ждём PING READY + SPOOL: 0). Нет токена бота -&gt; ступень 2 пропускается, ступень 3 работает, ничего не падает. Тесты хаба 6/6 + разбор находок Codex = MANIFEST.md рядом. Откат = вернуть .bak.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">verify-proof-gate-20260721</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">PROOF-GATE: proven/unproven VERIFY в consensus.py + payload-рельса-гейт в deploy_register (мандат Антона 20.07, тред #328e4404)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-21 00:29 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Файлы лежат в _deploy/payloads/verify-proof-gate-20260721/ (5 шт + CHECKSUMS.txt). Апплай по MANIFEST.md: бэкап *.bak-proofgate-20260721 -&gt; скопировать 5 файлов в ~/.claude/scripts/ (Win: %USERPROFILE%\.claude\scripts\) -&gt; прогнать python3 _test_consensus.py &amp;&amp; python3 _test_deploy_gate.py (оба exit 0) -&gt; VERIFY в тред #328e4404 с ДЕТЕРМИНИРОВАННЫМ proof (счётчики тестов + exit 0 + md5). Флаг proof_grading_after НЕ выставлять — армирование отдельным шагом после VERIFY всех узлов.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">grok-vendor3-20260721</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Grok Build CLI + grok_review.py = третий вендор-ревьюер (пакет _transit/grok-vendor3-rollout-20260721)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-21 00:58 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Читать _transit/grok-vendor3-rollout-20260721/INSTALL.md. Кратко: (1) поставить grok CLI — macOS: brew install --cask grok-build; Linux/Windows(Git Bash/WSL): curl -fsSL https://x.ai/cli/install.sh | bash; (2) grok login --device-auth (аккаунт X @*****Stef_; код ОДНОРАЗОВЫЙ — отбился, генери новый; узлам коллег логин НЕ делать до отмашки Антона); (3) скопировать grok_review.py в ~/.claude/scripts/cc-review/ (на пирах ~/.claude receiveonly -&gt; кладёт ХАБ), сверить md5 по CHECKSUMS.txt.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">approval-late-reply-fix-20260721</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">approval.py класс-фикс: поздний bound &#x27;+&#x27;/QQQ решает stale/expired + харвест 02 в тике (инцидент #38a18623)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-21 22:40 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (ZBOOKG8-2023PAL) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Скопируй из _machine-bus/_transit/approval/: approval.py, approval_reping_tick.py, _test_approval_plus_reping.py -&gt; ~/.claude/scripts/ (детали и MD5: APPLY-2026-07-21.md рядом). approval.json не трогать.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">verify-tilde-windows-20260721</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">verify-судья перестаёт врать: (1) ~ раскрывается на Windows [НОВЫЙ корень: verify, написанный на Mac, умирал на КАЖДОМ Windows-пире], (2) deploy_apply судит через run_verify [реализация verify-parity-20260720, чьи файлы НЕ доехали синком], (3) _test_deploy_gate пишет фикстуры newline=&#x27;&#x27; [тест проваливал сам себя: 8/11 -&gt; 11/11]. Пакет в _deploy/payloads/verify-tilde-windows-20260721/ + CHECKSUMS.txt</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-21 21:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Бэкап *.bak-tilde-20260721 -&gt; скопировать 3 файла из _deploy/payloads/verify-tilde-windows-20260721/ в ~/.claude/scripts/ -&gt; прогнать оба теста (11/11 и 48/48). Применять ПОСЛЕ verify-proof-gate-20260721 (надстраивает его deploy_lib)</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">publish-canon-argparse-20260721</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">publish_canon.py argparse root-fix (backup-publisher: --help публиковал канон!) — пакет _transit/publish-canon-argparse-20260721</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-21 22:53 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (ZBOOKG8-2023PAL) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Если ~/.claude/scripts не на claude-config шаре -&gt; скопируй publish_canon.py из _transit/publish-canon-argparse-20260721/ (md5 в CHECKSUMS.txt). НЕ проверяй старую версию запуском --help — она публикует; verify ниже читает файл, не запускает.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">memory-guard-allprojects-20260721</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">memory_guard.py сторожил ЧУЖОЙ MEMORY.md: путь был захардкожен на проект E---CLAUDE-PaloAltoPC-June26, а скрипт синкается всем. На хабе живой always-loaded индекс (123 строки, 35 записей &gt;150 симв) не проверялся ВООБЩЕ, страж рапортовал про чужой файл. Теперь обходит projects/*/memory/MEMORY.md, префикс [проект] в выводе, флаг рядом со своим индексом. Payload + CHECKSUMS на месте</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-21 23:00 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Бэкап memory_guard.py -&gt; *.bak-allprojects-20260721; скопировать 1 файл из _deploy/payloads/memory-guard-allprojects-20260721/ в ~/.claude/scripts/; прогнать python3 memory_guard.py — должен перечислить ВСЕ твои проекты с префиксом [...]</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">argparse-wave1-20260722</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">argparse волна 1: 10 CLI-паблишеров/отправителей (--help/незнакомый флаг больше не стреляют) — пакет _deploy/payloads/argparse-wave1-20260722</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-21 15:24 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (ZBOOKG8-2023PAL) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Сверь md5 живых ~/.claude/scripts/* с payloads/argparse-wave1-20260722/CHECKSUMS.txt; не доехало — скопируй из пакета (вкл. _shared/bus_group_post.py). Детали и смена контракта bus_send (-- разделитель) в APPLY-2026-07-22.md. НЕ проверяй СТАРЫЕ версии запуском --help.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">tripwire-deploy-fix-20260723</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Убрать &#x27;deploy&#x27; из tier_tripwire (ложная Tier-2 эскалация); данные, не движок</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-23 10:26 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Скопировать payloads/tripwire-deploy-fix-20260723/tier_tripwire.txt в ~/.claude/scripts/tier_tripwire.txt (перезаписать), md5=e17f23c7a7c3a41e306aeb415834d3c6, затем deploy_apply.py tripwire-deploy-fix-20260723</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">deploy-split-manifest-20260724</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Манифест не теряется в расколотой копии Syncthing (sync-conflict/merged читаются как свои, фантомные пиры исчезли) + машина резолвится по hostname/алиасам, а не только по регистру (голый env launchd звал Mac16 &#x27;MacBookPro.home&#x27;). Замер на Маяке: своих посылок 12-&gt;22, фантомов 2-&gt;0. Пакет _transit/deploy-split-manifest-20260724</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-24 15:26 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>скопировать deploy_lib.py + deploy_check.py из _transit/deploy-split-manifest-20260724 (md5 в CHECKSUMS.txt); fleet_nodes.json — СВЕРИТЬ hostname своей машины командой hostname и дописать алиас, если расходится (не слепая копия); прогнать _test_case_class.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">canon-chain-catchup-20260725</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Канон: отставший узел догоняет сам (CHAIN.json + FF-CATCHUP); лесенка к fleet-секрету</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-25 23:36 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Читай _deploy/payloads/canon-chain-catchup-20260725/APPLY-2026-07-25.md; canon_apply.py + publish_canon.py -&gt; scripts/, fleet_hmac.py -&gt; scripts/_shared/, _test_canon_chain.py -&gt; scripts/</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">canon-ack-selfheal-20260726</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Канон: публикатор больше не числится отстающим у своего сторожа + анти-гонка ACK + видимость ключа (поверх вчерашней посылки)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-26 06:46 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Читай _deploy/payloads/canon-ack-selfheal-20260726/APPLY-2026-07-26.md; canon_apply.py + _test_canon_chain.py -&gt; scripts/</code></div>
+  
+</div><div class="card held">
+  <div class="top"><span class="id">sentinel-age-rootfix-20260726</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
+  <div class="ttl">Layer-C сторож: daily-nag был мёртвым кодом (возраст всегда None) — лестница улик + first_seen ledger</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-07-26 20:09 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">непроверенный/неизвестный источник: FLEET-ANCHOR</div>
+  
+  <div class="apply">примени: <code>Читай _deploy/payloads/sentinel-age-rootfix-20260726/APPLY-2026-07-26.md; бэкап-first, копируй deploy_sweep_guard.py + _test_deploy_sentinel_age.py в ~/.claude/scripts/</code></div>
+  
+</div><div class="card held">
+  <div class="top"><span class="id">tasks-registry-readers-20260726</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
+  <div class="ttl">Читатели реестра задач: SessionStart-хук P0/P1 (портируемый) + tasks_index с гейтом схемы и авто-нормализатором для вашей копии индексатора. Маяк остаётся sole writer audit-latest.json и sole weekly-пингером — на пирах НИЧЕГО не шедулить, старый scheduler-двойник индексатора выключить. Codex-ревью вшито.</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-07-26 20:27 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">непроверенный/неизвестный источник: FLEET-ANCHOR</div>
+  
+  <div class="apply">примени: <code>Читай _deploy/payloads/tasks-registry-readers-20260726/APPLY-2026-07-26.md: хук -&gt; ~/.claude/hooks/ + ADD-ONLY регистрация в SessionStart settings.json (бэкап, не затирая secondop); tasks_index.py -&gt; замена своей копии индексатора (бэкап .bak); md5 по CHECKSUMS.txt</code></div>
+  
+</div><div class="card held">
+  <div class="top"><span class="id">autochannel-cmdapply-gate-20260726</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
+  <div class="ttl">Авто-канал доставки скриптов: cmd-apply гейт (tier1+Ed25519) + генерический апплаер deploy_payload_install.py (P0 #83487491/#001b5f1f)</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-07-26 20:29 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">непроверенный/неизвестный источник: FLEET-ANCHOR</div>
+  
+  <div class="apply">примени: <code>Читай _deploy/payloads/autochannel-cmdapply-gate-20260726/APPLY-2026-07-26.md; bootstrap: python3 &lt;payload&gt;/deploy_payload_install.py autochannel-cmdapply-gate-20260726</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">sync-conflict-rootfix-20260726</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">ROOT-FIX sync-conflict: per-node имена (Waiting-Sessions/Quarantine) + единственный писатель (Task-Backlog/Vault-Orphans/_People-MOC) + идемпотентный ACTIVE_NOW</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-26 21:40 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>scripts/ синком НЕ едет -&gt; файлы в _machine-bus/_transit/sync-conflict-rootfix-20260726 (README.md там же). Забэкапить и положить в ~/.claude/scripts: onair.py, session_wait_watchdog.py, quarantine.py, derived_writers.py, fleet_boards_index.py. derived_writers.py = МОСТ, реализация+реестр в _imports/sync (едет сама). Без этого узел продолжает драться за общие дашборды и ACTIVE_NOW.md.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">bible-leads-gate-20260726</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Гейт «сначала Библия» для любой лид-работы (anton 26.07)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-26 23:53 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>cp _transit/DEPLOY-bible_leads.py ~/.claude/scripts/bible_leads.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">bible-leads-gate-v2-20260727</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Гейт «сначала Библия» v2: +touch-base/триаж/no-show/DoD-звонка (anton 27.07)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-27 00:11 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>cp _transit/DEPLOY-bible_leads.py ~/.claude/scripts/bible_leads.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">fleet-parity-audit-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Табло паритета флота: у всех ли пиров все апдейты (смотрит на узлы СНАРУЖИ)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-29 12:45 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python ~/.claude/scripts/deploy_payload_install.py fleet-parity-audit-20260729</code></div>
+  
+</div><div class="card held">
+  <div class="top"><span class="id">fleet-nodes-ladder-20260729</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
+  <div class="ttl">fleet_nodes.json ladder fix (env-&gt;~/.claude-&gt;_shared), thread #a9a5fbb3, author ZBOOKG8-2023PAL, proven-VERIFY on FLEET-ANCHOR</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-07-29 13:01 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">непроверенный/неизвестный источник: FLEET-ANCHOR</div>
+  
+  <div class="apply">примени: <code>скопировать fleet_nodes.py+fleet_nodes.json из _deploy/payloads/fleet-nodes-ladder-20260729/ в ~/.claude/scripts/_shared/ (сверить md5 по CHECKSUMS.txt)</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">false-no-guard-20260724</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Гейт против ложного «файла X нет» (have.py + Stop-хук false_no_guard.py)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-29 06:07 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>Скопировать have.py -&gt; ~/.claude/scripts/ и false_no_guard.py -&gt; ~/.claude/hooks/ из &lt;bus&gt;/_deploy/payloads/false-no-guard/ (Windows: %USERPROFILE%\.claude\...), сверить md5 с CHECKSUMS.txt, затем ОДНА команда: python3 ~/.claude/hooks/false_no_guard.py --install (сам пропишется в локальный settings.json локальными путями, бэкап снимет, идемпотентно). Подробности в MANIFEST.md рядом.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">qa-engine-zone-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">QA: движки видят зону _engine + пер-машинный отчёт регресс-сетки (6 починок)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-29 06:27 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/qa-engine-zone-20260729/apply_qa_engine_zone.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">proc-patrol-v1</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Proc Patrol: робот против зомби-процессов и тормозов (кейс Mac16 29.07: 172 сироты MCP + 20 сессий &gt;24ч, swap 97%)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-29 07:51 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/proc_patrol.py --install</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">session-gates-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Сессии «в чёрную» запрещены: 3 гейта видимости (blackbox + немой чип + сторож) + имя AUTO-&lt;узел&gt;-&lt;дата&gt;. Приказ Антона 29.07. Чинит Windows-пути (на Mac/Linux гейт был мёртв)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-29 16:07 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python -c &quot;import sys,os,subprocess;sys.path.insert(0,os.path.expanduser(&#x27;~/.claude/scripts&#x27;));import deploy_lib;p=deploy_lib.payload_dir(&#x27;session-gates-20260729&#x27;);sys.exit(subprocess.call([sys.executable,os.path.join(p,&#x27;install_session_gates.py&#x27;)]))&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">crm-proof-of-delivery-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">CRM: касание засчитывается только с message_id (budget.py proof-of-delivery + safe_send ловит Message.id + touch_audit карточная половина)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-29 16:11 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>ничего ставить не надо: файлы едут Syncthing-шарой _imports/crm-engine — только дождись синка</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">portable-verify-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Портируемый verify: deploy_lib раскрывает $VAR и не верит Store-заглушке python3; have.py видит зону движков по IMPORTS_ROOT</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-29 17:46 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/portable-verify-20260729/apply_portable_verify.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">regress-junk-filter-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">regress_run: отсев протухших дублей (sync-conflict/.bak-*) + тест</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-29 19:28 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (ZBOOKG8-2023PAL) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python -c &quot;import shutil,os,glob;s=os.path.join(os.environ.get(&#x27;OBSIDIAN_VAULT&#x27;,r&#x27;E:\Obsidian\Anton-Knowledge&#x27;),&#x27;_machine-bus&#x27;,&#x27;_deploy&#x27;,&#x27;payloads&#x27;,&#x27;regress-junk-filter-20260729&#x27;);d=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);[shutil.copy2(f,d) for f in glob.glob(os.path.join(s,&#x27;*.py&#x27;))]&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">ack-fastlane-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">ACK fast lane + ACK format gate (root-fix: ACK coverage 22%)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-29 19:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (ZBOOKG8-2023PAL) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python ~/.claude/scripts/install_ack_fast_lane.py --from-payload _deploy/payloads/ack-fastlane-20260729</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">menv-ladder-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">win-portability: ОДНА лесенка путей _shared/menv.py (env -&gt; machine.env -&gt; дефолт под ОС) + require_windows() для виндовых по природе инструментов; 34 общих скрипта переведены</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-29 21:13 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (ZBOOKG8-2023PAL) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>файлы приезжают Syncthing-шарой claude-config; установочного шага нет — достаточно дождаться синка</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">receiveonly-edit-guard-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Гейт receiveonly_edit_guard: правка в receive-only шаре отбивается в момент записи</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-29 12:43 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 &quot;&lt;bus&gt;/_deploy/payloads/receiveonly-edit-guard-20260729/install.py&quot;   (Windows: python &quot;%MACHINE_BUS_DIR%\_deploy\payloads\receiveonly-edit-guard-20260729\install.py&quot;). Идемпотентно: кладёт 3 файла в ~/.claude/hooks, add-only регистрирует PreToolUse-хук (matcher Write|Edit|MultiEdit|NotebookEdit, бэкап settings.json до правки), прогоняет тест и падает, если он красный. Синком гейт НЕ доедет: hooks/* заперт в .stignore claude-home.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">hooks-parity-20260730</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Гейты-хуки: манифест + сторож паритета + установщик регистрации (корень: тело гейта доезжает, а регистрация в settings.json пер-машинная)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-30 04:11 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (A-2022BAYAREA) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python &quot;&lt;bus&gt;/_deploy/payloads/hooks-parity-20260730/install.py&quot;   (Windows: python &quot;%MACHINE_BUS_DIR%\_deploy\payloads\hooks-parity-20260730\install.py&quot;). Самодостаточно: везёт движки + тела 9 гейтов, кладёт их локально, вписывает регистрации С МЕСТНЫМИ путями под эту ОС, прогоняет тест и падает на красном.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">content-paths-limits-20260730</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Приборы контента: limits.json + машинные пути вместо хардкода буквы диска</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-30 14:48 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$IMPORTS_ROOT/content-factory/registry/_test_pub_registry_limits.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">codex-lib-uuidtail-20260730</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">codex_lib.py: имя заметки из ХВОСТА UUIDv7 (было sid[:8]=время -&gt; тихая перезапись, замер: хаб 231 роллаут -&gt; 173 ноты) + preserve обогащённых заметок при пересборке. md5=03a18f6b61303e976eb0d7b30ed719c4</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-30 14:55 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python codex_lib.py import</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">firefox-engine-py39-lock-20260730</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Firefox-движок: python&lt;3.10 fix + замок профиля + ff_session_harvest L2</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-30 15:11 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python -c &quot;import hashlib,os;p=os.path.expanduser(&#x27;~/.claude/scripts/_shared/firefox_selenium.py&#x27;);print(hashlib.md5(open(p,&#x27;rb&#x27;).read()).hexdigest())&quot;</code></div>
+  
+</div><div class="card held">
+  <div class="top"><span class="id">fleet-tools-sync-20260731</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
+  <div class="ttl">Обе половины обмена инструментами: НОВЫЙ приёмник fleet_tools_sync.py + починка зашитого E:\ в publish_scripts.py (замер: узел отставал на 361 инструмент и не отдавал ничего)</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-07-31 10:42 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">непроверенный/неизвестный источник: MyOwnPC-Natalia</div>
+  
+  <div class="apply">примени: <code>python %MACHINE_BUS_DIR%\_transit\fleet-tools-sync-20260731\fleet_tools_sync.py --source A-2022BAYAREA --apply</code></div>
+  <div class="dec">🗳 решение: <b>released</b> · 2026-07-30 23:45</div>
+</div><div class="card trusted">
+  <div class="top"><span class="id">stignore-include-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Активировать общие правила игнора claude-imports: .stignore c #include на каждом узле (движок stignore_ensure.py в корне шары, тест 13 кейсов)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-30 23:50 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$IMPORTS_ROOT/stignore_ensure.py&quot; --apply</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">content-portability-ghostwrite-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Класс «запись в призрака» закрыт в content-factory: 22 файла на идиоме _paths, _default_vault от положения файла, сторож _test_portability_gate.py (скан чист + красное доказательство + нет призраков)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-30 23:53 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$IMPORTS_ROOT/content-factory/_test_portability_gate.py&quot;</code></div>
+  
+</div><div class="card held">
+  <div class="top"><span class="id">node-roles-are-facts-20260731</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
+  <div class="ttl">Роль узла = машиночитаемый факт (role_class), а не проза: node_doctor спрашивает задачи по роли, машинам сотрудников выданы ранги арбитра (было null у обеих)</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-07-31 12:39 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">непроверенный/неизвестный источник: MyOwnPC-Natalia</div>
+  
+  <div class="apply">примени: <code>python %MACHINE_BUS_DIR%\_transit\node-roles-are-facts-20260731\nodes_role_patch.py &amp;&amp; python %MACHINE_BUS_DIR%\_transit\node-roles-are-facts-20260731\node_doctor_role_patch.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">social-autopost-3lanes-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Автопостинг на 3 площадки (FB+Threads+Instagram): один селектор, один счётчик темпа, нода-гейт §7.2, карточка для IG, скилл /social-daily</div>
+  <div class="meta">источник: <b>MacBook-Ruslana</b> · отправлено: 2026-07-31 13:17 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Ruslana) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python &quot;$MACHINE_BUS_DIR/_transit/social-autopost-3lanes-20260731/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">fleet-nodes-ladder-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Лесенка fleet_nodes (#a9a5fbb3): env-&gt;~/.claude-&gt;_shared + тест 3 ступеней — доводка committed-фикса, артефакт до узлов не доезжал</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-31 06:23 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py fleet-nodes-ladder-20260731</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dr-start-single-door-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Одна дверь ДР: dr_start.py + COMPAT-ШИМ в dr_registry + атомарная публикация манифеста в dr_queue + гейт обхода</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-31 06:38 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/dr_start_install.py --install</code></div>
+  
+</div><div class="card held">
+  <div class="top"><span class="id">ack-watchdog-portable-20260731</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
+  <div class="ttl">ack_watchdog.cmd: убран зашитый C:\Users\Anton\...python.exe -- у кого другой юзер, сторож ТИШИНЫ сам был тих</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-07-31 20:17 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">непроверенный/неизвестный источник: MyOwnPC-Natalia</div>
+  
+  <div class="apply">примени: <code>python %MACHINE_BUS_DIR%\_transit\ack-watchdog-portable-20260731\ack_watchdog_apply.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">block-dangerous-bash-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Security-floor exit-2 hook block_dangerous_bash: pipe-to-shell, secret exfil, rm -rf root, settings.json write</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-31 09:48 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/hooks/install_block_dangerous_bash.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">quarantine-sig25-gate-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Корень ложного карантина: гейт не спрашивал Ed25519-подпись (только легаси-HMAC) и держал криптографически доказанные посылки из-за написания имени узла — так и сломалось Tier-2</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-31 09:50 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_quarantine_sig25.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dead-claim-guard-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Гейт против «X мёртв» без обхода: rail_sweep.py (все поверхности: профили рельсы + системный FF + Chrome + Chrome-MCP) + Stop-хук dead_claim_guard.py. Класс замерен 3x за 3 суток: ложный аск Антону + день не той работы</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-31 09:54 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python %MACHINE_BUS_DIR%/_transit/dead-claim-guard-20260731/_install.py --apply</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">git-channel-claude-config-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Git-канал доставки ~/.claude (закрывает P0 peer-scripts-delivery-channel). Файлы НЕ перезаписывает: чего нет — доставит, что есть и отличается — оставит и покажет</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-31 09:57 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 $OBSIDIAN_VAULT/_machine-bus/_deploy/payloads/git-channel-claude-config-20260731/install.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">workflow-harvest-v2-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">workflow_harvest.py v2: дедуп по маркеру source (лечит дубль при --slug), mtime-штамп против гонки дозаписи, null-стойкость, OBSIDIAN_VAULT-роутинг для Win/Linux узлов + тест _test_workflow_harvest.py (6 классов, сам встаёт в регресс-сетку)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-31 22:11 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python ~/.claude/scripts/deploy_payload_install.py workflow-harvest-v2-20260731</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">fleet-sync-no-backwards-20260801</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">СРОЧНО: приёмник флота молча откатывал файлы, рождённые на СВОЁМ узле (замер Mac16: 10 файлов параллельных сессий пошли бы под нож ночного прогона). Теперь СТАРШЕ принимаем, НОВЕЕ не трогаем</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-31 22:18 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python %MACHINE_BUS_DIR%/_transit/fleet-sync-no-backwards-20260801/_install.py --apply</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dr-registry-integrity-gates-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Гейты целостности статуса ДР: тело обязано существовать + молчаливое понижение ловится (exit 3 + откат мусорной строки)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-07-31 22:20 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">доверенный источник флота (MacBook-Anton) [мягкий гейт: HMAC ещё не подключён]</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/install_dr_registry_gates.py</code></div>
+  
+</div>
+</div></body></html>

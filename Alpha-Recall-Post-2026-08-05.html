@@ -1,0 +1,69 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Content-Debt.html">Content-Debt &rarr;</a></span></div><title>Альфа из комментов: пост про recall (05.08.2026)</title>
+<style>
+  :root{--bg:#fff;--fg:#1a1a1a;--mut:#666;--line:#e3e3e3;--card:#fafafa;--ok:#1a7f37;--no:#b3261e;--wait:#8a6d00}
+  @media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#ececec;--mut:#9a9a9a;--line:#2e2e2e;--card:#1d1d1d;--ok:#4ac26b;--no:#f26d63;--wait:#e0b341}}
+  :root[data-theme="dark"]{--bg:#141414;--fg:#ececec;--mut:#9a9a9a;--line:#2e2e2e;--card:#1d1d1d;--ok:#4ac26b;--no:#f26d63;--wait:#e0b341}
+  :root[data-theme="light"]{--bg:#fff;--fg:#1a1a1a;--mut:#666;--line:#e3e3e3;--card:#fafafa;--ok:#1a7f37;--no:#b3261e;--wait:#8a6d00}
+  body{background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;padding:24px;max-width:1000px}
+  h1{font-size:22px;margin:0 0 4px} h2{font-size:17px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .sub{color:var(--mut);font-size:14px;margin-bottom:18px}
+  .cards{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+  .c{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:120px}
+  .c b{display:block;font-size:22px} .c span{color:var(--mut);font-size:13px}
+  .wrap{overflow-x:auto} table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+  th,td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  th{color:var(--mut);font-weight:600;font-size:13px}
+  .ok{color:var(--ok);font-weight:600}.no{color:var(--no);font-weight:600}.wait{color:var(--wait);font-weight:600}
+  ul{margin:6px 0 0 18px;padding:0} li{margin:5px 0}
+  code{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:13px}
+</style>
+
+<h1>Альфа из комментов под постом про recall</h1>
+<div class="sub">Сессия 05.08.2026, машина Nataly-Win-NB. Восстановлено 06.08.2026. Реестр: <code>D:\OBSIDIAN\_imports\alpha\credit_ledger.jsonl</code></div>
+
+<div class="cards">
+  <div class="c"><b>10</b><span>советов в реестре</span></div>
+  <div class="c"><b>1</b><span>взяли</span></div>
+  <div class="c"><b>1</b><span>не взяли</span></div>
+  <div class="c"><b>8</b><span>без вердикта</span></div>
+  <div class="c"><b>9</b><span>названы в посте</span></div>
+  <div class="c"><b>1</b><span>не поблагодарен</span></div>
+</div>
+
+<h2>Кто что дал и чем закончилось</h2>
+<div class="wrap"><table>
+<tr><th>Человек</th><th>Совет</th><th>Вердикт</th><th>В посте</th></tr>
+<tr><td>**son **omt</td><td>Не проси у агента экскурсию «посмотри файлы» - задай конкретный вопрос, контекст наберётся сам</td><td class="ok">взяли</td><td>да</td></tr>
+<tr><td>**sha ***geev</td><td>XERJ, ES-совместимый движок с памятью на агента, BM25+вектор</td><td class="no">не взяли: их же замер 9/10 против 10/10 у голого grep+python</td><td>да</td></tr>
+<tr><td>Alexander Fedorenko</td><td>Не полный recall, а briefing на старте + точечный recall под задачу; top-20 → reranking до 5-10; критерий достаточности из 4 вопросов</td><td class="wait">думаем</td><td>да</td></tr>
+<tr><td>****imir ***tsov</td><td>mem0: агент сам пишет и достаёт, человек валидирует спорное. Ручной recall - работа за машину</td><td class="wait">думаем</td><td>да</td></tr>
+<tr><td>*kk *ng</td><td>Скилл-накопитель доменных знаний, выставленный топиком в телеге = персональный advisor</td><td class="wait">думаем</td><td>да</td></tr>
+<tr><td>***riy *****kevych</td><td>Память проекта обновляется на КАЖДОМ коммите, а не в конце сессии</td><td class="wait">думаем</td><td>да</td></tr>
+<tr><td>Николай Махов</td><td>Три слоя памяти (короткая, средняя, длинная) + глубина по импульсу</td><td class="wait">думаем</td><td>да</td></tr>
+<tr><td>**mur ***dik</td><td>Граф над большой базой знаний (graphify)</td><td class="wait">думаем (крутится A/B вектор vs вектор+граф)</td><td>да</td></tr>
+<tr><td>***ill ***akov</td><td>Инвариант f(A+B)=f(A)+f(B) в структуре памяти - про причину амнезий, а не про инструмент</td><td class="wait">думаем</td><td>да</td></tr>
+<tr><td>Ihar Paliashchuk</td><td>CodeIndexer: память проекта + семантический и графовый поиск по коду</td><td class="wait">думаем</td><td class="no">НЕТ</td></tr>
+</table></div>
+
+<h2>Что реально сделано и лежит на диске</h2>
+<ul>
+<li>Реестр альфа-кредита: 10 записей, все <code>fb/public</code>, у 9 проставлена ссылка на пост-благодарность.</li>
+<li>Совет **son **omt внедрён по-настоящему: правило <code>question-not-tour-warms-context.md</code> + строка в MEMORY.md.</li>
+<li>Твой финальный текст поста сохранён побуквенно: <code>D:\!CLAUDE-NATALY-June26\drafts\2026-08-05-alpha-credit-recall-FINAL.md</code> (рабочая версия рядом, <code>...-post.md</code>).</li>
+<li>CRM: 5 новых карточек (**son **omt, **sha ***geev, *kk *ng, Николай Махов, **mur ***dik), у ***riy *****kevych дописан facebook. Было 3 профиля из 8, стало 8 из 8.</li>
+<li>Гейты прогнаны: slop_gate medium OK (1833 знака), platform_gate facebook/medium PASS.</li>
+<li>Пост опубликован тобой вручную, вышел от первого лица Антона (не Майкрофта).</li>
+</ul>
+
+<h2>Что осталось открытым</h2>
+<ul>
+<li><b>Ihar Paliashchuk не назван в посте</b> - десятый советчик, в благодарности его нет. Либо отдельный коммент ему в тред, либо в следующий такой пост.</li>
+<li><b>8 советов стоят «думаем»</b> - вердикта «взяли/не взяли» нет. Намерение в посте есть, внедрения нет; это разные вещи.</li>
+<li><b>Прибор врёт в зелёную сторону</b>: <code>pending</code> показывает «хвостов нет», потому что считает долгом только неблагодарность, а не отсутствие вердикта.</li>
+</ul>
+
+<h2>Две мои ошибки той сессии, записаны честно</h2>
+<ul>
+<li>Начал добывать альфу, не проверив, не добыта ли она уже: хаб разобрал тред 04.08 (<code>03-Insights\insight-2026-08-04-fb-comments-llm-tool-recommendations.md</code>, 221 коммент по 20 постам, по этому посту 51).</li>
+<li>FB по умолчанию показывает «Most relevant» - часть комментов физически не отрисована. Принял «то, что вижу» за «всё, что есть». После переключения на «All comments» нашёлся Alexander Fedorenko, самый сильный совет треда, которому Антон в треде ответил «надо мне пересмотреть немного свой регламент».</li>
+</ul>

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Аудит доступов и оффбординг — 05.07.2026</title>
+<style>
+:root{--bg:#0f1420;--card:#161d2e;--card2:#1c2540;--ink:#e8edf7;--mut:#93a0bd;--line:#2a3550;
+--red:#ff5a6a;--amber:#ffb23e;--green:#38d39f;--blue:#5aa9ff;--purple:#b98bff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:1120px;margin:0 auto;padding:26px 18px 80px}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:19px;margin:30px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.sub{color:var(--mut);font-size:13.5px}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;vertical-align:middle}
+.p-red{background:rgba(255,90,106,.16);color:var(--red)}
+.p-amber{background:rgba(255,178,62,.16);color:var(--amber)}
+.p-green{background:rgba(56,211,159,.16);color:var(--green)}
+.p-blue{background:rgba(90,169,255,.16);color:var(--blue)}
+.p-purple{background:rgba(185,139,255,.16);color:var(--purple)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{margin:0 0 6px;font-size:15.5px}
+.card .meta{color:var(--mut);font-size:12.5px;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;overflow:hidden;border-radius:10px}
+th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--card2);color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:none}
+td.who{font-weight:600}
+.tag{font-size:11.5px;padding:1px 7px;border-radius:6px;font-weight:600;white-space:nowrap}
+.t-rm{background:rgba(255,90,106,.15);color:var(--red)}
+.t-keep{background:rgba(56,211,159,.15);color:var(--green)}
+.t-ask{background:rgba(255,178,62,.15);color:var(--amber)}
+.t-svc{background:rgba(147,160,189,.15);color:var(--mut)}
+.mono{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:#b9c6e6}
+.note{background:var(--card2);border-left:3px solid var(--blue);padding:10px 14px;border-radius:8px;margin:10px 0;font-size:13.5px}
+.note.warn{border-left-color:var(--amber)}.note.crit{border-left-color:var(--red)}
+.phase{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0}
+.phase .h{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px}
+.phase ol{margin:8px 0 0;padding-left:22px}.phase li{margin:4px 0}
+.who-line{color:var(--mut);font-size:12px}
+ul.tight{margin:6px 0;padding-left:20px}ul.tight li{margin:3px 0}
+.legend{font-size:12.5px;color:var(--mut);margin:6px 0 0}
+.legend span{margin-right:14px}
+code{background:#0b0f18;padding:1px 5px;border-radius:5px;font-size:12.5px;color:#cdd8f5}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Audit-SectionB-10-Decisions-2026-07-07.html">Audit-SectionB-10-Decisions-2026-07-07 &rarr;</a></span></div><div class="wrap">
+
+<h1>🔐 Аудит доступов и оффбординг</h1>
+<div class="sub">Снято 05 июля 2026, хаб A-2022BAYAREA · дедлайн <b style="color:var(--amber)">15 июля</b> · решать с Наташей<br>
+Задача Антона: отключить <b>Олега Кличкина</b> и <b>Дениса Удота</b> (последний разработчик) + всех бывших сотрудников от всех систем; забрать хостинг сайта под свой контроль.</div>
+
+<div class="note" style="border-left-color:var(--green)"><b>СТАТУС 05.07 20:31 — решение: гоним всю внешнюю команду, координируем с Наташей.</b><br>
+✅ Наш независимый root-ключ заведён и проверен (не отрежем себя). ✅ <b>Олег Кличкин</b> и <b>Денис Удот</b> — ключи удалены со всех аккаунтов сервера (полный бэкап, откат в 1 команду). ✅ Наташе (@*****ya_Le) ушёл запрос: кто активен + у кого Hetzner/Cloudflare/101domain. ⏳ Остальную команду режем после её подтверждения (чтобы не сломать деплой).</div>
+<div class="note crit"><b>⚠️ Приоритет №1 — выше SSH-ключей:</b> у кого <b>аккаунт Hetzner</b> (почта <code>******tdevops@gmail.com</code>) — тот через <b>консоль</b> может сбросить root и войти в обход ключей. Плюс на сервере ещё открыт вход по паролю (<code>passwordauthentication yes</code>). Пока Hetzner + эта почта + Cloudflare не наши — отрезанные могут вернуться. Забрать их — первым делом.</div>
+<div class="note warn"><b>Исходно:</b> ты назвал 2 человек — но root-доступ был у <b>~12 человек</b> (все ключи в sudo-аккаунте <code>developer</code>). Полный список ниже.</div>
+
+<div class="note" style="border-left-color:var(--green)"><b>🟢 ОБНОВЛЕНИЕ 11.07 — прогон offboarding с хаба:</b>
+<ul class="tight" style="margin-top:6px">
+<li>✅ <b>Боевые образы зеркалированы:</b> 25 tarball'ов / <b>34 GB</b> в <code>noahotc:/root/image-mirror-backup/</code> + конфиги стеков (140M). Все 4 прод-стека проверены — поднимутся из локальных образов <b>без реестра</b>. <span class="tag t-svc">harbor.cryptozaurus.com уже мёртв в DNS — что крутится, спасено</span></li>
+<li>✅ <b>Отрезаны ещё 10 ключей</b> (Nikolay, Artem, Garik×2, Khayrullo, Olzhas, mindphaser, sgritsenko, kolbin, VDenisov). Бэкап <code>/root/authkeys-backup-20260711-130020.tgz</code>. Сервисные (jenkins, postgresql3, gitlab-runner, telegraf) и наши 2 ключа — целы.</li>
+<li>✅ <b>Пароль <code>developer</code> ротирован</b> (был единственный аккаунт с паролем, команда знала общий) → новый только у нас (credential-store). Глобальный passwordauth НЕ трогал — Шаг 6.</li>
+<li>✅ <b>Наташа:</b> ответила 05.07 (активны Денис+Олег; почта у <b>Сергея Походенко</b>+Олега — новое имя!). Отправлен follow-up про Cloudflare/101domain-держателей.</li>
+<li>🔴 <b>Ждёт Антона (2FA):</b> захват Hetzner — аск <code>#1a089f95</code> в 02 POLICE. noahotc = Hetzner <b>Robot/dedicated</b> (не Cloud) → вход <code>******tdevops@gmail.com</code> на robot.hetzner.com.</li>
+<li>✅ <b>Глеб Тайгунов ОТРЕЗАН</b> (Антон: «РЕЗАТЬ») — оба ключа удалены, eventsbot-контейнеры живы. Теперь в <code>developer</code> только наш ключ — вся внешняя команда вычищена.</li>
+<li>📋 <b>n8n-ключ</b> жив (94 wf), истекает 15.07 → пересоздать через веб-UI (bb-аккаунт); origin-IP найдётся после захвата Cloudflare.</li>
+</ul></div>
+
+<h2>1 · Карта систем и точек контроля сайта</h2>
+<div class="sub" style="margin-bottom:12px">Цепочка «от домена до железа». Чтобы «полностью забрать сайт», нужен контроль над каждым звеном.</div>
+<div class="grid">
+  <div class="card"><h3>① Домен <span class="pill p-blue">точка №1</span></h3>
+    <div class="meta"><code>palo-alto.ai</code></div>
+    <ul class="tight">
+      <li>Регистратор: <b>101domain.com</b> (101domain GRS Ltd)</li>
+      <li>Создан 01.08.2023 · продлён до 01.08.2027</li>
+      <li>Приватность включена (Digital Privacy Corp)</li>
+      <li>Статус: <span class="mono">clientTransferProhibited</span> (замок на перенос)</li>
+    </ul>
+    <div class="note warn" style="margin:8px 0 0">Нужен <b>логин в 101domain</b> — у кого он? Скорее всего у девопса (Олег) или Дениса.</div>
+  </div>
+  <div class="card"><h3>② DNS + прокси <span class="pill p-blue">точка №2</span></h3>
+    <div class="meta">Cloudflare</div>
+    <ul class="tight">
+      <li>NS: <span class="mono">buck / etta .ns.cloudflare.com</span></li>
+      <li>Сайт спрятан за Cloudflare (IP 172.67../104.21..)</li>
+      <li>Кто держит Cloudflare-аккаунт — тот рулит DNS сайта <b>прямо сейчас</b></li>
+    </ul>
+    <div class="note warn" style="margin:8px 0 0">Нужен <b>логин в Cloudflare</b> (аккаунт неизвестен).</div>
+  </div>
+  <div class="card"><h3>③ Боевой сервер <span class="pill p-green">у нас есть SSH</span></h3>
+    <div class="meta"><code>noahotc · 188.40.100.249</code> (Hetzner)</div>
+    <ul class="tight">
+      <li>27 контейнеров, живой прод</li>
+      <li>Сайт: <span class="mono">websites_production-platinum-alto</span> + <span class="mono">palo-alto_research</span></li>
+      <li>CRM (деньги): <span class="mono">leads-crm_production-*</span></li>
+      <li>traefik-proxy → отдаёт наружу через Cloudflare</li>
+    </ul>
+    <div class="note" style="margin:8px 0 0">У нас есть ключ <code>claude-code-hp17</code> (аккаунт developer, sudo). <b>Не потерять его при чистке.</b></div>
+  </div>
+  <div class="card"><h3>④ Сборка/деплой <span class="pill p-purple">инфра команды</span></h3>
+    <div class="meta">GitLab + Harbor + Jenkins</div>
+    <ul class="tight">
+      <li><span class="mono">gitlab.star-alliance.io</span> — код CRM/сайта</li>
+      <li><span class="mono">harbor.star-alliance.io</span>, <span class="mono">harbor.cryptozaurus.com</span> — реестры образов</li>
+      <li>Jenkins + gitlab-runner на сервере</li>
+    </ul>
+    <div class="note warn" style="margin:8px 0 0">Домены <b>star-alliance.io / cryptozaurus.com</b> — инфра команды Дениса, НЕ твоя. Сайт пересобирается из них. Это отдельная тема «миграция», не только оффбординг.</div>
+  </div>
+  <div class="card"><h3>⑤ n8n (роботы) <span class="pill p-green">под контролем</span></h3>
+    <div class="meta"><code>n8n.palo-alto.ai</code> · 89 workflow</div>
+    <ul class="tight">
+      <li>В n8n <b>только 1 аккаунт — наш</b> (bbplatinum). Личных аккаунтов Олега/Дениса там нет ✅</li>
+      <li>Живёт на <b>отдельном хосте</b> (не noahotc)</li>
+      <li>API-ключ <b>истекает 15.07</b> — ровно в дедлайн ⚠️</li>
+    </ul>
+    <div class="note warn" style="margin:8px 0 0">Риск не в аккаунтах, а в том, есть ли у них SSH к хосту n8n — надо найти этот хост.</div>
+  </div>
+  <div class="card"><h3>⑥ Hetzner + почта-2FA <span class="pill p-amber">делил девопс</span></h3>
+    <div class="meta">console.hetzner.com</div>
+    <ul class="tight">
+      <li>MAIN: <span class="mono">******tdevops@gmail.com</span> — логин/пароль девопс раздавал</li>
+      <li>root-пароль сервера уходит на эту почту → почта = ключ ко всему</li>
+      <li>На Gmail включена 2FA</li>
+    </ul>
+    <div class="note crit" style="margin:8px 0 0">Сменить пароль Hetzner + разобраться, у кого доступ к <b>******tdevops@gmail.com</b>. Это корневая почта восстановления.</div>
+  </div>
+</div>
+
+<h2>2 · Кто имеет доступ к боевому серверу (карта ключей)</h2>
+<div class="sub" style="margin-bottom:10px">Каждая строка — реальный SSH-ключ, найденный на сервере <code>188.40.100.249</code> (read-only проверка). «Через <code>developer</code>» = sudo/root.</div>
+<div class="legend"><span><span class="tag t-rm">УБРАТЬ</span> назвал Антон</span><span><span class="tag t-ask">СПРОСИТЬ</span> отметь: свой/бывший</span><span><span class="tag t-keep">ОСТАВИТЬ</span></span><span><span class="tag t-svc">сервис</span></span></div>
+<table style="margin-top:10px">
+<thead><tr><th>Человек / ключ</th><th>Где ключ (доступ)</th><th>Уровень</th><th>Решение — отметь</th></tr></thead>
+<tbody>
+<tr><td class="who">Олег Кличкин<div class="who-line">oleg@kparent · OlegKlyuchkin@anviar</div></td><td>root <b>напрямую</b> + developer + devops</td><td><span class="tag t-rm">ROOT ×3</span></td><td><span class="tag t-keep">✅ ОТРЕЗАН 20:31</span></td></tr>
+<tr><td class="who">Денис Удот<div class="who-line">DenisUdot@No148 · udot</div></td><td>developer (sudo) + свой аккаунт udot</td><td><span class="tag t-rm">ROOT</span></td><td><span class="tag t-keep">✅ ОТРЕЗАН 20:31</span></td></tr>
+<tr><td class="who">***olay *******innikov<div class="who-line">NikolayKrasheninnikov@nikolkrash</div></td><td>developer (sudo)</td><td>root</td><td><span class="tag t-ask">СПРОСИТЬ</span></td></tr>
+<tr><td class="who">**tem ****chkov<div class="who-line">ArtemStarchkov@artemstarchkov</div></td><td>developer (sudo)</td><td>root</td><td><span class="tag t-ask">СПРОСИТЬ</span></td></tr>
+<tr><td class="who">**rik ****elian<div class="who-line">GarikMikaelian@gbmikaelian (2 ключа)</div></td><td>developer (sudo)</td><td>root</td><td><span class="tag t-ask">СПРОСИТЬ</span></td></tr>
+<tr><td class="who">Khayrullo Rustamov<div class="who-line">KhayrulloRustamov@khayrullosss</div></td><td>developer (sudo)</td><td>root</td><td><span class="tag t-ask">СПРОСИТЬ</span></td></tr>
+<tr><td class="who">***has ***nov<div class="who-line">OlzhasKuanov@ollzhas</div></td><td>developer (sudo)</td><td>root</td><td><span class="tag t-ask">СПРОСИТЬ</span></td></tr>
+<tr><td class="who">Gleb Taygunov<div class="who-line">GlebTaygunov@tgaru</div></td><td>developer (sudo) + свой аккаунт gleb</td><td>root</td><td><span class="tag t-ask">СПРОСИТЬ</span> <span class="who-line">(в заметках — «деньги», возможно активен)</span></td></tr>
+<tr><td class="who">«mindphaser»<div class="who-line">mindphaser@NSK-NBT01</div></td><td>devops</td><td>root</td><td><span class="tag t-ask">СПРОСИТЬ</span></td></tr>
+<tr><td class="who">«sgritsenko»<div class="who-line">sgritsenko</div></td><td>devops</td><td>root</td><td><span class="tag t-ask">СПРОСИТЬ</span></td></tr>
+<tr><td class="who">Dmitry Kolbin<div class="who-line">kolbin@Dmitrijs-MBP</div></td><td>аккаунт kolbin</td><td>обычный</td><td><span class="tag t-ask">СПРОСИТЬ</span></td></tr>
+<tr><td class="who">V. Denisov<div class="who-line">VDenisov</div></td><td>platinum-dba (база данных)</td><td>БД</td><td><span class="tag t-ask">СПРОСИТЬ</span></td></tr>
+<tr><td class="who">Claude (мы)<div class="who-line">claude-code-hp17-&gt;n8n-vps</div></td><td>developer (sudo)</td><td>root</td><td><span class="tag t-keep">ОСТАВИТЬ</span></td></tr>
+<tr><td class="who">jenkins@infra / gitlab-runner / devops@postgresql3</td><td>CI/деплой</td><td>сервис</td><td><span class="tag t-svc">не трогать сходу</span> <span class="who-line">(сломает деплой)</span></td></tr>
+</tbody></table>
+<div class="note warn"><b>Почему так важно:</b> все люди выше заходят под общим аккаунтом <code>developer</code>, а он = root. Пока там лежит хоть один чужой ключ — человек имеет полный доступ к серверу с CRM (деньги) и сайтом. Убрать надо <u>ключи</u>, а не только «сказать не заходить».</div>
+
+<h2>3 · План оффбординга по фазам</h2>
+<div class="note"><b>Порядок нарочно такой:</b> сначала закрепляем СВОЙ контроль, потом отрезаем чужих — чтобы не отрезать самих себя и не уронить прод (там деньги CRM).</div>
+
+<div class="phase"><div class="h"><span class="pill p-green">Фаза 0</span> Аудит — ✅ сделано сегодня</div>
+<ol><li>Собрана карта всех систем, ключей и людей (этот дашборд).</li></ol></div>
+
+<div class="phase"><div class="h"><span class="pill p-blue">Фаза 1</span> Закрепить наш контроль <span class="who-line">(перед любым отрезанием)</span></div>
+<ol>
+<li>Завести <b>наш чистый root-путь</b> на сервере (отдельный админ-аккаунт + наш ключ), проверить что заходит.</li>
+<li>Разобраться, у кого сейчас <b>******tdevops@gmail.com</b> (почта-2FA Hetzner/сервера) и <b>Cloudflare</b>/<b>101domain</b> — это точки, где чужой может всё отыграть назад.</li>
+<li>Поставить <b>резервные email + телефоны</b> (твои / Антона, PT или US) на Hetzner, Cloudflare, 101domain, Google. <span class="pill p-red">Tier-2 — нужен ты</span></li>
+<li>Найти хост <b>n8n</b> и проверить, кто имеет к нему SSH.</li>
+</ol></div>
+
+<div class="phase"><div class="h"><span class="pill p-amber">Фаза 2</span> Отрезать людей <span class="who-line">(после отметок «убрать/оставить»)</span></div>
+<ol>
+<li>Удалить SSH-ключи отрезаемых из <code>root</code>, <code>developer</code>, <code>devops</code> и их личных аккаунтов. <span class="pill p-red">Tier-2</span></li>
+<li>Сменить пароли, которые они знали: Hetzner, веб-логин n8n, GitLab-CRM, БД. <span class="pill p-red">Tier-2</span></li>
+<li>«Выключить и заблокировать n8n для них» — как договорились, закрыть вход (смена пароля + при желании временно снять публичный доступ). <span class="pill p-red">Tier-2</span></li>
+<li>Новый пароль BB Platinum <b>им НЕ передавать</b> (зафиксировано).</li>
+<li>Пересоздать API-ключ n8n (истекает 15.07) — заодно.</li>
+</ol></div>
+
+<div class="phase"><div class="h"><span class="pill p-purple">Фаза 3</span> Забрать хостинг сайта под себя</div>
+<ol>
+<li>Получить/сменить владельца аккаунтов <b>101domain</b> (домен) и <b>Cloudflare</b> (DNS). <span class="pill p-red">Tier-2</span></li>
+<li>Решить судьбу <b>сборки на инфре команды</b> (GitLab/Harbor star-alliance/cryptozaurus): либо получить доступ, либо запланировать перенос образов сайта к нам. <span class="who-line">Отдельный проект — не успеть к 15.07, но зафиксировать.</span></li>
+</ol></div>
+
+<div class="phase"><div class="h"><span class="pill p-blue">Фаза 4</span> Handoff + всё в Vault</div>
+<ol>
+<li>Организовать передачу дел от Олега и Дениса (что где лежит, как деплоится) — до отрезания забрать знания.</li>
+<li>Все найденные доступы/пароли занести в credential store (уже частично есть).</li>
+</ol></div>
+
+<h2>4 · Что от кого нужно</h2>
+<div class="grid">
+<div class="card"><h3>🔴 От Антона лично</h3><ul class="tight">
+<li>Отметить в таблице: кто «бывший» (убрать), кто активен (оставить).</li>
+<li>Разрешение (`+`) на разрушающие шаги (удаление ключей, смена паролей).</li>
+<li>Пройти анти-бот/2FA там, где сам ввести не могу (Hetzner/Cloudflare/101domain).</li>
+<li>Дать номера телефонов для резервного восстановления.</li>
+</ul></div>
+<div class="card"><h3>🟡 С Наташей</h3><ul class="tight">
+<li>У кого сейчас логины <b>******tdevops@gmail.com</b>, Cloudflare, 101domain.</li>
+<li>Кто из команды ещё работает, кто ушёл (подтвердить список).</li>
+<li>Забрать пароли/доступы, что лежат в её переписках.</li>
+</ul></div>
+<div class="card"><h3>🟢 Делаю я (сам)</h3><ul class="tight">
+<li>Готовый скрипт удаления ключей и ротации — покажу ДО→ПОСЛЕ, жму по твоему `+`.</li>
+<li>Найду хост n8n и остальные точки доступа.</li>
+<li>Занесу всё в Vault/credential store.</li>
+<li>Заведу наш чистый root-путь на сервере.</li>
+</ul></div>
+</div>
+
+<div class="note" style="margin-top:20px"><b>Статус:</b> Фаза 0 (аудит) закрыта. Ничего разрушающего ещё <u>не сделано</u> — жду твои отметки «убрать/оставить» и `+` на Фазу 1.</div>
+
+</div></body></html>

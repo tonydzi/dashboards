@@ -1,0 +1,35 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Сессии по голосовым задачам — живое табло</title><style>
+:root{--bg:#0f1115;--fg:#e8eaed;--mut:#9aa3af;--card:#181b22;--bd:#262b35;--acc:#4da3ff}
+@media(prefers-color-scheme:light){:root{--bg:#f7f8fa;--fg:#15181d;--mut:#5b6472;--card:#fff;--bd:#e2e6ec;--acc:#0b63c4}}
+:root[data-theme=dark]{--bg:#0f1115;--fg:#e8eaed;--mut:#9aa3af;--card:#181b22;--bd:#262b35;--acc:#4da3ff}
+:root[data-theme=light]{--bg:#f7f8fa;--fg:#15181d;--mut:#5b6472;--card:#fff;--bd:#e2e6ec;--acc:#0b63c4}
+*{box-sizing:border-box}body{margin:0;padding:22px;background:var(--bg);color:var(--fg);
+font:15px/1.5 -apple-system,Segoe UI,system-ui,sans-serif}
+h1{font-size:21px;margin:0 0 4px}.sub{color:var(--mut);font-size:13px;margin-bottom:14px}
+.cnt{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:8px 14px;font-size:13px}
+.c b{font-size:18px;color:var(--acc);display:block}
+.wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+td{padding:10px 12px;border-top:1px solid var(--bd);vertical-align:top}tr:first-child td{border-top:0}
+.p{width:88px;font-weight:700;color:var(--acc);white-space:nowrap}
+.a{width:70px;text-align:right;color:var(--mut);font-size:12px;white-space:nowrap}
+.w{color:var(--mut);font-size:13px;margin-top:3px}
+.b{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:600}
+.note{background:var(--card);border:1px solid var(--bd);border-left:3px solid #ffb454;
+padding:9px 13px;border-radius:8px;font-size:13px;margin-bottom:12px}
+.foot{color:var(--mut);font-size:12.5px;margin-top:14px}
+code{background:var(--card);border:1px solid var(--bd);border-radius:5px;padding:1px 6px;font-size:12.5px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Session-Token-Audit.html">&larr; Session-Token-Audit</a> · <a href="Sessions-Results.html">Sessions-Results &rarr;</a></span></div>
+<h1>Сессии по твоим голосовым задачам</h1>
+<div class="sub">Запущены 29.07 утром по твоему разбору 28.07. Номера — те же, что в дашборде «82 задачи».</div>
+<div class="cnt"><div class="c"><b>15</b>бежит</div><div class="c"><b>0</b>закончила</div>
+<div class="c"><b>0</b>упало</div><div class="c"><b>25</b>пунктов закрыто сессиями</div></div>
+
+<div class="wrap"><table><tr><td class="p">30, 32</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Здоровье флота: снять RED в /arch, починить молчаливую потерю приказов в bus_send, чек-лист сервисов по ролям</div></td><td class="a">9м</td></tr><tr><td class="p">55, 22</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Гигиена 12 публичных репо (LICENSE/CONTRIBUTING/CoC/README) + решение, публикуем ли свои Deep Research</div></td><td class="a">9м</td></tr><tr><td class="p">31, 34, 40</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Свой волт каждому в команде, граница приватности, очищенный экспорт волта наружу</div></td><td class="a">9м</td></tr><tr><td class="p">17</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Пароли Chrome в единый store (только secrets, наружу ноль)</div></td><td class="a">9м</td></tr><tr><td class="p">28, 26</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Контент-план v1, робот дистрибуции, дневник постов FB/X в GitHub</div></td><td class="a">6м</td></tr><tr><td class="p">29, 39</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Стили письма до конца + голосовой слой: подкасты из наших материалов</div></td><td class="a">6м</td></tr><tr><td class="p">53, 41</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Заметность GitHub: собрать заказанный DR, замер, позиционирование рядом с Карпати</div></td><td class="a">6м</td></tr><tr><td class="p">52</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Аутрич к тем, кто строит похожее (доделать после ночного обрыва)</div></td><td class="a">6м</td></tr><tr><td class="p">38, 48</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Альфа-конвейер: звонки и инженерные TG-каналы, с видимым доказательством работы</div></td><td class="a">2м</td></tr><tr><td class="p">33, 6</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Координация роя: одна живая сессия вместо новой на каждое сообщение, watchdog зависших</div></td><td class="a">2м</td></tr><tr><td class="p">35, 49</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Регламент dogfooding + единая температурная шкала для лидов, альфы и задач</div></td><td class="a">2м</td></tr><tr><td class="p">8, 20</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Потерянное знание: разобрать картинку-альфу hub:3807, забрать ноу-хау у Дениса</div></td><td class="a">1м</td></tr><tr><td class="p">47</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Велосипеды: США -&gt; перегрузочный склад -&gt; Португалия, сквозной расчёт</div></td><td class="a">1м</td></tr><tr><td class="p">11</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Пульт с телефона: видеть сессии / запускать / оценить ответ живой</div></td><td class="a">1м</td></tr><tr><td class="p">хвосты</td><td><span class="b" style="background:#4da3ff1a;color:#4da3ff">бежит</span><div class="w">Сторож свежести выхода на все узлы без ложных тревог + ночная регрессия</div></td><td class="a">1м</td></tr></table></div>
+<div class="foot">Живое состояние: <code>python ~/.claude/scripts/spawn_session.py list</code> ·
+лог одной: <code>python ~/.claude/scripts/spawn_session.py tail &lt;id&gt;</code> ·
+перегнать это табло: <code>python board.py</code><br>Снято: 29.07.2026 07:16</div>
+</body></html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Гейт «1 раз в сутки» — табло применения по флоту</title>
+<style>
+  :root{
+    --bg:#fbfbfa; --fg:#1d1d1b; --muted:#6b6b66; --line:#e2e2dd; --card:#fff;
+    --ok:#2f7d4f; --okbg:#eaf5ee; --warn:#8a6100; --warnbg:#fdf3dd; --bad:#a33232; --badbg:#fbeaea;
+    --accent:#33518a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#16171a; --fg:#e9e9e6; --muted:#9a9a94; --line:#2c2e33; --card:#1d1f23;
+           --ok:#7bc79a; --okbg:#1c2a22; --warn:#e0b45c; --warnbg:#2b2416; --bad:#e08787; --badbg:#2b1b1b;
+           --accent:#8fa9de; }
+  }
+  :root[data-theme="dark"]{ --bg:#16171a; --fg:#e9e9e6; --muted:#9a9a94; --line:#2c2e33; --card:#1d1f23;
+           --ok:#7bc79a; --okbg:#1c2a22; --warn:#e0b45c; --warnbg:#2b2416; --bad:#e08787; --badbg:#2b1b1b; --accent:#8fa9de; }
+  :root[data-theme="light"]{ --bg:#fbfbfa; --fg:#1d1d1b; --muted:#6b6b66; --line:#e2e2dd; --card:#fff;
+           --ok:#2f7d4f; --okbg:#eaf5ee; --warn:#8a6100; --warnbg:#fdf3dd; --bad:#a33232; --badbg:#fbeaea; --accent:#33518a; }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 18px 60px;background:var(--bg);color:var(--fg);
+       font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px;font-weight:650}
+  h2{font-size:16px;margin:34px 0 10px;font-weight:650}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:20px}
+  .verdict{display:inline-block;padding:10px 14px;border-radius:8px;font-weight:650;
+           background:var(--warnbg);color:var(--warn);border:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px;margin:18px 0 6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:12px 13px}
+  .card .n{font-size:24px;font-weight:680;line-height:1.2}
+  .card .l{font-size:12px;color:var(--muted);margin-top:3px}
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:9px;background:var(--card)}
+  table{border-collapse:collapse;width:100%;min-width:900px;font-size:13.5px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-weight:620;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  .pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:12px;font-weight:620;white-space:nowrap}
+  .p-ok{background:var(--okbg);color:var(--ok)} .p-bad{background:var(--badbg);color:var(--bad)}
+  .p-warn{background:var(--warnbg);color:var(--warn)}
+  code{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;background:rgba(128,128,128,.13);
+       padding:1px 5px;border-radius:4px}
+  .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
+        border-radius:0 8px 8px 0;padding:11px 14px;margin:10px 0}
+  .note b{color:var(--accent)}
+  ul{margin:8px 0 0 18px;padding:0} li{margin:5px 0}
+  .muted{color:var(--muted)}
+  footer{margin-top:34px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Fleet-Services.html">&larr; Fleet-Services</a> · <a href="Mayak-Health-2026-07-07.html">Mayak-Health-2026-07-07 &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>Гейт «обслуживание — 1 раз в сутки»: табло применения по флоту</h1>
+<div class="sub">CLAUDE.md §10.0 · посылка <code>maintgate-2026-08-04</code> · собрано 2026-08-05 19:50 UTC с ноута HP17 (ZBOOKG8-2023PAL) · улики читаны фактом, не по намерению</div>
+
+<div class="verdict">⚠️ 4 узла из 6 доказаны. Отстают поимённо: MyOwnPC-Natalia, MacBook-Ruslana.</div>
+
+<div class="cards">
+  <div class="card"><div class="n">6</div><div class="l">узлов-потребителей</div></div>
+  <div class="card"><div class="n" style="color:var(--ok)">4</div><div class="l">гейт стоит (улика)</div></div>
+  <div class="card"><div class="n" style="color:var(--bad)">2</div><div class="l">не стоит</div></div>
+  <div class="card"><div class="n" style="color:var(--accent)">2</div><div class="l">починено в этой сессии</div></div>
+  <div class="card"><div class="n">31</div><div class="l">блок за 05.08 на HP17</div></div>
+</div>
+
+<h2>1 · Кто применил, с уликой</h2>
+<div class="scroll">
+<table>
+<thead><tr>
+  <th>Узел</th><th>Гейт</th><th>Улика (значение / exit / дата)</th><th>Леджер <code>_deploy</code></th>
+</tr></thead>
+<tbody>
+<tr>
+  <td><b>ZBOOKG8-2023PAL</b><br><span class="muted">HP17, этот ноут</span></td>
+  <td><span class="pill p-ok">стоит</span></td>
+  <td><code>maintgate_install.py --verify</code> → exit 0: PreToolUse ✅, SessionStart ✅, движок selftest OK, режим <code>quota</code>, задача «Claude Housekeeping Daily» есть. Живой блок в этой же сессии: «fleet-audit уже отработала сегодня (5-й заход)». Журнал <code>_maintenance_gate.jsonl</code> за 05.08: 42 срабатывания, из них 31 блок.</td>
+  <td>✅ <code>.ok</code> 04.08 21:34 «verify-passed (self-healed)»</td>
+</tr>
+<tr>
+  <td><b>A-2022BAYAREA</b><br><span class="muted">хаб, always-on</span></td>
+  <td><span class="pill p-ok">стоит</span><br><span class="muted">починено 05.08 19:45</span></td>
+  <td><b>было:</b> «❌ PreToolUse НЕ зарегистрирован · ❌ SessionStart НЕ зарегистрирован · режим: нет файла · ИТОГ: гейт НЕ стоит».<br><b>стало:</b> все ✅, режим <code>quota</code>, задача «Claude Housekeeping Daily» заведена (её на хабе не было вовсе).</td>
+  <td>✅ <code>deploy_apply</code> → «applied+verified, DONE marker written»; на хабе <code>deploy_check</code> сразу дал 9→8 непринятых и maintgate из списка ушла. К нам <code>.ok</code> едет синком.</td>
+</tr>
+<tr>
+  <td><b>FLEET-ANCHOR</b><br><span class="muted">Маяк, VPS</span></td>
+  <td><span class="pill p-ok">стоит</span><br><span class="muted">починено 05.08 19:42</span></td>
+  <td><b>было:</b> exit 2, оба хука не зарегистрированы, режим «нет файла».<br><b>стало:</b> exit 0, режим <code>quota</code>. Движок доехал синком и совпадает с нашим байт-в-байт: md5 <code>09acaca8…</code> (до фикса), <code>ead47e3f…</code> (после).</td>
+  <td>✅ <code>.ok</code> 05.08 19:42 «applied+verified»</td>
+</tr>
+<tr>
+  <td><b>MacBook-Anton</b></td>
+  <td><span class="pill p-warn">стоит по леджеру</span></td>
+  <td>Улика — <b>его собственная</b> запись, не мой живой прогон: узел offline 7 ч (tailscale), достучаться нечем. <code>.ok</code> 05.08 09:59 «applied+verified».</td>
+  <td>✅ <code>.ok</code> 05.08 09:59</td>
+</tr>
+<tr>
+  <td><b>MyOwnPC-Natalia</b></td>
+  <td><span class="pill p-bad">НЕ стоит</span></td>
+  <td>В <code>DONE-MyOwnPC-Natalia/</code> файла <code>maintgate-2026-08-04.ok</code> НЕТ (94 других есть). Посылка зарегистрирована 04.08 21:32, висит сутки. Узел offline 6 ч — проверить живьём нечем, применяет у себя сам (§7.2).</td>
+  <td>❌ PENDING без DONE</td>
+</tr>
+<tr>
+  <td><b>MacBook-Ruslana</b></td>
+  <td><span class="pill p-bad">НЕ стоит</span></td>
+  <td>В <code>DONE-MacBook-Ruslana/</code> файла нет (42 других есть). По общему аудиту раздачи у этого узла 🔴 <b>75 непринятых посылок</b> — отстаёт не только по гейту. В tailscale не в сети.</td>
+  <td>❌ PENDING без DONE</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="note"><b>Что сделано с отстающими:</b> обоим ушла задача по шине (dual-send: <code>_machine-bus</code> + TG-03, exit 0 на обеих рельсах) с тремя шагами — поставить, проверить <code>--verify</code>, записать факт через <code>deploy_apply</code>. Тишина от них за «ок» не считается: вернусь к этой строке следующим прогоном.</div>
+
+<h2>2 · Сколько раз за 7 суток реально трогали CLAUDE.md и MEMORY.md</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>Узел</th><th>CLAUDE.md</th><th>MEMORY.md</th><th>Чем измерено</th></tr></thead>
+<tbody>
+<tr><td><b>ZBOOKG8-2023PAL</b></td><td>17 <span class="muted">(03.08 — 2 · 04.08 — 12 · 05.08 — 3)</span></td><td>42 <span class="muted">(пик 04.08 — 14 · 05.08 — 9)</span></td><td>git-снапшоты каждые 15 мин: <code>~/.claude/.git</code> и <code>projects/…/memory/.git</code>. Это ПОЛ: правки внутри одного 15-минутного окна сливаются в одну.</td></tr>
+<tr><td><b>A-2022BAYAREA</b></td><td class="muted">не измеримо</td><td>43 <span class="muted">(пик 04.08 — 15 · 05.08 — 8)</span></td><td>Журнал конфига на хабе начат только 05.08 (<code>FIRST_COMMIT 2026-08-05</code>, 3 снапшота всего) — семидневки по CLAUDE.md там физически нет. Репо памяти живёт с 08.06, ему верим.</td></tr>
+<tr><td><b>FLEET-ANCHOR</b></td><td>9</td><td class="muted">нет журнала</td><td><code>~/.claude/.git</code>. У папки памяти на Маяке git-репо нет вовсе (<code>NOGIT</code>).</td></tr>
+<tr><td colspan="4" class="muted">MacBook-Anton, MyOwnPC-Natalia, MacBook-Ruslana — все трое offline, замер отсюда невозможен. Честно: цифр нет, а не «ноль».</td></tr>
+</tbody>
+</table>
+</div>
+<div class="note">Приказ прозвучал вечером 04.08. По цифрам 05.08 <b>падения пока не видно</b> (MEMORY.md: 9 на ноуте, 8 на хабе против пика 14–15 накануне). Это ожидаемо: гейт душит <b>запуски рутин</b> из Bash, а правку файла инструментом Edit он не видит вовсе — см. открытый вопрос №2.</div>
+
+<h2>3 · Ночной оптимизатор MEMORY.md — есть ли и когда давал ВЫХОД</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>Узел</th><th>Что стоит</th><th>Последний выход</th></tr></thead>
+<tbody>
+<tr><td><b>ZBOOKG8-2023PAL</b></td><td>«Memory Index Tidy» (00:35) + «Memory Index Guard»</td><td><span class="pill p-ok">свежий</span> <code>_memory_tidy.log</code> дописан 05.08 00:47, внутри построчный разбор всех проектов и «claude-exit 0». Guard: 04.08 21:24, rc=0.</td></tr>
+<tr><td><b>A-2022BAYAREA</b></td><td>«Memory Index Tidy» (23:35) + Guard + «Memory Dream Consolidation» + «Memory AB Eval»</td><td><span class="pill p-warn">частично</span> Tidy 04.08 23:35 rc=0, Dream 05.08 03:50 rc=0, AB 05.08 04:10 rc=0, но <b>Memory Index Guard 05.08 05:40 вернул rc=1</b> — падает, разобрать отдельно.</td></tr>
+<tr><td><b>FLEET-ANCHOR</b></td><td>crontab: <code>memory_guard.py --notify</code> 23:50 + <code>mayak_memory_tidy.sh</code> 22:30</td><td>Расписание есть; свежесть выхода в этой сессии не читал.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>4 · Починено по дороге: гейт душил ЧТЕНИЕ кода</h2>
+<div class="note">
+<b>Симптом.</b> В журнале за 05.08: <code>sed -n '185,215p' regress_run.py</code> и <code>grep -n "_test_" regress_run.py</code> трижды получили «regress-grid уже отработала сегодня» — гейт блокировал чтение исходника той самой рутины, которую в этот момент чинили.<br>
+<b>Корень.</b> Регексы реестра шли по всей команде: имя файла в аргументе <code>sed</code>/<code>grep</code> неотличимо от запуска. Тот же класс, что уже лечили для тела сообщений в шину.<br>
+<b>Лечение.</b> Перед матчингом выкидываем сегменты, начинающиеся с read-only смотрелки (<code>cat grep sed head tail rg awk wc Get-Content Select-String …</code>). Запуск после чтения (<code>grep … &amp;&amp; python regress_run.py</code>) и запуск с грепом на выходе по-прежнему ловятся.<br>
+<b>Улика.</b> <code>_test_maintenance_gate_body.py</code>: 11/11 PASS, из них 5 новых. Тест краснеет на сломанном коде — проверено: без фикса <code>sed -n … regress_run.py</code> → <code>regress-grid</code>. Движок в <code>scripts/_shared</code>, md5 <code>ead47e3f…</code>, уже доехал синком до Маяка (тот же md5).<br>
+<b>Почему важно.</b> Ложное срабатывание учит писать <code>--force</code> на автомате — и однажды через тот же автоматический <code>--force</code> пройдёт настоящий паразит.
+</div>
+
+<h2>5 · Что осталось открытым (решает Антон)</h2>
+<ul>
+<li><b>MEMORY.md — не «свой у каждого», а ОДИН общий файл.</b> md5 <code>f017f8eb37ebba190c22632099cbbe94</code> совпал на трёх узлах: HP17, Маяк, хаб. Правило §10.0 «MEMORY.md каждый узел правит СВОЙ, ночью» на сегодняшней архитектуре невыполнимо: файл едет синком, и ночной оптимизатор на каждом узле будет править ОДИН И ТОТ ЖЕ файл (то есть либо гонка, либо тройная работа). Развилки две: (а) один писатель на флот, как у CLAUDE.md; (б) действительно пер-узловые файлы. §10.0 в этой сессии не трогал — это не моя правка.</li>
+<li><b>Гейт не видит правку файла инструментом.</b> Он висит на Bash/PowerShell, а «оптимизировать CLAUDE.md» сессия делает через Edit/Write — мимо гейта. Поэтому суточная квота честно душит <i>прогоны рутин</i>, но <i>саму правку служебных файлов</i> ограничивает только текст правила. Если нужно железно — это отдельная дверь на PreToolUse|Edit, и это уже новый гейт (в не-цели этой сессии).</li>
+<li><b>Журнал конфига на хабе начат 05.08</b> — истории CLAUDE.md за неделю на главной машине нет. Само по себе не поломка, но следующий такой замер на хабе снова упрётся в пустоту, если репо опять пересоздадут.</li>
+<li><b>MacBook-Ruslana: 75 непринятых посылок.</b> Гейт там — лишь одна строка из семидесяти пяти; узел отстаёт системно.</li>
+</ul>
+
+<footer>
+Собрано вручную из живых источников: <code>maintgate_install.py --verify</code> на трёх узлах по ssh · <code>_deploy/DONE-*/</code> · <code>fleet_fix_audit.py</code> · git-журналы <code>~/.claude</code> и папок памяти · <code>schtasks</code>/<code>crontab</code> · <code>tailscale status</code>.
+Узлы, до которых не дотянулся, помечены «не измеримо», а не «ок». source_ref hub:5114.
+</footer>
+
+</div>
+</body>
+</html>

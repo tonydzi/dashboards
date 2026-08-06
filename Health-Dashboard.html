@@ -1,0 +1,37 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Health Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0f1419;--card:#1a2230;--ink:#e6edf3;--mut:#9fb0c3;--acc:#4ade80;}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 20px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:22px}
+.kpi{background:var(--card);border-radius:12px;padding:16px}
+.kpi .n{font-size:28px;font-weight:700;color:var(--acc)}.kpi .l{color:var(--mut);font-size:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--card);border-radius:12px;padding:16px}.card h3{margin:0 0 12px;font-size:15px;font-weight:600}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.full{grid-column:1/-1}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Hanging-Nataly-2026-08-03.html">&larr; Hanging-Nataly-2026-08-03</a> · <a href="Hetzner-Costs.html">Hetzner-Costs &rarr;</a></span></div>
+<h1>🩺 Health — Второй Мозг здоровья</h1>
+<p class="sub" id="sub"></p>
+<div class="kpis" id="kpis"></div>
+<div class="grid">
+<div class="card full"><h3>Заметки по чатам</h3><canvas id="cChat"></canvas></div>
+<div class="card"><h3>Активность по годам</h3><canvas id="cYear"></canvas></div>
+<div class="card"><h3>Провенанс заметок</h3><canvas id="cOrigin"></canvas></div>
+<div class="card full"><h3>Категории</h3><canvas id="cCat"></canvas></div>
+</div>
+<script>
+const D={"kpi": {"msgs": 1927, "notes": 904, "anton": 1003, "fwd": 273, "media": 460, "links": 255, "chats": 7, "first": "2021-03-06", "last": "2026-07-11"}, "per_chat": {"labels": ["HEALTH Кровь Давление / blood & pr", "Воздержание от пищи / Fasting / Го", "Successful healing head MEDICINE H", "LONGEVITY Weight Loss Похудение ВО", "MEDICINE for MIND / DRUGS for MIND", "MEDICINE HEALTH main", "Health VITAMINS BADs БАДы"], "values": [42, 450, 18, 230, 23, 134, 7]}, "per_year": {"labels": ["2021", "2022", "2023", "2024", "2025", "2026"], "values": [202, 213, 97, 429, 637, 349]}, "per_cat": {"labels": ["blood-pressure", "fasting-community", "neuro-head", "longevity-diet", "nootropics-mind", "medicine-general", "supplements"], "values": [42, 450, 18, 230, 23, 134, 7]}, "origin": {"labels": ["Антон", "внешние", "переслано"], "values": [312, 405, 187]}};
+document.getElementById('sub').textContent=`Сообщений ${D.kpi.msgs} · ценных заметок ${D.kpi.notes} · период ${D.kpi.first} — ${D.kpi.last}`;
+const K=[['notes','Ценных заметок'],['msgs','Сообщений'],['anton','От Антона'],['fwd','Переслано'],['media','С вложением'],['links','Со ссылкой'],['chats','Чатов']];
+document.getElementById('kpis').innerHTML=K.map(([k,l])=>`<div class="kpi"><div class="n">${D.kpi[k]}</div><div class="l">${l}</div></div>`).join('');
+const acc='#4ade80',cols=['#4ade80','#60a5fa','#f59e0b','#f472b6','#a78bfa','#34d399','#fb7185'];
+const gopt=(extra={})=>Object.assign({responsive:true,plugins:{legend:{labels:{color:'#9fb0c3'}}},scales:{x:{ticks:{color:'#9fb0c3'}},y:{ticks:{color:'#9fb0c3'}}}},extra);
+new Chart(cChat,{type:'bar',data:{labels:D.per_chat.labels,datasets:[{data:D.per_chat.values,backgroundColor:acc}]},options:gopt({indexAxis:'y',plugins:{legend:{display:false}}})});
+new Chart(cYear,{type:'bar',data:{labels:D.per_year.labels,datasets:[{data:D.per_year.values,backgroundColor:'#60a5fa'}]},options:gopt({plugins:{legend:{display:false}}})});
+new Chart(cOrigin,{type:'doughnut',data:{labels:D.origin.labels,datasets:[{data:D.origin.values,backgroundColor:cols}]},options:{responsive:true,plugins:{legend:{labels:{color:'#9fb0c3'}}}}});
+new Chart(cCat,{type:'bar',data:{labels:D.per_cat.labels,datasets:[{data:D.per_cat.values,backgroundColor:'#a78bfa'}]},options:gopt({plugins:{legend:{display:false}}})});
+</script></body></html>

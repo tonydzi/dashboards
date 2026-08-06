@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дашборды на хабе — раскатка правила 06.08.2026</title>
+<style>
+ :root{--canvas:#010409;--bg:#0d1117;--panel:#161b22;--border:#30363d;--border2:#21262d;
+ --ink:#e6edf3;--dim:#8b949e;--link:#2f81f7;--green:#3fb950;--amber:#d29922;--red:#f85149;}
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--canvas);color:var(--ink);
+      font:15px/1.55 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;padding:26px 18px 60px}
+ .wrap{max-width:1060px;margin:0 auto}
+ h1{font-size:23px;margin:0 0 6px;font-weight:650}
+ .sub{color:var(--dim);font-size:13.5px;margin:0 0 22px}
+ .quote{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--amber);
+        border-radius:8px;padding:12px 16px;margin:0 0 22px;font-size:14.5px}
+ .quote b{color:var(--amber);font-weight:600}
+ h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);
+    margin:28px 0 10px;font-weight:600}
+ .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:6px}
+ .kpi{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:13px 15px}
+ .kpi .n{font-size:26px;font-weight:650;line-height:1.15}
+ .kpi .l{color:var(--dim);font-size:12.5px;margin-top:3px}
+ .g{color:var(--green)}.a{color:var(--amber)}.r{color:var(--red)}
+ .scroll{overflow-x:auto;border:1px solid var(--border);border-radius:8px;background:var(--panel)}
+ table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
+ th{text-align:left;padding:9px 13px;color:var(--dim);font-weight:600;
+    border-bottom:1px solid var(--border);white-space:nowrap;background:var(--bg)}
+ td{padding:9px 13px;border-bottom:1px solid var(--border2);vertical-align:top}
+ tr:last-child td{border-bottom:none}
+ code{background:var(--bg);border:1px solid var(--border2);border-radius:4px;
+      padding:1px 5px;font-size:12.5px;color:var(--ink)}
+ .pill{display:inline-block;padding:1px 8px;border-radius:11px;font-size:12px;font-weight:600;white-space:nowrap}
+ .pill.ok{background:rgba(63,185,80,.14);color:var(--green)}
+ .pill.wait{background:rgba(210,153,34,.14);color:var(--amber)}
+ .pill.no{background:rgba(248,81,73,.14);color:var(--red)}
+ ul{margin:8px 0 0;padding-left:20px}li{margin:5px 0}
+ .eli5{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--link);
+       border-radius:8px;padding:13px 16px;margin-top:26px;font-size:14px}
+ .ts{color:var(--dim);font-size:12px;margin-top:26px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Content-Machine-Map.html">&larr; Content-Machine-Map</a> · <a href="Fleet-Boards.html">Fleet-Boards &rarr;</a></span></div><div class="wrap">
+
+<h1>Дашборды хранятся на хабе</h1>
+<p class="sub">Раскатка правила по флоту · 06.08.2026 · собрано на узле MyOwnPC-Natalia</p>
+
+<div class="quote"><b>Антон, 06.08.2026:</b> «Любые дашборды должны храниться всегда на хабе
+чтобы к ним имел доступ любой сотрудник. Раскатай это правило по всему флоту».</div>
+
+<h2>Что было найдено</h2>
+<div class="kpis">
+  <div class="kpi"><div class="n r">54</div><div class="l">дашборда лежали мимо хаба</div></div>
+  <div class="kpi"><div class="n r">3</div><div class="l">папки-самозванки</div></div>
+  <div class="kpi"><div class="n g">35</div><div class="l">переехали в волт</div></div>
+  <div class="kpi"><div class="n g">6</div><div class="l">дублей и стухших копий убрано</div></div>
+  <div class="kpi"><div class="n g">2</div><div class="l">генератора переключены на волт</div></div>
+</div>
+
+<h2>Дома правила</h2>
+<div class="scroll"><table>
+<tr><th>Дом</th><th>Статус</th><th>Что именно</th></tr>
+<tr><td>память</td><td><span class="pill ok">записано</span></td><td><code>dashboards-live-on-hub.md</code> — сторож видит след</td></tr>
+<tr><td>проектный CLAUDE.md</td><td><span class="pill ok">записано</span></td><td>always-loaded слой этой машины</td></tr>
+<tr><td>глобальный CLAUDE.md §2.4</td><td><span class="pill wait">на хабе</span></td><td>здесь канон receive-only, <code>canon_write_gate</code> = BLOCK → предложение в шине</td></tr>
+<tr><td>MEMORY.md</td><td><span class="pill wait">на хабе</span></td><td>строку отбил <code>receiveonly_edit_guard</code> → в том же предложении</td></tr>
+<tr><td>Библия</td><td><span class="pill wait">на хабе</span></td><td><code>reglament-dashbordy-hranyatsya-na-habe.md</code> написан, ждёт вливания + MOC</td></tr>
+<tr><td>дверь (скрипт)</td><td><span class="pill ok">работает</span></td><td><code>dashboard_home_guard.py</code> + паспорт, самотест 5/5</td></tr>
+<tr><td>скилл</td><td><span class="pill no">не нужен</span></td><td>правило — одна строка, отдельный скилл был бы лишней деталью</td></tr>
+<tr><td>hook</td><td><span class="pill no">не нужен</span></td><td>ловится дверью на прогоне, перехватывать каждую запись файла избыточно</td></tr>
+</table></div>
+
+<h2>Раскатка по узлам</h2>
+<div class="scroll"><table>
+<tr><th>Посылка</th><th>Что делает</th><th>Узлы</th><th>Здесь</th></tr>
+<tr><td><code>dash-home-hub-20260806</code></td><td>доставляет дверь (tier 1, авто-применение)</td><td>все 6</td><td><span class="pill ok">применено + верифицировано</span></td></tr>
+<tr><td><code>dash-home-clean-20260806</code></td><td>узел чист: ни одного дашборда мимо волта</td><td>все 6</td><td><span class="pill wait">красный: ждёт канон-строку с хаба</span></td></tr>
+<tr><td><code>rulehome-permem-20260806</code></td><td>попутный фикс: <code>rule_home_guard</code> искал память по пути машины Антона</td><td>все 6</td><td><span class="pill ok">применено + верифицировано</span></td></tr>
+</table></div>
+<p class="sub" style="margin-top:9px">Узлы: Хаб (A-2022BAYAREA) · Маяк · HP17-ZBook · MacBook-Anton · MacBook-Ruslana · MyOwnPC-Natalia.
+Зелёным узел станет только после того, как хаб опубликует канон-строку — до этого дверь честно красная, а не подкрашенная.</p>
+
+<h2>Осталось на других</h2>
+<ul>
+<li><b>Хабу:</b> влить пакет <code>_transit/canon-proposals/dashboards-live-on-hub-20260806/</code> — блок §2.4, строка MEMORY.md, реглумент Библии, затем <code>build_bible_moc.py</code>.</li>
+<li><b>Маяку:</b> 3 файла <code>Quarantine-*.html</code> он пишет в <code>_machine-bus/_Dashboards</code> — переключить генератор на свой волт. Пока стоит именованным исключением с причиной.</li>
+<li><b>Антону (Tier-2, сам не решаю):</b> <code>C:\Obsidian\_STALE-PHANTOM-Anton-Knowledge__DELETE-AFTER-CONFIRM-20260626</code> — мёртвая копия волта от 26.06, внутри 11 дашбордов. Удаление невозвратно, поэтому жду слова.</li>
+</ul>
+
+<h2>Граница трактовки</h2>
+<p class="sub">«На хабе» прочитано как «в папке волта <code>_Dashboards</code>, которая синкается с хабом и приезжает
+каждому сотруднику» — хаб держит каноническую копию, доступ у всех получается сам. Альтернатива «только диск хаба
+плюс сервер» требует всегда-включённого хаба, туннеля и логина, и ломается, когда хаб офлайн — это не АК-47.
+Если имелся в виду именно сервер на хабе — скажи, правило перепишем, дверь останется.</p>
+
+<div class="eli5">🧒 <b>Простыми словами:</b> раньше таблички-дашборды лежали у каждого на своём столе,
+и коллеги их не видели. Теперь у всех один общий шкаф, который стоит на главном компьютере и
+виден каждому. Я перенёс туда 35 табличек со своего стола и поставил робота-проверяльщика:
+он ругается, если кто-то опять положил табличку мимо шкафа.</div>
+
+<p class="ts">Собрано автоматически · узел MyOwnPC-Natalia · 06.08.2026 · единый дом: <code>$OBSIDIAN_VAULT\_Dashboards</code></p>
+</div></body></html>

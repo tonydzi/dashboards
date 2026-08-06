@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Kill Review — 5 июля 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body{font-family:Segoe UI,system-ui,sans-serif;background:#14161a;color:#e8e8e8;margin:0;padding:24px;line-height:1.45}
+  h1{font-size:1.5em;margin:0 0 4px}
+  .sub{color:#9aa0a6;font-size:.9em;margin-bottom:20px}
+  .grp{border-radius:12px;padding:16px 20px;margin-bottom:22px}
+  .kill{background:#2a1517;border:1px solid #5c2328}
+  .freeze{background:#2a2415;border:1px solid #5c4f23}
+  .grow{background:#152a1a;border:1px solid #235c2f}
+  .info{background:#171d26;border:1px solid #26364a}
+  .grp h2{margin:0 0 12px;font-size:1.15em}
+  .item{margin:0 0 16px;padding-left:4px}
+  .item label{font-weight:600;font-size:1.0em;cursor:pointer}
+  .item input{transform:scale(1.3);margin-right:8px;accent-color:#e05555}
+  .freeze .item input{accent-color:#d8b83a}
+  .grow .item input{accent-color:#43b35c}
+  .ba{margin:6px 0 0 30px;font-size:.92em;color:#c6cbd2}
+  .ba b{color:#fff}
+  .ev{margin:4px 0 0 30px;font-size:.85em;color:#8d949c}
+  .tag{display:inline-block;font-size:.75em;padding:1px 8px;border-radius:9px;background:#333a44;color:#cfd6df;margin-left:8px;vertical-align:middle}
+  .kpi{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 22px}
+  .kpi div{background:#1d2129;border:1px solid #2c333e;border-radius:10px;padding:10px 16px;min-width:130px}
+  .kpi .n{font-size:1.5em;font-weight:700}
+  .kpi .l{font-size:.8em;color:#9aa0a6}
+  .eli5{background:#1b2330;border:1px solid #2c3f57;border-radius:12px;padding:14px 18px;margin-top:26px;font-size:.97em}
+  a{color:#7fb4ff}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Kill-Review-2026-07-17.html">&larr; Kill-Review-2026-07-17</a> · <a href="Near-Dup-Review.html">Near-Dup-Review &rarr;</a></span></div>
+<h1>🔪 Kill Review — что развить, что убить</h1>
+<div class="sub">5 июля 2026 · ноут HP17-ZBook · автор HP17-ZBook·Claude (Майк, кофаундер) · вердикты на решение Антона, сам НИЧЕГО не убивал · метод: счётчики/даты файлов/логи + Connect-тест «кто потребитель?»</div>
+
+<div class="kpi">
+  <div><div class="n">89</div><div class="l">роботов-задач в системе (system.db 04.07)</div></div>
+  <div><div class="n">3%</div><div class="l">бака жгут ВСЕ фоновые рутины ($251 из $8180 за окно)</div></div>
+  <div><div class="n">85%</div><div class="l">бака жгут долгоживущие Opus-сессии (кэш контекста)</div></div>
+  <div><div class="n">13 дней</div><div class="l">альфа-движок без свежего выхода (с 22.06)</div></div>
+  <div><div class="n">294 KB</div><div class="l">непотреблённая очередь vault-janitor</div></div>
+</div>
+
+<div class="grp info">
+<h2>⚡ Главный факт (из Token-Audit 05.07)</h2>
+Токены съедают НЕ рутины, а 20+ параллельных долгоживущих Opus-сессий (сессия-долгожитель = $150–600 каждая). Поэтому вердикты ниже — про <b>внимание Антона, хрупкость и отсутствие потребителя</b>, а не про экономию токенов. Правило-лечение №1: <b>закончил кусок → /retro → закрыть сессию; параллельно ≤3 окна</b>. Эффект ~50% лимита = больше Opus на продажи.
+</div>
+
+<div class="grp kill">
+<h2>🔴 УБИТЬ сейчас (галочка = «согласен, убиваем»)</h2>
+
+<div class="item"><input type="checkbox" id="k1"><label for="k1">1. UFO-UAP Digest Weekly</label><span class="tag">хаб · headless Sonnet + web · еженедельно</span>
+<div class="ba"><b>До:</b> каждое вс генерит дайджест для «defense+UFO pivot». <b>После:</b> задача удалена; лейн спит — проснётся, дайджест вернём за 5 минут.</div>
+<div class="ev">Доказательство: в content-factory\chatgpt-drop выходов НЕТ вообще; потребитель не назван; pivot-лейн не двигался ≥2 недели.</div></div>
+
+<div class="item"><input type="checkbox" id="k2"><label for="k2">2. vault-janitor-nightly (ручная med/low-очередь)</label><span class="tag">хаб cron · Sonnet каждую ночь</span>
+<div class="ba"><b>До:</b> ночной Sonnet растит очередь перелинковки, которую никто не смотрит. <b>После:</b> ночную задачу выключаем; АВТО-apply HIGH-confidence (уже живёт отдельно с 01.07, откатимый) остаётся.</div>
+<div class="ev">Доказательство: _Vault-Janitor-Queue.md = 294 KB накопленных прогонов с 14.06; следов ручного ревью med/low нет.</div></div>
+
+<div class="item"><input type="checkbox" id="k3"><label for="k3">3. Пакет мёртвых/зомби задач ноута (8 шт одним махом)</label><span class="tag">ноут · 0 ценности, шум и ложное «всё работает»</span>
+<div class="ba"><b>До:</b> в планировщике числятся живыми. <b>После:</b> удалены/починены: aibus-bridge-sync (НИ РАЗУ не бегала), CHARM leads-to-VPS nightly (НИ РАЗУ), cowork-watch (дубль signal-dispatcher — должен был быть Disabled, а бегает каждые 15 мин), takeout-arrival-watch (должна была самоликвидироваться 26.06), Claude Dashboard Refresh Daily + Brain Reindex Weekly full (result 267011 = не бегают), Fleet Manifest Check (ПАДАЕТ, result=1), TG daemon ZOMBIE (err24=48, стоп-приказ 30.06 — добить).</div>
+<div class="ev">Доказательство: LastResult из Task Scheduler 05.07 + память tg-daemon-visibility.</div></div>
+
+<div class="item"><input type="checkbox" id="k4"><label for="k4">4. weekly-brain-audio-digest (NotebookLM аудио)</label><span class="tag">ноут cron · вс 05:39 · enabled</span>
+<div class="ba"><b>До:</b> каждое вс собирается аудио-дайджест мозга. <b>После:</b> выключен. Вопрос-триггер Антону: ты слушал хоть один выпуск за месяц? Нет → мёртвый ритуал.</div>
+<div class="ev">Connect-тест: потребитель не подтверждён; плюс ноут уезжает (away-mode) — задача умрёт всё равно.</div></div>
+
+<div class="item"><input type="checkbox" id="k5"><label for="k5">5. Инсайт-ритуалы без читателя: wisdom-distill-weekly + five-hard-monthly</label><span class="tag">ноут cron · Opus в чат 03</span>
+<div class="ba"><b>До:</b> по вс/1-му числу генерятся «мудрость недели» и «5 трудных вопросов» в чат 03. <b>После:</b> выключены. Выход уходит в heartbeat-шумный канал; реакции Антона не зафиксированы.</div>
+<div class="ev">Connect-тест провален. Код остаётся — вернуть можно одной командой.</div></div>
+</div>
+
+<div class="grp freeze">
+<h2>🟡 ЗАМОРОЗИТЬ (код живёт, расписание спит — до появления потребителя)</h2>
+
+<div class="item"><input type="checkbox" id="f1"><label for="f1">Альфа-движок целиком: 10 miners + Alpha Judge Nightly + экран 8772</label><span class="tag">тихий сбой</span>
+<div class="ba"><b>До:</b> числится живым (result=0 29.06), но ВСЕ judged-выходы датированы 22.06 = 13 дней зомби «бежит-но-пусто», очередь «золота» с экрана 8772 ПУСТА. <b>После:</b> расписания спят. Разморозка = Антон называет потребителя (напр. 30 мин/нед на экране 8772) ИЛИ судья армируется авто-порогом в HOME-заметки.</div>
+<div class="ev">candidates\*-judged-latest.md все 2026-06-22; home-queue-latest.md 04.07 = «(очередь пуста)»; system.db «ok» — классический silent-success.</div></div>
+
+<div class="item"><input type="checkbox" id="f2"><label for="f2">Near-dup dedup: nightly → раз в месяц</label>
+<div class="ba"><b>До:</b> каждую ночь скан + очередь ревью 1.9 MB, дашборд 369 KB — никто не разбирает. <b>После:</b> авто-мердж остаётся, детект раз в месяц, очередь не растёт.</div></div>
+
+<div class="item"><input type="checkbox" id="f3"><label for="f3">intention-daily (ноут, Opus ежедневно 23:20) → слить в content-factory-daily на хабе</label>
+<div class="ba"><b>До:</b> два отдельных ночных контент-цикла (интеншены на ноуте + фабрика на хабе). <b>После:</b> ОДИН цикл на хабе; ноут чист (away-mode всё равно его убьёт).</div></div>
+
+<div class="item"><input type="checkbox" id="f4"><label for="f4">Watch-Digest / mine-channel (8 каналов, 0 токенов)</label>
+<div class="ba"><b>До:</b> ночная альфа каналов «PRIVATE Second Brain only» без явного читателя. <b>После:</b> остаётся ТОЛЬКО как сырьё-вход content-factory (подключить явно) — иначе заморозить.</div></div>
+
+<div class="item"><input type="checkbox" id="f5"><label for="f5">Creator Watcher hub-nightly — НЕ армировать</label>
+<div class="ba">Гейт валидирован, но потребителя нет → PENDING остаётся PENDING. Подтверждаю пассив NotPeople-волн (решение 05.07) и H14-компрессии (ждёт «+») — не трогаем, время не тратим.</div></div>
+</div>
+
+<div class="grp grow">
+<h2>🟢 РАЗВИТЬ — три ставки на деньги</h2>
+
+<div class="item"><input type="checkbox" id="g1"><label for="g1">1. Лид-движок первого чека</label><span class="tag">путь к деньгам №1</span>
+<div class="ba">/pipeline + tg-leads-today (бегает, 04.07 ok) + lead-reply-watch (IMAP bb) + CRM Engine Fields Sync (04.07 ok) + Calendly. Первый чек ЛЮБОГО размера ($100–2000, решение 05.07). <b>Метрика недели: касания/день · выданные Calendly · звонки · первый чек.</b></div></div>
+
+<div class="item"><input type="checkbox" id="g2"><label for="g2">2. Zero-trust консалтинг-оффер</label><span class="tag">единственный productized-оффер</span>
+<div class="ba">agent-leash SHIPPED, пост ждёт «➕» (память zero-trust-product-line). Вариант B принят 04.07: async-аудит → hardening → retainer. <b>Шаг: выпустить пост + первым 5 тёплым лидам предложить аудит за любой чек.</b></div></div>
+
+<div class="item"><input type="checkbox" id="g3"><label for="g3">3. Контент-воронка с метриками стадий</label><span class="tag">гипотеза-воронка 05.07</span>
+<div class="ba">content-factory-daily (хаб) + fb-post/fb-reply + footer-CTA. ВСЁ контентное (intention, episodes, book The Journey, voice-100%) — внутрь ЭТОГО одного цикла, не отдельными роботами. <b>Мерить: подписчики · Δкомменты · выдано Calendly · звонки.</b></div></div>
+
+<div class="item"><input type="checkbox" id="g4"><label for="g4">+ Опора: финучёт и токен-дисциплина</label>
+<div class="ba">money.json создан (скелет 05.07) — Антон/Наташа заполняют 5 цифр (резерв, burn, зарплаты, подписки) → строка runway в каждом дайджесте. Token-audit → еженедельная рутина. Правило «закрыл кусок → /retro → закрыл сессию».</div></div>
+</div>
+
+<div class="grp info">
+<h2>⚠️ Красные флаги вне вердиктов (Пульс 04.07 16:35)</h2>
+1) <b>Хаб показывал «Not logged in / Please run /login»</b> — при away-mode это смертельно для ВСЕХ хаб-рутин, проверить логин первым делом. 2) Syncthing-рельс хаб→ноут лежал 04.07 (connected=FALSE), у Русланы Syncthing отвалился, 9 sync-conflict файлов. 3) Два QQQ висят на Антоне 2 дня. 4) Движок Task Backlog живёт на HP17, а ноут уезжает на 45 дней → перенести на хаб. 5) Аудит токенов покрывает только ноут — тот же скрипт прогнать на хабе. 6) 1407 дашбордов в каталоге — сорняк-класс, чистить не срочно.
+</div>
+
+<div class="eli5">🧒 <b>Простыми словами:</b> у нас на ферме 89 роботов. Мы проверили каждого: несёт ли он яйца и ест ли кто-то эти яйца. Оказалось: еда (токены) уходит не на роботов — 85% съедают 20 открытых толстых «тетрадок»-разговоров. Но десяток роботов несут яйца в пустой сарай, куда никто не заходит, а восемь вообще сломаны и только числятся живыми. Предлагаю: сломанных и «пустосарайных» — выключить (галочки выше), а все силы — на трёх роботов, которые приносят ДЕНЬГИ: находить клиентов, продать аудит безопасности и делать посты-приманки. Я никого сам не выключал — решаешь ты.</div>
+
+<script>
+document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+  const k='killreview-'+cb.id;
+  cb.checked=localStorage.getItem(k)==='1';
+  cb.addEventListener('change',()=>localStorage.setItem(k,cb.checked?'1':'0'));
+});
+</script>
+</body>
+</html>

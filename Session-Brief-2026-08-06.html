@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Бриф на старте сессии — 06.08.2026</title>
+<style>
+  :root{
+    --bg:#0f1216; --card:#171b21; --line:#262c35; --tx:#e6e9ee; --dim:#8b97a8;
+    --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --acc:#60a5fa;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f5f7fa; --card:#fff; --line:#e2e8f0; --tx:#111827; --dim:#5b6676;
+           --ok:#15803d; --warn:#b45309; --bad:#b91c1c; --acc:#1d4ed8; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--tx);
+       font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--dim);margin-bottom:22px;font-size:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+        padding:18px 20px;margin-bottom:16px}
+  h2{font-size:16px;margin:0 0 12px;letter-spacing:.2px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .ba{border-left:3px solid var(--line);padding-left:14px}
+  .ba.before{border-color:var(--bad)} .ba.after{border-color:var(--ok)}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;
+       border:1px solid var(--line);color:var(--dim);margin-bottom:8px}
+  pre{background:var(--bg);border:1px solid var(--line);border-radius:7px;
+      padding:12px;overflow-x:auto;font-size:12.5px;margin:0;
+      font-family:Consolas,Menlo,monospace;white-space:pre;color:var(--tx)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+  .n{font-size:26px;font-weight:700}
+  .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:760px){.kpi{grid-template-columns:repeat(2,1fr)}}
+  .kpi div{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px}
+  .kpi small{display:block;color:var(--dim);font-size:11.5px;margin-top:2px}
+  code{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:12.5px}
+  .note{color:var(--dim);font-size:13px}
+  ul{margin:8px 0 0;padding-left:20px} li{margin-bottom:6px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Routines-Registry.html">&larr; Routines-Registry</a> · <a href="Session-Token-Audit.html">Session-Token-Audit &rarr;</a></span></div><div class="wrap">
+
+<h1>Бриф на старте сессии</h1>
+<div class="sub">машина MyOwnPC-Natalia · 06.08.2026 · статус <strong class="warn">SHADOW до 13.08.2026</strong> · решает Наташа</div>
+
+<div class="card">
+  <h2>Что изменилось — на твоих настоящих данных</h2>
+  <div class="grid">
+    <div class="ba before">
+      <span class="tag">ДО</span>
+      <p>Recall был <strong>правилом в CLAUDE.md</strong>. Сессия открывалась с пустой головой, а вспоминала, только если её попросить. Правило не падает, когда не сработало — поэтому никто не замечал.</p>
+      <pre>SessionStart сегодня утром:
+  computer_use_grant
+  inbox_read
+  visible_sessions
+  sync_conflict_watch
+  onair
+  housekeeping
+
+брифа нет ни одного</pre>
+    </div>
+    <div class="ba after">
+      <span class="tag">ПОСЛЕ</span>
+      <p>Тот же старт сессии, реальный вывод в 13:58:</p>
+      <pre>🧠 БРИФ НА СТАРТЕ (session_brief v1.0.0)
+🧭 Прошлая сессия (06.08 13:58): Стоп погоди
+   Я просил чтобы БЫЛ ВСЕГДА ДОСТУП К ЛЮБОМУ…
+📌 Открыто P0/P1 (28 за 7 дн): Перелогинить
+   headless claude CLI на хабе
+   · P0 [anton] GitHub-25: прокачка профиля…
+   · P0 [anton] Снять замок апрувов…
+✍️ Свежее локально (38 файлов за 3 дн):
+   x8-dedup…, 40-medium-READY.md, 40-medium-en.md
+❓ Хэндоффы (1): HANDOFF-alpha-recall-comments.md</pre>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Цифры прямо сейчас</h2>
+  <div class="kpi">
+    <div><span class="n ok">24/24</span><small>проверки зелёные</small></div>
+    <div><span class="n">82 мс</span><small>время сбора, бюджет 1600</small></div>
+    <div><span class="n">6</span><small>строк в брифе, потолок 8</small></div>
+    <div><span class="n">3.4%</span><small>baseline холодных стартов</small></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Откуда бриф берёт факты и почему именно оттуда</h2>
+  <table>
+    <tr><th>источник</th><th>живой?</th><th>решение</th></tr>
+    <tr><td><code>turnstate.db</code> — база ходов</td>
+        <td class="bad">МЁРТВ</td>
+        <td>3 строки, все селф-тесты от 14.07. Хук возвращает <code>exit 0</code> и не пишет. <strong>Не берём:</strong> это уже один «механизм», который умер молча — второй такой не строим.</td></tr>
+    <tr><td>транскрипты сессий <code>*.jsonl</code></td>
+        <td class="ok">ЖИВЫЕ</td>
+        <td><strong>Взят главным.</strong> Их пишет сам харнес: отдельного писателя, который может тихо сдохнуть, просто нет. 146 файлов, свежайшие — текущий час.</td></tr>
+    <tr><td>задачи <code>10-Tasks\task-*.md</code></td>
+        <td class="ok">ЖИВЫЕ</td>
+        <td>Взяты второй полосой: 614 файлов, 260 тронуты за неделю. Читается только YAML-шапка, не смысл.</td></tr>
+    <tr><td>локальные <code>drafts\</code>, <code>posting-chain\</code></td>
+        <td class="ok">ЖИВЫЕ</td>
+        <td>Третья полоса: что в работе на этой машине.</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Что тесты поймали при постройке</h2>
+  <p class="note">Оба бага были из тех, что не падают, а тихо врут — то есть именно те, ради которых тест и пишется.</p>
+  <ul>
+    <li><strong>Путь волта.</strong> Движок подставлял зашитый путь <em>поверх</em> заданной переменной окружения — молча поехал бы не на тот диск. Починено.</li>
+    <li><strong>Фантомные падения.</strong> <code>sys.exit()</code> стоял внутри <code>try</code> — каждый нормальный прогон дописывал в лог лишнюю строку «упал». Набежало <strong>54 фантомных падения</strong>, медиана времени показывала 0 мс. Прибор врал бы в красную сторону на главном критерии. Починено, лог обнулён, чистый отсчёт с 13:58.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Критерии на 13.08 — названы ДО включения</h2>
+  <p class="note">Судить можно, только если набралось 7 дней <strong>и</strong> минимум 15 запусков. Меньше — продлеваем окно, а не выносим вердикт по трём точкам.</p>
+  <table>
+    <tr><th>#</th><th>что меряем</th><th>порог «оставить»</th><th>чем</th></tr>
+    <tr><td>1</td><td>старт сессии сломался</td><td class="ok">0 случаев</td><td><code>--stats</code></td></tr>
+    <tr><td>2</td><td>медиана времени</td><td class="ok">&lt; 500 мс</td><td><code>--stats</code></td></tr>
+    <tr><td>3</td><td>брифу было что сказать</td><td class="ok">≥ 70% запусков</td><td><code>--stats</code></td></tr>
+    <tr><td>4</td><td><strong>польза для человека</strong></td><td class="ok">≥ 3 раза за неделю</td><td>один вопрос Наташе в конце недели</td></tr>
+    <tr><td>5</td><td>холодные старты</td><td class="warn">справочно</td><td>решения не определяет — см. ниже</td></tr>
+  </table>
+  <p class="note" style="margin-top:14px"><strong>Слабость метрики №5 названа заранее, а не после:</strong> baseline — всего 5 холодных стартов на 146 сессий за месяц. Это пол: за неделю такая метрика физически не сдвинется настолько, чтобы что-то доказать. Плюс 3 случая из 5 — точечный recall по конкретному лиду, который бриф и не должен убирать. Поэтому решение принимается по критериям 1–4, а №5 идёт справкой.</p>
+  <p class="note"><strong>13.08 ровно один из трёх ответов:</strong> оставить (1,2,3 выполнены и 4 дал ≥3) · доработать (1,2 ок, но 3 или 4 не дотянули — значит полосы выбраны не те) · удалить (падения были, ИЛИ бриф не пригодился ни разу). Удаление = одна строка из settings.json и папка tools\.</p>
+</div>
+
+<div class="card">
+  <h2>Четыре команды, которые нужны Наташе</h2>
+  <pre>python D:\!CLAUDE-NATALY-June26\tools\session_brief.py            посмотреть бриф
+python D:\!CLAUDE-NATALY-June26\tools\session_brief.py --check    всё ли живо
+python D:\!CLAUDE-NATALY-June26\tools\session_brief.py --stats    статистика за неделю
+python D:\!CLAUDE-NATALY-June26\tools\session_brief.py --off      выключить (--on включить)</pre>
+  <p class="note" style="margin-top:12px">Выключатель — обычный файл <code>tools\SESSION-BRIEF-OFF.flag</code>, как <code>STOP-POSTING.flag</code> в postbox. Лежит — бриф молчит, удалила — работает. Sqlite и json руками править не нужно нигде. Паспорт: <code>D:\!CLAUDE-NATALY-June26\tools\_doc_session_brief.md</code></p>
+</div>
+
+<div class="card">
+  <h2>Что ушло хабу</h2>
+  <p>Канон-предложение <code>_transit\canon-proposals\session-brief-20260806\</code> + сообщение в шину (dual-send OK, чат 03).</p>
+  <p class="note">Главное там — не бриф, а находка: <strong>turnstate мёртв, и молчание узла тут ничего не значит</strong> — сломанный и живой выглядят одинаково. Просим проверить на каждом узле. Скилл <code>/1</code> заявлен как «recall из TurnState» — на пустой базе он возвращает пустоту, но это 🤔 гипотеза: хаб отсюда мы не проверяли.</p>
+</div>
+
+<div class="sub" style="margin-top:24px">Всё измерено на машине Наташи 06.08.2026. О хабе и других узлах отсюда не судим.</div>
+
+</div></body></html>

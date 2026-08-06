@@ -1,0 +1,95 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Голос -&gt; Контент: что опубликовано</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#16181d;--dim:#6b7280;--line:#e5e7eb;
+      --s1:#93c5fd;--s2:#60a5fa;--s3:#34d399;--s4:#059669;--bad:#dc2626;--good:#059669}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#171a21;--ink:#e8eaed;--dim:#9aa3af;--line:#272b33}}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;background:var(--bg);color:var(--ink);
+     font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:22px;margin:0 0 4px}
+.meta{color:var(--dim);font-size:13px;margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
+h2{font-size:15px;margin:0 0 12px;text-transform:uppercase;letter-spacing:.04em;color:var(--dim)}
+.tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:transparent;color:var(--ink);padding:6px 14px;
+     border-radius:999px;cursor:pointer;font-size:13px}
+.tab.active{background:var(--s2);border-color:var(--s2);color:#fff}
+.pane{display:none}.pane.active{display:block}
+.step{display:flex;align-items:center;gap:12px;margin:8px 0}
+.lbl{width:170px;font-size:14px;color:var(--dim);flex:none}
+.bar{flex:1;background:var(--line);border-radius:6px;height:26px;overflow:hidden}
+.fill{height:100%;border-radius:6px}
+.fill.s1{background:var(--s1)}.fill.s2{background:var(--s2)}
+.fill.s3{background:var(--s3)}.fill.s4{background:var(--s4)}
+.num{width:56px;text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.kpis{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:12px 16px;min-width:150px}
+.kpi .k{font-size:24px;font-weight:700}
+.kpi .v{font-size:12px;color:var(--dim)}
+.kpi .sub{font-size:11px;color:var(--dim);margin-top:2px}
+.kpi.bad .k{color:var(--bad)}.kpi.good .k{color:var(--good)}
+.chips{margin-top:12px}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:3px 10px;
+      font-size:12px;margin:0 6px 6px 0;color:var(--dim)}
+.chip.warn{border-color:#d97706;color:#d97706}
+ul{margin:0;padding-left:20px}li{margin:4px 0;color:var(--bad)}li.ok{color:var(--good)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase}
+.mono{font-family:ui-monospace,Consolas,monospace}.small{font-size:12px;color:var(--dim)}
+.cmd{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--dim);
+     white-space:nowrap;overflow-x:auto;max-width:520px}
+a{color:var(--s2)}
+.eli5{background:var(--card);border-left:3px solid var(--s3);padding:14px 18px;border-radius:8px;
+      font-size:14px;color:var(--dim)}
+.wrap{overflow-x:auto}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Threads-Posts-Bank.md">&larr; Threads-Posts-Bank</a> · <a href="content-factory-S0-S6.html">content-factory-S0-S6 &rarr;</a></span></div>
+<h1>Голос &rarr; Контент: что реально <b>опубликовано</b></h1>
+<div class="meta">Собрано 2026-08-06 10:27 &middot; источники: triage_log.jsonl (что пришло) + posts.jsonl (реестр) +
+pub_ledger / pubmetrics.db / episodes (факты публикаций) &middot; пересобрать:
+<span class="mono">python funnel_dashboard.py</span></div>
+
+<div class="card">
+  <h2>Воронка</h2>
+  <div class="tabs"><button class="tab active" data-w="7">7 дней</button><button class="tab" data-w="30">30 дней</button><button class="tab" data-w="0">всё время</button></div>
+  <div class="pane active" id="w7"><div class="funnel"><div class="step"><div class="lbl">Пришло заметок</div><div class="bar"><div class="fill s1" style="width:100.0%"></div></div><div class="num">1291</div></div><div class="step"><div class="lbl">Годно в контент</div><div class="bar"><div class="fill s2" style="width:22.5%"></div></div><div class="num">290</div></div><div class="step"><div class="lbl">Собран эпизод</div><div class="bar"><div class="fill s3" style="width:1.2%"></div></div><div class="num">0</div></div><div class="step"><div class="lbl">ОПУБЛИКОВАНО</div><div class="bar"><div class="fill s4" style="width:1.2%"></div></div><div class="num">0</div></div></div><div class="kpis"><div class="kpi bad"><div class="k">0%</div><div class="v">публикуемая конверсия</div><div class="sub">пол канона: 80%</div></div><div class="kpi"><div class="k">75</div><div class="v">внутреннее</div></div><div class="kpi"><div class="k">926</div><div class="v">отброшено с причиной</div></div></div><div class="chips"><span class="chip">отброшено <b>926</b></span> <span class="chip">банк <b>128</b></span> <span class="chip">серия <b>84</b></span> <span class="chip">внутреннее <b>75</b></span> <span class="chip">склейка <b>46</b></span> <span class="chip">пост <b>32</b></span></div></div><div class="pane" id="w30"><div class="funnel"><div class="step"><div class="lbl">Пришло заметок</div><div class="bar"><div class="fill s1" style="width:100.0%"></div></div><div class="num">1506</div></div><div class="step"><div class="lbl">Годно в контент</div><div class="bar"><div class="fill s2" style="width:25.0%"></div></div><div class="num">377</div></div><div class="step"><div class="lbl">Собран эпизод</div><div class="bar"><div class="fill s3" style="width:1.2%"></div></div><div class="num">0</div></div><div class="step"><div class="lbl">ОПУБЛИКОВАНО</div><div class="bar"><div class="fill s4" style="width:1.2%"></div></div><div class="num">0</div></div></div><div class="kpis"><div class="kpi bad"><div class="k">0%</div><div class="v">публикуемая конверсия</div><div class="sub">пол канона: 80%</div></div><div class="kpi"><div class="k">108</div><div class="v">внутреннее</div></div><div class="kpi"><div class="k">1021</div><div class="v">отброшено с причиной</div></div></div><div class="chips"><span class="chip">отброшено <b>1021</b></span> <span class="chip">банк <b>154</b></span> <span class="chip">внутреннее <b>108</b></span> <span class="chip">серия <b>88</b></span> <span class="chip">склейка <b>72</b></span> <span class="chip">пост <b>63</b></span></div></div><div class="pane" id="w0"><div class="funnel"><div class="step"><div class="lbl">Пришло заметок</div><div class="bar"><div class="fill s1" style="width:100.0%"></div></div><div class="num">1523</div></div><div class="step"><div class="lbl">Годно в контент</div><div class="bar"><div class="fill s2" style="width:25.6%"></div></div><div class="num">390</div></div><div class="step"><div class="lbl">Собран эпизод</div><div class="bar"><div class="fill s3" style="width:1.2%"></div></div><div class="num">0</div></div><div class="step"><div class="lbl">ОПУБЛИКОВАНО</div><div class="bar"><div class="fill s4" style="width:1.2%"></div></div><div class="num">0</div></div></div><div class="kpis"><div class="kpi bad"><div class="k">0%</div><div class="v">публикуемая конверсия</div><div class="sub">пол канона: 80%</div></div><div class="kpi"><div class="k">109</div><div class="v">внутреннее</div></div><div class="kpi"><div class="k">1024</div><div class="v">отброшено с причиной</div></div></div><div class="chips"><span class="chip">отброшено <b>1024</b></span> <span class="chip">банк <b>159</b></span> <span class="chip">внутреннее <b>109</b></span> <span class="chip">серия <b>90</b></span> <span class="chip">склейка <b>76</b></span> <span class="chip">пост <b>65</b></span></div></div>
+</div>
+
+<div class="card">
+  <h2>Что мешает засчитать «опубликовано» (окно 7 дней)</h2>
+  <ul><li>PUBLISH_RATE: 0% of active material published (canon floor 80%)</li></ul>
+</div>
+
+<div class="card">
+  <h2>Опубликовано, но НЕ привязано к воронке (10)</h2>
+  <div class="meta">Эпизод вышел наружу, но ни одна запись воронки не несёт его slug &mdash;
+  поэтому он не попадает в счёт «опубликовано». Сшивается одной командой (из папки content-factory).</div>
+  <div class="wrap"><table><thead><tr><th>эпизод (slug)</th><th>рельсы факта</th><th>когда</th>
+  <th>возраст</th><th>команда сшивки</th></tr></thead><tbody><tr><td class="mono">ai-hands-died-win-r</td><td class="mono small">pub_ledger,pubmetrics,episode_meta</td><td class="mono small">2026-07-10T08:58</td><td><span class="chip small">историческое</span></td><td class="cmd">python voice_triage.py link-episode --id &lt;post-id&gt; --slug ai-hands-died-win-r</td></tr><tr><td class="mono">voice-intention</td><td class="mono small">episode_meta</td><td class="mono small">2026-07-05T19:42</td><td><span class="chip small">историческое</span></td><td class="cmd">python voice_triage.py link-episode --id &lt;post-id&gt; --slug voice-intention</td></tr><tr><td class="mono">wow-claude-bible-launch</td><td class="mono small">pub_ledger,pubmetrics,episode_meta</td><td class="mono small">2026-07-02</td><td><span class="chip small">историческое</span></td><td class="cmd">python voice_triage.py link-episode --id &lt;post-id&gt; --slug wow-claude-bible-launch</td></tr><tr><td class="mono">wow-claude-consensus</td><td class="mono small">pub_ledger,pubmetrics,episode_meta</td><td class="mono small">2026-07-03</td><td><span class="chip small">историческое</span></td><td class="cmd">python voice_triage.py link-episode --id &lt;post-id&gt; --slug wow-claude-consensus</td></tr><tr><td class="mono">wow-claude-consensus-launch</td><td class="mono small">pub_ledger,pubmetrics</td><td class="mono small">2026-07-02T12:00</td><td><span class="chip small">историческое</span></td><td class="cmd">python voice_triage.py link-episode --id &lt;post-id&gt; --slug wow-claude-consensus-launch</td></tr><tr><td class="mono">wow-cloud-embeddings-unlock-vps</td><td class="mono small">pub_ledger,pubmetrics,episode_meta</td><td class="mono small">2026-07-04</td><td><span class="chip small">историческое</span></td><td class="cmd">python voice_triage.py link-episode --id &lt;post-id&gt; --slug wow-cloud-embeddings-unlock-vps</td></tr><tr><td class="mono">wow-consensus-moves-to-chat</td><td class="mono small">pub_ledger,pubmetrics,episode_meta</td><td class="mono small">2026-07-06</td><td><span class="chip small">историческое</span></td><td class="cmd">python voice_triage.py link-episode --id &lt;post-id&gt; --slug wow-consensus-moves-to-chat</td></tr><tr><td class="mono">wow-fable-revision</td><td class="mono small">pub_ledger,pubmetrics,episode_meta</td><td class="mono small">2026-07-02</td><td><span class="chip small">историческое</span></td><td class="cmd">python voice_triage.py link-episode --id &lt;post-id&gt; --slug wow-fable-revision</td></tr><tr><td class="mono">wow-tracekit-live-trace</td><td class="mono small">episode_meta</td><td class="mono small">2026-07-15</td><td><span class="chip small">историческое</span></td><td class="cmd">python voice_triage.py link-episode --id &lt;post-id&gt; --slug wow-tracekit-live-trace</td></tr><tr><td class="mono">wow-vps-anchor</td><td class="mono small">pub_ledger,pubmetrics,episode_meta</td><td class="mono small">2026-07-02</td><td><span class="chip small">историческое</span></td><td class="cmd">python voice_triage.py link-episode --id &lt;post-id&gt; --slug wow-vps-anchor</td></tr></tbody></table></div>
+</div>
+
+<div class="card">
+  <h2>Факты публикаций (все рельсы)</h2>
+  <div class="meta">«Опубликовано» = материал вышел наружу <b>хотя бы на одной площадке</b>.
+  Колонка «веер» показывает, весь ли комплект тиров подтверждён &mdash; жёлтое значит вышла только часть.</div>
+  <div class="wrap"><table><thead><tr><th>когда</th><th>эпизод</th><th>площадка</th><th>веер</th><th>ссылка</th></tr></thead>
+  <tbody><tr><td class="mono small">2026-07-15</td><td>wow-tracekit-live-trace</td><td class="mono small">-</td><td><span class="chip warn">0 из 8 тиров подтверждено</span></td><td class="mono small">-</td></tr><tr><td class="mono small">2026-07-10T08:58</td><td>ai-hands-died-win-r</td><td class="mono small">github, tg_clawrus, fb_wall, x_en</td><td><span class="chip warn">4 из 8 тиров подтверждено</span></td><td class="mono small"><a href="https://github.com/Palo-Alto-AI-Research-Lab/clawrush/blob/main/longreads/ai-hands-died-win-r.md">https://github.com/Palo-Alto-AI-Research-Lab/clawrush/blob/m</a></td></tr><tr><td class="mono small">2026-07-06</td><td>wow-consensus-moves-to-chat</td><td class="mono small">chat03_preview</td><td><span class="chip warn">1 из 8 тиров подтверждено</span></td><td class="mono small">-</td></tr><tr><td class="mono small">2026-07-05T19:42</td><td>voice-intention</td><td class="mono small">-</td><td><span class="chip warn">0 из 8 тиров подтверждено</span></td><td class="mono small">-</td></tr><tr><td class="mono small">2026-07-04</td><td>wow-cloud-embeddings-unlock-vps</td><td class="mono small">chat03_preview</td><td><span class="chip warn">1 из 8 тиров подтверждено</span></td><td class="mono small">-</td></tr><tr><td class="mono small">2026-07-03</td><td>wow-claude-consensus</td><td class="mono small">chat03_preview</td><td><span class="chip warn">1 из 6 тиров подтверждено</span></td><td class="mono small">-</td></tr><tr><td class="mono small">2026-07-02T12:00</td><td>wow-claude-consensus-launch</td><td class="mono small">chat03_preview</td><td><span class="chip">1 площадк(и)</span></td><td class="mono small">-</td></tr><tr><td class="mono small">2026-07-02</td><td>wow-claude-bible-launch</td><td class="mono small">chat03_preview</td><td><span class="chip warn">1 из 6 тиров подтверждено</span></td><td class="mono small">-</td></tr><tr><td class="mono small">2026-07-02</td><td>wow-vps-anchor</td><td class="mono small">chat03_preview</td><td><span class="chip warn">1 из 6 тиров подтверждено</span></td><td class="mono small">-</td></tr><tr><td class="mono small">2026-07-02</td><td>wow-fable-revision</td><td class="mono small">chat03_preview</td><td><span class="chip warn">1 из 6 тиров подтверждено</span></td><td class="mono small">-</td></tr></tbody></table></div>
+</div>
+
+<div class="eli5"><b>🧒 Простыми словами:</b> сверху видно, сколько твоих голосовых пришло, сколько из них
+годится в контент и сколько реально вышло наружу. Раньше последнюю цифру никто не записывал, поэтому
+она была пустая. Теперь она считается сама. Если в таблице «не привязано» есть строки &mdash; значит пост
+вышел, но система не знает, из какой заметки он вырос: сшивается одной строчкой.</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
+    document.querySelectorAll('.pane').forEach(function(x){x.classList.remove('active')});
+    b.classList.add('active');
+    document.getElementById('w'+b.dataset.w).classList.add('active');
+  };
+});
+</script></body></html>

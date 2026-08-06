@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>LLM Cookbook Radar v2 — вклады в топ-LLM экосистемы</title>
+<style>
+  :root { --bg:#0f1115; --card:#1a1d24; --txt:#e6e6e6; --dim:#9aa0aa; --acc:#5eb1ff; --ok:#4caf50; --warn:#ffb300; --hot:#ff6d5e; }
+  body { background:var(--bg); color:var(--txt); font:15px/1.5 -apple-system,Segoe UI,sans-serif; margin:24px; }
+  h1 { font-size:22px; } h2 { font-size:17px; margin-top:28px; color:var(--acc); }
+  .meta { color:var(--dim); font-size:13px; }
+  table { border-collapse:collapse; width:100%; margin-top:10px; background:var(--card); }
+  th,td { padding:7px 10px; border-bottom:1px solid #2a2e38; text-align:left; vertical-align:top; font-size:13.5px; }
+  th { color:var(--dim); font-weight:600; }
+  a { color:var(--acc); text-decoration:none; } a:hover { text-decoration:underline; }
+  .tierA { border-left:3px solid var(--hot); } .tierB { border-left:3px solid var(--warn); } .done { border-left:3px solid var(--ok); } .skip { border-left:3px solid #555; color:var(--dim); }
+  .badge { display:inline-block; padding:1px 7px; border-radius:9px; font-size:11.5px; margin-right:4px; }
+  .bA { background:#4a2320; color:#ffb0a6; } .bB { background:#42361a; color:#ffd98a; } .bD { background:#1e3a22; color:#9fdca8; } .bS { background:#2a2e38; color:#9aa0aa; }
+  .hi { color:#4caf50; font-weight:600; } .med { color:#ffb300; } .lo { color:#ff6d5e; }
+  .asset { color:#c9a7ff; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="HF-Alpha-Radar.html">&larr; HF-Alpha-Radar</a> · <a href="Lebedev-Style-DR-ZB-07.html">Lebedev-Style-DR-ZB-07 &rarr;</a></span></div>
+<h1>📡 LLM Cookbook Radar v2 — вклады в топ-LLM экосистемы</h1>
+<p class="meta">🎯 <b>Ночной авто-матчер</b> «открытый запрос ↔ наш готовый код»: <a href="HF-Alpha-Radar.html">HF-Alpha-Radar.html</a> (Mac16 launchd, окно 02:10 Lisbon; глубокий watch huggingface/cookbook + матч по 15 vendor-репо).</p>
+<p class="meta">Скан v2: 2026-07-20/21, Mac16 — 5 параллельных агентов, gh api: <b>liveness-проверка</b> (кто реально мержит внешние PR, скорость, кладбища), поверх issue-скана v1 от 20.07. Канон: <b>reglament-zametnost-v-top-10-llm-issue-matching</b>. Decision Memo: <b>02-Decisions/decision-2026-07-20-multi-vendor-oss-backlog.md</b> · Внешний DR: <b>DR26-07-20-MACANTON-02-2127</b> (issued). Активы для портирования: <span class="asset">consensus/adversarial verification (#784) · authority routing ADVISE/EXECUTE/DEFER/STOP (#787) · pipeline-vs-barrier (#788) · citation-faithfulness evals (#789) · verified-ops SDK agent (#70) · reasoning-quality gate (skills #1460) · память/second-brain · MCP-тулинг · Ed25519-подписи · QQQ human-in-the-loop</span>.</p>
+
+<h2>✅ Отправлено — 6 артефактов (Anthropic, вахта ревью; 21.07 ревью ещё 0 на всех)</h2>
+<table>
+<tr class="done"><td><span class="badge bD">SHIPPED</span></td><td><a href="https://github.com/anthropics/claude-cookbooks/pull/784">claude-cookbooks #784</a> consensus & verification · <a href="https://github.com/anthropics/claude-cookbooks/pull/787">#787</a> authority routing (issue #619) · <a href="https://github.com/anthropics/claude-cookbooks/pull/788">#788</a> pipeline-vs-barrier (issue #721, кредит @***ynn) · <a href="https://github.com/anthropics/claude-cookbooks/pull/789">#789</a> citation-faithfulness (issue #682, кредит @****jlamb) · <a href="https://github.com/anthropics/claude-agent-sdk-demos/pull/70">agent-sdk-demos #70</a> verified-ops (issue #63) · <a href="https://github.com/anthropics/skills/pull/1460">skills #1460</a> reasoning-quality-gate (issue #1385)</td></tr>
+</table>
+
+<h2>🥇 Топ-10 бэклог (ценность×скорость = вес вендора × шанс мержа × дешевизна)</h2>
+<table>
+<tr><th>#</th><th>Цель</th><th>Issue / гэп</th><th>Что строим (порт какого актива)</th><th>Мерж</th><th>Усилие</th></tr>
+<tr class="tierA"><td>1</td><td><a href="https://github.com/google/adk-python-community">google/adk-python-community</a></td><td>гэп; прецедент: AgentGovernancePlugin УЖЕ смержен</td><td>AuthorityRoutingPlugin (порт #787) для ADK — плагин governance tool-calls; прецедент доказывает аппетит</td><td class="hi">HIGH</td><td>M</td></tr>
+<tr class="tierA"><td>2</td><td><a href="https://github.com/huggingface/cookbook">huggingface/cookbook</a></td><td><a href="https://github.com/huggingface/cookbook/issues/303">#303</a> «search agent cookbook» — висит &gt;1 года</td><td>Search-agent с adversarial verification (порт #784); кредит автору; бонус: значок huggingcooks</td><td class="hi">HIGH</td><td>M</td></tr>
+<tr class="tierA"><td>3</td><td><a href="https://github.com/openai/openai-agents-js">openai/openai-agents-js</a></td><td><a href="https://github.com/openai/openai-agents-js/issues/1097">#1097</a> approve() with modified arguments</td><td>Authority-routing поверх их approval-флоу (порт #787 на OpenAI Agents SDK) — разлочка экосистемы OpenAI; мержи &lt;1 дня</td><td class="med">MED-HIGH</td><td>M</td></tr>
+<tr class="tierA"><td>4</td><td><a href="https://github.com/xai-org/xai-cookbook">xai-org/xai-cookbook</a></td><td><a href="https://github.com/xai-org/xai-cookbook/issues/18">#18</a> deterministic function-call contracts</td><td>Рецепт «детерминизм первым» (0-токен гейты + верификация) для Grok; ⚠ не пересекаться с их открытым PR #42 (human sign-off); кредит @****ss21</td><td class="med">MED-HIGH</td><td>S/M</td></tr>
+<tr class="tierA"><td>5</td><td><a href="https://github.com/google-gemini/cookbook">google-gemini/cookbook</a></td><td><a href="https://github.com/google-gemini/cookbook/issues/1274">#1274</a> grounding silently off при JSON · дух #1268</td><td>Citation-faithfulness / trust-layer ноутбук (порт #789) — СТРОГО issue-first (их правило) и НОЛЬ сторонних pip (об это убился конкурент #1268)</td><td class="med">MED-HIGH</td><td>M</td></tr>
+<tr class="tierA"><td>6</td><td><a href="https://github.com/microsoft/semantic-kernel">microsoft/semantic-kernel</a></td><td><a href="https://github.com/microsoft/semantic-kernel/issues/14072">#14072</a> + 6 дублей memory-guard</td><td>Function-invocation approval + memory-poisoning guard (порт #787 + верификация) — 7 независимых issues = валидированный спрос; MS CLA</td><td class="hi">HIGH</td><td>M/L</td></tr>
+<tr class="tierB"><td>7</td><td><a href="https://github.com/anthropics/skills">anthropics/skills</a></td><td><a href="https://github.com/anthropics/skills/issues/1417">#1417</a> plan-file hygiene</td><td>Скилл гигиены PLAN/NOTES-файлов — мы это буквально живём (plan-clobber 20.07); 1 коммент, конкурентов нет</td><td class="med">MED</td><td>S</td></tr>
+<tr class="tierB"><td>8</td><td><a href="https://github.com/anthropics/claude-cookbooks">anthropics/claude-cookbooks</a></td><td><a href="https://github.com/anthropics/claude-cookbooks/issues/715">#715</a>+<a href="https://github.com/anthropics/claude-cookbooks/issues/716">#716</a> memory across context resets</td><td>Ноутбук памяти через context-reset (наш конёк); все 3 DR-вендора звали это гэпом №2. ⏸ Очередь: 6 наших PR без ревью — не флудить, брать после первого ревью</td><td class="hi">HIGH</td><td>M/L</td></tr>
+<tr class="tierB"><td>9</td><td><a href="https://github.com/google-gemini/genai-processors">google-gemini/genai-processors</a></td><td>contrib/ открыт для процессоров; issues #19/#14/#9</td><td>ConcurrentPipelineProcessor с бенчмарком (порт #788, наш замер 1.93×) в contrib/</td><td class="med">MED-HIGH</td><td>M</td></tr>
+<tr class="tierB"><td>10</td><td><a href="https://github.com/groq/groq-api-cookbook">groq/groq-api-cookbook</a></td><td>гэп: evals/verification рецептов нет</td><td>Verification/reasoning-gate рецепт по их явной рубрике (мержи за часы—дни; самый быстрый вход из всех)</td><td class="hi">HIGH</td><td>S/M</td></tr>
+</table>
+<p class="meta">Запасные: together-cookbook (consensus/evals ноутбук, мержи 4-7 дней) · gemini-cli (16/20 внешних мержей! но это тулинг/extension, не кукбук) · openai-cookbook #2837 MCP-security-audit (высокая видимость, но репо в mid-prune и спам-шум) · openai-cookbook #2394 MCP-пример.</p>
+
+<h2>🗺 Карта живости — 13 компаний (liveness 20-21.07)</h2>
+<table>
+<tr><th>Компания</th><th>Репо</th><th>Живость внешних PR (факты)</th><th>Гейты</th><th>Вердикт</th></tr>
+<tr><td>Anthropic</td><td>claude-cookbooks · agent-sdk-demos · skills</td><td>Наша лестница: 6 PR отправлено, ревью пока 0 (все свежие ≤4 дней)</td><td>без CLA</td><td class="hi">ДОМ — ждать ревью, не флудить</td></tr>
+<tr><td>Google</td><td>adk-python-community · gemini cookbook · genai-processors · gemini-cli</td><td>community-репо мержит внешние плагины (governance-прецедент); cookbook 6-15 дн; gemini-cli 16/20 внешних; ⚠ adk-samples = кладбище 574 PR; python-genai закрыт («in the future»)</td><td>Google CLA, issue-first в cookbook</td><td class="hi">HIGH (через community/contrib-двери)</td></tr>
+<tr><td>OpenAI</td><td>openai-cookbook · agents-python · agents-js</td><td>cookbook: внешние мержи 5-38 дн, репо чистится; agents-SDK: мержи минуты-часы (seratch), но тривиальная полоса забита; js #1097 = конкретная дверь</td><td>без CLA</td><td class="med">MED-HIGH (SDK examples &gt; cookbook)</td></tr>
+<tr><td>Microsoft</td><td>semantic-kernel · agent-framework</td><td>SK: внешние мержи 2-11 дн (бывает 72); 7 дублей-issues просят наш паттерн; ⚠ autogen = maintenance mode, PR-кладбище с апреля</td><td>MS CLA</td><td class="hi">HIGH (SK), agent-framework MED</td></tr>
+<tr><td>HuggingFace</td><td>cookbook · smolagents</td><td>cookbook: повторные внешние авторы, 3-44 дн, живой прицесс + значок; smolagents: ревью-культура есть, но спам-завал (~20 PR одного фармера)</td><td>без CLA</td><td class="hi">HIGH (cookbook)</td></tr>
+<tr><td>xAI / Grok</td><td>xai-cookbook</td><td>Внешние мержи за часы-дни (#28 ~1.5 дн), но 16 открытых PR, часть висит 2-5 мес; молодой репо = ранняя заметность</td><td>без CLA, есть гайд</td><td class="med">MED-HIGH (узкий тайтовый PR)</td></tr>
+<tr><td>Groq</td><td>groq-api-cookbook</td><td>Мержи за часы—дни стабильно (#101 за 27 мин); явная рубрика оценки; бэклог чистый</td><td>рубрика 6 критериев</td><td class="hi">HIGH</td></tr>
+<tr><td>Together</td><td>together-cookbook</td><td>Внешние мержи 4-7 дн; узкое место — один мейнтейнер (zainhas); категория evals/agents уже принята</td><td>неформально</td><td class="med">MED-HIGH</td></tr>
+<tr><td>Mistral</td><td>mistralai/cookbook</td><td>Пуш ежедневный, гайд низкопороговый, НО 42 внешних PR в бэклоге, часть с 2024; быстрые мержи в основном стафф</td><td>без CLA</td><td class="med">MED (вход через stale-bot issues #298-303)</td></tr>
+<tr class="skip"><td>Meta</td><td>llama-cookbook · llama-stack</td><td>cookbook мёртв ~8.5 мес (внешних мержей 0, все «внешние» = сотрудники Meta); llama-stack ПЕРЕЕХАЛ из Meta в ogx-ai/ogx (vendor-neutral) — вклад туда ≠ заметность в Meta</td><td>Meta CLA</td><td class="lo">SKIP (пересканить PurpleLlama/llama-models позже)</td></tr>
+<tr class="skip"><td>Qwen / Alibaba</td><td>Qwen-Agent · Qwen-Cookbook</td><td>⛔ Все ~30 последних закрытых PR закрыты БЕЗ мержа (вкл. security-фиксы); CONTRIBUTING.md нет (PR о его добавлении тоже висит); Cookbook мёртв 18 мес («还有人在维护吗»). Понижение из Tier A радара v1</td><td>нет гайда</td><td class="lo">SKIP/LOW</td></tr>
+<tr class="skip"><td>DeepSeek</td><td>—</td><td>Кукбук-репо НЕ СУЩЕСТВУЕТ — только awesome-списки ссылок (batch-мержи раз в квартал); техвклад некуда класть</td><td>—</td><td class="lo">SKIP</td></tr>
+<tr class="skip"><td>Cohere</td><td>notebooks · developer-experience</td><td>notebooks АРХИВИРОВАН; живой репо мержит только своих (все «внешние» аккаунты = стафф), 0 open issues</td><td>—</td><td class="lo">SKIP</td></tr>
+</table>
+
+<h2>📋 Правила волны (из Decision Memo)</h2>
+<table>
+<tr><td>1</td><td><b>Не флудить Anthropic</b> — 6 PR на вахте; следующий домашний (#715/#716) только после первого ревью. Исключение: skills #1417 (другой репо, S-усилие).</td></tr>
+<tr><td>2</td><td><b>Каждый новый вендор = разлочка экосистемы</b> — первый PR в новую экосистему ценнее второго в старую (нарратив «вклады во все топ-10»).</td></tr>
+<tr><td>3</td><td><b>Только порты готовых паттернов</b> — живой прогон + реальные выводы в ноутбуке + дисклоз AI-authorship + кредит автору issue («Addresses #N proposed by @***hor»).</td></tr>
+<tr><td>4</td><td><b>Liveness-вето</b> — не вкладываться в кладбища (Qwen, autogen, adk-samples, llama-cookbook); проверка свежести прямо перед стартом работы.</td></tr>
+<tr><td>5</td><td><b>Gemini cookbook = issue-first</b> и ноль сторонних pip; SK/Google = подписать CLA один раз.</td></tr>
+</table>
+
+<p class="meta">Обновление радара: перезапустить ~/llm-cookbook-radar/scan2.sh (сырые issues) + liveness-агенты (этот файл, v2). Бэкап v1: LLM-Cookbook-Radar.html.bak-2026-07-20. Сессия: eager-swirles (Mac16), 2026-07-20/21.</p>
+</body>
+</html>

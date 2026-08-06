@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Watcher Token Audit — LLM только на суждении</title>
+<style>
+  :root { --bg:#0f1420; --card:#1a2233; --txt:#e8ecf4; --dim:#8b96ab; --ok:#3ddc84; --warn:#ffb454; --fix:#59b7ff; --bad:#ff6b6b; }
+  body { background:var(--bg); color:var(--txt); font:15px/1.5 "Segoe UI",sans-serif; margin:0; padding:24px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .sub { color:var(--dim); margin-bottom:20px; }
+  .cards { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+  .card { background:var(--card); border-radius:12px; padding:14px 20px; min-width:160px; }
+  .card .n { font-size:26px; font-weight:700; }
+  .card .l { color:var(--dim); font-size:12px; }
+  table { border-collapse:collapse; width:100%; background:var(--card); border-radius:12px; overflow:hidden; }
+  th, td { padding:9px 12px; text-align:left; border-bottom:1px solid #263049; vertical-align:top; }
+  th { background:#141b2b; color:var(--dim); font-size:12px; text-transform:uppercase; letter-spacing:.4px; }
+  tr:last-child td { border-bottom:none; }
+  .tag { display:inline-block; padding:1px 8px; border-radius:10px; font-size:12px; font-weight:600; }
+  .t-ok   { background:#12331f; color:var(--ok); }
+  .t-fix  { background:#11293d; color:var(--fix); }
+  .t-zero { background:#20283a; color:var(--dim); }
+  .t-gate { background:#332a12; color:var(--warn); }
+  code { background:#111827; padding:1px 5px; border-radius:5px; font-size:13px; }
+  .ba { background:var(--card); border-radius:12px; padding:14px 18px; margin:18px 0; }
+  .ba h3 { margin:0 0 8px; font-size:15px; }
+  .arrow { color:var(--fix); font-weight:700; }
+  .eli5 { background:#16233a; border-left:4px solid var(--fix); border-radius:8px; padding:12px 16px; margin-top:24px; }
+  .small { color:var(--dim); font-size:12px; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Vault-Audit-2026-07-07.html">&larr; Vault-Audit-2026-07-07</a> · <a href="Zalp1-Audit-2026-07-25.html">Zalp1-Audit-2026-07-25 &rarr;</a></span></div>
+<h1>🔬 Watcher Token Audit</h1>
+<div class="sub">Правило Артура Арсёнова (Soul Daemon, $0.08→$0.002/день): <b>сначала Python, потом LLM</b>. LLM зовётся только на СУЖДЕНИИ; сбор/фильтр/транспорт = код (0 токенов). Аудит 2026-07-02, машина ZBOOKG8 (laptop-HP17), сессия B (implementer).</div>
+
+<div class="cards">
+  <div class="card"><div class="n">19</div><div class="l">watcher'ов в инвентаре</div></div>
+  <div class="card"><div class="n" style="color:var(--ok)">11</div><div class="l">уже 0 токенов (Python-only)</div></div>
+  <div class="card"><div class="n" style="color:var(--ok)">6</div><div class="l">LLM только на суждении (норм)</div></div>
+  <div class="card"><div class="n" style="color:var(--fix)">3</div><div class="l">починено/построено в этой сессии</div></div>
+  <div class="card"><div class="n" style="color:var(--fix)">~51k</div><div class="l">ИЗМЕРЕННЫЙ балласт одного headless claude -p (30,360 создание кэша + 20,813 чтение — json usage)</div></div>
+</div>
+
+<table>
+<tr><th>Скрипт</th><th>Где зовёт LLM</th><th>Сбор или суждение?</th><th>Частота</th><th>Оценка токенов/день</th><th>Статус</th></tr>
+
+<tr><td><code>creator-watcher\cw_gate.py</code></td>
+<td><code>claude -p --model sonnet</code> на КАЖДЫЙ STRIPPED-элемент (по одному)</td>
+<td>Суждение, но <b>без 0-токен префильтра</b> — очевидный мусор тоже ехал в Sonnet</td>
+<td>ночной прогон (пока on-demand)</td>
+<td>~51k/вызов измерено × очередь (29 элементов ≈ 1.5M за прогон; кэш 1ч смягчает)</td>
+<td><span class="tag t-fix">🔧 ПОЧИНЕНО: префильтр</span></td></tr>
+
+<tr><td><code>chatgpt\chatgpt_freshness_check.cmd</code></td>
+<td>headless <code>claude -p</code> только чтобы ОТПРАВИТЬ фикс-текст в TG</td>
+<td><b>Транспорт</b> (= сбор): текст фиксированный + 2 числа из json, суждения ноль</td>
+<td>ежедневно, при STALE</td>
+<td>~25k за срабатывание → <b>0</b></td>
+<td><span class="tag t-fix">🔧 ПОЧИНЕНО: nag_send.py</span></td></tr>
+
+<tr><td><code>creator-watcher\cw_translate.py</code></td><td><code>claude -p sonnet</code>, батчами по 8</td><td>Язык (легитимный LLM), идемпотентен (кириллица = скип)</td><td>on-demand</td><td>малая, батчед</td><td><span class="tag t-ok">✅ ок</span></td></tr>
+
+<tr><td><code>claude_sessions\judge_sessions_llm.py</code></td><td><code>claude -p sonnet</code> на ambiguous-хвост</td><td>Суждение; детектор отсеивает ~95% бесплатно, вердикты кэшируются навсегда</td><td>ночью</td><td>steady-state ≈ 0</td><td><span class="tag t-ok">✅ образец</span></td></tr>
+
+<tr><td><code>foxpod\foxpod_weekly_judge.py</code></td><td>1 вызов Sonnet на недельный дайджест</td><td>Суждение; сбор = regex-вены + BANTER-фильтр (0 ток.)</td><td>еженедельно</td><td>~4k/день в среднем</td><td><span class="tag t-ok">✅ образец</span></td></tr>
+
+<tr><td><code>alpha\judge_nightly.cmd</code></td><td>1 headless Sonnet-сессия судит 10 майнеров</td><td>Суждение; все 10 детекторов 0-токенные</td><td>Пн 05:00</td><td>1 сессия/нед</td><td><span class="tag t-ok">✅ ок</span></td></tr>
+
+<tr><td><code>dispatcher\signal_dispatcher.py</code></td><td>route:wake → <code>claude -p</code></td><td>Суждение; wake ЗАБЛОКИРОВАН по умолчанию (--allow-wake opt-in)</td><td>по событию</td><td>0 (гейт закрыт)</td><td><span class="tag t-gate">🚪 за гейтом</span></td></tr>
+
+<tr><td><code>C:\mcp\tg-watch-daemon</code> (вне _imports)</td><td>1 <code>claude -p</code> на whitelist-сообщение</td><td>Суждение (черновик ответа); событийный, не поллинг</td><td>по событию</td><td>по трафику</td><td><span class="tag t-ok">✅ ок</span></td></tr>
+
+<tr><td colspan="6" class="small" style="background:#141b2b">— 0 LLM ТОКЕНОВ (Python-only, проверено grep'ом всего _imports): —</td></tr>
+<tr><td><code>watchers\watch_run.py</code> (/watch-channel ночной)</td><td>—</td><td>сбор Telethon + детектор mine_channel</td><td>ночью</td><td>0</td><td><span class="tag t-zero">0 ток.</span></td></tr>
+<tr><td><code>alpha\alpha_scan / bets / bridge / contradictions_scan.py</code></td><td>—</td><td>детекторы (regex/SQL), дайджест для судьи</td><td>ночью/еженед.</td><td>0</td><td><span class="tag t-zero">0 ток.</span></td></tr>
+<tr><td><code>content-factory\voice_triage.py</code></td><td>—</td><td>классификация в сессии, стор детерминирован</td><td>3×/день</td><td>0</td><td><span class="tag t-zero">0 ток.</span></td></tr>
+<tr><td><code>cowork\cowork_loop.py</code> + <code>cowork_watch</code></td><td>—</td><td>регистрация/маячки, 0 LLM</td><td>15 мин</td><td>0</td><td><span class="tag t-zero">0 ток.</span></td></tr>
+<tr><td><code>foxpod\foxpod_digest.py</code></td><td>—</td><td>детектор вен</td><td>ежедн.</td><td>0</td><td><span class="tag t-zero">0 ток.</span></td></tr>
+<tr><td><code>cw_detect / cw_fetch / cw_strip / cw_eval / cw_render</code></td><td>—</td><td>сбор/стрип/дашборд</td><td>ночью</td><td>0</td><td><span class="tag t-zero">0 ток.</span></td></tr>
+<tr><td><code>chatgpt_freshness_check.py</code>, <code>sync\conflict_sweeper.py</code>, <code>syncthing_watchdog*</code>, <code>tg_daemon\guard.py</code>+<code>status.py</code>, <code>airtable_watch.py</code>, <code>server_watchdog.py</code></td><td>—</td><td>watchdog'и: сравнение дат/портов/файлов = код</td><td>разные</td><td>0</td><td><span class="tag t-zero">0 ток.</span></td></tr>
+</table>
+
+<div class="ba">
+<h3>🔧 Фикс 1 — cw_gate.py: 0-токенный префильтр перед Sonnet</h3>
+ДО: каждый STRIPPED-транскрипт (даже 504 символа «What if plants could talk?») ехал в Sonnet — ~25k токенов на вызов.<br>
+ПОСЛЕ: <code>prefilter()</code> режет транскрипты &lt;2000 символов до LLM. Калибровка на 29 реальных вердиктов: ловит <b>6/29 (21%)</b>, ложных срабатываний <b>0</b> (минимальный PROMOTED = 14 258 символов, запас 7×). <span class="arrow">≈300k токенов на прогон очереди 30 шт. (по измеренным 51k/вызов)</span> /tt: 12/12 ✅ (живой прогон на копии базы, Sonnet замокан «взорваться если позовут» — 0 вызовов).
+</div>
+
+<div class="ba">
+<h3>🔧 Фикс 2 — chatgpt freshness nag: LLM-транспорт → nag_send.py (0 токенов)</h3>
+ДО: при застое ChatGPT→волт поднимался ЦЕЛЫЙ headless <code>claude -p</code> (грузит весь CLAUDE.md+MEMORY.md — измерено ~51k токенов), чтобы отправить фиксированный текст с двумя числами из <code>_freshness.json</code>.<br>
+ПОСЛЕ: <code>nag_send.py</code> шлёт тот же текст детерминированно через <code>bus_ping.py --post</code> → чат 03 (канон cc-alerts-to-chat-03). Старый LLM-путь остался закомментированным fallback'ом при падении рельса. /tt: живой прогон на реальном STALE (4 дня) → <code>PING OK → group 03</code>, LLM не вызван; края (нет json / битый json / нет рельса) деградируют кодом 1. ✅
+</div>
+
+<div class="ba">
+<h3>🔧 Фикс 3 — lint-гейт «LLM на сборе» в ночной /arch (Anton «++», 2026-07-02)</h3>
+<code>arch\lint_llm_collection.py</code>: детерминированный скан всего <code>_imports</code> (.py/.cmd/.ps1) на LLM-вызовы (<code>claude -p</code> / api.anthropic / claude_run.py), baseline = сегодняшний аудит (29 known sites), НОВЫЙ незаревьюенный вызов → RED-флаг к утру. Вшит в <code>run_architect.cmd</code> после lint_print_encoding. /tt: подсадной фейк → RED exit 1 + флаг; удалил → GREEN, флаг очищен. ✅ Правило стало сторожем: класс «LLM тихо вписали в watcher» закрыт.<br>
+<b>После адверсариального ревью (APPROVE-WITH-NITS) дочинено:</b> флаги обоих линтов вшиты в sys_check (<code>chk-lint-flags</code>, daily/critical → RED.flag → утренний пинг) — «тревога без звонка» закрыта, причём для соседнего lint_encoding тоже; линты подняты выше sys_check в пайплайне; регекс расширен (claude_exe(), --print, Start-Process) + задокументированы известные слепые зоны; nag_send при занятом рельсе делает 1 ретрай и скипает БЕЗ дорогого LLM-fallback (fallback только на реальный фейл). Бонус ревью: звонок сразу поймал живое нарушение в cofounder_watch.py (· без stdout-guard) — починено. Сквозной /tt: фейк → lint RED → chk-lint-flags FAIL → RED.flag; чисто → 8 checks 0 fail.
+</div>
+
+<div class="ba">
+<h3>⛔ Проверено и отклонено (делали eval, не внедрили)</h3>
+1. <b>Батчинг cw_gate (8/вызов)</b> — eval на 16 реальных вердиктов: совпадение survive-вердикта всего <b>62% (10/16)</b>, включая 2 потери сигнала (одиночный HELD → батч drop). Гейт качества главнее экономии → остаёмся на поштучном судействе. Скрипт eval: scratchpad <code>_eval_gate_batch.py</code>.<br>
+2. <b>Микропрофиль headless (<code>--bare</code>)</b> — измерено: <code>--bare</code> НЕ читает OAuth-keychain («Not logged in») = работал бы только на платном API (нарушение «сначала лимиты подписки»); <code>--setting-sources project</code> экономит ~1k из 51k (бессмысленно). Смягчение уже встроено: 30k балласта кэшируются на 1 час → последовательные вызовы судьи в одном прогоне платят в основном чтение кэша.<br>
+3. <b>ChatGPT-синк</b>: токен 401 (мёртв), на ноуте Chrome-расширение не подключено → self-heal задиспатчен ХАБУ (владелец синка) по шине; при провале хаб эскалирует Антону.
+</div>
+
+<div class="eli5">🧒 <b>Простыми словами:</b> у нас есть роботы-сторожа. Раньше двое из них звали дорогого умного помощника даже для глупой работы: один — чтобы «прочитать» заведомо пустые бумажки, второй — просто чтобы отнести записку. Теперь пустые бумажки выкидывает бесплатное сито, а записку относит бесплатный курьер. Умного помощника зовём только думать. Остальные 17 сторожей уже так и работали.</div>
+
+<div class="small" style="margin-top:14px">Источники: grep всего <code>E:\Obsidian\_imports\**\*.py|.cmd</code> по <code>claude -p / api.anthropic / ANTHROPIC_API_KEY</code> · watcher.db (29 вердиктов) · system.db · /tt-прогоны. Оценка «25k/вызов headless» = CLAUDE.md+MEMORY.md+системный промпт (confidence: med). Статус: artifact.proposed (сессия B, implementer) — ревью и «done» за координатором.</div>
+</body>
+</html>

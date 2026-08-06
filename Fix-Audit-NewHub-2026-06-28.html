@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Аудит починок · новый хаб · 2026-06-28</title>
+<style>
+  :root{--bg:#0f1117;--card:#1a1d27;--card2:#222633;--txt:#e6e8ee;--mut:#9aa3b2;--line:#2c313f;
+        --red:#ff5d5d;--yel:#ffc24b;--blu:#5db0ff;--grn:#4bd07a;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--mut);margin-bottom:18px}
+  .root{background:linear-gradient(90deg,#2a1d2e,#1a1d27);border:1px solid var(--line);border-left:4px solid var(--yel);
+        border-radius:10px;padding:14px 18px;margin-bottom:22px}
+  .root b{color:var(--yel)}
+  .counters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+  .cnt{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 16px;text-align:center;min-width:120px}
+  .cnt .n{font-size:24px;font-weight:700}
+  .cnt .l{color:var(--mut);font-size:12px}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+  .col{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .col h2{font-size:15px;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .item{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:11px 12px;margin-bottom:10px}
+  .item .t{font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .badge{font-size:11px;font-weight:700;border-radius:6px;padding:2px 7px;white-space:nowrap}
+  .b-red{background:rgba(255,93,93,.15);color:var(--red);border:1px solid var(--red)}
+  .b-yel{background:rgba(255,194,75,.13);color:var(--yel);border:1px solid var(--yel)}
+  .b-grn{background:rgba(75,208,122,.13);color:var(--grn);border:1px solid var(--grn)}
+  .row{font-size:12.5px;color:var(--mut);margin:3px 0}
+  .row b{color:var(--txt);font-weight:600}
+  .fix{color:var(--blu)}
+  code{background:#0c0e14;padding:1px 5px;border-radius:4px;font-size:12px;color:#cfe3ff}
+  .c-red h2{color:var(--red)} .c-yel h2{color:var(--yel)} .c-blu h2{color:var(--blu)} .c-grn h2{color:var(--grn)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Creator-Watcher-Eval.html">&larr; Creator-Watcher-Eval</a> · <a href="Harness-Audit.html">Harness-Audit &rarr;</a></span></div>
+  <h1>🔧 Аудит «чиним надёжно» — новый хаб A‑2022BAYAREA</h1>
+  <div class="sub">2026‑06‑28 · 6 Sonnet‑агентов (read‑only) + ручная перепроверка 5 критичных claim'ов · вс 10:5x Лиссабон</div>
+
+  <div class="root">
+    <b>🎯 КОРЕНЬ КОРНЕЙ (CS‑вывод):</b> почти все проблемы — одна болезнь в двух формах.
+    <b>(1) «Правило написано, но не закодировано как гейт»</b> — count‑проверка миграции, потолок MEMORY.md, линт путей живут ПРОЗОЙ в памяти/Библии, а не кодом, что падает громко → класс повторяется (MEMORY.md КРАСНЫЙ прямо сейчас = доказательство).
+    <b>(2) «Заплатка поверх заплатки без cutover старого»</b> — 6 bus‑рельсов вместо 2, CLAUDE.md живёт на Syncthing И git одновременно, сторож без сторожа. Систему наращивают слоями, но сломанную основу не убирают. = твоё же правило fix‑root‑cause не механизировано.
+  </div>
+
+  <div class="counters">
+    <div class="cnt"><div class="n" style="color:var(--grn)">8</div><div class="l">✅ реально закрыто</div></div>
+    <div class="cnt"><div class="n" style="color:var(--yel)">6</div><div class="l">🟡 на мне (AK‑47)</div></div>
+    <div class="cnt"><div class="n" style="color:var(--red)">4</div><div class="l">🔴 решает Антон</div></div>
+    <div class="cnt"><div class="n" style="color:var(--blu)">4</div><div class="l">⏳ компы семьи</div></div>
+  </div>
+
+  <div class="cols">
+
+    <!-- НА МНЕ -->
+    <div class="col c-yel">
+      <h2>🟡 На мне — AK‑47, обратимо, могу сейчас</h2>
+
+      <div class="item"><div class="t">MEMORY.md КРАСНЫЙ <span class="badge b-red">❌ live</span></div>
+        <div class="row"><b>Факт:</b> 135/135 строк (потолок), флаг <code>MEMORY_OVER_BUDGET.flag</code> живой, 3 строки >150 симв (QQQ=170, alerts=152, episode=163).</div>
+        <div class="row"><b>Корень:</b> правка днём не имеет write‑time гейта → лечится только ночью в 23:35.</div>
+        <div class="row fix">→ Подрезать 3 строки <150 + увести <135. Это твоё же standing‑правило.</div></div>
+
+      <div class="item"><div class="t">cron_watchdog без сторожа <span class="badge b-red">❌</span></div>
+        <div class="row"><b>Факт:</b> сам watchdog НЕ в своём WATCH‑списке + 3 LLM‑крана (Alpha Judge, UFO Digest, Memory Tidy) вне надзора.</div>
+        <div class="row fix">→ Добавить 4 строки в <code>cron_watchdog.py</code> WATCH + heartbeat самого себя в node_health.</div></div>
+
+      <div class="item"><div class="t">machine_bus auto‑ack не существует <span class="badge b-red">❌</span></div>
+        <div class="row"><b>Факт:</b> inbox‑хук зовёт <code>auto-ack</code> и <code>tg_bus_read.py</code> — обоих НЕТ → тихий сбой при каждом старте сессии, отправитель не получает ACK.</div>
+        <div class="row fix">→ Либо реализовать команды, либо вырезать мёртвые вызовы из хука (решить — см. 🔴).</div></div>
+
+      <div class="item"><div class="t">WhatsApp from_me дыра <span class="badge b-yel">⚠️</span></div>
+        <div class="row"><b>Факт:</b> <code>approval.py:106</code> — пустой phone → любое from_me=True = «Антон». На практике номер заполнен, риск низкий.</div>
+        <div class="row fix">→ Одна строка: доверять from_me только если phone сконфигурён.</div></div>
+
+      <div class="item"><div class="t">git_transport_monitor падает <span class="badge b-yel">⚠️</span></div>
+        <div class="row"><b>Факт:</b> задача даёт exit 0x80070002 (<code>python.exe</code> без полного пути в SYSTEM‑контексте); лог при этом GREEN.</div>
+        <div class="row fix">→ Прописать полный путь к python.exe в действии задачи.</div></div>
+
+      <div class="item"><div class="t">automation‑inventory отстал <span class="badge b-yel">⚠️</span></div>
+        <div class="row"><b>Факт:</b> Cowork Reaper, Memory Index Tidy, 3 «never‑run» крана не отражены (~2 недели лага).</div>
+        <div class="row fix">→ Обновить заметку (доковая правка).</div></div>
+    </div>
+
+    <!-- РЕШАЕТ АНТОН -->
+    <div class="col c-red">
+      <h2>🔴 Решает Антон — риск / необратимо / мульти‑машина</h2>
+
+      <div class="item"><div class="t">.stignore cutover <span class="badge b-grn">🧭 решено: ОТЛОЖИТЬ</span></div>
+        <div class="row"><b>Вердикт хаба 2026‑06‑28:</b> НЕ резать. SOAK‑гейт не выполнен: laptop→hub не на git, у пиров git нет → Syncthing сейчас ЕДИНСТВЕННЫЙ рельс канона к семье. Резать = заморозить их канон.</div>
+        <div class="row"><b>Цена ожидания ≈ 0:</b> генератор не течёт (0 свежих конфликтов сегодня), git‑автокоммит+merge уже спасают данные.</div>
+        <div class="row fix">→ Рычаг разблокировки: твоё «да» на git‑daemon НА НОУТЕ (без паролей, как на хабе). Тогда гейт зелёный → режем.</div></div>
+
+      <div class="item"><div class="t">Спагетти из 6 bus‑рельсов <span class="badge b-yel">⚠️</span></div>
+        <div class="row"><b>Корень:</b> 4 лишних рельса (GDrive/email/WA/Telethon) появились, потому что топ‑2 (TG+Syncthing) ненадёжны, а ненадёжны из‑за общей TG‑сессии (FIX B) не раскатанной на все.</div>
+        <div class="row fix">→ Раскатать FIX B (своя TG‑сессия на машину) → рельсы 3‑6 в архив. С 6 скриптов до 2. Стратегическое упрощение.</div></div>
+
+      <div class="item"><div class="t">tg_bus_read.py: строить или резать? <span class="badge b-red">❌</span></div>
+        <div class="row">Развилка: достроить TG‑чтение в хуке ИЛИ вырезать как мёртвый код. Зависит от того, оставляем ли TG‑рельс при FIX B.</div></div>
+
+      <div class="item"><div class="t">Count‑гейт миграции (корень №1) <span class="badge b-grn">✅ ЗАКРЫТ</span></div>
+        <div class="row"><b>Сделано 2026‑06‑28:</b> <code>config_integrity_gate.py</code> — snapshot baseline + daily check; RED+флаг+пинг если skills/hooks/память/CLAUDE.md молча урежутся. Протестирован (нарочный RED сработал). На 05:38 ежедневно, под надзором cron_watchdog (win=19).</div>
+        <div class="row fix">✅ Класс закрыт кодом, а не прозой.</div></div>
+    </div>
+
+    <!-- КОМПЫ СЕМЬИ -->
+    <div class="col c-blu">
+      <h2>⏳ Компы семьи — не сделать с хаба</h2>
+      <div class="item"><div class="t">Сторож Syncthing у Русланы/Натальи <span class="badge b-red">❌</span></div>
+        <div class="row">Natalia offline 2+ дня, Ruslana отключена. У пиров НЕТ своего watchdog → падение синка незаметно. node_health у них не стоит → «тишина = неизвестно, не здоров».</div>
+        <div class="row fix">→ Раскатать watchdog + node_health через _machine-bus TASK, когда онлайн.</div></div>
+      <div class="item"><div class="t">Дубль‑генераторы на ноуте <span class="badge b-yel">⚠️</span></div>
+        <div class="row">Ноут крутит ChatGPT Sync / Sessions‑to‑Vault и др. → при возврате синка штампует 200+ конфликтов. Должны быть hub‑only.</div>
+        <div class="row fix">→ Выключить дубли на ноуте через bus TASK + твоё «да».</div></div>
+      <div class="item"><div class="t">FIX B на пирах <span class="badge b-yel">⚠️</span></div>
+        <div class="row">Своя TG‑сессия на каждой машине (корень нестабильности рельсов).</div></div>
+      <div class="item"><div class="t">node_health install на followers <span class="badge b-yel">⚠️</span></div>
+        <div class="row">heartbeat‑relay работает, но реле нечего нести — у пиров нет node_health.</div></div>
+    </div>
+
+    <!-- ЗАКРЫТО -->
+    <div class="col c-grn">
+      <h2>✅ Реально закрыто (перепроверено)</h2>
+      <div class="item"><div class="t">QQQ‑одобрение <span class="badge b-grn">✅</span></div>
+        <div class="row">Identity (крипто TG‑id), 15‑мин окно, one‑time, анти‑self‑ask — всё В КОДЕ, не на бумаге. Живая запись в БД decided_by=Антон.</div></div>
+      <div class="item"><div class="t">claude_run.py tree‑kill <span class="badge b-grn">✅</span></div>
+        <div class="row">taskkill /F /T на process‑group; все 4 живых <code>claude -p</code> идут через него. Cowork Reaper выносит зомби (сейчас 0 старых).</div></div>
+      <div class="item"><div class="t">node_health пробы реальные <span class="badge b-grn">✅</span></div>
+        <div class="row">Syncthing REST, disk, crons, git‑backup, arch — настоящие проверки, не заглушки.</div></div>
+      <div class="item"><div class="t">Skills восстановлены <span class="badge b-grn">✅</span></div>
+        <div class="row">61 скилл, git auto‑commit каждые 15 мин (last result 0).</div></div>
+      <div class="item"><div class="t">Конфликты vault вычищены <span class="badge b-grn">✅</span></div>
+        <div class="row">Живых sync‑conflict в волте = 0; ночной sweeper работает.</div></div>
+      <div class="item"><div class="t">CLAUDE.md в бюджете <span class="badge b-grn">✅</span></div>
+        <div class="row">77.3KB / 82KB cap (~6% запас); guard ежедневно зелёный.</div></div>
+      <div class="item"><div class="t">Memory‑guards не дублируют <span class="badge b-grn">✅</span></div>
+        <div class="row">4 скрипта = 4 разные роли (не patch‑on‑patch).</div></div>
+      <div class="item"><div class="t">git 3‑way merge доказан <span class="badge b-grn">✅</span></div>
+        <div class="row">Живой конфликт памяти слит чисто (206 файлов, 0 conflicts).</div></div>
+    </div>
+
+  </div>
+</body>
+</html>

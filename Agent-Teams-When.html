@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Когда звать КОМАНДЫ АГЕНТОВ — памятка Антона</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#171a21; --card2:#1d212b; --ink:#e8ecf3; --mut:#9aa6b8;
+    --green:#36c98b; --red:#f06464; --amber:#f0b429; --blue:#5aa9ff; --line:#2a2f3a;
+    --accent:#7c5cff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,Segoe UI,Roboto,Arial,sans-serif;padding:28px}
+  h1{font-size:25px;margin:0 0 4px}
+  .sub{color:var(--mut);margin:0 0 22px;font-size:13px}
+  .wrap{max-width:1080px;margin:0 auto}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:0 0 18px}
+  h2{font-size:17px;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+  .test{background:linear-gradient(135deg,#1d1733,#171a21);border:1px solid var(--accent)}
+  .test b{color:#c8b8ff}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:780px){.grid{grid-template-columns:1fr}}
+  .bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+  .bar .lab{width:235px;color:var(--mut);flex:none}
+  .bar .track{flex:1;background:#11141a;border-radius:6px;overflow:hidden;height:16px}
+  .bar .fill{height:100%}
+  .bar .n{width:38px;text-align:right;color:var(--mut)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  td,th{padding:8px 9px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+  th{color:var(--mut);font-weight:600}
+  .yes{color:var(--green)} .no{color:var(--red)} .maybe{color:var(--amber)}
+  .pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11px;font-weight:700}
+  .pill.g{background:rgba(54,201,139,.15);color:var(--green)}
+  .pill.r{background:rgba(240,100,100,.15);color:var(--red)}
+  code{background:#11141a;border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:12.5px;color:#cdd6e6}
+  .prompt{position:relative;background:#0c0e13;border:1px solid var(--line);border-radius:10px;padding:14px 14px 14px;margin:10px 0}
+  .prompt pre{margin:0;white-space:pre-wrap;font:12.5px/1.5 ui-monospace,Consolas,monospace;color:#d7deea}
+  .prompt .ttl{font-size:13px;font-weight:700;color:var(--blue);margin:0 0 8px}
+  .copy{position:absolute;top:10px;right:10px;background:var(--accent);color:#fff;border:0;border-radius:7px;padding:5px 11px;font-size:12px;cursor:pointer;font-weight:600}
+  .copy:active{transform:translateY(1px)}
+  .copy.ok{background:var(--green)}
+  ul{margin:6px 0 0;padding-left:20px} li{margin:3px 0}
+  .foot{color:var(--mut);font-size:12px;margin-top:6px}
+  .kbd{background:#11141a;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="AB-Cofounder-Models.html">&larr; AB-Cofounder-Models</a> · <a href="Antislop-4-Legs-Report.html">Antislop-4-Legs-Report &rarr;</a></span></div><div class="wrap">
+
+  <h1>🤝 Когда звать КОМАНДЫ АГЕНТОВ</h1>
+  <p class="sub">Памятка Антона · основано на анализе 224 твоих реальных сессий за месяц + 2 Deep Research · решение: <code>decision-adopt-agent-teams-scoped</code></p>
+
+  <div class="card test">
+    <h2>🎯 Один тест перед запуском</h2>
+    <div style="font-size:16px">Спроси себя: <b>«Найдёт ли одна линза улику, которая должна на лету изменить ход другой, ДО того как обе закончат?»</b></div>
+    <div class="foot">ДА → команда оправдана (конкурирующие гипотезы / сравнение / adversarial-разбор). НЕТ → бери обычного Клода или сабагентов. «Просто параллельно» — это НЕ причина: сабагенты и так умеют.</div>
+  </div>
+
+  <div class="card">
+    <h2>📊 Твой месяц: 224 сессии по типам</h2>
+    <div class="bar"><div class="lab">Менеджмент / inbox / онбординг семьи</div><div class="track"><div class="fill" style="width:80%;background:var(--red)"></div></div><div class="n">~80</div></div>
+    <div class="bar"><div class="lab">Импорты / синки</div><div class="track"><div class="fill" style="width:22%;background:var(--red)"></div></div><div class="n">~22</div></div>
+    <div class="bar"><div class="lab">Build / setup (скиллы, MCP, n8n)</div><div class="track"><div class="fill" style="width:22%;background:var(--red)"></div></div><div class="n">~22</div></div>
+    <div class="bar"><div class="lab">Фиксы / дебаг</div><div class="track"><div class="fill" style="width:11%;background:var(--red)"></div></div><div class="n">~11</div></div>
+    <div class="bar"><div class="lab" style="color:var(--green)">✅ Ресёрч / сравнения / alpha-анализ / решения</div><div class="track"><div class="fill" style="width:30%;background:var(--green)"></div></div><div class="n">~28</div></div>
+    <div class="foot">~85% месяца — НЕ для команд. Стабильные ~15% (ресёрч/сравнения/анализ) — ровно зона Agent Teams.</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2><span class="yes">✅</span> Звать команду — твои реальные кейсы</h2>
+      <table>
+        <tr><th>Сессия за месяц</th><th>Команда</th></tr>
+        <tr><td>«Agent commands in Claude Teams» (06-24)</td><td>advocate ↔ skeptic ↔ синтез</td></tr>
+        <tr><td>«Whisper / GPU / Hermes vs CC / Mac LLM / MCP research»</td><td>champion-X ↔ champion-Y, спор на бенчмарках</td></tr>
+        <tr><td>«Cofounder research», «NotebookLM RDR», «knowledge-system architecture»</td><td>advocate / skeptic / frontier-линза</td></tr>
+        <tr><td>«Fox podcasts», «Lobster DAO», «Telegram community/alpha»</td><td>тиммейты по жилам: pricing · trust-map · roster</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h2><span class="no">❌</span> НЕ команда (а ты мог соблазниться)</h2>
+      <table>
+        <tr><th>Сессия</th><th>Чем правильно</th></tr>
+        <tr><td>Все импорты (Telegram, Gmail, Chrome, ChatGPT, CALLS 889)</td><td><b>Workflow + SQLite</b></td></tr>
+        <tr><td>Фиксы (reindex, broken links, zombie WA)</td><td>одна сессия, последовательно</td></tr>
+        <tr><td>Онбординг / inbox / менеджмент</td><td>одна сессия</td></tr>
+        <tr><td>Связь между компьютерами</td><td><b><code>_machine-bus</code></b> (тиммейты НЕ охватывают машины!)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🚀 Готовые промпты (вставляй после рестарта Claude Code)</h2>
+
+    <div class="prompt">
+      <div class="ttl">1 · Сравнение «X vs Y» — под Whisper/GPU/MCP/LLM</div>
+      <button class="copy" onclick="cp(this)">Копировать</button>
+      <pre>Команда из 2 тиммейтов на Sonnet, read-only, без записи файлов:
+- champion-X: собери сильнейшую сторону варианта &lt;X&gt; (бенчмарки, цена, риски).
+- champion-Y: то же для &lt;Y&gt;, и оспорь цифры champion-X.
+Обменяйтесь напрямую, один раунд челленджа, НЕ ищите консенсус — сохраните разногласия.
+Затем ты (лид) дай рекомендацию с условиями «бери X если…, Y если…».</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="ttl">2 · Alpha-анализ чата/сообщества — под Fox/Lobster/Telegram</div>
+      <button class="copy" onclick="cp(this)">Копировать</button>
+      <pre>Команда из 3 тиммейтов на Sonnet, read-only (источник — &lt;chat.db / выгрузка&gt;):
+- pricing: как тут устроено ценообразование/сделки.
+- trust-map: кто гарант/хаб доверия, кто скамил.
+- roster: ключевые игроки и их роли.
+Если кто-то нашёл, что один человек = центр (гарант), пусть СРАЗУ скажет другим —
+это меняет их разбор. Лид собери единую alpha-сводку.</pre>
+    </div>
+
+    <div class="prompt">
+      <div class="ttl">3 · Стратегическое решение / R+DR — под cofounder/архитектуру</div>
+      <button class="copy" onclick="cp(this)">Копировать</button>
+      <pre>Команда из 2 тиммейтов на Sonnet, read-only, без записи и без отправки наружу:
+- advocate: сильнейшие доводы ЗА &lt;идею/подход&gt; и сценарии-победители.
+- skeptic: доводы ПРОТИВ, скрытые риски, где это дороже/хуже; оспорь advocate.
+Один раунд челленджа, сохраните разногласия (НЕ консенсус). Лид → вердикт
+«когда да, когда нет» одной таблицей.</pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧰 Микро-плейбук (если включаешь команду)</h2>
+    <ul>
+      <li><b>Включено:</b> <code>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1</code> (на хабе) — но нужен <span class="kbd">рестарт</span> сессии.</li>
+      <li>Только <b>read-only</b> · <b>2–3 тиммейта макс</b> (не «3–5» из доков) · все на <b>Sonnet</b>.</li>
+      <li><b>Один присест</b> — нет <code>/resume</code> тиммейтов; не гонять длинные сессии (на Windows баг порчи identity лида после compaction).</li>
+      <li>Управление in-process: <span class="kbd">↑↓</span> выбрать · <span class="kbd">Enter</span> написать · <span class="kbd">x</span> стоп · <span class="kbd">Ctrl+T</span> задачи.</li>
+      <li>НЕ просить «консенсус» — сохранять разногласия (сикофантия рушит правильные позиции).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>💸 Правда про цену</h2>
+    <ul>
+      <li>≈ <b>1–2.1×</b> токенов против одиночной сессии · <b>1.3–2.9×</b> против Workflow-оркестратора.</li>
+      <li>Премию гонит <b>размер контекста</b> (каждый тиммейт грузит свою копию), не «ум».</li>
+      <li>Счётчик parent-сессии <b>не считает</b> дочерние → реальная цена выше, чем кажется.</li>
+      <li>Официальный якорь: <b>~7×</b> в plan-mode; на коде бывало <b>+73–124%</b> без выигрыша качества.</li>
+    </ul>
+    <div class="foot">Полный разбор: волт <code>02-Decisions/decision-adopt-agent-teams-scoped.md</code> · память <code>agent-teams-scoped-adoption</code></div>
+  </div>
+
+</div>
+<script>
+function cp(btn){
+  const pre = btn.parentElement.querySelector('pre');
+  const txt = pre.innerText;
+  navigator.clipboard.writeText(txt).then(()=>{
+    const o = btn.textContent; btn.textContent='Скопировано ✓'; btn.classList.add('ok');
+    setTimeout(()=>{btn.textContent=o; btn.classList.remove('ok')},1500);
+  });
+}
+</script>
+</body></html>

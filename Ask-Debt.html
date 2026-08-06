@@ -1,0 +1,34 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Arxiv-Track.html">&larr; Arxiv-Track</a> · <a href="Away-Mode-Checklist.html">Away-Mode-Checklist &rarr;</a></span></div><!doctype html><html lang="ru"><meta charset="utf-8">
+<title>Долг автономности — журнал 02</title>
+<style>
+ body{font:15px/1.5 system-ui,Segoe UI,sans-serif;margin:24px;max-width:1100px;color:#1c1c1c}
+ h1{font-size:22px;margin:0 0 4px} h2{font-size:17px;margin:26px 0 8px}
+ .sub{color:#666;font-size:13px;margin-bottom:16px}
+ .kpi{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0}
+ .kpi div{background:#f4f5f7;border-radius:10px;padding:10px 14px;min-width:120px}
+ .kpi b{display:block;font-size:24px}
+ table{border-collapse:collapse;width:100%;font-size:14px}
+ th,td{border-bottom:1px solid #e3e3e3;padding:6px 8px;text-align:left;vertical-align:top}
+ th{background:#fafafa} td:nth-child(n+2){white-space:nowrap}
+ tr td:last-child{white-space:normal;color:#333}
+ .bad{color:#b00020;font-weight:600} .warn{color:#a86400;font-weight:600}
+ code{background:#f2f2f2;padding:1px 4px;border-radius:4px}
+ @media(prefers-color-scheme:dark){body{background:#151515;color:#eaeaea}
+  .kpi div{background:#232323} th{background:#1e1e1e} th,td{border-color:#333}
+  tr td:last-child{color:#ccc} code{background:#262626} .bad{color:#ff6b6b} .warn{color:#e0a33a}}
+</style>
+<h1>📉 Долг автономности — журнал 02 (за 30 дн.)</h1>
+<div class="sub">Собрано 28.07.2026 23:22 · read-only по approvals.db · Дельта к замеру 2026-07-28 23:21</div>
+<div class="kpi">
+ <div><b>57</b>асков</div>
+ <div><b>40</b>протухло</div>
+ <div><b>70.2%</b>долг</div>
+ <div><b>7</b>🚩 ложных</div>
+</div>
+<h2>Классы асков</h2>
+<table><tr><th>Класс</th><th>Всего</th><th>Доля</th><th>Протухло</th><th>% протухания</th><th>Δ stale</th></tr><tr><td>Машинный шум</td><td>24</td><td>42.1%</td><td>17</td><td class='bad'>70.8%</td><td>=</td></tr><tr><td>Деньги</td><td>2</td><td>3.5%</td><td>0</td><td>0.0%</td><td>=</td></tr><tr><td>UAC / физика</td><td>5</td><td>8.8%</td><td>4</td><td class='bad'>80.0%</td><td>=</td></tr><tr><td>Логин / 2FA</td><td>10</td><td>17.5%</td><td>10</td><td class='bad'>100.0%</td><td>=</td></tr><tr><td>Контент-гейт</td><td>7</td><td>12.3%</td><td>4</td><td class='warn'>57.1%</td><td>=</td></tr><tr><td>Решения</td><td>5</td><td>8.8%</td><td>4</td><td class='bad'>80.0%</td><td>=</td></tr><tr><td>Прочее</td><td>4</td><td>7.0%</td><td>1</td><td>25.0%</td><td>=</td></tr></table>
+<h2>Темп по неделям</h2>
+<table><tr><th>Неделя</th><th>С даты</th><th>Асков</th><th>Протухло</th><th>%</th></tr><tr><td>2026-W27</td><td>02.07</td><td>2</td><td>0</td><td>0.0%</td></tr><tr><td>2026-W28</td><td>10.07</td><td>6</td><td>2</td><td>33.3%</td></tr><tr><td>2026-W29</td><td>14.07</td><td>8</td><td>3</td><td>37.5%</td></tr><tr><td>2026-W30</td><td>20.07</td><td>23</td><td>23</td><td>100.0%</td></tr><tr><td>2026-W31</td><td>27.07</td><td>18</td><td>12</td><td>66.7%</td></tr></table>
+<h2>Флаги — ответ описывает МОЮ работу</h2>
+<table><tr><th></th><th>id</th><th>Дата</th><th>Класс</th><th>Статус</th><th>Флаг</th><th>Текст</th></tr><tr><td>🚩</td><td><code>5c92bcdb</code></td><td>26.07 08:01</td><td>Машинный шум</td><td>stale</td><td>«+ = да, займись», «займись», «разобраться?»</td><td>Канон CLAUDE.md на узле FLEET-ANCHOR отстаёт от хаба 8 дн. (нет ACK на 8f0dba47). Пнуть узел / разобраться? + = да, займись · NO = осознанно оставляем</td></tr><tr><td>🚩</td><td><code>98f70deb</code></td><td>26.07 08:01</td><td>Машинный шум</td><td>stale</td><td>«+ = да, займись», «займись», «разобраться?»</td><td>Канон CLAUDE.md на узле ZBOOKG8-2023PAL отстаёт от хаба 8 дн. (нет ACK на 8f0dba47). Пнуть узел / разобраться? + = да, займись · NO = осознанно оставляем</td></tr><tr><td>🚩</td><td><code>6845127f</code></td><td>26.07 09:01</td><td>Машинный шум</td><td>stale</td><td>«+ = да, займись», «займись», «разобраться?»</td><td>Канон CLAUDE.md на узле FLEET-ANCHOR отстаёт от хаба 8 дн. (нет ACK на 5c8d2c01). Пнуть узел / разобраться? + = да, займись · NO = осознанно оставляем</td></tr><tr><td>🚩</td><td><code>071c4f3c</code></td><td>26.07 09:01</td><td>Машинный шум</td><td>stale</td><td>«+ = да, займись», «займись», «разобраться?»</td><td>Канон CLAUDE.md на узле ZBOOKG8-2023PAL отстаёт от хаба 8 дн. (нет ACK на 5c8d2c01). Пнуть узел / разобраться? + = да, займись · NO = осознанно оставляем</td></tr><tr><td>🚩</td><td><code>fa8b55c4</code></td><td>26.07 09:31</td><td>Машинный шум</td><td>stale</td><td>«+ = да, займись», «займись», «разобраться?»</td><td>Канон CLAUDE.md на узле FLEET-ANCHOR отстаёт от хаба 8 дн. (нет ACK на cdff46de). Пнуть узел / разобраться? + = да, займись · NO = осознанно оставляем</td></tr><tr><td>🚩</td><td><code>ca1a3339</code></td><td>26.07 09:31</td><td>Машинный шум</td><td>stale</td><td>«+ = да, займись», «займись», «разобраться?»</td><td>Канон CLAUDE.md на узле ZBOOKG8-2023PAL отстаёт от хаба 8 дн. (нет ACK на cdff46de). Пнуть узел / разобраться? + = да, займись · NO = осознанно оставляем</td></tr><tr><td>🚩</td><td><code>7017680b</code></td><td>28.07 23:15</td><td>Машинный шум</td><td>pending</td><td>«+ = да, займись», «займись», «разобраться?»</td><td>Канон CLAUDE.md на узле ZBOOKG8-2023PAL отстаёт от хаба 3 дн. (нет ACK на b98eff6e). Пнуть узел / разобраться? + = да, займись · NO = осознанно оставляем</td></tr><tr><td>⚠️</td><td><code>02bad122</code></td><td>10.07 17:01</td><td>Контент-гейт</td><td>approved</td><td>«+ = да, &lt;я сам жму&gt;»</td><td>fb-watch: 2 черновика тизеров готовы (RU@ClawRus) на свежие посты — &#x27;/compact на 2% лимита&#x27; и &#x27;Опус vs Fable, 3 аккаунта&#x27;. Публикуем RU в @ClawRus И взводим авто-arm (дальше каждый новый пост тизерит…</td></tr><tr><td>⚠️</td><td><code>f6d80d7a</code></td><td>12.07 10:31</td><td>Машинный шум</td><td>approved</td><td>«+ = да, &lt;я сам жму&gt;»</td><td>CLAUDE.md 8-й прогон подряд над бюджетом (82 КБ &gt; 82 КБ), структурные резервы исчерпаны. Поднять бюджет сторожа (env CLAUDE_MD_CAP, напр. до 90 КБ)? + = да, поднять · NO = жать дальше</td></tr><tr><td>⚠️</td><td><code>c66e5ee6</code></td><td>24.07 10:31</td><td>Машинный шум</td><td>stale</td><td>«+ = да, &lt;я сам жму&gt;»</td><td>CLAUDE.md 2-й прогон подряд над бюджетом (85 КБ &gt; 82 КБ). По канону кап — НЕ рычаг: сначала структурный проход (указатель-форма, харнес claude_md_compress.py) + ЗАМЕР до→после. Запускаю структурный п…</td></tr></table>
+</html>

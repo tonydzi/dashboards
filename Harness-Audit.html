@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Картина разработки — замер 28.07.2026</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#fff; --ink:#14171c; --dim:#5b6470; --line:#e3e7ec;
+  --red:#d94a3d; --amber:#d99114; --green:#2e9e63; --blue:#2f6fd0; --violet:#7a55c9;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#101317; --card:#181c22; --ink:#e9edf2; --dim:#98a2b0; --line:#272d36;
+    --red:#f0705f; --amber:#f0b13f; --green:#4fc98a; --blue:#6da2f5; --violet:#a888ec; }
+}
+*{box-sizing:border-box}
+body{margin:0;padding:24px 16px 60px;background:var(--bg);color:var(--ink);
+  font:15px/1.55 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:26px;margin:0 0 4px}
+.sub{color:var(--dim);font-size:13px;margin-bottom:26px}
+h2{font-size:18px;margin:34px 0 12px;padding-bottom:7px;border-bottom:2px solid var(--line)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:16px 18px;margin-bottom:14px}
+.grid{display:grid;gap:12px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(165px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 16px}
+.kpi .n{font-size:27px;font-weight:700;letter-spacing:-.5px}
+.kpi .l{color:var(--dim);font-size:12px;margin-top:3px;text-transform:uppercase;letter-spacing:.4px}
+.kpi .h{font-size:12px;color:var(--dim);margin-top:6px}
+.red{color:var(--red)} .amber{color:var(--amber)} .green{color:var(--green)}
+.blue{color:var(--blue)} .violet{color:var(--violet)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line)}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto}
+.bar{height:22px;border-radius:4px;display:flex;overflow:hidden;margin:4px 0 2px}
+.bar span{display:block;height:100%}
+.legend{font-size:12px;color:var(--dim);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.rowbar{display:flex;align-items:center;gap:10px;margin:7px 0}
+.rowbar .nm{width:150px;flex:none;font-size:13px}
+.rowbar .tr{flex:1;background:var(--line);border-radius:4px;height:17px;overflow:hidden}
+.rowbar .fl{height:100%;border-radius:4px}
+.rowbar .vl{width:92px;flex:none;text-align:right;font-size:13px;font-variant-numeric:tabular-nums;color:var(--dim)}
+ul{margin:8px 0;padding-left:20px} li{margin:5px 0}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--dim);margin-right:5px}
+.tag.ok{color:var(--green);border-color:var(--green)}
+.tag.no{color:var(--red);border-color:var(--red)}
+.tag.wait{color:var(--amber);border-color:var(--amber)}
+.big{font-size:19px;font-weight:600;margin:10px 0}
+.note{font-size:12.5px;color:var(--dim);margin-top:9px;padding-top:9px;border-top:1px dashed var(--line)}
+code{background:var(--line);padding:1px 5px;border-radius:4px;font-size:12.5px}
+.eli{background:linear-gradient(0deg,var(--card),var(--card)) padding-box;border-left:4px solid var(--violet)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Fix-Audit-NewHub-2026-06-28.html">&larr; Fix-Audit-NewHub-2026-06-28</a> · <a href="Kill-Review-2026-07-17.html">Kill-Review-2026-07-17 &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>Аудит харнесса + сверка</h1>
+<div class="sub">28 июля 2026, 23:15 · хаб A-2022BAYAREA · всё посчитано скриптами, не на глаз</div>
+
+<div class="card" style="border-color:var(--amber)">
+  <div class="big amber">⚠️ Сначала честно: этот замер сделан дважды</div>
+  <p style="margin:6px 0">Пока я считал на хабе, параллельная сессия на ноуте HP17 посчитала то же самое и в 22:53 выложила <code>_Dashboards\Code-Census.html</code>. Я узнал об этом уже после того, как посчитал. Дублирование — мой промах по правилу §7.7 (сверяться с параллельными сессиями до крупной работы).</p>
+  <p style="margin:6px 0"><strong>Разделение:</strong> объём кода и время — источник истины <code>Code-Census.html</code> (там замер по ЧАСАМ, он точнее моего). Эта страница оставлена ради того, чего там нет: <strong>аудит харнесса, история отклонённых советов, здоровье 186 роботов, проверка гипотезы Syncthing и сверка двух замеров</strong>.</p>
+</div>
+
+<h2>1. Сколько кода написано</h2>
+<div class="grid g4">
+  <div class="kpi"><div class="n">198 866</div><div class="l">строк Python</div><div class="h">уникальных, копии зеркал вычтены</div></div>
+  <div class="kpi"><div class="n">~215 000</div><div class="l">строк всего</div><div class="h">со всеми языками</div></div>
+  <div class="kpi"><div class="n">1 497</div><div class="l">файлов Python</div><div class="h">+ 654 файла = точные копии в зеркале GitHub</div></div>
+  <div class="kpi"><div class="n">7 099</div><div class="l">функций</div><div class="h">5 703 публичных, 1 223 внутренних</div></div>
+</div>
+
+<div class="card">
+  <div class="big">На каких языках пишем</div>
+  <div class="rowbar"><div class="nm">Python</div><div class="tr"><div class="fl" style="width:95%;background:var(--blue)"></div></div><div class="vl">198 866 · 95%</div></div>
+  <div class="rowbar"><div class="nm">PowerShell</div><div class="tr"><div class="fl" style="width:2.2%;background:var(--violet)"></div></div><div class="vl">4 686 · 2.2%</div></div>
+  <div class="rowbar"><div class="nm">Batch (.cmd)</div><div class="tr"><div class="fl" style="width:2.1%;background:var(--dim)"></div></div><div class="vl">4 432 · 2.1%</div></div>
+  <div class="rowbar"><div class="nm">JavaScript</div><div class="tr"><div class="fl" style="width:2%;background:var(--amber)"></div></div><div class="vl">4 275 · 2.0%</div></div>
+  <div class="rowbar"><div class="nm">HTML (дашборды)</div><div class="tr"><div class="fl" style="width:1.3%;background:var(--green)"></div></div><div class="vl">2 699 · 1.3%</div></div>
+  <div class="note"><strong>Сверка с замером ноута.</strong> Там 393 251 строка и 2 727 файлов, у меня 198 866 и 1 497. Расхождение объяснимо и не является ошибкой ни у кого: число файлов сошлось почти в ноль (2 592 против 2 593), а вот я дополнительно <strong>вычел точные копии по md5</strong> — 654 python-файла лежат двумя экземплярами (зеркало <code>E:\GitHub\imports-engines</code>) плюс версии в <code>.stversions</code>. Ещё я не считал строки-комментарии кодом. Итог: <strong>~393К — это «сколько лежит на дисках», ~199К — «сколько написано уникального»</strong>. Обе цифры честные, вторая ближе к вопросу «сколько кода мы написали».<br>Побочно: 654 точные копии — это нарушение нашего же правила §5.8 «один источник, ноль копий».</div>
+  <div class="note">Правильный ли язык? <strong class="green">Да.</strong> Python — ровно тот инструмент для этого класса задач: склейка чужих API, SQLite, текст, вызовы LLM. Ни Go, ни Rust, ни TypeScript тут ничего не улучшат, а починить их «отвёрткой» будет сложнее. Язык менять не надо. Проблема не в языке — она ниже.</div>
+</div>
+
+<h2>2. Тесты — самая красная зона</h2>
+<div class="grid g4">
+  <div class="kpi"><div class="n red">2.4%</div><div class="l">функций под тестом</div><div class="h">173 тестовых из 7 099</div></div>
+  <div class="kpi"><div class="n red">2.5%</div><div class="l">живых деталей с тестом</div><div class="h">18 из 708 · по Coverage-Map</div></div>
+  <div class="kpi"><div class="n">55</div><div class="l">тестовых файлов</div><div class="h">на 1 497 файлов кода</div></div>
+  <div class="kpi"><div class="n red">нет</div><div class="l">pytest не установлен</div><div class="h">запустить всё разом нечем</div></div>
+</div>
+
+<div class="card">
+  <div class="big">Что именно сломано в тестах</div>
+  <ul>
+    <li><strong>pytest в системе отсутствует</strong> — проверено импортом. Как и <code>coverage</code>, <code>mypy</code>, <code>black</code>, <code>pylint</code>. Из привычного стека стоит только <code>ruff</code> (и то как чужая зависимость).</li>
+    <li><strong>55 тест-файлов написаны «руками»</strong> — каждый со своим <code>check()</code> и печатью ✅/❌. Работают, но запускаются только поштучно и только когда кто-то вспомнит.</li>
+    <li><strong>Раннер тестов есть, но только на ноуте.</strong> Я сначала написал «раннера не существует» — это было неверно. Проверил: <code>regress_run.py</code> и <code>coverage_map.py</code> физически отсутствуют на хабе и в волте, они живут только на HP17-ZBook. На хабе пересчитать собственное покрытие нечем — доезжают только готовые отчёты. Это та самая дыра P0 «у пиров нет автоканала доставки <code>~/.claude/scripts</code>».</li>
+    <li>⚠️ <strong>Канон ссылается на то, чего тут нет:</strong> CLAUDE.md §5.8 велит запускать <code>python ~/.claude/scripts/coverage_map.py</code> — на хабе эта команда просто не сработает.</li>
+    <li><strong>Первый прогон регресс-сетки (ноут, 28.07): 28 зелёных, 4 молча красных.</strong> Четыре проверки падали, и никто об этом не знал.</li>
+    <li><strong>Нет <code>pyproject.toml</code>, нет <code>requirements.txt</code>, нет CI, нет pre-commit</strong> — 1 497 файлов не упакованы ни во что.</li>
+    <li><strong>Покрытие по строкам измерить нечем</strong> — модуль <code>coverage</code> не стоит, так что цифра 2.4% посчитана по функциям, а не по строкам. Настоящее покрытие строк почти наверняка ниже.</li>
+  </ul>
+  <div class="note">Отраслевой ориентир: у обычной команды 60–80% покрытия строк, и падение теста блокирует мерж. У нас 2.4% по функциям и ничего ничего не блокирует. Действует наше же правило §5.8: «проверка без прогона = нет проверки» — значит 55 тестов формально не существуют.</div>
+</div>
+
+<h2>3. Сколько «микросервисов»</h2>
+<div class="card">
+  <div class="scroll"><table>
+    <tr><th>Слой</th><th class="num">Штук</th><th>Состояние</th></tr>
+    <tr><td>Задачи планировщика (наши ночные роботы)</td><td class="num">186</td><td>152 включены, 34 выключены</td></tr>
+    <tr><td>Скиллы</td><td class="num">101</td><td>markdown-обёртки над скриптами</td></tr>
+    <tr><td>Базы SQLite</td><td class="num">61</td><td>у каждой свой формат и свой хозяин</td></tr>
+    <tr><td>Хуки сессии</td><td class="num">22</td><td>python</td></tr>
+    <tr><td>MCP-серверы (коннекторы)</td><td class="num">~19</td><td>Telegram, WhatsApp, Gmail, Calendar, Drive, Trello, Granola, Fireflies, Calendly и др.</td></tr>
+  </table></div>
+  <div class="note">Формально «микросервисов» у нас нет — нет сети, нет API между ними. Но по нагрузке на сопровождение 186 запланированных роботов = именно микросервисная архитектура, только без единого журнала, без общего протокола ошибок и без владельца.</div>
+</div>
+
+<div class="card">
+  <div class="big">Здоровье этих 186 роботов</div>
+  <div class="grid g4">
+    <div class="kpi"><div class="n green">119</div><div class="l">отработали за 24 ч</div></div>
+    <div class="kpi"><div class="n amber">31</div><div class="l">молчат больше 7 дней</div></div>
+    <div class="kpi"><div class="n red">16</div><div class="l">последний код ≠ 0</div></div>
+    <div class="kpi"><div class="n red">5</div><div class="l">не запускались ни разу</div></div>
+  </div>
+  <div class="note">То есть примерно каждый четвёртый робот (52 из 186) либо протух, либо падает, либо мёртв с рождения. Это и есть «шаг назад», который приходится ловить руками.</div>
+</div>
+
+<h2>4. Главный ответ: инфраструктура против движения вперёд</h2>
+
+<div class="card">
+  <div class="big">Из 6 551 сессии на этой машине живых разговоров с тобой — 539</div>
+  <div class="bar">
+    <span style="width:38.2%;background:var(--dim)" title="роботы"></span>
+    <span style="width:44.5%;background:#8a8f98" title="одноходовки скриптов"></span>
+    <span style="width:8.6%;background:var(--violet)" title="субагенты"></span>
+    <span style="width:8.2%;background:var(--blue)" title="реальные разговоры"></span>
+  </div>
+  <div class="legend">
+    <span><i class="dot" style="background:var(--dim)"></i>2 503 робота (боты-ассистенты, кроны)</span>
+    <span><i class="dot" style="background:#8a8f98"></i>2 912 одноходовок из скриптов</span>
+    <span><i class="dot" style="background:var(--violet)"></i>566 субагентов</span>
+    <span><i class="dot" style="background:var(--blue)"></i>539 твоих разговоров</span>
+  </div>
+  <div class="note">83% всех сессий — это система, разговаривающая сама с собой. Само по себе не плохо (роботы должны работать), но объём обслуживания виден именно тут.</div>
+</div>
+
+<div class="card">
+  <div class="big">Твоя гипотеза «шаг вперёд — три назад»: <span class="red">подтвердилась, ровно 3:1</span></div>
+  <div class="scroll"><table>
+    <tr><th>Тема разговора</th><th class="num">Сессий</th><th class="num">Доля</th><th class="num">Ходов</th><th class="num">Доля ходов</th></tr>
+    <tr><td>🔧 Волт / правила / скиллы / память</td><td class="num">141</td><td class="num">26.2%</td><td class="num">2 063</td><td class="num">20.0%</td></tr>
+    <tr><td>🔬 Ресёрч (в основном про саму систему)</td><td class="num">110</td><td class="num">20.4%</td><td class="num">3 030</td><td class="num">29.4%</td></tr>
+    <tr><td>🔧 Прямая починка / инфра</td><td class="num">68</td><td class="num">12.6%</td><td class="num">1 128</td><td class="num">10.9%</td></tr>
+    <tr><td>📝 Контент</td><td class="num">53</td><td class="num">9.8%</td><td class="num">1 229</td><td class="num">11.9%</td></tr>
+    <tr><td>🤝 Аутрич и лиды</td><td class="num">34</td><td class="num">6.3%</td><td class="num">518</td><td class="num">5.0%</td></tr>
+    <tr><td>🚀 Продукт / GitHub / релизы</td><td class="num">23</td><td class="num">4.3%</td><td class="num">298</td><td class="num">2.9%</td></tr>
+    <tr><td>Прочее</td><td class="num">110</td><td class="num">20.4%</td><td class="num">2 056</td><td class="num">19.9%</td></tr>
+  </table></div>
+
+  <div style="margin-top:18px">
+    <div class="rowbar"><div class="nm"><strong>Обвязка</strong> (инфра+волт+ресёрч)</div><div class="tr"><div class="fl" style="width:100%;background:var(--red)"></div></div><div class="vl">319 сессий</div></div>
+    <div class="rowbar"><div class="nm"><strong>Наружу</strong> (аутрич+продукт+контент)</div><div class="tr"><div class="fl" style="width:34.5%;background:var(--green)"></div></div><div class="vl">110 сессий</div></div>
+  </div>
+  <div class="big red" style="margin-top:14px">2.9 : 1 по сессиям · 3.04 : 1 по ходам</div>
+  <div class="note">Ты сказал «шаг вперёд и три назад» по ощущению. Мой замер по сессиям: <strong>3.0 к 1</strong>. Ощущение попало в точку.<br>
+  Узкая трактовка (считать «назад» только явную починку, без волта и ресёрча) даёт 1.9:1 — тоже плохо, но мягче.</div>
+  <div class="note" style="border-top-style:solid;border-top-color:var(--amber)"><strong>А замер ноута по ЧАСАМ даёт 7.3 : 1</strong> — и его надо считать главным, он точнее: там классифицированы действия внутри сессий и взвешено время, а я считал штуки сессий и ходы. Одна короткая инфра-сессия и одна многочасовая весят у меня одинаково.<br><br>
+  <strong>И там же диагноз острее моего, я с ним согласен:</strong> время съедает не починка (274 ч, 14.9%), а <strong>стройка новых инструментов — 1 073 ч, 58.4%</strong>. Наружу ушло 161 ч (8.8%). По месяцам починка падает (156→110 ч), а стройка растёт (471→562 ч). То есть «три шага назад» — это не столько «чиню сломанное», сколько «строю ещё одну штуку вместо того, чтобы идти наружу». Это меняет лечение: харнесс лечит поломки, но перекос лечится только отказом от стройки.</div>
+</div>
+
+<div class="card">
+  <div class="big">Июль отдельно — стало ли лучше</div>
+  <div class="scroll"><table>
+    <tr><th>Месяц</th><th class="num">Обвязка</th><th class="num">Наружу</th><th class="num">Отношение</th></tr>
+    <tr><td>Июнь 2026</td><td class="num">133</td><td class="num">33</td><td class="num red">4.0 : 1</td></tr>
+    <tr><td>Июль 2026</td><td class="num">178</td><td class="num">74</td><td class="num amber">2.4 : 1</td></tr>
+  </table></div>
+  <div class="note">Тренд <strong class="green">в правильную сторону</strong>: с 4:1 до 2.4:1. Продуктовых сессий стало вдвое больше в доле. Но обвязка в абсолюте всё равно растёт.</div>
+</div>
+
+<h2>5. Харнесс: что уже стоит</h2>
+<div class="grid g2">
+  <div class="card">
+    <div class="big green">Есть и работает</div>
+    <ul>
+      <li><span class="tag ok">ритуал</span> <code>/tt</code> — прогнать, сломать нарочно, вердикт ✅/⚠️/❌</li>
+      <li><span class="tag ok">3 ломателя</span> Codex + Grok + Gemini через <code>secondop.py</code> — чужие глаза на свежий код</li>
+      <li><span class="tag ok">10 гейтов</span> claude_md_guard, memory_guard, rule_home_guard, declined_guard, lint_path_hardcode, lint_approval_routing, fb_guard, social_guard, bus_guard, deploy_sweep_guard</li>
+      <li><span class="tag ok">карта</span> <code>coverage_map.py</code> → живые/мёртвые детали, тест, док</li>
+      <li><span class="tag ok">карта</span> System Architect <code>/arch</code>, скор 98/100</li>
+      <li><span class="tag ok">бэкап</span> git-снапшот каждые 15 минут, 293 коммита с 23 июня</li>
+      <li><span class="tag wait">только на ноуте</span> <code>regress_run.py</code> — регресс-сетка. На хабе её нет</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="big red">Нет вообще</div>
+    <ul>
+      <li><span class="tag no">нет</span> <strong>регресс-сетки на хабе</strong> — на ноуте она появилась сегодня и сразу нашла 4 молча красных проверки; на главной машине её нет</li>
+      <li><span class="tag no">нет</span> pytest ни на одной машине</li>
+      <li><span class="tag no">нет</span> канала доставки скриптов на пиры — инструмент, написанный на одной машине, на другие не доезжает</li>
+      <li><span class="tag no">нет</span> измерения покрытия (<code>coverage</code> не стоит)</li>
+      <li><span class="tag no">нет</span> упаковки: ни <code>pyproject.toml</code>, ни <code>requirements.txt</code></li>
+      <li><span class="tag no">нет</span> проверки LLM-выходов (eval) — качество ответов не меряется вообще</li>
+      <li><span class="tag no">нет</span> единого журнала: сколько токенов и минут стоит каждый ночной робот</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="big">Граница, которую важно понимать</div>
+  <p style="margin:6px 0">Ломатель (Codex/Grok/Gemini) — это <strong>разовое ревью в момент сборки</strong>. Он смотрит на свежий код и говорит «тут криво».</p>
+  <p style="margin:6px 0">Харнесс — это <strong>«вчера работало, сегодня нет»</strong>. Он ловит регрессии, тихие падения ночных роботов, дрейф качества LLM и гонки за блокировки — то, что ломатель не видит в принципе.</p>
+  <p style="margin:6px 0"><strong>У нас есть первое и нет второго.</strong> Одно другое не заменяет.</p>
+</div>
+
+<h2>6. Какие харнессы советовали раньше и что мы с ними сделали</h2>
+<div class="card">
+  <div class="scroll"><table>
+    <tr><th>Когда</th><th>Кто и что предлагал</th><th>Решение</th><th>Почему</th></tr>
+    <tr><td>03.07 коммент<br>10.07 зум<br>21.07 TG</td><td><strong>Кирилл Симаков</strong> (Monosnap, 2.5M MAU) — 20 оптимизаций харнесса с самозамеренным A/B; «Agent Learning Infrastructure» (апгрейд чужих харнессов через A2A); фрактальный рой агентов; zero-trust на апдейты харнесса. Прямая оферта: «will help you to evolve/upgrade your agents/harness or create a custom one»</td><td><span class="tag wait">открыто</span></td><td>Живой человек с прямым предложением. Лежит в <code>02-Decisions\decision-harness-optimizations-from-kirill-dr-2026-07-04.md</code></td></tr>
+    <tr><td>2026</td><td><strong>Денис Смирнов</strong> — AgentPlane.org, платформа-харнесс с оркестрацией агентов и облачным слоем</td><td><span class="tag no">не разбирали ни разу</span></td><td>Единственный совсем неотработанный советчик. <code>07-People\person-denis-smirnov.md</code></td></tr>
+    <tr><td>14.06.2026</td><td>Тяжёлый knowledge-pipeline: Playwright, Tesseract OCR, FAISS/Qdrant, BERTopic, SQLCipher</td><td><span class="tag no">отклонили</span></td><td>АК-47: «стек, который не починить отвёрткой». Взяли 4 дешёвые надстройки. DR независимо подтвердил ~70% нашей архитектуры</td></tr>
+    <tr><td>16.06.2026</td><td><strong>«Единая review-поверхность + eval-харнес»</strong></td><td><span class="tag wait">отложили</span></td><td>Параллельная сессия строила движок альфы, боялись дубля. <strong>Это ровно то, о чём ты спрашиваешь сейчас</strong></td></tr>
+    <tr><td>18.06.2026</td><td>Codex: milestone-retro как 3-слойный контур — PostgreSQL, Redis/SQS, Jira/Slack, OpenTelemetry, approval-engine. Оценка: 6–8 недель, 1.5–2 FTE, $250–2000/мес</td><td><span class="tag no">отклонили</span></td><td>Спроектировано под обычную SWE-команду, не под тебя. Взяли одну надстройку: <code>/retro</code> Step 4★</td></tr>
+    <tr><td><strong>28.07.2026</strong><br>сегодня</td><td><strong>Decision Memo «QA-процесс и тест-харнес»</strong> — синтез 10 отчётов от 3 вендоров (Grok Heavy, ChatGPT Pro DR, Gemini Pro DR)</td><td><span class="tag wait">ждёт твоего «+»</span></td><td>Статус <code>proposed</code>. Ничего не построено</td></tr>
+  </table></div>
+  <div class="note">Файл памятки: <code>E:\Obsidian\Anton-Knowledge\02-Decisions\decision-2026-07-28-qa-process-and-test-harness.md</code></div>
+</div>
+
+<div class="card">
+  <div class="big">Что памятка от сегодня рекомендует (коротко)</div>
+  <div class="scroll"><table>
+    <tr><th>Слой</th><th>Берём</th><th>Не берём и почему</th></tr>
+    <tr><td>Обычный Python</td><td class="green"><strong>pytest</strong></td><td>unittest — многословный, nose2 — мёртв</td></tr>
+    <tr><td>Проверка LLM-выходов</td><td class="green"><strong>promptfoo</strong> (YAML/CSV, MIT, локально)</td><td>DeepEval — UI завязан на SaaS; Inspect AI — порог входа</td></tr>
+    <tr><td>Журнал прогонов</td><td class="green"><strong>свой SQLite</strong></td><td>Langfuse (Docker+Postgres+Clickhouse+Redis), LangSmith, Braintrust — вендор-лок и приватность</td></tr>
+    <tr><td>Ночные роботы</td><td class="green"><strong>heartbeat + утренняя проверка</strong></td><td>внешний SaaS-мониторинг — приватность</td></tr>
+  </table></div>
+  <div class="note">Плюс детерминированный стоп-кран отладки: 3 неудачные попытки подряд · больше 5 файлов · 50% контекста · 20 минут без прогресса → выносим в отдельную сессию. Все 3 вендора независимо назвали ровно 3 попытки.</div>
+</div>
+
+<h2>7. Проверил на наших данных: гипотеза про Syncthing</h2>
+<div class="card">
+  <p style="margin:6px 0">Gemini предупредил: Syncthing поверх живых <code>.git</code> и SQLite-WAL тихо портит блокировки, и часть «случайных зависаний» — это оно.</p>
+  <p style="margin:6px 0"><strong class="green">Проверил на хабе — у нас этой дыры нет.</strong> Все <code>*.db-wal</code> нулевого размера; <code>*.db</code>, <code>*.db-wal</code>, <code>*.db-shm</code> уже в <code>.stignore</code>; <code>.git</code> исключён в <code>.stignore.shared</code>; ни одного <code>sync-conflict</code> по базам или гиту; <code>git fsck</code> чистый.</p>
+  <div class="note">Это была самая дешёвая проверка из всей памятки, и она закрыта: причина «случайных зависаний» не здесь. Искать надо в другом месте. Оговорка: проверен только хаб, на других узлах не смотрел.</div>
+</div>
+
+<h2>8. Мой вывод как кофаундера</h2>
+<div class="card">
+  <div class="big">Харнесс нужен, но он не корень проблемы</div>
+  <p style="margin:8px 0">Корень видно в цифрах: <strong>1 497 файлов кода, 186 ночных роботов, 101 скилл, 61 база</strong> — на одного не-технаря. Из 867 python-деталей <strong>159 уже мёртвые</strong> (18%). Из 186 роботов <strong>52 протухли, падают или не запускались ни разу</strong> (28%).</p>
+  <p style="margin:8px 0">Мы производим детали быстрее, чем способны их содержать. Харнесс это <em>покажет</em>, но сам по себе не уменьшит. Поставить pytest поверх 1 497 неупакованных файлов — это добавить ещё одну деталь в тот же зоопарк.</p>
+  <p style="margin:8px 0">Замер ноута по часам это подтверждает численно: <strong>стройка 1 073 ч против починки 274 ч</strong>. Ты просил улучшить харнесс, потому что «починка съедает время» — но починка это только 15% времени. Съедает <strong>стройка новых инструментов</strong>. Значит харнесс, каким бы хорошим он ни был, вернёт максимум пятую часть потерянного.</p>
+  <p style="margin:8px 0">И сегодняшний день — живая иллюстрация: два узла независимо посчитали одну и ту же перепись и сделали два дашборда. Это ровно та стройка, о которой речь.</p>
+  <div class="big" style="margin-top:16px">Порядок, который я предлагаю</div>
+  <ol>
+    <li><strong>Сначала снести мёртвое</strong> — 159 деталей и 34 выключенных робота. Это минус сопровождение, ноль риска, и оно уже посчитано в <code>Coverage-Map</code> и <code>Dead-Code-Candidates</code>.</li>
+    <li><strong>Потом Неделя 1 из памятки</strong> — pytest + 5–7 тестов на служебный слой + heartbeat на 5–7 критичных роботов. Полезно само по себе, даже если дальше не пойдём.</li>
+    <li><strong>Одновременно — стоп-кран</strong> (3 попытки / 5 файлов / 20 минут). Он бесплатный, это правило, а не код, и по данным трёх вендоров он лечит вторую треть долгой отладки.</li>
+    <li><strong>Жёстче держать гейт §3.5</strong> «строим только то, что кровь-из-носу сейчас». 3:1 не выправится, пока производство деталей не замедлится.</li>
+  </ol>
+  <div class="note">Возражение, которое я жду от тебя: «сначала харнесс, потом чистка — вдруг снесём живое». Контраргумент: <code>coverage_map.py</code> уже размечает живое/мёртвое по ссылкам и дате правки, а мёртвое по определению никем не вызывается — тест на него писать некому и незачем. Но если не согласен — переубеди, спорить готов.</div>
+</div>
+
+<div class="card eli">
+  <div class="big">🧒 Простыми словами</div>
+  <p>Мы построили очень большую мастерскую: почти 200 тысяч строк, 1 500 деталей, 186 роботов, которые работают ночью.</p>
+  <p>Но проверялок у нас почти нет — тесты есть только у 2 деталей из 100. И даже те 55 проверок, что написаны, запустить разом нечем: программа для запуска тестов у нас просто не установлена.</p>
+  <p>Ты сказал «шаг вперёд, три назад». Я посчитал по разговорам: <strong>три к одному</strong>. Другая машина посчитала по часам и вышло <strong>семь к одному</strong>. Ты не преувеличивал, ты преуменьшал.</p>
+  <p>Но самое важное вот что. Ты думал, что время съедает <em>починка</em>. Оказалось — нет. Починка это только пятнадцать минут из каждого часа. Съедает <strong>стройка новых штук</strong>: почти шестьдесят минут из ста. Мы всё время строим новый инструмент вместо того, чтобы выйти наружу и поговорить с людьми.</p>
+  <p>Значит проверялки помогут, но мало. Они лечат поломки, а у нас болезнь другая: мы слишком много строим.</p>
+  <p>Ещё: из 186 ночных роботов каждый четвёртый молчит, падает или ни разу не работал.</p>
+  <p>Что делать: сначала выкинуть 159 сломанных и никому не нужных деталей, потом поставить простую проверялку и «пульс» роботам, а главное — перед каждой новой стройкой спрашивать «а кто этим будет пользоваться?» и не строить, если ответа нет.</p>
+</div>
+
+<div class="note" style="margin-top:24px">
+  <strong>Как это посчитано и где границы:</strong> код — обход файлов с вычетом точных копий по md5. Сессии — разбор 6 551 файла <code>~/.claude/projects/*.jsonl</code> по первому сообщению: роботы, одноходовки скриптов и субагенты отделены и в статистику разговоров не входят. Темы размечены по ключевым словам первого сообщения — метод грубый, ошибка на отдельной сессии возможна, на 539 сессиях пропорция устойчива. Окно данных начинается в конце мая 2026 (более ранняя история ноутбука сюда не доехала), так что абсолютные числа — это «с конца мая», а не «за всё время». Покрытие считано по функциям, не по строкам: измерить строки нечем.
+</div>
+
+</div>
+</body>
+</html>

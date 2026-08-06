@@ -1,0 +1,72 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Alpha-Flow.html">&larr; Alpha-Flow</a> · <a href="Alpha-Usage-Audit.html">Alpha-Usage-Audit &rarr;</a></span></div><title>Альфа про recall: что применяем сейчас (06.08.2026)</title>
+<style>
+  :root{--bg:#fff;--fg:#1a1a1a;--mut:#666;--line:#e3e3e3;--card:#fafafa;--ok:#1a7f37;--no:#b3261e;--wait:#8a6d00;--accent:#0b57d0}
+  @media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#ececec;--mut:#9a9a9a;--line:#2e2e2e;--card:#1d1d1d;--ok:#4ac26b;--no:#f26d63;--wait:#e0b341;--accent:#7aa7ff}}
+  :root[data-theme="dark"]{--bg:#141414;--fg:#ececec;--mut:#9a9a9a;--line:#2e2e2e;--card:#1d1d1d;--ok:#4ac26b;--no:#f26d63;--wait:#e0b341;--accent:#7aa7ff}
+  :root[data-theme="light"]{--bg:#fff;--fg:#1a1a1a;--mut:#666;--line:#e3e3e3;--card:#fafafa;--ok:#1a7f37;--no:#b3261e;--wait:#8a6d00;--accent:#0b57d0}
+  body{background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;padding:24px;max-width:1020px}
+  h1{font-size:22px;margin:0 0 4px} h2{font-size:17px;margin:26px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .sub{color:var(--mut);font-size:14px;margin-bottom:16px}
+  .root{background:var(--card);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0}
+  .wrap{overflow-x:auto} table{border-collapse:collapse;width:100%;min-width:700px;font-size:14px}
+  th,td{border-bottom:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top}
+  th{color:var(--mut);font-weight:600;font-size:13px}
+  .ok{color:var(--ok);font-weight:600}.no{color:var(--no);font-weight:600}.wait{color:var(--wait);font-weight:600}
+  ul{margin:6px 0 0 18px;padding:0} li{margin:6px 0}
+  code{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:13px}
+  .tag{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:20px;padding:1px 9px;color:var(--mut)}
+</style>
+
+<h1>Что из альфы применяем прямо сейчас</h1>
+<div class="sub">10 советов под постом про recall. Разбор 06.08.2026, машина Nataly-Win-NB. Проверено по факту на диске, не по памяти.</div>
+
+<div class="root">
+  <b>Главное: у трёх советов один корень.</b> Fedorenko, Goltsov и Махов говорят про разное, но бьют в одну точку - <b>у нас recall это ПРАВИЛО (текст в CLAUDE.md, который я должен вспомнить и исполнить), а не МЕХАНИЗМ (код, который исполнится сам)</b>. Правило умирает тихо: сессия просто не вспомнила. Поэтому чинить надо не три совета по отдельности, а один корень.
+</div>
+
+<h2>🟢 Применяем сейчас - 2 хода</h2>
+<div class="wrap"><table>
+<tr><th>Ход</th><th>Чей совет</th><th>Почему сейчас</th><th>Цена</th></tr>
+<tr>
+  <td><b>Бриф на старте сессии</b><br>SessionStart печатает: текущий проект, активные задачи, последние решения, открытые вопросы</td>
+  <td>Alexander Fedorenko (ядро), ****imir ***tsov (корень), Николай Махов (слои)</td>
+  <td>Дыра подтверждена: в <code>settings.json</code> на SessionStart висят инбокс, видимые сессии, доступ к экрану - брифа нет ни одного. Данные для него уже лежат в <code>turnstate.db</code>.</td>
+  <td>Один скрипт + строка в хуках. Понарошку, с замером «пользуюсь или нет».</td>
+</tr>
+<tr>
+  <td><b>Починить замер графа</b><br>не строить граф, а вернуть цифры</td>
+  <td>**mur ***dik (за граф) против Николая Махова (против)</td>
+  <td>В посте публично обещано «отвечу цифрами». По факту: в <code>turnstate.db</code> на этой машине таблицы <code>ab_recall</code> НЕТ, только <code>turns</code>. Замер не идёт - значит обещание пустое.</td>
+  <td>Проверить хаб, поднять сбор. Ноль стройки.</td>
+</tr>
+</table></div>
+
+<h2>🟡 В бэклог с потребителем - 2 хода</h2>
+<div class="wrap"><table>
+<tr><th>Ход</th><th>Чей</th><th>Вердикт</th></tr>
+<tr><td>Скилл-накопитель доменных знаний, выставленный топиком в телеге = персональный advisor по домену</td><td>*kk *ng</td><td>Сильнейшее в треде и <b>prior-art у нас нет</b>: проверил, скиллы <code>/advisor-intake</code> и <code>/advisor-mine</code> про живых людей-эдвайзеров, а не про доменные знания. Но это стройка, а не применение. Гейт §3.5: в бэклог, не строим сегодня.</td></tr>
+<tr><td>Память проекта обновляется на КАЖДОМ коммите</td><td>***riy *****kevych</td><td>На этой машине <b>неприменимо физически</b>: git-репозитория нет ни в рабочей папке, ни в волте, ни в конфиге (замерено сегодня). Ход адресован хабу, где репо есть. Нам ту же боль закрывает бриф из зелёного блока.</td></tr>
+</table></div>
+
+<h2>⚪ Не сейчас - 3 хода</h2>
+<ul>
+<li><b>***ill ***akov, инвариант f(A+B)=f(A)+f(B)</b> - единственный совет про причину амнезий, а не про инструмент. Это вопрос для ДР, а не строчка кода. Уважительно откладываем в исследование.</li>
+<li><b>Ihar Paliashchuk, CodeIndexer</b> - память и графовый поиск по КОДУ. Наша боль в волте и переписке, не в коде. И этот человек единственный не назван в посте - долг по благодарности отдельно от вердикта.</li>
+<li><b>**sha ***geev, XERJ</b> - <span class="no">закрыто 05.08</span>: по их же замеру 9/10 против 10/10 у нашего голого grep+python.</li>
+</ul>
+
+<h2>✅ Уже взято</h2>
+<ul>
+<li><b>**son **omt</b>: прогрев контекста вопросом по делу, а не «посмотри файлы и скажи, как понимаешь». Лежит правилом: <code>question-not-tour-warms-context.md</code>.</li>
+</ul>
+
+<h2>Что в движке уже есть, а чего нет</h2>
+<div class="wrap"><table>
+<tr><th>Кусок совета Fedorenko</th><th>У нас</th></tr>
+<tr><td>retrieval top-20 → reranking до 5-10</td><td class="ok">есть в <code>brain_ask.py</code> (reranker + RERANK_MODEL)</td></tr>
+<tr><td>граф поверх вектора</td><td class="ok">код есть, <code>--ab</code> есть</td></tr>
+<tr><td>цифры замера A/B</td><td class="no">таблицы нет на этой машине</td></tr>
+<tr><td>briefing на старте сессии</td><td class="no">нет</td></tr>
+<tr><td>точечный recall под каждую задачу</td><td class="wait">правило есть, механизма нет</td></tr>
+</table></div>
+<div class="sub" style="margin-top:14px"><span class="tag">граница</span> Проверял на этой машине. Про хаб отсюда судить не могу - там надо смотреть отдельно, иначе это будет «нет» из одного места.</div>

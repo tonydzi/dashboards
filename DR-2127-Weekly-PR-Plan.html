@@ -1,0 +1,108 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Arsenov-Alpha-Audit.html">&larr; Arsenov-Alpha-Audit</a> · <a href="DR-Best-Practices.html">DR-Best-Practices &rarr;</a></span></div><meta charset="utf-8">
+<title>DR-2127 — План PR-ов недели (24–30 июл 2026)</title>
+<style>
+  :root{--bg:#0f1115;--card:#1a1d24;--fg:#e6e8ec;--mut:#9aa3b2;--line:#2a2f3a;
+        --green:#3fb950;--amber:#d29922;--red:#f85149;--blue:#58a6ff;--purple:#bc8cff}
+  @media(prefers-color-scheme:light){:root{--bg:#f6f7f9;--card:#fff;--fg:#1a1d24;--mut:#5b6472;--line:#e3e6ea}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:24px}
+  h1{font-size:22px;margin:0 0 4px}h2{font-size:15px;margin:22px 0 8px;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
+  .sub{color:var(--mut);margin:0 0 18px;font-size:13px}
+  .grid{display:grid;gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-left-width:4px;border-radius:10px;padding:14px 16px}
+  .card.go{border-left-color:var(--green)}
+  .card.fly{border-left-color:var(--blue)}
+  .card.collab{border-left-color:var(--purple)}
+  .card.busy{border-left-color:var(--amber)}
+  .card.drop{border-left-color:var(--red);opacity:.75}
+  .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .t{font-weight:650;font-size:15px}
+  .repo{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--blue)}
+  .badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap}
+  .b-go{background:rgba(63,185,80,.16);color:var(--green)}
+  .b-fly{background:rgba(88,166,255,.16);color:var(--blue)}
+  .b-collab{background:rgba(188,140,255,.16);color:var(--purple)}
+  .b-busy{background:rgba(210,153,34,.16);color:var(--amber)}
+  .b-drop{background:rgba(248,81,73,.16);color:var(--red)}
+  .meta{color:var(--mut);font-size:13px;margin-top:6px}
+  .meta b{color:var(--fg);font-weight:600}
+  .odds{font-family:ui-monospace,monospace;font-size:12px}
+  .eli5{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:14px 16px;margin-top:22px;font-size:14px}
+  a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+  .num{display:inline-block;width:22px;height:22px;line-height:22px;text-align:center;border-radius:50%;
+       background:var(--line);font-size:12px;font-weight:700;margin-right:6px}
+</style>
+
+<div style="background:rgba(248,81,73,.14);border:1px solid var(--red);border-radius:10px;padding:12px 16px;margin-bottom:16px">
+  ⛔ <b>УСТАРЕЛО (31.07).</b> Этот план — снимок от 24.07. Живой recon 30.07 (5 разведчиков) показал: <b>7 из 8 «дверей» мертвы</b> (genkit #4366/#4365 — код удалён PR #4812; MS #7212, genai #164, agentscope #2123 — заняты чужими PR; adk #142 — product-placement). Единственный источник правды теперь → <b>oss-wave2-strike-list.md</b> + <b>oss-contributions-ledger.md</b> (~15 отгруженных PR) + дашборд <b>W3-Open-PRs.html</b>. Оставлено как исторический след метода.
+</div>
+<h1>DR-2127 · План PR-ов недели <span style="color:var(--red);font-size:14px">(superseded)</span></h1>
+<p class="sub">24–30 июля 2026 · после <b>живого prior-art гейта</b> (проверил каждый issue через <code>gh</code> — половину «топа» из DR уже заняли конкуренты). Аккаунт: <code>Palo-Alto-AI-Research-Lab</code>. Источник приоритетов: <a href="../03-Insights/insight-DR-DR26-07-20-MACANTON-02-2127-мульти-вендорная-карта-живости-oss-cookbook-exampl.md">insight DR-2127</a>.</p>
+
+<h2>🟢 Чистые двери — открываем новый PR (конкурентов нет)</h2>
+<div class="grid">
+  <div class="card go">
+    <div class="top"><span class="t"><span class="num">1</span>MCP inputSchema → json_schema</span><span class="badge b-go">SHIP · маленький</span></div>
+    <div><span class="repo">firebase/genkit</span> · <a href="https://github.com/firebase/genkit/issues/4366">issue #4366</a> · автор-мейнтейнер @****deep</div>
+    <div class="meta">TODO мейнтейнера с точным адресом (<b>client.py:245</b>) + готовые acceptance-criteria. Наш ассет: <b>MCP tooling</b>. Идеальный узкий Python-PR. <span class="odds">odds ~60–75%</span></div>
+  </div>
+  <div class="card go">
+    <div class="top"><span class="t"><span class="num">2</span>Валидация MCP tool-args по схеме</span><span class="badge b-go">SHIP · отдельный PR</span></div>
+    <div><span class="repo">firebase/genkit</span> · <a href="https://github.com/firebase/genkit/issues/4365">issue #4365</a></div>
+    <div class="meta">Компаньон к #4366. <b>НЕ смешивать</b> в один PR (правило DR: один concern = один PR). Делаем вторым, после мёрджа/ревью первого. <span class="odds">odds ~55–70%</span></div>
+  </div>
+  <div class="card go">
+    <div class="top"><span class="t"><span class="num">3</span>Починка сломанных agent-рецептов</span><span class="badge b-go">SHIP · quick-win</span></div>
+    <div><span class="repo">huggingface/cookbook</span> · <a href="https://github.com/huggingface/cookbook/issues/316">issue #316</a> (execution error, удалённый <code>smolagents.ManagedAgent</code>)</div>
+    <div class="meta">Maintenance-фикс = самый быстрый класс мёрджа (по обоим вендорам). Гейткиперы @*****enoyan / @****hliu. Разогрев перед заявкой на #303. <span class="odds">odds высокие (fix &gt; new)</span></div>
+  </div>
+</div>
+
+<h2>🔵 Уже в полёте — наш PR открыт, ведём ревью</h2>
+<div class="grid">
+  <div class="card fly">
+    <div class="top"><span class="t">Self-verifying search-agent recipe</span><span class="badge b-fly">НАШ PR #366 · сегодня</span></div>
+    <div><span class="repo">huggingface/cookbook</span> · <a href="https://github.com/huggingface/cookbook/pull/366">PR #366</a> закрывает <a href="https://github.com/huggingface/cookbook/issues/303">issue #303</a></div>
+    <div class="meta">Открыт 24.07 06:41 от нашего аккаунта. <b>Действие:</b> следить за ревью, отвечать гейткиперам ≤24ч, не плодить дубль. Конкурент рядом: PR #349 (AG2).</div>
+  </div>
+</div>
+
+<h2>🟣 Коллаборация — автор уже «implementation-ready», НЕ конкурируем</h2>
+<div class="grid">
+  <div class="card collab">
+    <div class="top"><span class="t">Post-execution audit trail</span><span class="badge b-collab">COMMENT → тесты</span></div>
+    <div><span class="repo">google/adk-python-community</span> · <a href="https://github.com/google/adk-python-community/issues/142">issue #142</a></div>
+    <div class="meta">Дополняет AgentGovernancePlugin (наш authority-routing плагин уже там — PR #173). Автор заявил готовую реализацию → предлагаем <b>тесты / verify-слой</b>, не параллельный PR. Нужен <b>Google CLA</b> (ждёт Антона).</div>
+  </div>
+</div>
+
+<h2>🟡 Занято конкурентом — предложить ревью/тесты, НЕ открывать competing PR</h2>
+<div class="grid">
+  <div class="card busy">
+    <div class="top"><span class="t">Compaction orphans tool-call pairs</span><span class="badge b-busy">PR #7244 живёт</span></div>
+    <div><span class="repo">microsoft/agent-framework</span> · <a href="https://github.com/microsoft/agent-framework/issues/7212">#7212</a> → чужой <a href="https://github.com/microsoft/agent-framework/pull/7244">PR #7244</a> (jstar0, 21.07)</div>
+    <div class="meta">Был #1 в ранге DR — но фикс уже пишут. Наш persistent-memory ассет тут лишний. Максимум: ревью-коммент с доп. тест-кейсом.</div>
+  </div>
+  <div class="card busy">
+    <div class="top"><span class="t">approve() with modified args</span><span class="badge b-busy">PR #1098 (полу-stale)</span></div>
+    <div><span class="repo">openai/openai-agents-js</span> · <a href="https://github.com/openai/openai-agents-js/issues/1097">#1097</a> → <a href="https://github.com/openai/openai-agents-js/pull/1098">PR #1098</a> (с марта, обновлён 12.07)</div>
+    <div class="meta">4 месяца без review-decision → возможно застрял. Опция: аккуратный коммент с тестом/пуш ревью. Не открывать свой поверх.</div>
+  </div>
+  <div class="card busy">
+    <div class="top"><span class="t">Bounded backpressure / cancellation</span><span class="badge b-busy">PR #165 живёт</span></div>
+    <div><span class="repo">google-gemini/genai-processors</span> · <a href="https://github.com/google-gemini/genai-processors/issues/164">#164</a> → <a href="https://github.com/google-gemini/genai-processors/pull/165">PR #165</a> (THRISHAL, 08.07)</div>
+    <div class="meta">Наш concurrency-ассет уже покрыт чужим PR. Пропускаем или ревьюим.</div>
+  </div>
+</div>
+
+<h2>🔴 Не трогаем</h2>
+<div class="grid">
+  <div class="card drop">
+    <div class="meta"><b>mistralai/cookbook #300</b> — уже <b>CLOSED</b>. · <b>Groq API cookbook</b> и <b>xai-cookbook</b> — 0 мёрджей за 90 дней (риторика welcoming, review-bandwidth мёртв). · <b>Qwen-Agent, DeepSeek, Cohere (архив), OpenAI evals, Meta llama-cookbook, autogen</b> — «do-not-bother» (консенсус 3 вендоров).</div>
+  </div>
+</div>
+
+<div class="eli5">
+  🧒 <b>Простыми словами:</b> я обзвонил 10 чужих «мастерских» и спросил, куда реально примут нашу заплатку прямо сейчас. Оказалось, три самые вкусные двери из отчёта уже заняли другие мастера — туда ломиться бесполезно, только предложим помочь. Зато нашлись две свободные двери у Google Genkit (там мейнтейнер сам оставил записку «доделайте вот тут») и одна быстрая починка у Hugging Face. С них и начинаем. А одну дверь (HF search-agent) мы уже открыли сегодня утром — за ней просто следим.
+  <div style="margin-top:8px;color:var(--mut)">Порядок: <b>Genkit #4366 → HF #316 → Genkit #4365</b>, параллельно ведём наш HF #366 и комментим adk #142.</div>
+</div>

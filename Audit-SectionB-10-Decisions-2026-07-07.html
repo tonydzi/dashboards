@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Section-B: 10 решений — статус запуска (Mac16, 2026-07-07)</title>
+<style>
+  :root{--bg:#0f1216;--card:#1a1f27;--ink:#e8edf4;--dim:#93a1b0;--line:#2a323d;
+        --green:#3fb950;--amber:#d29922;--red:#f85149;--blue:#58a6ff;--violet:#bc8cff;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:24px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 20px;font-size:13px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:22px;font-size:13px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .g{background:var(--green)}.a{background:var(--amber)}.r{background:var(--red)}.b{background:var(--blue)}
+  section{margin-bottom:26px}
+  .hd{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);
+      border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+        padding:14px 16px;margin-bottom:10px}
+  .card.green{border-left:4px solid var(--green)}
+  .card.blue{border-left:4px solid var(--blue)}
+  .card.red{border-left:4px solid var(--red)}
+  .t{font-weight:650;margin:0 0 4px;font-size:15px}
+  .num{color:var(--violet);font-weight:700;margin-right:6px}
+  .did{color:var(--ink);margin:6px 0 0;font-size:13.5px}
+  .did b{color:var(--green)}
+  .need{color:var(--amber);margin:6px 0 0;font-size:13.5px}
+  .proof{color:var(--dim);font-size:12.5px;margin-top:6px;font-family:ui-monospace,Menlo,monospace}
+  .ask{background:#20160a;border:1px solid #4a3410;border-radius:8px;padding:5px 10px;
+       margin-top:8px;font-size:13px;color:#ffcf7a;display:inline-block}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Access-Offboarding-Audit-2026-07-05.html">&larr; Access-Offboarding-Audit-2026-07-05</a> · <a href="Backup-Audit-MacBook-Anton-2026-07-07.html">Backup-Audit-MacBook-Anton-2026-07-07 &rarr;</a></span></div>
+<h1>Аудит Section-B — 10 решений, статус запуска</h1>
+<p class="sub">Mac16 (MacBook-Anton) · выделенная сессия · 2026-07-07 · мандат: «+ ДЕЛАЕМ ВСЕ», довести до реального запуска</p>
+
+<div class="legend">
+  <span><i class="dot g"></i>Запущено / сделано сам на Mac16</span>
+  <span><i class="dot b"></i>Готово, отдано хабу (нужен always-on / single-writer / живой TG)</span>
+  <span><i class="dot r"></i>Ждёт финального «+» Антона (Tier-2: деньги / публикация / флот / его email)</span>
+</div>
+
+<section>
+  <div class="hd">🟢 Запущено — сделал сам на Mac16 (необратимого нет)</div>
+
+  <div class="card green">
+    <p class="t"><span class="num">#1</span>Long-horizon attention layer — дешёвый первый шаг</p>
+    <p class="did"><b>Сделал:</b> восстановил <b>12 484 визита Chrome за 2018→2026 (8 лет истории внимания)</b> в append-only <code>browser_history.db</code>; собрал портативный экстрактор; поставил <b>ActivityWatch.app</b>.</p>
+    <p class="need">Осталось (GUI-шаги Антона): дать Terminal <b>Full Disk Access</b> (тогда подтянется Safari-история) + запустить ActivityWatch и разрешить Accessibility/Screen — тогда пойдёт форвард-захват.</p>
+    <p class="proof">_imports/attention/extract_browser_history.py · browser_history.db (12 484)</p>
+  </div>
+
+  <div class="card green">
+    <p class="t"><span class="num">#3</span>Real-time ambient кофаундер — сверка статуса</p>
+    <p class="did"><b>Сделал:</b> сверил с живущим <code>/cofounder-watch</code> = это частичный Phase 0 (on-demand ping-only диспетчер по <code>tg_followups.json</code>). Обновил решение <b>proposed → in-progress</b>, вписал разрыв до полного Phase 0 и следующий шаг хабу.</p>
+    <p class="proof">decision-realtime-cofounder-2026-07-02.md (§ Статус реализации)</p>
+  </div>
+
+  <div class="card green">
+    <p class="t"><span class="num">#6</span>Radar v1 (Web3.career) — 🚀 LIVE (2026-07-10)</p>
+    <p class="did"><b>Запущено полностью:</b> токен зарегистрирован (email a@, лежит в secrets), эндпоинт из доков починен (+/api), <b>живой прогон: 50 вакансий → 40 сигналов → 14 матчей с активными лидами CRM</b> (CertiK «Web3 BD»→arunteja, Kraken Sr PM→daniel-ayuko, Chainlink→adelyn-zhou, Binance→michela-silvestri-2…). Load-bearing факт подтверждён: free-tier отдаёт данные.</p>
+    <p class="need">Дальше (не блокер): калибровка скоринга + колонка «🚨 почему сейчас» в Radar-Leads.html.</p>
+    <p class="proof">_imports/radar/radar_signals.py · signals.json (40 записей, source=live)</p>
+  </div>
+
+  <div class="card green">
+    <p class="t"><span class="num">#10</span>Peer-coordination — 2 висящих QQQ закрыты по процессу</p>
+    <p class="did"><b>Сделал:</b> снял 3 пункта с «висят бессрочно», поставил <b>дедлайн 2026-07-10</b> + рекомендацию по каждому, эскалировал Антону в решении.</p>
+    <p class="need">3 пункта Tier-2 (флот) ждут «+»: зеркалировать start-race фикс (#e53fd7fe) · циркуит-брейкер сторожей (#0b1d5d4f) · дубль-группа Русланы.</p>
+    <p class="proof">decision-peer-coordination-roots-2026-07-02.md (§ РАЗРЕШЕНИЕ)</p>
+  </div>
+</section>
+
+<section>
+  <div class="hd">🔵 Готово, отдано хабу (нужен always-on / single-writer / живой TG-клиент)</div>
+  <p class="sub" style="margin-top:-6px">Диспатч ушёл дуал-рельсом (TG-03 + _machine-bus) хабу A-2022BAYAREA, ждём ACK.</p>
+
+  <div class="card blue">
+    <p class="t"><span class="num">#5</span>Warm-intro outcome-loop — модуль готов</p>
+    <p class="did"><b>Собрал:</b> <code>outcome_loop.py</code> (SQLite-леджер, day3/day14 follow-up, лог исхода, RU/EN шаблоны, идемпотентно) — <b>selftest 9/9 ✅</b>. Автор решения зовёт outcome-граф единственным moat.</p>
+    <p class="need">Хабу: вкрутить в живой <code>/intro</code> watcher (там единственный живой TG-клиент).</p>
+    <p class="proof">_imports/intro/outcome_loop.py + OUTCOME-LOOP-INTEGRATION.md</p>
+  </div>
+
+  <div class="card blue">
+    <p class="t"><span class="num">#4</span>Config-portability P3 — скан готов</p>
+    <p class="did"><b>Собрал:</b> read-only скан — <b>1284 хардкод-пути в 592 файлах, 57 батчей</b> (low→high risk), карта env-переменных, гардрейлы. Нашёл существующий линтер <code>lint_path_hardcode.py</code> (не дублировать).</p>
+    <p class="need">Рефактор = Tier-2 + single-writer хаба: по батчам с backup+diff+test-one-machine. Ждёт твоё+хаба go.</p>
+    <p class="proof">_imports/portability/SCAN-REPORT.md + scan_paths.py</p>
+  </div>
+
+  <div class="card blue">
+    <p class="t"><span class="num">#3→hub</span>Кофаундер Phase 0 — обернуть в постоянную петлю</p>
+    <p class="did">Хабу: <code>/cofounder-watch</code> → постоянный signal-dispatcher (Task Scheduler, событийный) + подключить персону на high-salience + дашборд + kill-switch.</p>
+  </div>
+
+  <div class="card blue">
+    <p class="t"><span class="num">#2</span>Полный TG-архив (4 аккаунта) — запуск на хабе</p>
+    <p class="did">Пилот де-рискован (500 DM, 0 FloodWait). Хабу: Phase 0-4, staggered по сессиям аккаунтов, FloodWait-safe <code>takeout()</code>, расширить <code>dm_pilot.py</code> → <code>_originals/tg/</code> + SQLite. Тяжёлое/24-7 = десктоп-хаб.</p>
+  </div>
+</section>
+
+<section>
+  <div class="hd">🔴 Готово «до осталось-нажать» — ждёт финального «+» Антона (Tier-2)</div>
+
+  <div class="card green">
+    <p class="t"><span class="num">#7</span>CharmOS анонс — 🚀 RU ОПУБЛИКОВАН (2026-07-10, «+» Антона)</p>
+    <p class="did"><b>Опубликовано:</b> свежесть починена (Opus, «сегодня»→«неделю назад») → RU тизер + RU лонгрид ушли в @ClawRus от tonydzi (создатель канала). EN лонгрид уже живёт в репо.</p>
+    <p class="need">EN-тред → X: ждёт X API-ключей (spawn-сессия #9); постим через API, не браузером (по решению social-posting-stack).</p>
+    <p class="proof">@ClawRus 2 поста 2026-07-10 · decision-opensource-secondbrain-charm.md обновлён</p>
+  </div>
+
+  <div class="card red">
+    <p class="t"><span class="num">#8</span>Nonprofit fiscal sponsorship — ⚠️ деньги (платёжный рельс)</p>
+    <p class="did">Рекомендация: НЕ регать юрлицо сейчас. Включить GitHub Sponsors (0%) + Ko-fi (0%) + фискальный спонсор HCB. Черновики готовы: HCB-заявка + <code>FUNDING.yml</code> + <code>SUPPORT.md</code>.</p>
+    <p class="need">Только ты заводишь платёжные рельсы: GitHub Sponsors org (Stripe, ~10 мин) / Ko-fi аккаунт, потом отправить HCB-заявку.</p>
+    <p class="ask">🔴 «+» на шаги 1-2 (создать рельсы + подать HCB)</p>
+    <p class="proof">_drafts/HCB-application-draft-2026-07-05.md · _drafts/FUNDING.yml · _drafts/SUPPORT.md</p>
+  </div>
+
+  <div class="card red">
+    <p class="t"><span class="num">#9</span>Social posting stack — ⚠️ dev-аккаунты + X-биллинг</p>
+    <p class="did">Стек построен (на хабе: <code>x_post.py</code> + <code>fb_posts_poll.py</code>), простаивает без кредов.</p>
+    <p class="need">Нужны: X dev-аккаунт (developer.x.com) + биллинг (~$0.20/пост ≈ $6/мес) → 4 ключа; FB dev-app → long-lived token. Твоя личность + 2FA + согласие на X-биллинг.</p>
+    <p class="ask">🔴 «+» на X-биллинг ~$6/мес + завести dev-аккаунты (логинюсь сам, если дашь доступ)</p>
+  </div>
+
+  <div class="card red">
+    <p class="t"><span class="num">#10→</span>Peer QQQ (3 пункта флота) — дедлайн 2026-07-10</p>
+    <p class="need">«+» на: зеркалировать start-race фикс на флот · циркуит-брейкер сторожей · удалить дубль-группу Русланы. Дефолт при молчании к 10.07 — в описании решения.</p>
+    <p class="ask">🔴 «+» (все 3) / «+ только start-race» / «нет»</p>
+  </div>
+</section>
+
+<p class="sub">Источник: аудит ideas-decisions.json · план PLAN-fix-all-13-findings.md (Section B) · сессия Mac16 2026-07-07.</p>
+</body>
+</html>

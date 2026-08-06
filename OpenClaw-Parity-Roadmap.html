@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw-паритет внутри Claude Code</title>
+<style>
+  :root{
+    --bg:#0d1117; --card:#161b22; --line:#30363d; --ink:#e6edf3; --dim:#8b949e;
+    --green:#3fb950; --yellow:#d29922; --red:#f85149; --blue:#58a6ff; --accent:#bc8cff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:28px;max-width:1100px;margin:0 auto}
+  h1{font-size:26px;margin-bottom:4px}
+  .sub{color:var(--dim);margin-bottom:24px}
+  .grid{display:grid;gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+  h2{font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  /* gauge */
+  .gauge-wrap{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+  .gauge{--p:85;width:140px;height:140px;border-radius:50%;
+    background:conic-gradient(var(--green) calc(var(--p)*1%),var(--line) 0);
+    display:grid;place-items:center;flex-shrink:0}
+  .gauge::before{content:"";position:absolute;width:104px;height:104px;border-radius:50%;background:var(--card)}
+  .gauge b{position:relative;font-size:30px}
+  .gauge small{position:relative;display:block;text-align:center;color:var(--dim);font-size:12px}
+  .verdict{flex:1;min-width:260px}
+  .verdict p{margin-bottom:8px}
+  .pill{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:600}
+  .pill.no{background:rgba(248,81,73,.15);color:var(--red);border:1px solid var(--red)}
+  /* matrix */
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);font-size:14px}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+  .s{font-weight:700;white-space:nowrap}
+  .s.ok{color:var(--green)} .s.best{color:var(--blue)} .s.part{color:var(--yellow)} .s.no{color:var(--red)}
+  /* roadmap */
+  .phase{border-left:3px solid var(--line);padding:4px 0 4px 18px;margin-bottom:18px;position:relative}
+  .phase::before{content:"";position:absolute;left:-8px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--line)}
+  .phase.p1{border-color:var(--green)} .phase.p1::before{background:var(--green)}
+  .phase.p2{border-color:var(--blue)} .phase.p2::before{background:var(--blue)}
+  .phase.p3{border-color:var(--accent)} .phase.p3::before{background:var(--accent)}
+  .phase h3{font-size:16px;margin-bottom:4px}
+  .phase .meta{color:var(--dim);font-size:13px;margin-bottom:6px}
+  .bar{height:7px;border-radius:4px;background:var(--line);overflow:hidden;margin:6px 0;max-width:340px}
+  .bar i{display:block;height:100%;background:var(--green)}
+  .block{color:var(--yellow);font-size:13px}
+  .foot{color:var(--dim);font-size:12px;margin-top:22px;text-align:center}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Mayak-Primary-Plan.html">&larr; Mayak-Primary-Plan</a> · <a href="Peer-Coordination-Root-Analysis.html">Peer-Coordination-Root-Analysis &rarr;</a></span></div>
+  <h1>🦾 OpenClaw-паритет внутри Claude Code</h1>
+  <div class="sub">Alpha Protocol (R+DR) · 2026-06-15 · решение: <b>НЕ ставить OpenClaw, достроить 3 разрыва нативно</b></div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Готовность</h2>
+      <div class="gauge-wrap">
+        <div class="gauge" style="position:relative"><b>85%</b></div>
+        <div class="verdict">
+          <p><span class="pill no">OpenClaw НЕ ставим</span> — он и есть «зоопарк» (отдельный runtime + gateway + ClawHub), плюс Anthropic в апреле-2026 отрубил его от Pro/Max → только платный API.</p>
+          <p>Ты уже сам повторил <b>~85%</b> OpenClaw в Claude Code + MCP. Слой памяти/поиска — <b style="color:var(--blue)">сильнее</b>, чем у OpenClaw. Осталось 3 узких разрыва.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Карта паритета</h2>
+      <table>
+        <tr><th>Топ-фича OpenClaw</th><th>Статус в Claude Code</th></tr>
+        <tr><td>Память / recall между сессиями</td><td class="s best">✅✅ ЛУЧШЕ — RAG e5+rerank, SQLite, волт 154k</td></tr>
+        <tr><td>Control UI / дашборды</td><td class="s best">✅✅ много HTML-дашбордов</td></tr>
+        <tr><td>Браузер-автоматизация / OSINT</td><td class="s ok">✅ Chrome MCP + computer-use</td></tr>
+        <tr><td>Cron / фоновая автоматизация</td><td class="s ok">✅ Task Scheduler + /loop (~40 задач)</td></tr>
+        <tr><td>Мессенджер-ассистент</td><td class="s ok">✅ Telegram (полный)</td></tr>
+        <tr><td>Карточки / кнопки в каналах</td><td class="s ok">✅ TG inline-кнопки в MCP</td></tr>
+        <tr><td>Запуск агента из чата</td><td class="s part">🟡 ~70% — telegram-watch отвечает, не исполняет</td></tr>
+        <tr><td>Routing по аккаунтам</td><td class="s part">🟡 whitelist — частично</td></tr>
+        <tr><td>Реестр skills (ClawHub)</td><td class="s part">🟡 свои скиллы; авто-реестр не нужен</td></tr>
+        <tr><td>Голос (Talk-mode + TTS)</td><td class="s part">🟡 только Whisper на вход</td></tr>
+        <tr><td>WhatsApp / Slack / Discord</td><td class="s no">❌ нет MCP</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Дорожная карта — 3 разрыва (выбраны все)</h2>
+
+      <div class="phase p1">
+        <h3>Phase 1 · Управление Claude Code из Telegram</h3>
+        <div class="meta">Самая любимая фича OpenClaw · база <code>telegram-watch</code> уже построена</div>
+        <div class="bar"><i style="width:70%"></i></div>
+        <div>Готово на ~70%: пишешь в DM — CC отвечает со всем знанием. Доделать: <b>исполнение</b> (не только ответ) + кнопка «одобряю план».</div>
+        <div class="block">⛔ Блокер: login <code>@*****numvc1</code> + членство в чатах (нужен ты).</div>
+      </div>
+
+      <div class="phase p2">
+        <h3>Phase 2 · Живой голосовой цикл</h3>
+        <div class="meta">Говоришь двойнику — он отвечает голосом</div>
+        <div class="bar"><i style="width:30%"></i></div>
+        <div>Whisper-вход есть. Доделать: GPU-local TTS на выход + цикл. <b>Строю автономно</b> (бесплатно на RTX A3000).</div>
+      </div>
+
+      <div class="phase p3">
+        <h3>Phase 3 · WhatsApp / Slack / Discord</h3>
+        <div class="meta">⚠️ усложнение — новые MCP на каждый канал</div>
+        <div class="bar"><i style="width:5%"></i></div>
+        <div>Research existing MCP → install → auth твоих аккаунтов. Ты живёшь в Telegram → решим, нужны ли реально.</div>
+        <div class="block">⛔ Блокер: твои аккаунты WhatsApp/Slack/Discord (нужен ты).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">Decision Memo: 02-Decisions/decision-openclaw-parity-inside-claude-code.md · цель №1 «цифровой двойник»</div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Разбор чата 03 — 08.07.2026</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1a1d21; --muted:#5b6470; --line:#e3e7ec;
+    --ok:#1a8f5b; --okbg:#e6f6ee; --warn:#b7791f; --warnbg:#fdf3e0; --bad:#c53434; --badbg:#fbe9e9;
+    --accent:#3b6fd4; --accentbg:#eaf1fd; --chip:#eef1f5;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#14171b; --card:#1c2127; --ink:#e9edf1; --muted:#9aa4b2; --line:#2b323b;
+      --ok:#4bd08a; --okbg:#16321f; --warn:#e0aa4e; --warnbg:#332711; --bad:#f0736f; --badbg:#361a1a;
+      --accent:#78a4f0; --accentbg:#16233c; --chip:#232a33;
+    }
+  }
+  :root[data-theme="dark"]{
+      --bg:#14171b; --card:#1c2127; --ink:#e9edf1; --muted:#9aa4b2; --line:#2b323b;
+      --ok:#4bd08a; --okbg:#16321f; --warn:#e0aa4e; --warnbg:#332711; --bad:#f0736f; --badbg:#361a1a;
+      --accent:#78a4f0; --accentbg:#16233c; --chip:#232a33;
+  }
+  :root[data-theme="light"]{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1a1d21; --muted:#5b6470; --line:#e3e7ec;
+    --ok:#1a8f5b; --okbg:#e6f6ee; --warn:#b7791f; --warnbg:#fdf3e0; --bad:#c53434; --badbg:#fbe9e9;
+    --accent:#3b6fd4; --accentbg:#eaf1fd; --chip:#eef1f5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 18px 60px}
+  header h1{font-size:24px;margin:0 0 4px}
+  header .sub{color:var(--muted);font-size:14px;margin-bottom:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px;margin:14px 0;
+    box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .card h2{font-size:17px;margin:0 0 10px;display:flex;align-items:center;gap:9px}
+  .badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.02em;white-space:nowrap}
+  .b-ok{background:var(--okbg);color:var(--ok)} .b-warn{background:var(--warnbg);color:var(--warn)}
+  .b-bad{background:var(--badbg);color:var(--bad)} .b-acc{background:var(--accentbg);color:var(--accent)}
+  p{margin:8px 0} .muted{color:var(--muted)}
+  ul{margin:8px 0;padding-left:20px} li{margin:5px 0}
+  code{background:var(--chip);padding:1px 6px;border-radius:6px;font-size:13px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .kv{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .proof{background:var(--accentbg);border-left:3px solid var(--accent);border-radius:8px;padding:10px 12px;margin-top:10px;font-size:14px}
+  .row{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line)}
+  .row:first-child{border-top:none}
+  .row .st{flex:0 0 auto;font-size:18px;line-height:1.3}
+  .row .tx{flex:1 1 auto}
+  .row .tx b{font-weight:650}
+  .msg{background:var(--chip);border-radius:8px;padding:9px 11px;margin:8px 0;font-size:13.5px}
+  .msg .id{color:var(--muted);font-family:ui-monospace,monospace;font-size:12px}
+  .eli5{background:var(--accentbg);border-radius:14px;padding:16px 18px;margin-top:18px}
+  .eli5 h2{margin-top:0}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .stat{background:var(--chip);border-radius:10px;padding:10px 12px}
+  .stat .n{font-size:20px;font-weight:700} .stat .l{font-size:12px;color:var(--muted)}
+  .arrow{color:var(--muted)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="CC-Automation-Routing-Cloud-vs-Local.html">&larr; CC-Automation-Routing-Cloud-vs-Local</a> · <a href="Coach-Window.html">Coach-Window &rarr;</a></span></div>
+<div class="wrap">
+<header>
+  <h1>Разбор чата «03» — 08 июля 2026</h1>
+  <div class="sub">Машина: MacBook-Ruslana · оператор: Руслана · анализ за 07–08.07 + внесённые фиксы</div>
+</header>
+
+<div class="card">
+  <h2><span class="badge b-bad">была проблема</span> <span class="badge b-ok">✅ починено</span> Почему от нас писал «Platinum VC»</h2>
+  <p>На этом Маке сообщения в 03 идут двумя путями. Heartbeat / FB-посты — от <b>Русланы</b> ✅. А координация робота (reddit-отчёт, sync-ACK, SSH-ACK) шла через <code>tg_coord.py</code>, который брал аккаунт из <b>общего</b> конфига <code>tg_bus.json</code> = <code>platinumvc1</code> → выходило от <b>«Tony |Platinum VC|»</b>.</p>
+  <p><b>Фикс:</b> персональная настройка только этого Мака — <code>TG_BUS_ACCOUNT="ruslana"</code>. Общий конфиг не тронут (другие машины не задеты).</p>
+  <div class="proof">✅ <b>Проверено вживую:</b> тестовая строка тем же путём → сообщение <code>#118351</code> числится за <b>«Ruslana Vasilieva»</b>. Раньше было бы «Platinum VC».</div>
+</div>
+
+<div class="card">
+  <h2><span class="badge b-acc">то самое 17:28</span> Что было в последнем сообщении</h2>
+  <p class="muted">По твоему времени 17:28 = два сообщения, оба ушли <b>от Platinum VC</b>:</p>
+  <div class="msg"><span class="id">#118334 · 17:28</span><br>«Уточнение по <code>sync🔴</code>: Syncthing работает, REST вернул 403 — реального отказа синка НЕТ».</div>
+  <div class="msg"><span class="id">#118335 · 17:28</span><br>«Вижу: сообщение об SSH-ключе ещё без ACK от тебя…» (напоминание хабу).</div>
+  <p>По смыслу верные, но <b>от чужого имени</b> — ровно то, что тебя зацепило. Теперь такие идут от @****va97.</p>
+</div>
+
+<div class="card">
+  <h2><span class="badge b-ok">✅ поставлен</span> Сторож 24/7 — и он был сломан</h2>
+  <p><b>Всплыл серьёзный баг:</b> сторож на Telegram-рельсе <b>был мёртв</b>. <code>bus_tg_peek.py</code> вызывал функцию <code>parse_line</code>, которой на этом Маке в <code>tg_bus.py</code> <b>не было</b> → каждая проверка падала → быстрый сторож (60 сек) <b>никогда не будил</b> робота. Это корень, почему на 03 плохо реагировали.</p>
+  <div class="row"><div class="st">✅</div><div class="tx"><b>Восстановил <code>parse_line</code></b> — сторож снова видит машинные сообщения. Доказал WAKE-путь: <code>WAKE 6: new item(s) addressed to MacBook-Ruslana</code>.</div></div>
+  <div class="row"><div class="st">✅</div><div class="tx"><b>Добавил подхват сообщений людей</b> — будит и когда пишет <b>Антон</b> (или упоминают Руслану), не только 🤖-роботов. 8 тест-случаев пройдено.</div></div>
+  <div class="row"><div class="st">✅</div><div class="tx"><b>Робот отвечает</b> на такие сообщения голосом Русланы («приняла, смотрю») + берёт в работу/план.</div></div>
+  <div class="kv" style="margin-top:12px">
+    <span class="badge b-ok">launchd · tg-fast-peek · 60 сек</span>
+    <span class="badge b-ok">launchd · inbox-robot · 20 мин</span>
+  </div>
+  <p class="muted" style="margin-top:10px">⚠️ Честно: launchd не тикает, пока Мак <b>спит</b> — 24/7 на ноутбуке нет, добирает always-on хаб.</p>
+</div>
+
+<div class="card">
+  <h2>Что происходило в 03 (кратко)</h2>
+  <div class="grid" style="margin-bottom:6px">
+    <div class="stat"><div class="n">~95%</div><div class="l">трафика — роботы координируются</div></div>
+    <div class="stat"><div class="n">FB №9 ✅</div><div class="l">пост выложен (Руслана)</div></div>
+    <div class="stat"><div class="n">reddit ✅</div><div class="l">warmup стартовал, 3 коммента</div></div>
+    <div class="stat"><div class="n">SSH-ключ</div><div class="l">хаба установлен на Мак</div></div>
+  </div>
+  <ul>
+    <li><b>Ночь 07.07:</b> онбординг MacBook-Anton, деплои (#83, approval-upgrade, ON AIR, Gmail) — хаб↔ноут.</li>
+    <li><b>08.07:</b> синк несколько раз флапал, consensus про dr_registry, canon-update «равенство пиров».</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Наши недоработки — статус</h2>
+  <div class="row"><div class="st">✅</div><div class="tx"><b>Идентичность</b> — писали от Platinum VC <span class="arrow">→</span> починено.</div></div>
+  <div class="row"><div class="st">✅</div><div class="tx"><b>Сторож 03</b> был мёртв (нет <code>parse_line</code>) <span class="arrow">→</span> починено.</div></div>
+  <div class="row"><div class="st">✅</div><div class="tx"><b>Не ловили сообщения Антона</b> <span class="arrow">→</span> починено.</div></div>
+  <div class="row"><div class="st">⚠️</div><div class="tx"><b>Ложный <code>sync🔴</code></b> (REST 403 — не передаёт API-ключ) <span class="arrow">→</span> заведена отдельная задача-чип, уже чинится в фоне.</div></div>
+  <div class="row"><div class="st">⚠️</div><div class="tx"><b>Дубль reddit-отчёта</b> (Platinum VC + Руслана) <span class="arrow">→</span> уйдёт с фиксом идентичности.</div></div>
+</div>
+
+<div class="eli5">
+  <h2>🧒 Простыми словами</h2>
+  <p>В общем рабочем чате наш компьютер иногда подписывался чужим именем — «Platinum VC» вместо Русланы. Я поправил, чтобы он всегда был Русланой (проверил — работает).</p>
+  <p>Ещё «дежурный», который должен замечать новые сообщения, был сломан и вообще не будил помощника. Я его починил и научил замечать не только роботов, но и когда пишет Антон, — и сразу отвечать. Один хвостик (компьютер путает «синк сломан», хотя он цел) уже чинится отдельно.</p>
+</div>
+
+<div class="sub" style="text-align:center;margin-top:22px">Резервные копии правок: <code>~/.claude/scripts/_identity-fix-backup-20260708-174840/</code></div>
+</div>
+</body>
+</html>

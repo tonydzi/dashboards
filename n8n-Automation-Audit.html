@@ -1,0 +1,878 @@
+<!DOCTYPE html><html lang=ru><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>n8n Automation Audit</title><style>
+:root{--bg:#0e1116;--card:#171c24;--bd:#262d38;--tx:#e6edf3;--mut:#8b949e;--acc:#58a6ff;
+--ok:#3fb950;--warn:#d29922;--err:#f85149;--off:#6e7681;}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1280px;margin:0 auto;padding:24px}
+h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);font-size:12px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:20px 0}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.kpi .v{font-size:26px;font-weight:700}.kpi .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+.kpi.err .v{color:var(--err)}.kpi.ok .v{color:var(--ok)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.bar button{background:var(--card);border:1px solid var(--bd);color:var(--tx);padding:6px 12px;border-radius:20px;cursor:pointer;font-size:12px}
+.bar button.on{background:var(--acc);color:#04101f;border-color:var(--acc);font-weight:600}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--bd);vertical-align:top}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;position:sticky;top:0;background:#10151c;cursor:pointer}
+td.num{text-align:right;font-variant-numeric:tabular-nums}td.nm{font-weight:600}
+td.sub,.sub{color:var(--mut);font-size:12px}
+.st.ok{color:var(--ok)}.st.warn{color:var(--warn)}.st.err{color:var(--err)}.st.off{color:var(--off)}
+.st.flaky{color:#e3852a}.st.tool{color:#6ca0c4}
+.cl{font-size:10px;padding:2px 7px;border-radius:20px;background:#21262d;white-space:nowrap}
+.cl-CHARM{background:#1f2d3d;color:#79c0ff}.cl-Content{background:#2d2438;color:#d2a8ff}
+.cl-Audio{background:#1f3329;color:#7ee787}.cl-AI{background:#3d2e1f;color:#ffa657}.cl-Dev{background:#33272a;color:#ff7b72}
+.fl{font-size:11px;color:var(--warn)}
+td.usg{width:120px}.ub{display:inline-block;width:80px;height:7px;background:#21262d;border-radius:4px;overflow:hidden;vertical-align:middle}
+.ub span{display:block;height:100%;background:var(--acc)}.un{font-size:11px;color:var(--mut);margin-left:6px;font-variant-numeric:tabular-nums}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}@media(max-width:760px){.panels{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px 18px}.panel h3{margin:0 0 10px;font-size:14px}
+.urow{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12px}.uname{flex:0 0 200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.urow .ub{flex:1;width:auto}.ucnt{flex:0 0 70px;text-align:right;color:var(--mut);font-variant-numeric:tabular-nums}
+.note{background:var(--card);border:1px solid var(--bd);border-left:3px solid var(--err);border-radius:8px;padding:14px 18px;margin:16px 0}
+.note h3{margin:0 0 8px;font-size:14px}.note ul{margin:6px 0;padding-left:20px}.note li{margin:4px 0;font-size:13px}
+.badge{font-size:10px;padding:1px 6px;border-radius:10px}.badge.bad{background:#3d1d1d;color:#ff7b72}.badge.warn{background:#3a3216;color:#e3b341}
+code{background:#0c1117;padding:1px 5px;border-radius:4px;font-size:12px;color:#ffa657}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Zalp1-Audit-2026-07-25.html">&larr; Zalp1-Audit-2026-07-25</a> · <a href="n8n-Robots-Audit.html">n8n-Robots-Audit &rarr;</a></span></div><div class=wrap>
+<h1>n8n Automation Stack — операционный аудит</h1>
+<div class=sub>https://n8n.palo-alto.ai · v2.14.2 · окно логов 5–15 июня 2026 (~10 дней, лимит логов n8n 10k) · агентный движок за Platinum CRM</div>
+<div class=kpis>
+<div class=kpi><div class=v>89</div><div class=l>Workflows</div></div>
+<div class="kpi ok"><div class=v>71</div><div class=l>Активных</div></div>
+<div class=kpi><div class=v>18</div><div class=l>Спящих</div></div>
+<div class=kpi><div class=v>10,004</div><div class=l>Выполнений (10д)</div></div>
+<div class="kpi err"><div class=v>8</div><div class=l>С ошибками</div></div>
+<div class=kpi><div class=v>21</div><div class=l>Webhooks</div></div>
+<div class=kpi><div class=v>15</div><div class=l>По расписанию</div></div>
+</div>
+<div class=panels>
+<div class=panel><h3>🔥 Чаще всего используется (за 10 дней)</h3><div class=urow><span class=uname>CHARM CRM Main Agent</span><div class=ub><span style="width:100%;background:#3fb950"></span></div><span class=ucnt>4155</span></div><div class=urow><span class=uname>LobsterDAO Translation</span><div class=ub><span style="width:70%;background:#3fb950"></span></div><span class=ucnt>2901</span></div><div class=urow><span class=uname>Personal Audio Summary</span><div class=ub><span style="width:35%;background:#f85149"></span></div><span class=ucnt>1435 · 2err</span></div><div class=urow><span class=uname>Eliza AI Agent TG bot</span><div class=ub><span style="width:15%;background:#f85149"></span></div><span class=ucnt>623 · 1err</span></div><div class=urow><span class=uname>aaapad chat agent</span><div class=ub><span style="width:4%;background:#3fb950"></span></div><span class=ucnt>164</span></div><div class=urow><span class=uname>aaapad longevity agent</span><div class=ub><span style="width:4%;background:#3fb950"></span></div><span class=ucnt>162</span></div><div class=urow><span class=uname>CHARM CRM Inner Agent</span><div class=ub><span style="width:4%;background:#3fb950"></span></div><span class=ucnt>159</span></div><div class=urow><span class=uname>Gitbook Kira support bot</span><div class=ub><span style="width:3%;background:#f85149"></span></div><span class=ucnt>144 · 16err</span></div><div class=urow><span class=uname>Audio to text flow</span><div class=ub><span style="width:3%;background:#f85149"></span></div><span class=ucnt>90 · 1err</span></div><div class=urow><span class=uname>Youtube to text</span><div class=ub><span style="width:3%;background:#3fb950"></span></div><span class=ucnt>44</span></div><div class=urow><span class=uname>BD in Web3 Summary</span><div class=ub><span style="width:3%;background:#f85149"></span></div><span class=ucnt>20 · 1err</span></div><div class=urow><span class=uname>Lobster DAO Summary</span><div class=ub><span style="width:3%;background:#3fb950"></span></div><span class=ucnt>20</span></div></div>
+<div class=panel><h3>🔴 Ошибки — почему</h3><ul style="margin:0;padding-left:18px"><li><b>Gitbook Kira support bot</b> <span class="badge bad">16×</span> — Postgres-память <code>Kira Chat Memory1</code> валится (11% запусков). Агент жив, ломается слой памяти.</li><li><b>Events Posting</b> <span class="badge bad">10×</span> — Python-нода: <code>name '_input' is not defined</code> — баг в коде. <b>100% падений</b>, каждый запуск (10/10).</li><li><b>Personal Audio Summary</b> <span class="badge warn">2×</span> — <code>OpenAI: connection aborted</code> 2 из 1435 (0.1%) — кратковременный сбой OpenAI, не баг.</li><li><b>Channel list reading and summary</b> <span class="badge warn">2×</span> — LLM <code>Text Classifier: Service unavailable</code> 503 — транзиентно. → включить авто-retry.</li><li><b>Eliza AI Agent TG bot</b> <span class="badge warn">1×</span> — <code>Send voice transcription: Bad request</code> 1 раз — редкая ошибка параметров Telegram.</li><li><b>Audio to text flow</b> <span class="badge warn">1×</span> — <code>Send voice transcription: Bad request</code> 1 раз — редко.</li><li><b>BD in Web3 Summary</b> <span class="badge warn">1×</span> — <code>reading 'messages' undefined</code> 1 раз — пустой источник (edge-case).</li><li><b>Talk back bot v2</b> <span class="badge warn">1×</span> — <code>Telegram1: Bad request</code> 1 раз — редкая ошибка параметров.</li></ul></div>
+</div>
+<div class=note><h3>⚙️ Что разобрать (кроме ошибок)</h3><ul>
+<li><b>Codex cron</b> — активен с расписанием «каждую 1 мин», но <b>0 запусков</b> за 10 дней (должно быть ~14k) → молча НЕ срабатывает.</li>
+<li><b>aaaZeroInbound (+DEV)</b> — активные Telegram-триггеры, <b>0 запусков</b> → боты не получают сообщения (токен/подключение); при этом Main Agent (опрос Mongo) крутится 413/день.</li>
+<li><b>Простаивают активные боты</b>: Calories counter, AI vocabulary, Number verification, MTProto Telegram (1 запуск с 2025), Talk back bot v2 (стоп с 11 июня).</li>
+<li><b>Неаутентифицированные webhook'и</b>: aaapad ×4 каждый, Inner Agent DELETE-эндпоинты · коллизия пути Multi Posting ↔ MTProto.</li>
+<li><b>Дубли DEV/prod активны</b>: aaaZeroInbound, send_msg_to_lead_tool · мусор: mongo test, My workflow, test python node, HH Agent (76 нод спящий).</li>
+<li><b>API-ключ Claude Code → n8n истекает 2026-07-15</b> — пересоздать бессрочный.</li>
+</ul></div>
+<div class=bar id=fbar>
+<button class=on data-f=all>Все (89)</button>
+<button data-f="cl:CHARM CRM">CHARM CRM (39)</button><button data-f="cl:Content/Summary">Content/Summary (11)</button><button data-f="cl:Audio/Media">Audio/Media (8)</button><button data-f="cl:AI Agents">AI Agents (13)</button><button data-f="cl:Dev/RAG/Legacy">Dev/RAG/Legacy (18)</button>
+<button data-f=st:err>🔴 сломано</button><button data-f=st:flaky>🟠 флапает</button><button data-f=st:ok>✅ работает</button><button data-f=st:warn>⚠️ 0 runs</button><button data-f=st:tool>🔧 инстр.</button><button data-f=st:off>💤 спящие</button>
+</div>
+<table id=t><thead><tr><th>Кластер</th><th>Workflow</th><th>Статус</th><th>Запусков</th><th>Ноды</th><th>Триггер</th><th>Сервисы</th><th>Связи</th><th>⚑</th></tr></thead>
+<tbody><tr data-cluster="AI Agents" data-status="ok">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">aaapad chat agent</td>
+<td class="st ok">✅ 164з · last 2026-06-15</td>
+<td class="usg"><div class=ub><span style="width:61%"></span></div><span class=un>164</span></td>
+<td class="num">23</td>
+<td>chatTrigger, webhook, respondToWebhook</td>
+<td class="sub">agent, chat, elevenLabs, embeddingsOpenAi, lmChatOpenAi, memoryBufferWindow, memoryMongoDbChat</td>
+<td class="num"></td>
+<td class="fl">🌐4wh</td></tr><tr data-cluster="AI Agents" data-status="ok">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">aaapad longevity agent</td>
+<td class="st ok">✅ 162з · last 2026-06-15</td>
+<td class="usg"><div class=ub><span style="width:61%"></span></div><span class=un>162</span></td>
+<td class="num">24</td>
+<td>chatTrigger, webhook, respondToWebhook</td>
+<td class="sub">agent, chat, elevenLabs, embeddingsOpenAi, lmChatOpenAi, memoryBufferWindow, memoryMongoDbChat</td>
+<td class="num"></td>
+<td class="fl">🌐4wh</td></tr><tr data-cluster="AI Agents" data-status="tool">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">Eliza Agent Core</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">11</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">agent, embeddingsOpenAi, lmChatOpenAi, memoryPostgresChat, outputParserStructured, toolHttpRequest, toolWorkflow</td>
+<td class="num">→2 ←1</td>
+<td class="fl"></td></tr><tr data-cluster="AI Agents" data-status="flaky">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">Eliza AI Agent TG bot</td>
+<td class="st flaky">🟠 623з / 1 err (0.2%)</td>
+<td class="usg"><div class=ub><span style="width:77%"></span></div><span class=un>623</span></td>
+<td class="num">61</td>
+<td>manualTrigger, telegramTrigger</td>
+<td class="sub">agent, airtable, chainLlm, documentDefaultDataLoader, embeddingsOpenAi, executeWorkflow, extractFromFile</td>
+<td class="num">→5 </td>
+<td class="fl"></td></tr><tr data-cluster="AI Agents" data-status="flaky">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">Gitbook Kira support bot</td>
+<td class="st flaky">🟠 144з / 16 err (11.1%)</td>
+<td class="usg"><div class=ub><span style="width:60%"></span></div><span class=un>144</span></td>
+<td class="num">31</td>
+<td>telegramTrigger</td>
+<td class="sub">agent, airtableTool, embeddingsOpenAi, executeWorkflow, httpRequest, httpRequestTool, lmChatOpenAi</td>
+<td class="num">→2 </td>
+<td class="fl"></td></tr><tr data-cluster="AI Agents" data-status="tool">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">Kira Agent core</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">17</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">agent, airtableTool, embeddingsOpenAi, httpRequest, httpRequestTool, lmChatOpenAi, outputParserStructured</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="AI Agents" data-status="ok">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">MTProto Telegram</td>
+<td class="st ok">✅ 1з · last 2025-04-01</td>
+<td class="usg"><div class=ub><span style="width:8%"></span></div><span class=un>1</span></td>
+<td class="num">32</td>
+<td>webhook, manualTrigger</td>
+<td class="sub">agent, chainLlm, documentDefaultDataLoader, embeddingsOpenAi, extractFromFile, googleDrive, httpRequest</td>
+<td class="num"></td>
+<td class="fl">🌐1wh</td></tr><tr data-cluster="AI Agents" data-status="flaky">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">Talk back bot v2</td>
+<td class="st flaky">🟠 11з / 1 err (9.1%)</td>
+<td class="usg"><div class=ub><span style="width:30%"></span></div><span class=un>11</span></td>
+<td class="num">15</td>
+<td>telegramTrigger, telegramTrigger</td>
+<td class="sub">agent, elevenLabs, lmChatOpenAi, memoryBufferWindow, openAi, splitInBatches, splitOut</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="AI Agents" data-status="tool">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">Tasks assistant</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">18</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">agent, airtable, airtableTool, lmChatOpenAi, memoryBufferWindow, outputParserStructured, toolHttpRequest</td>
+<td class="num">→3 ←2</td>
+<td class="fl"></td></tr><tr data-cluster="AI Agents" data-status="off">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">Codex Agent Chat</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">13</td>
+<td>webhook</td>
+<td class="sub">agent, httpRequest, lmChatOpenAi, noOp, outputParserStructured, toolWorkflow</td>
+<td class="num">→1 </td>
+<td class="fl">🌐1wh</td></tr><tr data-cluster="AI Agents" data-status="off">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">HH Agent</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">76</td>
+<td>webhook, manualTrigger, errorTrigger<br><span class=sub>every 1min</span></td>
+<td class="sub">agent, executeWorkflow, httpRequest, lmChatOpenAi, mongoDb, noOp, openAi</td>
+<td class="num">→6 </td>
+<td class="fl">🌐1wh</td></tr><tr data-cluster="AI Agents" data-status="off">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">Tagging test</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">4</td>
+<td>chatTrigger</td>
+<td class="sub">agent, lmChatOpenAi, memoryBufferWindow</td>
+<td class="num"></td>
+<td class="fl"></td></tr><tr data-cluster="AI Agents" data-status="off">
+<td><span class="cl cl-AI Agents">AI Agents</span></td>
+<td class="nm">Talk back bot</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">10</td>
+<td>telegramTrigger</td>
+<td class="sub">agent, lmChatOpenAi, memoryBufferWindow, openAi, telegram</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Audio/Media" data-status="warn">
+<td><span class="cl cl-Audio">Audio/Media</span></td>
+<td class="nm">AI vocabulary</td>
+<td class="st warn">⚠️ активен, 0 запусков</td>
+<td class="usg"></td>
+<td class="num">70</td>
+<td>telegramTrigger, manualTrigger</td>
+<td class="sub">airtable, chainLlm, convertToFile, extractFromFile, httpRequest, lmChatOpenAi, openAi</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Audio/Media" data-status="flaky">
+<td><span class="cl cl-Audio">Audio/Media</span></td>
+<td class="nm">Audio to text flow</td>
+<td class="st flaky">🟠 90з / 1 err (1.1%)</td>
+<td class="usg"><div class=ub><span style="width:54%"></span></div><span class=un>90</span></td>
+<td class="num">17</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">chainLlm, httpRequest, lmChatOpenAi, openAi, splitInBatches, splitOut, telegram</td>
+<td class="num">←3</td>
+<td class="fl"></td></tr><tr data-cluster="Audio/Media" data-status="ok">
+<td><span class="cl cl-Audio">Audio/Media</span></td>
+<td class="nm">Audio to text flow 11labs</td>
+<td class="st ok">✅ 11з · last 2026-06-13</td>
+<td class="usg"><div class=ub><span style="width:30%"></span></div><span class=un>11</span></td>
+<td class="num">19</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">chainLlm, elevenLabs, httpRequest, lmChatOpenAi, openAi, splitInBatches, splitOut</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="Audio/Media" data-status="warn">
+<td><span class="cl cl-Audio">Audio/Media</span></td>
+<td class="nm">Calories counter</td>
+<td class="st warn">⚠️ активен, 0 запусков</td>
+<td class="usg"></td>
+<td class="num">24</td>
+<td>telegramTrigger</td>
+<td class="sub">agent, extractFromFile, httpRequest, lmChatOpenAi, postgres, telegram</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Audio/Media" data-status="warn">
+<td><span class="cl cl-Audio">Audio/Media</span></td>
+<td class="nm">Number verification</td>
+<td class="st warn">⚠️ активен, 0 запусков</td>
+<td class="usg"></td>
+<td class="num">10</td>
+<td>telegramTrigger</td>
+<td class="sub">agent, lmChatOpenAi, memoryBufferWindow, openAi, telegram</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Audio/Media" data-status="flaky">
+<td><span class="cl cl-Audio">Audio/Media</span></td>
+<td class="nm">Personal Audio Summary</td>
+<td class="st flaky">🟠 1435з / 2 err (0.1%)</td>
+<td class="usg"><div class=ub><span style="width:87%"></span></div><span class=un>1435</span></td>
+<td class="num">51</td>
+<td>telegramTrigger</td>
+<td class="sub">agent, chainLlm, convertToFile, elevenLabs, httpRequest, lmChatOpenAi, mongoDb</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Audio/Media" data-status="ok">
+<td><span class="cl cl-Audio">Audio/Media</span></td>
+<td class="nm">Youtube to text</td>
+<td class="st ok">✅ 44з · last 2026-06-15</td>
+<td class="usg"><div class=ub><span style="width:46%"></span></div><span class=un>44</span></td>
+<td class="num">26</td>
+<td>telegramTrigger, manualTrigger</td>
+<td class="sub">convertToFile, httpRequest, mongoDb, splitInBatches, splitOut, telegram</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Audio/Media" data-status="off">
+<td><span class="cl cl-Audio">Audio/Media</span></td>
+<td class="nm">audio to text</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">6</td>
+<td>telegramTrigger</td>
+<td class="sub">chainLlm, httpRequest, lmChatOpenAi, openAi, telegram</td>
+<td class="num"></td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="warn">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">aaaZeroInbound</td>
+<td class="st warn">⚠️ активен, 0 запусков</td>
+<td class="usg"></td>
+<td class="num">100</td>
+<td>telegramTrigger</td>
+<td class="sub">agent, embeddingsOpenAi, executeWorkflow, extractFromFile, httpRequest, lmChatOpenAi, modelSelector</td>
+<td class="num">→2 </td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="CHARM CRM" data-status="warn">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">aaaZeroInbound DEV</td>
+<td class="st warn">⚠️ активен, 0 запусков</td>
+<td class="usg"></td>
+<td class="num">81</td>
+<td>telegramTrigger</td>
+<td class="sub">agent, embeddingsOpenAi, executeWorkflow, extractFromFile, httpRequest, lmChatOpenAi, modelSelector</td>
+<td class="num">→3 </td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">add_remove_tag_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">3</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">approve_lead_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">5</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest</td>
+<td class="num">←2</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">approve_request_superviser_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">7</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest, mongoDb</td>
+<td class="num">←2</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">ask_superviser_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">4</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest, mongoDb</td>
+<td class="num">←2</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">autotag_lead_charm_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">19</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">chainLlm, httpRequest, lmChatOpenAi, mongoDb, outputParserStructured</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">calls_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">13</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">agent, lmChatOpenAi, mongoDb, mongoDbTool, toolWorkflow</td>
+<td class="num">→3 ←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="ok">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">CHARM CRM Inner Agent</td>
+<td class="st ok">✅ 159з · last 2026-06-15</td>
+<td class="usg"><div class=ub><span style="width:61%"></span></div><span class=un>159</span></td>
+<td class="num">69</td>
+<td>webhook, respondToWebhook, webhook</td>
+<td class="sub">agent, elevenLabs, executeWorkflow, jinaAiTool, lmChatOpenAi, modelSelector, mongoDb</td>
+<td class="num">→20 </td>
+<td class="fl">🌐5wh</td></tr><tr data-cluster="CHARM CRM" data-status="ok">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">CHARM CRM Main Agent</td>
+<td class="st ok">✅ 4155з · last 2026-06-15</td>
+<td class="usg"><div class=ub><span style="width:100%"></span></div><span class=un>4155</span></td>
+<td class="num">70</td>
+<td>webhook, manualTrigger, errorTrigger<br><span class=sub>every 1min</span></td>
+<td class="sub">agent, executeWorkflow, httpRequest, lmChatOpenAi, mongoDb, openAi, outputParserStructured</td>
+<td class="num">→6 </td>
+<td class="fl">🌐1wh</td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">Charm CRM tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">7</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">agent, httpRequestTool, lmChatOpenAi</td>
+<td class="num">←2</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">count_leads_with_tags_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">4</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">create_call_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">6</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">create_newsletter_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">5</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">create_tag_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">6</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">edit_call_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">6</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">edit_newsletter_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">4</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">find_lead_in_crm_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">5</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">mongoDb</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">get_accounts_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">4</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">mongoDb</td>
+<td class="num">←3</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">get_automatic_actions_listing_info_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">2</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub"></td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">get_crm description</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">2</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub"></td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">get_employees_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">4</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">mongoDb</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">get_leads_individual_info_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">3</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">mongoDb</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">get_leads_listing_info_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">2</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub"></td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">get_newsletter_messages_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">5</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">mongoDb</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">get_newsletter_sent_messages_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">3</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">mongoDb</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">get_newsletter_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">6</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">get_newsletters_listing_info_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">2</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub"></td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">get_tags_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">4</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">mongoDb</td>
+<td class="num">←2</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">newsletters_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">15</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">agent, httpRequestTool, lmChatOpenAi, mongoDb, toolWorkflow</td>
+<td class="num">→5 ←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">reject_lead_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">2</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest</td>
+<td class="num">←2</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">send_message_in_crm_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">8</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest, mongoDb</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">send_message_to_lead_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">13</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">chainLlm, httpRequest, lmChatOpenAi, noOp, outputParserStructured, splitInBatches, splitOut</td>
+<td class="num">←2</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">send_msg_to_lead_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">16</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">chainLlm, httpRequest, lmChatOpenAi, noOp, outputParserStructured, postgres, splitInBatches</td>
+<td class="num">←2</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">send_msg_to_lead_tool DEV</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">17</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">chainLlm, httpRequest, lmChatOpenAi, noOp, outputParserStructured, postgres, splitInBatches</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">Tag lead tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">15</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">chainLlm, httpRequest, lmChatOpenAi, mongoDb, outputParserStructured</td>
+<td class="num">←2</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">Unassign lead</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">3</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">mongoDb</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">update_lead_info_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">4</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">mongoDb</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="CHARM CRM" data-status="tool">
+<td><span class="cl cl-CHARM CRM">CHARM CRM</span></td>
+<td class="nm">upsert_chat_template_tool</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">3</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">mongoDb</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="Content/Summary" data-status="flaky">
+<td><span class="cl cl-Content">Content/Summary</span></td>
+<td class="nm">BD in Web3 Summary</td>
+<td class="st flaky">🟠 20з / 1 err (5.0%)</td>
+<td class="usg"><div class=ub><span style="width:37%"></span></div><span class=un>20</span></td>
+<td class="num">56</td>
+<td>manualTrigger, scheduleTrigger, scheduleTrigger<br><span class=sub>{&quot;triggerAtMinute&quot;: 1}; {&quot;triggerAtMinute&quot;: 5}</span></td>
+<td class="sub">chainLlm, convertToFile, httpRequest, lmChatOpenAi, mongoDb, noOp, splitInBatches</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Content/Summary" data-status="ok">
+<td><span class="cl cl-Content">Content/Summary</span></td>
+<td class="nm">Canton Network Summary</td>
+<td class="st ok">✅ 4з · last 2026-06-15</td>
+<td class="usg"><div class=ub><span style="width:19%"></span></div><span class=un>4</span></td>
+<td class="num">56</td>
+<td>manualTrigger, scheduleTrigger, scheduleTrigger<br><span class=sub>weekly day=[1] 3:01; weekly day=[1] 3:05</span></td>
+<td class="sub">chainLlm, convertToFile, httpRequest, lmChatOpenAi, mongoDb, noOp, splitInBatches</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Content/Summary" data-status="flaky">
+<td><span class="cl cl-Content">Content/Summary</span></td>
+<td class="nm">Channel list reading and summary</td>
+<td class="st flaky">🟠 10з / 2 err (20.0%)</td>
+<td class="usg"><div class=ub><span style="width:29%"></span></div><span class=un>10</span></td>
+<td class="num">25</td>
+<td>manualTrigger, scheduleTrigger<br><span class=sub>{&quot;triggerAtHour&quot;: 2, &quot;triggerAtMinute&quot;: 2}</span></td>
+<td class="sub">dataTable, httpRequest, lmChatOpenAi, mongoDb, splitInBatches, splitOut, stickyNote</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Content/Summary" data-status="err">
+<td><span class="cl cl-Content">Content/Summary</span></td>
+<td class="nm">Events Posting</td>
+<td class="st err">🔴 10з / 10 err (100.0%)</td>
+<td class="usg"><div class=ub><span style="width:29%"></span></div><span class=un>10</span></td>
+<td class="num">16</td>
+<td>manualTrigger, scheduleTrigger<br><span class=sub>{&quot;triggerAtHour&quot;: 10}</span></td>
+<td class="sub">httpRequest, splitInBatches, splitOut</td>
+<td class="num"></td>
+<td class="fl"></td></tr><tr data-cluster="Content/Summary" data-status="ok">
+<td><span class="cl cl-Content">Content/Summary</span></td>
+<td class="nm">Everyday group posting</td>
+<td class="st ok">✅ 10з · last 2026-06-15</td>
+<td class="usg"><div class=ub><span style="width:29%"></span></div><span class=un>10</span></td>
+<td class="num">13</td>
+<td>manualTrigger, scheduleTrigger<br><span class=sub>{&quot;triggerAtHour&quot;: 3}</span></td>
+<td class="sub">dataTable, httpRequest, splitInBatches, telegram</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Content/Summary" data-status="ok">
+<td><span class="cl cl-Content">Content/Summary</span></td>
+<td class="nm">Lobster DAO Summary</td>
+<td class="st ok">✅ 20з · last 2026-06-15</td>
+<td class="usg"><div class=ub><span style="width:37%"></span></div><span class=un>20</span></td>
+<td class="num">67</td>
+<td>manualTrigger, scheduleTrigger, scheduleTrigger<br><span class=sub>{&quot;triggerAtMinute&quot;: 1}; {&quot;triggerAtMinute&quot;: 5}</span></td>
+<td class="sub">chainLlm, convertToFile, httpRequest, lmChatOpenAi, mongoDb, noOp, splitInBatches</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Content/Summary" data-status="ok">
+<td><span class="cl cl-Content">Content/Summary</span></td>
+<td class="nm">LobsterDAO Translation</td>
+<td class="st ok">✅ 2901з · last 2026-06-15</td>
+<td class="usg"><div class=ub><span style="width:96%"></span></div><span class=un>2901</span></td>
+<td class="num">19</td>
+<td>webhook, scheduleTrigger<br><span class=sub>every 1min</span></td>
+<td class="sub">chainLlm, httpRequest, lmChatOpenAi, mongoDb, openAi, splitInBatches</td>
+<td class="num"></td>
+<td class="fl">🌐1wh</td></tr><tr data-cluster="Content/Summary" data-status="ok">
+<td><span class="cl cl-Content">Content/Summary</span></td>
+<td class="nm">Telegram Chats Summary</td>
+<td class="st ok">✅ 20з · last 2026-06-15</td>
+<td class="usg"><div class=ub><span style="width:37%"></span></div><span class=un>20</span></td>
+<td class="num">49</td>
+<td>scheduleTrigger, scheduleTrigger, manualTrigger<br><span class=sub>{&quot;triggerAtMinute&quot;: 1}; {&quot;triggerAtMinute&quot;: 5}</span></td>
+<td class="sub">chainLlm, dataTable, httpRequest, lmChatOpenAi, mongoDb, noOp, splitInBatches</td>
+<td class="num"></td>
+<td class="fl"></td></tr><tr data-cluster="Content/Summary" data-status="off">
+<td><span class="cl cl-Content">Content/Summary</span></td>
+<td class="nm">BD in Web3 Summary</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">54</td>
+<td>manualTrigger, scheduleTrigger, scheduleTrigger<br><span class=sub>{&quot;triggerAtMinute&quot;: 1}; {&quot;triggerAtMinute&quot;: 5}</span></td>
+<td class="sub">chainLlm, convertToFile, httpRequest, lmChatOpenAi, mongoDb, noOp, splitInBatches</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Content/Summary" data-status="off">
+<td><span class="cl cl-Content">Content/Summary</span></td>
+<td class="nm">Lobster Daily Translation</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">11</td>
+<td>webhook</td>
+<td class="sub">chainLlm, httpRequest, lmChatOpenAi, openAi</td>
+<td class="num"></td>
+<td class="fl">🌐1wh</td></tr><tr data-cluster="Content/Summary" data-status="off">
+<td><span class="cl cl-Content">Content/Summary</span></td>
+<td class="nm">Multi Posting Telegram</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">13</td>
+<td>webhook</td>
+<td class="sub">chainLlm, httpRequest, lmChatOpenAi, splitInBatches, splitOut</td>
+<td class="num"></td>
+<td class="fl">🌐1wh</td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="warn">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">Codex cron</td>
+<td class="st warn">⚠️ активен, 0 запусков</td>
+<td class="usg"></td>
+<td class="num">34</td>
+<td>manualTrigger, scheduleTrigger, errorTrigger<br><span class=sub>every 1min</span></td>
+<td class="sub">airtable, airtop, httpRequest, noOp, telegram</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="tool">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">Create task in airtable</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">10</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">extractFromFile, httpRequest, telegram</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="tool">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">Edit PR in Codex</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">24</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">airtable, airtop, httpRequest</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="tool">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">Get tasks airtable</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">5</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">airtable</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="ok">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">Gitbook update</td>
+<td class="st ok">✅ 10з · last 2026-06-15</td>
+<td class="usg"><div class=ub><span style="width:29%"></span></div><span class=un>10</span></td>
+<td class="num">19</td>
+<td>manualTrigger, scheduleTrigger<br><span class=sub>{}</span></td>
+<td class="sub">documentDefaultDataLoader, embeddingsOpenAi, httpRequest, postgres, splitInBatches, splitOut, textSplitterRecursiveCharacterTextSplitter</td>
+<td class="num"></td>
+<td class="fl"></td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="warn">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">Github PR webhook</td>
+<td class="st warn">⚠️ активен, 0 запусков</td>
+<td class="usg"></td>
+<td class="num">6</td>
+<td>webhook</td>
+<td class="sub">airtable, telegram</td>
+<td class="num"></td>
+<td class="fl">🌐1wh 📌tg-id</td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="warn">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">PG RAG</td>
+<td class="st warn">⚠️ активен, 0 запусков</td>
+<td class="usg"></td>
+<td class="num">6</td>
+<td>formTrigger</td>
+<td class="sub">documentDefaultDataLoader, embeddingsOpenAi, extractFromFile, textSplitterRecursiveCharacterTextSplitter, vectorStorePGVector</td>
+<td class="num"></td>
+<td class="fl"></td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="tool">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">Update task in airtable</td>
+<td class="st tool">🔧 инструмент (не логир.)</td>
+<td class="usg"></td>
+<td class="num">5</td>
+<td>executeWorkflowTrigger</td>
+<td class="sub">httpRequest</td>
+<td class="num">←1</td>
+<td class="fl"></td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="off">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">add employees to crm</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">17</td>
+<td>manualTrigger</td>
+<td class="sub">mongoDb, splitInBatches, splitOut, telegram</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="off">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">Check if calls in crm</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">14</td>
+<td>manualTrigger, scheduleTrigger<br><span class=sub>{&quot;triggerAtHour&quot;: 2}</span></td>
+<td class="sub">httpRequest, mongoDb, splitInBatches, splitOut</td>
+<td class="num"></td>
+<td class="fl"></td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="off">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">crm export to google</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">11</td>
+<td>manualTrigger</td>
+<td class="sub">convertToFile, mongoDb, splitInBatches, telegram</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="off">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">crm linkedin search and export</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">4</td>
+<td>manualTrigger</td>
+<td class="sub">mongoDb, telegram</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="off">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">Export dialogues</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">10</td>
+<td>manualTrigger</td>
+<td class="sub">convertToFile, mongoDb, telegram</td>
+<td class="num"></td>
+<td class="fl">📌tg-id</td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="off">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">Export tasks to text</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">7</td>
+<td>manualTrigger</td>
+<td class="sub">airtable</td>
+<td class="num"></td>
+<td class="fl"></td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="off">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">Get Card Balance</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">9</td>
+<td>manualTrigger, scheduleTrigger<br><span class=sub>{&quot;triggerAtHour&quot;: 13}</span></td>
+<td class="sub">httpRequest</td>
+<td class="num"></td>
+<td class="fl"></td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="off">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">mongo test</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">2</td>
+<td>manualTrigger</td>
+<td class="sub">mongoDb</td>
+<td class="num"></td>
+<td class="fl"></td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="off">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">My workflow</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">6</td>
+<td>manualTrigger</td>
+<td class="sub"></td>
+<td class="num"></td>
+<td class="fl"></td></tr><tr data-cluster="Dev/RAG/Legacy" data-status="off">
+<td><span class="cl cl-Dev">Dev/RAG/Legacy</span></td>
+<td class="nm">test python node</td>
+<td class="st off">💤 спящий</td>
+<td class="usg"></td>
+<td class="num">2</td>
+<td>chatTrigger</td>
+<td class="sub"></td>
+<td class="num"></td>
+<td class="fl"></td></tr></tbody></table>
+<div class=sub style=margin-top:16px>Конспект: _n8n-Automation-Audit-MOC · сырьё: _imports\n8n\ (10,004 выполнений разобрано, 0 токенов)</div>
+</div><script>
+const bar=document.getElementById('fbar'),rows=[...document.querySelectorAll('#t tbody tr')];
+bar.onclick=e=>{if(e.target.tagName!='BUTTON')return;[...bar.children].forEach(b=>b.classList.remove('on'));e.target.classList.add('on');
+const f=e.target.dataset.f;rows.forEach(r=>{let show=f=='all'||(f.startsWith('cl:')&&r.dataset.cluster==f.slice(3))||(f.startsWith('st:')&&r.dataset.status==f.slice(3));r.style.display=show?'':'none';});};
+// sortable: Запусков (3) and Ноды (4)
+function sortCol(i){const tb=document.querySelector('#t tbody');[...rows].sort((a,b)=>(parseInt(b.children[i].textContent)||0)-(parseInt(a.children[i].textContent)||0)).forEach(r=>tb.appendChild(r));}
+document.querySelectorAll('#t th')[3].onclick=()=>sortCol(3);
+document.querySelectorAll('#t th')[4].onclick=()=>sortCol(4);
+</script></body></html>

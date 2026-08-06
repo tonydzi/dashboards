@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Маяк — миграция «полная копия хаба»</title>
+<style>
+  :root{
+    --bg:#0e1116; --card:#171b22; --card2:#1d222b; --line:#2a3140;
+    --txt:#e6e9ef; --dim:#9aa4b2; --acc:#e0b064; --acc2:#5ea0ff;
+    --done:#3fb96b; --todo:#e0b064; --hub:#8a93a5; --warn:#e8623d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .wrap{max-width:960px;margin:0 auto;padding:24px 16px 80px}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 20px}
+  .frame{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 18px}
+  .frame h2{margin:0 0 8px;font-size:16px}
+  .frame p{margin:6px 0;color:var(--dim)}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0 22px;font-size:13px;color:var(--dim)}
+  .legend b{color:var(--txt)}
+  .phase{margin:26px 0 8px}
+  .phase h2{font-size:19px;margin:0 0 2px}
+  .phase .note{color:var(--dim);font-size:13px;margin:0 0 12px}
+  .grid{display:grid;grid-template-columns:1fr;gap:8px}
+  .item{background:var(--card);border:1px solid var(--line);border-left-width:4px;border-radius:9px;padding:10px 14px;display:flex;gap:12px;align-items:flex-start}
+  .item .n{color:var(--dim);font-variant-numeric:tabular-nums;min-width:26px;font-size:13px;padding-top:1px}
+  .item .body{flex:1}
+  .item .t{font-weight:600}
+  .item .d{color:var(--dim);font-size:13px;margin-top:2px}
+  .b{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap;margin-top:1px}
+  .st-done{border-left-color:var(--done)} .bd{background:rgba(63,185,107,.15);color:var(--done)}
+  .st-todo{border-left-color:var(--todo)} .bt{background:rgba(224,176,100,.15);color:var(--todo)}
+  .st-hub{border-left-color:var(--hub)}  .bh{background:rgba(138,147,165,.15);color:var(--hub)}
+  .st-warn{border-left-color:var(--warn)} .bw{background:rgba(232,98,61,.16);color:var(--warn)}
+  .pri{font-size:11px;font-weight:700;color:var(--acc);border:1px solid rgba(224,176,100,.4);border-radius:6px;padding:1px 7px;margin-left:8px}
+  .foot{color:var(--dim);font-size:12px;margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+  code{background:#0b0e13;border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:12.5px;color:var(--acc)}
+  .kpi{display:flex;gap:20px;flex-wrap:wrap;margin:2px 0 0}
+  .kpi div{font-size:13px;color:var(--dim)}
+  .kpi b{font-size:20px;color:var(--txt);display:block}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Mayak-Health-2026-07-07.html">&larr; Mayak-Health-2026-07-07</a> · <a href="Mayak-Plan.html">Mayak-Plan &rarr;</a></span></div>
+<div class="wrap">
+  <h1>🚢💡 Маяк — миграция «полная копия хаба»</h1>
+  <p class="sub">Аудит + план. Обновлено 2026-07-05 · нода <code>fleet-anchor</code> (Hetzner CPX62, 167.233.122.145) · до отъезда Антона 17 июля</p>
+
+  <div class="frame">
+    <h2>Честная рамка (не «100% клон», а по-умному)</h2>
+    <p>Маяк = копия <b>мозга и инфраструктуры</b> (волт, правила, RAG, бэкапы, дашборды, всегда-вкл, телефон). «Краевой» слой, завязанный на <b>домашний португальский IP и живые сессии</b> (Telegram, WhatsApp, Facebook, аутрич-отправка) — <b>остаётся на хабе</b>: с датацентр-IP эти каналы палятся и рвутся. Если хаб умрёт, пока тебя нет — мозг, волт, recall и телефон живут на Маяке; деградирует только IP-краевое.</p>
+    <div class="kpi">
+      <div><b>39</b>✅ уже боевое</div>
+      <div><b>1</b>⚠️ частично · <b>6</b>🏠 на хабе · <b>~2</b>⏳ осталось</div>
+      <div><b>6</b>🏠 остаётся дома</div>
+      <div><b>2</b>⚠️ чинить</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><b class="bd b">✅ done</b></span> уже работает на Маяке ·
+    <span><b class="bt b">⏳ to-do</b></span> поднять ·
+    <span><b class="bh b">🏠 hub</b></span> остаётся на хабе (IP/идентичность) ·
+    <span><b class="bw b">⚠️ fix</b></span> есть проблема ·
+    <span class="pri">🔴 приоритет</span>
+  </div>
+
+  <!-- PHASE 0 -->
+  <div class="phase"><h2>Фаза 0 — Фундамент ✅ БОЕВОЕ</h2><p class="note">Сделано ночью 4-5 июля.</p></div>
+  <div class="grid">
+    <div class="item st-done"><div class="n">1</div><div class="body"><div class="t">VPS куплен + захаржен <span class="b bd">✅</span></div><div class="d">UFW · sshd key-only · fail2ban · авто-патчи · restic. SSH по ключу.</div></div></div>
+    <div class="item st-done"><div class="n">2</div><div class="body"><div class="t">Tailscale — приватная сеть <span class="b bd">✅</span></div><div class="d">100.74.43.25, ~44ms до Лиссабона.</div></div></div>
+    <div class="item st-done"><div class="n">3</div><div class="body"><div class="t">Syncthing v2 — волт + machine-bus <span class="b bd">✅</span></div><div class="d">Anton-Knowledge 177k файлов, 100% синк, state=idle.</div></div></div>
+    <div class="item st-done"><div class="n">4</div><div class="body"><div class="t">Permission-мост (anton читает волт) <span class="b bd">✅</span></div><div class="d">setfacl u:anton:x /root — Claude Code видит файлы.</div></div></div>
+    <div class="item st-done"><div class="n">5</div><div class="body"><div class="t">Claude Code Opus 4.8 / Max, в папке волта <span class="b bd">✅</span></div><div class="d">Думает по подписке Max, читает заметки end-to-end.</div></div></div>
+    <div class="item st-done"><div class="n">6</div><div class="body"><div class="t">Remote Control с телефона <span class="b bd">✅</span></div><div class="d">**********department@gmail.com — тот же аккаунт, что на телефоне.</div></div></div>
+    <div class="item st-done"><div class="n">7</div><div class="body"><div class="t">Самовосстановление <span class="b bd">✅</span></div><div class="d"><code>mayak_rc.sh</code> + @***oot + сторож 5мин + linger. Переживёт перезагрузку и краш.</div></div></div>
+    <div class="item st-done"><div class="n">8</div><div class="body"><div class="t">Witness presence-stamp <span class="b bd">✅</span></div><div class="d">cron /20мин пишет «я живой» флоту.</div></div></div>
+    <div class="item st-done"><div class="n">9</div><div class="body"><div class="t">Playbook деплоя ноды <span class="b bd">✅</span></div><div class="d">deploy_fleet_node.sh + RUNBOOK — новая нода за ~15 мин.</div></div></div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase"><h2>Фаза 1 — МОЗГ <span class="pri">🔴 приоритет №1</span></h2><p class="note">Чтобы телефонный Маяк был ТВОЙ Claude (правила/ELI5/сигналы), а не ванильный. Сейчас <b>их нет</b> на Маяке.</p></div>
+  <div class="grid">
+    <div class="item st-done"><div class="n">10</div><div class="body"><div class="t">~/.claude/CLAUDE.md — глобальные правила <span class="b bd">✅</span></div><div class="d">Стоит + ПРОВЕРЕН: канон отвечает в телефонной сессии (заголовок Маяк-ноды + полный канон хаба).</div></div></div>
+    <div class="item st-done"><div class="n">11</div><div class="body"><div class="t">MEMORY.md + memory/*.md (память) <span class="b bd">✅</span></div><div class="d">291 файл памяти + MEMORY.md в ~/.claude/projects/-root-Obsidian-Anton-Knowledge/memory.</div></div></div>
+    <div class="item st-done"><div class="n">12</div><div class="body"><div class="t">Skills (/skills) <span class="b bd">✅</span></div><div class="d">80 скиллов скопированы; в CLAUDE.md пометка «пути E:/C: = хаб, корни из machine.env».</div></div></div>
+    <div class="item st-warn"><div class="n">13</div><div class="body"><div class="t">Commands + hooks <span class="b bw">⚠️ частично</span></div><div class="d">162 скрипта ~/.claude/scripts скопированы. Хуки хаба = Windows .cmd → на Маяк не тащим, Linux-хуки сделаем по мере надобности.</div></div></div>
+    <div class="item st-done"><div class="n">14</div><div class="body"><div class="t">settings.json (пер-машинно, аккуратно) <span class="b bd">✅</span></div><div class="d">Linux-версия: env-блок с путями Маяка + bypassPermissions. Старый сохранён .bak.</div></div></div>
+    <div class="item st-done"><div class="n">15</div><div class="body"><div class="t">Механизм бэкапа ~/.claude (git ~15мин) <span class="b bd">✅</span></div><div class="d">git-репо в ~/.claude + cron-автокоммит каждый час (:25). Память трекается (298 файлов).</div></div></div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase"><h2>Фаза 2 — RAG / «рендерка» <span class="pri">🔴 приоритет №2</span></h2><p class="note">Семантический recall через OpenAI. На хабе работает; на Маяке — нет (нет _imports, индекса, openai/numpy, ключа).</p></div>
+  <div class="grid">
+    <div class="item st-done"><div class="n">16</div><div class="body"><div class="t">Синк папки _imports <span class="b bd">✅</span></div><div class="d">Субсет движка (5 скриптов + _paths + machine.env). Полный синк не нужен: Маяк реиндексирует сам.</div></div></div>
+    <div class="item st-done"><div class="n">17</div><div class="body"><div class="t">RAG-индекс (OpenAI-large / e5) <span class="b bd">✅</span></div><div class="d">_brain_oai.npy (5704 чанка, dim=3072) + мета с ЛИНУКС-путями. Бэкенд OpenAI-large.</div></div></div>
+    <div class="item st-done"><div class="n">18</div><div class="body"><div class="t">OpenAI API key <span class="b bd">✅</span></div><div class="d">openai.env в ~/secrets (600). brain_ask читает через SECRETS_DIR.</div></div></div>
+    <div class="item st-done"><div class="n">19</div><div class="body"><div class="t">Python-зависимости <span class="b bd">✅</span></div><div class="d">venv: numpy 2.5.1 + torch-cpu + sentence-transformers 5.6.0 (Python 3.14). Реранкер на CPU работает.</div></div></div>
+    <div class="item st-done"><div class="n">20</div><div class="body"><div class="t">Тест brain_ask / <code>/ask</code> на Маяке <span class="b bd">✅</span></div><div class="d">Живой тест: «что решили про OpenAI embeddings» → топ-1 = свежий DR 04.07. 12 хитов, реранкер CPU.</div></div></div>
+    <div class="item st-done"><div class="n">21</div><div class="body"><div class="t">SQLite факт-базы <span class="b bd">✅</span></div><div class="d">leads.db (920МБ, 33 табл.) + names.db → Маяк, integrity ok. Снапшот 05.07; освежение с хаба = TODO (пока хаб жив).</div></div></div>
+    <div class="item st-done"><div class="n">22</div><div class="body"><div class="t">Реиндекс-рутина (ночью) <span class="b bd">✅</span></div><div class="d">cron 03:10 UTC (04:10 Лиссабон). Проверен вручную: reuse=5657 new=47, 11 сек.</div></div></div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase"><h2>Фаза 3 — Секреты и доступы</h2><p class="note">Только нужный субсет, безопасно, вне волта/always-loaded.</p></div>
+  <div class="grid">
+    <div class="item st-done"><div class="n">23</div><div class="body"><div class="t">secrets store (субсет) <span class="b bd">✅</span></div><div class="d">openai + mail_bus + github + google_bb в ~/secrets, chmod 600.</div></div></div>
+    <div class="item st-done"><div class="n">24</div><div class="body"><div class="t">Headless токен биллит платный API <span class="b bd">✅</span></div><div class="d">ПРОВЕРЕНО: claude auth status = claude.ai / subscription MAX. Cron не читает .bashrc → платный токен не подхватится.</div></div></div>
+    <div class="item st-done"><div class="n">25</div><div class="body"><div class="t">GitHub PAT <span class="b bd">✅</span></div><div class="d">github.env на Маяке.</div></div></div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="phase"><h2>Фаза 4 — Автоматизация (переносимый субсет)</h2><p class="note">Мозг/волт-рутины → на Маяк (всегда-вкл). TG-зависимые остаются на хабе (см. ниже).</p></div>
+  <div class="grid">
+    <div class="item st-done"><div class="n">26</div><div class="body"><div class="t">vault-janitor-nightly (уборщик волта) <span class="b bt">⏳</span></div></div></div>
+    <div class="item st-done"><div class="n">27</div><div class="body"><div class="t">preference-sweep-daily <span class="b bd">✅</span></div><div class="d">DONE 07.07: rule_scan.py + wrapper mayak_pref_sweep.sh, cron 03:20 UTC. Тест: 45 сессий, 4 кандидата, дайджест записан.</div></div></div>
+    <div class="item st-todo"><div class="n">28</div><div class="body"><div class="t">near-dup dedup service <span class="b bt">⏳</span></div></div></div>
+    <div class="item st-done"><div class="n">29</div><div class="body"><div class="t">alpha miners (weekly) <span class="b bd">✅</span></div><div class="d">DONE 07.07: 10 майнеров /_imports/alpha, cron Вс 03:40 UTC. Тест: 9/10 зелёные (88с); leadsignal_scan исключён — нужна TG dm_messages.db, её нет на Маяке.</div></div></div>
+    <div class="item st-done"><div class="n">30</div><div class="body"><div class="t">skill-gap (weekly) <span class="b bd">✅</span></div><div class="d">DONE 07.07: claude -p + task skill-gap.md, cron Вс 04:00 UTC. Тест: Sonnet выдал 3-gap анализ, дашборд Skill-Gap-Audit-MAYAK.html (host-суффикс, не затирает хаб).</div></div></div>
+    <div class="item st-done"><div class="n">31</div><div class="body"><div class="t">memory index guard <span class="b bt">⏳</span></div></div></div>
+    <div class="item st-done"><div class="n">32</div><div class="body"><div class="t">system-architect scan (/arch) <span class="b bd">✅</span></div><div class="d">DONE 07.07: /_imports/arch, cron 03:50 UTC. Тест: score 100/100, 10 проверок зелёные. Пишет System-Health-MAYAK.html (host-суффикс). RED-алерты через machine-bus (не трогает ntfy-полосу). build_arch_map исключён (Linux schtasks пуст).</div></div></div>
+    <div class="item st-done"><div class="n">33</div><div class="body"><div class="t">token-spend-watchdog (дубль на Маяке) <span class="b bt">⏳</span></div></div></div>
+    <div class="item st-done"><div class="n">34</div><div class="body"><div class="t">vault backup restic offsite <span class="b bd">✅</span></div><div class="d">DONE 05.07: Storage Box BX11 1TB (€3.20/мес, fsn1, id 609943) куплен ПО API (токен mayak-cc — больше никакого анти-бота). Repo sftp:storagebox:restic, ключ mayak-root, 1-й снапшот f6957f96 = 3.95 GiB / 180612 файлов. Cron 03:40 UTC daily + Вс prune (keep 14d/8w). Локальный /root/restic-repo остаётся.</div></div></div>
+    <div class="item st-done"><div class="n">35</div><div class="body"><div class="t">Syncthing watchdog 5-мин <span class="b bt">⏳</span></div></div></div>
+  </div>
+
+  <!-- STAYS ON HUB -->
+  <div class="phase"><h2>🏠 Остаётся на хабе (домашний PT IP + сессии)</h2><p class="note">Не переносим — с датацентр-IP палятся/рвутся. Маяк отдаёт им результат текстом через шину.</p></div>
+  <div class="grid">
+    <div class="item st-hub"><div class="n">36</div><div class="body"><div class="t">Telegram MCP (4 акка) + все TG-рутины <span class="b bd">✅</span></div><div class="d">syncthing_watchdog.sh cron */5 (+tailscaled). Проверен поломкой: убил службу — воскресла, лог записан.</div></div></div>
+    <div class="item st-hub"><div class="n">37</div><div class="body"><div class="t">WhatsApp (живая сессия) <span class="b bh">🏠</span></div></div></div>
+    <div class="item st-hub"><div class="n">38</div><div class="body"><div class="t">Facebook — посты/тизеры/дневник/ответы <span class="b bh">🏠</span></div><div class="d">браузер + авторская идентичность.</div></div></div>
+    <div class="item st-hub"><div class="n">39</div><div class="body"><div class="t">Outreach-отправка лидам <span class="b bh">🏠</span></div><div class="d">тёплые сессии + IP. Черновики можно готовить на Маяке (гибрид).</div></div></div>
+    <div class="item st-hub"><div class="n">40</div><div class="body"><div class="t">claude.ai-sync (Chrome, account-guard) <span class="b bh">🏠</span></div></div></div>
+    <div class="item st-hub"><div class="n">41</div><div class="body"><div class="t">Gmail/Calendar MCP <span class="b bh">🏠</span></div><div class="d">API-based; читатели можно продублировать на Маяк при желании.</div></div></div>
+  </div>
+
+  <!-- PHASE 5 -->
+  <div class="phase"><h2>Фаза 5 — Флот / консенсус / мониторинг</h2></div>
+  <div class="grid">
+    <div class="item st-warn"><div class="n">42</div><div class="body"><div class="t">FLEET-ANCHOR в консенсусе <span class="b bw">⚠️ частично</span></div><div class="d">07.07: подписывающая идентичность ГОТОВА (ключ + pubkey опубликован в _engine/signers/, fleet_sign.py задеплоен, selftest PASS). Маяк живёт в 03 обеими рельсами. ⏳ Осталось: армин-ролл движка в S6 + запись в consensus.json = эпоха включения кворума (quorum OFF, лидер-driven) — не форсирую вслепую (risk без срочности).</div></div></div>
+    <div class="item st-done"><div class="n">43</div><div class="body"><div class="t">machine_bus inbox-робот (dual-rail приём) <span class="b bd">✅</span></div><div class="d">Живой с 05.07: mayak_inbox_robot.sh, cron */10. Подтверждён 07.07.</div></div></div>
+    <div class="item st-done"><div class="n">44</div><div class="body"><div class="t">heartbeat health с Маяка <span class="b bd">✅</span></div><div class="d">DONE 07.07: mayak_heartbeat.sh пишет health-JSON в machine-bus/_heartbeat/ каждые 20 мин (load/disk/syncthing/tailscale/tunnel/ферма). Синкается флоту. ✅ TG-зеркало в 03 LIVE 07.07 (компакт-heartbeat через живую рельсу Маяка, throttle ~2ч чтобы не спамить; файловый beat 20мин для сторожа-мертвеца).</div></div></div>
+    <div class="item st-done"><div class="n">45</div><div class="body"><div class="t">Дашборды сервятся с Маяка (tailnet) <span class="b bd">✅</span></div><div class="d">DONE 07.07: systemd mayak-dashboards.service (python http.server :8899, enabled, Restart=always), UFW только на tailscale0. Доступ с любого устройства в сети: http://100.74.43.25:8899/ (или http://fleet-anchor:8899/). CHARM-MCP Funnel не тронут. ⭐ Плюс: сторож-мертвец на хабе (Mayak Dead-Man Watchdog, каждые 30 мин) читает heartbeat Маяка → протух/служба/диск → 🚨 в 02 POLICE. Ребут-выживание проверено: все демоны enabled/socket, tunnel linger+Restart, ферма @***oot+*/5.</div></div></div>
+    <div class="item st-done"><div class="n">46</div><div class="body"><div class="t">Task journal → markdown-first на Маяке <span class="b bd">✅</span></div><div class="d">DONE 07.07 (Антон + markdown-first): заметка-на-задачу в волте = источник истины (синкается флоту); индексатор+аудит+дашборд на всегда-вкл Маяке ЕДИНСТВЕННЫМ писателем (root-cron 03:30 UTC), 40 задач. Ночная задача хаба погашена (устраняет sync-conflict). HP17 SQLite → fallback, дельта запрошена по шине.</div></div></div>
+  </div>
+
+  <div class="frame" style="margin-top:26px">
+    <h2>Рекомендованный порядок «потихоньку»</h2>
+    <p><b>1) Мозг (10-15)</b> — сегодня-завтра. Тогда телефонный Маяк = твой Claude с правилами. Самый быстрый видимый скачок.</p>
+    <p><b>2) RAG (16-20)</b> — «рендерка» на телефоне: семантический recall «что я писал про X».</p>
+    <p><b>3) Секреты (23-25) + бэкап (34)</b> — чтобы рутины и восстановление работали.</p>
+    <p><b>4) Переносим мозг-рутины (26-35)</b> по одной, с проверкой, гася дубль на хабе.</p>
+    <p><b>5) Флот (42-46)</b> — витесс, шина, дашборды.</p>
+    <p style="color:var(--acc)">Правило: одну штуку поднял на Маяке → проверил → погасил на хабе. Никогда обе разом, чтобы не задвоить.</p>
+  </div>
+
+  <div class="foot">
+    Источник: живой аудит SSH + инвентарь scheduled-tasks хаба · нода 167.233.122.145 / tailnet 100.74.43.25 ·
+    самовосстановление: <code>/home/anton/mayak_rc.sh</code> + cron + linger ·
+    RC-сессия: список Code в приложении Claude (bbplatinum), имя «Mayak».
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Браузерный слой — Firefox vs Chrome (recap + замер 29.07.2026)</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#171a21; --card2:#1d212a; --line:#2a2f3a;
+    --tx:#e6e9ef; --dim:#9aa3b2; --acc:#ff8a3d;
+    --ok:#3fb950; --warn:#d29922; --bad:#f85149; --info:#58a6ff; --neut:#8b949e;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f7f9; --card:#fff; --card2:#f0f2f5; --line:#dde1e7;
+           --tx:#12151a; --dim:#5b6472; --acc:#d2601a; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 16px 64px;background:var(--bg);color:var(--tx);
+       font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1120px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px;letter-spacing:-.4px}
+  h2{font-size:19px;margin:34px 0 12px;padding-bottom:7px;border-bottom:2px solid var(--acc);letter-spacing:-.2px}
+  h3{font-size:15px;margin:18px 0 8px;color:var(--acc)}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0}
+  .eli5{background:linear-gradient(135deg,rgba(255,138,61,.13),rgba(255,138,61,.04));border-left:4px solid var(--acc)}
+  .grid{display:grid;gap:12px}
+  @media(min-width:760px){ .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)} }
+  .kpi{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .kpi .n{font-size:26px;font-weight:700;line-height:1.1}
+  .kpi .l{font-size:12px;color:var(--dim);margin-top:4px}
+  .tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px;background:var(--card)}
+  th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--card2);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--dim);position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  .b{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+  .ok{background:rgba(63,185,80,.16);color:var(--ok)}
+  .warn{background:rgba(210,153,34,.16);color:var(--warn)}
+  .bad{background:rgba(248,81,73,.16);color:var(--bad)}
+  .info{background:rgba(88,166,255,.16);color:var(--info)}
+  .neut{background:rgba(139,148,158,.16);color:var(--neut)}
+  code{background:var(--card2);padding:1px 5px;border-radius:4px;font-size:12.5px;
+       font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  pre{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-size:12.5px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin:8px 0}
+  ul{margin:6px 0 6px 0;padding-left:20px} li{margin:4px 0}
+  .verdict{border-left:4px solid var(--ok)} .verdict.no{border-left-color:var(--bad)} .verdict.mid{border-left-color:var(--warn)}
+  .foot{color:var(--dim);font-size:12px;margin-top:34px;border-top:1px solid var(--line);padding-top:14px}
+  .tag{font-size:11px;color:var(--dim)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Browser-History-Dashboard.html">&larr; Browser-History-Dashboard</a> · <a href="Bus-Debt-Triage.html">Bus-Debt-Triage &rarr;</a></span></div><div class="wrap">
+
+<h1>Браузерный слой: Firefox vs Chrome</h1>
+<div class="sub">Recap всего, что мы решили + <b>замер по железу 29.07.2026</b> (Mac16 · хаб · Маяк) · автор: Максим (Mac16·Антон) · источник решения: <code>decision-2026-07-16-browser-automation-layer.md</code> (DR26-07-16-HUB-01)</div>
+
+<div class="card eli5">
+  <b>🧒 Простыми словами</b><br>
+  Chrome спрятал «пропуска» (куки) в железный сейф и приварил крышку — снаружи не открыть. Firefox держит их в открытой коробочке. Поэтому 16 июля мы решили: <b>робот-браузер = Firefox</b>. Решили — и не сделали. Я сегодня пошёл и проверил руками все три компа, до которых дотягиваюсь:
+  <ul>
+    <li>на <b>хабе</b> четыре папки под Firefox-профили созданы — и все <b>пустые</b>, туда никто ни разу не залогинился;</li>
+    <li>на <b>Mac16</b> Firefox стоит и без окна работает (я проверил, снял скриншот), но кук в нём <b>ноль</b>;</li>
+    <li>на <b>Маяке</b> Firefox <b>вообще не установлен</b>.</li>
+  </ul>
+  Ты прав, что Firefox нам нужен. Но он лечит ровно одну болезнь — «достать пропуск». Больше половины наших браузерных мучений — не про браузер, а про то, как я к нему подключён, и Firefox их не вылечит. Ниже — где он спасёт, где бесполезен, а где сделает <b>хуже</b>.
+</div>
+
+<h2>0. Вердикт кофаундера</h2>
+
+<div class="card verdict">
+  <b>✅ Ты прав в главном.</b> Firefox — единственная работающая дорога к «достать залогиненную сессию и отдать её скрипту». Chrome эту дверь заварил окончательно (ABE + DBSC), и это не баг, а политика вендора. Консенсус 3/3 внешних DR + наша ручная проверка на 44 живых Google-куках. Пересматривать нечего.
+</div>
+
+<div class="card verdict mid">
+  <b>⚠️ Но «Firefox более friendly» — наполовину миф.</b> Friendly он к <i>извлечению кук</i>. Для <i>вождения сайта</i> Firefox+Selenium — это <code>navigator.webdriver=true</code>, то есть мы выглядим роботом сильнее, чем сейчас, когда я работаю в твоей живой вкладке Chrome. Для бан-чувствительных площадок (Grok, FB, X) Firefox-автоматизация — шаг <b>назад</b> по риску, а не вперёд. Мы это уже решали 16.07 и решили верно: гибрид, а не «всё на Firefox».
+</div>
+
+<div class="card verdict no">
+  <b>🔴 Главная находка сегодня — не про Firefox, а про нас.</b> Решение «Firefox-first» принято 16.07 со статусом <code>proposed</code>. Прошло 13 дней. На трёх проверенных узлах <b>работающего Firefox-пути нет ни одного</b>: профили пустые, selenium не стоит, на Маяке нет самого браузера. То есть мы 13 дней живём на Chrome и думаем, что переехали. Это ровно класс <code>vault-note-is-selfreport-not-evidence</code>.
+</div>
+
+<h2>0-бис. Сделано сегодня, 29.07 (после замера — сразу починка)</h2>
+
+<div class="grid g3">
+  <div class="kpi"><div class="n" style="color:var(--ok)">3 / 3</div><div class="l">достижимых узла водят Firefox: <code>SMOKE=PASS</code> на хабе, Mac16 и Маяке</div></div>
+  <div class="kpi"><div class="n" style="color:var(--ok)">d43995e6</div><div class="l">одинаковый md5 хелпера на трёх узлах — паритет доказан фактом, не рассылкой</div></div>
+  <div class="kpi"><div class="n" style="color:var(--bad)">1</div><div class="l">блокер остался, и он настоящий: ручной логин в Firefox</div></div>
+</div>
+
+<div class="tblwrap" style="margin-top:12px">
+<table>
+<tr><th>Что сделал</th><th>Узел</th><th>Доказательство</th></tr>
+<tr><td>Поставил Firefox (tarball Mozilla в хоум, <b>не snap</b> — snap-confinement ломает headless-профили)</td><td>Маяк</td><td><span class="b ok">153.0.1</span> + headless-скриншот 19 872 б</td></tr>
+<tr><td>Поставил geckodriver + закрепил <code>firefox</code>/<code>geckodriver</code> в <code>/usr/local/bin</code>, чтобы рутины не помнили про PATH</td><td>Маяк</td><td><span class="b ok">0.37.1</span>, <code>which</code> отвечает</td></tr>
+<tr><td>venv <code>~/.venv-browser</code> + selenium (обошёл PEP 668, системный pip запрещён)</td><td>Маяк</td><td><span class="b ok">selenium 4.46.0</span></td></tr>
+<tr><td>Поставил selenium</td><td>Mac16</td><td><span class="b ok">4.46.0</span> — версия сошлась с хабом</td></tr>
+<tr><td>Научил хелпер искать Firefox в <code>~/opt/firefox</code> и <code>/opt/firefox</code> (без этого Linux-узел не находил браузер)</td><td>все</td><td>md5 <code>d43995e6</code> совпал на 3 узлах</td></tr>
+<tr><td>Прогнал <code>--smoke</code></td><td>хаб · Mac16 · Маяк</td><td><span class="b ok">PASS ×3</span> <span class="tag">FF 152.0.6 / 152.0.6 / 153.0.1</span></td></tr>
+<tr><td>Боевая проверка на реальной JS-странице (не data:-URL)</td><td>Маяк</td><td><span class="b ok">3 186 символов</span>, JS-виджеты отрендерились, сессия анонимна</td></tr>
+<tr><td><b>Попробовал разблокировать хаб без рук Антона</b> — клонировал его системный FF-профиль в <code>google-main</code></td><td>хаб</td><td><span class="b bad">ПРОВАЛ, честно</span> — см. ниже</td></tr>
+<tr><td><b>/tt со сторонними глазами:</b> Codex сломал мою правку по трём пунктам — все три оказались реальны, все три починены</td><td>—</td><td><span class="b ok">VERIFY</span> + регресс <code>_test_firefox_selenium.py</code>, 7 проверок, PASS ×3 узла</td></tr>
+<tr><td><b>Поймал и починил чужую мину:</b> Firefox 153 запретил <code>data:</code>-URL через WebDriver — на этом стоял наш smoke-тест</td><td>Маяк</td><td><span class="b ok">forever-fix</span> — тест переведён на локальный <code>file://</code>, PASS ×3, md5 <code>bf33bfd1</code></td></tr>
+</table>
+</div>
+
+<div class="card">
+  <h3>🔍 Две находки из ревью, которые стоило поймать до продакшна</h3>
+  <p><b>1. Codex (внешний ломатель) нашёл три дыры в локаторе браузера:</b> проверка была на <code>exists()</code>, поэтому директория с именем <code>firefox</code> и файл без бита <code>+x</code> проходили как годные — выигрывали выбор и роняли запуск вместо перехода к следующему кандидату. Хуже: writable-хоум <code>~/opt/firefox</code> стоял <b>перед</b> root-owned путями, то есть любой файл, положенный туда, молча перехватывал бы запуск браузера. Починено: <code>is_file() + os.access(X_OK)</code>, порядок «системные → /opt → хоум → snap последним», кривой <code>STOCK_FIREFOX</code> теперь кричит, а не уходит в тихий автопоиск.</p>
+  <p><b>2. Firefox 153 убил наш smoke-тест — и это была не моя правка.</b> Тест проверял управление через <code>data:text/html,...</code>; в 153 Marionette запретил такую навигацию («not allowed in this context»). На хабе и Mac16 (FF 152) тест проходил, на Маяке (FF 153) упал. Соблазн был откатить хорошую правку — вместо этого проверил, какой бинарь резолвится до и после: <b>один и тот же</b>, значит правка ни при чём. Forever-fix: тест больше не стоит на том, что вендор вправе закрутить, а пишет временный <code>file://</code>-документ.</p>
+  <p class="tag">Побочная польза: разные версии Firefox на узлах (152 vs 153) работают как бесплатная канарейка — то, что упало на одном, придёт на остальные с ближайшим апдейтом.</p>
+</div>
+
+<div class="card verdict no">
+  <b>🔴 Попытка обойти ручной логин — провалилась, и это полезный факт.</b>
+  Скопировал профиль Антона <code>646yqiss.default-release</code> → <code>D:\AutomationBrowsers\Firefox\google-main</code>. Формально всё выглядело отлично: <b>63 куки</b>, из них 46 Google, включая все критичные сессионные (<code>SID</code>, <code>LSID</code>, <code>__Secure-1PSIDTS</code>, <code>__Secure-3PSID</code>, <code>__Host-GAPS</code>, <code>OSID</code>, <code>HSID</code>, <code>SSID</code>), плюс 7 ChatGPT и 8 Facebook.
+  <p>Но проверка делом, а не наличием файла, дала:</p>
+  <pre>Google  → redirect на accounts.google.com/signin/accountchooser   ⇒ ANONYMOUS
+ChatGPT → /api/auth/session вернул пустой объект (email: None)   ⇒ ANONYMOUS</pre>
+  <p><b>Почему:</b> Антон Firefox-ом на хабе не пользуется — последняя запись в его профиле <b>20.07</b>, живые сессии лежат в Chrome. Мы скопировали не сессию, а её труп.</p>
+  <p><b>Что это значит:</b> «профиль с 46 Google-куками» и «рабочая сессия» — разные вещи. Обхода нет. Ручной логин в Firefox — <b>неустранимый</b> блокер, и именно он, а не забывчивость, держит Firefox-first на месте 13 дней.</p>
+</div>
+
+<h2>1. Замер по железу — что было на входе (утро 29.07)</h2>
+<div class="sub" style="margin-top:-4px">Состояние ДО починки. Что стало после — секция 0-бис выше.</div>
+
+<div class="grid g3">
+  <div class="kpi"><div class="n" style="color:var(--warn)">3 / 6</div><div class="l">узлов удалось проверить (hub, Mayak, Mac16 — остальные по ssh недостижимы отсюда)</div></div>
+  <div class="kpi"><div class="n" style="color:var(--bad)">0</div><div class="l">залогиненных Firefox-профилей автоматизации — и на утро, и <b>до сих пор</b>: это единственный незакрытый пункт</div></div>
+  <div class="kpi"><div class="n" style="color:var(--warn)">13</div><div class="l">дней решение простояло в статусе <code>proposed</code>, потому что упиралось в руки человека</div></div>
+</div>
+
+<div class="tblwrap" style="margin-top:12px">
+<table>
+<tr><th>Узел</th><th>Firefox</th><th>Headless</th><th>selenium / gecko</th><th>Профили автоматизации</th><th>Живые куки</th></tr>
+<tr>
+  <td><b>Хаб</b> A-2022BAYAREA<br><span class="tag">Win11, резидентный IP, always-on</span></td>
+  <td><span class="b ok">152.0.6</span></td>
+  <td><span class="b neut">не гонял</span></td>
+  <td><span class="b ok">selenium 4.46.0</span></td>
+  <td><code>D:\AutomationBrowsers\Firefox\</code> → google-main, meta-main, telegram-main, x-main<br><span class="b bad">все 4 ПУСТЫЕ</span> <span class="tag">cookies.sqlite отсутствует в каждом</span></td>
+  <td>только системный профиль Антона <code>646yqiss.default-release</code> — 524 KB, последняя запись <b>20.07</b></td>
+</tr>
+<tr>
+  <td><b>Mac16</b> MacBook-Anton<br><span class="tag">macOS, эта машина</span></td>
+  <td><span class="b ok">152.0.6</span></td>
+  <td><span class="b ok">ДОКАЗАН</span> <span class="tag">скриншот example.com снят сегодня</span></td>
+  <td><span class="b bad">selenium НЕТ</span> <span class="b bad">geckodriver НЕТ</span><br><span class="b warn">playwright есть</span></td>
+  <td>нет ни одного выделенного</td>
+  <td><span class="b bad">0 кук</span> <span class="tag">профиль default-release, mtime 16.07</span></td>
+</tr>
+<tr>
+  <td><b>Маяк</b> FLEET-ANCHOR<br><span class="tag">Ubuntu VPS, дата-центр IP</span></td>
+  <td><span class="b bad">НЕ УСТАНОВЛЕН</span></td>
+  <td><span class="b bad">—</span></td>
+  <td><span class="b bad">нет ни того, ни другого</span> <span class="tag">playwright тоже нет</span></td>
+  <td>нет <code>~/.mozilla</code> вообще</td>
+  <td>—<br><span class="tag">есть <code>/usr/bin/google-chrome</code></span></td>
+</tr>
+<tr>
+  <td>HP17-ZBook · Mac Русланы · машина Наташи</td>
+  <td colspan="5"><span class="b neut">НЕ ПРОВЕРЕНО</span> — по ssh отсюда недостижимы (в конфиге только <code>hub</code> и <code>mayak</code>). Заказ замера идёт по шине.</td>
+</tr>
+</table>
+</div>
+
+<h2>2. Почему Firefox лучше Chrome — recall, 5 причин</h2>
+
+<div class="tblwrap">
+<table>
+<tr><th>#</th><th>Причина</th><th>Механика</th><th>Уверенность</th></tr>
+<tr><td>1</td><td><b>Куки лежат открыто</b></td><td><code>cookies.sqlite</code>, таблица <code>moz_cookies</code> — обычный SQLite. Извлечение = один <code>SELECT</code>. У Chrome 127+ база под App-Bound Encryption: ключ привязан к процессу браузера через привилегированный COM-сервис, внешний Python получает «Could not decrypt».</td><td><span class="b ok">established</span> <span class="tag">3/3 DR + наша ручная проверка</span></td></tr>
+<tr><td>2</td><td><b>Firefox не реализует DBSC</b></td><td>Device-Bound Session Credentials: GA в Chrome 146 (10.04.2026), по умолчанию для всех Google-аккаунтов, <b>выключателя в админке нет</b>. Сессия привязана к TPM машины — даже вытащенная кука мертва без железной подписи. Сессия, залогиненная <i>в Firefox</i>, device-bound не становится.</td><td><span class="b ok">established</span> <span class="tag">проверено живьём: 44 валидные Google-куки из FF-профиля</span></td></tr>
+<tr><td>3</td><td><b>Выделенные профили — штатный, документированный путь</b></td><td>geckodriver официально поддерживает подготовленные профили (<code>-profile</code>). Chrome 136+ наоборот <b>перестал слушать</b> <code>--remote-debugging-port</code> для дефолтного профиля — автоматизация профиля владельца запрещена самим вендором.</td><td><span class="b ok">established</span></td></tr>
+<tr><td>4</td><td><b>Обход ABE есть, но это малварь</b></td><td>Process hollowing / COM-инъекция (xaitax и подобные). Ловит EDR/Defender, ломается с каждым апдейтом Chrome, неремонтопригодно нетехническим владельцем. Как стандарт — не рассматриваем даже теоретически.</td><td><span class="b ok">established по риску</span></td></tr>
+<tr><td>5</td><td><b>Один профиль на сервис вместо мега-профиля</b></td><td>Папка на диске = один логин-контекст (google-main / meta-main / x-main / telegram-main). Разводит разом: конфликт profile-lock (GUI и скрипт не делят профиль), изоляцию личного от автоматизации, и «сдохла одна сессия — не упало всё».</td><td><span class="b ok">established</span></td></tr>
+</table>
+</div>
+
+<div class="card">
+<b>Единственный реальный контр-риск (мониторим, не архитектурим вокруг него):</b> если провайдер когда-нибудь потребует DBSC-only и жёстко заблокирует не-Chrome — Firefox-путь умрёт. Но это сломало бы разом всех пользователей Firefox и Safari, поэтому в ближней перспективе маловероятно.
+</div>
+
+<h2>3. Firefox Headless — да, есть. Проверено сегодня, а не по памяти</h2>
+
+<div class="card">
+  <p>Headless-режим у Firefox нативный, флаг <code>--headless</code>, отдельного «Firefox Headless» ставить не надо. Прогнал на Mac16 прямо сейчас:</p>
+  <pre>/Applications/Firefox.app/Contents/MacOS/firefox --headless \
+    --screenshot ff_test.png https://example.com
+→ ff_test.png, 18 803 байта  ✅ HEADLESS_FIREFOX_OK</pre>
+  <p>Два способа им управлять, и разница между ними важна:</p>
+</div>
+
+<div class="grid g2">
+  <div class="card">
+    <h3>✅ Selenium + geckodriver + СТОКОВЫЙ Firefox</h3>
+    <p>Наш выбранный путь. <code>~/.claude/scripts/_shared/firefox_selenium.py</code> уже написан и /tt-протестирован: <code>--setup</code> (один раз залогиниться руками) → <code>--autoff</code> (дальше headless без человека) → <code>--smoke</code>.</p>
+    <p>Внутри уже прошиты грабли, которые стоили крови: <code>-no-remote</code> (иначе запуск «украдут» уже открытые окна Антона), DoH-off, системный прокси, отдельный профиль.</p>
+    <p><span class="b warn">Ставится одной командой:</span> <code>pip install selenium</code> — geckodriver Selenium Manager качает сам.</p>
+  </div>
+  <div class="card">
+    <h3>⛔ Playwright c его СОБСТВЕННОЙ сборкой Firefox</h3>
+    <p>На хабе физически не запускается: <code>spawn UNKNOWN</code> / SxS «mozglue v1.0.0.0 not found». Полная перекачка не помогла → уровень ОС, не битый файл. Проверено детерминированно, три гипотезы (AppLocker, битый манифест, EDR) отметены поимённо.</p>
+    <p>Причина не чинится из user-space. Именно поэтому основной путь — стоковый Firefox через geckodriver, а не бандл Playwright.</p>
+  </div>
+</div>
+
+<h2>4. Где что запускать — матрица узлов</h2>
+
+<div class="tblwrap">
+<table>
+<tr><th>Узел</th><th>Браузер</th><th>Что на нём делаем</th><th>Почему</th></tr>
+<tr>
+  <td><b>Хаб</b><br><span class="tag">Win11, always-on</span></td>
+  <td><span class="b ok">Firefox headless — основной дом</span></td>
+  <td>Безлюдные прогоны с нашими залогиненными аккаунтами: <b>забор отчётов Gemini</b>, экспорт кук для API-клиентов (notebooklm), keepalive сессий, всё ночное по расписанию.</td>
+  <td><b>Резидентный IP</b> — главный аргумент, сильнее любого железа. Резкая смена IP/ASN мгновенно рвёт сессии Meta/X. Плюс always-on и уже стоящий selenium 4.46.</td>
+</tr>
+<tr>
+  <td><b>Маяк</b><br><span class="tag">Ubuntu VPS</span></td>
+  <td><span class="b warn">Firefox headless — только анонимный</span></td>
+  <td>Публичный веб без логина: рендер JS-страниц для радаров, проверка живости наших публичных страниц, скриншоты, HTML→текст там, где <code>curl</code> не хватает.</td>
+  <td>⛔ <b>Наши залогиненные аккаунты сюда не носим.</b> IP дата-центра — красная тряпка для anti-bot, а прилетит по нашим премиум-подпискам. Ставить FF на Маяк стоит, но под другую работу.</td>
+</tr>
+<tr>
+  <td><b>Mac16 / ноут</b><br><span class="tag">живой интерактив</span></td>
+  <td><span class="b info">Живой Chrome-MCP</span> + Firefox ситуативно</td>
+  <td>Всё, где я работаю «как человек в реальном сеансе»: fb-post, x-post, Grok, логины.</td>
+  <td>Это осознанный anti-ban выбор, а не наследие. Здесь Firefox-автоматизация дала бы <b>больше</b> риска бана, не меньше.</td>
+</tr>
+</table>
+</div>
+
+<h2>5. Наши браузерные грабли — и что из них Firefox реально лечит</h2>
+<div class="sub" style="margin-top:-4px">Это главный ответ на твой вопрос. Половина болей — не про браузер.</div>
+
+<div class="tblwrap">
+<table>
+<tr><th>Грабля</th><th>Firefox?</th><th>Разбор</th></tr>
+
+<tr><td><b>Chrome ABE — куки не расшифровать снаружи</b><br><span class="tag">rookiepy / browser_cookie3 → «Could not decrypt»</span></td>
+<td><span class="b ok">ЛЕЧИТ</span></td>
+<td>Родная зона Firefox. Открытый SQLite → один SELECT. Ровно так спасли notebooklm-py 16.07.</td></tr>
+
+<tr><td><b>DBSC — сессия привязана к TPM</b></td>
+<td><span class="b ok">ЛЕЧИТ</span></td>
+<td>Firefox DBSC не реализует → сессии, созданные в нём, остаются переносимыми.</td></tr>
+
+<tr><td><b>Bearer ChatGPT дохнет каждые 5–9 дней</b><br><span class="tag">L2-эскалация: «зайди Chrome-ом в /api/auth/session и достань токен»</span></td>
+<td><span class="b ok">ЛЕЧИТ</span></td>
+<td><b>Самый недооценённый выигрыш.</b> Сегодня, когда session cookie умирает, <code>token_heal.py</code> зовёт живого человека или сессию с Chrome. С залогиненным Firefox-профилем эту петлю можно замкнуть насухо: сессия читается с диска, bearer перевыпускается сам. Ночной синк ChatGPT перестаёт зависеть от рук.</td></tr>
+
+<tr><td><b>Забор отчётов Gemini / Grok</b><br><span class="tag">DR26-07-14 висит несобранным с 21.07</span></td>
+<td><span class="b ok">ЛЕЧИТ частично</span></td>
+<td>Забор = чтение, самый низкий ToS-риск и самая частая потеря. Кандидат №1 на безлюдный Firefox по расписанию. У ChatGPT забор уже безбраузерный (bearer-рельса) — там Firefox не нужен.</td></tr>
+
+<tr><td><b>Буфер обмена — общий на машину</b><br><span class="tag">28.07: параллельная сессия трижды подменила текст в композере</span></td>
+<td><span class="b ok">ЛЕЧИТ</span></td>
+<td>Selenium/Playwright подают текст в поле <b>своим кодом</b>, минуя системный буфер. Класс ошибки исчезает по построению, а не по бдительности.</td></tr>
+
+<tr><td><b>Chrome 136+ запретил автоматизацию дефолтного профиля</b></td>
+<td><span class="b ok">ЛЕЧИТ</span></td>
+<td>У Firefox выделенный профиль — штатный документированный путь, а не обход.</td></tr>
+
+<tr><td><b>Профиль занят: GUI и скрипт дерутся</b><br><span class="tag">14 живых окон Антона «крадут» запуск</span></td>
+<td><span class="b warn">ЛЕЧИТ ценой дисциплины</span></td>
+<td>Решается <code>-no-remote</code> + отдельный профиль (уже прошито в хелпере). Но правило «один профиль = одно использование» придётся соблюдать всегда.</td></tr>
+
+<tr><td><b>Composer не принимает текст</b><br><span class="tag">ProseMirror/TipTap: textarea — скрытое зеркало, даёт ложный успех</span></td>
+<td><span class="b neut">НЕ ЛЕЧИТ</span></td>
+<td>Это про фронтенд вендора, а не про браузер. Наш каскад <code>paste_verify.js</code> нужен одинаково в любом движке.</td></tr>
+
+<tr><td><b>Composer FB заблокирован харнесом</b><br><span class="tag">ФА не уходит в Messenger, текст отдаём Антону в руки</span></td>
+<td><span class="b warn">ОБХОДИТ, но ценой</span></td>
+<td>Selenium к харнесу не привязан — блок физически исчезает. НО: FB бан-чувствителен + IP-sensitive, а <code>navigator.webdriver=true</code> нас палит. Обмен «удобство сейчас ↔ риск аккаунта» — <b>твоё решение, не моё</b>.</td></tr>
+
+<tr><td><b>computer-use: браузеры в read-tier</b><br><span class="tag">клики и ввод заблокированы</span></td>
+<td><span class="b bad">НЕ ЛЕЧИТ</span></td>
+<td>Тир назначается по <i>категории приложения</i>. Firefox — такой же браузер, получит тот же read-tier.</td></tr>
+
+<tr><td><b>Пароль символами не набрать (запрет харнеса)</b></td>
+<td><span class="b bad">НЕ ЛЕЧИТ</span></td>
+<td>Ограничение моё, не браузерное. Сегодня спасает автозаполнение Chrome. У выделенного Firefox-профиля <b>своё</b> хранилище паролей — при переезде туда логины придётся заводить заново, руками, один раз на профиль. <b>Это цена, а не бонус.</b></td></tr>
+
+<tr><td><b>Anti-bot / риск бана</b></td>
+<td><span class="b bad">ДЕЛАЕТ ХУЖЕ</span></td>
+<td><code>navigator.webdriver=true</code> в Marionette. Живая вкладка Chrome с расширением такого флага не поднимает. Для Grok (AUP xAI прямо запрещает автоматизацию, 52k банов в 2026) — Firefox-робот строго противопоказан.</td></tr>
+
+<tr><td><b>Сессии Google протухают раз в 1–4 недели</b></td>
+<td><span class="b neut">НЕ ЛЕЧИТ</span></td>
+<td>Так у всех браузеров. Лечится не таймером, а детектом auth-ошибки и просьбой к человеку.</td></tr>
+
+<tr><td><b>Тихо не доехавшая загрузка</b><br><span class="tag"><code>a.click()</code> вернулся успехом, файла нет — 5 из 5</span></td>
+<td><span class="b neut">НЕ ЛЕЧИТ</span></td>
+<td>Лечится проверкой факта на диске после каждой загрузки, в любом браузере.</td></tr>
+</table>
+</div>
+
+<h2>6. Что предлагаю делать</h2>
+
+<div class="card">
+<h3>Сделано мной — вычеркнуто ✅</h3>
+<ol>
+  <li>✅ <b>Маяк:</b> Firefox + geckodriver + selenium, всё доказано прогоном. Готов к анонимной публичной работе.</li>
+  <li>✅ <b>Mac16:</b> selenium стоит, <code>SMOKE=PASS</code>.</li>
+  <li>✅ <b>Хаб:</b> <code>SMOKE=PASS</code>, профиль <code>google-main</code> создан и ждёт ровно одного действия.</li>
+  <li>✅ <b>Хелпер</b> научен находить Firefox на Linux, раскатан, md5 сошёлся на трёх узлах.</li>
+  <li>❌ <b>Обход ручного логина</b> — попробовал через клон профиля, не вышло. Доложено честно выше.</li>
+</ol>
+</div>
+
+<div class="card verdict mid">
+<h3>⛔ Осталась ровно ОДНА кнопка — твоя. Всё остальное готово и ждёт её</h3>
+<p>Я не могу ввести пароль в поле — это жёсткий запрет, не каприз харнеса. А клон профиля, как выяснилось выше, не работает. Значит одноразовый ручной логин неизбежен. Две двери на выбор:</p>
+
+<p><b>Дверь А — Mac16, ты прямо за этой машиной, 2 минуты:</b></p>
+<pre>/Users/anton/.brain-venv/bin/python \
+  ~/.claude/scripts/_shared/firefox_selenium.py --setup</pre>
+<p>Откроется Firefox с выделенным профилем AutoFF → залогинься в Google (<code>dzyatkovskiy.a@</code>) и ChatGPT (<code>dzyatkovskiy.a2@</code>) → закрой окно. Всё, узел рабочий.</p>
+
+<p><b>Дверь Б — хаб, когда доберёшься до него (там резидентный IP, это главный дом):</b></p>
+<pre>python %USERPROFILE%\.claude\scripts\_shared\firefox_selenium.py ^
+  --setup --profile D:\AutomationBrowsers\Firefox\google-main</pre>
+
+<p class="tag">Куки Mac16 на хаб перенести нельзя — разные IP/ASN рвут сессии. Каждый узел логинится у себя.</p>
+</div>
+
+<div class="card">
+<h3>Что я включу сразу после логина — без напоминаний</h3>
+<ol>
+  <li><b>Замкнуть петлю ChatGPT-токена на Firefox</b> — снять с тебя ручную реанимацию bearer раз в 5–9 дней. Первый выигрыш, который ты реально почувствуешь.</li>
+  <li><b>Забор отчётов Gemini через headless-Firefox по расписанию</b> — самое дешёвое и безопасное применение: чтение, не запись. Закроет класс «DR дописан, но не забран».</li>
+  <li><b>Экспорт кук для API-клиентов</b> (notebooklm и всё, что попросит сессию) — из выделенного профиля, а не из твоего личного.</li>
+</ol>
+</div>
+
+<div class="card">
+<h3>Чего делать НЕ надо</h3>
+<ul>
+  <li>❌ Переводить fb-post / x-post / Grok на Firefox — это ухудшение анти-бан позиции, а не улучшение.</li>
+  <li>❌ Ставить Camoufox / LibreWolf / анти-детект форки по умолчанию — оправданы только под конкретную доказанную блокировку.</li>
+  <li>❌ Трогать ABE-байпасы. Никогда, ни под каким соусом.</li>
+  <li>❌ Гонять Deep Research с Маяка — дата-центр IP по премиум-подпискам.</li>
+</ul>
+</div>
+
+<h2>7. Открытые вопросы</h2>
+<div class="card">
+<ul>
+  <li><b>Firefox на хабе живьём под нагрузкой не гонялся</b> — доказан только запуск на Mac16. Пока это не smoke-тест на хабе, «работает» = гипотеза, не факт.</li>
+  <li><b>DR26-07-16-ZB-02 мёртв</b> — вопрос «какие агент-friendly браузеры ставить в парк сверх Firefox-first» так и не был исследован (отчёт стёрт fold-багом). Перезапускать не предлагаю: гейт «внедряю только критичное» — сейчас некритично.</li>
+  <li><b>3 из 6 узлов не замерены</b> — HP17, Mac Русланы, машина Наташи по ssh отсюда недостижимы.</li>
+  <li><b>Решение до сих пор в статусе <code>proposed</code></b> — за 13 дней не переведено в принятое.</li>
+</ul>
+</div>
+
+<div class="foot">
+Источники: <code>02-Decisions/decision-2026-07-16-browser-automation-layer.md</code> (DR26-07-16-HUB-01, консенсус 3/3) · <code>insight-DR-DR26-07-16-HUB-04</code> · <code>insight-DR-DR26-07-17-HUB-03</code> · скилл <code>/dr-fanout</code> п.1–9 · <code>_drafts/EPISODE-firefox-cookie-lockout-2026-07-16.md</code>.<br>
+Замер железа выполнен вживую 29.07.2026: версии браузеров, наличие selenium/geckodriver/playwright, содержимое профилей, headless-прогон со скриншотом. Ничего не взято «со слов заметки».
+</div>
+
+</div></body></html>

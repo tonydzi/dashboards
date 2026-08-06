@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Маяк = ГЛАВНЫЙ · план переезда (14.07.2026)</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --surface:#ffffff; --ink:#1a1a18; --ink2:#5c5c56; --muted:#8a8a82;
+    --line:#e4e4de; --accent:#3b6ea5;
+    --good-bg:#e3f2e6; --good-ink:#1e6b34;
+    --warn-bg:#fdf1dc; --warn-ink:#8a5a00;
+    --wait-bg:#e7eef7; --wait-ink:#2d5c8f;
+    --stop-bg:#efeeec; --stop-ink:#6b6b64;
+    --crit-bg:#fbe4e1; --crit-ink:#a33224;
+  }
+  @media (prefers-color-scheme: dark){ :root{
+    --bg:#191917; --surface:#232320; --ink:#ecece8; --ink2:#b4b4ac; --muted:#84847c;
+    --line:#3a3a35; --accent:#7fa8d4;
+    --good-bg:#1e3a26; --good-ink:#8fd4a2;
+    --warn-bg:#3d2f14; --warn-ink:#e8bc6a;
+    --wait-bg:#1d2b3d; --wait-ink:#93b8e0;
+    --stop-bg:#2c2c28; --stop-ink:#9a9a92;
+    --crit-bg:#43201b; --crit-ink:#e89386;
+  }}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Segoe UI",system-ui,sans-serif;padding:24px}
+  .wrap{max-width:1060px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px}
+  h2{font-size:18px;margin:34px 0 10px;border-bottom:2px solid var(--line);padding-bottom:6px}
+  .sub{color:var(--ink2);margin:0 0 20px}
+  .eli5{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:12px 16px;margin:14px 0;color:var(--ink2)}
+  .eli5 b{color:var(--ink)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .card .big{font-size:19px;font-weight:600;margin:2px 0}
+  .card .note{color:var(--muted);font-size:13px}
+  .tblwrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+  table{border-collapse:collapse;width:100%;min-width:720px}
+  th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em;text-align:left}
+  th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  td.mono{font-family:Consolas,monospace;font-size:13px;white-space:nowrap}
+  .pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12.5px;font-weight:600;white-space:nowrap}
+  .p-good{background:var(--good-bg);color:var(--good-ink)}
+  .p-warn{background:var(--warn-bg);color:var(--warn-ink)}
+  .p-wait{background:var(--wait-bg);color:var(--wait-ink)}
+  .p-stop{background:var(--stop-bg);color:var(--stop-ink)}
+  .p-crit{background:var(--crit-bg);color:var(--crit-ink)}
+  .waves{display:flex;flex-direction:column;gap:0;margin:14px 0}
+  .wave{display:flex;gap:14px}
+  .rail{display:flex;flex-direction:column;align-items:center;width:34px;flex:none}
+  .dot{width:16px;height:16px;border-radius:50%;border:3px solid var(--accent);background:var(--surface);flex:none;margin-top:4px}
+  .dot.done{background:var(--good-ink);border-color:var(--good-ink)}
+  .stem{width:3px;flex:1;background:var(--line);min-height:18px}
+  .wbody{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:14px;flex:1}
+  .wbody h3{margin:0 0 4px;font-size:15.5px}
+  .wbody p{margin:4px 0;color:var(--ink2);font-size:14px}
+  .go{font-weight:600;color:var(--accent)}
+  footer{color:var(--muted);font-size:12.5px;margin-top:30px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Mayak-Plan.html">&larr; Mayak-Plan</a> · <a href="OpenClaw-Parity-Roadmap.html">OpenClaw-Parity-Roadmap &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>🗼 Маяк = ГЛАВНЫЙ, хаб = запасной</h1>
+<p class="sub">Директива Антона 14.07.2026 · план переезда по волнам · собрано хаб-сессией 14.07, 12:40 Лиссабон</p>
+
+<div class="eli5">🧒 <b>Простыми словами:</b> у нас два «дома» для всех данных и роботов. Раньше главным был домашний компьютер (хаб), а Маяк (арендованный сервер, который никогда не выключается) был помощником. Теперь наоборот: <b>всё живёт и работает на Маяке</b>, а домашний компьютер держит запасную копию и делает только то, что умеет лишь он (видеокарты, браузер). Если один из них умрёт, второй продолжит.</div>
+
+<h2>✅ Сделано сегодня, 14.07</h2>
+<div class="cards">
+  <div class="card"><span class="pill p-good">✅ починено</span><div class="big">Синк памяти жив</div><div class="note">Корень: у демона Syncthing были урезаны права, он не мог войти в папку памяти. Одна строка фикса, доказано.</div></div>
+  <div class="card"><span class="pill p-good">✅ проверено</span><div class="big">Паритет 346 = 346</div><div class="note">Файлы памяти и MEMORY.md на Маяке теперь байт в байт как на хабе. 2 уникальные памяти Маяка спасены.</div></div>
+  <div class="card"><span class="pill p-good">✅ переехало</span><div class="big">Уборка памяти → Маяк</div><div class="note">Ночной уборщик MEMORY.md теперь на Маяке (первый прогон сегодня 23:30). Хаб-двойники Tidy + Guard выключены.</div></div>
+  <div class="card"><span class="pill p-wait">⏳ решение</span><div class="big">TurnState = оба узла</div><div class="note">Антон будет стартовать живые сессии на Маяке в дороге → пилот памяти ставим и туда. Отдельная задача-чип.</div></div>
+</div>
+
+<h2>📦 Карта шар: что где лежит и что едет</h2>
+<div class="tblwrap"><table>
+<tr><th>Шара</th><th>Что это по-простому</th><th>На Маяке?</th><th>Волна</th><th>Заметка</th></tr>
+<tr><td class="mono">anton-knowledge</td><td>Весь «второй мозг» (волт Obsidian)</td><td><span class="pill p-good">✅ уже там</span></td><td>—</td><td>синкается с 04.07, это ядро</td></tr>
+<tr><td class="mono">claude-memory</td><td>Память Клода (факты, MEMORY.md)</td><td><span class="pill p-good">✅ уже там</span></td><td>—</td><td>починено 14.07; Маяк теперь ночной уборщик для всего флота</td></tr>
+<tr><td class="mono">machine-bus</td><td>Почта между машинами</td><td><span class="pill p-good">✅ уже там</span></td><td>—</td><td></td></tr>
+<tr><td class="mono">claude-skills</td><td>Скиллы (команды /x)</td><td><span class="pill p-good">✅ уже там</span></td><td>—</td><td>подключено 14.07, двусторонняя: скилл с Маяка сам едет флоту</td></tr>
+<tr><td class="mono">claude-imports</td><td>Движки и скрипты импортов</td><td><span class="pill p-good">✅ зеркало</span></td><td>—</td><td>14.07: приём-только зеркало /root/Obsidian/_imports-hub-mirror (2578 файлов); рабочие движки Маяка живут отдельно, не затираются</td></tr>
+<tr><td class="mono">claude-secrets</td><td>Пароли и ключи</td><td><span class="pill p-good">✅ зеркало</span></td><td>—</td><td>14.07: приём-только зеркало /home/anton/secrets-hub (все 31); машинно-локальные секреты Маяка не тронуты</td></tr>
+<tr><td class="mono">cowork-inbox</td><td>Результаты Cowork-ресёрчей</td><td><span class="pill p-wait">⏳ нет</span></td><td>Волна 2</td><td>по надобности</td></tr>
+<tr><td class="mono">mac-anton-courier</td><td>Курьер для MacBook Антона</td><td><span class="pill p-wait">⏳ нет</span></td><td>Волна 2</td><td>по надобности</td></tr>
+<tr><td class="mono">claude-home</td><td>Весь конфиг ~/.claude целиком</td><td><span class="pill p-stop">⛔ не едет шарой</span></td><td>—</td><td>CLAUDE.md Маяка = сознательный Linux-вариант; канон едет отдельной рельсой (_transit/canon-from-hub, работает с 11.07)</td></tr>
+<tr><td class="mono">claude-config</td><td>Бэкап-зеркало конфига хаба</td><td><span class="pill p-stop">⛔ не нужно</span></td><td>—</td><td>у Маяка свой git-бэкап конфига</td></tr>
+</table></div>
+
+<h2>🤖 Рутины: кто где работает</h2>
+<div class="tblwrap"><table>
+<tr><th>Группа</th><th>Статус</th><th>Детали</th></tr>
+<tr><td>~45 рутин волн 1-2 (11.07) + уборка памяти (14.07)</td><td><span class="pill p-good">✅ на Маяке</span></td><td>хаб-двойники выключены, правило двух фаз соблюдено</td></tr>
+<tr><td>dr-collect · dr-nightly · alpha-judge · chatgpt-nag</td><td><span class="pill p-good">✅ армлены 11.07</span></td><td>проверено живьём 14.07: dr-nightly в root-кроне (05:20 Лиссабон), свежие синтезы в 03-Insights сегодня</td></tr>
+<tr><td>ab-eval · dream (TurnState-пилот)</td><td><span class="pill p-wait">⏳ в работе</span></td><td>решение 14.07: пилот на ОБА узла; чип-сессия ставит прямо сейчас</td></tr>
+<tr><td>fireflies-pull</td><td><span class="pill p-good">✅ армлен 11.07</span></td><td>ключ fireflies.env на месте с 11.07, крон 03:00 Лиссабон</td></tr>
+<tr><td>GPU-тяжёлое: Whisper, эмбеддинги, реиндекс</td><td><span class="pill p-stop">🏠 остаётся на хабе</span></td><td>у Маяка нет видеокарт; умрёт хаб = потеряем скорость, не данные</td></tr>
+<tr><td>Браузер (Chrome, соцсети, публикации)</td><td><span class="pill p-stop">🏠 остаётся на хабе/пирах</span></td><td>браузерная работа = на машинах с экраном и залогиненным Chrome</td></tr>
+</table></div>
+
+<h2>🌊 Волны переезда</h2>
+<div class="waves">
+  <div class="wave"><div class="rail"><div class="dot done"></div><div class="stem"></div></div>
+    <div class="wbody"><h3>✅ Волна 0: память (сделано 14.07)</h3><p>Синк памяти починен в корне, паритет доказан, ночной уборщик переехал на Маяк, хаб-двойники выключены.</p></div></div>
+  <div class="wave"><div class="rail"><div class="dot done"></div><div class="stem"></div></div>
+    <div class="wbody"><h3>✅ Волна 1: три шары данных (сделано 14.07, «да, армим»)</h3><p>Маяк подключён к <b>claude-skills</b> (двусторонняя, чистая конвергенция 115=115), <b>claude-imports</b> (зеркало, 2578 файлов, need=0) и <b>claude-secrets</b> (зеркало, 31 файл). Машинно-локальные файлы Маяка не тронуты.</p></div></div>
+  <div class="wave"><div class="rail"><div class="dot done"></div><div class="stem"></div></div>
+    <div class="wbody"><h3>✅ Волна 2: рутины (оказалась заармлена ещё 11.07)</h3><p>Живая проверка 14.07: dr-collect, dr-nightly, alpha-judge, chatgpt-nag, fireflies давно армлены, хаб-двойники Disabled. Остаток волны = TurnState-пилот, его прямо сейчас ставит отдельная чип-сессия.</p></div></div>
+  <div class="wave"><div class="rail"><div class="dot"></div></div>
+    <div class="wbody"><h3>Волна 3: роль «кто вписывает канон» (утверждена 14.07, исполнение по шагам)</h3><p>Антон подписал план «+++/+++/ДА»: (1) наблюдаем 2-3 зелёные ночи (первый боевой прогон уборки памяти Маяком 14.07 в 23:30); (2) ставим подпись на канон-рельсу (сейчас правила едут без «водяного знака»), задача-чип выдана; (3) сам перенос = перемещаемый батон писателя (перо следует за Антоном: в поездке пишет Маяк, дома хаб), включается явной командой Антона + консенсусом флота к отъезду.</p><p class="go">➤ Следующий шаг: зелёные ночи + готовая подпись, потом батон</p></div></div>
+</div>
+
+<h2>🛟 Страховка (уже построено, ничего делать не надо)</h2>
+<div class="tblwrap"><table>
+<tr><th>Сценарий</th><th>Что происходит</th></tr>
+<tr><td>Умер Маяк</td><td>Хаб-сторож (deadman, каждые 30 мин) поднимает тревогу в 02 POLICE; хаб подхватывает арбитраж; полная копия данных на хабе уже есть</td></tr>
+<tr><td>Умер хаб</td><td>Маяк продолжает работать как ни в чём не бывало (он и есть главный); теряется только GPU-скорость и браузер</td></tr>
+<tr><td>Порча/удаление уехало синком</td><td>Offsite-бэкап Маяка: restic → Hetzner Storage Box каждую ночь 03:40 + .stversions + git-снапшоты конфигов на каждой машине</td></tr>
+</table></div>
+
+<footer>Источники: живой REST Syncthing хаба и Маяка (14.07), W1B-REPORT-2026-07-11 (Маяк), vps-anchor-node (память). Дашборд статичный, обновляется вручную при каждой волне.</footer>
+</div>
+</body>
+</html>

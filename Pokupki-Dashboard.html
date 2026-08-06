@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Покупки — дашборд</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{--bg:#0f1115;--card:#181b22;--ink:#e7ebf0;--mut:#9aa4b2;--line:#262b35;
+        --acc:#5b9bff;--acc2:#37d399;--acc3:#ffb454;--acc4:#ff6b8b;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  header{padding:28px 28px 8px}
+  h1{margin:0 0 4px;font-size:24px}
+  .sub{color:var(--mut);font-size:13px;max-width:1100px}
+  .wrap{padding:16px 28px 60px;max-width:1320px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 22px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .kpi .n{font-size:24px;font-weight:700}
+  .kpi .l{color:var(--mut);font-size:12px;margin-top:2px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;min-width:0}
+  .card h3{margin:0 0 2px;font-size:15px}
+  .card .cap{color:var(--mut);font-size:12px;margin:0 0 10px}
+  .full{grid-column:1/-1}
+  canvas{max-height:300px}
+  .controls{margin:0 0 14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  select,button{background:#11141a;color:var(--ink);border:1px solid var(--line);
+                border-radius:9px;padding:7px 11px;font-size:13px;cursor:pointer}
+  button.on{border-color:var(--acc);color:#fff}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--mut);font-weight:600;cursor:pointer;user-select:none}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tag{display:inline-block;background:#222834;border-radius:6px;padding:1px 7px;font-size:11px;color:var(--mut)}
+  a{color:var(--acc);text-decoration:none}
+  .note{background:#1c1207;border:1px solid #4a3413;color:#f4d6a6;border-radius:12px;
+        padding:12px 16px;font-size:13px;margin:14px 0 0}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Planning-System-Before-After.html">&larr; Planning-System-Before-After</a> · <a href="Public-Surface.html">Public-Surface &rarr;</a></span></div>
+<header>
+  <h1>🛒 Покупки — дашборд расходов и активности</h1>
+  <div class="sub" id="sub"></div>
+</header>
+<div class="wrap">
+  <div class="note">⚠️ <b>Цены — это сигнал, а не бухгалтерия.</b> Сумма берётся только из чисел, приклеенных к валюте
+  (€/eur/евро/$/usd/руб) в свободном тексте чата — это отсекает телефоны, коды и ID, но research-посты часто перечисляют
+  по несколько вариантов цен, поэтому «сумма упоминаний» завышает реальные траты. Голосовые директивы (<span id="vk"></span>)
+  пока не транскрибированы — настоящие суммы там. Считай это нижней границей активности, не итоговым чеком.</div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="controls">
+    <span style="color:var(--mut);font-size:13px">Год:</span>
+    <span id="yearbtns"></span>
+  </div>
+
+  <div class="grid">
+    <div class="card full">
+      <h3>Активность по месяцам</h3>
+      <p class="cap">Сообщений в чате и из них — атомарных заметок-покупок</p>
+      <canvas id="activity"></canvas>
+    </div>
+    <div class="card full">
+      <h3>Ценовой сигнал по месяцам (EUR)</h3>
+      <p class="cap">Сумма всех упоминаний цен в евро · столбец = месяц</p>
+      <canvas id="spend"></canvas>
+    </div>
+    <div class="card">
+      <h3>Кто пишет</h3>
+      <p class="cap">Распределение сообщений по ролям</p>
+      <canvas id="roles"></canvas>
+    </div>
+    <div class="card">
+      <h3>Валюта упоминаний</h3>
+      <p class="cap">Сколько раз встречалась каждая валюта</p>
+      <canvas id="currency"></canvas>
+    </div>
+    <div class="card">
+      <h3>Категории покупок</h3>
+      <p class="cap">Заметок-покупок по концепту (top-12)</p>
+      <canvas id="cats"></canvas>
+    </div>
+    <div class="card">
+      <h3>Топ площадок / вендоров</h3>
+      <p class="cap">По числу ссылок в чате (top-15)</p>
+      <canvas id="vendors"></canvas>
+    </div>
+    <div class="card full">
+      <h3>Категории — таблица</h3>
+      <p class="cap">Клик по заголовку — сортировка. «Медиана EUR» устойчивее суммы.</p>
+      <table id="cattable"><thead><tr>
+        <th data-k="label">Категория</th><th data-k="posts" class="num">Заметок</th>
+        <th data-k="eur_cnt" class="num">Упом. цен</th><th data-k="eur_median" class="num">Медиана €</th>
+        <th data-k="eur_sum" class="num">Σ упоминаний €</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+    <div class="card full">
+      <h3>Самые крупные упоминания цен (EUR)</h3>
+      <p class="cap">Топ-25 по сумме · проверь глазами — крупные числа иногда per-kg или опечатки</p>
+      <table id="toptable"><thead><tr>
+        <th class="num">€</th><th>Дата</th><th>Вендор</th><th>Категория</th><th>Фрагмент</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+</div>
+<script>
+const DATA = {"meta": {"span": ["2023-08", "2026-05"], "messages": 46801, "active_days": 858, "posts": 5295, "voice_total": 9418, "price_posts": 1904, "post_files": 5223, "eur_median": 40.71, "eur_p25": 14.8, "eur_p75": 161.0, "eur_mentions": 5966, "eur_sum": 2154383.7}, "months": ["2023-08", "2023-09", "2023-10", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05"], "by_month": {"2023-08": {"messages": 5, "posts": 0, "voice": 0, "anton": 3, "eur_sum": 0.0, "price_posts": 0, "price_mentions": 0}, "2023-09": {"messages": 13, "posts": 0, "voice": 1, "anton": 6, "eur_sum": 0.0, "price_posts": 0, "price_mentions": 0}, "2023-10": {"messages": 1, "posts": 0, "voice": 0, "anton": 0, "eur_sum": 0.0, "price_posts": 0, "price_mentions": 0}, "2024-01": {"messages": 1499, "posts": 14, "voice": 304, "anton": 566, "eur_sum": 10142.98, "price_posts": 13, "price_mentions": 103}, "2024-02": {"messages": 2588, "posts": 26, "voice": 480, "anton": 1221, "eur_sum": 117547.72, "price_posts": 16, "price_mentions": 88}, "2024-03": {"messages": 2535, "posts": 36, "voice": 557, "anton": 1069, "eur_sum": 20187.22, "price_posts": 26, "price_mentions": 108}, "2024-04": {"messages": 1103, "posts": 17, "voice": 238, "anton": 402, "eur_sum": 12381.49, "price_posts": 12, "price_mentions": 130}, "2024-05": {"messages": 1009, "posts": 24, "voice": 169, "anton": 361, "eur_sum": 1551.54, "price_posts": 24, "price_mentions": 44}, "2024-06": {"messages": 373, "posts": 11, "voice": 75, "anton": 185, "eur_sum": 1869.49, "price_posts": 10, "price_mentions": 55}, "2024-07": {"messages": 657, "posts": 8, "voice": 167, "anton": 303, "eur_sum": 2896.989999999998, "price_posts": 4, "price_mentions": 22}, "2024-08": {"messages": 1276, "posts": 14, "voice": 193, "anton": 568, "eur_sum": 3579.89, "price_posts": 11, "price_mentions": 36}, "2024-09": {"messages": 1476, "posts": 78, "voice": 213, "anton": 683, "eur_sum": 11768.42, "price_posts": 76, "price_mentions": 140}, "2024-10": {"messages": 790, "posts": 12, "voice": 140, "anton": 291, "eur_sum": 2448.48, "price_posts": 9, "price_mentions": 30}, "2024-11": {"messages": 1159, "posts": 7, "voice": 156, "anton": 492, "eur_sum": 8663.029999999999, "price_posts": 3, "price_mentions": 36}, "2024-12": {"messages": 916, "posts": 10, "voice": 237, "anton": 386, "eur_sum": 22703.930000000004, "price_posts": 7, "price_mentions": 22}, "2025-01": {"messages": 1699, "posts": 28, "voice": 352, "anton": 758, "eur_sum": 184987.94999999998, "price_posts": 18, "price_mentions": 120}, "2025-02": {"messages": 1395, "posts": 105, "voice": 253, "anton": 549, "eur_sum": 39660.869999999995, "price_posts": 84, "price_mentions": 175}, "2025-03": {"messages": 2321, "posts": 109, "voice": 447, "anton": 992, "eur_sum": 74575.19999999998, "price_posts": 90, "price_mentions": 223}, "2025-04": {"messages": 2667, "posts": 160, "voice": 457, "anton": 1198, "eur_sum": 105174.91000000002, "price_posts": 137, "price_mentions": 365}, "2025-05": {"messages": 2345, "posts": 240, "voice": 440, "anton": 1133, "eur_sum": 266082.4499999995, "price_posts": 126, "price_mentions": 357}, "2025-06": {"messages": 1546, "posts": 291, "voice": 371, "anton": 961, "eur_sum": 58210.599999999984, "price_posts": 62, "price_mentions": 151}, "2025-07": {"messages": 1185, "posts": 188, "voice": 282, "anton": 685, "eur_sum": 24773.900000000012, "price_posts": 15, "price_mentions": 68}, "2025-08": {"messages": 1153, "posts": 185, "voice": 271, "anton": 696, "eur_sum": 40924.29, "price_posts": 35, "price_mentions": 128}, "2025-09": {"messages": 2827, "posts": 574, "voice": 681, "anton": 1709, "eur_sum": 111102.33999999997, "price_posts": 195, "price_mentions": 617}, "2025-10": {"messages": 2772, "posts": 569, "voice": 541, "anton": 1551, "eur_sum": 231616.19999999955, "price_posts": 184, "price_mentions": 638}, "2025-11": {"messages": 2063, "posts": 407, "voice": 460, "anton": 1256, "eur_sum": 87252.16000000005, "price_posts": 111, "price_mentions": 440}, "2025-12": {"messages": 1787, "posts": 434, "voice": 442, "anton": 1139, "eur_sum": 134369.25, "price_posts": 121, "price_mentions": 373}, "2026-01": {"messages": 1536, "posts": 348, "voice": 347, "anton": 881, "eur_sum": 57410.649999999994, "price_posts": 128, "price_mentions": 375}, "2026-02": {"messages": 1176, "posts": 245, "voice": 216, "anton": 613, "eur_sum": 29856.04000000003, "price_posts": 59, "price_mentions": 263}, "2026-03": {"messages": 1986, "posts": 462, "voice": 416, "anton": 1061, "eur_sum": 56986.269999999975, "price_posts": 111, "price_mentions": 432}, "2026-04": {"messages": 1486, "posts": 298, "voice": 240, "anton": 787, "eur_sum": 378185.9400000004, "price_posts": 74, "price_mentions": 330}, "2026-05": {"messages": 1457, "posts": 395, "voice": 272, "anton": 724, "eur_sum": 57473.50000000003, "price_posts": 143, "price_mentions": 522}}, "origin": {"anton": 23229, "mixed": 21176, "external": 2043, "anna": 353}, "categories": [{"slug": "concept-construction-renovation", "label": "Стройка и ремонт", "posts": 1291, "eur_sum": 257916.52, "eur_cnt": 1011, "eur_median": 27.99}, {"slug": "concept-procurement-vendors", "label": "Закупки и поставщики", "posts": 982, "eur_sum": 12303.66, "eur_cnt": 120, "eur_median": 21.0}, {"slug": "concept-home-goods", "label": "Дом и быт", "posts": 953, "eur_sum": 141487.5, "eur_cnt": 595, "eur_median": 44.0}, {"slug": "concept-tech-tools", "label": "Техника и инструменты", "posts": 495, "eur_sum": 99721.57, "eur_cnt": 460, "eur_median": 31.7}, {"slug": "concept-cars", "label": "Авто", "posts": 418, "eur_sum": 233079.96, "eur_cnt": 175, "eur_median": 50.0}, {"slug": "concept-garden-landscaping", "label": "Сад и ландшафт", "posts": 312, "eur_sum": 24114.4, "eur_cnt": 287, "eur_median": 28.0}, {"slug": "concept-parenting", "label": "Parenting", "posts": 279, "eur_sum": 105146.18, "eur_cnt": 163, "eur_median": 25.4}, {"slug": "concept-groceries-food", "label": "Продукты и еда", "posts": 227, "eur_sum": 8760.1, "eur_cnt": 125, "eur_median": 19.0}, {"slug": "concept-personal-finance", "label": "Personal finance", "posts": 161, "eur_sum": 16943.06, "eur_cnt": 113, "eur_median": 42.36}, {"slug": "concept-travel-logistics", "label": "Путешествия и логистика", "posts": 69, "eur_sum": 2803.31, "eur_cnt": 25, "eur_median": 43.0}, {"slug": "concept-place-livability", "label": "Place livability", "posts": 36, "eur_sum": 880.22, "eur_cnt": 23, "eur_median": 16.25}], "currencies": [{"cur": "EUR", "count": 5966, "sum": 2154383.7}, {"cur": "USD", "count": 348, "sum": 280162.7}, {"cur": "GBP", "count": 40, "sum": 5221.5}, {"cur": "RUB", "count": 37, "sum": 120926.9}], "vendors": [{"vendor": "Amazon", "count": 1414}, {"vendor": "Leroy Merlin", "count": 428}, {"vendor": "eBay", "count": 292}, {"vendor": "AliExpress", "count": 192}, {"vendor": "Worten", "count": 65}, {"vendor": "lazada.co.th", "count": 63}, {"vendor": "OLX", "count": 57}, {"vendor": "Decathlon", "count": 55}, {"vendor": "pneuslider.pt", "count": 43}, {"vendor": "IKEA", "count": 35}, {"vendor": "bricobutikk.pt", "count": 35}, {"vendor": "Etsy", "count": 31}, {"vendor": "mobile.de", "count": 28}, {"vendor": "iherb.com", "count": 28}, {"vendor": "obras360.pt", "count": 27}, {"vendor": "webike.net", "count": 25}, {"vendor": "troyleedesigns.com", "count": 22}, {"vendor": "deporvillage.pt", "count": 21}, {"vendor": "topeca.pt", "count": 21}, {"vendor": "proinco.es", "count": 21}], "top_prices": [{"amount": 200300.0, "cur": "EUR", "date": "2025-05-02", "vendor": "", "category": "—", "snippet": "найдите мне оперативную отгрузку арбалета, у меня те же самые стрелы что недавно просил купить, то есть мне нужен стрелы", "msg_id": 40821}, {"amount": 131229.0, "cur": "EUR", "date": "2026-04-12", "vendor": "vetonek.com", "category": "Стройка и ремонт", "snippet": "https://vetonek.com/products/baldosa-terracota-mecanica?variant=50362061914459 Есть такой вариант (плитка от поставщика ", "msg_id": 63685}, {"amount": 131229.0, "cur": "EUR", "date": "2026-04-12", "vendor": "", "category": "—", "snippet": "Заказана плитка у производителя VETONEK: Palet 264 UDS (42.24 m²) / 40x40x2.2 cm / Orange стоимость - €1.312.29 Shipping", "msg_id": 63695}, {"amount": 109236.0, "cur": "EUR", "date": "2025-10-04", "vendor": "", "category": "—", "snippet": "По звонк была задача Я отгрузила радиатор, который утверрдил Иван Оплата карта револют 2109 236 евро Доставка до 7 раб д", "msg_id": 50877}, {"amount": 64400.0, "cur": "EUR", "date": "2024-02-12", "vendor": "nortavia.com", "category": "Parenting", "snippet": "Школы пилотирования 1) https://www.nortavia.com/en/cplh/ Минимум 18 месяцев Стоимость обучения 64400€ Постановка на учет", "msg_id": 18592}, {"amount": 52500.0, "cur": "EUR", "date": "2025-01-19", "vendor": "mobile.de", "category": "Авто", "snippet": "https://m.mobile.de/auto-inserat/man-tge-3-180-l3h2-9-sitzer-led-navi-kamera-klima-gro%C3%9Fenkneten/401086726.html?ref=", "msg_id": 33317}, {"amount": 45000.0, "cur": "EUR", "date": "2025-01-19", "vendor": "mobile.de", "category": "Авто", "snippet": "https://m.mobile.de/auto-inserat/man-tge-mr-hochdach-dachklima-systemboden-ladbergen/406465368.html?ref=srp&refId=33653f", "msg_id": 33316}, {"amount": 38500.0, "cur": "EUR", "date": "2025-01-19", "vendor": "mobile.de", "category": "Авто", "snippet": "https://m.mobile.de/auto-inserat/man-tge-standhzg-sitzhzg-luftgefederter-sitz-dortmund/402721798.html?ref=srp&refId=a18a", "msg_id": 33315}, {"amount": 35800.0, "cur": "EUR", "date": "2025-01-19", "vendor": "mobile.de", "category": "Авто", "snippet": "https://m.mobile.de/auto-inserat/man-tge-3-180-top-ausstattung-tour-bus-8-sitze-chemnitz/414099383.html?ref=srp&refId=a1", "msg_id": 33314}, {"amount": 27000.0, "cur": "EUR", "date": "2026-04-27", "vendor": "", "category": "—", "snippet": "Получен ответ от Sunsynk: Здравствуйте. Спасибо, что посетили нас на выставке и связались с нами. Мы сделаем всё возможн", "msg_id": 64844}, {"amount": 23400.0, "cur": "EUR", "date": "2024-02-12", "vendor": "nortavia.com", "category": "Parenting", "snippet": "Школы пилотирования 1) https://www.nortavia.com/en/cplh/ Минимум 18 месяцев Стоимость обучения 64400€ Постановка на учет", "msg_id": 18592}, {"amount": 22872.0, "cur": "EUR", "date": "2026-04-27", "vendor": "", "category": "—", "snippet": "Получен ответ от Sunsynk: Здравствуйте. Спасибо, что посетили нас на выставке и связались с нами. Мы сделаем всё возможн", "msg_id": 64844}, {"amount": 20283.86, "cur": "EUR", "date": "2025-05-24", "vendor": "", "category": "Стройка и ремонт", "snippet": "Лучший вариант до 800 € для «мягкой» и лёгкой детской езды Модель Цена в Португалии Вес самоката Что делает ход мягким П", "msg_id": 42688}, {"amount": 18840.0, "cur": "EUR", "date": "2025-12-12", "vendor": "", "category": "—", "snippet": "Обзвонила около 20 дилерских точек в Португалии, и из них только 3 успешных диалога. По полученной информации, в Португа", "msg_id": 56641}, {"amount": 16728.0, "cur": "EUR", "date": "2025-11-29", "vendor": "", "category": "—", "snippet": "Sikagard-570 W- 89,99€ ( 4,50 евро /кг) Sikalastic-614- 319€ (15л) -(21.26 еврол/л) Sikalastic-612- 250,92 € (15л) (16.7", "msg_id": 55651}, {"amount": 15000.0, "cur": "EUR", "date": "2025-12-12", "vendor": "", "category": "—", "snippet": "Цена шокировала, поэтому контрольно позвонила в другой дилерский центр, назвали стоимость 15000 евро с номерами. Третий ", "msg_id": 56646}, {"amount": 11699.0, "cur": "EUR", "date": "2025-06-19", "vendor": "mount7.com", "category": "—", "snippet": "Комплект Bullit 4 CC X0 AXS RSV - 2026 г. 11 699 € Бесплатная доставка в Германию и Австрию (https://www.mount7.com/vers", "msg_id": 44018}, {"amount": 11699.0, "cur": "EUR", "date": "2025-08-26", "vendor": "mount7.com", "category": "—", "snippet": "Комплект Bullit 4 CC X0 AXS RSV - 2026 г. 11 699 € Бесплатная доставка в Германию и Австрию (https://www.mount7.com/vers", "msg_id": 46868}, {"amount": 11500.0, "cur": "EUR", "date": "2026-04-27", "vendor": "", "category": "—", "snippet": "Получен ответ от Sunsynk: Здравствуйте. Спасибо, что посетили нас на выставке и связались с нами. Мы сделаем всё возможн", "msg_id": 64844}, {"amount": 10000.0, "cur": "EUR", "date": "2024-02-29", "vendor": "", "category": "—", "snippet": "Honda goldwing Bmw k1200 До 10000 евро Пробег до 10000 км", "msg_id": 20149}, {"amount": 10000.0, "cur": "EUR", "date": "2024-02-29", "vendor": "", "category": "—", "snippet": "Найти б/у мотоцикл Honda goldwing Bmw k1200 До 10000 евро Пробег до 10000 км Задача срочная https://trello.com/c/G2WnN63", "msg_id": 20178}, {"amount": 8257.0, "cur": "EUR", "date": "2025-04-24", "vendor": "", "category": "—", "snippet": "Счет на ванну, ванна есть в наличии с гидромассажем, поэтому ее не надо ждать 12 недель, если оплатим сегодня будет 19 м", "msg_id": 39865}, {"amount": 8257.0, "cur": "EUR", "date": "2025-04-24", "vendor": "", "category": "—", "snippet": "Счет на ванну, ванна есть в наличии с гидромассажем, поэтому ее не надо ждать 12 недель, если оплатим сегодня будет 19 м", "msg_id": 39874}, {"amount": 8000.0, "cur": "EUR", "date": "2025-07-04", "vendor": "carithai.com", "category": "Техника и инструменты", "snippet": "В Таиланде цены на подержанные мотоциклы Ducati Multistrada 2015 года с пробегом около 20 000 км варьируются в зависимос", "msg_id": 45240}, {"amount": 7699.0, "cur": "EUR", "date": "2025-08-28", "vendor": "mount7.com", "category": "Техника и инструменты", "snippet": "7699 € Santa Cruz (https://www.mount7.com/marken/santa-cruz/) Bullit 4 C 70-Kit - 2026 ХХL Бесплатная доставка по Герман", "msg_id": 47040}]};
+const C = {acc:'#5b9bff',acc2:'#37d399',acc3:'#ffb454',acc4:'#ff6b8b',mut:'#9aa4b2',line:'#262b35'};
+const PALETTE=['#5b9bff','#37d399','#ffb454','#ff6b8b','#a78bfa','#4dd0e1','#f06292','#9ccc65','#ffd54f','#7986cb','#4db6ac','#ba68c8'];
+Chart.defaults.color=C.mut; Chart.defaults.borderColor=C.line; Chart.defaults.font.family='Segoe UI,system-ui,sans-serif';
+const fmt=n=>n.toLocaleString('ru-RU');
+const eur=n=>'€'+Math.round(n).toLocaleString('ru-RU');
+
+// ---- subtitle + KPIs
+const M=DATA.meta;
+document.getElementById('sub').textContent =
+  `Источник: Telegram-чат «Покупки» · ${M.span[0]} → ${M.span[1]} · ${fmt(M.messages)} сообщений · `+
+  `${fmt(M.active_days)} активных дней · сгенерировано Claude Code`;
+document.getElementById('vk').textContent = fmt(M.voice_total)+' голосовых';
+const ROLE_LABEL={anton:'Антон',anna:'Анна',mixed:'Ассистенты',assistant:'Ассистенты',external:'Внешние'};
+const kpis=[
+  [fmt(M.messages),'сообщений всего'],
+  [fmt(M.posts),'заметок-покупок'],
+  [fmt(M.price_posts),'постов с ценой'],
+  [eur(M.eur_median),'медиана цены (EUR)'],
+  [fmt(M.eur_mentions),'упоминаний € цен'],
+  [fmt(M.voice_total),'голосовых (не расшифр.)'],
+  [DATA.categories[0]?DATA.categories[0].label:'—','топ-категория'],
+  [DATA.vendors[0]?DATA.vendors[0].vendor:'—','топ-вендор'],
+];
+document.getElementById('kpis').innerHTML = kpis.map(k=>
+  `<div class="kpi"><div class="n">${k[0]}</div><div class="l">${k[1]}</div></div>`).join('');
+
+// ---- year filter
+const years=[...new Set(DATA.months.map(m=>m.slice(0,4)))];
+let curYear='all';
+const yb=document.getElementById('yearbtns');
+yb.innerHTML = ['all',...years].map(y=>
+  `<button data-y="${y}" class="${y==='all'?'on':''}">${y==='all'?'Все':y}</button>`).join(' ');
+yb.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+  curYear=b.dataset.y; yb.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  drawTime();
+});
+const monFilter=()=>DATA.months.filter(m=>curYear==='all'||m.startsWith(curYear));
+
+// ---- charts
+let actChart,spendChart;
+function drawTime(){
+  const ms=monFilter();
+  const msgs=ms.map(m=>DATA.by_month[m].messages);
+  const posts=ms.map(m=>DATA.by_month[m].posts);
+  const spend=ms.map(m=>Math.round(DATA.by_month[m].eur_sum));
+  if(actChart)actChart.destroy(); if(spendChart)spendChart.destroy();
+  actChart=new Chart(document.getElementById('activity'),{type:'line',
+    data:{labels:ms,datasets:[
+      {label:'Сообщений',data:msgs,borderColor:C.acc,backgroundColor:'transparent',tension:.3,yAxisID:'y'},
+      {label:'Заметок-покупок',data:posts,borderColor:C.acc2,backgroundColor:'transparent',tension:.3,yAxisID:'y1'}]},
+    options:{responsive:true,interaction:{mode:'index',intersect:false},
+      scales:{y:{position:'left',title:{display:true,text:'сообщения'}},
+              y1:{position:'right',grid:{drawOnChartArea:false},title:{display:true,text:'заметки'}}}}});
+  spendChart=new Chart(document.getElementById('spend'),{type:'bar',
+    data:{labels:ms,datasets:[{label:'Σ упоминаний € за месяц',data:spend,backgroundColor:C.acc3}]},
+    options:{responsive:true,plugins:{tooltip:{callbacks:{label:c=>eur(c.raw)+' (сумма упоминаний)'}}},
+      scales:{y:{title:{display:true,text:'EUR'}}}}});
+}
+drawTime();
+
+const ro=DATA.origin; const roAgg={};
+Object.keys(ro).forEach(k=>{const L=ROLE_LABEL[k]||k; roAgg[L]=(roAgg[L]||0)+ro[k];});
+new Chart(document.getElementById('roles'),{type:'doughnut',
+  data:{labels:Object.keys(roAgg),datasets:[{data:Object.values(roAgg),backgroundColor:PALETTE}]},
+  options:{plugins:{legend:{position:'right'}}}});
+
+new Chart(document.getElementById('currency'),{type:'doughnut',
+  data:{labels:DATA.currencies.map(c=>c.cur),datasets:[{data:DATA.currencies.map(c=>c.count),backgroundColor:PALETTE}]},
+  options:{plugins:{legend:{position:'right'}}}});
+
+const cats=DATA.categories.slice(0,12);
+new Chart(document.getElementById('cats'),{type:'bar',
+  data:{labels:cats.map(c=>c.label),datasets:[{label:'заметок',data:cats.map(c=>c.posts),backgroundColor:C.acc}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false}}}});
+
+const vd=DATA.vendors.slice(0,15);
+new Chart(document.getElementById('vendors'),{type:'bar',
+  data:{labels:vd.map(v=>v.vendor),datasets:[{label:'ссылок',data:vd.map(v=>v.count),backgroundColor:C.acc2}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false}}}});
+
+// ---- tables
+let csort={k:'posts',dir:-1};
+function drawCat(){
+  const rows=[...DATA.categories].sort((a,b)=>{
+    const x=a[csort.k],y=b[csort.k];
+    return (typeof x==='string'?x.localeCompare(y):x-y)*csort.dir;});
+  document.querySelector('#cattable tbody').innerHTML=rows.map(c=>
+    `<tr><td>${c.label}</td><td class="num">${fmt(c.posts)}</td><td class="num">${fmt(c.eur_cnt)}</td>
+     <td class="num">${c.eur_median?eur(c.eur_median):'—'}</td><td class="num">${c.eur_sum?eur(c.eur_sum):'—'}</td></tr>`).join('');
+}
+document.querySelectorAll('#cattable th').forEach(th=>th.onclick=()=>{
+  const k=th.dataset.k; csort.dir=(csort.k===k)?-csort.dir:-1; csort.k=k; drawCat();});
+drawCat();
+
+document.querySelector('#toptable tbody').innerHTML=DATA.top_prices.map(p=>
+  `<tr><td class="num"><b>${eur(p.amount)}</b></td><td>${p.date||''}</td>
+   <td>${p.vendor?'<span class="tag">'+p.vendor+'</span>':''}</td><td>${p.category}</td>
+   <td>${p.snippet.replace(/</g,'&lt;')}</td></tr>`).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,703 @@
+<!doctype html><html lang=ru><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>Фоновые сессии и результаты</title></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Sessions-Live.html">&larr; Sessions-Live</a> · <a href="Task-Backlog.html">Task-Backlog &rarr;</a></span></div><style>
+:root{--bg:#f7f7f8;--fg:#1b1b1f;--mut:#63636b;--card:#fff;--line:#e2e2e6;
+--red:#b3261e;--redbg:#fdecea;--yel:#8a6100;--yelbg:#fff5dc;--grn:#1c6c3c;--grnbg:#e9f6ee;}
+@media (prefers-color-scheme:dark){:root{--bg:#131316;--fg:#e9e9ec;--mut:#9a9aa4;--card:#1c1c21;
+--line:#2e2e36;--red:#ff9d92;--redbg:#3a1c19;--yel:#ffd479;--yelbg:#3a2f13;--grn:#8fe0ac;--grnbg:#14301f;}}
+:root[data-theme=dark]{--bg:#131316;--fg:#e9e9ec;--mut:#9a9aa4;--card:#1c1c21;--line:#2e2e36;
+--red:#ff9d92;--redbg:#3a1c19;--yel:#ffd479;--yelbg:#3a2f13;--grn:#8fe0ac;--grnbg:#14301f;}
+:root[data-theme=light]{--bg:#f7f7f8;--fg:#1b1b1f;--mut:#63636b;--card:#fff;--line:#e2e2e6;
+--red:#b3261e;--redbg:#fdecea;--yel:#8a6100;--yelbg:#fff5dc;--grn:#1c6c3c;--grnbg:#e9f6ee;}
+*{box-sizing:border-box}
+body{margin:0;padding:24px 16px 64px;background:var(--bg);color:var(--fg);
+font:15px/1.55 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto}
+h1{font-size:23px;margin:0 0 4px}
+.sub{color:var(--mut);font-size:13px;margin-bottom:20px}
+.tiles{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.tile{flex:1 1 150px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.tile b{display:block;font-size:26px;line-height:1.1}
+.tile span{color:var(--mut);font-size:12px}
+h2{font-size:17px;margin:30px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.s{background:var(--card);border:1px solid var(--line);border-left-width:4px;border-radius:9px;
+padding:12px 14px;margin-bottom:10px}
+.s.red{border-left-color:var(--red)} .s.yellow{border-left-color:var(--yel)}
+.s.green{border-left-color:var(--grn)}
+.t{font-weight:600;margin-bottom:4px}
+.v{display:inline-block;font-size:12px;padding:1px 8px;border-radius:20px;margin-right:6px}
+.red .v{background:var(--redbg);color:var(--red)} .yellow .v{background:var(--yelbg);color:var(--yel)}
+.green .v{background:var(--grnbg);color:var(--grn)}
+.meta{color:var(--mut);font-size:12px;margin:4px 0}
+.note{font-size:13px;margin:6px 0}
+.red .note{color:var(--red)}
+details{margin-top:8px}
+summary{cursor:pointer;font-size:13px;color:var(--mut)}
+pre{white-space:pre-wrap;word-wrap:break-word;overflow-x:auto;background:var(--bg);
+border:1px solid var(--line);border-radius:7px;padding:10px;font-size:12.5px;margin:8px 0 0}
+.path{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--mut);
+overflow-x:auto;white-space:nowrap;display:block}
+.empty{color:var(--mut);font-size:13px}
+</style><div class=wrap><h1>Фоновые сессии и их результаты</h1><div class=sub>Собрано 2026-08-06 05:40 · источник: <span class=path>C:\Users\Anton\.claude\spawned</span> · вердикт пересчитан по выходу сессии, не по её state</div><div class=tiles><div class=tile><b>34</b><span>всего сессий</span></div><div class=tile><b>8</b><span>🔴 Требует внимания</span></div><div class=tile><b>8</b><span>🟡 В работе</span></div><div class=tile><b>18</b><span>✅ Закончила с результатом</span></div></div><h2>🔴 Требует внимания — 8</h2><div class=sub>числится сделанной, но работы не было · упала · таймаут · зависла</div><div class='s red'><div class=t>Brain Reindex Frequent (15m): восстановить таймер или починить врущий канон</div><div><span class=v>🔴 числится сделанной, работы не было</span><span class=meta>2026-07-29 00:02:10 · 20 мин 47 с · opus · meta: done/rc=0</span></div><div class=note>rc=0, но вместо работы отказ: «spend limit»</div><details><summary>итог (лог, 100 символов)</summary><pre>You&#x27;ve hit your monthly spend limit · raise it at claude.ai/settings/usage?from=cc_cli_limit_message</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-000210-brain-reindex-frequent-15m\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-brain-reindex-frequent-15m-восстановить-та.md</span></div><div class='s red'><div class=t>Fix dead WhatsApp history bridge (stale since Jun 30)</div><div><span class=v>🔴 числится сделанной, работы не было</span><span class=meta>2026-07-29 00:06:39 · 16 мин 24 с · opus · meta: done/rc=0</span></div><div class=note>rc=0, но вместо работы отказ: «spend limit»</div><details><summary>итог (лог, 100 символов)</summary><pre>You&#x27;ve hit your monthly spend limit · raise it at claude.ai/settings/usage?from=cc_cli_limit_message</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-000639-fix-dead-whatsapp-history-br\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-fix-dead-whatsapp-history-bridge-stale-sin.md</span></div><div class='s red'><div class=t>Дедуп асков: один вопрос штампуется x16 в 02</div><div><span class=v>🔴 числится сделанной, работы не было</span><span class=meta>2026-07-29 00:18:03 · 5 мин 1 с · opus · meta: done/rc=0</span></div><div class=note>rc=0, но вместо работы отказ: «spend limit»</div><details><summary>итог (лог, 100 символов)</summary><pre>You&#x27;ve hit your monthly spend limit · raise it at claude.ai/settings/usage?from=cc_cli_limit_message</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-001803-x16--02\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-дедуп-асков-один-вопрос-штампуется-x16-в-0.md</span></div><div class='s red'><div class=t>п.30+32 Здоровье флота: снять RED, починить bus_send, чек-лист сервисов по ролям</div><div><span class=v>🔴 убита, преемника нет</span><span class=meta>2026-07-29 07:07:15 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>перезапускалась видимой рельсой, но ни карточка не получила итог, ни одной запланированной задачи с этой сессией не заведено</div><details><summary>итог (карточка задачи, 1348 символов)</summary><pre>-red--bus-send
+title: &quot;п.30+32 Здоровье флота: снять RED, починить bus_send, чек-лист сервисов по ролям&quot;
+state: wip
+type: session
+priority: P1
+owner: machine
+machine: A-2022BAYAREA
+created_at: 2026-07-29
+touched_at: 2026-07-29
+born_from:
+  - &quot;[[chip-vs-live-work]]&quot;
+tags: [task, spawned-session]
+---
+
+## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: здоровье флота — закрыть ложно-зелёное и собрать чек-лист «что должно работать на каждой машине»
+
+Ты работаешь на хабе A-2022BAYAREA, оператор — Антон. Это пункты №30 и №32 из его голосового разбора 28.07 («нужно сделать в отдельной сессии»).
+
+## Outcome
+Антон открывает одну страницу и видит по каждой машине: что на ней ОБЯЗАНО работать по её роли, что реально работает, что молчит. Плюс закрыты открытые карточки «ложно-зелёного» и снят RED в `/arch`.
+
+## Контекст (проверь, не верь на слово)
+- `/arch` показывает score 98/100 и **RED** — уже сутки. Первым делом `/arch broken`: что имен
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-070715-3032----red--bus-send`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-070715-3032----red--bus-send
+
+## Outcome
+(дописывается ранером по завершении)</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-070715-3032----red--bus-send\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п3032-здоровье-флота-снять-red-починить-bu.md</span></div><div class='s red'><div class=t>п.55+22 Гигиена публичных репо + решение по публикации DR</div><div><span class=v>🔴 убита, преемника нет</span><span class=meta>2026-07-29 07:07:20 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>перезапускалась видимой рельсой, но ни карточка не получила итог, ни одной запланированной задачи с этой сессией не заведено</div><details><summary>итог (карточка задачи, 1831 символов)</summary><pre>----dr
+title: &quot;п.55+22 Гигиена публичных репо + решение по публикации DR&quot;
+state: wip
+type: session
+priority: P1
+owner: machine
+machine: A-2022BAYAREA
+created_at: 2026-07-29
+touched_at: 2026-07-29
+born_from:
+  - &quot;[[chip-vs-live-work]]&quot;
+tags: [task, spawned-session]
+---
+
+## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: гигиена публичных репо + решить, публикуем ли свои Deep Research как контент
+
+Ты на хабе A-2022BAYAREA, оператор — Антон. Пункты №55 и №22 голосового разбора.
+
+## Outcome
+Любой инженер, зашедший в любой наш публичный репозиторий, за 10 секунд понимает: что это, какая лицензия, как контрибьютить, куда написать. Ни одного репо без README/LICENSE/CONTRIBUTING/CODE_OF_CONDUCT.
+
+## Контекст (замер 28.07, перепроверь своими руками)
+- Организация `Palo-Alto-AI-Research-Lab`, 12 публичных репо.
+- LICENSE у 7 из 10 · CONTRIBUTING только у `clawrush` · CODE_OF_CONDUCT нигде · у репо `cofounder
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-070720-5522-------dr`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-070720-5522-------dr
+
+## Outcome
+
+Сессия остановлена в 07:25 ради видимого перезапуска; работа доведена до конца
+перезапущенной сессией 29.07 08:23–09:00.
+
+Итог и доказательства: [[task-2026-07-29-repo-hygiene-i-dr-publikaciya]] ·
+решение по DR: [[decision-2026-07-29-publikaciya-dr-kak-kontent]].
+
+Коротко: гигиена 13/13 GREEN (гейт exit 0), в `.github` дописан контакт (`5850c62`),
+гейт научен наследованию community-файлов и проверке CODE_OF_CONDUCT/описания/тем,
+триаж DR прогнан на 191 отчёте (CLEAN 42 · SCRUB 37 · PRIVATE 112), написан
+недостающий тест триажа. Наружу ничего не публиковалось.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-070720-5522-------dr\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п5522-гигиена-публичных-репо-решение-по-пу.md</span></div><div class='s red'><div class=t>п.31+34+40 Личный волт каждому пиру + граница приватности + очищенный экспорт</div><div><span class=v>🔴 убита, преемника нет</span><span class=meta>2026-07-29 07:07:29 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>перезапускалась видимой рельсой, но ни карточка не получила итог, ни одной запланированной задачи с этой сессией не заведено</div><details><summary>итог (карточка задачи, 1017 символов)</summary><pre>## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: свой волт каждому члену команды + граница приватности + очищенный экспорт волта
+
+Ты на хабе A-2022BAYAREA, оператор — Антон. Пункты №31, №34, №40 голосового разбора («тоже нужно в отдельную сессию»).
+
+## Outcome
+У каждого члена команды на его машине растёт ЕГО собственный второй мозг: его переписки, его заметки, его стиль. Он сам решает, что уходит в общий волт, а что остаётся только у него. Плюс существует очищенный экспорт нашего волта, который не стыдно показать внешнему адвайзеру.
+
+## Контекст
+- Сейчас follower — receive-only потребитель канона: он получает наш закон, но своего в
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-070729-313440`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-070729-313440
+
+## Outcome
+(дописывается ранером по завершении)</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-070729-313440\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п313440-личный-волт-каждому-пиру-граница-п.md</span></div><div class='s red'><div class=t>Долг: ответить Антону Каткову @*****katkov (ждёт 21 день)</div><div><span class=v>🔴 числится сделанной, работы не было</span><span class=meta>2026-07-29 07:18:37 · 236 мин 23 с · opus · meta: done/rc=0</span></div><div class=note>rc=0, но сессия почти ничего не вывела</div><details><summary>итог (лог, 10 символов)</summary><pre>(лог пуст)</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071837-antonkatkov--21\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-долг-ответить-антону-каткову-antonkatkov-ж.md</span></div><div class='s red'><div class=t>ПОВТОР (ночью съел лимит): Fix dead WhatsApp history bridge (stale since Jun 30)</div><div><span class=v>🔴 числится сделанной, работы не было</span><span class=meta>2026-07-29 07:28:05 · 19 мин 41 с · opus · meta: suspect/rc=0</span></div><div class=note>rc=0, но вместо работы отказ: «spend limit» -- ⚠️ спорно: ответ длиной 4637 символов, похоже на цитату внутри настоящего отчёта, проверь хвост</div><details><summary>итог (лог, 2696 символов)</summary><pre>…
+
+### 4. Сторож — починен там, где он реально был сломан
+
+Строить новый сторож не понадобилось: `wa_probe.py` уже проверял ровно то, что просили. Сломана была **доставка**: 28 дней он печатал RED в лог, а `exit=1` по флоту значит «нашёл **И САМ доставил**» — контракт был ложью, и LLM-проход поверх писал «Overall: GREEN». Сделано:
+
+- `wa_probe.py --alarm` — сам dual-send-ит RED (TG-03 + `_machine-bus`), троттлинг по отпечатку **списка проблем**, дефолт 168ч → месяц простоя стоит ~4 пинга;
+- `node_marker` — нет каталога моста → N/A и тихий 0 (у пиров не завоет), каталог есть, а стор пропал → громкий 2;
+- **exit 3** = «нашёл, но не доставил» — единственный случай, когда никого не разбудили, больше не маскируется под сигнал 1;
+- `connector_health_daily.cmd` → `--alarm`; в SKILL.md статус WhatsApp берётся из `wa_probe.py --json`, а не из наличия MCP-тула.
+
+**Доказательства (`/tt`):** dry-run ✅ · node_marker → rc=0 тихо ✅ · боевая доставка → `bus_send rc=0`, обе рельсы ✅ · повтор → `throttled` ✅ · обе рельсы убиты (`BUS_SEND_FAIL`) → **rc=3** + откат состояния ✅ · `py_compile` ✅ · `/arch scan` — 3 broken, все чужие ✅.
+
+**Сторонние глаза (Codex T3):** нашёл две настоящие дыры — гонку параллельных запусков и «зависший bus_send без маркера провала». Обе починены (claim-before-send с откатом; отдельный код 3) и перепроверены. Он же косвенно вскрыл мой баг: отпечаток считался со всего текста, поэтому правка формулировки ЛЕЧЕНИЯ вызвала лишний пинг — сузил до списка проблем.
+
+### 5. Найдено попутно (не чинил)
+
+Ночной прогон этой же задачи (00:06) умер на `You&#x27;ve hit your monthly spend limit` за 16 минут, а ранер записал **`Outcome: OK (rc=0)`**. Детектор «rc=0 + пустой вывод» мимо: вывод не пустой. Задача выглядела сделанной. Карточку пометил `superseded`, класс записал в память; фикс `spawn_session.py` не делал — вне периметра.
+
+**Тронуто:** `wa_probe.py`, `connector_health_daily.cmd`, `connector-health-daily/SKILL.md`, 3 карточки в `10-Tasks`, 2 файла памяти. Зоны `connectors`/`scheduled-tasks` были чисты; `output_freshness.py` не трогал — его прямо сейчас правит соседняя сессия.
+
+🧒 **Простыми словами:** телефонная трубка к WhatsApp отвалилась ещё 1 июля — не «сломалась запись», а просто **вышла из аккаунта**. Все эти 28 дней у нас был сторож, который каждый день кричал «мёртвый!»… в пустой блокнот: кричать он умел, а звонить нам — нет, хотя всем говорил, что позвонил. Я приделал ему телефон, научил не трезвонить одно и то же каждый день и честно признаваться, когда дозвониться не смог. Саму трубку обратно вставить может только ты: надо взять телефон и сфотографировать QR-код, 2 минуты. Я написал тебе об этом в чат 02 — ответь `+`, и я всё покажу на экране.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-072805-fix-dead-whatsapp-history-br\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-повтор-ночью-съел-лимит-fix-dead-whatsapp.md</span></div><h2>🟡 В работе — 8</h2><div class=sub>ещё бежит либо передана видимой задаче — итог там</div><div class='s yellow'><div class=t>п.29+39 Стили письма до конца + голосовой слой (подкасты)</div><div><span class=v>🟡 передана видимой задаче</span><span class=meta>2026-07-29 07:10:13 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>подхватила запланированная задача «sess-writing-styles-voice»; своя карточка осталась заглушкой (state: wip) -- итог смотри в сессии этой задачи</div><details><summary>итог (карточка-заглушка, 2912 символов)</summary><pre>…
+- Идея Антона про стиль сериала: читател
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-071013-2939`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-071013-2939
+
+## Outcome (закрыто 29.07, вторая: видимая: сессия)
+
+**Критерий «сделано»:** 5 из 5 голосов с профилем имеют образец на реальном дне · по каждому из 6 черновиков есть вердикт с причиной · аудиофайл существует и проверен по критериям, объявленным ДО прогона.
+
+### Вердикт: ✅ по всем пунктам scope, с двумя честными блоками внутри
+
+| Пункт | Итог | Доказательство |
+|---|---|---|
+| 1. Проверить реестр голосов | ✅ | [[_Voices-Registry]]: новый раздел «Образцы»: покрытие **5/5** голосов с профилем (было 2/5); у 3 частичных голосов образца нет по причине «сначала профиль» |
+| 2. Три недостающих стиля | ✅ | [[sample-day-x-2026-07-28-proof-layer]] · [[sample-day-reddit-2026-07-28-proof-layer]] · [[sample-day-hackernoon-2026-07-28-proof-layer]]: все на дне 28.07, источники-ретро в frontmatter, у каждого самопроверка по чек-листу своего голоса |
+| 3. Шесть висящих черновиков | ✅ | [[Draft-Verdicts-2026-07-29]]: **4 к выпуску, 2 блокированы, списанных нет**. Пять чисел проверены по первоисточникам: четыре сошлись, одно рассыпалось |
+| 4. Голосовой слой | ✅ | [[podcast-2026-07-28-one-day-in-the-fleet]]: файл 12.2 МБ, 6:20, диалог м/ж, **6/6 критериев** |
+| 5. Цена дорожки | ✅ | 6 мин 04 с wall-clock, 0 токенов на озвучку, 0 ручных шагов; порог «на поток» пройден |
+
+### Что нашлось попутно (не было в scope)
+
+- **Прошлая сессия успела почти всё, но её работа была невидима:** лог пустой, ни одной ссылки в волте, индекс NotebookLM не обновлён. Артефакты лежали на диске как несуществующие. Это ровно класс «построил и не рассказал»: работа без входящей ссылки не отличима от невыполненной.
+- **Два стоп-сигнала в черновиках VC**, оба поймались только проверкой цифр: непроверяемое «140 000+ контактов» и факап, которого нет ни в одном ретро.
+- **Правило про CTA инженеру исполнялось буквально** и портило концовку трёх статей Хабра сдвоенным зовом. Лечение: встраивать зов в существующий вопрос, а не дописывать абзацем.
+
+### Осталось (не блокеры, следующий заход)
+
+1. Пересчитать «140 000+ контактов» по явному определению → разблокирует [[article-vcru-01-fleet-operations]].
+2. Заменить невоспроизводимый факап в [[article-vcru-03-night-shift]] на документированный.
+3. Склеить сдвоенные CTA в трёх хабровских черновиках (≈10 минут на все три).
+4. Поставить дорожку «текст → голос» ночной рутиной + сторож свежести auth (cookie NotebookLM протухает молча).
+5. ⛔ Публикация чего-либо наружу: гейт Наташи (чат 121), в этой сессии сознательно не делалось.
+
+### Границы, которые соблюдены
+
+Наружу не ушло ничего. Tier-2 не трогался. `approval.py ask` не понадобился: логин NotebookLM живой (auth check валиден), рук Антона путь не потребовал.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071013-2939\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п2939-стили-письма-до-конца-голосовой-слой.md</span></div><div class='s yellow'><div class=t>п.52 Аутрич к строящим похожее (доделать после обрыва на лимите)</div><div><span class=v>🟡 передана видимой задаче</span><span class=meta>2026-07-29 07:10:32 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>подхватила запланированная задача «sess-outreach-similar-builders»; своя карточка осталась заглушкой (state: wip) -- итог смотри в сессии этой задачи</div><details><summary>итог (карточка-заглушка, 1307 символов)</summary><pre>## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: аутрич к тем, кто строит похожее — вход через разбор ИХ кода
+
+Ты на хабе A-2022BAYAREA, оператор — Антон. Пункт №52 голосового разбора («нужно делать отдельной сессией»). Ночью 28→29.07 сессия по этому пункту начиналась, но оборвалась на лимите: двери были выбраны, черновики и заметки волта не досданы. Найди её след, прежде чем начинать заново.
+
+## Outcome
+5-10 живых разработчиков со схожими проектами получили от нас содержательное сообщение, которое начинается с разбора ИХ работы, а не с рассказа о нас.
+
+## Контекст
+- Формула Антона: похвали код → дополни → попроси ревью. Вход не «п
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-071032-52`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-071032-52
+
+## Outcome
+✅ Закрыто 29.07 видимой сессией (фоновая была остановлена на полпути ради видимого перезапуска).
+
+Итог и доказательства → [[task-2026-07-29-autrich-k-stroyashchim-pohozhee]]: 10 касаний по 7 проектам с проверенными ссылками, первый живой ответ мейнтейнера, слот platform-owner `codex-cli` получен и отработан реальным прогоном сборки.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071032-52\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п52-аутрич-к-строящим-похожее-доделать-пос.md</span></div><div class='s yellow'><div class=t>п.33+6 Координация роя: одна живая сессия, watchdog зависших, DR по VS Code</div><div><span class=v>🟡 передана видимой задаче</span><span class=meta>2026-07-29 07:14:26 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>подхватила запланированная задача «sess-swarm-coordination»; своя карточка осталась заглушкой (state: wip) -- итог смотри в сессии этой задачи</div><details><summary>итог (карточка-заглушка, 1344 символов)</summary><pre>---watchdog--dr
+title: &quot;п.33+6 Координация роя: одна живая сессия, watchdog зависших, DR по VS Code&quot;
+state: wip
+type: session
+priority: P1
+owner: machine
+machine: A-2022BAYAREA
+created_at: 2026-07-29
+touched_at: 2026-07-29
+born_from:
+  - &quot;[[chip-vs-live-work]]&quot;
+tags: [task, spawned-session]
+---
+
+## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: координация роя — одна живая сессия вместо новой на каждое сообщение + DR по координации агентов
+
+Ты на хабе A-2022BAYAREA, оператор — Антон. Пункты №33 и №6 голосового разбора.
+
+## Outcome
+Агент, получивший сообщение в общий чат-лог, продолжает работать в СВОЕЙ живой сессии, а не плодит новую на каждое входящее. Зависшая сессия ловится и перезапускается. Плюс собран внешний опыт: кто и как координирует агентов, в том числе через VS Code.
+
+## Контекст
+- Идея Антона: чат = общий лог/радио событий роя; каждый агент по хуку или крону читает входящее плюс последние ~15 сообщений для конт
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-071426-336------watchdog--dr`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-071426-336------watchdog--dr
+
+## Outcome
+(дописывается ранером по завершении)</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071426-336------watchdog--dr\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п336-координация-роя-одна-живая-сессия-wat.md</span></div><div class='s yellow'><div class=t>п.8+20 Потерянное знание: скрин-альфа hub:3807 + забрать ноу-хау Дениса</div><div><span class=v>🟡 передана видимой задаче</span><span class=meta>2026-07-29 07:14:53 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>подхватила запланированная задача «sess-lost-knowledge-screen-alpha»; своя карточка осталась заглушкой (state: wip) -- итог смотри в сессии этой задачи</div><details><summary>итог (карточка-заглушка, 1322 символов)</summary><pre>--hub3807
+title: &quot;п.8+20 Потерянное знание: скрин-альфа hub:3807 + забрать ноу-хау Дениса&quot;
+state: wip
+type: session
+priority: P1
+owner: machine
+machine: A-2022BAYAREA
+created_at: 2026-07-29
+touched_at: 2026-07-29
+born_from:
+  - &quot;[[chip-vs-live-work]]&quot;
+tags: [task, spawned-session]
+---
+
+## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: достать два потерянных куска знания — картинка-альфа из хаба и ноу-хау от Дениса
+
+Ты на хабе A-2022BAYAREA, оператор — Антон. Пункты №8 и №20 голосового разбора.
+
+## Часть 1: разобрать скрин-альфу (№8)
+- Сообщение `hub:3807` в TG — фото с подписью «Взять себе эту альфу». Содержание картинки триажу недоступно: нужен OCR или просмотр, иначе альфа теряется.
+- Чат-источник — «00 Архив ГОЛОСА» (`-1002427790196`) либо соседний хабовый чат; найди сообщение по номеру, скачай медиа (`mcp__telegram__download_media`), прочитай картинку глазами (Read покажет изображение).
+- Разбери, что там за а
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-071453-820-----hub3807`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-071453-820-----hub3807
+
+## Outcome
+(дописывается ранером по завершении)</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071453-820-----hub3807\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п820-потерянное-знание-скрин-альфа-hub3807.md</span></div><div class='s yellow'><div class=t>п.47 Велосипеды: США -&gt; перегрузочный склад -&gt; Португалия, сквозной расчёт</div><div><span class=v>🟡 передана видимой задаче</span><span class=meta>2026-07-29 07:15:08 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>подхватила запланированная задача «sess-bikes-usa-portugal»; своя карточка осталась заглушкой (state: wip) -- итог смотри в сессии этой задачи</div><details><summary>итог (карточка-заглушка, 2441 символов)</summary><pre>## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: велосипеды — купить в США, через перегрузочный склад доставить в Португалию
+
+Ты на хабе A-2022BAYAREA, оператор — Антон. Пункт №47 голосового разбора. Уточнение Антона 28.07 дословно: «велосипеды купить в США, отправить на перегрузочный склад, получить в Португалии».
+
+## Outcome
+Антон видит готовую схему покупки с числами: какие велосипеды, где дешевле, сколько стоит доставка через посредника, сколько пошлина и НДС в Португалии, за сколько дней придёт. И понимает, дешевле ли это, чем купить на месте.
+
+## Контекст
+- Руслана уже занималась покупкой велосипедов в отдельной сессии. **Пер
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-071508-47`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-071508-47
+
+## Outcome
+
+✅ **СДЕЛАНО 29.07.2026.** Результат:
+[[2026-07-29-velosipedy-ssha-forwarder-portugalia-skvoznoy-raschet]]
+
+**Вердикт: НЕВЫГОДНО.** Схема США → перегрузочный склад → Португалия проигрывает
+покупке в ЕС на **€365–518** на велосипед — и проигрывает даже когда американский
+велосипед б/у, а европейский новый.
+
+- Б/у Prevelo Zulu Two $400 (Майами) → **€1 014** до двери
+  против нового Early Rider Seeker 16 → **€649** в наличии в ЕС.
+- Новый Prevelo Zulu Two HEIR → **€1 617** против нового
+  Early Rider Charger 16 → **€1 099**, с **той же вилкой RST 60 мм**.
+- Корень: коробка велосипеда негабаритна (81&quot; линейных &gt; порога MyUS 72&quot;),
+  платим за 29 кг объёмного веса вместо 12 реальных; пошлина 14% и IVA 23%
+  начисляются **и на фрахт тоже** (множитель ×1,402).
+- Точка безубыточности: б/у Prevelo должен стоить ≤ $105, чтобы побить
+  новый Seeker 16. Схема не спасается торгом.
+
+**Критерий «сделано»:** сквозная таблица по всем вариантам с датой замера и
+источником на каждое число ✅ · явный ответ выгодно/невыгодно с разницей в евро ✅ ·
+работа Русланы сведена и явно указано, что из неё взято ✅ · заметка перелинкована ✅.
+
+**Не сделано и почему:** живая котировка фрахта склад→Лиссабон (€300) осталась
+оценкой — калькулятор Stackry не отдаёт результат без реального клика мышью,
+скриншот в фоновой сессии недоступен. На вывод не влияет: даже при вдвое
+меньшем фрахте импорт всё равно дороже.
+
+⛔ Ничего не куплено, не заказано, не зарегистрировано — Tier-2 соблюдён.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071508-47\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п47-велосипеды-сша---перегрузочный-склад.md</span></div><div class='s yellow'><div class=t>п.11 Пульт с телефона: видеть / запускать / оценить ответ живой сессии</div><div><span class=v>🟡 передана видимой задаче</span><span class=meta>2026-07-29 07:15:22 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>подхватила запланированная задача «sess-phone-remote-control»; своя карточка осталась заглушкой (state: wip) -- итог смотри в сессии этой задачи</div><details><summary>итог (карточка-заглушка, 1009 символов)</summary><pre>## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: пульт с телефона — видеть сессии, отвечать им, запускать новые
+
+Ты на хабе A-2022BAYAREA, оператор — Антон. Пункт №11 голосового разбора. Дословная формулировка Антона 28.07: «управление сессиями с телефона — видеть / отвечать / запускать, три разные вещи с разной ценой».
+
+## Outcome
+Антон с телефона видит, что сейчас делают его машины, может ответить работающей сессии и может запустить новую. Начиная с самого дешёвого из трёх.
+
+## Контекст
+- Ночью 28→29.07 по этому пункту уже шла работа, есть карточка `E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-telegram-pult-sessii.md`. **
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-071522-11`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-071522-11
+
+## Outcome
+(дописывается ранером по завершении)</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071522-11\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п11-пульт-с-телефона-видеть-запускать-оцен.md</span></div><div class='s yellow'><div class=t>Хвосты ночи: output_freshness на пиры (COMMON/BY_HOST) + ночная регрессия</div><div><span class=v>🟡 передана видимой задаче</span><span class=meta>2026-07-29 07:15:43 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>подхватила запланированная задача «sess-output-freshness-peers»; своя карточка осталась заглушкой (state: wip) -- итог смотри в сессии этой задачи</div><details><summary>итог (карточка-заглушка, 1350 символов)</summary><pre>commonby-
+title: &quot;Хвосты ночи: output_freshness на пиры (COMMON/BY_HOST) + ночная регрессия&quot;
+state: wip
+type: session
+priority: P1
+owner: machine
+machine: A-2022BAYAREA
+created_at: 2026-07-29
+touched_at: 2026-07-29
+born_from:
+  - &quot;[[chip-vs-live-work]]&quot;
+tags: [task, spawned-session]
+---
+
+## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: доделать хвосты ночи 28→29.07 — сторож свежести на пиры и ночная регрессия на хабе
+
+Ты на хабе A-2022BAYAREA, оператор — Антон. Это не пункт из голосового списка, а незакрытые хвосты ночной работы. Они названы в ночном отчёте `E:\Obsidian\Anton-Knowledge\_Dashboards\Night-Report-2026-07-29.html` — прочитай его первым.
+
+## Outcome
+Сторож свежести выхода работает не только на хабе, а на всех узлах, и при этом не устраивает ложных тревог. Ночная регрессия заведена там, где её нет.
+
+## Хвост 1: `output_freshness.py` на пиры
+- Это единственный сторож, который проверяет ВОЗРАСТ ВЫХОДА, а н
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-071543-output-freshness---commonby-`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-071543-output-freshness---commonby-
+
+## Outcome
+(дописывается ранером по завершении)</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071543-output-freshness---commonby-\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-хвосты-ночи-output-freshness-на-пиры-commo.md</span></div><div class='s yellow'><div class=t>Библия: помогаем только полезным (циничный капер)</div><div><span class=v>🟡 передана видимой задаче</span><span class=meta>2026-07-29 07:23:29 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>подхватила запланированная задача «sess-bible-help-useful»; своя карточка осталась заглушкой (state: wip) -- итог смотри в сессии этой задачи</div><details><summary>итог (карточка-заглушка, 1013 символов)</summary><pre>## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+ЗАДАЧА: принять новое стоячее правило Антона и развезти по ВСЕМ домам через ритуал /intake.
+
+## Правило (origin: anton, голосом, 29.07.2026, эмфатично)
+«Мы помогаем только тем, кто может быть как-то полезен НАМ СЕЙЧАС — например инженер или инвестор.
+Если это безымянный некто — зачем нам ему помогать? Нам всегда нужно помогать только тем, КТО МОЖЕТ
+ДАТЬ НАМ ПОЛЬЗУ. Тебе нужно учиться быть ЦИНИЧНЫМ КАПЕРОМ.»
+
+## Повод (конкретный кейс, из которого правило родилось)
+***pak **pta (@****ibes): 17.07 на звонке Антон пообещал сделать VC/ангел-интро от его лица
+(Founders Fund, Playground Global, a16z
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-072329-task`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-072329-task
+
+## Outcome
+(дописывается ранером по завершении)</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-072329-task\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-библия-помогаем-только-полезным-циничный-к.md</span></div><h2>✅ Закончила с результатом — 18</h2><div class=sub>хвост отчёта самой сессии</div><div class='s green'><div class=t>ПРОБА: доказать что фоновая сессия реально работает</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-28 23:18:09 · 24 с · sonnet · meta: done/rc=0</span></div><details><summary>итог (лог, 154 символов)</summary><pre>23:18 [28.07] — как и в прошлой сессии: инструмента `mcp__computer-use__list_granted_applications` в моём наборе нет (ToolSearch ничего не нашёл).
+
+NOTOOL</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260728-231809-проба-доказать-что-фоновая-с\log.txt</span></div><div class='s green'><div class=t>Перемерить вендорские cookbook-репо по пропускной способности</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-28 23:19:23 · 4 мин 50 с · opus · meta: done/rc=0</span></div><details><summary>итог (лог, 1387 символов)</summary><pre>Разобрал сигнал крана-сторожа (4 «не в порядке» задачи). Итог — все четыре уже объяснены или уже чинятся, править было почти нечего:
+
+1. **Claude Reddit Warmup Lead** (Disabled) — намеренно: Reddit-лейн заморожен 2026-07-23/28 (шэдоубан 3 аккаунтов), уже зарегистрирован в `DISABLED_OK` cron_watchdog.py — не баг.
+2. **Claude Tg Calendar Agenda** (Disabled) — намеренно: «пока стоп» (память calendar-agenda-stopped), тоже уже в `DISABLED_OK`.
+3. **heartbeat-relay** (arm-verify просрочен с 12.07) — это НЕ забытый баг, а сознательно оставленный красным «нэг»: владение передано Маяку, но verify не закрыт — привязано к P0-блокеру Hetzner/Маяк, лечится там же.
+4. **reddit-warmup-lead молчит 41ч** — это была настоящая просадка (registry drift: OS-задачу отключили 28.07, а близнец-реестр heartbeat в `REGISTRY_MCP` не обновили — классическая грабля, описанная в самом файле). Я собрался поправить одну строку (`DAILY`→`None`), но при записи получил конфликт «file modified since read» — параллельная сессия/сторож уже исправил ровно эту строку за секунды до меня (сейчас там `&quot;reddit-warmup-lead&quot;: None, # RETIRED 2026-07-28`). Правка не нужна, дубли не создавал.
+
+Ничего в общей инфраструктуре не менял (уступил параллельному редактору). Если нужно — могу дальше разобрать P0-бэклог (Hetzner/Маяк, реактивационный батч, автоканал доставки пирам) или долги шины (90 шт., старейший 302ч).</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260728-231923-перемерить-вендорские-cookbo\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-28-перемерить-вендорские-cookbook-репо-по-про.md</span></div><div class='s green'><div class=t>Замер: подхватился ли постоянный доступ к экрану</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-28 23:19:56 · 6 мин 3 с · sonnet · meta: done/rc=0</span></div><details><summary>итог (лог, 1195 символов)</summary><pre>23:31, вторник, 28 июля 2026
+
+🧒 Простыми словами: мне никто не дал новую задачу в этом заходе, а браузер (Chrome) сюда ещё не подключился — значит забрать отчёт Gemini я сейчас не могу. Зато нашёл в очереди задачу «научи /dr-fanout не принимать пустой отчёт от ChatGPT» — и оказалось, что она уже сделана в прошлых заходах, просто карточка забыла об этом сказать. Я проверил построчно и закрыл её.
+
+Что сделал: task-2026-07-27-dr-fanout-citations-gate закрыта как `done` — гейт «0 citations/0 searches → статус `dead`, не `collected`, не идёт в синтез» уже реализован в `SKILL.md` скилла `/dr-fanout` (строки 82, 108, 126, 143) и подтверждён 5 полевыми прогонами 26–28.07 плюс проверкой `dr_registry.py` (`dead` — настоящий терминальный статус). Единственное расхождение с исходным текстом задачи — она предлагала имя статуса `degraded` и мягкое «третий голос по общим местам», а в поле закрепилось имя `dead` и полное исключение из синтеза (строже, не слабее) — я это явно отметил в чек-листе, не выдал за 1:1.
+
+Дальше: computer-use/Chrome в этой сессии не подключён, поэтому задачу по сбору Gemini-отчёта (DR26-07-14-MACANTON-01) взять не могу — жду появления доступа к экрану/браузеру в фоне.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260728-231956-замер-подхватился-ли-постоян\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-28-замер-подхватился-ли-постоянный-доступ-к-э.md</span></div><div class='s green'><div class=t>ПРОБА 2: доказать что фоновая сессия делает работу</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-28 23:20:52 · 49 с · sonnet · meta: done/rc=0</span></div><details><summary>итог (лог, 703 символов)</summary><pre>23:21, 28.07.2026 — задача выполнена.
+
+**Что сделано:** прочитал `MACHINE_HOST=A-2022BAYAREA` из `C:\Users\Anton\.claude\machine.env`; записал файл `spawn_proof.txt` в указанный scratchpad-путь с содержимым `PROOF A-2022BAYAREA 2026-07-28 23:21:28`.
+
+**Чем доказано:** запись подтверждена харнесом (файл создан, состояние актуально); директория существовала заранее (в ней уже лежали `chip_census.py` и `proof_task.md` — это чужая scratchpad-папка родительской/соседней сессии, я туда только дописал требуемый файл).
+
+**Осталось / заблокировано:** ничего — задача тривиальная, Tier-2 не задет, наружу ничего не публиковалось.
+
+ГОТОВО записал `PROOF A-2022BAYAREA 2026-07-28 23:21:28` в `spawn_proof.txt`</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260728-232052-2\log.txt</span></div><div class='s green'><div class=t>proof3 after codex fixes</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-28 23:23:59 · 46 с · sonnet · meta: done/rc=0</span></div><details><summary>итог (лог, 519 символов)</summary><pre>Готово. Задача выполнена полностью, без блокировок.
+
+**Что сделано:**
+1. Прочитал `MACHINE_HOST=A-2022BAYAREA` из `C:\Users\Anton\.claude\machine.env`.
+2. Записал файл `spawn_proof.txt` в указанный scratchpad-путь с содержимым:
+   ```
+   PROOF A-2022BAYAREA 2026-07-28 23:24:35
+   ```
+3. Проверил — файл создан по точному пути, одна строка, формат соблюдён.
+
+ГОТОВО: записал `PROOF A-2022BAYAREA 2026-07-28 23:24:35` в `spawn_proof.txt`.
+
+Ничего не заблокировано, Tier-2 не задействован, наружу ничего не публиковалось.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260728-232359-proof3-after-codex-fixes\log.txt</span></div><div class='s green'><div class=t>proof3 after codex fixes</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-28 23:23:59 · 27 с · sonnet · meta: done/rc=0</span></div><details><summary>итог (лог, 102 символов)</summary><pre>The task is trivial — the file&#x27;s actual instruction is just to answer with one line.
+
+Гонка проверена.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260728-232359-proof3-after-codex-fixes-2\log.txt</span></div><div class='s green'><div class=t>Restore missing canon_index.py generator</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-28 23:29:48 · 35 мин 41 с · opus · meta: done/rc=0</span></div><details><summary>итог (лог, 2989 символов)</summary><pre>…
+| `--check` работает на хабе | exit 1 на дрейфе, exit 0 после прогона |
+| Рутина «Canon Index Nightly» 23:40 Лиссабон | прогнана через планировщик: `LastTaskResult: 0`, next 29.07 23:40 |
+| Сторож свежести | `output_freshness.py` → артефакт `canon-index-nightly`, 30ч; `OK -- 0.2ч`; родной тест сторожа по-прежнему ALL PASS |
+| Тест + паспорт (§5.8) | `_test_canon_index.py` 20/20 PASS; `canon_index.md`; карта покрытия: `tested: True, documented: True` |
+| Карта системы | `build_arch_map.py` пересканирован, задача на карте, broken 0 |
+| Флот уведомлён | dual-send exit 0 (TG-03 msg 17267 + шина) |
+
+**Живой пример закрыт.** Два приказа Антона (№24 вопрос дня, №19 факап дня) не попадали в индекс по двум причинам: индекс сгенерирован до их создания **и** у обоих не было `status:` в шапке — они бы легли в «без статуса», то есть «не понять, исполняемые или история». Проставил `status: active`, оба теперь в списке активного канона (строки 110 и 354).
+
+**Сторонние глаза (§4.3).** Codex T3 нашёл две настоящие дыры, обе закрыты и покрыты тестами: неатомарная запись деривата в синкаемой шаре (теперь temp + `os.replace`) и **тихое разжалование** — опечатка в шапке (`status: [active`) молча уводила живое правило в историю; теперь это громкое ⚠️.
+
+**Пункт 4 (аудит класса).** Прошёл весь волт по шапкам «сгенерировано / не править руками» с извлечением имён движков: **других случаев нет**. Детектор проверен на состоянии до фикса — ловит ровно тот случай, значит ноль не от слепоты.
+
+**Осталось / не моё:**
+- **Mac должен перестать писать.** Два писателя на один файл уже дали 4 sync-conflict 27.07. В шине лежит просьба выключить его ночную перегенерацию или обернуть в `derived_writers.guard`. Пока Mac не ответил — риск живой.
+- **Дыра в существующем гейте.** `arch/lint_canon_script_refs.py` ловит ровно этот класс, но сканирует только CLAUDE.md и скиллы — шапки дериватов в волте вне его поверхности. Расширение было бы forever-fix, но гейт **прямо сейчас краснит 35 NEW и его базлайн перебивает параллельная сессия** — лезть туда одновременно я не стал (§7.7).
+- **28 канон-файлов без `status:`** — каждый в лимбе «исполнять или нет». Отдельная задача, за рамками этой.
+- 🤔 **Гипотеза, не доказана:** маковский прогон 28.07 не увидел 5 правил, созданных за часы до него — похоже на отставание Syncthing на роуминговом ноутбуке. Опровергать не пробовал, поэтому гипотеза.
+
+Заблокированного нет. Tier-2 не потребовалось.
+
+🧒 **Простыми словами:** у нас есть список живых правил, и правило не из списка выполнять нельзя. Робота, который этот список составляет, держал у себя один ноутбук, и он никому не пересылался — а в самом списке было написано «проверяй меня вот такой командой», хотя команды ни на одном компьютере не было. Я собрал робота заново на главном компьютере, сверил — ни одно правило не потерялось, поставил его работать каждую ночь и приделал сторожа: если список залежится дольше 30 часов, придёт тревога. Заодно два свежих приказа наконец попали в список живых.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260728-232948-restore-missing-canon-indexp\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-28-restore-missing-canon-indexpy-generator.md</span></div><div class='s green'><div class=t>RAG index checksum (снять предел проверки целостности)</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-28 23:40:18 · 24 мин 57 с · opus · meta: done/rc=0</span></div><details><summary>итог (лог, 2844 символов)</summary><pre>…
+- Порядок у производителя `clear() → replace(.npy) → replace(.pkl) → write()`: крэш оставляет **отсутствующий** манифест (мягко), а не протухший (ложная тревога).
+- Манифеста нет / битый json / чужая версия = мягкая деградация до проверки длин. Флот не ломается.
+- `--backfill` запечатал живые индексы **без многочасового реиндекса**; `--check` даёт 0/1/2 (2 = «сверка выключена» отдельно от «всё хорошо» — принято от ломателя).
+- Манифест машинно-локален: `*.json` уже в `.stignore` рядом с `*.npy`/`*.pkl` — правка `.stignore` не понадобилась (зону соседней сессии не трогал).
+
+## Чем доказано
+
+| Проверка | Результат |
+|---|---|
+| `_test_brain_ask.py` | **37 → 58 проверок, 0 FAIL** (тест написан ДО кода и был красным) |
+| Break-тест 1: сверка отключена в `load_index` | 4 FAIL, откачено по md5 |
+| Break-тест 2: хеш только по путям | красный ровно на чанк-перестановке + на живых индексах |
+| Break-тест на РЕАЛЬНЫХ 8887 описаниях | перестановка **двух** строк и сдвиг всего списка пойманы |
+| Живой прогон производителей | ночной реиндекс 23:50 сам записал манифесты: `by=brain_embed_update.py` (9878), `by=brain_embed_openai.py` (9879) |
+| `brain_ask.py &quot;как мы строим продукт&quot;` | **12 hits, exit 0** — как раньше; коды 0/2/3 не тронуты |
+| cp1252-класс | нашёл у себя же (`exit 1` на голой консоли) и закрыл guard&#x27;ом |
+| `/arch scan` + `coverage_map.py` | перекатаны; 0 broken; RED в линтах — чужие файлы (`hn_watch.py`, `sandbox_bus.py`, `zalp_delta.py`), не мои |
+
+**Внешний ломатель Codex T3** (`rag-index-checksum`): 3 замечания. Одно принято в код (код 2 у `--check`), два записаны как честные пределы — окно между подменой `.pkl` и записью манифеста (~мс, fail-soft) и «два производителя разом». Последнее **проверил, а не поверил**: у e5 одиночный лок работает (мой параллельный запуск был отбит живьём), у `brain_embed_openai.py` лока нет.
+
+**Документы:** паспорт [[brain_ask]] обновлён (предел снят, 56→58 проверок), новый паспорт `00-System\Parts\memory-rag\brain_index_manifest.md` с разделом «чего НЕ ловит», карточка `10-Tasks\task-2026-07-29-rag-index-checksum.md`, линк из `_Tasks-MOC.md` (раздел «Покрытие тестами и доками») и из `MOC-memory-rag`. Бэкапы: `brain_ask.py.bak-20260728-pre-manifest` + `.bak-20260728` у трёх остальных.
+
+## Осталось / заблокировано
+
+- 🔴 **Хвост, не блокер:** у `brain_embed_openai.py` нет одиночного лока (класс «два писателя», не «целостность индекса»). Трогать платный ночной индексатор в рамках этой задачи не стал — оставляю тебе как отдельную починку, она дешёвая (`bc.SingleInstance`).
+- 🟡 На других узлах флота сторож включится сам при первом реиндексе (движок уедет по `claude-imports`, манифест локальный); до этого — прежняя проверка длин.
+- Ничего наружу не публиковал, Tier-2 не трогал, платных API-вызовов не инициировал (манифест OpenAI записала штатная ночная рутина сама).</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260728-234018-rag-index-checksum\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-28-rag-index-checksum-снять-предел-проверки-ц.md</span></div><div class='s green'><div class=t>п.17 Экспорт паролей Chrome в store (только secrets, наружу ноль)</div><div><span class=v>✅ доделана видимой сессией</span><span class=meta>2026-07-29 07:07:35 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>лог обрезан на рестарте, итог взят из карточки (state: done, обновлена 2026-07-29 09:05)</div><details><summary>итог (карточка задачи, 2955 символов)</summary><pre>…
+
+**Что в сторе (только `secrets\`, наружу ноль):**
+- `chrome-passwords.csv` — полный экспорт паролей Chrome (профиль Default, `dz***@gmail.com`), сделан штатным «Export passwords» под Windows Hello (Антон подтвердил сам 28.07). Колонки `name,url,username,password,note` — привязка сервис→логин→пароль встроена. Это и есть «менеджер паролей».
+- `chrome-login-gaps.md` — новый список **«НЕЧЕМ ВОЙТИ»: 33 хоста**, известных Chrome, но без пароля в экспорте (passkey-only / v10 / SSO-only / устаревшее). Только хосты, без логинов и паролей.
+- `credentials.md` — индекс-запись обновлена: числа + аудит + ⚠️ про app-bound `v20`.
+
+**Чем доказано (замер ПОСЛЕ разбора состава, независимый метод):**
+- `~/.claude/scripts/chrome_creds_audit.py` (другой скрипт, не тот что делал экспорт) пересчитал: **1869 строк · 1857 с реальным паролем · 12 пустых**. Ядро совпало с прошлым замером = подтверждено. Домены зависят от нормализации (raw 1155/288-мульти vs нормализованный хост 1145/267) — методики разные, поэтому это НЕ «расхождение», ядро едино.
+- /tt пройден: 3 break-теста краснеют (нет CSV / битые колонки / переименованная секция карты → все exit 1); встроенный `--self-test` доказан красным на сломанном коде и зелёным на целом; на «злом» CSV (секретный пароль + многострочный note) отчёт НЕ содержит ни значения пароля, ни note (grep=0).
+- Внешний ломатель Codex (secondop t3) поднял 2 края (IPv6-хост, multiline-note) — оба закрыты и перепроверены.
+- Защита от утечки доказана: секреты на диске C: (`!CLAUDE-HP17 May26\secrets`), RAG индексирует ТОЛЬКО волт `E:\Obsidian` (разные диски → структурно вне RAG); публикационный гейт `leak_scan.py` пойман живьём — машинные идентификаторы → exit 1 BLOCKED, чистое → exit 0. Файл лежит в своей Syncthing-шаре `claude-secrets` (не в `anton-knowledge`/`claude-home`).
+
+**Корень, закрывший scope «написать скрипт извлечения паролей» (✅ доказано, не гипотеза):**
+Современный Chrome шифрует пароли **app-bound (`v20`, привязка к процессу Chrome)** — DPAPI/скриптом НЕ извлекаются. Пункт scope №1-2 в исходной форме (DPAPI-скрипт) невыполним by design и это правильно. Рабочий путь пополнения стора = штатный экспорт Chrome под Windows Hello (руки Антона). `chrome_creds_audit.py` обрабатывает результат такого экспорта — это достижимая форма «скрипта».
+
+**Что осталось / границы:**
+- Пополнение стора новыми/сменёнными паролями = разовый ручной экспорт Chrome Антоном (v20 не автоматизировать). Не блокер — стор уже полон (1857 паролей).
+- 12 пустых + 33 «нечем войти» — не чинить массово: это passkey/SSO/устаревшее, вход через них идёт другим путём.
+
+**Критерий «сделано»:** стор содержит рабочие пары сервис→логин→пароль (1857), есть список «нечем войти» (33), доказано что файл не уезжает в волт/RAG/наружу, скрипт-обработчик с тестом и док-паспортом (докстринг-шапка) прогнан. Все пункты закрыты.
+
+**⛔ Инвариант соблюдён:** ни одного значения пароля в этот отчёт, в карточку, в память, в волт и в лог не попало.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-070735-17---chrome--store--secrets\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п17-экспорт-паролей-chrome-в-store-только.md</span></div><div class='s green'><div class=t>п.28+26 Контент-план v1 + робот дистрибуции + дневник FB/X в GitHub</div><div><span class=v>✅ доделана видимой сессией</span><span class=meta>2026-07-29 07:10:05 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>лог обрезан на рестарте, итог взят из карточки (state: done, обновлена 2026-07-29 09:23)</div><details><summary>итог (карточка задачи, 2988 символов)</summary><pre>…
+
+### Сделано
+1. **Замер состава долга** (не «на глаз»): леджер 105 единиц = 73 `queued` + 24 `posted` + 8 `skipped`. Разбор 73: 52 `episode`, 16 `plan-cluster`, 3 `intention`, 2 `devlog`; файлы всех 73 на диске, пропаж 0. Самый старый висяк `plans\plan-2026-06-08.md` (51 день). Отдельно: воронка `triage\posts.jsonl` 518 захватов, это сырьё, а не долг.
+2. **Робот дистрибуции** `content_debt_watch.py` + дашборд `_Dashboards\Content-Debt.html` + задача Windows `Content-Distribution-Watch` (ежедневно 23:40, ночное окно). Паспорт: [[Content-Debt-Watch-Passport]].
+3. **Дневник постов FB/X** `diary_build.py` → `E:\GitHub\clawrush\diary\` (README + 2026-06 + 2026-07), **42 записи со ссылками** (FB 27, X 15), RU и EN, кросс-ссылки на лонгриды. Коммит `39d4a88`, запушен. Паспорт: [[Diary-Build-Passport]].
+4. **Контент-план v1** с арифметикой: [[Content-Plan-v1]] — 3 старых + 3 свежих в день, долг 73 обнуляется за 25 дней (запас 6 дней до дедлайна).
+
+### Найдено и починено по ходу
+- ⚠️ **Ложный вердикт сторожа.** «GitHub-дневник молчит 18 дн» оказался артефактом отставшего локального клона: на `origin` лежало 45 коммитов, последний накануне. Корень: мерили свою копию, а не опубликованное. Лечение: `git fetch` + замер по `origin/*`; не удалось сверитьcя — честный `STALE-SOURCE` «не знаю». Регрессия закреплена тестом.
+- ⚠️ **Утечка в публичный README.** Причина ручного скипа поста пересказывала его содержание. Наружу теперь идёт нейтральная корзина, полная причина остаётся в локальном `diary_gaps.json`.
+- ⚠️ **Нестабильный `id`** поста на встроенном `hash()` (соль случайная на процесс) — кэш однострочников не совпал бы никогда, молча. Переведён на `hashlib`.
+
+### Не сделано и почему
+- **8 свежих постов FB (19–28 июля) не попали в дневник:** свежий скан стены `fb_posts_scan.json` не несёт `permalink` (0 из 14), а старый `fb_wall_window.json` со ссылками остановился на 2026-07-05. Ссылку не выдумываем: посты записаны в `diary_gaps.json` с причиной. Чинится на стороне сборщика стены (живой логин FB = руки Антона).
+- **X: состояние канала неизвестно** — окно `x_wall_window.json` не обновлялось 23 дня.
+- **`diary_build` не поставлен на ночь:** пока свежие посты приходят без ссылок, автопрогон давал бы ноль новых записей.
+- **Леджер долга двигается руками** (один снимок `2026-07-05: 73`): пока публикация не проставляет `posted` сама, «долг тает» держится на честном слове. Отдельная деталь.
+
+### Доказательство
+- `python _test_content_debt_watch.py` → 12/12; `python _test_diary_build.py` → 22/22.
+- Тесты проверены **мутациями**: 4 нарочные поломки на дневник (3 покраснели сразу, 4-я вскрыла дырку в тесте, дырка закрыта) + 1 на сторожа (`SILENT 209 дн` при возврате старого поведения).
+- Сторож после публикации сам переключил `github_diary` из `SILENT` в `OK last=2026-07-29`, то есть петля план→факт замкнута.
+
+**Вердикт: ✅ по пунктам 1–4, ⚠️ по охвату дневника** (42 из 51 поста окна; 8 заблокированы отсутствием ссылок в источнике, 1 исключён редакторски).</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071005-2826---v1----fbx--github\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п2826-контент-план-v1-робот-дистрибуции-дн.md</span></div><div class='s green'><div class=t>п.53+41 Заметность GitHub: собрать DR, замер, позиционирование рядом с Карпати</div><div><span class=v>✅ доделана видимой сессией</span><span class=meta>2026-07-29 07:10:25 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>лог обрезан на рестарте, итог взят из карточки (state: done, обновлена 2026-07-29 09:31)</div><details><summary>итог (карточка задачи, 1347 символов)</summary><pre>## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: заметность на GitHub — собрать уже заказанный DR, замерить, позиционировать рядом с Карпати
+
+Ты на хабе A-2022BAYAREA, оператор — Антон. Пункты №53 и №41 голосового разбора. Антон: «был новый DR — найти, собрать, провести ещё замер».
+
+## Outcome
+Есть честный план разгона заметности: что реально двигает стрелку, что не двигает, и где красная черта. Плюс сформулировано, чем наша сборка похожа на подход Andrej Karpathy и кто ещё работает в этой нише.
+
+## Контекст
+- Реестр ДР: `E:\Obsidian\Anton-Knowledge\_DR-Registry.md`, движок `python E:\Obsidian\_imports\dr_registry.py`. Сначала найд
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-071025-5341--github--dr`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-071025-5341--github--dr
+
+## Outcome
+(дописывается ранером по завершении)
+
+## Outcome (закрыто 29.07)
+Сессия была убита в 07:25 ради видимого перезапуска, лог пустой — работа сделана заново видимой сессией.
+Продукт: [[decision-2026-07-29-github-visibility-measurement-and-karpathy-position]]
+Живая карточка с критериями «сделано»: [[task-2026-07-29-github-zametnost-zamer-i-karpaty]]</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071025-5341--github--dr\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п5341-заметность-github-собрать-dr-замер-п.md</span></div><div class='s green'><div class=t>п.38+48 Альфа-конвейер: звонки и инженерные каналы с видимым доказательством</div><div><span class=v>✅ доделана видимой сессией</span><span class=meta>2026-07-29 07:14:16 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>лог обрезан на рестарте, итог взят из карточки (state: done, обновлена 2026-07-29 10:19)</div><details><summary>итог (карточка задачи, 1366 символов)</summary><pre>## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: альфа-конвейер — со звонков и с инженерных каналов, с ВИДИМЫМ доказательством работы
+
+Ты на хабе A-2022BAYAREA, оператор — Антон. Пункты №38 и №48 голосового разбора. Антон про №38: «сделать, чтобы видеть, что это работает». Про №48: «альфамайнер — убедиться, что работает».
+
+## Outcome
+Заметки со звонков и посты из инженерных TG-каналов сами превращаются в альфу в волте, и на дашборде видно: сколько зашло вчера, сколько сегодня, что именно выбрано и почему.
+
+## Контекст
+- Звонки: Granola (MCP `mcp__1ec939e5-...`) и Fireflies. ⚠️ Granola требует авторизации и в неинтерактивной сессии 
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-071416-3848`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-071416-3848
+
+## Outcome
+Сессия остановлена на полпути 29.07 07:25 ради видимого перезапуска. Работу подхватила и довела
+до конца видимая сессия того же дня — итог, доказательства и что осталось:
+[[task-2026-07-29-alpha-flow-visible-pipeline]].
+Успела до остановки: `alpha_flow.py` + `_test_alpha_flow.py` + первая версия дашборда
+`_Dashboards\Alpha-Flow.html` + `granola\alpha_post.py` с атомарной записью стейта.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071416-3848\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п3848-альфа-конвейер-звонки-и-инженерные-к.md</span></div><div class='s green'><div class=t>п.35+49 Регламент dogfooding + единая температурная шкала (лиды, альфа, задачи)</div><div><span class=v>✅ доделана видимой сессией</span><span class=meta>2026-07-29 07:14:39 · opus · meta: killed-for-visible-restart/rc=None</span></div><div class=note>лог обрезан на рестарте, итог взят из карточки (state: done, обновлена 2026-07-29 10:10)</div><details><summary>итог (карточка задачи, 2129 символов)</summary><pre>## Why
+Запущена отдельная фоновая сессия вместо немого чипа (правило «решил создать сессию — сам её и запусти», Антон 28.07.2026).
+
+## Задача
+# Сессия: два правила — dogfooding перед выпуском наружу и единая температурная шкала
+
+Ты на хабе A-2022BAYAREA, оператор — Антон. Пункты №35 («это тоже правило» — сессия + регламент) и №49 («сессия на сдачу по температуре лидов в CRM»).
+
+## Outcome
+Оба правила живут не в переписке, а в домах, куда придёт следующий исполнитель: канон, Библия, память, скилл, хук — по матрице. И по каждому доказано покрытие.
+
+## Часть 1: регламент dogfooding (№35)
+Суть: перед внешним запуском любой фичи — сначала внутренним пользователям (команда), собрать фидбэк, зафиксировать боли и баги, доработать, ретест вн
+
+## Как смотреть
+- статус: `python ~/.claude/scripts/spawn_session.py list`
+- лог: `python ~/.claude/scripts/spawn_session.py tail 20260729-071439-3549--dogfooding`
+- рабочая папка: C:\Users\Anton\.claude\spawned\20260729-071439-3549--dogfooding
+
+## Outcome — ✅ закрыто 29.07.2026 (хаб A-2022BAYAREA)
+
+**Часть 1 (п.35, dogfooding)** — была сделана утренней сессией, эта сессия проверила и достроила:
+правило живёт в CLAUDE.md §5.9 · Библии `reglament-snachala-na-svoih-potom-naruzhu-dogfooding` ·
+памяти `dogfood-before-external-release` + строка в MEMORY.md · скилле `/release-slice` Шаг 2b ·
+`_CANON-INDEX`. `rule_home_guard.py dogfood-before-external-release` = **GREEN** (exit 0).
+Достроено сейчас: в Библию добавлена **матрица покрытия по домам** с явным вердиктом на каждый,
+включая единственный ⛔ — хук, с причиной (у события «уходит наружу» нет одного инструментального
+следа: git push · TG MCP · Chrome/FB · GitHub PR).
+
+**Часть 2 (п.49, температура)** — сделана этой сессией:
+[[insight-2026-07-29-edinaya-temperaturnaya-shkala-lidy-alfa-zadachi]] +
+карточка [[task-2026-07-29-edinaya-temperaturnaya-shkala]].
+Главный вывод: поле температуры не надо вводить — их **три**, все заполнены на 14 133/14 133,
+и два из них противоречат друг другу на 1064 карточках. Заметка отвечает на открытый вопрос
+доктрины Антона [[concept-lead-typology]] («нужна более тонкая шкала остывания»).</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071439-3549--dogfooding\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-п3549-регламент-dogfooding-единая-температ.md</span></div><div class='s green'><div class=t>warn check</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-29 07:16:45 · 28 с · opus · meta: done/rc=0</span></div><details><summary>итог (лог, 508 символов)</summary><pre>ок
+
+**Отчёт**
+- **Что сделано:** прочитал `C:\Users\Anton\.claude\spawned\20260729-071645-warn-check\task.md`, выполнил задачу — она состояла из одной строки «скажи ок».
+- **Чем доказано:** файл прочитан целиком (17 строк), инструкция после разделителя `---` = `скажи ок`, ответ дан.
+- **Что осталось:** ничего.
+- **Заблокировано:** ничего. Tier-2 не потребовался, наружу ничего не уходило.
+
+🧒 Простыми словами: в записке было написано всего одно задание — «скажи ок». Я сказал ок. Больше там ничего не было.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071645-warn-check\log.txt</span></div><div class='s green'><div class=t>Долг: ответить Арсению @****niySP (ждёт 12 дней)</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-29 07:18:36 · 3 мин 41 с · opus · meta: done/rc=0</span></div><details><summary>итог (лог, 2843 символов)</summary><pre>**Долг перед Арсением закрыт — отправлено, подтверждено, записано.**
+
+Текст, ушедший от @***ydzi (102 слова, строчными, без подписи, один открытый вопрос в конце):
+
+&gt; арсений, привет. извини за паузу — твой ответ висел на мне двенадцать дней, это мой косяк, не твоя тишина.
+&gt;
+&gt; термукс как рельса управления агентом — ровно та часть, которой у меня нет. у меня четыре машины в связке: домашний хаб на двух gpu, ноут, мак и vps-якорь; приказы ходят между ними через телеграм-группу, туда же каждая сама отчитывается. телефон в эту схему пока не встал: узлу надо пережить сон и ребут и самому отписаться в шину, а на телефоне у меня для этого ничего не крутится — он у меня пульт, а не узел.
+&gt;
+&gt; что у тебя термукс реально держит, когда телефон в кармане и экран выключен?
+
+**Что сделано и чем доказано**
+- RECALL до буквы черновика: карточка целиком + задача в реестре + **живой** `get_history 144660345` под @***ydzi. Тред совпал с описанием один-в-один, за 12 дней в него никто не писал → расхождения нет, эскалация не понадобилась.
+- Отправлено 29.07 06:19:48 UTC, **msg_id 2128098**; подтверждено повторным `get_history` — сообщение лежит в треде.
+- Касание записано: `budget.py record TONYDZI community-touch arseniy-sp --msg 2128098` → `recorded [PROVEN msg_id=2128098]`.
+- `budget.py unverified` — строк с arseniy-sp **0** (висят только два чужих старых: stan-novi 18.07 и w2test).
+- Карточка: frontmatter `last_contact/touched_at 2026-07-29`, `touch_verified msg_id 2128098`, `awaiting: ЕГО`; красный заголовок долга снят, добавлен блок «Контакт 2026-07-29 ✅ ПОДТВЕРЖДЕНО».
+- `tg_followups.json`: `ball: them`, `last_touch 2026-07-29`, `verified` с обоими msg_id (бэкап `.bak-20260729` рядом). Дашборд пересобран: 13 лидов, Арсений теперь в «Ждём ответа», не в «мяч у нас».
+- Задача в реестре: пункт по Арсению отмечен `[x]` + evidence с msg_id.
+
+**Не делал (по не-целям):** Calendly и созвон — нет. Песочницу Claude↔Claude не упомянул: поверх первого же ответа она бы перетянула смысл письма; пометил в карточке как уместный следующий шаг, если он ответит. Других лидов не трогал.
+
+**Осталось / расхождения**
+- Вторая половина той же задачи реестра — **Антон Катков** (долг 19 дней) — вне моего scope, остаётся открытой.
+- ⚠️ Отклонение от ТЗ: писал не Fable 5, а Opus 5 — эта фоновая сессия запущена на Opus, модель внутри сессии не переключается. Sonnet, который запрещён, не использовался; Opus = штатный fallback по §6.2.
+
+🧒 Простыми словами: Арсений ответил нам ещё 17 июля через 16 минут, а мы двенадцать дней молчали — просто не заметили. Я написал ему сам, коротко и по делу: извинился, рассказал, что у нас четыре компьютера общаются через телеграм, а телефон в эту компанию пока не взяли, и спросил его про телефон. Письмо ушло, номер письма записал везде — в карточку, в журнал и в табличку, чтобы больше никто не потерялся.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-071836-arseniysp--12\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-долг-ответить-арсению-arseniysp-ждёт-12-дн.md</span></div><div class='s green'><div class=t>ПОВТОР (ночью съел лимит): Brain Reindex Frequent (15m): восстановить таймер или починить врущий канон</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-29 07:28:04 · 12 мин 59 с · opus · meta: done/rc=0</span></div><details><summary>итог (лог, 2745 символов)</summary><pre>…
+
+3. **Канон починен — он противоречил сам себе.** В `reindex-routine.md` было ДВА блока, оба датированных 29.07: один «задача восстановлена и работает», другой «задачи на хабе НЕТ, лаг до суток, решение за Антоном». Второй переписан в исторический блок «состояние ДО восстановления» с явной пометкой, что его вывод больше не действует; сохранено то, что починку пережило (кулдаун = дроссель, а не производитель; замер «6 прогонов в сутки максимум»; реальный порог watchdog 240 мин, а не 90). Снят пункт «решение за Антоном»: замер показывает, что развилки «свежесть против нагрузки» нет — 66 с на прогон, почти все тики выходят мгновенно.
+
+4. **Флот проверен, каждый узел — со степенью доказанности:**
+   - хаб — замерен, ≤15 мин;
+   - **Маяк** — по ssh: cron/systemd-таймера реиндекса нет, e5-индекса нет вовсе (нет GPU), но `_brain_oai.*` обновляется раз в сутки ~03:18 из ночных обёрток → **лаг до суток**; 15-мин таймер там означал бы платные вызовы OpenAI каждые 15 минут — не ставим;
+   - **ноут ZBook** — с хаба состояние не читается (ssh timeout; своего `routines-*.json` он в шину не шлёт). Последний известный замер — его собственный транскрипт 22.06: `Frequent (15m)` = `Disabled`. Отправлен робото-видимый `TASK:` по шине (дошёл обоими рельсами) на самоотчёт; в заметке это помечено как «последнее известное», а не «текущее»;
+   - **Маки** — ssh отказал (`refused` / `host key`), поэтому «реиндекс не гоняют» помечено как вывод из роли, а не замер.
+
+5. **Тесты**: `_test_essence_registries.py` exit 0 и `_test_reindex_frequent.py` exit 0 — до и после моих правок. Зона `memory-index` объявлена на доске ON AIR и закрыта; прошлая заявка `vault-imports` той сессии уже была `expired`, конфликта не было. Бэкап заметки — в скретчпаде сессии.
+
+**Осталось / заблокировано**
+- Ответ ноута по шине (единственный незакрытый факт). Ничего не блокирует: даже если там окажется `Ready`, это не поломка, а повод выключить по §7.1.
+- Маки остаются непроверенными с хаба — чинить ssh-доступ ради этого не стал, это отдельная задача.
+- Tier-2 не потребовалось: наружу ничего не ушло, кроме внутрифлотового запроса.
+
+🧒 **Простыми словами:** будильник, который каждые 15 минут освежает «поиск по мозгу», кто-то выключил месяц назад, а в инструкции так и было написано «он работает». Ночью его починила соседняя сессия — но инструкция стала спорить сама с собой: в одном абзаце «починили», в другом «его нет». Я проверил своими глазами, что будильник реально звонит и работу делает, нашёл, кто и какой командой его выключил, и переписал инструкцию так, чтобы она не врала. Ещё обошёл остальные компьютеры: на сервере-Маяке обновление раз в сутки и так правильно, ноуту отправил записку «скажи, как у тебя», про Маки честно написал «отсюда не видно».</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-072804-brain-reindex-frequent-15m\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-повтор-ночью-съел-лимит-brain-reindex-freq.md</span></div><div class='s green'><div class=t>ПОВТОР (ночью съел лимит): Дедуп асков: один вопрос штампуется x16 в 02</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-29 07:28:05 · 15 мин 47 с · opus · meta: done/rc=0</span></div><details><summary>итог (лог, 2918 символов)</summary><pre>…
+
+**Найден усилитель, которого в задании не было.** `approval.py due` отдаёт конверт **на каждый аск**, а `approval_reping_tick.py` шлёт каждый. Это не гипотеза: `_reping_tick.log` — 249 строк за утро, тик работал 07:31–07:35 и слал Антону в телефон примерно по сообщению каждые 5 секунд. Побочно объяснилась загадка «153 аска в одну минуту»: `cmd_due` при переpingе **перезаписывает `created`**. Свернул через `ask_once.fold_due()` — один вопрос = одно напоминание с припиской «и ещё N копий».
+
+**Чем доказано:**
+- движок: `--self-test` ALL PASS · `--break-test` 5 провалов на сломанном ключе;
+- **проводка** (новый тест `_test_ask_once_wiring.py`, дёргает настоящие функции роботов): 12/12 OK · `--break-test` 9 провалов;
+- самотесты `canon_apply` и `claude_md_guard` после правок — ALL PASS;
+- **живьём:** тик свернул 27 конвертов → **1 сообщение** вместо 27;
+- замер стены: 190 открытых → **5 уникальных**, 185 лишних копий.
+
+**Границы соблюдены.** `approval.py` не тронут ни строкой (mtime 28.07 23:32). Бэкапы `*.bak-preaskonce-20260729`. Существующие pending не удалены.
+
+**Свои ошибки, найденные по ходу:** (1) `--break-test` импортировал `ask_once` раньше песочницы → тест насорил 23 строки в боевой лог; починено перепривязкой модульных путей, строки помечены, оригинал в `_ask_once.log.pre-cleanup`, боевая база не пострадала (проверено поиском тестовых id — их там нет). (2) В проверке импортировал `approval_reping_tick`, а он выполняется на уровне модуля → ушёл ещё один пинг в 02 (уже свёрнутый, 1/1).
+
+**🔴 Осталось на Антона** — 190 накопленных копий это его очередь, молча не трогал:
+```
+python C:\Users\Anton\.claude\scripts\ask_once.py collapse          # репетиция: покажет 190 → 5
+python C:\Users\Anton\.claude\scripts\ask_once.py collapse --apply  # схлопнуть (бэкап базы сам)
+```
+**Не заблокировано ничего.** Записано: карточка `10-Tasks\task-2026-07-29-ask-wall-dedup-at-producer.md`, строка в `_Tasks-MOC.md`, память `wiring-needs-its-own-test` + строка в MEMORY.md.
+
+**Не проверено честно:** кто именно поднял 153 аска в 07:31 до моей правки — установлено, что это переping перештамповал `created`, но исходный всплеск ~180 копий за 07:01–07:28 совпадает с массовым стартом фоновых сессий; это 🤔 гипотеза, опровергать её не стал.
+
+🧒 **Простыми словами:** у тебя в телефоне один и тот же вопрос задавался 179 раз — каждая новая сессия спрашивала заново, будто предыдущей не было. Ночью сделали «глушилку повторов», но забыли её включить: она лежала и тест на ней горел зелёным. Я её включил в четырёх местах и проверил не «работает ли глушилка», а «дёргает ли её кто-нибудь» — это разные вещи. Ещё нашёл вторую беду: напоминалка слала отдельное сообщение на каждую копию, поэтому утром телефон пикал каждые 5 секунд. Теперь одно сообщение на один вопрос: проверил вживую — было бы 27, ушло 1. Старые 190 копий не стёр, это твоя почта: скажешь — одной командой схлопну в 5, ничего не пропадёт.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-072805-x\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-повтор-ночью-съел-лимит-дедуп-асков-один-в.md</span></div><div class='s green'><div class=t>ПРОБА ГЕЙТА: эта сессия не должна запуститься</div><div><span class=v>✅ сделана</span><span class=meta>2026-07-29 08:29:06 · 15 с · opus · meta: done/rc=0</span></div><details><summary>итог (лог, 258 символов)</summary><pre>[⏰ среда, утро, 08:29, 29 июля 2026]
+
+проба
+
+Отчёт: задача — ответить одним словом; выполнено, доказательство — строка выше. Осталось: ничего. Заблокировано: ничего.
+
+🧒 Простыми словами: в записке было написано «скажи одно слово: проба». Я прочитал и сказал.</pre></details><span class=path>лог: C:\Users\Anton\.claude\spawned\20260729-082906-task\log.txt</span><span class=path>карточка: E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-07-29-проба-гейта-эта-сессия-не-должна-запустить.md</span></div></div></body></html>

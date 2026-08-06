@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Аудит прожорливости сессий · 24ч</title>
+<style>
+:root{--bg:#0e1117;--card:#161b22;--bd:#2a323d;--tx:#e6edf3;--dim:#8b98a8;--acc:#58a6ff;--red:#f85149;--amber:#e3b341;--grn:#3fb950}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:20px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:26px 0 10px;color:var(--acc)}
+.sub{color:var(--dim);font-size:13px;margin-bottom:6px}.wrap{max-width:1080px;margin:0 auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.card .n{font-size:26px;font-weight:700}.card .l{color:var(--dim);font-size:12px;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--bd);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-block;padding:1px 7px;border-radius:5px;font-size:11px;font-weight:600}
+.t-interactive{background:#1f6feb33;color:#79c0ff}.t-robot-inbox{background:#e3b34133;color:#e3b341}
+.t-scheduled-task{background:#bc8cff33;color:#bc8cff}.t-session-classifier{background:#3fb95033;color:#3fb950}
+.bar{height:22px;border-radius:5px;display:flex;overflow:hidden;margin:8px 0;border:1px solid var(--bd)}.seg{height:100%}
+.wrapx{overflow-x:auto;background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:4px 8px}
+.fu{color:var(--dim);max-width:430px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.warn{background:#f8514922;border:1px solid #f8514955;border-radius:8px;padding:10px 12px;margin:10px 0}
+.fix{background:#3fb95018;border:1px solid #3fb95055;border-radius:8px;padding:10px 12px;margin:10px 0}
+.corr{background:#e3b34118;border:1px solid #e3b34155;border-radius:8px;padding:10px 12px;margin:10px 0}
+.ok{color:var(--grn)}.rd{color:var(--red)}.am{color:var(--amber)}.di{color:var(--dim)}
+.note{color:var(--dim);font-size:12px;margin-top:6px}
+</style></head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Session-Brief-2026-08-06.html">&larr; Session-Brief-2026-08-06</a> · <a href="Sessions-Live.html">Sessions-Live &rarr;</a></span></div><div class="wrap" id="app"></div>
+<script>
+const D = {
+ "generated": "2026-07-06 00:21",
+ "n_recent": 129,
+ "method": "per-message 24h",
+ "totals": {
+  "cost": 162872129.20000002,
+  "cr": 782384007,
+  "out": 6194230,
+  "cw": 40567094,
+  "inp": 2953711
+ },
+ "bykind": {
+  "robot-inbox": {
+   "n": 72,
+   "inp": 1733,
+   "out": 437157,
+   "cw": 6465466,
+   "cr": 89298328,
+   "cost": 19199183.299999997
+  },
+  "interactive": {
+   "n": 30,
+   "inp": 2708204,
+   "out": 5596313,
+   "cw": 32092362,
+   "cr": 672462707,
+   "cost": 138051492.19999996
+  },
+  "scheduled-task": {
+   "n": 3,
+   "inp": 243705,
+   "out": 160645,
+   "cw": 1386820,
+   "cr": 20062962,
+   "cost": 4786751.2
+  },
+  "other": {
+   "n": 1,
+   "inp": 0,
+   "out": 0,
+   "cw": 0,
+   "cr": 0,
+   "cost": 0.0
+  },
+  "session-classifier": {
+   "n": 23,
+   "inp": 69,
+   "out": 115,
+   "cw": 622446,
+   "cr": 560010,
+   "cost": 834702.4999999997
+  }
+ },
+ "top": [
+  {
+   "when": "07-06 00:16",
+   "cost": 18238136.85,
+   "cr": 94915836,
+   "out": 650017,
+   "cw": 4201673,
+   "inp": 244377,
+   "msgs": 496,
+   "kind": "interactive",
+   "model": "opus-4-8",
+   "fu": "Я поставил Claude Code на свой Mac. Можешь что-то подготовить для моего мака? Сид для сессии, которая запущена на нем. Эта сессия полностью на мой Mac. Mac 2019",
+   "sid": "29b1d9e7"
+  },
+  {
+   "when": "07-05 15:50",
+   "cost": 17053141.15,
+   "cr": 65434309,
+   "out": 831636,
+   "cw": 4839937,
+   "inp": 301609,
+   "msgs": 450,
+   "kind": "interactive",
+   "model": "opus-4-8",
+   "fu": "Прочитай в волте _machine-bus/_plans/SEED-S3-dark-build-2026-07-05.md и выполни его как implementer. Ночной режим: вопросы копи в утренний отчёт, Антона не буди",
+   "sid": "a46e161b"
+  },
+  {
+   "when": "07-06 00:20",
+   "cost": 15550136.600000001,
+   "cr": 57259181,
+   "out": 843271,
+   "cw": 4210278,
+   "inp": 345016,
+   "msgs": 390,
+   "kind": "interactive",
+   "model": "opus-4-8",
+   "fu": "Давай пройдем исследование, как у нас все работает, а именно работает кросс-машинная коммуникация. И я хотел бы, чтобы ты использовал, прежде всего, если надо, ",
+   "sid": "f4b09ad1"
+  },
+  {
+   "when": "07-05 03:29",
+   "cost": 13723563.55,
+   "cr": 109010638,
+   "out": 274157,
+   "cw": 1095675,
+   "inp": 82121,
+   "msgs": 420,
+   "kind": "interactive",
+   "model": "fable-5",
+   "fu": "@\"C:\\Users\\_\\Downloads\\cofounder deep-research-report.md\" ПРОВЕДИ РДР                          проведи глубокое исследование. Мне нужен ко-пилот, точнее кофаунд",
+   "sid": "738c31ab"
+  },
+  {
+   "when": "07-05 22:29",
+   "cost": 13073520.350000001,
+   "cr": 76148386,
+   "out": 496414,
+   "cw": 2258047,
+   "inp": 154053,
+   "msgs": 377,
+   "kind": "interactive",
+   "model": "opus-4-8",
+   "fu": "Я поставил Claude Code на свой Mac. Можешь что-то подготовить для моего мака? Сид для сессии, которая запущена на нем. Эта сессия полностью на мой Mac. Mac 2019",
+   "sid": "33f29bde"
+  },
+  {
+   "when": "07-05 23:44",
+   "cost": 9588977.100000001,
+   "cr": 58451056,
+   "out": 246287,
+   "cw": 1983882,
+   "inp": 32584,
+   "msgs": 296,
+   "kind": "interactive",
+   "model": "opus-4-8",
+   "fu": "На ноуте ZBOOKG8-2023PAL обнаружен дрейф от канона «Защита конфига Claude» (CLAUDE.md + память config-safety-backup-and-migration-check, claude-skills-git-backu",
+   "sid": "e10bd6e1"
+  },
+  {
+   "when": "07-05 15:34",
+   "cost": 7054110.65,
+   "cr": 21959254,
+   "out": 379798,
+   "cw": 2222481,
+   "inp": 181094,
+   "msgs": 183,
+   "kind": "interactive",
+   "model": "opus-4-8",
+   "fu": "Давай пройдем исследование, как у нас все работает, а именно работает кросс-машинная коммуникация. И я хотел бы, чтобы ты использовал, прежде всего, если надо, ",
+   "sid": "e6a6d5ca"
+  },
+  {
+   "when": "07-05 03:13",
+   "cost": 6126485.0,
+   "cr": 30637855,
+   "out": 391050,
+   "cw": 785038,
+   "inp": 126152,
+   "msgs": 184,
+   "kind": "interactive",
+   "model": "opus-4-8",
+   "fu": "@\"C:\\Users\\_\\Downloads\\Telegram Desktop\\Состав. Флудильня.json\" @\"C:\\Users\\_\\Downloads\\Telegram Desktop\\Состав. Крипта.json\" @\"C:\\Users\\_\\Downloads\\Telegram Des",
+   "sid": "4584f198"
+  },
+  {
+   "when": "07-05 10:04",
+   "cost": 5331268.6,
+   "cr": 29703021,
+   "out": 193208,
+   "cw": 1008782,
+   "inp": 133949,
+   "msgs": 203,
+   "kind": "interactive",
+   "model": "fable-5",
+   "fu": "проверь задачи с ноута и делай их ближайшие 24 часа  03 003",
+   "sid": "bdb8982b"
+  },
+  {
+   "when": "07-05 15:54",
+   "cost": 4315950.8,
+   "cr": 19954908,
+   "out": 224431,
+   "cw": 878120,
+   "inp": 100655,
+   "msgs": 137,
+   "kind": "interactive",
+   "model": "opus-4-8",
+   "fu": "Это должно быть правило в нашу Библию. Сессии, которые работают с какими-то очень sensitive файлами, допустим, находят консенсус или работают с нашим, как там, ",
+   "sid": "6911daed"
+  },
+  {
+   "when": "07-06 00:21",
+   "cost": 3628002.1,
+   "cr": 11745246,
+   "out": 140198,
+   "cw": 1303658,
+   "inp": 122915,
+   "msgs": 97,
+   "kind": "interactive",
+   "model": "opus-4-8",
+   "fu": "проведи аудит всех РАБОЧИХ на сейчас сессий или хуков которые ИНИЦИИРУЮТ СЕССИИ мне нужно понять какие сессии за последние 24 часа наиболее прожорливые",
+   "sid": "a24a7538"
+  },
+  {
+   "when": "07-05 23:05",
+   "cost": 3331921.25,
+   "cr": 7497875,
+   "out": 19804,
+   "cw": 1953787,
+   "inp": 40880,
+   "msgs": 14,
+   "kind": "interactive",
+   "model": "opus-4-8",
+   "fu": "https://we.tl/t-WhyCPL08RHT0EmnX попробуй достать файл транскрибируй его и потом УДАЛИ это реально?",
+   "sid": "85cd51f4"
+  },
+  {
+   "when": "07-05 06:13",
+   "cost": 2750303.9000000004,
+   "cr": 14758249,
+   "out": 77281,
+   "cw": 653996,
+   "inp": 70579,
+   "msgs": 120,
+   "kind": "scheduled-task",
+   "model": "opus-4-8",
+   "fu": "<scheduled-task name=\"weekly-brain-audio-digest\" file=\"C:\\Users\\_\\.claude\\scheduled-tasks\\weekly-brain-audio-digest\\SKILL.md\"> This is an automated run of a sch",
+   "sid": "d6dd2c5a"
+  },
+  {
+   "when": "07-05 01:04",
+   "cost": 2717050.2,
+   "cr": 10786797,
+   "out": 28369,
+   "cw": 1194438,
+   "inp": 3478,
+   "msgs": 37,
+   "kind": "interactive",
+   "model": "fable-5",
+   "fu": "проверь что у РУсланы все наши скилы \\ память и прочее  как ни странно ЕЕ СС не ГОНИТ ее спать после 2200 - А ДОЛЖЕН!!!  мне кажется что то сломалось",
+   "sid": "999f7b41"
+  },
+  {
+   "when": "07-05 23:34",
+   "cost": 2636356.6,
+   "cr": 11949191,
+   "out": 114752,
+   "cw": 632854,
+   "inp": 76610,
+   "msgs": 90,
+   "kind": "interactive",
+   "model": "opus-4-8",
+   "fu": "https://t.me/ClawRus OpenClaw на РУССКОМ by Palo Alto Ai Research Lab  Deep research Нужно проанализировать всю эту группу на предмет поиска альфы. Мы ищем в не",
+   "sid": "06c57ef8"
+  }
+ ]
+};
+const M=n=>{n=Math.round(n);if(n>=1e9)return (n/1e9).toFixed(2)+'B';if(n>=1e6)return (n/1e6).toFixed(1)+'M';if(n>=1e3)return (n/1e3).toFixed(0)+'k';return n.toLocaleString()};
+const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const kc={interactive:'#1f6feb',"robot-inbox":'#e3b341',"scheduled-task":'#bc8cff',"session-classifier":'#3fb950',other:'#555'};
+const kr={interactive:'Живые (Антон печатает)',"robot-inbox":'inbox-robot (авто, шина)',"scheduled-task":'Задачи по расписанию',"session-classifier":'Классификатор сессий',other:'прочее'};
+const T=D.totals,tc=T.cost,kinds=Object.entries(D.bykind).sort((a,b)=>b[1].cost-a[1].cost);
+let h=`<h1>🍽️ Аудит прожорливости сессий — честные 24 часа</h1>
+<div class="sub">сгенерировано ${D.generated} · машина ZBOOKG8 (HP17) · метод: ${D.method} · активных сессий за 24ч: ${D.n_recent}</div>
+<div class="corr"><b>⚠️ Методология исправлена (v2).</b> Первая версия приписывала сессии ВСЕ её токены за всю жизнь, если её последнее сообщение попало в окно 24ч. Из-за этого «марафон про Obsidian на 195M» вылез наверх — а это твоя <b>первая онбординг-сессия от 27 мая</b> (38 дней жизни, 5341 сообщение), в которой за сутки было всего <b>24 сообщения</b>. Теперь считаю только токены сообщений с меткой времени ВНУТРИ 24ч. Итог упал с 671M → <b>${M(tc)}</b> — это и есть настоящий суточный расход.</div>
+<div class="note">«cost*» = прокси $-стоимости: вход×1 + запись-кэша×1.25 + чтение-кэша×0.1 + выход×5. Не счёт из биллинга Anthropic, но порядки и рейтинг верные.</div>
+<div class="cards">
+<div class="card"><div class="n">${M(tc)}</div><div class="l">cost* за 24ч (честно)</div></div>
+<div class="card"><div class="n">${M(T.cr)}</div><div class="l">чтение кэша</div></div>
+<div class="card"><div class="n">${M(T.cw)}</div><div class="l">запись кэша</div></div>
+<div class="card"><div class="n">${M(T.out)}</div><div class="l">выход (генерация)</div></div>
+<div class="card"><div class="n">${D.n_recent}</div><div class="l">сессий за 24ч</div></div>
+</div>
+<h2>Кто ест: по типу сессии</h2>
+<div class="bar">${kinds.map(([k,v])=>`<div class="seg" style="width:${(v.cost/tc*100).toFixed(2)}%;background:${kc[k]}" title="${kr[k]} ${(v.cost/tc*100).toFixed(1)}%"></div>`).join('')}</div>
+<div class="wrapx"><table><tr><th>Тип</th><th class="num">Сессий</th><th class="num">cost*</th><th class="num">доля</th><th class="num">чтение кэша</th><th class="num">выход</th></tr>
+${kinds.map(([k,v])=>`<tr><td><span class="tag t-${k}">${kr[k]||k}</span></td><td class="num">${v.n}</td><td class="num">${M(v.cost)}</td><td class="num">${(v.cost/tc*100).toFixed(1)}%</td><td class="num">${M(v.cr)}</td><td class="num">${M(v.out)}</td></tr>`).join('')}
+</table></div>
+<div class="note">Честный расклад: <b>живые сессии ≈85%</b>, но <b>inbox-robot ≈12%</b> (72 запуска/сутки) — заметно больше, чем казалось в кривой версии. Остальные роботы вместе — ~3%.</div>
+<h2>Что ИНИЦИИРУЕТ сессии (автозапускатели)</h2>
+<div class="wrapx"><table>
+<tr><th>Инициатор</th><th>Механизм</th><th>Частота</th><th>Вкл?</th><th class="num">сесс/24ч</th><th class="num">cost*</th><th>Заметка</th></tr>
+<tr><td><b>inbox-robot</b></td><td>Windows Task → <code>claude -p</code></td><td>каждые 20 мин</td><td class="ok">✅</td><td class="num">72</td><td class="num am">19.2M</td><td class="ok">✅ починен (tg_bus.py→tg_bus_read.py)</td></tr>
+<tr><td>Session Archive (классиф.)</td><td>Windows Task → <code>claude -p</code> пачкой</td><td>02:40</td><td class="ok">✅</td><td class="num">23</td><td class="num">0.8M</td><td class="di">классиф. HUMAN/SERVICE, дёшево</td></tr>
+<tr><td>scheduled-tasks (intention/wisdom/audio)</td><td>CC-планировщик</td><td>ночь/Вс</td><td class="ok">✅ 4</td><td class="num">3</td><td class="num">4.8M</td><td class="di">weekly-brain-audio = 2.8M</td></tr>
+<tr><td>watchdog'и (ack·heartbeat·fixb·dupgen·backlog)</td><td>чистый Python .cmd</td><td>12–30 мин</td><td class="ok">✅</td><td class="num">0</td><td class="num ok">0</td><td class="di">сессий НЕ создают → 0 токенов</td></tr>
+<tr><td>SessionStart-хуки (inbox·sys_status·resume·memory)</td><td>скрипты на старте</td><td>каждый старт</td><td class="ok">✅</td><td class="num">—</td><td class="num ok">~0</td><td class="di">дополняют старт, не запускают сессию</td></tr>
+</table></div>
+<div class="fix"><b>🔧 Поломка inbox-robot — ПОЧИНЕНА.</b> Робот 72×/сутки падал на <code>tg_bus.py … No such file</code> и тихо пропускал шаг 1b (чтение Telegram-рельса — резервного канала, когда Syncthing лежит). Корень: рефактор 05.07 слил старый <code>tg_bus.py config+MCP+filter</code> в один <code>tg_bus_read.py --peek</code>, а промпт остался на мёртвом имени. Правка внесена в <code>robot_inbox_prompt.md</code> + проверено вживую (exit 0, читает 9 адресованных строк, маркер не двигает). Синкается на все машины через claude-config.</div>
+<h2>🔥 ТОП-15 самых прожорливых — только токены за настоящие 24ч</h2>
+<div class="wrapx"><table>
+<tr><th>#</th><th>послед.</th><th>тип</th><th>модель</th><th class="num">cost*</th><th class="num">чтение кэша</th><th class="num">выход</th><th class="num">ходов/24ч</th><th>с чего началась</th></tr>
+${D.top.map((r,i)=>`<tr><td class="di">${i+1}</td><td class="num">${r.when}</td><td><span class="tag t-${r.kind}">${r.kind==='interactive'?'живая':r.kind}</span></td><td class="di">${esc(r.model)}</td><td class="num"><b>${M(r.cost)}</b></td><td class="num">${M(r.cr)}</td><td class="num">${M(r.out)}</td><td class="num">${r.msgs}</td><td class="fu" title="${esc(r.fu)}">${esc((r.fu||'').slice(0,60))}</td></tr>`).join('')}
+</table></div>
+<div class="note">Топ теперь честный: лидеры — «сид для Mac» (18M), «SEED-S3 implementer» (17M), «исследование кросс-машинной связи» (16M). Все — длинные Opus-сессии за реальные сутки. Строка «проведи аудит РАБОЧИХ сессий» (~3.6M) — это текущая сессия аудита.</div>
+<div style="margin-top:24px;color:var(--dim);font-size:12px">📁 E:\\Obsidian\\Anton-Knowledge\\_Dashboards\\Session-Token-Audit.html · v2 честный (per-message 24h)</div>`;
+document.getElementById('app').innerHTML=h;
+</script></body></html>

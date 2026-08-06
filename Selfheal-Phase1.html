@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Самолечение рутин — фаза 1 (05.08.2026)</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--mut:#666;--line:#e3e3e3;--card:#fafafa;
+--red:#c0392b;--yel:#b7791f;--grn:#1e7a46;--blu:#2b6cb0}
+@media(prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e8e8e8;--mut:#9aa0a6;
+--line:#2c2f36;--card:#1d2027;--red:#ff6b5a;--yel:#e0b341;--grn:#4ade80;--blu:#63b3ed}}
+*{box-sizing:border-box}body{margin:0;padding:24px;background:var(--bg);color:var(--fg);
+font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:26px 0 10px;color:var(--blu)}
+.sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+.kpi .n{font-size:26px;font-weight:600;line-height:1.1}
+.kpi .l{font-size:12px;color:var(--mut);margin-top:3px}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.r{color:var(--red);font-weight:600}.y{color:var(--yel);font-weight:600}.g{color:var(--grn);font-weight:600}
+code{background:var(--card);padding:1px 5px;border-radius:4px;font-size:12.5px}
+li{margin:4px 0}.note{color:var(--mut);font-size:13px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Roots-2026-08-05.html">&larr; Roots-2026-08-05</a> · <a href="Sverka-Zadach-Natalia-2026-08-05.html">Sverka-Zadach-Natalia-2026-08-05 &rarr;</a></span></div>
+
+<h1>Самолечение рутин — фаза 1</h1>
+<div class="sub">Хаб A-2022BAYAREA · среда 5 августа 2026, вечер · всё проверено прогонами, не на слово</div>
+
+<div class="grid">
+  <div class="kpi"><div class="n r">7 → 2</div><div class="l">красных роботов: утро → вечер</div></div>
+  <div class="kpi"><div class="n g">6</div><div class="l">роботов оказались живыми</div></div>
+  <div class="kpi"><div class="n">183 / 19 / 2</div><div class="l">зелёных / находок / красных</div></div>
+  <div class="kpi"><div class="n">12</div><div class="l">поведений движка под тестом</div></div>
+  <div class="kpi"><div class="n y">5</div><div class="l">корней в очереди на разбор</div></div>
+</div>
+
+<h2>Корень «семи мёртвых роботов»</h2>
+<p>Они не умирали. Робот, который <b>нашёл проблему и сам о ней доложил</b>, выходит ненулевым кодом.
+Если этот код не записан в карту сигналов — сторож красит здорового робота мертвецом. Каждый случай
+прочитан в исходнике, а не угадан.</p>
+<div class="wrap"><table>
+<tr><th>Робот</th><th>Что означал его код 1</th><th>Улика</th><th>Было → стало</th></tr>
+<tr><td>Token Audit</td><td>нашёл флаги расхода токенов</td><td><code>token_audit.py:586</code>, замер FLAGS=4</td><td><span class="r">RED</span> → <span class="y">находка</span></td></tr>
+<tr><td>Repo Hygiene Gate</td><td>нашёл репо без лицензии/CoC</td><td><code>repo_hygiene_gate.py:227</code></td><td><span class="r">RED</span> → <span class="y">находка</span></td></tr>
+<tr><td>Fleet Services Board</td><td>нашёл красные сервисы флота</td><td><code>fleet_services.py:635</code></td><td><span class="r">RED</span> → <span class="y">находка</span></td></tr>
+<tr><td>Proc Patrol</td><td>нашёл зомби-процессы</td><td><code>proc_patrol.py:609</code>; в карте был только маковский ключ</td><td><span class="r">RED</span> → <span class="y">находка</span></td></tr>
+<tr><td>claude-auth-probe</td><td>нашёл больную авторизацию</td><td><code>claude_auth_probe.py:99-121</code></td><td><span class="r">RED</span> → <span class="y">находка</span></td></tr>
+<tr><td>funnel-stall-watch</td><td>воронка встала</td><td><code>funnel_stall_watch.py:157-181</code></td><td><span class="r">RED</span> → <span class="y">находка</span></td></tr>
+</table></div>
+<p class="note">⚠️ Регистрировать код = <b>заглушать</b> его. Поэтому четырём роботам сначала поставлен
+crash-guard (падение уходит кодом 4), и только потом сделана запись — иначе смерть робота
+маскировалась бы под находку. Порядок проверяет гейт <code>_test_crash_guard.py</code>: ALL PASS.</p>
+
+<h2>Движок ремонта (ярус 0)</h2>
+<p>Права описаны <b>данными</b> (<code>runbooks.json</code>), а не кликом. Незнакомое ночью
+<b>отклоняется</b>, а не ждёт человека: зависшая сессия хуже отказавшей.</p>
+<ul>
+<li><b>Стабилизировал ≠ вылечил.</b> Перезапуск задачи снимает симптом, но корень неизвестен → движок
+<b>обязательно</b> заводит запись в очередь корней.</li>
+<li><b>Правило дефекта:</b> 3-я автопочинка одной пары за 7 дней — это дефект дизайна, а не инцидент.</li>
+<li><b>Белый список:</b> запускать можно только питон и только по скриптам из наших деревьев.</li>
+<li><b>Замок:</b> два сторожа не лечат одну цель одновременно; протухший замок отбирается через 30 мин.</li>
+<li><b>verify ≠ cure:</b> реестр, где проверка повторяет лечение, отбивается — «команда отработала» не доказывает здоровье.</li>
+</ul>
+
+<h2>Что нашла внешняя пара глаз (Codex)</h2>
+<div class="wrap"><table>
+<tr><th>Дыра</th><th>Чем закрыта</th></tr>
+<tr><td>Запрет обходится обёрткой <code>-EncodedCommand</code> / вложенным шеллом</td><td>белый список исполняемых + фильтр обфускации</td></tr>
+<tr><td>Гонка бюджета: два процесса читают «попытка доступна» до записи</td><td>атомарный замок на пару (симптом, цель)</td></tr>
+<tr><td>verify может выдавать «команда отработала» за «здорово»</td><td>отказ на runbook, где verify дословно равен cure</td></tr>
+</table></div>
+
+<h2>Ещё два корня, найденных по дороге</h2>
+<ul>
+<li><b>Сторож <code>oauth-probe</code> смотрел не туда.</b> Полгода проверял токены папки-дубля, а боевые
+лежат в другой. Умри боевые — проба осталась бы зелёной. Переставлен, прогон 5/5 OK.</li>
+<li><b>Карта сигналов снова размножилась</b> (третий рецидив). У копии оказалось ноль читателей и ноль
+уникальных записей, зато она не знала четырёх роботов. Убрана обратимо, переименованием.</li>
+</ul>
+
+<h2>Осталось красным — и это честно красное</h2>
+<div class="wrap"><table>
+<tr><th>Робот</th><th>Код</th><th>Почему автопочинка не берётся</th></tr>
+<tr><td>LobsterMonthlyPulse</td><td><code>0x80070002</code></td><td>файл не найден: перезапуск не лечит, нужен разбор — <span class="y">ярус 1</span></td></tr>
+<tr><td>Daily Community Card</td><td><code>0x1</code></td><td>перезапуск пробован, здоровье не вернулось → корень в очереди</td></tr>
+</table></div>
+
+<h2>Главная цифра вечера</h2>
+<p>Автоперезапуск вылечил <b>ноль</b> реальных поломок. Всё, что дал вечер, дала <b>починка корня</b>
+(карта сигналов), а не рестарт. Это аргумент за фазу 2 — repair-сессии для настоящих корней, — а не за
+раздувание реестра перезапусков.</p>
+
+</body></html>

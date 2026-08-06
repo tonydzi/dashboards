@@ -1,0 +1,122 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="LLM-Desktop-Apps.html">&larr; LLM-Desktop-Apps</a> · <a href="LLM-Week-Inventory.html">LLM-Week-Inventory &rarr;</a></span></div><!doctype html><html lang="ru"><meta charset="utf-8">
+<title>Утилизация подписок LLM — 05.08.2026</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--bg:#0f1115;--card:#191c23;--ink:#e9edf3;--mut:#9aa4b2;--line:#2a2f3a;
+--ok:#37d39a;--red:#ff5c6c;--amber:#f5b342;--blue:#5b9dff;--violet:#b48cff;--idle:#6b7280}
+*{box-sizing:border-box}
+body{margin:0;padding:1.6rem;background:var(--bg);color:var(--ink);
+font-family:ui-monospace,Consolas,monospace;line-height:1.5}
+h1{font-size:1.35rem;margin:0 0 .2rem}
+h2{font-size:1rem;margin:2rem 0 .7rem;color:var(--blue);letter-spacing:.04em}
+.sub{color:var(--mut);font-size:.82rem;margin-bottom:1.4rem}
+.wrap{max-width:1080px;margin:0 auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:.9rem}
+.c{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem}
+.c .k{color:var(--mut);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+.c .v{font-size:1.75rem;font-weight:700;margin:.35rem 0 .1rem}
+.c .n{color:var(--mut);font-size:.72rem}
+.red{color:var(--red)}.ok{color:var(--ok)}.amber{color:var(--amber)}.vio{color:var(--violet)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.83rem}
+th,td{padding:.55rem .8rem;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--mut);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+tr:last-child td{border-bottom:none}
+.bar{position:relative;height:16px;background:#11141a;border-radius:4px;min-width:140px;
+border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--red)}
+.bar i.g{background:var(--ok)}.bar i.a{background:var(--amber)}
+.bar span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+font-size:.68rem;color:var(--ink);text-shadow:0 1px 2px #000}
+.note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--amber);
+border-radius:8px;padding:.8rem 1rem;margin-top:.9rem;font-size:.83rem;color:var(--mut)}
+.note b{color:var(--ink)}
+.note.red{border-left-color:var(--red)}
+.spark{display:flex;gap:3px;align-items:flex-end;height:44px}
+.spark div{width:26px;background:var(--violet);border-radius:2px 2px 0 0;position:relative}
+.spark div b{position:absolute;top:-15px;left:0;right:0;text-align:center;
+font-size:.62rem;color:var(--mut);font-weight:400}
+ul{margin:.4rem 0;padding-left:1.1rem;font-size:.85rem}li{margin:.25rem 0}
+.q{color:var(--mut);font-size:.72rem}
+</style>
+<div class="wrap">
+<h1>Утилизация подписок LLM</h1>
+<div class="sub">узел HP17 · окно 29.07–05.08.2026 · все цифры прочитаны с диска, ни одна не на память</div>
+
+<div class="cards">
+  <div class="c"><div class="k">Claude Code, выход</div>
+    <div class="v vio">19.7M</div><div class="n">токенов за 24 535 сообщений</div></div>
+  <div class="c"><div class="k">Codex, выход</div>
+    <div class="v">219K</div><div class="n">= 1.1% от выхода Claude Code</div></div>
+  <div class="c"><div class="k">Бак Codex выбран</div>
+    <div class="v red">3.0%</div><div class="n">цифра OpenAI, окно 7 дней, plan=pro</div></div>
+  <div class="c"><div class="k">Упоров в лимит Claude</div>
+    <div class="v amber">4</div><div class="n">+1 «5-hour limit reached» за неделю</div></div>
+</div>
+
+<h2>Кто сколько выбирает из оплаченного</h2>
+<div class="scroll"><table>
+<tr><th>вендор</th><th>тариф</th><th>$/мес</th><th>выбрано бака</th><th>чем доказано</th><th>вердикт</th></tr>
+<tr><td>claude</td><td>Anthropic Max</td><td>200</td>
+  <td><div class="bar"><i class="g" style="width:65%"></i><span>65%</span></div></td>
+  <td class="q">глаз человека, машинно недоступно</td><td class="ok">🟢 выгребаем</td></tr>
+<tr><td>grok</td><td>SuperGrok</td><td>300</td>
+  <td><div class="bar"><i style="width:12%"></i><span>12%</span></div></td>
+  <td class="q">глаз человека</td><td class="red">🔴 недобор</td></tr>
+<tr><td>chatgpt</td><td>ChatGPT Pro (a2@)</td><td>100+</td>
+  <td><div class="bar"><i style="width:3%"></i><span>3.0%</span></div></td>
+  <td class="q"><b style="color:var(--ok)">цифра вендора</b>, rate_limits</td><td class="red">🔴 недобор</td></tr>
+<tr><td>gemini</td><td>Google Gemini Pro</td><td>20</td>
+  <td><div class="bar"><i style="width:8%"></i><span>8%</span></div></td>
+  <td class="q">глаз человека</td><td class="red">🔴 недобор</td></tr>
+</table></div>
+
+<div class="note red"><b>Расхождение в 10 раз, пойманное сегодня.</b> В журнале лежало
+продиктованное глазами «chatgpt 30%», а вендор в тот же день отдавал <b>3.0%</b>. Это разные баки:
+машинная цифра только про кодинг. Решение о деньгах принималось бы по неверному числу.</div>
+
+<h2>Бак Codex внутри текущей недели (окно 01.08 → 08.08)</h2>
+<div class="spark">
+  <div style="height:11%"><b>1%</b></div><div style="height:11%"><b>1%</b></div>
+  <div style="height:11%"><b>1%</b></div><div style="height:22%"><b>2%</b></div>
+  <div style="height:33%"><b>3%</b></div>
+</div>
+<div class="q" style="margin-top:.5rem">01.08 · 02.08 · 03.08 · 04.08 · 05.08 &nbsp;—&nbsp;
+сессий Codex в день: 2 · 5 · <b>18</b> · <b>18</b> · <b>12</b></div>
+
+<div class="note"><b>Самая тяжёлая неделя Codex за всю историю машины подняла бак с 1% до 3%.</b>
+Чтобы дойти до порога «выгребаем» (40%), нужно примерно в 10 раз больше кодинга, до 95% — в 30 раз.
+Столько кодинга у нас нет. «Дожечь лимиты Codex кодингом» арифметически недостижимо: рычаг тут
+не нагрузка, а тариф.</div>
+
+<h2>Единый интерфейс: что реально работает по подпискам</h2>
+<div class="scroll"><table>
+<tr><th>вариант</th><th>Claude (3 подписки)</th><th>ChatGPT</th><th>Grok</th><th>чем платим</th></tr>
+<tr><td>Claude Code + аутсорс под капотом</td><td class="ok">✅ напрямую</td>
+  <td class="ok">✅ codex CLI</td><td class="ok">✅ grok CLI</td><td class="ok">подписками</td></tr>
+<tr><td>OpenCode</td><td class="red">⛔ Anthropic запретила</td>
+  <td class="ok">✅ OAuth</td><td class="ok">✅ SuperGrok</td><td class="amber">подписками, кроме Claude</td></tr>
+<tr><td>Claude Code Router</td><td class="red">⛔</td><td class="red">⛔</td><td class="red">⛔</td>
+  <td class="red">поштучным API</td></tr>
+<tr><td>Hermes Agent</td><td class="red">⛔</td><td class="red">⛔</td><td class="red">⛔</td>
+  <td class="red">поштучным API</td></tr>
+</table></div>
+
+<div class="note"><b>Вывод.</b> Единого интерфейса на все подписки не существует и построить его
+нельзя: Anthropic отдельным решением закрыла подписочный вход Claude в сторонние агенты
+(январь 2026, плагины выпилены в OpenCode 1.3.0+). Значит единый интерфейс — не программа, а
+оркестратор: Антон говорит с одной дверью, выбор бэкенда живёт под капотом.</div>
+
+<h2>Что нужно от Антона (Tier-2, сам не трогаю)</h2>
+<ul>
+<li>Какой тариф ChatGPT у a2@: Pro $100 или Pro $200? И что за вторая подписка?</li>
+<li>Логин Codex вторым аккаунтом (bb@) — нужны руки на 2FA</li>
+<li>Сколько процентов ВЕБ-бака ChatGPT съедает Deep Research: без этого числа нельзя трогать тариф</li>
+</ul>
+
+<div class="sub" style="margin-top:2rem">
+источники: ~/.claude/projects/**/*.jsonl · ~/.codex/sessions/**/rollout-*.jsonl ·
+~/.codex/auth.json · subscription_utilization.py report · outsource_digest.py --days 7
+</div>
+</div>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🧭 Жизнь — ОС</title>
+<style>
+  :root{
+    --bg:#0b1020; --panel:#121a30; --panel2:#0f1729; --ink:#e8edf7; --muted:#94a3c0;
+    --amber:#f59e0b; --blue:#60a5fa; --green:#34d399; --orange:#fb923c; --violet:#a78bfa;
+    --line:rgba(255,255,255,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;
+    color:var(--ink); background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(96,165,250,.10), transparent 60%),
+      radial-gradient(900px 500px at 110% 0%, rgba(245,158,11,.10), transparent 55%),
+      var(--bg);
+    -webkit-font-smoothing:antialiased; line-height:1.5; padding:0 18px 60px;
+  }
+  .wrap{max-width:1080px;margin:0 auto}
+  header.hero{padding:54px 8px 26px;text-align:center}
+  .logo{font-size:58px;line-height:1;filter:drop-shadow(0 6px 18px rgba(245,158,11,.35))}
+  h1{font-size:34px;margin:14px 0 6px;letter-spacing:.3px}
+  .sub{color:var(--muted);font-size:16px;max-width:640px;margin:0 auto}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0 6px}
+  .chip{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13px;color:var(--ink)}
+  .chip b{color:var(--amber)}
+  h2.sec{font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin:40px 6px 14px;font-weight:700}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
+    border-top:3px solid var(--accent,#888);border-radius:16px;padding:20px 20px 18px;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s; box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.38)}
+  .card .ico{font-size:30px}
+  .eyebrow{color:var(--muted);font-size:12.5px;margin-top:8px}
+  .card h3{margin:2px 0 0;font-size:22px}
+  .badge{display:inline-block;margin-top:12px;background:rgba(255,255,255,.06);border:1px solid var(--line);
+    color:var(--accent,#fff);border-radius:999px;padding:4px 11px;font-size:12.5px;font-weight:700}
+  .links{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+  a.pill{color:var(--ink);text-decoration:none;background:rgba(255,255,255,.05);border:1px solid var(--line);
+    border-radius:9px;padding:6px 10px;font-size:13px;transition:background .12s,border-color .12s,transform .12s}
+  a.pill:hover{background:rgba(255,255,255,.11);border-color:var(--accent,#888);transform:translateY(-1px)}
+  .themes{color:var(--muted);font-size:12.5px;margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+  .views .card{border-top-width:3px}
+  .idrow{display:flex;flex-wrap:wrap;gap:9px}
+  a.idchip{color:var(--ink);text-decoration:none;background:var(--panel);border:1px solid var(--line);
+    border-radius:999px;padding:9px 15px;font-size:14px;transition:.12s}
+  a.idchip:hover{border-color:var(--violet);transform:translateY(-2px)}
+  footer{margin-top:46px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:18px;text-align:center}
+  footer a{color:var(--blue);text-decoration:none}
+  .note{margin-top:8px;font-size:12px;opacity:.8}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="_Coach.html">&larr; _Coach</a> · <a href="_Relink-AutoApplied.md">_Relink-AutoApplied &rarr;</a></span></div>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="logo">🧭</div>
+    <h1>Жизнь — операционная система</h1>
+    <p class="sub">Принципы, цели и сферы — собраны из моих Google-задач в единую карту. Вся «жизнь» открывается с одной страницы.</p>
+    <div class="chips">
+      <span class="chip"><b>144</b> принципа</span>
+      <span class="chip"><b>38</b> целей</span>
+      <span class="chip"><b>11</b> сфер</span>
+      <span class="chip"><b>43</b> мечты</span>
+      <span class="chip"><b>734</b> сделано</span>
+    </div>
+  </header>
+
+  <h2 class="sec">🏛 Три столпа</h2>
+  <div class="grid">
+
+    <div class="card" style="--accent:var(--blue)">
+      <div class="ico">📜</div>
+      <div class="eyebrow">как я живу</div>
+      <h3>Принципы</h3>
+      <span class="badge">144 правила</span>
+      <div class="links">
+        <a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=concept-bible-self">Библия себя</a>
+        <a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=_Svod-Zakonov-Sebya">⚖️ Свод законов</a>
+        <a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=_Self-Bible-MOC">Индекс</a>
+      </div>
+      <div class="themes">Мужество · Дисциплина · Успех · Время · Окружение · Духовность</div>
+    </div>
+
+    <div class="card" style="--accent:var(--green)">
+      <div class="ico">🎯</div>
+      <div class="eyebrow">куда я иду</div>
+      <h3>Цели</h3>
+      <span class="badge">38 визий</span>
+      <div class="links">
+        <a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=concept-celi-plany">Цели и Планы</a>
+        <a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=_Plans-MOC">Индекс</a>
+        <a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=insight-decision-timeline">Траектория</a>
+        <a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=insight-prediction-ledger">Прогнозы</a>
+      </div>
+      <div class="themes">Династия · Империя · Фин-свобода · Недвижимость · IPO · Авиация · Дети</div>
+    </div>
+
+    <div class="card" style="--accent:var(--orange)">
+      <div class="ico">🧩</div>
+      <div class="eyebrow">где я живу</div>
+      <h3>Зоны</h3>
+      <span class="badge">11 сфер</span>
+      <div class="links">
+        <a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=concept-zony-zhizni">Зоны жизни</a>
+        <a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=_Zony-MOC">Индекс</a>
+      </div>
+      <div class="themes">Семья · Деньги · Здоровье · Карьера · Недвижимость · Travel · Авто · Авиация</div>
+    </div>
+
+  </div>
+
+  <h2 class="sec">✨ Виды поверх</h2>
+  <div class="grid views">
+
+    <div class="card" style="--accent:var(--amber)">
+      <div class="ico">🪣</div>
+      <h3>Bucket List</h3>
+      <span class="badge">43 мечты</span>
+      <div class="eyebrow" style="margin-top:12px">Опыт и мечты, которые хочу прожить — с чек-боксами ✅</div>
+      <div class="links"><a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=_Bucket-List">Открыть список</a></div>
+    </div>
+
+    <div class="card" style="--accent:var(--violet)">
+      <div class="ico">📜</div>
+      <h3>Хроника</h3>
+      <span class="badge">734 сделано</span>
+      <div class="eyebrow" style="margin-top:12px">Все выполненные дела по годам — честная запись прогресса</div>
+      <div class="links"><a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=_Chronicle-Done">Открыть хронику</a></div>
+    </div>
+
+    <div class="card" style="--accent:var(--blue)">
+      <div class="ico">🔗</div>
+      <h3>Цели из дневников</h3>
+      <span class="badge">80 целей</span>
+      <div class="eyebrow" style="margin-top:12px">Цели и визии из FB-дневников и чатов — собраны в штаб Целей</div>
+      <div class="links"><a class="pill" href="obsidian://open?vault=Anton-Knowledge&file=_Goals-in-Conversations">Открыть подборку</a></div>
+    </div>
+
+  </div>
+
+  <h2 class="sec">🧠 Кто я · identity-слой</h2>
+  <div class="idrow">
+    <a class="idchip" href="obsidian://open?vault=Anton-Knowledge&file=insight-worldview-throughlines">Сквозные темы (15)</a>
+    <a class="idchip" href="obsidian://open?vault=Anton-Knowledge&file=insight-core-values">Ценности (12)</a>
+    <a class="idchip" href="obsidian://open?vault=Anton-Knowledge&file=insight-contradictions">Противоречия</a>
+    <a class="idchip" href="obsidian://open?vault=Anton-Knowledge&file=_Life-OS-HOME">📄 MD-версия обложки</a>
+  </div>
+
+  <footer>
+    Источник: импорт Google Tasks (~1600 задач) → <a href="obsidian://open?vault=Anton-Knowledge&file=_Zhizn-GTasks-MOC">индекс импорта</a> ·
+    Сиблинг: <a href="obsidian://open?vault=Anton-Knowledge&file=concept-bible-platinum">Operations Bible</a> · версионируется в git
+    <div class="note">Клик по ссылке открывает заметку в Obsidian (vault: <b>Anton-Knowledge</b>). Если имя волта другое — поправь его в ссылках или открой MD-обложку.</div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="RUSLANA-CONTINUE-BOOKING.md">&larr; RUSLANA-CONTINUE-BOOKING</a> · <a href="Roots-2026-08-05.html">Roots-2026-08-05 &rarr;</a></span></div><meta charset='utf-8'><title>Реестр роботов</title><style>
+body{font-family:Segoe UI,Arial;margin:24px;background:#f6f8fa;color:#1f2328}
+h1{margin:0 0 4px}.sub{color:#57606a;margin-bottom:18px}
+table{border-collapse:collapse;width:100%;background:#fff;box-shadow:0 1px 3px #d0d7de;margin-bottom:26px}
+th,td{padding:7px 10px;border-bottom:1px solid #d8dee4;text-align:left;font-size:14px;vertical-align:top}
+th{background:#eaeef2}h2{margin:26px 0 8px}.b{font-weight:600;white-space:nowrap}
+.pill{border-radius:12px;padding:2px 9px;font-size:12px;color:#fff;white-space:nowrap}</style>
+<h1>🤖 Реестр роботов — все 259</h1>
+<div class='sub'>Обновлён 2026-08-02 · 🟢 оставить 135 · 🟡 на твоё решение 109 · 🔴 убрать 15 · вердикты = мнение Claude под текущий курс (двойник · Track A · контент-фабрика)</div>
+<h2>💾 Бэкапы и целостность <small>(11)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>CRM-Backup-Pull</td><td>тянет бэкап CRM</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Claude Canon Publish</td><td>авто-публикация канона (CLAUDE.md/Библия) ведомым</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — вожак/ведомый governance; проверить частоту</td></tr>
+<tr><td class='b'>Claude Config Git Snapshot</td><td>git-коммит ~/.claude каждые 15 мин</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>спасал скиллы</td></tr>
+<tr><td class='b'>Claude Config Integrity Gate</td><td>счётчики конфига до==после</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>анти-опустошение</td></tr>
+<tr><td class='b'>Claude Git Daemon</td><td>git-демон :9418 для быстрого 3-way синка конфига</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>ядро git-транспорта конфига (memory git-daemon-hub-guard)</td></tr>
+<tr><td class='b'>Claude Git Offsite Push</td><td>конфиг-git → GitHub offsite</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>offsite конфига</td></tr>
+<tr><td class='b'>Claude Git Sync</td><td>3-way git-синк memory/CLAUDE.md между машинами</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>мультимашинность</td></tr>
+<tr><td class='b'>Claude Git Transport Monitor</td><td>сторож git-транспорта</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>тихий отвал git = потеря канона</td></tr>
+<tr><td class='b'>Daily E to F Backup</td><td>ночная копия E:→F: (волт+данные)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>страховка №1</td></tr>
+<tr><td class='b'>Obsidian Backup to Drive</td><td>волт → GDrive offsite (3-2-1)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>offsite страховка</td></tr>
+<tr><td class='b'>Scripts Publish to Transit</td><td>ночная публикация скриптов хаба → _transit + leak-scan</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>forever-fix built-on-hub-stays-on-hub (memory scripts-auto-publish)</td></tr>
+</table>
+<h2>🔄 Синк и шина машин <small>(15)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>ClaudeAI Sync Nightly</td><td>ночной синк claude.ai → волт (Windows-рельса)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Consensus Tick</td><td>тик движка consensus.py (межмашинный консенсус)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — 03-триггер зависит; проверить частоту</td></tr>
+<tr><td class='b'>Tailnet Guard</td><td>страж Tailscale-сети</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>aibus-bridge-sync</td><td>ночной мост aibus</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>мульти-вендор пилот — живой ли проект?</td></tr>
+<tr><td class='b'>peer-watch</td><td>наблюдение за пирами</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Claude Sync Monitor</td><td>мониторинг Syncthing пиров + nudge</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>связь машин</td></tr>
+<tr><td class='b'>ClaudeBusWipeGuard</td><td>крик если _machine-bus опустел</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>защита шины</td></tr>
+<tr><td class='b'>RecvOnly Sweeper Nightly</td><td>уборка receive-only откатов у ведомых</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>канон вожак/ведомый</td></tr>
+<tr><td class='b'>Syncthing Hub Watchdog</td><td>демон Syncthing жив на хабе</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>без него всё молчит</td></tr>
+<tr><td class='b'>ack-watchdog</td><td>нет ACK 20мин → перепинг+эскалация</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>отправил≠сделано</td></tr>
+<tr><td class='b'>bus-guard</td><td>сторож шины</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>рельс жив</td></tr>
+<tr><td class='b'>heartbeat-relay</td><td>ретрансляция heartbeat в TG-03</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>видимость пиров</td></tr>
+<tr><td class='b'>inbox-robot</td><td>приём межмашинных сообщений ~20мин</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>ACK-контракт</td></tr>
+<tr><td class='b'>node-health-beat</td><td>health-снимок узла в чат 03</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>канон heartbeat</td></tr>
+<tr><td class='b'>signal-dispatcher</td><td>единый диспетчер сигналов (CC не демон)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>решение 06-22</td></tr>
+</table>
+<h2>🧠 Мозг / RAG / поиск <small>(15)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>Brain Reindex Frequent (15m)</td><td>частый инкрементальный реиндекс RAG (каждые 15 мин)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый 02.08 - сверить частоту с Daily/Weekly реиндексами</td></tr>
+<tr><td class='b'>Brain Shard Tick</td><td>тик обработки шардов индекса мозга</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый 02.08 - нужен вердикт</td></tr>
+<tr><td class='b'>Claude Weekly Brain Audio Digest</td><td>недельный аудио-дайджест мозга (NotebookLM)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; слушает ли Антон: иначе дорогой слот</td></tr>
+<tr><td class='b'>Claude Wisdom Distill Weekly</td><td>недельная дистилляция мудрости из корпуса</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; сверить с signal-without-noise (дистилляция > объём)</td></tr>
+<tr><td class='b'>fold-all-shards</td><td>сворачивание шардов</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Brain Near-Dup Scan</td><td>ночной поиск почти-дублей + авто-мердж zero-risk</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>гигиена волта</td></tr>
+<tr><td class='b'>Brain Reindex Daily  incremental</td><td>инкрементальный реиндекс RAG</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>свежесть /ask</td></tr>
+<tr><td class='b'>Brain Reindex Watchdog</td><td>сторож реиндекса</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>тихий сбой дорог</td></tr>
+<tr><td class='b'>Brain Reindex Weekly (--full)</td><td>полный реиндекс вс</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>дрейф индекса</td></tr>
+<tr><td class='b'>Entity Graph Nightly</td><td>граф сущностей для graph-recall</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>пилот Phase 2</td></tr>
+<tr><td class='b'>Search Catalog Weekly Rebuild</td><td>пересбор поискового каталога</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>Search UI Server  AtLogon</td><td>поисковый UI</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>Антон ищет глазами</td></tr>
+<tr><td class='b'>Search UI Server Watchdog</td><td>сторож UI</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>Second Brain Search Server  AtLogon</td><td>ask-сервер :8770</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>ядро recall</td></tr>
+<tr><td class='b'>Second Brain Server Watchdog  Daily</td><td>сторож ask-сервера</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+</table>
+<h2>📒 Память-пилот <small>(5)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>Memory AB Eval Nightly</td><td>свод A/B vector-vs-graph</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>идёт замер</td></tr>
+<tr><td class='b'>Memory Dream Consolidation</td><td>ночная консолидация памяти</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>пилот</td></tr>
+<tr><td class='b'>Memory Index Guard</td><td>потолки MEMORY.md</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>тихий обрез 25КБ</td></tr>
+<tr><td class='b'>Memory Index Tidy</td><td>еженед. уборка индекса (Opus)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>TurnState Backfill Nightly</td><td>дозапись TurnState-леджера</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>вечная память пилот</td></tr>
+</table>
+<h2>🗄 Волт-гигиена и SQL <small>(10)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>Claude Intention Daily</td><td>ночной майнер интенций Антона (23:20)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; нужен вердикт: потребитель выхлопа</td></tr>
+<tr><td class='b'>Downloads Janitor Nightly</td><td>ночная уборка папки Downloads</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — гигиена, дёшев</td></tr>
+<tr><td class='b'>Claude Conflict Sweeper Nightly</td><td>уборка sync-conflict файлов</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>Originals Shrink Guard</td><td>сторож усыхания _originals (никогда не терять сырые оригиналы)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>страховка правила preserve-originals; молчит, пока всё цело</td></tr>
+<tr><td class='b'>System Architect Nightly</td><td>скан карты системы + health</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>/arch</td></tr>
+<tr><td class='b'>Tasks Journal Index</td><td>индексация реестра задач (done+undone)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>Connect-эстафета (memory task-journal)</td></tr>
+<tr><td class='b'>Unified SQL Refresh</td><td>пересбор unified people/companies SQL</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>свежепочинен, CRM-ядро</td></tr>
+<tr><td class='b'>VC Nightly Warm Refresh</td><td>тёплый пересчёт VC-графа</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>фандрейз-слой</td></tr>
+<tr><td class='b'>Vault Orphan Index Refresh</td><td>скан сирот + MOC-членство + таксономия</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>свежепочинен</td></tr>
+<tr><td class='b'>day-ledger-nightly</td><td>детерминированная сборка «что сделано вчера» (0 ток)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>дёшев, 0 токенов; ⚠️ ДЫРА ПРОВОДКИ — нет heartbeat/реестра</td></tr>
+</table>
+<h2>📥 Импорты источников <small>(19)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>Devlog Collect Nightly</td><td>детерминированный сбор dev-log (заменил MCP-двойника 14.07)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Fireflies Nightly Pull</td><td>транскрипты звонков Fireflies → волт</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый источник — пересекается с Granola? проверить дубль</td></tr>
+<tr><td class='b'>Granola Call Distill</td><td>дистилляция Granola-звонков в саммари</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — рядом с Granola Nightly Pull</td></tr>
+<tr><td class='b'>Import Coverage Nightly</td><td>ночной аудит покрытия импортов</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — сторож полноты источников</td></tr>
+<tr><td class='b'>TG Assistant Daemon Boot</td><td>Boot-задача: стартует TG-ассистент-демон при ребуте</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>⚠️ ЗОМБИ: демон стоп 06-30, воскресает ребутом (memory tg-daemon-visibility); ждёт решения Антона</td></tr>
+<tr><td class='b'>Takeout Pull Weekly</td><td>еженедельный забор Google Takeout</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>wake-listener</td><td>слушатель wake-push fast-path (TG 03→hub ~13с)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; ⚠️ RED FAILED 0x80070002 (файл не найден) + NO-FUTURE-RUN — чинить или снять</td></tr>
+<tr><td class='b'>Browser History to Vault Daily</td><td>история браузера → SQLite</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>RECALL по лидам</td></tr>
+<tr><td class='b'>ChatGPT Nightly Sync</td><td>чаты ChatGPT → волт</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>второй мозг</td></tr>
+<tr><td class='b'>ChatGPT Vault Freshness</td><td>свежесть ChatGPT-синка</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>Claude Session Archive</td><td>архив сессий CC</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>чаты→волт рельс</td></tr>
+<tr><td class='b'>Claude Sessions to Vault Daily</td><td>сессии → заметки волта</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>GDrive Index Refresh  monthly</td><td>офлайн-индекс GDrive 205k</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>месячный, дёшев</td></tr>
+<tr><td class='b'>Granola Nightly Pull</td><td>транскрипты звонков → волт</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>звонки=лиды</td></tr>
+<tr><td class='b'>HubVoiceTranscribe</td><td>голосовые → Whisper GPU → текст</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>голос-хаб</td></tr>
+<tr><td class='b'>Telegram Chats Index Refresh</td><td>обновление chats.db (диалоги)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>нужен скраперу</td></tr>
+<tr><td class='b'>Telegram Groups Weekly Maintenance</td><td>недельная чистка групп-индекса</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>Telegram MCP Janitor</td><td>уборка зомби-MCP телеграма</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>зомби душат рельс</td></tr>
+<tr><td class='b'>call-monitor-daemon</td><td>монитор звонков (запись встреч)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+</table>
+<h2>📊 Дашборды/серверы <small>(8)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>Claude Desktop Interactive Launch</td><td>поднимает Claude Desktop в интерактивной сессии</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; сверить дубль с Desktop Watchdog/Nightly Restart</td></tr>
+<tr><td class='b'>Claude Desktop Nightly Restart</td><td>ночной рестарт Claude Desktop</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; профилактика app-death: нужен вердикт: лечим корень или перезапускаем симптом</td></tr>
+<tr><td class='b'>Fleet Migration Dashboard</td><td>рефреш дашборда миграции хаб→Маяк</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — миграция волн 1-2 закрыта 11.07, нужен ли ещё?</td></tr>
+<tr><td class='b'>Claude Dashboard Refresh Daily</td><td>дневной рефреш дашбордов сессий</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>рename Hourly→Daily 07-04, реже=дешевле</td></tr>
+<tr><td class='b'>Dashboards Server</td><td>локальный сервер дашбордов</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>Антон работает глазами</td></tr>
+<tr><td class='b'>Dashboards Server Watchdog</td><td>сторож сервера дашбордов</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>Follower Catalog Watch</td><td>каталог ведомых машин</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>клан растёт</td></tr>
+<tr><td class='b'>Pulse Live Refresh</td><td>рефреш Company Pulse окна на мониторе 2</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>живой пульс-дашборд (memory pulse-window)</td></tr>
+</table>
+<h2>🛡 Сторожа <small>(41)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>CLI Visibility Doctor</td><td>доктор видимости CLI</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Canon-Apply-Backstop</td><td>бэкстоп применения канона (canon_apply)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Certifi Weekly Update</td><td>обновляет CA-бандл certifi (certifi_weekly_update.cmd)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; гигиена TLS, дёшев</td></tr>
+<tr><td class='b'>Claude Approval Reping</td><td>approval.py перепинг незакрытых QQQ-запросов в 02 POLICE</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — remote-approval-qqq движок; сверить дубль с ack-watchdog</td></tr>
+<tr><td class='b'>Claude Declined Guard</td><td>страж отклонённых решений</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>пересечение с Nightly Scan — слить в один</td></tr>
+<tr><td class='b'>Claude Pulse Mirror</td><td>зеркало Пульса SEV1 в человекочитаемый чат (pulse_mirror.cmd)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый (memory pulse-sev1-human-mirror); нужен вердикт: смотрим ли зеркало</td></tr>
+<tr><td class='b'>Claude Session-Wait Watchdog</td><td>сторож зависших сессий (session_wait_watchdog)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>ClaudeHealthArch</td><td>health-пинг /arch слоя</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>дублирует red-alert? кандидат на слияние</td></tr>
+<tr><td class='b'>ClaudeHealthBrain</td><td>health-пинг мозга</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>дублирует brain-health-night? слить</td></tr>
+<tr><td class='b'>Consensus Config Guard</td><td>страж конфига консенсуса</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Declined-Decisions Nightly Scan</td><td>скан отклонённых по чатам</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>пересечение с Guard — слить в один</td></tr>
+<tr><td class='b'>Fleet Deadman Ping</td><td>deadman-пинг живости флота</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — fleet-safety-watchdog-layers; сверить с Mayak Dead-Man/node-health</td></tr>
+<tr><td class='b'>Hub Boot Self-Report</td><td>самоотчёт хаба при загрузке</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Hub Power-Thermal Logger</td><td>лог питания/температур хаба (power_thermal_logger.py)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; полезен для 24/7-хаба, но нужен потребитель метрик</td></tr>
+<tr><td class='b'>ON AIR board GC (expire stale)</td><td>чистка протухших табличек ON AIR</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>PAS ntfy Watchdog</td><td>сторож ntfy-уведомлений (PAS)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — уточнить назначение</td></tr>
+<tr><td class='b'>Quarantine-Watch</td><td>сторож карантина недоверенных посылок</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Revert Wave Guard</td><td>страж волны откатов</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>SecondOp Broker</td><td>брокер второго мнения (Codex-ревью)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>SecondOp Digest</td><td>дайджест второго мнения</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Win Portability Guard</td><td>страж портируемости путей на Windows</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>session-unsticker-hourly</td><td>проталкивание сессий, ждущих ≥8ч (MCP-кран)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>worktree-garbage-watch</td><td>сторож мусорных git-worktree (агентские изоляции)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; ещё ни разу не отрабатывал (last=never): проверить старт</td></tr>
+<tr><td class='b'>CLAUDE.md Guard</td><td>размер канона < 82КБ</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>Claude Cowork Reaper</td><td>добивает зависшие Cowork-процессы</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>Claude Cron Watchdog</td><td>протухшие heartbeat MCP-кронов</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>Claude Desktop Watchdog</td><td>сторож живости приложения Claude Desktop (desktop_app_watchdog.py)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>после app-death 19-20.07 именно он держит in-app краны живыми</td></tr>
+<tr><td class='b'>Claude Git Daemon Guard</td><td>сторож git-демона 9418 (⛔ S4U ломает сокеты)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>тихий отвал = потеря git-канала</td></tr>
+<tr><td class='b'>Claude n8n Watchdog</td><td>n8n жив</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>89 воркфлоу зависят</td></tr>
+<tr><td class='b'>ClaudeHealthTgWatch</td><td>health-пинг tg-watch</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>ловил 4-дневную смерть демона</td></tr>
+<tr><td class='b'>Credential Expiry Watch</td><td>сторож протухания креды/токенов (_shared/credential_expiry_watch.cmd)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>дёшев, ловит тихую смерть логинов до того, как встанет рельса</td></tr>
+<tr><td class='b'>Deploy Sweep Guard</td><td>Layer-C сторож деплой-разрыва: непринятые посылки становятся громкими вне сессии (forever-fix #e18fc1f4)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>критичный сторож; 26.07 аудит нашёл RED: копия в _shared не видела deploy_lib (ModuleNotFoundError); починено, exit 0 ✅</td></tr>
+<tr><td class='b'>Fleet Manifest Check</td><td>сверка манифеста флота</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>Fleet Routines Registry</td><td>сбор мега-таблицы кто-что-выполняет по пирам</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>fleet-routines-registry memory — карта флота</td></tr>
+<tr><td class='b'>Mayak Dead-Man Watchdog</td><td>второй эшелон: ловит смерть Маяка-арбитра</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>leader-down канон own-fleet-peer-equality</td></tr>
+<tr><td class='b'>OS Task Watchdog</td><td>мёртвые Windows-роботы → TG-03</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>новый, ловит класс</td></tr>
+<tr><td class='b'>Routine Supervisor</td><td>Layer-2 симметричный сторож рутин: манифест + hub-routines-health.json, который читает Маяк</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>критичный сторож; 26.07 аудит нашёл RED: алярм падал TypeError (нехватка MK_TAG), т.е. молчал именно когда был повод кричать; починено+firedrill ✅</td></tr>
+<tr><td class='b'>cowork-watch</td><td>сторож cowork-петли (готово/тишина)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>Connect-петля</td></tr>
+<tr><td class='b'>oauth-probe</td><td>независимый сторож OAuth-кранов (эталон «сторож не живёт в том, что сторожит», CLAUDE.md §5.5)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>эталонный слой видимости после инцидента 20.07 (ящик bb протух, connector-health ехал на сломанных кранах)</td></tr>
+<tr><td class='b'>output-freshness</td><td>сторож свежести ВЫХОДОВ роботов (не только exit 0): доказательство = свежая метка внутри артефакта</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>заведён в REGISTRY_MCP 22.07; ловит «зелёный тик при нуле работы»</td></tr>
+<tr><td class='b'>robot-audit-weekly</td><td>этот еженедельный аудит роботов (Вс 23:10)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>держит парк живым и без лишнего</td></tr>
+</table>
+<h2>💼 Бизнес/кофаундер <small>(14)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>CRM-Retag-Nightly</td><td>ночной ретаг карточек CRM (retag_v2 apply)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>CRM-Sensors-Nightly</td><td>сенсоры CRM: listener + member_analyzer</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Claude Five Hard Monthly</td><td>месячный разбор «5 трудных вопросов»</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; ещё ни разу не отрабатывал (last=never): проверить, что вообще стартует</td></tr>
+<tr><td class='b'>Claude PR Watch Nightly</td><td>ночной обход наших PR (Mission-2 / OSS-вклады)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; сверить с cold-pr-into-silent-queue: измеряем ли очередь, а не только шлём</td></tr>
+<tr><td class='b'>Content-Debt-Checker</td><td>проверка контент-долга (что не превращено в контент)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — сверить с voice-100%/everything-content</td></tr>
+<tr><td class='b'>Mission2 GitHub Traffic Snapshot</td><td>снимок трафика GitHub для миссии №2</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Natasha Reddit Push</td><td>ведение Наташи по Reddit-прогреву</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>возможен дубль reddit-warmup-lead (MCP) — свести владельца</td></tr>
+<tr><td class='b'>Pub-Comments-Morning-03</td><td>утренний отчёт неотвеченных комментов → 03</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Pub-Metrics-Nightly</td><td>ночной сбор метрик публикаций</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Zalp1 Delta Board</td><td>дельта-борд Zalp1</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>mission-pulse-weekly</td><td>еженедельный Mission-Pulse по миссии №2 (MCP-кран)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>ph-launch-day-consensus</td><td>разовый: день запуска claude-consensus на Product Hunt</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>one-time 2026-07-07 — самоистечёт после запуска</td></tr>
+<tr><td class='b'>Lead Reply Watch</td><td>опрос bb IMAP → чат 03 на совпадения leads.db</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>Track A аутрич (memory lead-reply-watch)</td></tr>
+<tr><td class='b'>cofounder-watch</td><td>пинги кофаундера по live-воронке 3р/день</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>Track A = главное</td></tr>
+</table>
+<h2>⛏ Альфа/контент-майнинг <small>(20)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>Alpha Flow Nightly</td><td>ночной прогон альфа-конвейера</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый 02.08 - нужен вердикт Антона</td></tr>
+<tr><td class='b'>Alpha Planerki Post</td><td>альфа звонков → чат 04 Планёрки (granola/alpha_post.py)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>ArXiv Submit Watch</td><td>сторож endorsement-гранта q-fin.GN для сабмита Le Chatelier (тик 4ч)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; блокер W2 25.07: после сабмита робот теряет смысл, тогда retire</td></tr>
+<tr><td class='b'>Browser History Dashboard Weekly</td><td>дашборд истории браузера</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>nice-to-have; кто его смотрит?</td></tr>
+<tr><td class='b'>Channel Topup Weekly</td><td>еженедельный топап каналов альфы</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>Creator Watcher (nightly)</td><td>хаб-версия Creator Watcher: AI-креаторы → волт</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>возможен дубль WatchChannelsNightly (memory creator-watcher hub nightly PENDING) — слить/оставить один</td></tr>
+<tr><td class='b'>DR Collect Nightly</td><td>ночной сбор готовых Deep Research отчётов</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — реестр DR (dr-numbering-registry)</td></tr>
+<tr><td class='b'>DR FSM Shadow Bake</td><td>shadow-выпечка FSM для DR-конвейера</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>DR Hub Janitor Nightly</td><td>ночной дворник DR-хаба</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>DR Synthesize Nightly</td><td>ночной синтез собранных DR-отчётов → 03-Insights</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — dr-pipeline-endtoend; сейчас Disabled</td></tr>
+<tr><td class='b'>DR-Queue-Robot</td><td>робот очереди DR</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый — появился с 14.07, нужен вердикт Антона</td></tr>
+<tr><td class='b'>LobsterMonthlyPulse</td><td>месячный пульс комьюнити Lobster</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый community-watcher — смотрим ли выхлоп?</td></tr>
+<tr><td class='b'>SostavNightlyWatch</td><td>ночной вотчер Состав-комьюнити</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>давно не смотрели выхлоп — стоит ли ночного слота?</td></tr>
+<tr><td class='b'>doc-alpha-weekly</td><td>недельный майнинг альфы из доков/чейнджлогов</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>новый; ⚠️ ДЫРА ПРОВОДКИ — нет cron_heartbeat.py и не в REGISTRY_MCP</td></tr>
+<tr><td class='b'>Alpha Judge Nightly</td><td>судья кандидатов альфы (Sonnet)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>двойник копит инсайты</td></tr>
+<tr><td class='b'>Alpha Miners Weekly</td><td>10 майнеров альфы еженед.</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>Obsidian Weekly Digest</td><td>недельный свод волта</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>дёшев</td></tr>
+<tr><td class='b'>Obsidian Weekly Resurface</td><td>всплытие забытых заметок</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>дёшев, анти-забывание</td></tr>
+<tr><td class='b'>UFO-UAP Digest Weekly</td><td>недельный дайджест fringe-тем</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>дёшев, research-ДНК</td></tr>
+<tr><td class='b'>WatchChannelsNightly</td><td>Creator Watcher: AI-креаторы → волт</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>gate-eval ждёт твоих меток</td></tr>
+</table>
+<h2>✨ charm-os <small>(2)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>charm-os Daily Drive Current</td><td>дневной charm-пак → Drive</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>свежий проект Антона</td></tr>
+<tr><td class='b'>charm-os Monthly Drive Refresh</td><td>месячный полный charm-пак</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>починен (диск не фатален)</td></tr>
+</table>
+<h2>🕷 TG-скрап участников <small>(2)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>TG Members Sweep AM</td><td>утренняя смена скрапа участников групп</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>рename Scrape A/B/C → Sweep AM/PM (3→2)</td></tr>
+<tr><td class='b'>TG Members Sweep PM</td><td>вечерняя смена скрапа участников групп</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>рename Scrape A/B/C → Sweep AM/PM (3→2)</td></tr>
+</table>
+<h2>🤖 Claude-рутины (LLM) <small>(33)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>bus-wipe-guard</td><td>старый LLM-обёрнутый сторож шины (выкл)</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>заменён OS-задачей (жёг 20М ток/день) — удалить</td></tr>
+<tr><td class='b'>coach-evening</td><td>вечерний коуч (выкл 06-30)</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>ты выключил, скилл /coach остаётся — задачу удалить</td></tr>
+<tr><td class='b'>consensus-autofinish-watch</td><td>разовый вотчер хендшейка (выкл)</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>one-shot отработал — удалить</td></tr>
+<tr><td class='b'>cross-machine-robot-dryrun</td><td>дрయ-ран межмашинного робота (выкл)</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>эксперимент завершён — удалить</td></tr>
+<tr><td class='b'>brain-health-night</td><td>ночной сторож мозга/RAG</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>пересекается с ClaudeHealthBrain — оставить один</td></tr>
+<tr><td class='b'>tg-leads-today</td><td>кому из лидов писать сегодня (выкл)</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>ты сам поставил паузу 06-30 — вернём при активном аутриче или удалим?</td></tr>
+<tr><td class='b'>tg-watchdog-silentfail</td><td>утренний чек фоновых задач</td><td><span class='pill' style='background:#9a6700'>🟡 на решение</span></td><td>перекрыт OS Task Watchdog + cron watchdog — кандидат на выкл (LLM-запуск ежедневно)</td></tr>
+<tr><td class='b'>alpha-to-tg</td><td>новая альфа ночью в TG</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>РЕШЕНО 20.07: уже переведён на weekly (Пн 04:20, cron 20 4 * * 1) — правка от 04.07</td></tr>
+<tr><td class='b'>claudeai-sync-daily</td><td>чаты claude.ai → волт</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>coach-morning</td><td>коуч пн утром (урезан с daily)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>ты сам урезал до weekly — ок</td></tr>
+<tr><td class='b'>connector-health-daily</td><td>сторож коннекторов (TG/WA/Gmail/Cal/n8n)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>content-factory-daily</td><td>кластеры дня → контент-план</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>ядро</td></tr>
+<tr><td class='b'>content-miner-nightly</td><td>ночной backstop контент-майнера (черновики в воронку)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>content-miner-reflex; ⚠️ ДЫРА ПРОВОДКИ — нет heartbeat/реестра</td></tr>
+<tr><td class='b'>faaa-weekly-sync</td><td>FAAA звонки → CRM</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>facebook-diary-daily</td><td>честный FB-дневник дня</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>контент-фабрика ядро</td></tr>
+<tr><td class='b'>fb-reply-daily</td><td>5-10 коротких ответов-шуток на FB-комменты</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>standing-мандат; ⚠️ ДЫРА ПРОВОДКИ — нет cron_heartbeat.py и не в REGISTRY_MCP</td></tr>
+<tr><td class='b'>fb-watch-daily</td><td>стена FB → тизеры draft-first</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>контент-дистрибуция</td></tr>
+<tr><td class='b'>gmail-digest-morning</td><td>тихий сторож 3 ящиков 05:36</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>email=источник двойника</td></tr>
+<tr><td class='b'>hanging-tasks-digest</td><td>утренняя сводка висячих задач</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>Антон читает</td></tr>
+<tr><td class='b'>health-weekly-sync</td><td>7 health-чатов TG → волт</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>longevity-слой</td></tr>
+<tr><td class='b'>journey-day-close-morning</td><td>дописывает главу The Journey за вчера (RU/EN/DEV)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>book-the-journey; ⚠️ ДЫРА ПРОВОДКИ — нет heartbeat/реестра</td></tr>
+<tr><td class='b'>obsidian-backup-healthcheck</td><td>жив ли offsite-бэкап</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>preference-sweep-daily</td><td>скан чатов на новые правила</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>канал правил</td></tr>
+<tr><td class='b'>reality-show-health-weekly</td><td>недельный health контент-сериала (4 оси DR)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>контент-фабрика v2</td></tr>
+<tr><td class='b'>reddit-warmup-lead</td><td>дневное ведение Русланы по Reddit-прогреву</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>РЕШЕНО 20.07: дубля нет — Natasha Reddit Push (Windows) выключен, владелец один</td></tr>
+<tr><td class='b'>skill-gap-daily</td><td>аудит какой скилл строить (daily)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>РЕШЕНО 20.07: уже переведён на weekly (Пн 00:50, cron 50 0 * * 1) — правка от 04.07</td></tr>
+<tr><td class='b'>system-architect-red-alert</td><td>пинг только при RED в /arch</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>тихий при зелёном</td></tr>
+<tr><td class='b'>tg-calendar-agenda</td><td>утренняя повестка из календаря</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>Антон читает</td></tr>
+<tr><td class='b'>tg-relationships-weekly</td><td>ДР недели + забытые важные лиды</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>фаннел-гигиена</td></tr>
+<tr><td class='b'>tg-weekly-digest</td><td>недельный свод вс вечером</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td></td></tr>
+<tr><td class='b'>token-spend-watchdog</td><td>ночной аудит расхода токенов</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>ловит пожирателей</td></tr>
+<tr><td class='b'>vault-janitor-nightly</td><td>авто-релинк сирот (Sonnet судит)</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>свежепочинен</td></tr>
+<tr><td class='b'>voice-triage</td><td>триаж голосовых 1р/день</td><td><span class='pill' style='background:#1a7f37'>🟢 оставить</span></td><td>голос=100% контент</td></tr>
+</table>
+<h2>⚰️ Мертвяки <small>(11)</small></h2><table><tr><th>Робот</th><th>Что делает</th><th>Вердикт</th><th>Почему</th></tr>
+<tr><td class='b'>ChatGPT Vault Freshness</td><td>выключенный дубль freshness</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>дубль активной задачи — удалить | переименован ChatGPT Vault Freshness (Daily) -> ChatGPT Vault Freshness (аудит 02.08)</td></tr>
+<tr><td class='b'>Claude Dashboard Refresh Daily</td><td>почасовой рефреш дашбордов сессий</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>переименован в Claude Dashboard Refresh Daily 2026-07-05 (реже=меньше токенов) — исчез из системы | переименован Claude Dashboard Refresh Hourly -> Claude Dashboard Refresh Daily (аудит 02.08)</td></tr>
+<tr><td class='b'>Embed Bakeoff one-shot</td><td>разовый бенчмарк эмбеддингов (сделан)</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>one-shot отработал, исчез из системы 2026-08-02</td></tr>
+<tr><td class='b'>Foxpod Monitor Daily</td><td>мониторинг Foxpod-подкаста</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>исчез из системы 2026-08-02</td></tr>
+<tr><td class='b'>Foxpod Weekly Judge</td><td>недельный судья foxpod</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>исчез из системы 2026-08-02</td></tr>
+<tr><td class='b'>TG Assistant Daemon Watchdog</td><td>сторож выключенного TG-ассистента</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>исчез из системы 2026-08-02 (остался TG Assistant Daemon Boot)</td></tr>
+<tr><td class='b'>TG Daemon Guard</td><td>второй сторож того же демона</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>исчез из системы 2026-08-02 (остался TG Assistant Daemon Boot)</td></tr>
+<tr><td class='b'>TG Members Scrape A (refresh)</td><td>скрап участников групп ≤1000, 40мин/день</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>исчез из системы 2026-08-02 (заменён TG Members Sweep AM/PM)</td></tr>
+<tr><td class='b'>TG Members Scrape B (tonyssd)</td><td>вторая дневная смена скрапа</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>исчез из системы 2026-08-02 (заменён TG Members Sweep AM/PM)</td></tr>
+<tr><td class='b'>TG Members Scrape C (tonydzi)</td><td>третья дневная смена скрапа</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>исчез из системы 2026-08-02 (заменён TG Members Sweep AM/PM)</td></tr>
+<tr><td class='b'>pilot-post-season-launch</td><td>разовый запуск пилот-поста сезона (FB)</td><td><span class='pill' style='background:#cf222e'>🔴 убрать</span></td><td>one-time отработал 2026-07-11 — самоистёк, удалить</td></tr>
+</table>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Аудит бэкапов — MacBook-Anton · 2026-07-07</title>
+<style>
+  body{font-family:-apple-system,Segoe UI,sans-serif;background:#111418;color:#e8e8e8;margin:0;padding:24px;line-height:1.45}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:#9aa4af;font-size:13px;margin-bottom:20px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin-bottom:26px}
+  th,td{border:1px solid #2a3038;padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#1b2129;color:#c9d4df;font-weight:600}
+  tr:nth-child(even) td{background:#161b21}
+  .ok{color:#4cd964;font-weight:600}
+  .new{background:#12351f !important;color:#7dffa8;font-weight:600}
+  .no{color:#8892a0}
+  .warn{color:#ffb84d;font-weight:600}
+  .red{color:#ff6b6b;font-weight:700}
+  .box{background:#1b2129;border:1px solid #2a3038;border-radius:8px;padding:14px 18px;margin-bottom:18px;font-size:13.5px}
+  code{background:#0d1013;padding:1px 5px;border-radius:4px;font-size:12.5px;color:#9fd4ff}
+  .kid{background:#241f14;border:1px solid #4a3d20;border-radius:8px;padding:14px 18px;font-size:14px}
+  h2{font-size:16px;color:#c9d4df;margin:22px 0 10px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Audit-SectionB-10-Decisions-2026-07-07.html">&larr; Audit-SectionB-10-Decisions-2026-07-07</a> · <a href="Bus-Debt-Audit-2026-07-05.html">Bus-Debt-Audit-2026-07-05 &rarr;</a></span></div>
+<h1>🛡️ Аудит бэкапов: пиры → MacBook-Anton</h1>
+<div class="sub">2026-07-07 · автор: MacBook-Anton·Claude · источники: память хаба (claude-skills-git-backup, vault-backup-rule, vault-offsite-backup, config-safety, automation-inventory) + живой Syncthing REST + launchd</div>
+
+<h2>Матрица слоёв защиты</h2>
+<table>
+<tr><th>Слой</th><th>Хаб A-2022BAYAREA</th><th>Ноут ZBOOKG8</th><th>Мак — было</th><th>Мак — стало</th></tr>
+<tr><td><b>1. Git-снапшот конфига Claude</b><br>идемпотентный коммит каждые 15 мин</td>
+  <td class="ok">✅ 8 реп (skills, memory, scripts, hooks, _config-backup, sched-tasks + E:\Obsidian scripts/_imports)</td>
+  <td class="ok">✅ 6 реп</td><td class="red">❌ (ГЭП)</td>
+  <td class="new">✅ 07.07: один корневой репо ~/.claude (whitelist), launchd 900с + heartbeat-коммит &gt;5ч</td></tr>
+<tr><td><b>2. Config Integrity Gate</b><br>счётчики skills/commands/memory + wipe-floor CLAUDE.md, RED→TG-03</td>
+  <td class="ok">✅ daily 05:38</td><td class="no">— (класс ловится git'ом)</td><td class="red">❌</td>
+  <td class="new">✅ 07.07: тот же скрипт, daily 05:45 + при загрузке; baseline: 81 skills · 643 memory · 90563B</td></tr>
+<tr><td><b>3. settings_guard</b><br>битый JSON settings → harness тихо на fallback</td>
+  <td class="warn">⏳ propagate</td><td class="ok">✅ в nightly 03:30</td><td class="red">❌</td>
+  <td class="new">✅ 07.07: микро-порт, в том же daily-агенте</td></tr>
+<tr><td><b>4. Syncthing File Versioning</b><br>staggered 30d — удаления/перезаписи восстановимы из .stversions</td>
+  <td class="ok">✅ (после потери _machine-bus 06-29)</td><td class="warn">❓ не проверено — хвост ноуту</td><td class="red">❌ все 7 шар NONE</td>
+  <td class="new">✅ 07.07: staggered 30d на всех 7 шарах</td></tr>
+<tr><td><b>5. Волт-git + vault_backup.py</b><br>коммит перед любой записью в волт</td>
+  <td class="ok">✅ репо на E: + локи</td><td class="ok">✅</td><td class="no">❌</td>
+  <td class="no">— НЕ ставим: волт ещё докачивается; Мак почти не пишет; .stversions прикрывает; хаб держит git. Пересмотреть при need=0, если Мак начнёт писать много</td></tr>
+<tr><td><b>6. Оффсайт 3-2-1</b><br>git-bundle → GDrive + 2-й SSD, nightly 03:00 + healthcheck Пн</td>
+  <td class="ok">✅ владелец</td><td class="no">— отключён намеренно (2 узла в одну Drive-папку = коллизия)</td><td class="no">—</td>
+  <td class="no">— НЕ ставим, тот же урок: оффсайтом владеет хаб</td></tr>
+<tr><td><b>7. Git-транспорт памяти/CLAUDE.md</b><br>bare-репы хаба + GitHub claude-offsite-memory</td>
+  <td class="ok">✅</td><td class="ok">✅</td><td class="no">—</td>
+  <td class="no">— Мак = receive-only потребитель канона, не участник merge; git-слой п.1 страхует локально</td></tr>
+<tr><td><b>8. Time Machine</b> (мак-специфичный слой)</td>
+  <td class="no">n/a</td><td class="no">n/a</td><td class="red">❌ нет диска назначения</td>
+  <td class="warn">❓ К АНТОНУ: нужен внешний диск/NAS — решение железом. Единственный незакрытый слой</td></tr>
+</table>
+
+<h2>Расписания на Маке (launchd, после аудита)</h2>
+<div class="box">
+  <code>claude-git-backup</code> 15 мин · <code>config-integrity</code> ежедневно 05:45 + при загрузке ·
+  <code>node-health-beat</code> 15 мин · <code>syncthing-watchdog</code> 10 мин ·
+  <code>inbox-robot</code> 20 мин · <code>session-push</code> 60 мин · Syncthing-versioning: фоново, чистка раз в час
+</div>
+
+<h2>Как восстановить</h2>
+<div class="box">
+  Конфиг Claude: <code>git -C ~/.claude log --oneline</code> → <code>git -C ~/.claude checkout &lt;hash&gt; -- &lt;путь&gt;</code><br>
+  Удалённое/перезаписанное синком: папка <code>.stversions</code> внутри соответствующей шары (30 дней)<br>
+  Волт целиком: бандлы хаба в GDrive (<code>Obsidian-Backup/vault/*.bundle</code>) — скилл <code>/obsidian-backup</code>
+</div>
+
+<h2>Найдено попутно (хвосты не-Мака)</h2>
+<div class="box">
+  🟡 Ноут: проверить, включён ли File Versioning на его шарах (на хабе включали, про ноут в памяти тихо)<br>
+  🟡 Хаб: settings_guard всё ещё «⏳ propagate» из заметки 07-02 — Мак свой поставил, хабу нужен вызов в его nightly
+</div>
+
+<div class="kid">🧒 <b>Простыми словами:</b> я посмотрел, какие «страховки от потери» стоят на больших компьютерах, и поставил такие же на Мак. Теперь у Мака есть: фотоальбом настроек (каждые 15 минут), утренний сторож-счётчик («ничего не пропало за ночь?»), проверка «не порвался ли главный файл настроек» и корзина на 30 дней для всего, что синк случайно удалит. Не поставил только две вещи — и это правильно: запасную копию всей базы в облако делает главный компьютер (двое в одну папку = толкучка), а для маковского Time Machine нужен внешний диск — это к Антону.</div>
+</body>
+</html>

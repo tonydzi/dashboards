@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Висячие задачи по владельцам — 04.08.2026</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#171a21; --ink:#e8eaed; --dim:#9aa0aa; --line:#262b34;
+    --red:#e5484d; --redbg:#2a1416; --yel:#f5a623; --yelbg:#2a2410; --blu:#4a9eff; --blubg:#0f1e2e; --grn:#3fb950; --grnbg:#0f2416;
+  }
+  @media (prefers-color-scheme:light){
+    :root{--bg:#f6f7f9;--card:#fff;--ink:#1a1d23;--dim:#5c6470;--line:#e3e6ea;
+      --redbg:#fdecec;--yelbg:#fdf5e3;--blubg:#eaf3ff;--grnbg:#e9f7ec;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;padding:24px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 20px;font-size:13px}
+  .grp{margin:0 0 26px}
+  .ghead{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;margin:0 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+  .cnt{font-size:12px;color:var(--dim);font-weight:500}
+  .card{background:var(--card);border:1px solid var(--line);border-left-width:4px;border-radius:8px;padding:12px 14px;margin:0 0 8px}
+  .r{border-left-color:var(--red)} .y{border-left-color:var(--yel)} .b{border-left-color:var(--blu)} .g{border-left-color:var(--grn)}
+  .t{font-weight:600;margin:0 0 3px}
+  .m{color:var(--dim);font-size:13px;margin:0}
+  .tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;margin-left:6px;vertical-align:middle;font-weight:600}
+  .tag.act{background:var(--redbg);color:var(--red)} .tag.dec{background:var(--yelbg);color:var(--yel)} .tag.new{background:var(--red);color:#fff}
+  code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-size:12px}
+  .id{font-family:ui-monospace,monospace;font-size:11px;color:var(--dim)}
+  .foot{color:var(--dim);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Hackernoon-Playbook.html">&larr; Hackernoon-Playbook</a> · <a href="Hanging-Nataly-2026-08-02.html">Hanging-Nataly-2026-08-02 &rarr;</a></span></div>
+<h1>🗂 Висячие задачи по владельцам</h1>
+<p class="sub">хаб A-2022BAYAREA · собрано 2026-08-04 13:3x (Лиссабон) · живые данные: approval.py pending · /arch broken · task-registry · RECALL проведён по каждой</p>
+
+<div class="grp">
+  <div class="ghead">🔴 Ждут ТЕБЯ <span class="cnt">решение или руки — сам не могу</span></div>
+
+  <div class="card r">
+    <p class="t">Канон-цепочка застряла <span class="tag dec">решение</span> <span class="id">#647bd422 +27 дублей</span></p>
+    <p class="m">Хаб держит ЛОКАЛЬНЫЙ канон, входящие парцели (<code>a23b0e45→787e65a1→c0bbe4ed</code>) построены НЕ на нём → авто-апплай затёр бы твою правку. Плюс 3 узла отстают: Руслана 6д · Наташа 4д · ZBook 6д. <b>30 pending-апрувов — это ОДНА проблема в 28 копиях.</b> Решение: применять (я сделаю verify→бэкап→apply→guard→ACK) или держать HELD? <code>+</code> / <code>NO</code></p>
+  </div>
+
+  <div class="card r">
+    <p class="t">WhatsApp мёртв 34.8 дней <span class="tag act">телефон</span></p>
+    <p class="m">creds.json пропал 30.06 — входящие не доходят, отправка невозможна ни из одной сессии. Лечение (1 мин): <code>python ~/.claude/scripts/wa_broker.py --start</code> → на телефоне WhatsApp → Связанные устройства → скан QR.</p>
+  </div>
+
+  <div class="card r">
+    <p class="t">Show HN 11.08 — вход в HN + email <span class="tag act">руки, дедлайн −5д</span> <span class="id">#63ebea04</span></p>
+    <p class="m">Гейт Show HN зелёный за 5 дней до срока, но стрелять нечем без твоих 15 мин: логин на news.ycombinator.com + email в профиле. Иначе окно 11.08 пропускаем.</p>
+  </div>
+
+  <div class="card r">
+    <p class="t">Tailscale на хабе отстал 6 релизов <span class="tag act">admin-руки</span> <span class="id">#5ea4254b</span></p>
+    <p class="m">1.98.4 при 1.98.10, два SSH-адвизори (хаб SSH-сервером не работает — пожара нет). Терминал «от администратора»: <code>winget upgrade --id Tailscale.Tailscale</code>. Автообновление включено, но не применяется — после разберусь почему.</p>
+  </div>
+
+  <div class="card r">
+    <p class="t">Гейт Наташи — 2 контент-пакета <span class="tag dec">маршрут/решение</span></p>
+    <p class="m">Из Mission-Pulse W3: 2 пакета ждут ОК Наташи (§3.2), таймер авто-апрува 24ч ни разу не взводился — наш баг (пинг не пишет время). Отправить черновики асков Наташе/Руслане? <code>+</code> / <code>NO</code></p>
+  </div>
+</div>
+
+<div class="grp">
+  <div class="ghead">🟡 На МНЕ <span class="cnt">хаб-Claude, делаю сам</span></div>
+
+  <div class="card y">
+    <p class="t">Масс-удаление в волте <span class="tag new">НОВОЕ · найдено сейчас</span></p>
+    <p class="m">Бэкап-сторож остановил авто-коммит: <b>291 удаление</b> с последнего бэкапа (27ч). Из них 124 — легит-переименования (codex-sessions <code>MacBook-Anton→A-Mac16-2019</code>), НО часть реальна: <code>_originals/ab-cofounder-models/</code> целиком пропал с диска (§8.3 — originals не удаляем). Не форсирую коммит (запечь потерю нельзя, файлы пока живы в HEAD). Разберу намеренное-vs-потеря ДО коммита — отдельной проверкой.</p>
+  </div>
+
+  <div class="card y">
+    <p class="t">8 сломанных задач планировщика</p>
+    <p class="m">ack-coverage-watch · Claude Config Integrity Gate · Daily Community Card · Fleet Services Board · headless-llm-watchdog · LobsterMonthlyPulse · Repo Hygiene Gate · Token Audit. Читаю exit-коды в исходниках (часть может быть designed-signal, а не поломкой — класс designed-signal-exit-codes).</p>
+  </div>
+
+  <div class="card y">
+    <p class="t">11 линт-флагов /arch</p>
+    <p class="m">llm · encoding · vault_walk · path_hardcode · approval · dangling · canon_refs · tls_certifi · platform · agents_mirror · script_delivery. Разбираю новые сайты по <code>_lint_*.txt</code> (часть может быть устаревшим кэшем, как было 27.07 — проверю свежим sys_check).</p>
+  </div>
+
+  <div class="card y">
+    <p class="t">Применить посылку medium-tracker-sync-20260803 <span class="tag act">§7.5</span></p>
+    <p class="m">Непринятая посылка для хаба: refresh Medium-трекера p1–p40. Применить <code>deploy_apply.py</code> + verify (md5-равенство).</p>
+  </div>
+</div>
+
+<div class="grp">
+  <div class="ghead">⏳ Машины / внешнее / в полёте <span class="cnt">не блокирует тебя</span></div>
+
+  <div class="card b">
+    <p class="t">Маяк (FLEET-ANCHOR) — арм отправлен <span class="tag dec">жду ACK</span></p>
+    <p class="m">По твоему <code>+8e211eb6</code> отправил TASK с конвертом авторизации на обоих рельсах — Маяк заармит себя как канарейку и пришлёт ACK в 03. Владею до подтверждения.</p>
+  </div>
+
+  <div class="card b">
+    <p class="t">MacBook-Anton — уже заармлен 31.07</p>
+    <p class="m">Обнаружено при RECALL: ты лично разрешил («разрешаю!!!») авто-апплай на MacBook-Anton 31.07 — узел уже на живом апплае. Мир ушёл вперёд от плана «сперва только Маяк».</p>
+  </div>
+
+  <div class="card b">
+    <p class="t">3 узла отстают по канону</p>
+    <p class="m">Руслана / Наташа / ZBook без ACK 3–6 дней — часть той же канон-проблемы выше. Раскатается, когда решишь base-mismatch на хабе.</p>
+  </div>
+
+  <div class="card b">
+    <p class="t">Chip: ChatGPT-токен <span class="id">task_6aab5950</span></p>
+    <p class="m">Отправлен отдельной сессией 27.07. Задача «ChatGPT Nightly Sync» ушла из broken-списка — вероятно закрыт. Подтвержу прогоном.</p>
+  </div>
+</div>
+
+<div class="grp">
+  <div class="ghead">✅ Сделано (эта дуга 27.07→04.08) <span class="cnt">доказано</span></div>
+
+  <div class="card g"><p class="t">sync-conflict sweep — 97 конфликтов в архив</p><p class="m">Обратимо, манифест, 0 живых осталось; .stversions не тронут.</p></div>
+  <div class="card g"><p class="t">canon-unhold — подтверждён закрытым</p><p class="m">Ты лично разблокировал 25.07 23:11 (ack-лог); правки 8970e507→cdff46de приземлились. «Кнопка» была нажата.</p></div>
+  <div class="card g"><p class="t">Ложный RED (линт-кэш) — починен</p><p class="m">3 фантомных флага были кэшем ночного скана; sys_check освежил карту.</p></div>
+  <div class="card g"><p class="t">parcel-coverage 6 дыр — закрыты <span class="id">chip task_a47dc829</span></p><p class="m">Флаг <code>_lint_parcel_coverage.flag</code> исчез — чип отработал.</p></div>
+  <div class="card g"><p class="t">Маяк арм — авторизован (+8e211eb6) + отправлен</p><p class="m">TASK с конвертом на обоих рельсах, fleet-signed.</p></div>
+</div>
+
+<div class="foot">
+🧒 Простыми словами: это карта «кто над чем застрял». Красное — только ты можешь (нажать кнопку, войти телефоном, сказать «да»); главное красное на самом деле одно, просто размножилось в 30 копий (компы не могут согласовать общий свод правил). Жёлтое — моё, делаю сам, и я прямо сейчас нашёл тревогу: за неделю из волта пропала папка, которую нельзя удалять — разберусь до того, как сохранять. Синее — уже едет само. Зелёное — уже готово.
+</div>
+</body>
+</html>

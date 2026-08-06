@@ -1,0 +1,151 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="LLM-Cookbook-Radar.html">&larr; LLM-Cookbook-Radar</a> · <a href="PhD-Alpha.html">PhD-Alpha &rarr;</a></span></div><!doctype html><html lang="ru"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DR ZB-07 — стиль Лебедева для palo-alto.ai</title><style>
+:root{--bg:#0f1115;--card:#171a21;--fg:#e8eaed;--dim:#9aa0a6;--line:#2a2f3a;--acc:#5b9dd9;
+--ok:#3fb950;--warn:#d29922;--bad:#f85149}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;padding:20px}
+.w{max-width:1180px;margin:0 auto}
+h1{font-size:24px;margin:0 0 4px}
+h2{font-size:18px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.sub{color:var(--dim);margin-bottom:18px;font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#1e2330;color:var(--dim);font-weight:600}
+.c{text-align:center}
+.ok{color:var(--ok);font-weight:600}.warn{color:var(--warn);font-weight:600}.bad{color:var(--bad);font-weight:600}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:12px;background:#243040;color:var(--acc)}
+.eli{background:#12251a;border:1px solid #1f4d31;border-radius:10px;padding:12px 16px;margin:16px 0}
+.note{background:#2a2113;border:1px solid #6b4c17;border-radius:10px;padding:12px 16px;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+small{color:var(--dim)}
+code{background:#12151b;padding:1px 5px;border-radius:4px;font-size:13px}
+.big{font-size:30px;font-weight:700;line-height:1.1}
+.pathrow{font-family:Consolas,monospace;font-size:12.5px;color:var(--dim);word-break:break-all}
+ul{margin:6px 0 0 18px;padding:0}li{margin:4px 0}
+</style><div class="w">
+
+<h1>DR26-08-04-ZB-07-1621 — стиль Лебедева для главной palo-alto.ai</h1>
+<div class="sub">Веер закрыт: 4 вендора. Обновлено 04.08.2026, вечер, HP17-ZBook. Решает Антон, глазами. На origin ничего не выкатывалось.</div>
+
+<div class="eli">
+🧒 <b>Простыми словами.</b> Четыре умных помощника независимо разобрали, что именно делает стиль Лебедева узнаваемым, и ответили на неудобный вопрос: не испортим ли мы страницу лаборатории, нарядив её в дизайнерский костюм. Ответ у всех один: <b>костюм — вредно, аккуратность — полезно</b>. Забирать надо строгий порядок и точный набор, а не яркие плашки. Ещё нашли ошибку у одного из помощников: он пересказал старое исследование неверно и при этом говорил громче всех, что «доказано». Мы его громкость понизили.
+</div>
+
+<h2>1. Состояние веера</h2>
+<div class="card scroll"><table>
+<tr><th>Рельса</th><th class="c">Статус</th><th>Доказательство работы</th><th>Файл / чат</th></tr>
+<tr><td>Grok Heavy</td><td class="c ok">✅ собран</td><td>1m29s · 549 источников · Agents thinking</td><td class="pathrow">_originals/deep-research/…-grok.md</td></tr>
+<tr><td>ChatGPT Pro + Web search</td><td class="c ok">✅ собран</td><td>~45 мин · 205 URL · 37 разделов · отдельный проход верификации</td><td class="pathrow">_originals/deep-research/…-chatgpt.md</td></tr>
+<tr><td>Gemini Pro Deep research</td><td class="c ok">✅ собран 22:16</td><td>23 источника использовано + 36 прочитано-не-использовано</td><td class="pathrow">_originals/deep-research/…-gemini.md<br>gemini.google.com/app/19ac8951cf5d4378</td></tr>
+<tr id="claudeai-row"><td>claude.ai Research (Fable 5)</td><td class="c ok">✅ собран 23:2x</td><td><b>256 источников · 9 мин 53 с</b>; коннекторы Drive/Calendar не пускали</td><td class="pathrow">_originals/deep-research/…-claudeai.md<br>claude.ai/chat/e699aded-4552-4c73-bdd9-8534b68e790d</td></tr>
+</table></div>
+
+<div class="note">
+⚠️ <b>Разбор факапа, который дороже самого отчёта.</b> Утром Gemini записали как «заблокирован капчей». Фактом было другое: challenge пришёл в ОДНОМ заходе, в ОДНУ минуту, из ОДНОГО профиля. Днём с Mac16 чат не открылся — потому что беседа жила в другом Google-профиле, — и это зачли как подтверждение блока. В этом Chrome залогинено минимум 4 Google-аккаунта, проверялся один. <b>Готовый отчёт пролежал в чате 4 часа.</b> Правило: challenge при заборе = <code>not-collected</code>, никогда <code>dead</code>.
+</div>
+
+<h2>2. Ответ на главный контр-вопрос: не ошибка ли смена</h2>
+<div class="card">
+<div class="big">Полный «Лебедев» — <span class="bad">против, 4 из 4</span></div>
+<p>Ни один вендор независимо не выбрал вариант B. Общий механизм у всех один: <b>жанровая прототипичность</b>. Страница лаборатории, выглядящая как рекламный проект дизайн-студии, читается research lead-ом и рекрутером как маркетинг, и это снижает доверие к содержанию, а не повышает.</p>
+<p>Но исследование <b>не сказало «ничего не меняй»</b>. Оно сказало другое: менять можно ровно настолько, насколько это не выводит страницу из жанра. Это и есть гибрид: <b>C = A плюс дисциплина набора, а не A минус жанр</b>.</p>
+<p class="warn">⚠️ Практический вывод, который легко потерять: правки должны быть <b>типографскими, а не визуальными</b>. Всё, что меняет ощущение страницы (крупный цвет, плашки, вывороты, дисплей 5.4rem), — это дрейф к варианту B, против которого 4 из 4.</p>
+</div>
+
+<div class="card scroll"><table>
+<tr><th>Вендор</th><th class="c">Рекомендация</th><th class="c">Уверенность вендора</th><th>Условие, при котором рекомендация меняется</th></tr>
+<tr><td>Grok</td><td class="c">(в) гибрид</td><td class="c">emerging</td><td>A/B на живых senior engineers: полный вариант растит открытия репозиториев и hiring-контакты</td></tr>
+<tr><td>ChatGPT</td><td class="c">(в) гибрид</td><td class="c">emerging</td><td>то же A/B; плюс 12 поимённых red lines</td></tr>
+<tr><td>Gemini</td><td class="c">(в) гибрид</td><td class="c bad">established → <b>понижено нами до emerging</b></td><td>смена жанра бизнеса: если лаборатория станет B2B-компанией с продажей API, корректен корпоративный лендинг</td></tr>
+<tr><td>claude.ai</td><td class="c">(в) гибрид</td><td class="c">«высокая» → <b>medium</b> у нас</td><td>смена цели с «доверие эксперта» на «виральность»; либо A/B на своей аудитории</td></tr>
+</table>
+<p><small><b>4 из 4 независимо выбрали (в).</b> Ни один не выбрал ни (а), ни (б).</small></p></div>
+
+<div class="card" style="border-color:var(--ok)">
+<div class="big">Главный сдвиг вечера</div>
+<p>Утром синтез стоял на фразе ChatGPT: «данных по экспертной аудитории нет, наша ставка на голый документ не доказана». <b>claude.ai нашёл эти данные — и они на нашей стороне.</b></p>
+<ul>
+<li><b>Companion-исследование «эксперты против потребителей»</b> (Stanford J., Tauber E., Fogg B., Marable L., 2002, Consumer WebWatch): эксперты <b>штрафуют «маркетинговый» вид</b> — в финансах привлекательный сайт потребители поставили 3-м, эксперты 7-м, «lacking unbiased information». <span class="warn">n = 15 экспертов, 2002 год</span> — проверено в первоисточнике PDF.</li>
+<li><b>Liu 2004</b> (IPM 40:1027–1038): для научной информации дизайн влияет минимально. Том и страницы совпали до цифры.</li>
+<li><b>Winter &amp; Krämer 2012</b> (JCMC 18): привлекательность дизайна <b>не</b> влияла на достоверность — решала репутация источника.</li>
+</ul>
+<p><b>И самый сильный факт всего веера, проверенный на первоисточнике:</b> главная <code>anthropic.com</code> прямо сейчас отдаёт <code>#faf9f5</code>, <code>#141413</code> и <code>font-family: 'Anthropic Serif', Georgia, serif</code>. Наш канон (<code>#fdfdfd</code>, <code>#111</code>, Charter/Iowan/Palatino/Georgia) — та же формула другими значениями.</p>
+<p>⇒ Мы <b>не «серые как все»</b> — мы попадаем во фронт-дверь той самой лаборатории, в которую целится миссия №2. Утренняя формулировка «наша ставка не проверена» снята.</p>
+</div>
+
+<h2>3. Проверка цитат — каждый вендор через тот же фильтр</h2>
+<div class="card scroll"><table>
+<tr><th>Вендор</th><th>Что проверял</th><th class="c">Итог</th></tr>
+<tr><td>Grok</td><td>Ководство §57/62/97/104/120; Lindgaard 2006; Tuch 2012; Miniukovich&nbsp;&amp;&nbsp;Figl 2023; Fogg 46,1%</td><td class="c ok">чисто<br><small>одна неточность: Fogg — 2003, не 2002</small></td></tr>
+<tr><td>ChatGPT</td><td>4 свежие работы по DOI через Crossref: Figl 2025 (Electronic Markets) · Lo&nbsp;Piccolo 2026 (Corporate Reputation Review) · Miniukovich/Figl/Ernst 2024 (LNISO) · Jeannot 2022 (RAM)</td><td class="c ok">все 4 реальны,<br>авторы и годы совпали</td></tr>
+<tr><td>Gemini</td><td>Ководство §120 и §137 (HTTP 200, заголовки совпали) · дословная цитата Карпаты · gwern.net/design · Hyland (Crossref) · Lindgaard · Tuch</td><td class="c ok">6 из 8 чисто</td></tr>
+<tr><td class="bad">Gemini ⚠️</td><td><b>«Fogg: более 4500 респондентов»</b> — в исследовании 2&nbsp;684 участника и 2&nbsp;440 комментариев</td><td class="c bad">🤔 завышено вдвое</td></tr>
+<tr><td class="bad">Gemini ⚠️</td><td><b>«46,1% пользователей оценивают авторитетность исключительно по визуальному дизайну»</b> — на деле ~46% <i>комментариев</i> упоминали дизайн. ChatGPT прямо предупреждает, что так пересказывать нельзя</td><td class="c bad">🤔 пересказано неверно</td></tr>
+<tr><td>claude.ai</td><td>Liu 2004 (том и страницы) · Winter&nbsp;&amp;&nbsp;Krämer 2012 · Robins&nbsp;&amp;&nbsp;Holmes 2008 · Fogg-companion «Experts vs. Online Consumers» · хексы и шрифт Anthropic</td><td class="c ok">чисто<br><small>🤔 у Winter&nbsp;&amp;&nbsp;Krämer страница 194 против 80–96 у Crossref</small></td></tr>
+</table>
+<p><small>⇒ <b>Спор о Fogg закрыт первоисточником.</b> Скачал PDF Stanford 2002 и распарсил: «2,684 people evaluated…» и «the ″design look″… present in <b>46.1% of the comments</b>». ChatGPT и claude.ai правы, Gemini ошибся дважды. Fogg-аргумент в синтезе идёт в их формулировке; уверенность Gemini понижена с <code>established</code> до <code>emerging</code>.</small></p>
+</div>
+
+<h2>4. Три готовых файла — что выбирать</h2>
+<div class="grid">
+<div class="card"><b>A · site-index.html</b><br><small>канон, «документ»</small>
+<ul><li>максимальная жанровая честность</li><li>минимальный риск marketing signal</li><li class="warn">риск читаться как «не доделали», а не «сознательный минимализм»</li></ul></div>
+<div class="card"><b>B · site-index-lebedev.html</b><br><small>полный студийный язык</small>
+<ul><li>максимальная различимость</li><li class="bad">против него 4 из 4 вендоров</li><li class="bad">риск жанрового рассогласования</li></ul></div>
+<div class="card" style="border-color:var(--acc)"><b>C · site-index-hybrid.html</b><br><small>«документ с хорошим набором» — рекомендация</small>
+<ul><li>сохраняет жанр, добавляет сигнал ремесла</li><li>консенсус вендоров</li><li class="warn">эффект на найм не доказан ни для одного варианта</li></ul></div>
+</div>
+
+<div class="card">
+<b>✅ Развилка по гарнитуре тела ЗАКРЫТА: 3 против 1 в пользу антиквы.</b><br>
+ChatGPT + claude.ai + текущий канон против системного гротеска (Gemini, «инженерная строгость»). Довод Gemini бьётся прямым замером: у Anthropic в теле <code>'Anthropic Serif', Georgia, serif</code>.
+</div>
+
+<div class="card">
+<b>⚠️ Что осталось развилкой (не сглаживаю).</b>
+<ul>
+<li><b>Разделитель разрядов.</b> Gemini: в английском жёстко запятая <code>13,845</code>. claude.ai: норма — тонкий пробел <code>13 845</code>. Оба правы в своей нише (US-узус против научной/ISO). Практически неважно: четырёхзначных чисел на всех трёх вариантах <b>ноль</b>.</li>
+<li><b>«Висячая пунктуация по Лебедеву».</b> Gemini называет универсальной <code>[established]</code>. claude.ai: спорна даже внутри русской школы (Игорь Штанг / awdee.ru — Лебедев смешивает оптическое выравнивание и вынос на поле). ⇒ на латинице применять умеренно, по английской практике, а не «по §120».</li>
+</ul>
+</div>
+
+<h2>5. Инварианты и типографика — проверено фактом</h2>
+<div class="card scroll"><table>
+<tr><th>Проверка</th><th class="c">A канон</th><th class="c">B Лебедев</th><th class="c">C гибрид</th></tr>
+<tr><td>ёлочки « » в английском тексте</td><td class="c ok">0</td><td class="c ok">0</td><td class="c ok">0</td></tr>
+<tr><td>знак № в английском тексте</td><td class="c ok">0</td><td class="c ok">0</td><td class="c ok">0</td></tr>
+<tr><td>тонкий пробел в разрядах вместо запятой</td><td class="c ok">0</td><td class="c ok">0</td><td class="c ok">0</td></tr>
+<tr><td><code>text-align: justify</code></td><td class="c ok">0</td><td class="c ok">0</td><td class="c ok">0</td></tr>
+</table>
+<p><small>Живой origin: <b>13 из 13 проверок зелёные</b> (<code>palo_alto_site_check.py</code>) — robots index, 0 тегов script, email виден в сыром HTML, 1208 слов без JS, robots/sitemap/llms отдаются, /ru/ и /ja/ 301, неизвестный путь 404.</small></p>
+</div>
+
+<div class="note">
+<b>Мелочь, которая ломает удобный лозунг.</b> <code>karpathy.ai</code> — эталон жанра, на который ссылаются и Grok, и Gemini, — <b>содержит JavaScript</b> (rot13-обфускация почты). То есть «жанр требует ноль JS» — неправда; жанр требует отсутствия тяжести и фреймворков. Наш ноль-<code>&lt;script&gt;</code> оправдан индексацией, а не подражанием Карпаты.
+</div>
+
+<h2>6. Рекомендация и что осталось</h2>
+<div class="card" style="border-color:var(--acc)">
+<div class="big">Вариант C (гибрид), уверенность <span style="color:var(--acc)">medium-high</span></div>
+<p>Поднял с <b>medium</b> утренней версии. Не потому, что гибрид доказан, а потому что <b>B опровергнут четырежды и подкреплён механизмом</b> (прототипичность + штраф эксперта за маркетинговый вид), а <b>A перестал быть недоказанной ставкой</b> — он оказался жанрово правильным.</p>
+<p><b>Что перевернёт:</b> A/B на живых senior engineers, где B растит открытия репозиториев и hiring-контакты. Такого замера нет ни у нас, ни в литературе — это признали все четверо. Второе условие (Gemini): смена жанра бизнеса на B2B с продажей API.</p>
+</div>
+<div class="card">
+<b>Что осталось честно открытым</b>
+<ul>
+<li>Ранги «потребители 3-й / эксперты 7-й» из companion-отчёта Sliced Bread не перепроверял — сам отчёт не открывал. <code>[single-source]</code>, n=15, 2002 год.</li>
+<li>Типографика OpenAI не проверена: <code>openai.com</code> отдаёт 403 на прямой запрос. 🤔 не подтверждено, не опровергнуто.</li>
+<li>Файлы сайта в этот заход <b>не трогал</b>: <code>site-index.html</code>, <code>llms.txt</code> и copy-deck правит параллельная сессия (22:05–22:06).</li>
+<li><b>Антону:</b> открыть три файла и выбрать A / B / C. Больше DR тут ничего не решит.</li>
+<li>Синтез целиком: <code>03-Insights/insight-DR-DR26-08-04-ZB-07-1621-lebedev-style.md</code></li>
+</ul>
+</div>
+
+<div class="note">
+<b>Второй раз за вечер: индикатор врал.</b> UI claude.ai <b>44 минуты</b> показывал «Searching for sources» со спиннером — перезагрузка вкладки открыла давно готовый отчёт, реально ран занял <b>9 мин 53 с</b>. До этого Gemini «был заблокирован капчей», а отчёт лежал готовым 4 часа. Оба раза вердикт «мертво» выдавался по показанию прибора, который сам никто не проверил.
+</div>
+
+</div>

@@ -1,0 +1,82 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Skill-Gap-Audit-MAYAK.html">&larr; Skill-Gap-Audit-MAYAK</a> · <a href="Syncthing-alternatives-2026-07-07.html">Syncthing-alternatives-2026-07-07 &rarr;</a></span></div><!doctype html>
+<meta charset="utf-8">
+<title>Аудит синка: что не доехало на пиры</title>
+<style>
+  :root{--bg:#0f1216;--card:#171b22;--line:#262c37;--txt:#e6e9ef;--dim:#98a2b3;--red:#ff5c5c;--org:#ffb020;--grn:#35d07f;--blue:#5b9dff}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 20px;font-size:13px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 16px}
+  h2{font-size:15px;margin:0 0 12px;letter-spacing:.02em}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  th,td{padding:8px 10px;text-align:center;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--dim);font-weight:600}
+  .pct{font-weight:700;border-radius:6px;padding:2px 8px;display:inline-block;min-width:52px}
+  .ok{background:rgba(53,208,127,.15);color:var(--grn)}
+  .warn{background:rgba(255,176,32,.15);color:var(--org)}
+  .bad{background:rgba(255,92,92,.16);color:var(--red)}
+  .off{color:var(--dim)}
+  .never{color:var(--red);font-weight:700}
+  .root{border-left:3px solid var(--red)}
+  .tag{font-size:11px;padding:1px 7px;border-radius:20px;border:1px solid var(--line);color:var(--dim)}
+  ul{margin:6px 0 0;padding-left:18px}li{margin:4px 0}
+  code{background:#0b0e12;padding:1px 6px;border-radius:5px;color:#cbd5e1;font-size:12.5px}
+  .who{font-weight:700}
+  .a-anton{color:var(--red)}.a-me{color:var(--org)}.a-peer{color:var(--blue)}
+  .big{font-size:26px;font-weight:800}
+  .k{color:var(--dim);font-size:12px}
+  .flex{display:flex;gap:22px;flex-wrap:wrap}
+  .stat{background:#0b0e12;border:1px solid var(--line);border-radius:10px;padding:12px 16px;min-width:120px}
+</style>
+
+<h1>🔌 Аудит синка — что НЕ доехало на пиры</h1>
+<p class="sub">Хаб A-2022BayArea · снято из живого Syncthing REST · 2026-07-05</p>
+
+<div class="card root">
+  <h2>🎯 Корень (две независимые причины)</h2>
+  <ul>
+    <li><b>1. По дизайну не синкается.</b> В <code>.claude\.stignore</code> вырезаны <code>/scripts</code>, <code>/scheduled-tasks</code>, <code>/settings.json</code> — у них зашиты пути <code>C:\Users\Anton</code> vs <code>C:\Users\_</code>, синк их конфликтует вечно. Значит <b>любой скрипт, робот или фикс, что мы строим на хабе, живёт ТОЛЬКО на хабе</b>, пока вручную не протолкнём через <code>_machine-bus\_transit\</code>. Фикс чёрных окон — ровно этот случай.</li>
+    <li><b>2. У части пиров синк залип.</b> Даже то, что ДОЛЖНО синкаться (CLAUDE.md, hooks, скиллы, память, волт), сильно отстаёт у Наташи и Русланы (см. матрицу). У Наташи машина онлайн, но тянет 0.3% канона.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>📊 Матрица синка (% = сколько у пира есть от общего; из вида хаба)</h2>
+  <table>
+    <tr><th>Что синкается</th><th>💻 Ноут<br><span class="k">Антон · online</span></th><th>🖥️ Наташа<br><span class="k">online</span></th><th>🍎 Руслана<br><span class="k">offline</span></th><th>🛰️ Маяк/VPS<br><span class="k">online</span></th></tr>
+    <tr><td>CLAUDE.md + hooks + commands</td>
+        <td><span class="pct ok">100%</span></td><td><span class="pct bad">0.3%</span></td><td><span class="pct bad">0.5%</span></td><td class="off">—</td></tr>
+    <tr><td>Скиллы (<code>/skills</code>)</td>
+        <td><span class="pct ok">100%</span></td><td><span class="pct warn">65%</span></td><td><span class="pct ok">100%</span></td><td class="off">—</td></tr>
+    <tr><td>Память (<code>/memory</code>)</td>
+        <td><span class="pct ok">100%</span></td><td><span class="pct warn">55%</span></td><td><span class="pct ok">97%</span></td><td class="off">—</td></tr>
+    <tr><td>Волт (заметки)</td>
+        <td><span class="pct ok">97%</span></td><td><span class="pct bad">47%</span></td><td><span class="pct warn">84%</span></td><td><span class="pct ok">97%</span></td></tr>
+    <tr><td>Скрипты + задачи + settings</td>
+        <td class="never">никогда</td><td class="never">никогда</td><td class="never">никогда</td><td class="never">никогда</td></tr>
+  </table>
+  <p class="k" style="margin-top:10px">🟢 100% в норме · 🟠 отстаёт · 🔴 залип/почти пусто · «никогда» = вырезано из синка по дизайну.</p>
+</div>
+
+<div class="card">
+  <h2>🧨 Побочные проблемы</h2>
+  <div class="flex">
+    <div class="stat"><div class="big" style="color:var(--red)">3303</div><div class="k">конфликтов в волте<br>(<code>.sync-conflict</code>)</div></div>
+    <div class="stat"><div class="big" style="color:var(--org)">9</div><div class="k">конфликтов в памяти</div></div>
+    <div class="stat"><div class="big" style="color:var(--org)">152</div><div class="k">из 165 скриптов хаба<br>не заведены в <code>_transit</code></div></div>
+  </div>
+  <p class="k" style="margin-top:10px">Конфликты — это когда две машины правили один файл; они копятся и тормозят синк. 3303 — это уже свалка, её стоит разгрести.</p>
+</div>
+
+<div class="card">
+  <h2>✅ Что делать (по владельцам)</h2>
+  <ul>
+    <li><span class="who a-peer">🖥️ Наташа — залипший синк (ГЛАВНОЕ).</span> Её машина онлайн, но тянет 0.3% канона / 65% скиллов / 47% волта. Похоже, папка на её стороне на паузе / receive-only с конфликтами / ещё не приняла. → нужен ремонт на её машине. Могу толкнуть ей робо-задачу «проверь и сними паузу» + провести. <span class="tag">жду твоё ОК</span></li>
+    <li><span class="who a-peer">🍎 Руслана — offline.</span> MacBook давно не на связи (канон 0.5%, волт 84%). → ей открыть ноут / проверить Syncthing.</li>
+    <li><span class="who a-me">🔧 Скрипты/задачи для пиров.</span> Сейчас пробрасываю руками и забываю (окна = пример). → предлагаю правило: скрипт, который нужен пирам, автоматически кладётся в <code>_transit</code> ночным заданием. Тогда «забыл протолкнуть» больше не случится. <span class="tag">до→после покажу</span></li>
+    <li><span class="who a-me">🧹 Конфликты.</span> 9 в памяти (быстро) + 3303 в волте (с бэкапом, аккуратно). Могу разобрать. <span class="tag">жду ОК на волт</span></li>
+    <li><span class="who a-anton">💻 Твой ноут.</span> Здоров по синку; не хватает только скриптов/задач. Окна — один клик (уже отдал). Остальные хаб-скрипты пиру-ноуту нужны редко; если что-то конкретное надо — скажи, протолкну.</li>
+  </ul>
+</div>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ДР: fine-tuning под голос Антона — DR26-08-04-ZB-12-2205</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#171a21; --line:#262b36; --tx:#e7e9ee; --dim:#98a0b0;
+    --ok:#57c98a; --warn:#e5b45b; --bad:#e5705b; --acc:#6fa8ff;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f7f9; --card:#fff; --line:#e2e5ea; --tx:#161a20; --dim:#5c6472; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--tx);
+       font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  h1{font-size:23px;margin:0 0 4px}
+  h2{font-size:17px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .card b{display:block;font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+  .big{font-size:19px;font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  .wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+  th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)} .acc{color:var(--acc)}
+  .pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:11.5px;border:1px solid var(--line)}
+  .rec{background:linear-gradient(180deg,rgba(111,168,255,.10),transparent);border:1px solid var(--acc)}
+  ul{margin:8px 0 0 18px;padding:0} li{margin-bottom:5px}
+  .eli{background:var(--card);border-left:3px solid var(--acc);border-radius:8px;padding:14px 16px;margin-top:28px}
+  code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-size:12.5px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="DR-Synthesis-All-2026-08-04.html">&larr; DR-Synthesis-All-2026-08-04</a> · <a href="Foxpod-Alpha.html">Foxpod-Alpha &rarr;</a></span></div>
+
+<h1>Какая LLM реально выучит твой голос</h1>
+<div class="sub">DR26-08-04-ZB-12-2205 · корпус 100–200 МБ (RU+EN) · собрано 3 рельсы из 5 (grok, gemini, chatgpt), claude.ai и GLM в работе · прочитаны и сведены grok + gemini</div>
+
+<div class="grid">
+  <div class="card"><b>Главный вывод</b><span class="big">Не вендорский fine-tune</span><br><span class="dim">Открытые веса + обучение у себя</span></div>
+  <div class="card"><b>Метод</b><span class="big">CPT на BASE-модели</span><br>дообучение на сыром тексте, не на парах «вопрос-ответ»</div>
+  <div class="card"><b>Модель</b><span class="big">Qwen3-8B-base / T-lite</span><br>русскоязычные базы, 7–9B</div>
+  <div class="card"><b>Цена</b><span class="big">$50–400</span><br>пилот на твоей 5060 Ti = $0, полный проход на аренде H100</div>
+</div>
+
+<h2>Почему промпт не работает, а это — сработает</h2>
+<div class="wrap"><table>
+<tr><th>Подход</th><th>Что делает</th><th>Почему не даёт «твой голос»</th><th>Вердикт</th></tr>
+<tr><td>Промпт «пиши в стиле Антона»</td><td>копирует поверхностные маркеры: строчные, короткие фразы, пара словечек</td><td>распределение слов остаётся модельным — выходит гладко-LLM-ное</td><td class="bad">то, что есть сейчас</td></tr>
+<tr><td>SFT на парах «задание → твой пост»</td><td>учит формату ответа</td><td>из 100–200 МБ в пары превращается 5–20%, остальное выбрасывается</td><td class="warn">только как второй шаг</td></tr>
+<tr><td>DPO/ORPO «твоё vs модельное»</td><td>штрафует за чужой голос</td><td>шлифует, но сам по себе голос не ставит</td><td class="warn">третий шаг, опционально</td></tr>
+<tr><td><b>CPT / DAPT на сыром корпусе</b></td><td>обычное дообучение предсказанию следующего слова на всём твоём тексте</td><td>—</td><td class="ok">ядро решения</td></tr>
+</table></div>
+<p style="font-size:13.5px;color:var(--dim);margin-top:8px">Ключевая арифметика обеих рельс: 100–200 МБ ≈ 25–50 млн токенов. Для инструкционного SFT это абсурдно много (там норма 1–5 тыс. примеров), для CPT — ровно нужный размер: каждый токен становится обучающей меткой.</p>
+
+<h2>Вторая важная развилка: BASE, а не instruct</h2>
+<div class="card">Дообучать надо <b>base-чекпоинт</b> (сырая предобученная модель), а не «инструктивную» чат-версию. У чат-версий есть «аттрактор ассистента» — их специально дрессировали быть вежливым помощником, и этот приор дерётся с твоим голосом. Порядок: <code>CPT на base → лёгкий SFT, чтобы слушалась команд → опционально DPO</code>. Обе рельсы независимо сошлись; уверенность <span class="pill">emerging</span>.</div>
+
+<h2>Базовые модели — что брать</h2>
+<div class="wrap"><table>
+<tr><th>Семейство</th><th>Впитывает голос</th><th>Русский</th><th>VRAM обучить (QLoRA 7–9B)</th><th>VRAM крутить</th></tr>
+<tr><td><b>Qwen3 / Qwen2.5 7–14B base</b></td><td class="ok">высоко</td><td class="ok">сильный</td><td>10–14 ГБ</td><td>6–10 ГБ</td></tr>
+<tr><td><b>T-lite (на Qwen, от Т-Банка)</b></td><td class="ok">высоко — карточка прямо говорит «для дообучения»</td><td class="ok">очень сильный</td><td>10–14 ГБ</td><td>6–10 ГБ</td></tr>
+<tr><td>Vikhr / Vikhr-Nemo ~12B</td><td class="ok">высоко</td><td class="ok">сильный</td><td>14–16 ГБ (впритык)</td><td>8–12 ГБ</td></tr>
+<tr><td>T-pro ~32B</td><td class="ok">высоко</td><td class="ok">очень сильный</td><td class="warn">мультиGPU / аренда</td><td>20+ ГБ</td></tr>
+<tr><td>Llama 3.x 8B base</td><td class="ok">высоко</td><td class="warn">слабее без доучивания русскому</td><td>10–14 ГБ</td><td>6–10 ГБ</td></tr>
+<tr><td>Mistral / Gemma / Phi / OLMo</td><td class="warn">средне-высоко</td><td class="warn">средний</td><td>влезает</td><td>влезает</td></tr>
+<tr><td>YandexGPT / GigaChat</td><td class="bad">снаружи никак</td><td class="ok">топ</td><td>—</td><td>только API</td></tr>
+</table></div>
+<p style="font-size:13.5px;color:var(--dim);margin-top:8px">Размерная кривая: для поста на 80–200 слов <b>7–14B в твоём голосе бьёт 70B в общем голосе</b>. Ломается на длинных рассуждениях, коде, фактах о твоей жизни (там нужен RAG, а не дообучение).</p>
+
+<h2>Вендорские fine-tune API — почему мимо</h2>
+<div class="wrap"><table>
+<tr><th>Вендор</th><th>Доступен?</th><th>CPT на сыром тексте?</th><th>Веса заберёшь?</th><th>Годится для цели</th></tr>
+<tr><td>OpenAI</td><td class="warn">для новых пользователей сворачивают</td><td class="bad">нет, только SFT/DPO/RFT</td><td class="bad">нет</td><td class="bad">плохо</td></tr>
+<tr><td>Google Vertex / Gemini</td><td class="ok">да</td><td class="bad">нет, LoRA-SFT; рекомендуют 100–500 примеров</td><td class="bad">нет</td><td class="warn">частично — файл до 1 ГБ примет, но метод не тот</td></tr>
+<tr><td>Anthropic Claude</td><td class="bad">публичного self-serve FT не нашли</td><td>—</td><td>—</td><td class="bad">недоступно</td></tr>
+<tr><td>xAI / Grok</td><td class="bad">публичного FT API нет</td><td>—</td><td>—</td><td class="bad">нет</td></tr>
+<tr><td>Mistral</td><td class="ok">да</td><td class="warn">SFT-подобное</td><td class="warn">зависит</td><td class="warn">так себе</td></tr>
+<tr><td><b>Together AI</b></td><td class="ok">да</td><td class="warn">полный FT приближает</td><td class="ok">да, скачиваешь</td><td class="ok">лучший облачный путь</td></tr>
+</table></div>
+<p style="font-size:13.5px;color:var(--dim);margin-top:8px">Убийственный аргумент: чтобы влезть в вендорский SFT, 100–200 МБ придётся ужать до 500–5000 примеров. Выбрасывается ровно та масса, ради которой всё затевалось → получишь поверхностный стиль, а не голос по умолчанию.</p>
+
+<h2>Четыре рецепта</h2>
+<div class="grid">
+  <div class="card"><b>A · дешёвый, за неделю</b>
+    Qwen3-8B-base или T-lite · чистый подкорпус 2–5 ГБ (только самый «твой» FB-голос) · Unsloth CPT QLoRA r=64–128, 1 эпоха · потом лёгкий SFT 1–3 тыс. пар<br><br>
+    железо: твоя 5060 Ti 16 ГБ · время: 1–3 дня данные + 0.5–2 дня обучение · <b>$0–50 электричества</b><br>
+    <span class="warn">результат: заметный сдвиг, слепой тест скорее всего ещё не пройдёт</span></div>
+  <div class="card rec"><b>B · рекомендация ★</b>
+    T-lite / Qwen3-8B-base · CPT на полном чистом корпусе 1–2 эпохи → SFT (твои пары + ~10% общих) → DPO (ты против базовой модели)<br><br>
+    железо: пилот на 16 ГБ, полный проход — аренда 1×H100 на 10–40 ч · <b>$50–400</b> · веса твои, лежат дома<br>
+    <span class="ok">это и есть ответ на вопрос</span></div>
+  <div class="card"><b>C · максимум качества</b>
+    14–32B русская база (T-pro класс) · полный FT или LoRA высокого ранга на 4–8×A100/H100 · многораундовый DPO<br><br>
+    <b>$1 000–10 000+</b><br><span class="warn">против принципа АК-47: сложно чинить</span></div>
+  <div class="card"><b>D · только вендор</b>
+    Gemini/OpenAI SFT на 1–20 тыс. пар из лучших постов<br><br>
+    когда: нужен хостинг и нет GPU<br>
+    <span class="bad">не жди двойника — получишь поверхностный стиль</span></div>
+</div>
+
+<h2>Что мерить, прежде чем звать людей на слепой тест</h2>
+<div class="wrap"><table>
+<tr><th>Метрика</th><th>Что показывает</th></tr>
+<tr><td>Классификатор авторства на отложенных постах</td><td>признаёт ли машина сгенерённое за твоё</td></tr>
+<tr><td>Стилометрия (Burrows Delta, служебные слова, длины фраз, пунктуация)</td><td>совпал ли отпечаток письма</td></tr>
+<tr><td>Perplexity на отложенном твоём тексте vs базовая модель</td><td>сдвинулось ли само распределение</td></tr>
+<tr><td>MAUVE</td><td>насколько распределения текстов близки</td></tr>
+<tr><td>Слепой A/B на людях, которые тебя знают</td><td>финальный судья</td></tr>
+</table></div>
+
+<h2>Главные риски</h2>
+<div class="grid">
+  <div class="card"><b>Забывание</b>После стиль-обучения модель может разучиться слушаться команд и рассуждать. Лечится подмешиванием ~10% общих инструкций и KL/replay-регуляризацией.</div>
+  <div class="card"><b>Зубрёжка</b>Модель начнёт дословно выплёвывать твои старые приватные посты. Лечится дедупом, 1–2 эпохами, чисткой персональных данных до обучения.</div>
+  <div class="card"><b>Голос на 200 токенов</b>Начало в голосе, дальше сползает в базовый. Признак того, что взяли SFT вместо CPT или слишком низкий ранг LoRA.</div>
+  <div class="card"><b>Судьи цепляются за факты, а не за стиль</b>Слепой тест провалится не из-за голоса, а из-за незнания твоей биографии. Лечится RAG поверх модели, не дообучением.</div>
+</div>
+
+<h2>Честный контраргумент</h2>
+<div class="card">Сильная альтернатива, которую обе рельсы велели не выбрасывать: <b>сильная база + подтягивание твоих реальных постов в контекст + маленькая модель-переписчик сверху</b>. Дешевле, обратимо, и если мини-A/B на 20 текстах покажет, что люди уже не отличают — CPT можно не запускать вообще. Поэтому первым шагом идёт замерная стойка, а не обучение.</div>
+
+<h2>Что делать по шагам</h2>
+<div class="card">
+<ul>
+<li><b>1.</b> Собрать чистый корпус: только твой текст (без репостов и чужих реплик в диалогах), дедуп, вычистить телефоны/пароли/чужие имена, отложить held-out.</li>
+<li><b>2.</b> Заморозить замерную стойку (perplexity + стилометрия + классификатор + мини-A/B на 20 текстах) — <b>до</b> обучения.</li>
+<li><b>3.</b> Рецепт A на твоей 5060 Ti — сдвинулись ли метрики.</li>
+<li><b>4.</b> Сдвинулись → рецепт B: полный корпус на арендованной H100.</li>
+<li><b>5.</b> Только потом DPO.</li>
+</ul>
+</div>
+
+<div class="eli">
+<b>🧒 Простыми словами</b><br>
+Сейчас мы просим модель «говори как Антон» — она надевает твою маску: пара словечек, короткие фразы, а под маской всё равно робот.<br><br>
+Чтобы она заговорила твоим голосом по-настоящему, маску надо снять и <b>переучить саму привычку говорить</b>. Для этого твои 100–200 МБ текста скармливают модели как обычное чтение — она просто читает тебя и учится угадывать, какое слово ты скажешь следующим. Это называется CPT.<br><br>
+Три вещи из отчётов: (1) брать надо «сырую» модель, а не ту, что уже выдрессировали быть вежливым помощником — иначе твой голос дерётся с её вежливостью; (2) готовые кнопки «дообучи меня» у OpenAI и Google для этого не годятся — они заставят выбросить 95% твоего текста; (3) маленькая модель на 8 миллиардов, зато с твоим голосом, для постов лучше огромной чужой.<br><br>
+Пробный заход — на твоей домашней видеокарте, бесплатно. Настоящий — аренда чужой видеокарты на сутки, $50–400. И до всякого обучения надо сделать линейку, которой мы будем мерить, стало ли похоже — иначе спорить будем на ощущениях.
+</div>
+
+</body>
+</html>
