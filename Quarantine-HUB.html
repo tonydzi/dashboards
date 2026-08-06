@@ -26,7 +26,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Quarantine-FLEET-ANCHOR.html">&larr; Quarantine-FLEET-ANCHOR</a> · <a href="Quarantine-MACANTON.html">Quarantine-MACANTON &rarr;</a></span></div><div class="wrap">
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>A-2022BAYAREA</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
-<h2>✅ Доверенные — применятся сами <span class="cnt">4</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+<h2>✅ Доверенные — применятся сами <span class="cnt">3</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">_portability-selftest-bypass</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">самотест обхода</div>
   <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-04 05:41 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -50,15 +50,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   
-</div><div class="card trusted">
-  <div class="top"><span class="id">deploy-gate-selftests-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Три корня в воротах авто-применения: (1) verify_entry_sig25/_autoapply_gate падали AttributeError на отсутствующей записи вместо честного fail-closed; (2) фикстуры двух тестов писали пути с обратными слэшами и звали несуществующий install_x.py -- их блокировали ГЕЙТЫ, добавленные позже, и краснел не предмет, а декорация; (3) в реестр узла добавлено написание MYOWNPC (живая потеря codex-export-20260729 в PENDING-MYOWNPC)</div>
-  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:36 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
-  
-  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);h=os.path.expanduser(&#x27;~/.claude&#x27;);[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;_test_deploy_autoapply.py&#x27;,&#x27;_test_tier1_needs_cmd_apply.py&#x27;,&#x27;deploy_lib.py&#x27;)];shutil.copy(os.path.join(t,&#x27;DEPLOY-deploy_sweep_guard.py&#x27;),os.path.join(s,&#x27;_shared&#x27;,&#x27;deploy_sweep_guard.py&#x27;));shutil.copy(os.path.join(t,&#x27;DEPLOY-fleet_nodes.json&#x27;),os.path.join(h,&#x27;fleet_nodes.json&#x27;))&quot;</code></div>
-  
-</div><h2>📦 Уже применённые <span class="cnt">165</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">172</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1267,6 +1259,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;canon_apply.py&#x27;,&#x27;publish_canon.py&#x27;,&#x27;_test_ask_once_wiring.py&#x27;)]&quot;</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">deploy-gate-selftests-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Три корня в воротах авто-применения: (1) verify_entry_sig25/_autoapply_gate падали AttributeError на отсутствующей записи вместо честного fail-closed; (2) фикстуры двух тестов писали пути с обратными слэшами и звали несуществующий install_x.py -- их блокировали ГЕЙТЫ, добавленные позже, и краснел не предмет, а декорация; (3) в реестр узла добавлено написание MYOWNPC (живая потеря codex-export-20260729 в PENDING-MYOWNPC)</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:36 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);h=os.path.expanduser(&#x27;~/.claude&#x27;);[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;_test_deploy_autoapply.py&#x27;,&#x27;_test_tier1_needs_cmd_apply.py&#x27;,&#x27;deploy_lib.py&#x27;)];shutil.copy(os.path.join(t,&#x27;DEPLOY-deploy_sweep_guard.py&#x27;),os.path.join(s,&#x27;_shared&#x27;,&#x27;deploy_sweep_guard.py&#x27;));shutil.copy(os.path.join(t,&#x27;DEPLOY-fleet_nodes.json&#x27;),os.path.join(h,&#x27;fleet_nodes.json&#x27;))&quot;</code></div>
+  
+</div><div class="card trusted">
   <div class="top"><span class="id">selflaunch-win-lock-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">selflaunch.py не существовал на Windows-узлах: голый import fcntl (POSIX-only) ронял файл целиком до первой строки работы. Замок прогона разведён по ОС: flock на POSIX, msvcrt.locking на Windows -- та же семантика (захват без ожидания, снятие ядром при смерти процесса)</div>
   <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:37 · <span class="ok">подпись ✓</span></div>
@@ -1377,6 +1377,54 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
   
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/spool-drain-user-rail-20260806/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">grid-selfdetect-and-pause-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Chetyre kornya: (1) evristika vstroennogo selftest lovila SAMU SEBYA -- coverage_map.py i regress_run.py soderzhat detektor, i tyazhelyy skan kazhduyu noch padal po taymautu 180s kak &#x27;test&#x27;; (2) sync-conflict kopii gonyalis kak otdelnye testy (4 shtuki); (3) tg_coord.py bral imya uzla iz zhivogo env s CHUZHIM defoltom MacBook-Ruslana -- pod cron lyuboy uzel predstavlyalsya Makom Ruslany; (4) test tg_channel_post krasnel pri postavlennoy CHELOVEKOM pauze ploshchadki, teper chestnoe N/A s prichinoy. Gruz edet vmeste s posylkoy</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 20:32 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;regress_run.py&#x27;,&#x27;coverage_map.py&#x27;,&#x27;tg_coord.py&#x27;,&#x27;_test_tg_channel_post.py&#x27;)]&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">mayak-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">llm_ask: рельса mayak (Claude на баке VPS) первой аварийной + промпт стдином</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:34 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import io,os,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/llm_ask.py&#x27;);s=io.open(p,encoding=&#x27;utf-8&#x27;).read();sys.exit(0 if &#x27;def rail_mayak&#x27; in s else 1)&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dash-skill-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Скилл /dash + движок витрины: визуализация в каждой сессии, перелинковка, GitHub Pages, ссылка сразу и панель справа</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 20:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/install_dash_skill.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">crm-selftest-flag-and-na-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Dva kornya v crm_backup_pull: (1) selftest byl TOLKO pozitsionnyy, a regress-setka zovyot detal strogo --selftest -- proгon padal na RAZNITSE CLI, ne na predmete; teper prinimayutsya obe formy; (2) na uzle, gde relsa nikogda ne zavodilas, &#x27;net klyucha&#x27; schitalos polomkoy i setka krasnela vechno; teper N/A s prichinoy, no TOLKO esli net ni klyucha, ni zadachi CRM-Backup-Pull -- na hube propazha klyucha ostayotsya krasnoy</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 20:42 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-crm_backup_pull.py&#x27;),os.path.expanduser(&#x27;~/.claude/scripts/crm_backup_pull.py&#x27;))&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">vault-guard-reconcile-aware-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Vault pre-commit guard stal reconcile-aware: massovoe udalenie schitaetsya po NEVOSSTANOVIMYM (svezhiy .stversions-twin ili stroka _RECONCILE-LEDGER = benign sync churn), pereimenovaniya bolshe NE schitayutsya udaleniyami. Koren 5-y lozhnoy trevogi 08-06: fiks 07-23 nauchil TOLKO vault_backup.py, a pryamoy git commit bil v slepoy hook. Klassifikator pereehal v obshchiy vault_recoverable.py -- odin istochnik na oba storozha. Kanareyka ZBOOKG8 zelenaya (selftest 10/10 + _test_vault_backup 19/19).</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-06 17:47 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/vault-guard-reconcile-aware-20260806/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">agent-rail-safety-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Предохранители агентской рельсы: ярус mayak→codex-agent, рамка замещения, потолок 6/сутки, снимок волта до/после</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:56 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_claude_run_limit.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
   
 </div>
 </div></body></html>

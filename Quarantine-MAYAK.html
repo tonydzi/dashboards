@@ -27,14 +27,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>FLEET-ANCHOR</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
 <h2>⛔ В карантине — ждут твоего решения <span class="cnt">1</span></h2><div class="hint">Пришли из непроверенного источника или с плохой подписью. НЕ применены. Скажи Claude «/quarantine release &lt;id&gt;» чтобы применить (после проверки), или «discard &lt;id&gt;» чтобы выбросить.</div><div class="card held">
-  <div class="top"><span class="id">canon-7369276b</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span></div>
-  <div class="ttl">Canon CLAUDE.md 7369276b (hub) — СНАЧАЛА verify-гейт, потом влей СОДЕРЖАНИЕ в свой локальный канон; свою шапку/пути-адаптацию сохраняй; md5-равенство НЕ требуется</div>
+  <div class="top"><span class="id">canon-0dc21d49</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span></div>
+  <div class="ttl">Canon CLAUDE.md 0dc21d49 (hub) — СНАЧАЛА verify-гейт, потом влей СОДЕРЖАНИЕ в свой локальный канон; свою шапку/пути-адаптацию сохраняй; md5-равенство НЕ требуется</div>
   <div class="meta">источник: <b>(нет поля from)</b> · отправлено:  · <span class="mut">без подписи (HMAC не подключён)</span></div>
   <div class="rsn">непроверенный/неизвестный источник: поле from отсутствует</div>
   
-  <div class="apply">примени: <code>STEP 1 (gate): python3 ~/.claude/scripts/_shared/canon_verify.py E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub ; exit!=0 -&gt; НЕ применять, посылку в HELD, алерт в 03. STEP 2: read E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub/CLAUDE.md -&gt; merge -&gt; write ACK-&lt;node&gt;.json {applied_md5:&#x27;7369276b5bfe55bdd111909fb11fb50a&#x27;} рядом</code></div>
+  <div class="apply">примени: <code>STEP 1 (gate): python3 ~/.claude/scripts/_shared/canon_verify.py E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub ; exit!=0 -&gt; НЕ применять, посылку в HELD, алерт в 03. STEP 2: read E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub/CLAUDE.md -&gt; merge -&gt; write ACK-&lt;node&gt;.json {applied_md5:&#x27;0dc21d49f7aa15ec998e1c07c99bc043&#x27;} рядом</code></div>
   
-</div><h2>✅ Доверенные — применятся сами <span class="cnt">31</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+</div><h2>✅ Доверенные — применятся сами <span class="cnt">32</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">crm-proof-of-delivery-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">CRM: касание засчитывается только с message_id (budget.py proof-of-delivery + safe_send ловит Message.id + touch_audit карточная половина)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-29 16:11 · <span class="ok">подпись ✓</span></div>
@@ -251,14 +251,6 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_test_repair_fallback.py&quot;</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">freshness-and-gh-os-neutral-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Dva kornya odnogo klassa -- proverka trebovala CHUZHOY raskladki: (1) porog protuhaniya brain-index gonyalsya po ZHIVOMU artefaktu, kotorogo na uzle bez GPU net po zamyslu (npy v stignore) -- teper arifmetika porogа proveryaetsya na svoyom faylе, a zhivoy artefakt proveryaetsya myagko; (2) gh_bin znal tolko POSIX-puti, i test treboval put so sleshem -- na Windows-uzle bez gh krasnel vpustuyu; dobavleny Windows-raskladki, test proveryaet invariant cherez GH_BIN</div>
-  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 20:15 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
-  
-  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-_test_output_freshness.py&#x27;),os.path.join(s,&#x27;_shared&#x27;,&#x27;_test_output_freshness.py&#x27;));[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;public_surface_audit.py&#x27;,&#x27;_test_public_surface_audit.py&#x27;)]&quot;</code></div>
-  
-</div><div class="card trusted">
   <div class="top"><span class="id">extfallback-routines-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">Ночные рутины не встают при пустом баке Claude: --extfallback codex-agent + гонка рельс в llm_ask</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:17 · <span class="ok">подпись ✓</span></div>
@@ -275,14 +267,30 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_test_radical_order_gate.py&quot;</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">spool-drain-user-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">спул сливается пользовательской рельсой, потом ботом: на узле без бот-токена очередь не могла опустеть НИКОГДА (замер: 563 письма за 16 суток, 552 в 02 POLICE)</div>
-  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 20:29 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  <div class="top"><span class="id">mayak-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">llm_ask: рельса mayak (Claude на баке VPS) первой аварийной + промпт стдином</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:34 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
-  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/spool-drain-user-rail-20260806/install.py&quot;</code></div>
+  <div class="apply">примени: <code>python3 -c &quot;import io,os,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/llm_ask.py&#x27;);s=io.open(p,encoding=&#x27;utf-8&#x27;).read();sys.exit(0 if &#x27;def rail_mayak&#x27; in s else 1)&quot;</code></div>
   
-</div><h2>📦 Уже применённые <span class="cnt">98</span></h2><div class="card trusted">
+</div><div class="card trusted">
+  <div class="top"><span class="id">vault-guard-reconcile-aware-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Vault pre-commit guard stal reconcile-aware: massovoe udalenie schitaetsya po NEVOSSTANOVIMYM (svezhiy .stversions-twin ili stroka _RECONCILE-LEDGER = benign sync churn), pereimenovaniya bolshe NE schitayutsya udaleniyami. Koren 5-y lozhnoy trevogi 08-06: fiks 07-23 nauchil TOLKO vault_backup.py, a pryamoy git commit bil v slepoy hook. Klassifikator pereehal v obshchiy vault_recoverable.py -- odin istochnik na oba storozha. Kanareyka ZBOOKG8 zelenaya (selftest 10/10 + _test_vault_backup 19/19).</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-06 17:47 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/vault-guard-reconcile-aware-20260806/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">agent-rail-safety-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Предохранители агентской рельсы: ярус mayak→codex-agent, рамка замещения, потолок 6/сутки, снимок волта до/после</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:56 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_claude_run_limit.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
+  
+</div><h2>📦 Уже применённые <span class="cnt">103</span></h2><div class="card trusted">
   <div class="top"><span class="id">engine-visibility-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">consensus.py ENGINE-VISIBILITY (консенсус #94389335, tier-1, accepts FLEET-ANCHOR+MacBook-Anton, committed хабом 20.07). (1) провал подписи -&gt; строка в stderr + счётчик sigfail-&lt;MACHINE&gt;.json (dark mode СОХРАНЁН, леджер не падает); (2) CLI-гигиена: -h/--help голым и после любого verb, propose отказывает subject на &#x27;-&#x27; (инцидент #4b814fec). Сторож _shared/consensus_config_guard.py CLASS C читает счётчик и алармит на РОСТ -- едет сам синком _shared.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-20 20:53 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1065,6 +1073,46 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);h=os.path.expanduser(&#x27;~/.claude/hooks&#x27;);[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;_test_automations_shard.py&#x27;,&#x27;_test_signal_map.py&#x27;)];shutil.copy(os.path.join(t,&#x27;DEPLOY-receiveonly_edit_guard.py&#x27;),os.path.join(h,&#x27;receiveonly_edit_guard.py&#x27;))&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">freshness-and-gh-os-neutral-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Dva kornya odnogo klassa -- proverka trebovala CHUZHOY raskladki: (1) porog protuhaniya brain-index gonyalsya po ZHIVOMU artefaktu, kotorogo na uzle bez GPU net po zamyslu (npy v stignore) -- teper arifmetika porogа proveryaetsya na svoyom faylе, a zhivoy artefakt proveryaetsya myagko; (2) gh_bin znal tolko POSIX-puti, i test treboval put so sleshem -- na Windows-uzle bez gh krasnel vpustuyu; dobavleny Windows-raskladki, test proveryaet invariant cherez GH_BIN</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 20:15 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-_test_output_freshness.py&#x27;),os.path.join(s,&#x27;_shared&#x27;,&#x27;_test_output_freshness.py&#x27;));[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;public_surface_audit.py&#x27;,&#x27;_test_public_surface_audit.py&#x27;)]&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">spool-drain-user-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">спул сливается пользовательской рельсой, потом ботом: на узле без бот-токена очередь не могла опустеть НИКОГДА (замер: 563 письма за 16 суток, 552 в 02 POLICE)</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 20:29 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/spool-drain-user-rail-20260806/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">grid-selfdetect-and-pause-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Chetyre kornya: (1) evristika vstroennogo selftest lovila SAMU SEBYA -- coverage_map.py i regress_run.py soderzhat detektor, i tyazhelyy skan kazhduyu noch padal po taymautu 180s kak &#x27;test&#x27;; (2) sync-conflict kopii gonyalis kak otdelnye testy (4 shtuki); (3) tg_coord.py bral imya uzla iz zhivogo env s CHUZHIM defoltom MacBook-Ruslana -- pod cron lyuboy uzel predstavlyalsya Makom Ruslany; (4) test tg_channel_post krasnel pri postavlennoy CHELOVEKOM pauze ploshchadki, teper chestnoe N/A s prichinoy. Gruz edet vmeste s posylkoy</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 20:32 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;regress_run.py&#x27;,&#x27;coverage_map.py&#x27;,&#x27;tg_coord.py&#x27;,&#x27;_test_tg_channel_post.py&#x27;)]&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dash-skill-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Скилл /dash + движок витрины: визуализация в каждой сессии, перелинковка, GitHub Pages, ссылка сразу и панель справа</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 20:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/install_dash_skill.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">crm-selftest-flag-and-na-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Dva kornya v crm_backup_pull: (1) selftest byl TOLKO pozitsionnyy, a regress-setka zovyot detal strogo --selftest -- proгon padal na RAZNITSE CLI, ne na predmete; teper prinimayutsya obe formy; (2) na uzle, gde relsa nikogda ne zavodilas, &#x27;net klyucha&#x27; schitalos polomkoy i setka krasnela vechno; teper N/A s prichinoy, no TOLKO esli net ni klyucha, ni zadachi CRM-Backup-Pull -- na hube propazha klyucha ostayotsya krasnoy</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 20:42 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-crm_backup_pull.py&#x27;),os.path.expanduser(&#x27;~/.claude/scripts/crm_backup_pull.py&#x27;))&quot;</code></div>
   
 </div>
 </div></body></html>
