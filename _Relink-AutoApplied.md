@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Прочее · [← _Life-OS](_Life-OS.html) · [cofounder-application-form →](cofounder-application-form.html)
+[все дашборды](index.html) · категория: Инфраструктура и рутины · [← Waiting-Sessions](Waiting-Sessions.html) · [extra-tasks-2026-07-08 →](extra-tasks-2026-07-08.html)
 
 # 🔗 Авто-релинк — что связано автоматически (visibility, не требует действий)
 

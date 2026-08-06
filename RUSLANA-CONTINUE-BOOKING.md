@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Прочее · [← Quarantine](Quarantine.html) · [Robot-Registry →](Robot-Registry.html)
+[все дашборды](index.html) · категория: Задачи и планирование · [← Planning-System-Before-After](Planning-System-Before-After.html) · [Roots-2026-08-05 →](Roots-2026-08-05.html)
 
 # Руслана — как продолжить беседу про БРОНИРОВАНИЕ ЗВОНКОВ
 

@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Миссия и проекты · [← Mission-Pulse-2026-07-27](Mission-Pulse-2026-07-27.md) · [OSS-Door-Scan-2026-08-05 →](OSS-Door-Scan-2026-08-05.html)
+[все дашборды](index.html) · категория: Флот и узлы · [← Mission-Pulse-2026-07-27](Mission-Pulse-2026-07-27.md) · [OpenClaw-Parity-Roadmap →](OpenClaw-Parity-Roadmap.html)
 
 ---
 title: "Mission-Pulse 2026-08-03 — итог W3, открытие W4"

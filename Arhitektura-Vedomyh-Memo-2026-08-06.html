@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Архитектура ведомых — мемо для Антона, 06.08.2026</title>
+<style>
+  :root{--bg:#0f1216;--card:#171b21;--line:#262c35;--tx:#e6e9ee;--dim:#8b97a8;
+        --ok:#4ade80;--warn:#fbbf24;--bad:#f87171;--acc:#60a5fa}
+  @media (prefers-color-scheme: light){
+    :root{--bg:#f5f7fa;--card:#fff;--line:#e2e8f0;--tx:#111827;--dim:#5b6676;
+          --ok:#15803d;--warn:#b45309;--bad:#b91c1c;--acc:#1d4ed8}}
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--tx);
+       font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:1100px;margin:0 auto}
+  h1{font-size:25px;margin:0 0 4px} h2{font-size:16px;margin:0 0 12px}
+  .sub{color:var(--dim);margin-bottom:22px;font-size:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px}
+  .card.red{border-color:var(--bad)} .card.green{border-color:var(--ok)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.4px}
+  .ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+  .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:800px){.kpi{grid-template-columns:repeat(2,1fr)}}
+  .kpi div{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px}
+  .n{font-size:25px;font-weight:700} .kpi small{display:block;color:var(--dim);font-size:11.5px;margin-top:2px}
+  code{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:12.5px}
+  pre{background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:12px;
+      overflow-x:auto;font-size:12.5px;margin:0;font-family:Consolas,Menlo,monospace;color:var(--tx)}
+  .note{color:var(--dim);font-size:13px} ul{margin:8px 0 0;padding-left:20px} li{margin-bottom:7px}
+  .opt{border-left:3px solid var(--line);padding-left:14px;margin-bottom:18px}
+  .opt.rec{border-color:var(--ok)}
+  .badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;border:1px solid var(--line);color:var(--dim)}
+  .badge.rec{border-color:var(--ok);color:var(--ok)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Dashboard-Max-Rollout.html">Dashboard-Max-Rollout &rarr;</a></span></div><div class="wrap">
+
+<h1>Архитектура ведомых узлов</h1>
+<div class="sub">мемо Антону · 06.08.2026 · замеры с ОДНОГО узла (MyOwnPC-Natalia) · о хабе отсюда не судим</div>
+
+<div class="card red">
+  <h2>⛔ Сначала то, что нашлось по дороге — это важнее вариантов</h2>
+  <p><strong>На узле две папки <code>canon-proposals</code>, и сессии пишут в мёртвую.</strong></p>
+  <pre>ЖИВАЯ   C:\Obsidian\_machine-bus\_transit\canon-proposals   sendreceive   88 предложений
+МЁРТВАЯ D:\OBSIDIAN\Anton-Knowledge\_machine-bus\...        receiveonly   не уезжает никуда</pre>
+  <p style="margin-top:12px">Вторая лежит <em>внутри</em> receive-only шары волта. Файл туда пишется без ошибки, выглядит доставленным и не уезжает. В ней застряли <strong>11 предложений</strong>, старейшее <strong>42 дня</strong>.</p>
+  <table style="margin-top:10px">
+    <tr><th>застряло</th><th>с какого дня</th><th>цена молчания</th></tr>
+    <tr><td><code>PROPOSAL-2026-06-25-leads-live-operator-check-thread</code></td><td>25.06</td><td>42 дня</td></tr>
+    <tr><td><code>2026-07-09-never-post-from-personal-natalia-tg</code></td><td>09.07</td><td>28 дней. Следов в Библии нет — <strong>правило про личный ТГ Наташи так и не стало правилом</strong></td></tr>
+    <tr><td><code>2026-07-15-no-tg-content-without-approval</code></td><td>15.07</td><td>22 дня</td></tr>
+    <tr><td>ещё 8, включая все 5 сегодняшних</td><td>31.07 – 06.08</td><td>до 6 дней</td></tr>
+  </table>
+  <p style="margin-top:14px"><strong>Корень — издевательский:</strong> текст самого сторожа <code>receiveonly_edit_guard</code>, который существует ровно против тихой недоставки, велит писать в <code>$MB = &lt;vault&gt;/_machine-bus</code>. А <code>MACHINE_BUS_DIR</code> в <code>settings.json</code> указывает на <code>C:\Obsidian\_machine-bus</code>. Сторож против молчаливой потери сам направляет в молчаливую потерю.</p>
+  <p class="ok"><strong>Уже сделано:</strong> все 11 скопированы в живую шину, сверка показала ноль оставшихся. Хабу отправлено сообщение с просьбой проверить, нет ли такой же мёртвой копии у них.</p>
+</div>
+
+<div class="card">
+  <h2>Цифры, на которых стоит разговор</h2>
+  <div class="kpi">
+    <div><span class="n bad">11</span><small>предложений застряло</small></div>
+    <div><span class="n bad">42</span><small>дня старейшее</small></div>
+    <div><span class="n warn">43</span><small>отбитых правки за 8 дней</small></div>
+    <div><span class="n">5 из 6</span><small>шар — только на чтение</small></div>
+  </div>
+  <table style="margin-top:16px">
+    <tr><th>шара</th><th>тип</th><th>что это значит для ведомого</th></tr>
+    <tr><td>anton-knowledge (волт)</td><td class="bad">receiveonly</td><td>роадмап, дашборды, задачи, Библия — писать нельзя</td></tr>
+    <tr><td>claude-home</td><td class="bad">receiveonly</td><td>CLAUDE.md, скрипты</td></tr>
+    <tr><td>claude-memory</td><td class="bad">receiveonly</td><td>MEMORY.md</td></tr>
+    <tr><td>claude-skills</td><td class="bad">receiveonly</td><td>скиллы, кроме namespace <code>local-*</code></td></tr>
+    <tr><td>claude-imports</td><td class="bad">receiveonly</td><td>движки</td></tr>
+    <tr><td>machine-bus</td><td class="ok">sendreceive</td><td><strong>единственный двусторонний канал</strong></td></tr>
+  </table>
+  <p class="note" style="margin-top:12px">Что чаще всего отбивалось за 8 дней: <code>_Dashboards</code> (77 упоминаний в логе), <code>CLAUDE.md</code> 15, <code>MEMORY.md</code> 12, <code>10-Tasks</code> 11. Из 853 попыток записи отбито 43, то есть 5%. Но эти 5% — ровно рабочие продукты узла, а не канон.</p>
+</div>
+
+<div class="card">
+  <h2>Диагноз в одну строку</h2>
+  <p style="font-size:17px"><strong>Единица доверия — шара, а защищать надо путь.</strong></p>
+  <p>Syncthing умеет ставить тип только на папку целиком. Поэтому «канон правит только Антон» ($7.9, правильное правило) технически превратилось в «ведомый не пишет вообще ничего» — включая свои же дашборды, свои карточки задач и свои ретро, которые каноном никогда не были и никому не угрожали.</p>
+  <p class="note">Честная граница: это не единственная причина трения. Вторая — у предложения нет квитанции. Три старых предложения из четырёх всё-таки доехали в Библию, но под другими именами, и автор об этом не узнал никогда. Проверить «доехало ли» можно только вручную и по смыслу.</p>
+</div>
+
+<div class="card green">
+  <h2>Варианты</h2>
+
+  <div class="opt rec">
+    <span class="badge rec">РЕКОМЕНДУЮ · сначала это</span>
+    <h3 style="font-size:15px;margin:8px 0">A. Разрезать волт на две шары: канон и рабочая зона</h3>
+    <p>Канон (Библия <code>reglament-*</code>, <code>CLAUDE.md</code>, <code>MEMORY.md</code>) остаётся receive-only. Рабочая зона (<code>_Dashboards</code>, <code>10-Tasks</code>, ретро, <code>03-Insights</code>) становится <code>sendreceive</code> отдельной шарой.</p>
+    <p><strong>Даёт:</strong> убирает примерно 90% сегодняшнего трения — это ровно те папки, что чаще всего отбивались. Защита канона не ослабевает ни на грамм.</p>
+    <p><strong>Стоит:</strong> честно — не бесплатно. Тип в Syncthing только на папку, поэтому это <em>новая шара</em> и переезд путей на всех узлах. Разово, но руками.</p>
+    <p class="note"><strong>Риск:</strong> вернутся sync-конфликты, которые закрыли 27.07 (было 75). Смягчение уже существует и работает: один писатель на производный файл. Дашборды и так пишутся по одному файлу одним генератором.</p>
+  </div>
+
+  <div class="opt rec">
+    <span class="badge rec">РЕКОМЕНДУЮ · дёшево, делать в любом случае</span>
+    <h3 style="font-size:15px;margin:8px 0">D. Квитанция на предложение</h3>
+    <p>Хаб отвечает по каждому: влито / отклонено / куда легло. Сегодня автор не узнаёт судьбу никогда — отсюда и 42 дня тишины, которые никто не заметил.</p>
+    <p><strong>Стоит:</strong> мало. Одна строка обратно в шину при вливании.</p>
+  </div>
+
+  <div class="opt">
+    <span class="badge">запасной</span>
+    <h3 style="font-size:15px;margin:8px 0">B. Шардинг по автору вместо разрезания</h3>
+    <p>Оставить всё как есть, но общие рукописные файлы разбить по узлам: <code>ROADMAP.natalia.md</code>, хаб склеивает. Для роадмапа это уже записано как незакрытый хвост от 27.07.</p>
+    <p><strong>Даёт:</strong> ноль конфликтов по построению, Syncthing не трогаем. <strong>Стоит:</strong> хабу нужен сборщик, файлов больше. Лечит роадмап, но не дашборды.</p>
+  </div>
+
+  <div class="opt">
+    <span class="badge">направление, не на сегодня</span>
+    <h3 style="font-size:15px;margin:8px 0">C. Канон в git, Syncthing только под данные</h3>
+    <p>Промышленный стандарт для «много писателей, один авторитет»: ведомый делает ветку, хаб мержит. История, ревью, никакого тихого отката.</p>
+    <p><strong>Даёт:</strong> закрывает и доставку, и квитанцию, и историю разом. <strong>Стоит:</strong> git на всех узлах и операторы, которые git не знают. Наташа не должна учить ветки, чтобы поправить дашборд.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Возражения против моей же рекомендации</h2>
+  <ul>
+    <li><strong>«Разрезание вернёт потерю работы».</strong> Резонно: 27.07 закрывали флуд из 75 конфликтов. Но корнем тогда был не тип шары, а два писателя одного файла и промпт «перепиши файл целиком». Правило одного писателя остаётся в силе и после разрезания.</li>
+    <li><strong>«Это ослабляет §7.9».</strong> Не ослабляет: канон остаётся receive-only. Но границу «что канон, а что нет» придётся провести явно и один раз — сейчас она проведена случайно, по границе диска.</li>
+    <li><strong>«Настоящая боль была не в типе шары, а в двух папках».</strong> Сильнейшее возражение, и наполовину верное. 11 застрявших предложений — это баг адреса, а не архитектуры, и он уже починен. Но заметь: этот баг прожил 42 дня <em>именно потому</em>, что в receive-only мире «записал и не уехало» — нормальное ежедневное состояние. Там, где тихая недоставка привычна, её перестают замечать.</li>
+    <li><strong>«Мерили один узел».</strong> Верно. Все цифры с машины Наташи. У хаба картина может быть другой, и его конфиг отсюда не виден.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Что предлагаю сделать</h2>
+  <ol>
+    <li><strong>Уже сделано:</strong> 11 предложений доставлены, хабу отправлен заказ проверить мёртвую копию у себя и починить текст сторожа на всех узлах.</li>
+    <li><strong>Сегодня-завтра:</strong> вариант D (квитанция) — дёшево и нужно при любом решении по остальному.</li>
+    <li><strong>Твоё решение:</strong> вариант A. Это переезд путей на всех узлах, поэтому решаешь ты, а не я.</li>
+    <li><strong>Замер после:</strong> число отбитых правок на узел в неделю. Сейчас 43 за 8 дней. Цель — около нуля для неканонных путей. Если после A не упало, значит диагноз был неверен, и это будет видно цифрой.</li>
+  </ol>
+  <p class="note"><strong>Уверенность:</strong> в диагнозе (единица доверия = шара вместо пути) — высокая, стоит на логе сторожа и конфиге Syncthing. В том, что вариант A лучший, — средняя: не проверял, как переезд путей ляжет на хаб и Маяк, и это ровно тот кусок, которого отсюда не видно. Если хочешь, оформлю сравнение A/B/C глубоким ресёрчем перед тем, как что-то двигать.</p>
+</div>
+
+</div></body></html>
