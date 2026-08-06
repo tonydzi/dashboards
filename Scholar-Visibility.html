@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scholar Visibility — Антон Дзятковский (2026-07-14)</title>
+<style>
+:root{
+  --bg:#f8f9fb; --surface:#ffffff; --ink:#1a1f2b; --ink2:#5a6472; --ink3:#8b95a4;
+  --line:#e4e8ee; --accent:#2563c9; --accent-soft:#dbe7fb;
+  --good:#1a7f4e; --good-bg:#e3f4ea; --warn:#a05a00; --warn-bg:#fdf0dc;
+  --bad:#b3352e; --bad-bg:#fbe7e5; --wait:#6b4fa0; --wait-bg:#efe9f9;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#12151c; --surface:#1b202b; --ink:#e8ecf2; --ink2:#a8b2c0; --ink3:#77808f;
+    --line:#2b323f; --accent:#6ba3f5; --accent-soft:#233551;
+    --good:#5fce96; --good-bg:#173527; --warn:#e8b566; --warn-bg:#3a2c14;
+    --bad:#f08a84; --bad-bg:#3d1f1d; --wait:#b79ee8; --wait-bg:#2a2140;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;font:14px/1.5 "Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+h1{font-size:22px;margin:0 0 4px} h2{font-size:16px;margin:28px 0 10px}
+.sub{color:var(--ink2);margin-bottom:20px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:8px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.tile .big{font-size:30px;font-weight:700;letter-spacing:-.5px}
+.tile .lbl{color:var(--ink2);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+.tile .note{color:var(--ink3);font-size:12px;margin-top:4px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:12px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{color:var(--ink2);text-align:left;font-weight:600;padding:7px 10px;border-bottom:2px solid var(--line);white-space:nowrap}
+td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:hover td{background:var(--accent-soft)}
+.badge{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.b-good{background:var(--good-bg);color:var(--good)} .b-warn{background:var(--warn-bg);color:var(--warn)}
+.b-bad{background:var(--bad-bg);color:var(--bad)} .b-wait{background:var(--wait-bg);color:var(--wait)}
+.b-t1{background:var(--accent-soft);color:var(--accent)}
+.bar-row{display:grid;grid-template-columns:minmax(180px,320px) 1fr 42px;gap:10px;align-items:center;margin:5px 0}
+.bar-name{font-size:12.5px;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar-track{height:16px;position:relative}
+.bar-fill{height:16px;background:var(--accent);border-radius:0 4px 4px 0;min-width:2px}
+.bar-val{font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.plan li{margin:9px 0}
+.eli5{background:var(--warn-bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:24px}
+.footer{color:var(--ink3);font-size:12px;margin-top:22px}
+code{background:var(--accent-soft);padding:0 5px;border-radius:4px;font-size:12px}
+</style>
+</head>
+<body>
+<h1>📚 Scholar Visibility — Антон Дзятковский</h1>
+<div class="sub">Аудит видимости и цитируемости · снято вживую 2026-07-14 (Google Scholar · OpenAlex · Semantic Scholar · Crossref · ORCID) · сессия HP17-ZBook·Антон</div>
+
+<div class="tiles">
+  <div class="tile"><div class="lbl">Google Scholar (что видит hiring-менеджер)</div><div class="big">137</div>
+    <div class="note">цитат · <b>h-index 7</b> · i10 = 5 · было 139 до удаления RETRACTED из витрины (−2 её цитаты); имя исправлено 14.07</div></div>
+  <div class="tile"><div class="lbl">OpenAlex (привязан к ORCID)</div><div class="big">68</div>
+    <div class="note">цитат · h-index 4 · 41 работа · <b>до h=5 не хватает 1 цитаты</b></div></div>
+  <div class="tile"><div class="lbl">Semantic Scholar</div><div class="big">36</div>
+    <div class="note">цитат в главном профиле · h=4 · ⚠️ + 5 осколков-профилей не склеены</div></div>
+  <div class="tile"><div class="lbl">Работ в реестре волта</div><div class="big">22+3</div>
+    <div class="note">22 опубликованных (+2 найдены сегодня: IEEE 2021, Gumilyov 2025) + 3 на доработке</div></div>
+</div>
+
+<h2>Топ-10 по цитатам (Google Scholar, 2026-07-14)</h2>
+<div class="card" id="chart">
+<div class="bar-row"><div class="bar-name" title="Chronological Progress of Blockchain in STEM (systematic analysis)">Chronological Progress of Blockchain in STEM (systematic analysis)</div><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div><div class="bar-val">24</div></div>
+<div class="bar-row"><div class="bar-name" title="Блокчейн как средство достижения целей устойчивого развития">Блокчейн как средство достижения целей устойчивого развития</div><div class="bar-track"><div class="bar-fill" style="width:50.0%"></div></div><div class="bar-val">12</div></div>
+<div class="bar-row"><div class="bar-name" title="Researching the Usage of Blockchain in Higher Education">Researching the Usage of Blockchain in Higher Education</div><div class="bar-track"><div class="bar-fill" style="width:45.8%"></div></div><div class="bar-val">11</div></div>
+<div class="bar-row"><div class="bar-name" title="Education through the lens of blockchain and vice versa">Education through the lens of blockchain and vice versa</div><div class="bar-track"><div class="bar-fill" style="width:41.7%"></div></div><div class="bar-val">10</div></div>
+<div class="bar-row"><div class="bar-name" title="Accessible education: educational environment for sustainable development">Accessible education: educational environment for sustainable development</div><div class="bar-track"><div class="bar-fill" style="width:41.7%"></div></div><div class="bar-val">10</div></div>
+<div class="bar-row"><div class="bar-name" title="ICT in inclusive education by AI blockchain technology">ICT in inclusive education by AI blockchain technology</div><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><div class="bar-val">8</div></div>
+<div class="bar-row"><div class="bar-name" title="AI and blockchain interaction in the context of inclusive education">AI and blockchain interaction in the context of inclusive education</div><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><div class="bar-val">8</div></div>
+<div class="bar-row"><div class="bar-name" title="Research on contour feature extraction… nonlinear mechanics">Research on contour feature extraction… nonlinear mechanics</div><div class="bar-track"><div class="bar-fill" style="width:25.0%"></div></div><div class="bar-val">6</div></div>
+<div class="bar-row"><div class="bar-name" title="Integration of blockchain technologies and ML with deep analysis">Integration of blockchain technologies and ML with deep analysis</div><div class="bar-track"><div class="bar-fill" style="width:25.0%"></div></div><div class="bar-val">6</div></div>
+<div class="bar-row"><div class="bar-name" title="The economic impact of digitalization and digital products">The economic impact of digitalization and digital products</div><div class="bar-track"><div class="bar-fill" style="width:25.0%"></div></div><div class="bar-val">6</div></div>
+</div>
+
+<h2>Все работы: где индексируется · цитаты · открытый доступ · действие</h2>
+<div class="card">
+<table>
+<thead><tr><th>Работа</th><th>Год</th><th>Журнал / площадка</th><th>Тир</th><th class="num">GS</th><th class="num">OAx</th><th>Открытый текст</th><th>Действие</th></tr></thead>
+<tbody id="tbody">
+<tr><td>Chronological Progress of Blockchain in STEM (systematic analysis)</td><td>2022</td><td>Sustainability (MDPI)</td><td><span class="badge b-t1">T1</span></td><td class="num"><b>24</b></td><td class="num">19</td><td><span class="badge b-good">✔ OA</span></td><td>🥇 флагман — уже OA</td></tr>
+<tr><td>Блокчейн как средство достижения целей устойчивого развития</td><td>2021</td><td>Финансовые рынки и банки (ВАК)</td><td>T2</td><td class="num"><b>12</b></td><td class="num">0</td><td><span class="badge b-good">✔ OA</span></td><td>OA есть; OpenAlex не видит рус. цитат — норм</td></tr>
+<tr><td>Researching the Usage of Blockchain in Higher Education</td><td>2021</td><td>IEEE TELE (Xplore, Scopus)</td><td><span class="badge b-t1">T1</span></td><td class="num"><b>11</b></td><td class="num">8</td><td><span class="badge b-bad">✖ paywall</span></td><td>⚠️ найдена сегодня; выложить accepted version легально</td></tr>
+<tr><td>Education through the lens of blockchain and vice versa</td><td>2021</td><td>J. Modern Education Review (USA)</td><td>—</td><td class="num"><b>10</b></td><td class="num">0</td><td><span class="badge b-warn">◐ зеркало</span></td><td>зеркала Academia/RG есть</td></tr>
+<tr><td>Accessible education: educational environment for sustainable development</td><td>2021</td><td>J. BSU Ecology (ВАК)</td><td>T2</td><td class="num"><b>10</b></td><td class="num">0</td><td><span class="badge b-good">✔ OA</span></td><td>OA есть</td></tr>
+<tr><td>ICT in inclusive education by AI blockchain technology</td><td>2023</td><td>WJAETS</td><td>—</td><td class="num"><b>8</b></td><td class="num">4</td><td><span class="badge b-good">✔ OA</span></td><td>🎯 +1 цитата → h=5 в OpenAlex; цитировать в 3 статьях на доработке</td></tr>
+<tr><td>AI and blockchain interaction in the context of inclusive education</td><td>2022</td><td>Recent Scientific Investigation</td><td>T3</td><td class="num"><b>8</b></td><td class="num">2</td><td><span class="badge b-good">✔ OA</span></td><td>—</td></tr>
+<tr><td>Research on contour feature extraction… nonlinear mechanics</td><td>2022</td><td>Nonlinear Engineering (De Gruyter)</td><td><span class="badge b-t1">T1</span></td><td class="num"><b>6</b></td><td class="num">6</td><td><span class="badge b-good">✔ OA</span></td><td>OA есть</td></tr>
+<tr><td>Integration of blockchain technologies and ML with deep analysis</td><td>2022</td><td>IJITSS</td><td>—</td><td class="num"><b>6</b></td><td class="num">3</td><td><span class="badge b-good">✔ OA</span></td><td>—</td></tr>
+<tr><td>The economic impact of digitalization and digital products</td><td>2021</td><td>Economic Annals-XXI (Scopus)</td><td><span class="badge b-t1">T1</span></td><td class="num"><b>6</b></td><td class="num">7</td><td><span class="badge b-good">✔ OA</span></td><td>OA есть</td></tr>
+<tr><td>Secondary development of CAD software… mechanical product design</td><td>2023</td><td>CAD Journal</td><td><span class="badge b-t1">T1</span></td><td class="num"><b>5</b></td><td class="num">2</td><td><span class="badge b-good">✔ OA</span></td><td>—</td></tr>
+<tr><td>Blockchain based Framework for Student Performance Tracking (BloSPer)</td><td>2022</td><td>IJACSA (Scopus)</td><td><span class="badge b-t1">T1</span></td><td class="num"><b>5</b></td><td class="num">4</td><td><span class="badge b-good">✔ OA</span></td><td>🎯 +1 цитата → h=5 в OpenAlex</td></tr>
+<tr><td>State data security backed by AI and Zero-Knowledge Proofs</td><td>2023</td><td>Economic Annals-XXI (Scopus)</td><td><span class="badge b-t1">T1</span></td><td class="num"><b>3</b></td><td class="num">2</td><td><span class="badge b-good">✔ OA</span></td><td>цитируется в Homeostatic-paper (§5)</td></tr>
+<tr><td>Using blockchain technology in public administration by ML & AI</td><td>2022</td><td>WJARR</td><td>—</td><td class="num"><b>3</b></td><td class="num">1</td><td><span class="badge b-good">✔ OA</span></td><td>—</td></tr>
+<tr><td>Artificial intelligence in blockchain-provide digital technology</td><td>2022</td><td>IJITE</td><td>—</td><td class="num"><b>3</b></td><td class="num">1</td><td><span class="badge b-good">✔ OA</span></td><td>—</td></tr>
+<tr><td>CAD 3D simulation software design based on CAD</td><td>2023</td><td>CAD Journal</td><td><span class="badge b-t1">T1</span></td><td class="num"><b>2</b></td><td class="num">1</td><td><span class="badge b-good">✔ OA</span></td><td>—</td></tr>
+<tr><td>Analog modeling of education for sustainable development</td><td>2023</td><td>E3S Web of Conferences</td><td>—</td><td class="num"><b>2</b></td><td class="num">2</td><td><span class="badge b-good">✔ OA</span></td><td>🔴 RETRACTED (издатель снёс весь том EBWFF 2023) — из витрины Scholar убрана 14.07, в реестре хранится навсегда</td></tr>
+<tr><td>Blockchain in the digital economy</td><td>2022</td><td>Danish Scientific Journal</td><td>T3</td><td class="num"><b>2</b></td><td class="num">2</td><td><span class="badge b-good">✔ OA</span></td><td>—</td></tr>
+<tr><td>The use of blockchain technology and homeostatic principles in monetary policies</td><td>2021</td><td>Финансовые рынки и банки (ВАК) + SSRN</td><td>T2</td><td class="num"><b>2</b></td><td class="num">1</td><td><span class="badge b-good">✔ OA</span></td><td>⭐ предшественник LeChatelier-статьи — самоцитирование вписано</td></tr>
+<tr><td>Pedagogical ergonomics: possibilities of AI, ZKP and ML</td><td>2023</td><td>German Intl J. Modern Science</td><td>—</td><td class="num"><b>1</b></td><td class="num">0</td><td><span class="badge b-good">✔ OA</span></td><td>—</td></tr>
+<tr><td>Blockchain technology and homeostatic principles… (SSRN mirror)</td><td>2021</td><td>SSRN</td><td>—</td><td class="num"><b>0</b></td><td class="num">1</td><td><span class="badge b-good">✔ OA</span></td><td>зеркало, склеено в Scholar</td></tr>
+<tr><td>Ergonomics of School Textbooks: AI in ESD</td><td>2025</td><td>Gumilyov J. of Pedagogy</td><td>—</td><td class="num"><b>0</b></td><td class="num">0</td><td><span class="badge b-warn">? проверить</span></td><td>🆕 найдена сегодня; добавить зеркала, включить в профили</td></tr>
+<tr><td>Decentralized management in blockchain and its role in modern society</td><td>2018</td><td>Shikshan Sanshodhan</td><td>—</td><td class="num"><b>0</b></td><td class="num">0</td><td><span class="badge b-good">✔ OA</span></td><td>цитируется в Homeostatic-paper (§1)</td></tr>
+</tbody>
+</table>
+<div class="footer">GS = Google Scholar · OAx = OpenAlex. Расхождения нормальны: GS ловит русскоязычные/РИНЦ-цитаты, OpenAlex — только со связанными DOI.</div>
+</div>
+
+<h2>🎯 Топ-10 действий (ценность × скорость)</h2>
+<div class="card"><ol class="plan">
+<li><span class="badge b-good">✅ сделано</span> <b>Реестр волта исправлен:</b> реальные метрики (139 цитат / h=7, а не «31 / h≈4»), IEEE-статья с 11 цитатами возвращена в реестр, найдена новая работа 2025.</li>
+<li><span class="badge b-good">✅ сделано 14.07</span> <b>CITATION.cff + «Cite this work» запушены в claude-consensus</b> (коммиты 282b644d, 45a9fbfb). Кнопка «Cite this repository» с ORCID живая. Дальше — тот же паттерн на agent-leash / claude-bible / charm-os / sqlite-graph-memory.</li>
+<li><span class="badge b-good">✅ сделано 14.07</span> <b>Google Scholar: имя исправлено на обычное «**ton ******ovskii»</b> (через залогиненный Chrome, authuser=1 — владелец профиля).</li>
+<li><span class="badge b-good">✅ сделано 14.07</span> <b>RETRACTED-статья убрана из витрины Scholar</b> (−2 цитаты на счётчике, h-index не тронут). В реестре волта хранится навсегда (решение Антона). Причина ретракции: EDP Sciences снёс ВЕСЬ том EBWFF 2023 за «citation manipulation and inappropriate references» на уровне сборника — авторы персонально не названы → <b>PhD-Retraction-E3S-2023.md</b>.</li>
+<li><span class="badge b-good">✅ подано 15.07</span> <b>Semantic Scholar: claim профиля + merge 5 осколков отправлены на модерацию</b> (аккаунт a2, Google SSO; статус Pending — ответ придёт на a2-почту; после одобрения ~21 работа и 42+ цитаты соберутся в одном профиле).</li>
+<li><span class="badge b-good">✅ сделано</span> <b>Самоцитирование по делу вписано в оба arXiv-черновика</b> (Homeostatic-Governance: 4 работы; LeChatelier: 2 работы, включая обязательного предшественника — «homeostatic principles in monetary policies» 2021). Сабмит — зона arXiv-сессии.</li>
+<li><span class="badge b-wait">🟡 на мне</span> <b>+1 цитата до h=5 в OpenAlex:</b> у BloSPer (IJACSA) и «ICT in inclusive education» по 4 цитаты. Три статьи «на доработке» — все про inclusive education: при доработке цитировать обе (по делу — это та же тема).</li>
+<li><span class="badge b-warn">⚠️ проверить</span> <b>IEEE-статья — единственная без открытого текста</b> (paywall IEEE Xplore). Политика IEEE разрешает выложить accepted version на личном сайте автора (уверенность: med — сверить с actual IEEE author posting policy). Найти accepted manuscript в Drive → выложить легально.</li>
+<li><span class="badge b-wait">🟡 на мне</span> <b>Зеркала для 2 найденных работ:</b> IEEE 2021 и Gumilyov 2025 добавить в ResearchGate/Academia (у остальных 20 зеркала уже есть).</li>
+<li><span class="badge b-bad">🔴 Антон · решение</span> <b>Scopus/WoS профили:</b> Scopus ID <code>57226604663</code> и WoS <code>AAE-8860-2022</code> существуют; проверка «нет ли чужих работ» требует логина издательских систем — по готовности.</li>
+</ol>
+<div class="footer">⛔ Никаких citation-rings / накруток: все рычаги выше — открытый доступ, корректные профили, самоцитирование строго по теме, связка код↔статьи.</div>
+</div>
+
+<div class="eli5">🧒 <b>Простыми словами:</b> мы думали, у тебя 31 «лайк» от учёных — оказалось 139, просто мы смотрели не в тот счётчик. Твоя научная «витрина» в целом хорошая, но: имя написано смешным жирным шрифтом, одна статья висит с красной наклейкой «отозвана», и твои работы раскиданы по шести кучкам в одной из систем. Починка — три клика по 2–10 минут. Плюс мы нашли твою потерянную статью в IEEE (это престижный клуб инженеров) — она вторая по популярности из всех твоих!</div>
+
+<div class="footer">Источники: Google Scholar profile b8gKHiMAAAAJ · OpenAlex A5087729106 · Semantic Scholar 2104979172(+5) · ORCID 0000-0001-7408-3054 (100 работ) · Crossref/Unpaywall по DOI. Файлы: 05-Resources\PhD\ (phd_own_papers.csv обновлён) · бэкапы: _backup\phd-scholar-session-2026-07-14\</div>
+
+</body>
+</html>

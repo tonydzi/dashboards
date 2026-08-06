@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сигнализации в Telegram — Anton</title>
+<style>
+  :root{
+    --bg:#0f1419; --card:#1a2027; --card2:#222b34; --ink:#e7edf3; --mut:#8aa0b2;
+    --line:#2c3a46; --accent:#3aa0ff; --green:#34c77b; --amber:#f0b429; --violet:#a06bff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;padding:28px}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--mut);margin:0 0 22px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .card.evening::before{background:var(--violet)}
+  .card.weekly::before{background:var(--amber)}
+  .card.passive::before{background:var(--mut)}
+  .time{font-size:13px;color:var(--mut);font-weight:600;letter-spacing:.3px}
+  .name{font-size:17px;font-weight:700;margin:3px 0 6px}
+  .what{color:#cdd9e3;margin:0 0 10px}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;background:var(--card2);color:var(--mut);border:1px solid var(--line);margin-right:6px}
+  .tag.live{color:var(--green);border-color:#1f5e3f}
+  .sec{margin:30px 0 12px;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--mut);border-bottom:1px solid var(--line);padding-bottom:6px}
+  .kpis{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 6px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 18px;min-width:120px}
+  .kpi b{font-size:26px;display:block}
+  .kpi span{color:var(--mut);font-size:12px}
+  .addr{color:var(--green);font-weight:600}
+  .note{color:var(--mut);font-size:13px;margin-top:6px}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+  <h1>🔔 Сигнализации в Telegram</h1>
+  <p class="sub">Все автоматические сообщения, которые система присылает тебе сама. Адрес доставки: <span class="addr">чат 03 «клан» · chat_id -354748913</span> (канон cc-alerts-to-chat-03; Saved Антон не читает) · обновлено 2026-07-06</p>
+
+  <div class="kpis">
+    <div class="kpi"><b>13</b><span>всего задач шлют тебе</span></div>
+    <div class="kpi"><b>9</b><span>каждый день/будни</span></div>
+    <div class="kpi"><b>3</b><span>раз в неделю</span></div>
+    <div class="kpi"><b>1</b><span>вахта (по запросу)</span></div>
+  </div>
+
+  <div class="sec">🆕 Новые будильники (созданы 2026-06-14)</div>
+  <div class="grid">
+    <div class="card">
+      <div class="time">⏰ ~07:36 · ежедневно</div>
+      <div class="name">🛡 Сторож тишины</div>
+      <p class="what">Проверяет все 16 фоновых задач + свежесть индекса. Пишет ТОЛЬКО если что-то красное (по Пн — короткий «пульс»). На момент запуска нашёл 6 упавших задач.</p>
+      <span class="tag live">live</span><span class="tag">tg-watchdog-silentfail</span>
+    </div>
+    <div class="card">
+      <div class="time">⏰ ~09:33 · будни</div>
+      <div class="name">📇 Лиды: кому писать сегодня</div>
+      <p class="what">Триаж воронки → список действий, каждый как черновик «скажи го». Лидам само ничего не шлётся.</p>
+      <span class="tag live">live</span><span class="tag">tg-leads-today</span>
+    </div>
+    <div class="card">
+      <div class="time">⏰ ~07:53 · ежедневно</div>
+      <div class="name">🗓 Повестка дня</div>
+      <p class="what">Сколько встреч сегодня, ближайшая и время — из Google Календаря (Europe/Lisbon).</p>
+      <span class="tag live">live</span><span class="tag">tg-calendar-agenda</span>
+    </div>
+    <div class="card weekly">
+      <div class="time">⏰ Вс ~18:06</div>
+      <div class="name">🕸 Радар отношений</div>
+      <p class="what">Дни рождения на 7 дней + важные лиды, с кем молчим 30+ дней. Осторожный: лучше тихо, чем ложная тревога.</p>
+      <span class="tag live">live</span><span class="tag">tg-relationships-weekly</span>
+    </div>
+    <div class="card weekly">
+      <div class="time">⏰ Вс ~19:05</div>
+      <div class="name">🧠 Свод недели</div>
+      <p class="what">Что за неделю сделано / что зависло — из локального brain_digest.py, без LLM/GPU.</p>
+      <span class="tag live">live</span><span class="tag">tg-weekly-digest</span>
+    </div>
+  </div>
+
+  <div class="sec">📅 Каждый день — по времени (твой «день в Telegram»)</div>
+  <div class="grid">
+    <div class="card">
+      <div class="time">⏰ ~08:04 · ежедневно</div>
+      <div class="name">Коуч — утро</div>
+      <p class="what">Зеркало + отчёт по вчерашнему «камню» + один камень на сегодня + смелость + защита от граблей. Просит ответить 3 строчками.</p>
+      <span class="tag live">live</span><span class="tag">coach-morning</span>
+    </div>
+    <div class="card">
+      <div class="time">⏰ 08:45 · ежедневно</div>
+      <div class="name">Контент-фабрика</div>
+      <p class="what">Собирает вчера (openclaw + голос/текст-хаб + ChatGPT) → кластеры → контент-план на одобрение. Ничего не публикуется само.</p>
+      <span class="tag live">live</span><span class="tag">content-factory-daily</span>
+    </div>
+    <div class="card">
+      <div class="time">⏰ ~09:06 · ежедневно</div>
+      <div class="name">Курьер claude.ai</div>
+      <p class="what">Тянет новые веб-чаты claude.ai в волт (через твой браузер), коммитит и присылает краткое summary что забрал.</p>
+      <span class="tag live">live</span><span class="tag">claudeai-courier-health</span>
+    </div>
+    <div class="card">
+      <div class="time">⏰ ~09:15 · ежедневно</div>
+      <div class="name">Сбор привычек/правил</div>
+      <p class="what">Прочёсывает свежие чаты Claude Code, предлагает новые правила и переиспользуемые находки тебе на ревью. Сам ничего не вписывает.</p>
+      <span class="tag live">live</span><span class="tag">preference-sweep-daily</span>
+    </div>
+    <div class="card evening">
+      <div class="time">⏰ ~21:05 · ежедневно</div>
+      <div class="name">Коуч — вечер</div>
+      <p class="what">Итог дня + настроение → лог/streak/дашборд. Спрашивает что получилось и одно обязательство на завтра.</p>
+      <span class="tag live">live</span><span class="tag">coach-evening</span>
+    </div>
+    <div class="card evening">
+      <div class="time">⏰ 21:33 · ежедневно</div>
+      <div class="name">Дневник для Facebook</div>
+      <p class="what">Превращает сегодняшние диалоги Claude Code в один честный пост-дневник в твоём голосе (история борьбы) → черновик в Saved. Без автопубликации в FB.</p>
+      <span class="tag live">live</span><span class="tag">facebook-diary-daily</span>
+    </div>
+  </div>
+
+  <div class="sec">📆 Раз в неделю</div>
+  <div class="grid">
+    <div class="card weekly">
+      <div class="time">⏰ Пн ~10:01</div>
+      <div class="name">Сторож бэкапа волта</div>
+      <p class="what">Проверяет, жив ли офсайт-бэкап Obsidian. <b>Тревога в Telegram, если сломан</b>; короткий «пульс», если всё ок.</p>
+      <span class="tag live">live</span><span class="tag">obsidian-backup-healthcheck</span>
+    </div>
+  </div>
+
+  <div class="sec">🎧 По запросу (не по расписанию)</div>
+  <div class="grid">
+    <div class="card passive">
+      <div class="time">▶ запускается командой /telegram-watch</div>
+      <div class="name">Вахта помощника @*****numvc1</div>
+      <p class="what">Слушает упоминания/ЛС в реальном времени на ОТДЕЛЬНОМ аккаунте и отвечает/советует. Это не «по таймеру», а живой слушатель, пока включён.</p>
+      <span class="tag">on-demand</span><span class="tag">telegram-watch</span>
+    </div>
+  </div>
+
+  <div class="sec">↩️ Тянет ИЗ Telegram (тебе НЕ пишет)</div>
+  <div class="grid">
+    <div class="card passive">
+      <div class="time">⏰ Пн ~09:09</div>
+      <div class="name">FAAA → CRM синк</div>
+      <p class="what">Забирает свежие звонки-заметки FAAA из Telegram в Platinum-CRM. Это вход, а не сигнал тебе — сообщений не присылает.</p>
+      <span class="tag">passive</span><span class="tag">faaa-weekly-sync</span>
+    </div>
+  </div>
+
+  <p class="note">Windows-задачи (Reindex, Digest, Resurface, Backup, Warm Refresh, Orphan, Watchdog, Janitor, Browser-History, Claude-Sessions) работают молча — в Telegram тебе НЕ пишут. Здесь только то, что реально жужжит у тебя в кармане.</p>
+</body>
+</html>

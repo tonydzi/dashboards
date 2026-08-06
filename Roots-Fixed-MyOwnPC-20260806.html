@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Разбор инбокса и починка корней — MyOwnPC-Natalia, 06.08.2026</title>
+<style>
+ :root{--bg:#11131a;--card:#181b24;--line:#272b38;--tx:#e8eaf0;--dim:#9aa2b5;
+       --ok:#4ec9a7;--bad:#e5766b;--warn:#e2b04a;--acc:#7aa2f7}
+ @media (prefers-color-scheme: light){
+  :root{--bg:#f6f7fa;--card:#fff;--line:#e2e5ee;--tx:#181b24;--dim:#5d6478;
+        --ok:#1a8a68;--bad:#c0483c;--warn:#a87a12;--acc:#3b5fc0}}
+ *{box-sizing:border-box}
+ body{margin:0;padding:24px;background:var(--bg);color:var(--tx);
+      font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+ h1{font-size:22px;margin:0 0 4px} h2{font-size:16px;margin:28px 0 10px;color:var(--acc)}
+ .sub{color:var(--dim);margin-bottom:22px;font-size:13px}
+ .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+ .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+ .num{font-size:28px;font-weight:600} .lbl{color:var(--dim);font-size:12px;margin-top:2px}
+ .ok{color:var(--ok)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+ .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}
+ th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+ th{color:var(--dim);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+ .bar{height:9px;border-radius:5px;background:var(--line);overflow:hidden;margin-top:6px}
+ .bar i{display:block;height:100%;background:var(--ok)}
+ code{background:var(--line);padding:1px 5px;border-radius:4px;font-size:12.5px}
+ .foot{color:var(--dim);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:12px}
+</style></head><body>
+
+<h1>Разбор инбокса и починка корней</h1>
+<div class="sub">Узел MyOwnPC-Natalia · оператор Наталья · 6 августа 2026, 15:00–20:45 местного (UTC+5)</div>
+
+<div class="grid">
+  <div class="card"><div class="num ok">16 → 2</div><div class="lbl">непринятых посылок</div></div>
+  <div class="card"><div class="num ok">68 → 42</div><div class="lbl">красных в регресс-сетке</div></div>
+  <div class="card"><div class="num">272</div><div class="lbl">зелёных из 314 прогнанных</div></div>
+  <div class="card"><div class="num acc">14</div><div class="lbl">починок увезено на флот</div></div>
+  <div class="card"><div class="num warn">10 из 14</div><div class="lbl">красных были ложными</div></div>
+</div>
+
+<h2>Регресс-сетка: пять прогонов</h2>
+<div class="wrap"><table>
+<tr><th>прогон</th><th>найдено</th><th>прогнано</th><th>зелёных</th><th>красных</th><th>доля зелёного</th></tr>
+<tr><td>1 (первый в истории узла)</td><td>296</td><td>289</td><td>221</td><td class="bad">68</td>
+    <td>76%<div class="bar"><i style="width:76%"></i></div></td></tr>
+<tr><td>2</td><td>312</td><td>305</td><td>255</td><td class="bad">50</td>
+    <td>84%<div class="bar"><i style="width:84%"></i></div></td></tr>
+<tr><td>3</td><td>316</td><td>309</td><td>264</td><td class="bad">45</td>
+    <td>85%<div class="bar"><i style="width:85%"></i></div></td></tr>
+<tr><td>4</td><td>318</td><td>310</td><td>267</td><td class="bad">43</td>
+    <td>86%<div class="bar"><i style="width:86%"></i></div></td></tr>
+<tr><td>5</td><td>322</td><td>314</td><td class="ok">272</td><td class="bad">42</td>
+    <td>87%<div class="bar"><i style="width:87%"></i></div></td></tr>
+</table></div>
+<div class="sub">Число найденных тестов росло по ходу: движок сетки научился видеть зону хуков,
+перестал считать тестом самого себя и отбросил дубли <code>*.sync-conflict</code>.</div>
+
+<h2>Настоящие дыры, которые прятались под ложными красными</h2>
+<div class="wrap"><table>
+<tr><th>что было сломано</th><th>чем это грозило</th><th>посылка</th></tr>
+<tr><td><code>import secondop</code> запускал движок и убивал вызывающего кодом 2</td>
+    <td>четыре теста и живой скрипт рельс падали на ровном месте</td>
+    <td>import-safe-secondop-shim</td></tr>
+<tr><td>Сторож Tier-2 не знал словоформ «удаление», «оплачивать»</td>
+    <td>опасные фразы проходили гейт молча</td><td>tripwire-russian-forms</td></tr>
+<tr><td>Привязанный ответ Антона на протухший аск не считался</td>
+    <td>ответ через час терялся; спека жила тестом с 21.07, движка не было ни на одном узле</td>
+    <td>approval-bound-reply</td></tr>
+<tr><td><code>ask_once</code> звал 1 робот из 3</td>
+    <td>замер 29.07: 186 открытых асков, 179 копий одного вопроса за 27 минут</td>
+    <td>ask-once-wiring-2producers</td></tr>
+<tr><td>7 скриптов теряли имя машины под cron</td>
+    <td>ACK-файлы, которые никто не читает; безымянные хартбиты</td>
+    <td>machine-key-ladder-7-scripts</td></tr>
+<tr><td><code>tg_coord.py</code> по умолчанию звался чужой машиной</td>
+    <td>любой узел под cron представлялся Маком Русланы</td><td>grid-selfdetect-and-pause</td></tr>
+<tr><td><code>selflaunch.py</code> не существовал на Windows (<code>import fcntl</code>)</td>
+    <td>самозапуск сессий на виндовых узлах отсутствовал целиком</td><td>selflaunch-win-lock</td></tr>
+<tr><td>Шина обещала «доставлено по живой рельсе», когда упали обе</td>
+    <td>в логе успокоительная ложь вместо тревоги</td><td>bus-both-rails-down-honest</td></tr>
+<tr><td>Гейт утечек знал одну транслитерацию фамилии из двух</td>
+    <td>личные идентификаторы уезжали в комплект для чужой машины</td>
+    <td>persona-leak-both-spellings</td></tr>
+<tr><td><code>approval_clock.py</code> не компилировался (правка 121→03)</td>
+    <td>суточный таймер контента падал при каждом запуске — чинилось локально</td>
+    <td>—</td></tr>
+</table></div>
+
+<h2>Класс «проверка требует чужой раскладки» — 10 случаев</h2>
+<div class="wrap"><table>
+<tr><th>проверка держала</th><th>почему соврала</th></tr>
+<tr><td>путь <code>scripts/secondop.py</code></td><td>движок переехал в <code>cc-review/</code> 05.08</td></tr>
+<tr><td>md5 канона v4.0.0</td><td>живой канон v4.8.0, квитанция зелёная</td></tr>
+<tr><td>цитату строки исходника</td><td>движок отрефакторен, обе защиты на месте</td></tr>
+<tr><td>слова «пять рельс»</td><td>у узла уже шесть</td></tr>
+<tr><td>путь с обратными слэшами</td><td>гейт портируемости от 03.08 такое отбивает</td></tr>
+<tr><td>несуществующий <code>install_x.py</code></td><td>гейт «цель обязана существовать» добавлен позже</td></tr>
+<tr><td>3 зоны поиска из 4</td><td>движок обзавёлся зоной хуков</td></tr>
+<tr><td>папку шины, которую не создавала</td><td>движок намеренно не пишет в несуществующую</td></tr>
+<tr><td>снос <code>USERPROFILE</code> (приём POSIX)</td><td>на Windows читала настоящий дом вместо песочницы</td></tr>
+<tr><td>логику гейта до 31.07</td><td>канон в тот день перевернули</td></tr>
+</table></div>
+<div class="sub">Канон-предложение хабу: <code>verify-by-live-value-20260806</code> — проверка описывает
+предмет, а не его сегодняшнее написание.</div>
+
+<h2>Что осталось красным и почему</h2>
+<div class="wrap"><table>
+<tr><th>что</th><th>причина</th><th>чей ход</th></tr>
+<tr><td>win-portability</td><td>baseline хаба протух: 69 «новых» нарушений в живых скриптах</td><td class="warn">хаб</td></tr>
+<tr><td>radical-order-gate</td><td>тест есть, самого хука нет ни у меня, ни на шине</td><td class="warn">хаб</td></tr>
+<tr><td>persona_build</td><td>нет <code>canon/people.json</code> и <code>node_caps.json</code> — их нет ни у кого</td><td class="warn">хаб</td></tr>
+<tr><td>voice-dispatch</td><td>ждёт рутину, которой на этом узле нет</td><td class="warn">чей лейн?</td></tr>
+<tr><td>brain-тесты</td><td>нет локального стека эмбеддингов — по замыслу, поиск живёт у GPU</td><td>норма</td></tr>
+<tr><td>26 ссылок в скиллах</td><td>настоящий дрейф имён (было 85, из них 59 — ложь про путь волта)</td><td>задача</td></tr>
+</table></div>
+
+<div class="foot">
+Собрано детерминированно из выводов <code>regress_run.py</code> и манифестов
+<code>_deploy/</code>. Цифры не сглажены: рост числа найденных тестов от прогона к прогону —
+следствие починки самого движка сетки, а не разного набора проверок.
+</div>
+</body></html>

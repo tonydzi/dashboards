@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Что сейчас красное — 28.06.2026</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#1a1d24; --card2:#222630; --ink:#e8eaed; --muted:#9aa0aa;
+    --green:#36b37e; --red:#ff5630; --yellow:#ffab00; --line:#2a2f3a; --accent:#4c9aff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;padding:24px}
+  .wrap{max-width:1000px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 20px;font-size:14px}
+  .verdict{background:linear-gradient(135deg,#16321f,#1a1d24);border:1px solid var(--green);border-radius:14px;padding:18px 20px;margin-bottom:24px}
+  .verdict b{color:var(--green)}
+  .scorebar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 0}
+  .chip{background:var(--card2);border-radius:10px;padding:10px 14px;font-size:13px;min-width:120px}
+  .chip .n{font-size:22px;font-weight:700;display:block}
+  .g{color:var(--green)} .r{color:var(--red)} .y{color:var(--yellow)}
+  section{margin:22px 0}
+  .sechead{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+  .card.red{border-left-color:var(--red)}
+  .card.yellow{border-left-color:var(--yellow)}
+  .card.green{border-left-color:var(--green)}
+  .card h3{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11px;background:var(--card2);color:var(--muted);padding:2px 8px;border-radius:20px;font-weight:500}
+  .row{display:grid;grid-template-columns:90px 1fr;gap:6px 12px;font-size:14px;margin-top:8px}
+  .row .k{color:var(--muted)}
+  .root{color:#ffd9cf}
+  .fix{color:#cfe8da}
+  .who{font-size:12px;color:var(--muted);margin-top:8px}
+  .big{font-size:15px}
+  footer{color:var(--muted);font-size:12px;margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+  .pt{color:var(--accent);font-weight:600}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="TRIZ-vs-AK47.html">&larr; TRIZ-vs-AK47</a> · <a href="_doc_tracker_write.md">_doc_tracker_write &rarr;</a></span></div>
+<div class="wrap">
+  <h1>🩺 Что сейчас реально красное</h1>
+  <p class="sub">Снимок 28.06.2026, 15:2x Лиссабон · источники: /arch (карта системы) · n8n executions (ошибки) · Windows Task Scheduler · MCP-планировщик</p>
+
+  <div class="verdict">
+    <div class="big">Главный вывод: <b>система на ~95% зелёная.</b> Всё «красное» сидит в <b>n8n</b> (это и есть «не-LLM сервер», на который ты думал переезжать), и <b>ни одна поломка не про то, что «LLM глючит»</b> — это внешний API лёг и кончились деньги на счету OpenAI.</div>
+    <div class="scorebar">
+      <div class="chip"><span class="n g">100/100</span>/arch score, 0 broken</div>
+      <div class="chip"><span class="n r">2</span>реальных красных (оба n8n)</div>
+      <div class="chip"><span class="n y">3</span>жёлтых (мелочь / в работе)</div>
+      <div class="chip"><span class="n g">~50</span>задач зелёные сегодня</div>
+    </div>
+  </div>
+
+  <section>
+    <p class="sechead">🔴 Красное — реальное, повторяется, надо чинить</p>
+
+    <div class="card red">
+      <h3>n8n · Events Posting <span class="tag">ежедневно 14:00</span> <span class="tag">падает каждый день</span></h3>
+      <div class="row">
+        <span class="k">Симптом</span><span>6 нод, 5 успешны, падает последняя нода «Get events from onchainlab.ai», висит ~2 мин и ошибка.</span>
+        <span class="k">Корень</span><span class="root"><b>502 Bad gateway от ВНЕШНЕГО сервиса onchainlab.ai</b> — не наш код, не LLM. Чужой сервер не отвечает.</span>
+        <span class="k">Лечение</span><span class="fix">continueOnError на этой ноде, чтобы мёртвый внешний источник не валил весь пост (мягкая деградация). 5 мин правки.</span>
+      </div>
+      <div class="who">владелец: Антон (CRM-стек)</div>
+    </div>
+
+    <div class="card red">
+      <h3>n8n · OpenAI «insufficient_quota» <span class="tag">LobsterDAO / Audio / LLM Chain</span></h3>
+      <div class="row">
+        <span class="k">Симптом</span><span>Серия ошибок 26.06 у LobsterDAO Translation (сейчас уже выключен) + Personal Audio Summary. Все ноды до LLM успешны, падает только OpenAI-нода.</span>
+        <span class="k">Корень</span><span class="root"><b>Кончились деньги на предоплаченном балансе OpenAI.</b> Это биллинг, а не баг и не «LLM сломался». Ретраи НЕ помогают (жгут ещё больше неудачных вызовов).</span>
+        <span class="k">Лечение</span><span class="fix">Пополнить баланс + вменяемый авто-recharge. Удешевление моделей мы уже сделали (gpt-5.4 to gpt-5.1, поймали трату $216). Часть аудио уже сама чинится ретраем (retrySuccessId).</span>
+      </div>
+      <div class="who">владелец: Антон (CRM-стек / деньги)</div>
+    </div>
+  </section>
+
+  <section>
+    <p class="sechead">🟡 Жёлтое — мелочь, само-чинится или в активной разработке</p>
+
+    <div class="card yellow">
+      <h3>n8n · bus-bridge (cross-machine relay) <span class="tag">создан СЕГОДНЯ</span></h3>
+      <div class="row">
+        <span class="k">Статус</span><span>Создан сегодня 10:51, правился минут 10 назад (15:14). Одна ошибка сразу после создания. Это новое, в активной отладке — не «застарелая поломка».</span>
+        <span class="k">Действие</span><span class="fix">Дочинить (идёт сейчас). Если это параллельная сессия — свериться через шину.</span>
+      </div>
+    </div>
+
+    <div class="card yellow">
+      <h3>n8n · Youtube to text <span class="tag">webhook</span></h3>
+      <div class="row">
+        <span class="k">Статус</span><span>Пара ошибок на вебхуке 27.06. Редко, по запросу. Низкий приоритет.</span>
+        <span class="k">Действие</span><span class="fix">Глянуть тело ошибки при следующем падении; вероятно внешний вызыватель.</span>
+      </div>
+    </div>
+
+    <div class="card yellow">
+      <h3>Windows · «Claude Declined Guard» + «Claude Git Offsite Push» <span class="tag">код 267011</span></h3>
+      <div class="row">
+        <span class="k">Статус</span><span>Код 267011 = «ещё не запускалась». Обе по расписанию ночью (3:40 и 5:41) — сегодняшний запуск ещё не наступил. Похоже просто свежесозданные.</span>
+        <span class="k">Действие</span><span class="fix">Проверить завтра утром, что отработали с кодом 0. Если снова «не запускалась» — разобрать триггер.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="sechead">🟢 Зелёное — весь Claude-слой (для контекста)</p>
+    <div class="card green">
+      <div class="row">
+        <span class="k">/arch</span><span>100/100, broken 0, RED-флагов нет. 2080 ассетов.</span>
+        <span class="k">Windows</span><span>~25 сторожей/задач Claude (inbox-robot, Cron Watchdog, Sync Monitor, Syncthing Watchdog, Git Sync, Config Snapshot, Server Watchdogs, Backup, ChatGPT Sync...) — все код 0, отработали сегодня, крутятся каждые 15-30 мин.</span>
+        <span class="k">MCP-крон</span><span>24 «будильника» (коуч, повестка, gmail-сторож, дайджесты, синки) — все отработали сегодня. 1 выключен намеренно (robot-dryrun).</span>
+        <span class="k">n8n</span><span>Инстанс жив (HTTP 200, 364ms). Рабочие лошадки (CHARM CRM, Eliza, Audio) работают.</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="pt">Почему это отвечает на твой вопрос:</span> ты хотел уйти от LLM на n8n, потому что «всё ломается». Но красное — ровно в n8n, и причины внешние (чужой сервер лёг) и денежные (счёт OpenAI пуст), а не «LLM глючит». Переезд на n8n эти две причины не убирает — внешний 502 и пустой баланс будут падать на любом движке. Лечится точечно: 1) continueOnError на мёртвый источник, 2) пополнить/настроить OpenAI-баланс. Это AK-47 на полчаса, без переписывания всего.
+  </footer>
+</div>
+</body>
+</html>

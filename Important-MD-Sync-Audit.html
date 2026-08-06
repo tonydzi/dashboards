@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Аудит важных MD: синк, размер, частота правок</title>
+<style>
+ :root{--bg:#0f1419;--card:#1a2129;--ink:#e6edf3;--mut:#8b97a3;--line:#2a333d;
+       --green:#2ea043;--yellow:#d29922;--red:#f85149;--blue:#388bfd;}
+ *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);
+   font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+ h1{font-size:22px;margin:0 0 4px} .sub{color:var(--mut);margin:0 0 20px;font-size:13px}
+ h2{font-size:16px;margin:26px 0 10px;border-left:3px solid var(--blue);padding-left:8px}
+ .cards{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+ .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:170px;flex:1}
+ .card .n{font-size:26px;font-weight:700} .card .l{color:var(--mut);font-size:12px;margin-top:2px}
+ table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:6px}
+ th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);font-size:13px}
+ th{background:#141b22;color:var(--mut);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.4px}
+ tr:last-child td{border-bottom:none}
+ .g{color:var(--green)} .y{color:var(--yellow)} .r{color:var(--red)} .m{color:var(--mut)}
+ .pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11px;font-weight:600}
+ .pg{background:rgba(46,160,67,.15);color:var(--green)} .py{background:rgba(210,153,34,.15);color:var(--yellow)} .pr{background:rgba(248,81,73,.15);color:var(--red)}
+ .bar{height:7px;background:#141b22;border-radius:4px;overflow:hidden;margin-top:4px;min-width:90px}
+ .bar>i{display:block;height:100%}
+ .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:8px;padding:12px 14px;margin:8px 0;font-size:13px}
+ .note.ok{border-left-color:var(--green)} .note.w{border-left-color:var(--yellow)}
+ code{background:#141b22;padding:1px 5px;border-radius:4px;font-size:12px}
+ .foot{color:var(--mut);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:10px}
+</style></head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Hetzner-Costs.html">&larr; Hetzner-Costs</a> · <a href="Lebedev-Style-DR-ZB-07.html">Lebedev-Style-DR-ZB-07 &rarr;</a></span></div>
+<h1>🗂️ Аудит важных MD: как синкаются, размер, частота правок</h1>
+<p class="sub">Хаб A-2022BAYAREA · снимок 2026-06-28 · детерминированно (git + файловая система), 0 токенов</p>
+
+<div class="cards">
+  <div class="card"><div class="n">5</div><div class="l">всегда-загружаемых / критичных MD</div></div>
+  <div class="card"><div class="n">204</div><div class="l">memory/*.md (по релевантности)</div></div>
+  <div class="card"><div class="n">336</div><div class="l">коммитов памяти за 30д</div></div>
+  <div class="card"><div class="n r">~13</div><div class="l">файлов реально побил Syncthing 26.06</div></div>
+</div>
+
+<h2>1 · Всегда загружается в КАЖДУЮ сессию (= токен-налог всегда)</h2>
+<table>
+<thead><tr><th>Файл</th><th>Размер</th><th>Строк</th><th>Лимит</th><th>Правок/30д</th><th>Кто пишет</th><th>Статус</th></tr></thead>
+<tbody>
+<tr><td>CLAUDE.md</td><td>75.5 KB</td><td>117</td><td class="m">мягкого нет</td><td>22</td><td>хаб (один)</td>
+  <td><span class="pill py">🟡 крупный</span> ~19k токенов/сессия</td></tr>
+<tr><td>MEMORY.md</td><td>17.4 KB <span class="m">(89% от 20KB)</span></td><td class="r">138</td><td>135 строк / 20 KB</td><td class="r">163</td><td>хаб+ноут</td>
+  <td><span class="pill pr">🔴 за лимитом строк</span> +3</td></tr>
+<tr><td>MEMORY-archive.md</td><td>6.0 KB</td><td>52</td><td class="m">grep-only</td><td class="m">редко</td><td>хаб+ноут</td>
+  <td><span class="pill pg">🟢 ок</span></td></tr>
+<tr><td>compact-prompt.md</td><td>2.5 KB</td><td>24</td><td class="m">—</td><td class="m">редко</td><td>хаб</td>
+  <td><span class="pill pg">🟢 ок</span></td></tr>
+</tbody></table>
+<p class="m" style="font-size:12px">MEMORY.md грузится целиком каждую сессию: за лимитом строк нижние пункты индекса рискуют не загрузиться (тихая полуслепота). CLAUDE.md лимита не пробивает, но это самый дорогой постоянный груз: 117 строк, но строки гигантские.</p>
+
+<h2>2 · По релевантности (memory/*.md) — топ по размеру</h2>
+<table>
+<thead><tr><th>Файл</th><th>Размер</th><th>Тип</th><th>Оценка</th></tr></thead>
+<tbody>
+<tr><td>declined-decisions.md</td><td class="r">99.5 KB</td><td>журнал (растёт вечно)</td><td><span class="pill py">🟡 пора катать по датам</span></td></tr>
+<tr><td>MEMORY.bak-20260626-233911.md</td><td class="r">51.7 KB</td><td>СТАРЫЙ бэкап MEMORY.md</td><td><span class="pill pr">🔴 мусор в живой папке</span></td></tr>
+<tr><td>deterministic-script-gotchas.md</td><td class="y">46.4 KB</td><td>живой справочник</td><td><span class="pill py">🟡 крупный, ок</span></td></tr>
+<tr><td>claude-desktop-sessions-per-account.md</td><td class="y">40.1 KB</td><td>живой справочник</td><td><span class="pill py">🟡 крупный, ок</span></td></tr>
+<tr><td>machine-migration.md</td><td>29.7 KB</td><td>проект</td><td><span class="pill pg">🟢 ок</span></td></tr>
+<tr><td class="m">…остальные 199 файлов</td><td class="m">средний 6.4 KB</td><td class="m">—</td><td><span class="pill pg">🟢 ок</span></td></tr>
+</tbody></table>
+
+<h2>3 · Как они синкаются ПРЯМО СЕЙЧАС (правда)</h2>
+<table>
+<thead><tr><th>Слой</th><th>Транспорт сейчас</th><th>Слияние</th><th>Риск</th></tr></thead>
+<tbody>
+<tr><td>CLAUDE.md</td><td>Syncthing (двунаправл.) + git claude-claudemd (катовер)</td><td>last-writer-wins</td>
+  <td><span class="pill py">🟡 низкий</span> один писатель (хаб)</td></tr>
+<tr><td>MEMORY.md + 204 memory/*.md</td><td>Syncthing (двунаправл.), отдельная папка, исключён только <code>.git</code></td><td class="r">last-writer-wins</td>
+  <td><span class="pill pr">🔴 ВЫСОКИЙ</span> два писателя, самый горячий файл</td></tr>
+<tr><td>секреты / settings.json / sessions</td><td>НЕ синкаются (в .stignore)</td><td>—</td><td><span class="pill pg">🟢 правильно</span></td></tr>
+</tbody></table>
+
+<div class="note">
+<b>🔴 Дымящийся пистолет — это уже происходило.</b> В <code>_sync-conflict-archive\20260626-114910\</code> лежат жертвы last-writer-wins от 26.06:
+<b>MEMORY.md</b>, declined-decisions, deterministic-script-gotchas, user-registry, turnstate-ledger, hub-master-machine, telegram-account-identities, work-life-balance-nudge, n8n-stack и др. (~13 файлов за один инцидент). machine-bus-telegram-rail побит 27.06. Их восстановили вручную, но это ровно тот корень, ради которого делаем git-катовер.
+</div>
+<div class="note w">
+<b>🟡 Катовер ещё НЕ защищает.</b> git-транспорт (claude-memory.git + claude-claudemd.git по SMB) поднимается, но <code>.stignore</code> ещё НЕ резали, значит активный синк по-прежнему Syncthing = риск ЖИВОЙ, пока не пройдёт обкатка (soak) и не отрежем Syncthing синхронно на обеих машинах.
+</div>
+
+<h2>4 · Частота правок (почему синк-конфликты неизбежны без катовера)</h2>
+<table>
+<thead><tr><th>Файл</th><th>Касаний за 30д</th><th>Интенсивность</th></tr></thead>
+<tbody>
+<tr><td>MEMORY.md</td><td class="r">163</td><td><div class="bar"><i style="width:100%;background:var(--red)"></i></div></td></tr>
+<tr><td>deterministic-script-gotchas.md</td><td>46</td><td><div class="bar"><i style="width:28%;background:var(--yellow)"></i></div></td></tr>
+<tr><td>declined-decisions.md</td><td>44</td><td><div class="bar"><i style="width:27%;background:var(--yellow)"></i></div></td></tr>
+<tr><td>automation-inventory.md</td><td>35</td><td><div class="bar"><i style="width:21%;background:var(--yellow)"></i></div></td></tr>
+<tr><td>machine-bus-telegram-rail.md</td><td>35</td><td><div class="bar"><i style="width:21%;background:var(--yellow)"></i></div></td></tr>
+<tr><td>CLAUDE.md</td><td>22</td><td><div class="bar"><i style="width:14%;background:var(--green)"></i></div></td></tr>
+</tbody></table>
+<p class="m" style="font-size:12px">Память правится ~11 раз/день (включая авто-коммит каждые 15 мин). MEMORY.md, который пишут ОБЕ машины 163 раза за месяц, под last-writer-wins Syncthing неизбежно конфликтует. Это и случилось 26.06.</p>
+
+<h2>✅ Что чинить (4 пункта)</h2>
+<div class="note"><b>🔴 1. MEMORY.md за лимитом строк (138 &gt; 135).</b> Нижние пункты индекса рискуют не загрузиться. → подрезать 3+ строки (архивировать 1-2 DONE-пойнтера). Капитанский стол Daily 23:35 поймает, но лучше сразу.</div>
+<div class="note"><b>🔴 2. <code>MEMORY.bak-20260626-233911.md</code> (51.7 KB) лежит в ЖИВОЙ папке памяти.</b> Засоряет grep, зря синкается. → перенести в <code>_config-backup</code>, не удаляя.</div>
+<div class="note w"><b>🟡 3. <code>declined-decisions.md</code> = 99.5 KB, растёт вечно.</b> → катать по годам/кварталам (старое в <code>declined-decisions-archive.md</code>), живой файл лёгкий.</div>
+<div class="note w"><b>🟡 4. Завершить катовер → отрезать Syncthing.</b> Память на двунаправленном Syncthing = бомба last-writer-wins. После обкатки SMB-транспорта (оба пути, пара дней без потерь) синхронно отрезать <code>.stignore</code> на обеих машинах. До этого риск живой.</div>
+
+<p class="foot">Источник: git log (memory + _config-backup), Get-SmbShare, файловая система. Канон: <code>memory-index-hygiene</code>, <code>config-memory-git-sync</code>. Дашборд самодостаточный, обновляется перезапуском аудита.</p>
+</body></html>

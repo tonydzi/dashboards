@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Видимость сессий флота — аудит 2026-07-06</title>
+<style>
+  body { font-family: 'Segoe UI', sans-serif; background: #14161a; color: #e8e8e8; margin: 0; padding: 24px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .sub { color: #9aa0a6; font-size: 13px; margin-bottom: 20px; }
+  .verdict { display: inline-block; background: #2d4a1e; border: 1px solid #6fbf3f; color: #b6f09c; padding: 6px 14px; border-radius: 8px; font-size: 15px; font-weight: 600; margin-bottom: 18px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-bottom: 26px; }
+  .card { background: #1e2126; border: 1px solid #33383f; border-radius: 10px; padding: 14px 16px; }
+  .card h3 { margin: 0 0 6px; font-size: 15px; }
+  .ok { border-left: 4px solid #6fbf3f; }
+  .warn { border-left: 4px solid #e8b84a; }
+  .na { border-left: 4px solid #6b7280; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; vertical-align: middle; }
+  .b-anton { background: #5a2323; color: #ffb3b3; }
+  .b-hub { background: #4a3d1e; color: #f0d78c; }
+  .b-peer { background: #1e3a4a; color: #8cd3f0; }
+  .b-done { background: #2d4a1e; color: #b6f09c; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; margin-bottom: 26px; }
+  th, td { border: 1px solid #33383f; padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: #23262c; }
+  td.g { color: #8fdc6f; } td.y { color: #e8b84a; } td.r { color: #ff8a8a; } td.gr { color: #9aa0a6; }
+  .small { color: #9aa0a6; font-size: 12px; }
+  ul { margin: 6px 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  h2 { font-size: 17px; margin: 26px 0 10px; border-bottom: 1px solid #33383f; padding-bottom: 6px; }
+  code { background: #23262c; padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+  .eli5 { background: #1e2a36; border: 1px solid #2f4a63; border-radius: 10px; padding: 14px 16px; margin-top: 24px; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Fleet-Services.html">&larr; Fleet-Services</a> · <a href="Hetzner-Costs.html">Hetzner-Costs &rarr;</a></span></div>
+
+<h1>👀 Видимость сессий флота — «кто что делал»</h1>
+<div class="sub">Аудит с хаба A-2022BAYAREA · 2026-07-06 22:05 (Лиссабон) · автор A-2022BAYAREA·Anton</div>
+
+<div class="verdict">ВЕРДИКТ: РАБОТАЕТ (4 из 5 машин видны с хаба; 2 жёлтых зоны, 0 красных провалов)</div>
+
+<h2>Машины: что видно с хаба прямо сейчас</h2>
+<div class="grid">
+  <div class="card ok">
+    <h3>🖥️ A-2022BAYAREA (хаб) <span class="badge b-hub">Антон</span></h3>
+    ✅ Собственный каталог <code>catalog-PaloAlto-Desktop.json</code> обновлён сегодня 05:00.<br>
+    ✅ Транскрипты в пуле до 04:27 сегодня. Ретро пишутся (2 за сегодня).
+  </div>
+  <div class="card ok">
+    <h3>💻 HP17-ZBook (ноут) <span class="badge b-hub">Антон</span></h3>
+    ✅ Каталог обновлён сегодня 02:40, транскрипты до 01:11.<br>
+    ✅ Живой в TG-03 (heartbeat 21:47, консенсус-работа весь вечер).
+  </div>
+  <div class="card ok">
+    <h3>🖥️ MyOwnPC (Наталья) <span class="badge b-peer">Наталья</span></h3>
+    ✅ Каталог свежий: сегодня 18:54 · <b>62 сессии, 23 за 3 дня</b>, работала сегодня до 19:41.<br>
+    ✅ Транскрипты доезжают (последний 15:43 сегодня). Syncthing lastSeen 20:53.<br>
+    <span class="small">«Больная машина» (sync 4%) — вылечена: данные текут.</span>
+  </div>
+  <div class="card warn">
+    <h3>🍏 MacBook (Руслана) <span class="badge b-peer">Руслана</span></h3>
+    ⚠️ Рельса ЖИВА (каталог писался сегодня 17:28), но <b>сессий нет с 04.07 21:44</b>.<br>
+    ⚠️ Mac офлайн с ~20:02. Итог: в понедельник CC-сессий у Русланы не видно — либо не работала в CC, либо работала вне Claude Code. Нужен пинг.
+  </div>
+  <div class="card na">
+    <h3>☁️ fleet-anchor (VPS Маяк) <span class="badge b-hub">хаб</span></h3>
+    ➖ Человеческих сессий нет по определению (headless-роботы).<br>
+    ✅ Виден как свидетель: Syncthing connected, участвует в консенсусе (S6 сегодня).
+  </div>
+</div>
+
+<h2>⏱️ «Тест Наташи»: что Наташа сделала за 3 дня — ответ за 0.3 секунды</h2>
+<p class="small">Источник: <code>_machine-bus\_session-archive-inbound\MyOwnPC-Natalia\catalog-MyOwnPC-Natalia.json</code> — 23 сессии с 03.07:</p>
+<ul class="small">
+  <li><b>Сегодня 06.07 (19 сессий):</b> синк ноут-хаб · Telegram Stories research · структура постинга глав · очередь Post 13 · LinkTree · переписывание сессий Антона (Opus) · reality-show research · логика контент-фабрики ×2 · заметки звонка Арсёнова + peer setup · стиль reality-show · автоматизация комментов · задачи от Антона · Post 10 · видео Carpathian Second Brain · ссылка FB-поста в дашборд · задачи чата 03 · Reddit-прогрев · Post 6</li>
+  <li><b>04.07:</b> workflow контент-фабрики · напоминалки Reddit-прогрева</li>
+  <li><b>03.07:</b> голосование/звёзды GitHub-статьи · разбор сообщений чата 03</li>
+</ul>
+<p>✅ <b>Тест ПРОЙДЕН.</b> Один файл-каталог отвечает на вопрос быстрее чем за 2 минуты.</p>
+
+<h2>Рельсы видимости: инвентарь</h2>
+<table>
+  <tr><th>Рельса</th><th>Что даёт</th><th>Свежесть</th><th>Статус</th></tr>
+  <tr><td><code>_session-archive\catalog.html</code> (union-витрина)</td><td>ЕДИНОЕ ОКНО: все сессии всех машин (549 записей за 03–06.07; 4 машины в одном списке)</td><td>сегодня 19:08</td><td class="g">✅ живая</td></tr>
+  <tr><td><code>_session-archive\</code> каталоги хаб+ноут</td><td>сессии Антона (обе машины), ночная задача 03:30</td><td>сегодня 02:40 / 05:00</td><td class="g">✅ живая</td></tr>
+  <tr><td><code>_machine-bus\_session-archive-inbound\</code></td><td>сессии Наташи и Русланы (каталог + транскрипты)</td><td>Наташа сегодня · Руслана 04.07</td><td class="g">✅ живая</td></tr>
+  <tr><td>Ретро <code>01-Conversations\Claude\Retros\</code></td><td>смысловые итоги сессий; пишут ТОЛЬКО хаб и ноут (0 ретро от машин Наташи/Русланы)</td><td>сегодня 21:36</td><td class="y">🟡 частичная</td></tr>
+  <tr><td>TG-чат 03 (heartbeat + доклады)</td><td>живой пульс машин в минутах</td><td>сейчас</td><td class="g">✅ живая (Mac молчит — офлайн)</td></tr>
+  <tr><td>ON AIR доска <code>_machine-bus\_onair\</code></td><td>заявки «делаю крупную работу» ДО начала (а не задним числом)</td><td>построена СЕГОДНЯ 21:53, /tt ✅</td><td class="y">🟡 armed на хабе, разъезд на пиры ⏳</td></tr>
+  <tr><td>sessions.db → заметки волта (старый движок <code>claude-sessions\</code>)</td><td>LLM-судья + заметки сессий в волте</td><td>записей нет после 23.06 (задача крутится вхолостую)</td><td class="y">🟡 протухла ИЛИ списана — решить</td></tr>
+  <tr><td>RAG-индекс сессий (<code>_brain_sessions.npy</code>)</td><td>семантический поиск по сессиям</td><td>сегодня 03:31</td><td class="g">✅ живая</td></tr>
+  <tr><td>turnstate-леджер</td><td>чёрный ящик ходов — только локально на каждой машине</td><td>—</td><td class="gr">➖ по дизайну локальный</td></tr>
+</table>
+
+<h2>Задачи из аудита</h2>
+<h3>🔴 Ждут Антона</h3>
+<ul>
+  <li>☐ <b>Решить судьбу старого движка</b> <code>claude-sessions\sessions.db</code> (заметки+судья в волт, молчит с 23.06): чинить или официально списать? Новый пул + RAG-индекс уже покрывают задачу → моя рекомендация: <b>списать</b>, выключив задачу «Claude Sessions to Vault Daily» (сейчас она жжёт цикл вхолостую).</li>
+</ul>
+<h3>🟡 На хабе (мне)</h3>
+<ul>
+  <li>☐ Пинг Руслане/её роботу: «в понедельник сессий не видно — ты работала в CC?» (когда Mac вернётся онлайн; отдам её роботу через шину).</li>
+  <li>☐ ON AIR: разъезд на пиры + GC-крон + правило в CLAUDE.md (уже в плане H19 §8, держатель — хаб).</li>
+  <li>☐ Прибрать 3 <code>catalog-*.sync-conflict-*.json</code> (июль 02–04, класс «две машины дерутся за файл» — уже решён per-machine записью).</li>
+</ul>
+<h3>⏳ Машины/внешнее</h3>
+<ul>
+  <li>☐ Ретро от машин Наташи/Русланы не пишутся — опционально: их сырые сессии видны и так; если захотим смысловые итоги, добавить лёгкий ретро-хук в пакет ведомого.</li>
+</ul>
+<h3>✅ Закрыто (сегодня)</h3>
+<ul>
+  <li>☑ ON AIR v1: движок <code>onair.py</code> + доска + SessionStart-хук + Decision Memo <code>02-Decisions\decision-2026-07-05-onair-work-declaration-board.md</code> + H19 обновлён (сделано параллельной сессией хаба, проверено этой).</li>
+  <li>☑ «Тест Наташи» пройден — слепота по Наташе, из-за которой пакет фабрики не доехал 04.07, закрыта: её машина синкается и шлёт сессии.</li>
+</ul>
+
+<div class="eli5">
+🧒 <b>Простыми словами:</b> у каждого компьютера есть дневник «что я делал». Все дневники сами съезжаются на большой компьютер в одну книжку (catalog.html). Книжка работает: про Наташу мы узнали всё за секунду. Только у Русланы страничка пустая с субботы (спросим её), и одна старая машинка-переписчик крутится впустую — её лучше выключить.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Флот: висящие фиксы + паразитные активности — 06.08.2026</title>
+<style>
+ :root{--bg:#0f1116;--card:#171a21;--fg:#e8eaed;--dim:#9aa0aa;--line:#2a2e37;
+       --red:#ff6b6b;--yel:#ffd166;--grn:#4ade80;--acc:#7aa2ff}
+ @media (prefers-color-scheme:light){:root{--bg:#f6f7f9;--card:#fff;--fg:#1b1f27;--dim:#5d6672;--line:#e2e5ea}}
+ *{box-sizing:border-box}
+ body{margin:0;padding:20px;background:var(--bg);color:var(--fg);
+      font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+ h1{font-size:21px;margin:0 0 4px} h2{font-size:16px;margin:26px 0 10px;color:var(--acc)}
+ .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+ .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+ .kpi{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+ .kpi div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;flex:1;min-width:130px}
+ .kpi b{display:block;font-size:26px;line-height:1.1}
+ .kpi span{color:var(--dim);font-size:12px}
+ .wrap{overflow-x:auto}
+ table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+ th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left}
+ th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+ td.n{text-align:right;font-variant-numeric:tabular-nums}
+ .red{color:var(--red)} .yel{color:var(--yel)} .grn{color:var(--grn)} .dim{color:var(--dim)}
+ .bar{height:7px;border-radius:4px;background:var(--line);overflow:hidden;min-width:70px}
+ .bar i{display:block;height:100%}
+ code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-size:13px}
+ .note{border-left:3px solid var(--acc);padding-left:12px;color:var(--dim);font-size:13px;margin:10px 0}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Dashboards-On-Hub-Rollout.html">&larr; Dashboards-On-Hub-Rollout</a> · <a href="Fleet-Boards.html">Fleet-Boards &rarr;</a></span></div>
+
+<h1>Флот: висящие фиксы + паразитные активности</h1>
+<div class="sub">снято 06.08.2026 на ZBOOKG8 · источники: <code>fleet_fix_audit.py</code> (маркеры шины) и <code>parasite_scan.py</code> (457 транскриптов за 7 дней)</div>
+
+<div class="kpi">
+  <div><b class="red">140</b><span>фиксов не применено по флоту</span></div>
+  <div><b>94</b><span>уникальных фиксов</span></div>
+  <div><b class="grn">1 / 6</b><span>узлов со взведённым авто-применением</span></div>
+  <div><b class="red">29 / 601</b><span>маркеров DONE, поставленных роботом</span></div>
+</div>
+
+<h2>Корень: применяли руками, а руки приходят не на каждый узел</h2>
+<div class="card">
+Движок <code>deploy_sweep_guard.py</code> умеет применять посылки сам, стоит на всех узлах и тикает
+каждые 6 часов. Но боевой режим включается машинно-локальным маркером <code>_autoapply_armed.json</code>,
+и он есть <b>только на ZBOOKG8</b> — взведён 30.07 сессией с именем «root-fix-deploy-apply-gap»,
+которая нашла лечение и не отдала его флоту. Проверка: из 601 маркера DONE по всему флоту слово
+<code>auto-applied</code> стоит в 29, и все 29 — на одном узле. Отсюда прямая связь: где часто живут
+сессии, там висит 5–7; где сессий почти нет — 85.
+<div class="note">Ворота при взводе не ослабляются: tier 1 + подпись Ed25519 отправителя по всей записи
++ apply И verify машинными командами + чистый карантин + доверенное происхождение. Всё fail-closed,
+рубильник назад — <code>--disarm</code>.</div>
+</div>
+
+<h2>Кто сколько должен</h2>
+<div class="card wrap"><table>
+<tr><th>узел</th><th class="n">висит</th><th class="n">проза</th><th class="n">машинных</th><th>доля применённого</th><th>авто-применение</th></tr>
+<tr><td class="red">MacBook-Ruslana</td><td class="n red">85</td><td class="n">11</td><td class="n">73</td>
+    <td><div class="bar"><i style="width:36%;background:var(--red)"></i></div></td><td class="red">выключено</td></tr>
+<tr><td class="red">FLEET-ANCHOR</td><td class="n red">26</td><td class="n">5</td><td class="n">20</td>
+    <td><div class="bar"><i style="width:82%;background:var(--yel)"></i></div></td><td class="red">выключено</td></tr>
+<tr><td class="red">MyOwnPC-Natalia</td><td class="n red">16</td><td class="n">2</td><td class="n">13</td>
+    <td><div class="bar"><i style="width:88%;background:var(--yel)"></i></div></td><td class="red">выключено</td></tr>
+<tr><td class="yel">MacBook-Anton</td><td class="n yel">7</td><td class="n">1</td><td class="n">5</td>
+    <td><div class="bar"><i style="width:95%;background:var(--grn)"></i></div></td><td class="red">выключено</td></tr>
+<tr><td class="yel">A-2022BAYAREA (хаб)</td><td class="n yel">5</td><td class="n">2</td><td class="n">4</td>
+    <td><div class="bar"><i style="width:96%;background:var(--grn)"></i></div></td><td class="red">выключено</td></tr>
+<tr><td class="grn">ZBOOKG8 (этот ноут)</td><td class="n grn">1</td><td class="n">1</td><td class="n">0</td>
+    <td><div class="bar"><i style="width:99%;background:var(--grn)"></i></div></td><td class="grn">ВЗВЕДЕНО 30.07</td></tr>
+</table>
+<div class="note">«проза» = поле apply написано словами, а не командой → робот исполнить не может по определению,
+нужен живой человек или сессия. Таких 22 из 140. Остальные 118 — машинные, их разгребёт робот.</div>
+</div>
+
+<h2>Второй слой: мимо цели</h2>
+<div class="card">
+13 посылок из 140 отправлены туда, где они не могут примениться в принципе — виндовый синтаксис
+(<code>%USERPROFILE%</code>, <code>.cmd</code>, <code>schtasks</code>, обратные слэши) уехал на маки и на линукс-VPS.
+Это 9% кучи: не главная причина, но эти висяки не рассосутся никогда и обязаны быть закрыты
+записью «не про меня», а не молчанием.
+</div>
+
+<h2>Паразитные активности: что жрут сессии</h2>
+<div class="card wrap"><table>
+<tr><th>активность</th><th class="n">вызовов</th><th class="n">сессий</th><th class="n">в день</th><th>робот-двойник</th></tr>
+<tr><td>бэкап волта</td><td class="n red">274</td><td class="n">34</td><td class="n">39,1</td><td>Claude Vault Backup</td></tr>
+<tr><td>реиндекс RAG</td><td class="n red">210</td><td class="n">36</td><td class="n">30,0</td><td>Brain Reindex Daily</td></tr>
+<tr><td>fleet_fix_audit / deploy_register</td><td class="n red">198</td><td class="n">37</td><td class="n">28,3</td><td>deploy-sentinel</td></tr>
+<tr><td>publish_canon</td><td class="n red">168</td><td class="n">20</td><td class="n">24,0</td><td>Canon Publish Backup</td></tr>
+<tr><td>rule_home_guard</td><td class="n red">149</td><td class="n">45</td><td class="n">21,3</td><td class="red">— нет —</td></tr>
+<tr><td>regress_run</td><td class="n yel">84</td><td class="n">16</td><td class="n">12,0</td><td>Regress Grid Nightly</td></tr>
+<tr><td>claude_md_guard</td><td class="n yel">79</td><td class="n">24</td><td class="n">11,3</td><td>canon-v2-watch</td></tr>
+<tr><td>memory_guard</td><td class="n yel">72</td><td class="n">22</td><td class="n">10,3</td><td>Memory Index Guard</td></tr>
+<tr><td>output_freshness</td><td class="n">37</td><td class="n">9</td><td class="n">5,3</td><td class="red">— нет —</td></tr>
+<tr><td>arch scan</td><td class="n">37</td><td class="n">7</td><td class="n">5,3</td><td class="yel">System Architect (протух 40ч)</td></tr>
+<tr><td>coverage_map</td><td class="n">31</td><td class="n">10</td><td class="n">4,4</td><td class="red">— нет —</td></tr>
+<tr><td>прочие 9 активностей</td><td class="n dim">123</td><td class="n dim">—</td><td class="n dim">17,6</td><td class="dim">у всех есть</td></tr>
+</table></div>
+
+<h2>Что уже сделано против этого</h2>
+<div class="card wrap"><table>
+<tr><th>слой</th><th>что</th><th>состояние</th></tr>
+<tr><td>дверь</td><td><code>maintenance_gate.py</code> — квота 1 раз в сутки на узел, 2-й заход = блок</td><td class="grn">работает, режим quota</td></tr>
+<tr><td>подсказка</td><td><code>housekeeping_hint.py</code> на старте сессии, ≤2 строки, молчит когда тихо</td><td class="grn">работает</td></tr>
+<tr><td>уборщик</td><td><code>housekeeping_daily.cmd</code> 03:20 — только сироты без своего робота</td><td class="grn">работает</td></tr>
+<tr><td>догоняльщик</td><td><code>missed_jobs_catchup.ps1</code> 09:10 — до-запускает проспанное</td><td class="grn">работает, раскатан</td></tr>
+<tr><td>измеритель</td><td><code>parasite_scan.py</code> — эта таблица, 0 токенов</td><td class="grn">работает</td></tr>
+<tr><td>экран</td><td>скилл <code>/hk</code> — что роботы уже сделали сегодня</td><td class="grn">работает</td></tr>
+<tr><td>ложные срабатывания</td><td>гейт краснеет на УПОМИНАНИЕ рутины в тексте команды, а не на запуск</td><td class="yel">класс открыт, лечение частичное</td></tr>
+<tr><td>сирота</td><td><code>rule_home_guard</code> — 149 вызовов, 21 в день, робота-двойника нет</td><td class="red">не покрыт</td></tr>
+</table></div>
+
+<div class="sub">Дом дашборда: <code>E:\Obsidian\Anton-Knowledge\_Dashboards\Fleet-Backlog-and-Parasites.html</code></div>
+</body></html>

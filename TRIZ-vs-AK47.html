@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ТРИЗ против АК-47 — разведка DR26-08-06-HUB-01-1055</title>
+<style>
+  :root{
+    --bg:#f7f6f3; --card:#fff; --ink:#1d1d1b; --muted:#6b6b66; --line:#e3e1db;
+    --green:#2f7d4f; --red:#b3402f; --amber:#a8760f; --accent:#2b4c7e;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#17171a; --card:#202024; --ink:#eceae4; --muted:#9a978f; --line:#33333a;
+          --green:#6fbf8b; --red:#e08a78; --amber:#e0b055; --accent:#8fb0dd;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 16px 60px;background:var(--bg);color:var(--ink);
+       font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px;letter-spacing:-.4px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:26px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+        padding:18px 20px;margin-bottom:18px}
+  h2{font-size:17px;margin:0 0 12px;letter-spacing:-.2px}
+  .verdict{font-size:19px;line-height:1.45;font-weight:600}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;min-width:600px;font-size:14px}
+  th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+  tr:last-child td{border-bottom:none}
+  .g{color:var(--green);font-weight:600}
+  .r{color:var(--red);font-weight:600}
+  .a{color:var(--amber);font-weight:600}
+  .m{color:var(--muted)}
+  .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .pill{border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:13px}
+  .pill.g{border-color:var(--green)}
+  .pill.r{border-color:var(--red)}
+  ol{margin:8px 0 0;padding-left:22px}
+  ol li{margin-bottom:7px}
+  .step0{background:rgba(179,64,47,.09);border-left:3px solid var(--red);
+         padding:10px 14px;border-radius:0 8px 8px 0;margin-bottom:12px}
+  .formula{font-family:ui-monospace,Consolas,monospace;font-size:13px;background:var(--bg);
+           border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;white-space:pre}
+  .foot{color:var(--muted);font-size:13px}
+  .kv{display:flex;gap:10px;flex-wrap:wrap}
+  .kv div{border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:13px}
+  .big{font-size:20px;font-weight:700;display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>ТРИЗ против АК-47</h1>
+<div class="sub">Разведка DR26-08-06-HUB-01-1055 · 4 плеча из 6 · собрано и синтезировано 6 августа 2026</div>
+
+<div class="card">
+  <h2>Вердикт</h2>
+  <div class="verdict">
+    Полный ТРИЗ не берём. Берём <span class="g">три инструмента из тридцати</span> —
+    противоречие → ИКР → тримминг — и только <b>после</b> того, как причина доказана.
+    ТРИЗ не расследует; она запрещает согласиться на компромисс там, где противоречие можно растворить.
+  </div>
+  <div class="kv" style="margin-top:14px">
+    <div><span class="big">4/4</span> тела отчётов сняты</div>
+    <div><span class="big">1 из 4</span> наших граблей дала неочевидный ход</div>
+    <div><span class="big">27–50%</span> попадание матрицы ТРИЗ</div>
+    <div><span class="big">0</span> RCT против обычной отладки</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Проверка на наших четырёх граблях — что ТРИЗ реально дала</h2>
+  <div class="scroll">
+  <table>
+    <tr><th>Наша грабля</th><th>Ход ТРИЗ</th><th>Судья</th></tr>
+    <tr>
+      <td>Сторож не живёт в том, что сторожит</td>
+      <td>Разделение в пространстве → другая машина</td>
+      <td class="m">Пересказ. Любой SRE приходит к тому же</td>
+    </tr>
+    <tr>
+      <td>Похожесть на человека против безлюдности</td>
+      <td>Разделение во времени: вход захватывается один раз</td>
+      <td class="a">Наполовину. ИКР («а надо ли боту логиниться?») способен растворить задачу</td>
+    </tr>
+    <tr>
+      <td>Доставка фикса на офлайн-машины</td>
+      <td>Разделение по условию → машина сама подтягивает</td>
+      <td class="m">Пересказ pull/gitops</td>
+    </tr>
+    <tr>
+      <td>Тихий индикатор против «тишина ≠ живой»</td>
+      <td>ИКР: индикатора не существует, а функция выполняется → <b>отсутствие пульса и ЕСТЬ тревога</b></td>
+      <td class="g">Здесь ТРИЗ заработала. Два плеча независимо назвали единственным неочевидным ходом</td>
+    </tr>
+  </table>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Где ТРИЗ прямо противоречит АК-47</h2>
+  <p style="margin:0 0 10px">
+    Звучат одинаково («меньше механизма»), но оптимизируют разное:
+    <b>идеальность = функций на деталь</b>, <b>АК-47 = диагностируемость на деталь</b>.
+    Одна деталь на три роли — идеальность выросла, чинибельность упала.
+  </p>
+  <p style="margin:0 0 10px"><span class="r">Тримминг — ложный друг.</span>
+    Он не удаляет функцию, а перекладывает её на оставшийся компонент: деталей меньше, связности больше.
+    Опасен, когда сносит резервирование, сливает две функции в одну деталь или убирает
+    <b>единственный внешний признак сбоя</b> — то есть наш собственный прибор.</p>
+  <p style="margin:0 0 8px">Примирение — вносить ремонтопригодность в числитель явно:</p>
+  <div class="formula">AK-идеальность = (проверенные эффекты + читаемость + ручная восстановимость)
+                 / (детали + состояния + зависимости + связность
+                    + риск общего отказа + минуты на починку новичком)</div>
+</div>
+
+<div class="card">
+  <h2>40 принципов: берём только пересечение всех плеч</h2>
+  <p style="margin:0 0 4px" class="m">Веер оказался <b>не единодушен</b> — пять принципов в прямом конфликте между вендорами,
+     поэтому зелёный список сужен до того, где сошлись все.</p>
+  <div class="pills">
+    <span class="pill g">2 · вынесение</span>
+    <span class="pill g">13 · наоборот (dead-man's switch)</span>
+    <span class="pill g">16 · частичное действие</span>
+    <span class="pill g">21 · пропуск</span>
+    <span class="pill g">27 · дешёвые недолговечные объекты</span>
+    <span class="pill g">34 · выбросить и восстановить</span>
+  </div>
+  <p style="margin:14px 0 4px"><span class="r">Красный список</span> — если решение опирается на них,
+     это не решение, а сигнал переформулировать противоречие:</p>
+  <div class="pills">
+    <span class="pill r">вложенность</span><span class="pill r">посредник</span>
+    <span class="pill r">обратная связь</span><span class="pill r">динамизация</span>
+    <span class="pill r">фазовые переходы</span><span class="pill r">композиты</span>
+    <span class="pill r">подушка заранее</span>
+  </div>
+  <p style="margin:14px 0 4px" class="a">Спорные (плечи разошлись) — только с письменным флагом ⚠️ УСЛОЖНЕНИЕ:</p>
+  <div class="pills">
+    <span class="pill">25 самообслуживание</span><span class="pill">5 объединение</span>
+    <span class="pill">20 непрерывность</span><span class="pill">1 сегментация</span>
+    <span class="pill">6 универсальность</span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Карточка противоречия — ритуал, который берём в тень</h2>
+  <div class="step0">
+    <b>ШАГ 0. Причина доказана?</b> Есть воспроизведение, доказательство отсутствия полезного эффекта
+    (не статус-флага) и причинная цепочка ≤5 звеньев? <b>Нет → стоп, ТРИЗ запрещена.</b>
+    Иначе отсутствие телеметрии переименуется в красивую «изобретательскую задачу».
+  </div>
+  <ol>
+    <li>Назови сбой одной фразой.</li>
+    <li>Техническое противоречие: «улучшаем X — хуже становится Y».</li>
+    <li>Физическое: «должна быть A и одновременно НЕ-A».</li>
+    <li>Четыре разделения: во времени? в пространстве? по условию? между целым и частью?</li>
+    <li>ИКР: «этого узла не существует, а функция выполняется».</li>
+    <li>Тримминг + забор Честертона: понимаю ли, зачем стоит то, что сношу?</li>
+    <li>Фильтр по красному списку → обоснуй письменно или переформулируй.</li>
+    <li>Из двух решений выбираем <b>тупое</b>.</li>
+  </ol>
+  <p style="margin:12px 0 0" class="m">Применяется только к сбоям, дошедшим до порога рецидива — не к каждому багу.</p>
+</div>
+
+<div class="card">
+  <h2>Замер: 30 дней, критерии названы до старта</h2>
+  <div class="scroll">
+  <table>
+    <tr><th>Оставляем, если</th><th>Выбрасываем, если</th></tr>
+    <tr>
+      <td>
+        ≥20% снижение повторов в сопоставимых классах ·
+        ≥2 принятых неочевидных хода на 6 разборов ·
+        меньше добавленных механизмов, чем в обычных фиксах ·
+        выросла успешность починки новичком
+      </td>
+      <td>
+        за 4 разбора ни одного хода, до которого не дошли бы сами ·
+        сессия карточки дольше 30 минут ·
+        ритуал начал рождать «умные» решения со скрытым состоянием
+      </td>
+    </tr>
+  </table>
+  </div>
+  <p style="margin:12px 0 0" class="m">Поля журнала: minutes_to_verified_cause · recurred_14d/30d · false_green_after_fix ·
+     new_components / removed_components · novice_repair_minutes · non_obvious_move_accepted</p>
+</div>
+
+<div class="card">
+  <h2>Сильнейшее возражение — оставлено в полный рост</h2>
+  <p style="margin:0">
+    «Вы рекомендуете подмножество, ценность которого <b>как подмножества</b> не доказана. Все
+    исследования, показавшие хоть какую-то пользу ТРИЗ, использовали её как учат — с матрицей и полным
+    набором. Нет ни одного исследования, что связка противоречие + ИКР + тримминг обыгрывает обычную
+    гипотезо-ориентированную отладку. Возможно, вы прописываете плацебо с советским брендингом».
+  </p>
+  <p style="margin:10px 0 0" class="m">Плюс граница, названная всеми плечами: ТРИЗ не чинит опечатки, гонки,
+     отсутствие версионирования и конфликты Syncthing. Линейный сбой → 5 почему быстрее и дешевле.</p>
+</div>
+
+<div class="card">
+  <h2>Источники в волте</h2>
+  <div class="scroll">
+  <table>
+    <tr><th>Плечо</th><th>Доказательство работы</th><th>Файл</th></tr>
+    <tr><td>Grok Heavy</td><td>615 источников · 2m 6s</td><td class="m">_originals/deep-research/DR26-08-06-HUB-01-1055-triz-grok.md</td></tr>
+    <tr><td>Gemini Deep Research</td><td>Pro Extended · 77 735 симв.</td><td class="m">…-triz-gemini.md</td></tr>
+    <tr><td>GLM-5.2</td><td>Deep Think Max · 7 циклов поиска</td><td class="m">…-triz-glm.md</td></tr>
+    <tr><td>ChatGPT Pro</td><td>104 ссылки / 53 уникальных URL</td><td class="m">…-triz-chatgpt.md</td></tr>
+    <tr><td class="m">claude.ai</td><td class="m">пропущено осознанно: 75% недельного бака Max</td><td class="m">—</td></tr>
+    <tr><td class="m">Mistral</td><td class="m">аккаунта нет — регистрация за Антоном</td><td class="m">—</td></tr>
+  </table>
+  </div>
+  <p class="foot" style="margin:12px 0 0">
+    Синтез: 03-Insights/insight-DR-DR26-08-06-HUB-01-1055-triz-ak47.md ·
+    Потребитель: 05-Resources/Protocols/reglament-pyat-pochemu-koren-po-serii-sessiy.md ·
+    Статус ДР: applied
+  </p>
+</div>
+
+</div>
+</body>
+</html>

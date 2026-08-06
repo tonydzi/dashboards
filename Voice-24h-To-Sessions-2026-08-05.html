@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Голосовые 00 → сессии (05.08.2026)</title>
+<style>
+:root{--bg:#faf9f7;--fg:#1c1b1a;--mut:#6b6560;--line:#e3ded7;--card:#fff;
+--post:#1f7a4d;--build:#2563a8;--rule:#8a6d1f;--res:#7a4f9c;--del:#a8532a;--frag:#8c8c8c}
+@media (prefers-color-scheme:dark){:root{--bg:#141312;--fg:#eceae7;--mut:#9a938c;--line:#2c2a27;--card:#1c1b1a;
+--post:#5fd39b;--build:#79b4f2;--rule:#e0bd5a;--res:#c79ae8;--del:#f0a276;--frag:#9a938c}}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;background:var(--bg);color:var(--fg);
+font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:22px;margin:0 0 4px}
+h2{font-size:16px;margin:26px 0 10px}
+.sub{color:var(--mut);margin-bottom:20px;font-size:14px}
+.kpis{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;min-width:118px}
+.kpi b{display:block;font-size:26px;line-height:1.1}
+.kpi span{color:var(--mut);font-size:13px}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:860px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;color:var(--mut);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+code{font-size:12.5px;background:rgba(128,128,128,.12);padding:1px 5px;border-radius:4px}
+.k{font-weight:600;font-size:12.5px;white-space:nowrap}
+.post{color:var(--post)}.build{color:var(--build)}.rule{color:var(--rule)}
+.res{color:var(--res)}.del{color:var(--del)}.frag{color:var(--frag)}
+.note{margin-top:20px;color:var(--mut);font-size:13.5px;max-width:74ch}
+.was{color:var(--mut);font-size:12.5px;display:block;margin-top:3px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Telegram-MCP-Setup.md">&larr; Telegram-MCP-Setup</a> · <a href="Waiting-Sessions-MACRUS.html">Waiting-Sessions-MACRUS &rarr;</a></span></div>
+<h1>Голосовые чата «00 Архив ГОЛОСА» → отдельные сессии</h1>
+<div class="sub">05.08.2026 · окно 04.08 11:16 → 05.08 12:19 UTC · движок <code>voice_sessions.py</code> · правило: одна голосовая = одна сессия, «уже делали» = блок контекста в сид, а не молчание</div>
+
+<div class="kpis">
+<div class="kpi"><b>15</b><span>голосовых</span></div>
+<div class="kpi"><b>14</b><span>сессий поднято</span></div>
+<div class="kpi"><b>3</b><span>из них «уже делали»</span></div>
+<div class="kpi"><b>1</b><span>обрывок</span></div>
+<div class="kpi"><b>0</b><span>без расшифровки</span></div>
+</div>
+
+<div class="wrap"><table>
+<thead><tr><th>id</th><th>время UTC</th><th>дл.</th><th>тип</th><th>о чём</th><th>сессия</th></tr></thead>
+<tbody>
+<tr><td><code>5087</code></td><td>04.08 11:16</td><td>1:17</td><td class="k build">build</td><td>лайкать свои посты и все комменты; каждый день обход 5-10 лидов с реальным контактом</td><td><code>auto-hp17-260805-fb-likes-activity</code><span class="was">уже родила скиллы /fb-likes и /fb-audience</span></td></tr>
+<tr><td><code>5090</code></td><td>04.08 13:04</td><td>0:26</td><td class="k build">build</td><td>на закрытии сессии проверять: не тянет ли сделанное на скилл или апгрейд скилла; добавить и в подготовку сессии</td><td><code>auto-hp17-260805-skill-reflex-on-session-close</code><span class="was">контекст в сиде: /retro Шаг 4★ есть, но skill-gap-daily мёртв с 23.06</span></td></tr>
+<tr><td><code>5109</code></td><td>04.08 14:39</td><td>3:17</td><td class="k del">delegate</td><td>задача Наташе: каждая голосовая и текст из чата 00 = пост со ссылкой, ничего не теряем</td><td><code>auto-hp17-260805-voice-to-post-coverage</code></td></tr>
+<tr><td><code>5114</code></td><td>04.08 17:46</td><td>0:46</td><td class="k rule">rule</td><td>CLAUDE.md и MEMORY.md оптимизируем 1 раз в сутки; CLAUDE.md на хабе или Маяке, MEMORY.md каждый свой</td><td><code>auto-hp17-260805-daily-optimize-enforcement</code><span class="was">контекст в сиде: §10.0 записан 04.08, сессия доказывает применение фактом</span></td></tr>
+<tr><td><code>5117</code></td><td>04.08 17:48</td><td>0:35</td><td class="k build">build</td><td>найти ОСТАЛЬНЫЕ паразитные активности и вынести на суточную квоту</td><td><code>auto-hp17-260805-parasitic-activity-sweep</code><span class="was">контекст в сиде: первый заход поймал бэкап/реиндекс/гарды, нужен второй проход</span></td></tr>
+<tr><td><code>5120</code></td><td>04.08 20:24</td><td>4:03</td><td class="k post">post</td><td>сколько венгров вы знаете — впечатления о Венгрии и венграх</td><td><code>auto-hp17-260805-hungary-post</code></td></tr>
+<tr><td><code>5123</code></td><td>04.08 20:29</td><td>3:37</td><td class="k post">post</td><td>ночной Будапешт: весь центр как будто построен одновременно в одном стиле</td><td><code>auto-hp17-260805-budapest-architecture-post</code></td></tr>
+<tr><td><code>5126</code></td><td>04.08 21:28</td><td>0:07</td><td class="k frag">fragment</td><td>«вопрос в комментариях: какая у меня боль — сейчас объясню» и обрыв</td><td>сессии нет: договори голосом, подхвачу</td></tr>
+<tr><td><code>5132</code></td><td>05.08 05:36</td><td>2:36</td><td class="k build">build</td><td>гонять Deep Research на лимитах Codex/Gemini/Grok/GLM headless и видеть запущенные сессии глазами</td><td><code>auto-hp17-260805-dr-headless-multi-llm</code></td></tr>
+<tr><td><code>5135</code></td><td>05.08 05:39</td><td>2:21</td><td class="k res">research</td><td>есть ли desktop-приложения у LLM, поставить на все компы; агрегаторы 10+ подписок</td><td><code>auto-hp17-260805-llm-desktop-apps-audit</code></td></tr>
+<tr><td><code>5138</code></td><td>05.08 05:51</td><td>3:43</td><td class="k post">post</td><td>3-5 постов-историй из сессий за сутки; каждая сессия с DR = отдельный пост</td><td><code>auto-hp17-260805-sessions-24h-content</code></td></tr>
+<tr><td><code>5141</code></td><td>05.08 06:43</td><td>1:25</td><td class="k res">research</td><td>лимиты ChatGPT сгорают, переезжать на Codex; нужен единый интерфейс с выбором модели</td><td><code>auto-hp17-260805-codex-coding-migration</code></td></tr>
+<tr><td><code>5145</code></td><td>05.08 06:54</td><td>3:12</td><td class="k rule">rule</td><td>ДР превращать в публичный контент; CTA и подпись во всех постах; короткий нейминг (QQQ)</td><td><code>auto-hp17-260805-dr-to-content-and-naming</code></td></tr>
+<tr><td><code>5151</code></td><td>05.08 12:17</td><td>1:33</td><td class="k rule">rule</td><td>новый канал дистрибуции = выгружаем в него ВЕСЬ накопленный контент, «не только для читателей-людей, но и для роботов-читателей»</td><td><code>auto-hp17-260805-new-medium-backfill-logic</code></td></tr>
+<tr><td><code>5155</code></td><td>05.08 12:18</td><td>0:57</td><td class="k rule">rule</td><td>голосовые в текст БЕЗ купюр: не приглаживать, не смягчать, не подправлять политкорректность</td><td><code>auto-hp17-260805-voice-no-sanitizing-rule</code></td></tr>
+</tbody></table></div>
+
+<h2>Типовые случаи (растут по мере накопления голосовых)</h2>
+<div class="wrap"><table>
+<thead><tr><th>тип</th><th>сколько</th><th>куда целится сид</th></tr></thead>
+<tbody>
+<tr><td class="k build">build</td><td>4</td><td>стройка, починка, новый скилл + обязательный <code>/tt</code>, счётчик, док-паспорт</td></tr>
+<tr><td class="k rule">rule</td><td>4</td><td><code>/intake</code>: все дома + always-loaded след + <code>rule_home_guard</code></td></tr>
+<tr><td class="k post">post</td><td>3</td><td><code>/episode</code>: голос Fable 5, матрица площадок, taste-check, draft-first</td></tr>
+<tr><td class="k res">research</td><td>2</td><td>альфа-протокол + <code>/dr-fanout</code>, номер ДР до промпта, кворум 4 из 6</td></tr>
+<tr><td class="k del">delegate</td><td>1</td><td>сессия строит инструмент и таблицу человеку, а не пересказ</td></tr>
+<tr><td class="k frag">fragment</td><td>1</td><td>сессию не поднимаем, просим договорить</td></tr>
+</tbody></table></div>
+
+<p class="note">Сессии видны в разделе Scheduled под именами <code>auto-hp17-260805-*</code>.
+Каждый сид самодостаточен: контекст «что уже сделано», scope, DoD, не-цели, граница Tier-2.
+Публикация наружу ни в одной не разрешена: черновики кладутся в очередь, гейт Наташи и Tier-2 не ослаблены.
+Повтор нарезки безопасен: реестр дедупит по id сообщения, одна голосовая не форкнется дважды.</p>
+</body></html>

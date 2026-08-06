@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>Ретро тизеров — 06.08.2026</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--ink:#e8eaed;--dim:#9aa3af;--good:#3fb950;--bad:#f85149;--warn:#d29922;--line:#262b35}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:28px 0 10px;color:#c9d1d9}
+.sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.num{font-size:28px;font-weight:700}.lbl{color:var(--dim);font-size:12px;margin-top:4px}
+.bad{color:var(--bad)}.good{color:var(--good)}.warn{color:var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+td,th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+th{color:var(--dim);font-weight:600}
+blockquote{margin:8px 0;padding:8px 12px;border-left:3px solid var(--bad);background:#1c1f27;color:#d6dae0;font-size:13px}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ba div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:13px}
+.tag{display:inline-block;font-size:11px;padding:2px 7px;border-radius:20px;background:#22262f;color:var(--dim);margin-right:6px}
+code{background:#22262f;padding:1px 5px;border-radius:4px;font-size:12px}
+@media(max-width:640px){.ba{grid-template-columns:1fr}}
+</style></head><body>
+
+<h1>Ретро тизеров — замер 06.08.2026</h1>
+<div class="sub">Источник: история @ClawRus (120 сообщений, прочитано полностью), <code>content-factory/posted/</code>, <code>registry/pub_ledger.jsonl</code>, <code>pub_metrics.py status</code>, <code>episode_adapter.py</code>. Все цифры — замер, не оценка.</div>
+
+<div class="grid">
+  <div class="card"><div class="num bad">16</div><div class="lbl">наших постов в канал за 5 часов сегодня (07:31–12:31)</div></div>
+  <div class="card"><div class="num bad">0</div><div class="lbl">комментариев под ВСЕМИ нашими постами</div></div>
+  <div class="card"><div class="num good">5</div><div class="lbl">комментариев под постами живых людей за те же сутки</div></div>
+  <div class="card"><div class="num bad">0</div><div class="lbl">записей в реестре метрик (<code>pub_metrics status</code>) — эффект тизеров не мерился НИКОГДА</div></div>
+  <div class="card"><div class="num warn">1</div><div class="lbl">строка в <code>pub_ledger.jsonl</code> при 10 файлах с меткой POSTED — труба разомкнута</div></div>
+  <div class="card"><div class="num warn">57</div><div class="lbl">заготовок в <code>fb-teasers/</code> (наработки июля), в дело ушло 10</div></div>
+</div>
+
+<h2>Что сказали живые люди сегодня (цитаты из канала, не пересказ)</h2>
+<blockquote>«Проверка на прочность. Сколько нейро-говна сюда вылить агент от @***yDzi, чтобы…» — 10:08</blockquote>
+<blockquote>«Я не очень могу понять цель этого постинга от Тони.» — 10:21, единственный пост с ответом</blockquote>
+<blockquote>«Я заметил, что с тех пор, как бот начал свою серию публикаций, дискуссия в группе…» — 09:51, 3 коммента</blockquote>
+<blockquote>«Почему тебе не постить в телегу раз в неделю дайджест самого интересного?» — 10:12</blockquote>
+<blockquote>«Чат умер?» — 12:29</blockquote>
+
+<h2>Диагноз: две разные болезни, не одна</h2>
+<table>
+<tr><th>Болезнь</th><th>Улика</th><th>Лечится</th></tr>
+<tr><td><b>1. Тизер не несёт пользы сам по себе</b> — это подводка, а не единица ценности</td><td>Формула адаптера: <code>cold open + клиффхэнгер</code>. Тизер обязан оборваться на интриге — то есть по конструкции обязан ничего не дать</td><td>Новый контракт тизера (ниже)</td></tr>
+<tr><td><b>2. Каденс убил чат</b> — 16 штук за 5 часов в живую группу</td><td>0 комментов у нас против 5 у людей + 4 прямые жалобы за 3 часа</td><td>Не формат. Ритм и площадка. Правка ФОРМЫ тизера болезнь №2 НЕ вылечит</td></tr>
+<tr><td><b>3. Обратной связи нет вообще</b></td><td><code>pub_metrics status</code> = 0 публикаций / 0 снапшотов. Мы 5 недель судим о тизерах на ощупь</td><td>Замкнуть distributor → pub_ledger → метрики</td></tr>
+<tr><td><b>4. Контракт длины сам себе противоречит</b></td><td>Док-строка адаптера: 240–370 знаков HARD. Код <code>TIER_LEN["teaser"]=(120,240)</code>. Матрица площадок tg-chat: max 240</td><td>Одна цифра, один источник</td></tr>
+</table>
+
+<h2>Новый контракт тизера: ЗАВЕРШЁННАЯ ПОЛЬЗА + ДВЕРЬ</h2>
+<p style="font-size:14px;color:#c9d1d9">Правило одной строкой: <b>читатель, который НЕ перешёл по ссылке, всё равно унёс что-то применимое.</b> Клиффхэнгер без пользы = запрещён. Ссылка перестаёт быть платой за ответ и становится «а вот как это устроено внутри».</p>
+
+<div class="ba">
+<div><span class="tag">ДО — реальный тизер, msg 16720, 06.08</span><br><br>
+«на этой машине 146 скиллов. ни один не был задуман заранее — каждый родился, когда одно и то же объяснение пришлось повторить в третий раз.<br><br>а дальше лестница: чат, скилл, цель, субагент, команда, код, который правит агентами.»<br><br>
+<span class="bad">Что унёс тот, кто не кликнул: цифру про чужую машину. Применить нечего. Комментариев: 0.</span></div>
+
+<div><span class="tag">ПОСЛЕ — та же тема, контракт «польза+дверь»</span><br><br>
+«порог рождения скилла — третий повтор. объяснил одно и то же трижды — это больше не разговор, это инструкция, записывай её в файл.<br><br>у меня так набралось 146 штук, ни одного не планировал.<br><br>полная лестница — чат → скилл → субагент → код, правящий агентами: ссылка»<br><br>
+<span class="good">Не кликнул — унёс правило «третий повтор = пиши скилл», можно применить сегодня. Кликнул — получил лестницу.</span></div>
+</div>
+
+<h2>Пять рабочих форм тизера (выбирать по материалу, не по настроению)</h2>
+<table>
+<tr><th>Форма</th><th>Что уносит некликнувший</th><th>Из чего берём</th></tr>
+<tr><td><b>Правило-однострочник</b></td><td>Применимый закон («третий повтор → скилл»)</td><td>любой наш регламент, который сработал</td></tr>
+<tr><td><b>Грабля</b></td><td>Чего НЕ делать + цена ошибки в цифрах</td><td>факап дня, разбор сбоя</td></tr>
+<tr><td><b>Диагностика за минуту</b></td><td>Команда/вопрос, которым читатель проверит СЕБЯ</td><td>наши гейты и сторожа</td></tr>
+<tr><td><b>Цифра с выводом</b></td><td>Замер + что он означает (не голая цифра)</td><td>ДР, счётчики, аудиты</td></tr>
+<tr><td><b>Мини-рецепт</b></td><td>3 шага, которые работают отдельно от поста</td><td>скиллы, приёмы, промпты</td></tr>
+</table>
+
+<h2>Что предлагаю сделать (порядок = ценность×скорость)</h2>
+<table>
+<tr><th>#</th><th>Шаг</th><th>Цена</th></tr>
+<tr><td>1</td><td>Каденс в живую группу: с 16/день на 1–2/день + вернуть людям эфир. Это чинит самую громкую боль сегодня</td><td>решение Антона, 0 работы</td></tr>
+<tr><td>2</td><td>Переписать контракт тизера в <code>episode_adapter.py</code>: «cold open + клиффхэнгер» → «завершённая польза + дверь», добавить обязательное поле <code>takeaway</code></td><td>~1 час</td></tr>
+<tr><td>3</td><td>Гейт в <code>slop_gate.py</code>: тизер без takeaway = FAIL, а не WARN. Сейчас там только W7 «нет выхода» уровня WARN</td><td>~30 мин</td></tr>
+<tr><td>4</td><td>Замкнуть метрики: distributor пишет в pub_ledger → суточный снапшот комментов/переходов. Без этого следующее ретро снова будет на ощупь</td><td>~1 час</td></tr>
+<tr><td>5</td><td>Свести цифру длины к одной (240 для чатов, 370 для канала — но одна истина, не три)</td><td>15 мин</td></tr>
+<tr><td>6</td><td>Сессия Наташи: показать ей эти 5 цитат + 57 её заготовок, переписать 3 старых тизера в новой форме, сравнить</td><td>её сессия</td></tr>
+</table>
+
+<div class="sub" style="margin-top:24px">Собрано на хабе HP17, 06.08.2026 14:3x Лиссабон. Замер сделан по живой истории канала, не по памяти.</div>
+</body></html>

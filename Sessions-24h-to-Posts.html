@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Сессии за 24ч → черновики постов · 05.08.2026</title>
+<style>
+:root{--bg:#0f1115;--panel:#171a21;--line:#2a2e37;--fg:#e6e6e6;--dim:#9aa3b2;
+--ok:#4ade80;--warn:#fbbf24;--bad:#f87171;--acc:#60a5fa}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;background:var(--bg);color:var(--fg);
+font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.5}
+h1{font-size:22px;margin:0 0 4px}
+h2{font-size:16px;margin:28px 0 10px;color:var(--acc);font-weight:600}
+.sub{color:var(--dim);font-size:13px;margin-bottom:20px}
+.cards{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:8px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;min-width:150px;flex:1}
+.card .n{font-size:26px;font-weight:700}
+.card .l{color:var(--dim);font-size:12px;margin-top:2px}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:13.5px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+code{background:#0b0d11;padding:1px 5px;border-radius:4px;font-size:12.5px;color:#c9d1d9}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+.dr{color:var(--acc);font-weight:600}
+ul{margin:8px 0 0;padding-left:20px}li{margin:6px 0}
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--warn);
+border-radius:8px;padding:12px 16px;margin-top:10px}
+.foot{color:var(--dim);font-size:12px;margin-top:28px;border-top:1px solid var(--line);padding-top:12px}
+</style></head><body>
+
+<h1>Сессии за 24 часа → черновики постов</h1>
+<div class="sub">окно 04.08 11:42 UTC — 05.08 11:42 UTC · узел hp17 · источник: голосовая Антона <code>hub:5138</code> · всё draft-first, наружу ничего не ушло</div>
+
+<div class="cards">
+  <div class="card"><div class="n">105</div><div class="l">сессий с изменениями на диске</div></div>
+  <div class="card"><div class="n">15</div><div class="l">Deep Research за окно</div></div>
+  <div class="card"><div class="n">16</div><div class="l">черновиков написано</div></div>
+  <div class="card"><div class="n ok">16/16</div><div class="l">прошли slop_gate + platform_gate</div></div>
+  <div class="card"><div class="n bad">0</div><div class="l">опубликовано наружу</div></div>
+</div>
+
+<h2>Черновики: сессия → пост</h2>
+<div class="wrap"><table>
+<tr><th>#</th><th>черновик</th><th>о чём</th><th>сессия</th><th>ДР</th><th>гейт</th></tr>
+<tr><td>1</td><td><code>3332-otkaza-v-tishine</code></td><td>роботы не стартовали: 3332 отказа в журнале, который никто не читал</td><td>49b832d4</td><td>—</td><td class="ok">PASS</td></tr>
+<tr><td>2</td><td><code>393-pravila-bez-dveri</code></td><td>78% наших правил невозможно нарушить заметно</td><td>97953294 + 815022e4</td><td>—</td><td class="ok">PASS</td></tr>
+<tr><td>3</td><td><code>296-bekapov-za-nedelyu</code></td><td>обслуживание съело работу: 296 бэкапов, рекорд 52 в одной сессии</td><td>565c1aba</td><td>—</td><td class="ok">PASS</td></tr>
+<tr><td>4</td><td><code>golosovye-3-6-procenta</code></td><td>из 467 голосовых в текст доехали 17; знаменатель врал вдвое</td><td>79cc32fd</td><td>—</td><td class="ok">PASS</td></tr>
+<tr><td>5</td><td><code>dr-zb01-kitayskie-llm</code></td><td>искали дешёвого ревьюера, нашли совместимость без обёрток</td><td>1f4d1d98 + 621edcb2</td><td class="dr">ZB-01</td><td class="ok">PASS</td></tr>
+<tr><td>6</td><td><code>dr-zb02-zb13-agentnye-brauzery</code></td><td>браузер живёт столько же, сколько агент; ai-браузеры мимо</td><td>f728270f + 1614503d</td><td class="dr">ZB-02, ZB-13</td><td class="ok">PASS</td></tr>
+<tr><td>7</td><td><code>dr-zb03-ack-protokol</code></td><td>подтверждение обязано цитировать id, молчание не сигнал</td><td>d784b1d1</td><td class="dr">ZB-03</td><td class="ok">PASS</td></tr>
+<tr><td>8</td><td><code>dr-zb04-06-bezlaktoznoe</code></td><td>три ДР на бытовой вопрос; ценность в уровнях уверенности</td><td>9d379cf4 + ce91dab9</td><td class="dr">ZB-04/05/06</td><td class="ok">PASS</td></tr>
+<tr><td>9</td><td><code>dr-zb07-lebedev-stil</code></td><td>переносить дисциплину, а не костюм; метрика — открытия репо</td><td>4f3f80ae + 09209dff</td><td class="dr">ZB-07</td><td class="ok">PASS</td></tr>
+<tr><td>10</td><td><code>dr-zb08-geo-logi</code></td><td>«чаще краулит — чаще цитирует» опровергнуто</td><td>aeece179</td><td class="dr">ZB-08</td><td class="ok">PASS</td></tr>
+<tr><td>11</td><td><code>dr-zb09-popadanie-v-otvety</code></td><td>13845 визитов краулеров и ноль в индексе — почему</td><td>aeece179 + 29135523 + 238d95a3</td><td class="dr">ZB-09</td><td class="ok">PASS</td></tr>
+<tr><td>12</td><td><code>dr-zb10-golos-ciframi</code></td><td>узнаваемость живёт в ритме: 35% фраз короче 7 слов</td><td>12466bb1</td><td class="dr">ZB-10</td><td class="ok">PASS</td></tr>
+<tr><td>13</td><td><code>dr-zb11-kvorum-veera</code></td><td>ждать полного веера — антипаттерн; закрываем по кворуму</td><td>e06b3b76 + 9c7fa618</td><td class="dr">ZB-11</td><td class="ok">PASS</td></tr>
+<tr><td>14</td><td><code>dr-zb12-finetune-golosa</code></td><td>мимикрия по промпту против голоса по умолчанию</td><td>6ae34f04</td><td class="dr">ZB-12</td><td class="ok">PASS</td></tr>
+<tr><td>15</td><td><code>dr-zb14-recall-ne-nashel</code></td><td>близость 0.81, место 225 из 14493, воронка 60 — параметр устарел</td><td>fa5eef31 + d40962cd</td><td class="dr">ZB-14</td><td class="ok">PASS</td></tr>
+<tr><td>16</td><td><code>dr-arxiv-moderaciya</code></td><td>почему свежий аккаунт держат в модерации</td><td>раннер 05.08 01:25</td><td class="dr">08-05-ZB-01</td><td class="ok">PASS</td></tr>
+</table></div>
+
+<h2>Гейты</h2>
+<div class="wrap"><table>
+<tr><th>гейт</th><th>результат</th><th>что было</th></tr>
+<tr><td><code>slop_gate --tier medium</code></td><td class="ok">16 / 16 PASS</td><td>остались только WARN: ровный ритм и мало «я» — лечится вычиткой Антона</td></tr>
+<tr><td><code>platform_gate facebook/medium</code></td><td class="ok">16 / 16 PASS</td><td>все медиумы ≤ 2000 знаков</td></tr>
+<tr><td>тизеры ≤ 240</td><td class="ok">16 / 16</td><td>от 173 до 207 знаков</td></tr>
+<tr><td>HB1-unproven-claim</td><td class="warn">4 срабатывания → починено</td><td>слова «гипотеза» / «не подтверждено» в повествовании переписаны в форму с явным маркером ✅ / ⛔</td></tr>
+</table></div>
+
+<h2>Долги: пока не закрыты, наружу не идёт</h2>
+<div class="note">
+<ul>
+<li><strong>Гейт Наташи (§3.2)</strong> — ни один черновик не публикуется без её ОК. Часы автопубликации <strong>не взведены</strong>: черновики лежат в <code>_drafts</code>, а не в очереди <code>approval_clock place</code>.</li>
+<li><strong>Артефакты ДР за 04–05.08 не выложены в GitHub.</strong> Папка живая — <code>Palo-Alto-AI-Research-Lab/the-journey/artifacts/deep-research</code>, 26 отчётов, свежайший от 04.07. Все 12 ДР-черновиков зовут «забирайте отчёты у нас» — <strong>CTA станет правдой только после выкладки</strong>.</li>
+<li><strong>Развилка авторства (§3.3)</strong> по каждому черновику: вычитал Антон — его текст; уходит как есть — зачин Майкрофта первой строкой.</li>
+<li>Черновик про безлактозное трогает здоровье — нужен отдельный взгляд Антона на формулировки.</li>
+</ul>
+</div>
+
+<div class="foot">
+собрано детерминированно: <code>session_scan_24h.py</code> по timestamp строк транскрипта (не mtime — хук трогает файл без работы) · реестр ДР <code>_DR-Registry.md</code> · карточка задачи <code>10-Tasks/task-sessions-24h-to-posts-2026-08-05.md</code> · 05.08.2026
+</div>
+</body></html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Мега-реестр задач: что уже сделано (реколл 06.08.2026)</title>
+<style>
+:root{--bg:#0f1115;--fg:#e6e9ef;--dim:#9aa4b2;--card:#171a21;--line:#262b36;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--acc:#58a6ff}
+@media (prefers-color-scheme: light){:root{--bg:#f6f7f9;--fg:#12151a;--dim:#5b6472;--card:#fff;--line:#e2e5ea}}
+*{box-sizing:border-box}body{margin:0;padding:24px;background:var(--bg);color:var(--fg);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:26px 0 10px;color:var(--acc)}
+.sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.k{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+.k b{display:block;font-size:26px;line-height:1.1}.k span{color:var(--dim);font-size:12px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:13.5px}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+tr:last-child td{border-bottom:none}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-size:12.5px}
+.wrap{overflow-x:auto}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Мозг и волт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Dedup-Dashboard.html">&larr; Dedup-Dashboard</a> · <a href="Memory-AB-Demo.html">Memory-AB-Demo &rarr;</a></span></div>
+
+<h1>Мега-реестр задач: реколл «что уже сделано»</h1>
+<div class="sub">Хаб A-2022BAYAREA · 6 августа 2026, 15:00 · ответ на голосовую Антона от 05.08 21:32 (единый реестр + будильник + зависимости)</div>
+
+<div class="grid">
+  <div class="k"><b>635</b><span>карточек в реестре</span></div>
+  <div class="k"><b class="ok">14/14</b><span>полей из голосовой уже в схеме</span></div>
+  <div class="k"><b class="ok">8</b><span>статусов (все, что просил)</span></div>
+  <div class="k"><b class="warn">63</b><span>просрочены проверкой</span></div>
+  <div class="k"><b class="bad">0</b><span>сессий поднял диспетчер</span></div>
+  <div class="k"><b class="warn">29</b><span>блокеров прозой (машина не видит)</span></div>
+</div>
+
+<h2>1. Пункты голосовой против того, что уже стоит на машине</h2>
+<div class="wrap"><table>
+<tr><th>Что просил Антон</th><th>Состояние</th><th>Где это живёт</th></tr>
+<tr><td>Один реестр вместо разрозненных списков</td><td class="ok">✅ есть с 07.07</td><td><code>10-Tasks/task-*.md</code> = источник истины, 635 карточек; витрина <code>_Dashboards/Task-Backlog.html</code></td></tr>
+<tr><td>Обязательные поля (название, описание, источник, статус, ответственный, даты, критерий, зависимости, связи, причина отмены)</td><td class="ok">✅ все в схеме</td><td><code>state · priority · type · owner · created_at · touched_at · review_after · blocked_by · blocks · supersedes · born_from · related · evidence · outcome</code></td></tr>
+<tr><td>Статусы: идея / запланировано / в работе / завершено / отменено / заморожено / мутировало / ждёт зависимости</td><td class="ok">✅ 8 статусов</td><td><code>inbox · open · wip · blocked · done · dropped · someday · archived</code>; «мутировало» = поле <code>supersedes</code></td></tr>
+<tr><td>Дата следующей проверки («померим через месяц»)</td><td class="ok">✅ поле есть, заполнено у 376</td><td><code>review_after:</code>; ближайшие даты: 11.08 (дашборды), 18.08 (Firefox), 01.09 (пачка legacy)</td></tr>
+<tr><td>Зависимости «после A,B,C делаем D»</td><td class="warn">🟡 поле есть, но 29 блокеров записаны прозой</td><td><code>blocked_by</code> ждёт ссылок <code>[[task-...]]</code>, иначе задача ждёт вечно</td></tr>
+<tr><td>Робот, который сам будит по дате и по закрытым зависимостям</td><td class="ok">✅ построен 05.08 вечером</td><td><code>registry_wake.py</code> + задача Windows «Claude Registry Wake» 05:00; сегодня отработала в 05:00, вернула «есть что будить»</td></tr>
+<tr><td>Робот сам стартует сессии, а не шлёт четвёртый дайджест</td><td class="bad">❌ не подключён</td><td><code>registry_dispatch.py</code> написан (отбор + сид + кап 3/сутки + маршрут «сам / чип Антону»), но сессии-диспетчера в расписании НЕТ и леджер <code>_registry_dispatch.jsonl</code> пуст</td></tr>
+<tr><td>Регулярный review (неделя / месяц)</td><td class="warn">🟡 частично</td><td>ночной аудит + «Claude Hanging Tasks Digest» 05:52 живы; недельного разбора полки <code>someday</code> (34 карточки) как рутины нет</td></tr>
+<tr><td>Склейка roadmap / backlog / улучшений / DR</td><td class="ok">✅ ссылками, не копией</td><td><code>04-Projects/ROADMAP.md</code> · <code>00-System/_Improvements-Backlog.md</code> · <code>_DR-Registry</code> · <code>_Registry-of-Registries.md</code></td></tr>
+</table></div>
+
+<h2>2. Что будильник видит прямо сейчас</h2>
+<div class="wrap"><table>
+<tr><th>Корзина</th><th>Сколько</th><th>Самое старое</th></tr>
+<tr><td>🔔 Срок наступил</td><td class="bad">63</td><td>CRM-сенсоры на хабе, просрочено 25 дней</td></tr>
+<tr><td>⏰ Срок в ближайшие 3 дня</td><td>11</td><td>07.08: Маяк machine.env, стартер-кит Ильи, CLAUDE.md у жёлтой черты</td></tr>
+<tr><td>🥀 Без даты и без хода &gt;30 дней</td><td class="warn">4</td><td>vault git 1734 D / 505 M, лонгрид SQLite Graph RAG (33 дня)</td></tr>
+<tr><td>🧱 Блокер прозой (машина не проверит)</td><td class="warn">29</td><td>ждут замены текста на ссылку <code>[[task-...]]</code></td></tr>
+</table></div>
+
+<h2>3. История: почему реестр выглядит распухшим</h2>
+<div class="wrap"><table>
+<tr><th>Дата</th><th>Что было</th></tr>
+<tr><td>28.06</td><td>первый реестр (SQLite на ноуте) после двух потерянных задач из шины</td></tr>
+<tr><td>04-07.07</td><td>приказ Антона «журнал сделанных и несделанных с перелинковкой» → переезд на markdown-first, единственный писатель витрины на Маяке</td></tr>
+<tr><td>17.07</td><td>kill-review: из 100+ «открытых» 66% оказались археологией (29 done, 16 superseded); несделанных 132→74, P0 8→1</td></tr>
+<tr><td>27.07</td><td>найден второй реестр рядом: корзина голосового триажа (73 задачи), приклеен трубой в <code>10-Tasks</code></td></tr>
+<tr><td>05.08</td><td>по этой самой голосовой построены будильник и диспетчер; замер в тот день: 57 задач с наступившим сроком, старейшая ждала с 12 июля</td></tr>
+</table></div>
+
+<h2>4. Вывод</h2>
+<p>Реестр строить заново не нужно: он есть, схема закрывает голосовую почти целиком. Дырка ровно одна и она последняя в трубе: <b>будильник звонит, но никто не встаёт</b>. Диспетчер написан, но не подключён к планировщику, поэтому 63 просроченных проверки лежат так же, как лежали.</p>
+
+</body></html>

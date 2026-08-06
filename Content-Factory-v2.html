@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контент-фабрика v2 — карта бизнес-процесса</title>
+<style>
+  :root{
+    --bg:#0f1419; --panel:#1a2230; --panel2:#212c3d; --ink:#e8edf4; --mut:#94a3b8;
+    --line:#33415a; --accent:#5e4ae3; --teal:#1fb6a8; --amber:#e0a23c; --green:#33b96b;
+    --red:#e0556b; --blue:#3b82f6; --pink:#d65db1;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 22px 60px}
+  h1{font-size:26px;margin:0 0 4px}
+  h2{font-size:18px;margin:34px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+  .sub{color:var(--mut);font-size:14px;margin-bottom:6px}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--mut);margin-top:8px}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .grid{display:grid;gap:14px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel);border-radius:10px;overflow:hidden}
+  th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--panel2);color:#cdd7e6;font-weight:600}
+  tr:last-child td{border-bottom:none}
+  .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:600}
+  .ok{background:rgba(51,185,107,.16);color:#62e29b}
+  .warn{background:rgba(224,162,60,.16);color:#f0c277}
+  .block{background:rgba(224,85,107,.16);color:#f08aa0}
+  .todo{background:rgba(148,163,184,.16);color:#b8c4d6}
+  .sess{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+  .sess .card{padding:13px 15px}
+  .sess h3{margin:0 0 4px;font-size:14.5px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .sess p{margin:5px 0 0;font-size:12.7px;color:var(--mut)}
+  .ctr{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:12px}
+  .ctr .card{text-align:center;padding:15px 10px}
+  .ctr .n{font-size:30px;font-weight:700}
+  .ctr .l{font-size:12px;color:var(--mut);margin-top:3px}
+  .note{font-size:12.5px;color:var(--mut);margin-top:8px}
+  .tag{font-size:11px;color:var(--mut);background:var(--panel2);padding:1px 7px;border-radius:6px;border:1px solid var(--line)}
+  svg{width:100%;height:auto;background:#10161f;border:1px solid var(--line);border-radius:12px}
+  .em{color:var(--ink);font-weight:600}
+  a{color:#7aa7ff}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Content-Drafts-Backlog.html">&larr; Content-Drafts-Backlog</a> · <a href="Content-Gate-Audit.html">Content-Gate-Audit &rarr;</a></span></div>
+<div class="wrap">
+
+  <h1>🏭 Контент-фабрика v2 — карта бизнес-процесса</h1>
+  <div class="sub">Голос Антона → много форматов → много площадок → цитируют сами AI. Публичное reality-show о превращении не-программиста в AI-native билдера. Снимок: <b>2026-06-30</b> · хаб A-2022BAYAREA + ноут + машина Натальи.</div>
+  <div class="legend">
+    <span><span class="dot" style="background:var(--green)"></span>готово</span>
+    <span><span class="dot" style="background:var(--amber)"></span>черновик / ждёт DR</span>
+    <span><span class="dot" style="background:var(--red)"></span>ждёт решения Антона</span>
+    <span><span class="dot" style="background:var(--mut)"></span>не начато</span>
+  </div>
+
+  <!-- ============ FLOW MAP ============ -->
+  <h2>🗺️ Как живёт один кусок контента — от голоса до бессмертия в AI</h2>
+  <svg viewBox="0 0 1140 760" role="img" aria-label="Карта бизнес-процесса контент-фабрики">
+    <defs>
+      <marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+      </marker>
+      <style>
+        .b{rx:11;ry:11;stroke-width:1.5}
+        .t{fill:#e8edf4;font:600 14px Segoe UI,Arial;dominant-baseline:middle}
+        .ts{fill:#cdd7e6;font:500 11.5px Segoe UI,Arial;dominant-baseline:middle}
+        .tm{fill:#94a3b8;font:500 11px Segoe UI,Arial}
+        .ln{stroke:#64748b;stroke-width:1.6;fill:none}
+        .stage{fill:#7c8aa3;font:700 11px Segoe UI,Arial;letter-spacing:1px}
+      </style>
+    </defs>
+
+    <!-- STAGE 1 SOURCES -->
+    <text x="20" y="34" class="stage">1 · ИСТОЧНИК</text>
+    <rect x="20" y="44" width="250" height="56" class="b" fill="#202a3a" stroke="#3b82f6"/>
+    <text x="38" y="66" class="t">🎙️ Голос Антона</text>
+    <text x="38" y="85" class="ts">TG-хаб «00 Архив», авто-транскрипт</text>
+    <rect x="300" y="44" width="250" height="56" class="b" fill="#202a3a" stroke="#3b82f6"/>
+    <text x="318" y="66" class="t">🏗️ Авто-контент</text>
+    <text x="318" y="85" class="ts">логи стройки · выступления · грабли</text>
+    <text x="600" y="64" class="tm">оба = «сырьё дня» (HOT).</text>
+    <text x="600" y="80" class="tm">10-летний архив (COLD) — по теме через RAG, не вываливаем.</text>
+
+    <!-- arrows to triage -->
+    <path d="M145,100 L145,128" class="ln" marker-end="url(#ar)"/>
+    <path d="M425,100 L425,128" class="ln" marker-end="url(#ar)"/>
+
+    <!-- STAGE 2 TRIAGE -->
+    <text x="20" y="148" class="stage">2 · ТРИАЖ <tspan fill="#62e29b">(voice_triage.py · 3×/день)</tspan></text>
+    <rect x="20" y="158" width="530" height="78" class="b" fill="#1a2230" stroke="#1fb6a8"/>
+    <text x="38" y="180" class="ts">Сортировка каждой заметки на 3 корзины:</text>
+    <rect x="40" y="192" width="150" height="34" class="b" fill="#222c3d" stroke="#33415a"/>
+    <text x="56" y="210" class="ts">🔧 задача</text>
+    <rect x="205" y="192" width="150" height="34" class="b" fill="#222c3d" stroke="#33415a"/>
+    <text x="221" y="210" class="ts">💎 альфа</text>
+    <rect x="370" y="192" width="160" height="34" class="b" fill="#2a2438" stroke="#d65db1"/>
+    <text x="386" y="210" class="ts">📝 пост ← это контент</text>
+
+    <!-- side outputs -->
+    <path d="M115,226 L115,250 L760,250 L760,238" class="ln" marker-end="url(#ar)"/>
+    <text x="610" y="246" class="tm">🔧 → hanging-tasks-digest (TG)</text>
+    <path d="M280,226 L280,266 L760,266 L760,288" class="ln" marker-end="url(#ar)"/>
+    <text x="610" y="284" class="tm">💎 → alpha-to-tg (TG-папка)</text>
+
+    <!-- post -> base -->
+    <path d="M450,226 L450,300" class="ln" marker-end="url(#ar)"/>
+
+    <!-- STAGE 3 BASE -->
+    <text x="300" y="312" class="stage">3 · ЦЕНТРАЛЬНАЯ БАЗА</text>
+    <rect x="300" y="322" width="300" height="50" class="b" fill="#1a2230" stroke="#5e4ae3"/>
+    <text x="318" y="347" class="t">🧠 Волт — единый источник истины</text>
+    <path d="M450,372 L450,400" class="ln" marker-end="url(#ar)"/>
+
+    <!-- STAGE 4 EPISODE -->
+    <text x="300" y="412" class="stage">4 · ЭПИЗОД <tspan fill="#62e29b">(episode_adapter.py · /episode)</tspan></text>
+    <rect x="300" y="422" width="300" height="56" class="b" fill="#1a2230" stroke="#5e4ae3"/>
+    <text x="318" y="444" class="t">🎬 Эпизод сериала</text>
+    <text x="318" y="464" class="ts">season · arc · № · клиффхэнгер (reality-show)</text>
+
+    <!-- fan out to 4 tiers -->
+    <path d="M360,478 L150,512" class="ln" marker-end="url(#ar)"/>
+    <path d="M420,478 L400,512" class="ln" marker-end="url(#ar)"/>
+    <path d="M480,478 L660,512" class="ln" marker-end="url(#ar)"/>
+    <path d="M540,478 L920,512" class="ln" marker-end="url(#ar)"/>
+
+    <!-- STAGE 5 TIERS + PLATFORMS -->
+    <text x="20" y="506" class="stage">5 · ТИРЫ → ПЛОЩАДКИ <tspan fill="#94a3b8">(draft-first · голос = Opus)</tspan></text>
+
+    <!-- teaser -->
+    <rect x="20" y="516" width="250" height="92" class="b" fill="#202a3a" stroke="#1fb6a8"/>
+    <text x="36" y="536" class="t">🪝 ТИЗЕР <tspan class="ts">240–370 зн.</tspan></text>
+    <text x="36" y="558" class="ts">RU → ClawRus (мегагруппа)</text>
+    <text x="36" y="576" class="ts">EN → X / Twitter</text>
+    <text x="36" y="596" class="tm">зовёт «полное → тут»</text>
+
+    <!-- medium -->
+    <rect x="285" y="516" width="250" height="92" class="b" fill="#202a3a" stroke="#3b82f6"/>
+    <text x="301" y="536" class="t">📄 СРЕДНИЙ РИД</text>
+    <text x="301" y="558" class="ts">RU → FB · TG-канал RU</text>
+    <text x="301" y="576" class="ts">EN → X · TG-канал EN</text>
+    <text x="301" y="596" class="tm">+ CTA co-founder ↓ лонгрид</text>
+
+    <!-- longread -->
+    <rect x="550" y="516" width="250" height="92" class="b" fill="#202a3a" stroke="#e0a23c"/>
+    <text x="566" y="536" class="t">📕 ЛОНГРИД</text>
+    <text x="566" y="558" class="ts">RU+EN → Reddit · Medium</text>
+    <text x="566" y="576" class="ts">→ GitHub (канон)</text>
+    <text x="566" y="596" class="tm">выверенная история + CTA</text>
+
+    <!-- devlog -->
+    <rect x="815" y="516" width="250" height="92" class="b" fill="#251f2e" stroke="#d65db1"/>
+    <text x="831" y="536" class="t">🛠️ ДЕВ-ЛОГ <tspan class="ts">firehose</tspan></text>
+    <text x="831" y="558" class="ts">EN → GitHub (+Reddit/Medium)</text>
+    <text x="831" y="576" class="ts">все грабли + наши Deep Research</text>
+    <text x="831" y="596" class="tm">машинно-читаемо (GEO)</text>
+
+    <!-- to GEO loop -->
+    <path d="M145,608 L145,648 L520,648 L520,664" class="ln" marker-end="url(#ar)"/>
+    <path d="M410,608 L410,648 L520,648" class="ln"/>
+    <path d="M675,608 L675,648 L520,648" class="ln"/>
+    <path d="M940,608 L940,648 L520,648" class="ln"/>
+
+    <!-- STAGE 6 GEO LOOP / TWIN -->
+    <text x="300" y="672" class="stage">6 · GEO-ПЕТЛЯ → ЦЕЛЬ №1</text>
+    <rect x="300" y="676" width="248" height="58" class="b" fill="#1a2230" stroke="#33b96b"/>
+    <text x="316" y="699" class="t">🤖 LLM индексируют и</text>
+    <text x="316" y="719" class="t">ЦИТИРУЮТ нас</text>
+    <path d="M548,705 L588,705" class="ln" marker-end="url(#ar)"/>
+    <rect x="592" y="676" width="300" height="58" class="b" fill="#1a2230" stroke="#33b96b"/>
+    <text x="608" y="699" class="t">🧬 Цифровой двойник Антона</text>
+    <text x="608" y="719" class="ts">«живёт» в ответах AI всему миру</text>
+
+    <!-- cross-link annotation -->
+    <text x="915" y="699" class="tm">⭐ кросс-ссылки</text>
+    <text x="915" y="714" class="tm">связывают тиры</text>
+    <text x="915" y="729" class="tm">и языки в граф</text>
+  </svg>
+
+  <!-- ============ TIER MATRIX ============ -->
+  <h2>📊 Матрица: тир × площадка × язык (контракт, решено Антоном 29.06)</h2>
+  <table>
+    <tr><th>Тир</th><th>Длина</th><th>RU-площадки</th><th>EN-площадки</th><th>Экшен / ссылка вниз</th></tr>
+    <tr><td><b>🪝 Тизер</b></td><td>240–370 зн.</td><td>ClawRus (мегагруппа)</td><td>X / Twitter</td><td>«читай полное тут» → средний/лонг</td></tr>
+    <tr><td><b>📄 Средний рид</b></td><td>~0.5–2.2к зн.</td><td>FB · TG-канал RU</td><td>X · TG-канал EN</td><td>«подробнее → лонгрид» <b>+ CTA co-founder</b></td></tr>
+    <tr><td><b>📕 Лонгрид</b></td><td>длинный</td><td>Reddit · Medium · GitHub</td><td>Reddit · Medium · GitHub</td><td>выверенная история <b>+ CTA co-founder</b></td></tr>
+    <tr><td><b>🛠️ Дев-лог</b></td><td>raw / макс</td><td>GitHub (+зеркала)</td><td>GitHub (+зеркала)</td><td>ссылки на наши Deep Research</td></tr>
+  </table>
+  <div class="note">⭐ <b>Кросс-ссылка:</b> каждый тир зовёт вниз к более длинному; X↔«RU в Telegram». &nbsp; ⭐ <b>CTA co-founder</b> (средний+лонг): фолловьте + WhatsApp <b>+1&nbsp;341&nbsp;222&nbsp;9178</b> — авторизованный публичный контакт. &nbsp; Лонгриды кладём <b>и RU, и EN</b>. FB = средний рид (не тизер).</div>
+
+  <!-- ============ SESSIONS STATUS ============ -->
+  <h2>🧩 Семь рабочих сессий (S0–S6) — между всеми машинами</h2>
+  <div class="sess">
+    <div class="card"><h3>S0 · Аудит фабрик <span class="pill ok">готово</span></h3><p>Инвентаризация всех рутин → KEEP/PAUSE. Деливери: <span class="tag">factories-audit.md</span></p></div>
+    <div class="card"><h3>S1 · Архитектор спеки <span class="pill block">ждёт Антона</span></h3><p>Контракт тиров решён; decision-note до v2 ждёт ответов Антона + S2/S3. Владелец источника истины.</p></div>
+    <div class="card"><h3>S2 · GEO / дистрибуция <span class="pill warn">v0 · ждёт DR</span></h3><p>Плейбук «где постить для AI» собран (v0), DR-промпт готов. <span class="tag">→ Наталья</span></p></div>
+    <div class="card"><h3>S3 · Reality-show движок <span class="pill warn">v0 · ждёт DR</span></h3><p>Палитра драматургии + спека скилла; DR-промпт готов. <span class="tag">→ Наталья</span></p></div>
+    <div class="card"><h3>S4 · Голос → контент <span class="pill ok">готово /tt</span></h3><p>Вход+триаж расширены (posts.jsonl, seed-episode). Кормит S5.</p></div>
+    <div class="card"><h3>S5 · Адаптеры по тирам <span class="pill ok">готово /tt</span></h3><p>1 пост → 7 черновиков; CTA зашит; мост в публикацию. <span class="tag">/episode</span></p></div>
+    <div class="card"><h3>S6 · Дев-лог GEO-лейн <span class="pill ok">готово /tt</span></h3><p>Firehose-сборщик + дом в GitHub (llms.txt, robots.txt уже есть).</p></div>
+  </div>
+  <div class="note"><b>Делёжка:</b> 🟣 Наталья (её ноут) — S2 + S3 (ресёрч+креатив). 🔵 Антон (хаб) — S0, S1, S6-финал, сверка S4/S5.</div>
+
+  <!-- ============ COUNTERS ============ -->
+  <h2>🔢 Что уже наработано (живой снимок)</h2>
+  <div class="ctr">
+    <div class="card"><div class="n" style="color:var(--teal)">13</div><div class="l">пост-материалов в триаже<br>(11 public · 2 personal)</div></div>
+    <div class="card"><div class="n" style="color:var(--pink)">4</div><div class="l">эпизода собрано<br>(черновики)</div></div>
+    <div class="card"><div class="n" style="color:var(--amber)">10</div><div class="l">контент-планов<br>(content-factory-daily)</div></div>
+    <div class="card"><div class="n" style="color:var(--blue)">1</div><div class="l">дев-лог черновик<br>(06-29)</div></div>
+    <div class="card"><div class="n" style="color:var(--green)">10</div><div class="l">площадок в топологии<br>RU + EN</div></div>
+    <div class="card"><div class="n" style="color:var(--accent)">1</div><div class="l">GitHub-репо clawrush<br>(longreads/artifacts/devlog)</div></div>
+  </div>
+
+  <!-- ============ OLD FACTORIES ============ -->
+  <h2>♻️ Старые фабрики — вердикт аудита (S0)</h2>
+  <table>
+    <tr><th>Рутина</th><th>Расписание</th><th>Жив?</th><th>Вердикт</th></tr>
+    <tr><td>content-factory-daily (вход v2)</td><td>23:40</td><td><span class="pill ok">жив</span></td><td><b>KEEP</b></td></tr>
+    <tr><td>voice-triage (сердце входа)</td><td>10/15/20</td><td><span class="pill ok">жив</span></td><td><b>KEEP</b></td></tr>
+    <tr><td>alpha-to-tg · hanging-tasks-digest</td><td>04:25 · 05:54</td><td><span class="pill ok">жив</span></td><td><b>KEEP</b> (смежные)</td></tr>
+    <tr><td>facebook-diary-daily</td><td>23:26</td><td><span class="pill warn">дубль FB-тира</span></td><td><b>PAUSE</b> после армирования FB-адаптера → <span class="pill block">решает Антон</span></td></tr>
+    <tr><td>ufo-digest-weekly (источник тем)</td><td>Вс 17:07</td><td><span class="pill warn">06-28</span></td><td>UFO-пивот жив? → <span class="pill block">решает Антон</span></td></tr>
+  </table>
+
+  <!-- ============ NEXT ============ -->
+  <h2>⏭️ Что держит конвейер прямо сейчас</h2>
+  <div class="grid card" style="border-color:var(--amber)">
+    <div><span class="pill warn">DR #1</span> <b>GEO</b> — прогнать промпт во внешнем Deep Research → синтез S2 → v1.</div>
+    <div><span class="pill warn">DR #2</span> <b>Reality-show</b> — прогнать промпт → синтез в палитру S3.</div>
+    <div><span class="pill block">Решение Антона</span> facebook-diary свернуть? · ufo-digest жив? · 4 ответа S1 → decision-note v2.</div>
+    <div class="note">После DR + ответов → S1 пишет спеку v2 → S5/S6 досверяют площадки → первый реальный эпизод публикуем (draft-first, по «публикуем»).</div>
+  </div>
+
+  <div class="note" style="margin-top:26px;border-top:1px solid var(--line);padding-top:12px">
+    Источники: <span class="tag">CONTENT-FACTORY-V2-SESSIONS.md</span> <span class="tag">factories-audit.md</span> <span class="tag">geo-distribution-playbook.md</span> <span class="tag">reality-show-skill-spec.md</span> <span class="tag">decision-content-pipeline-reality-show</span> · хэндоффы S1–S6 в _machine-bus/_transit. Голос Антона = только Opus · draft-first наружу · приватность HARD (искл. публичный WhatsApp co-founder).
+  </div>
+
+</div>
+</body>
+</html>

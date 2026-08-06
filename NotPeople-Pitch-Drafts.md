@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Прочее · [← Dashboard-Max-Rollout](Dashboard-Max-Rollout.html) · [_doc_tracker_write →](_doc_tracker_write.md)
+[все дашборды](index.html) · категория: Прочее · [← Five-Whys-x-TRIZ](Five-Whys-x-TRIZ.html) · [Scholar-Visibility →](Scholar-Visibility.html)
 
 # NotPeople - драфты питчей (50) - НА АППРУВ
 
