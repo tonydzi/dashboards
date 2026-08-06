@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Реестр рутин — карта + gap-аудит</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--bg:#0f1115;--card:#181b22;--txt:#e8eaf0;--dim:#9aa3b2;--line:#2a2f3a;
+--ok:#3fb950;--warn:#d29922;--bad:#f85149;--none:#8b949e;--acc:#58a6ff}
+@media (prefers-color-scheme: light){:root{--bg:#f6f8fa;--card:#fff;--txt:#1f2328;--dim:#59636e;--line:#d1d9e0}}
+*{box-sizing:border-box}body{margin:0;padding:24px;background:var(--bg);color:var(--txt);
+font:15px/1.5 -apple-system,"Segoe UI",Roboto,sans-serif;max-width:1100px;margin-inline:auto}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 10px}
+.sub{color:var(--dim);font-size:13px;margin-bottom:20px}
+.cards{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 18px;min-width:120px}
+.card b{font-size:22px;display:block}.card span{color:var(--dim);font-size:12px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:14px}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+.s{font-weight:700;white-space:nowrap}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}.none{color:var(--none)}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{overflow-x:auto}
+.note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--dim);margin:14px 0}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Robots-Sessions.html">&larr; Robots-Sessions</a> · <a href="Session-Brief-2026-08-06.html">Session-Brief-2026-08-06 &rarr;</a></span></div>
+<h1>🗂️ Реестр рутин — карта + gap-аудит</h1>
+<div class="sub">Снимок 2026-07-10 · собран MacBook-Anton (Mac16) по мандату Антона (аудио 09.07: «реестры всего») ·
+канон: заметка <b>00-System/_Registry-of-Registries.md</b> в волте</div>
+
+<div class="cards">
+<div class="card"><b class="ok">6</b><span>рутин живут ✅</span></div>
+<div class="card"><b class="warn">4</b><span>наполовину 🟡</span></div>
+<div class="card"><b class="bad">1</b><span>сломано 🔴</span></div>
+<div class="card"><b class="none">3</b><span>не существуют ❌</span></div>
+</div>
+
+<h2>Твой список из аудио → что есть на самом деле</h2>
+<div class="wrap"><table>
+<tr><th>Хотим</th><th>Статус</th><th>Чем покрыто / что делать</th></tr>
+<tr><td>Чистить CLAUDE.md регулярно</td><td class="s ok">✅ есть</td><td>CLAUDE.md Guard — ежедневно, работает</td></tr>
+<tr><td>Чистить MEMORY.md регулярно</td><td class="s ok">✅ есть</td><td>Memory Index Guard (ночной) + Memory Index Tidy (Вс 23:30)</td></tr>
+<tr><td>ChatGPT-диалоги → волт каждую ночь</td><td class="s bad">🔴 сломано</td><td>ChatGPT Nightly Sync упал (код 7, 10.07 04:22) — чинить на хабе, пинг отправлен</td></tr>
+<tr><td>Claude.ai-диалоги → волт</td><td class="s warn">🟡 полуручное</td><td>скилл /claudeai-sync есть, ночной рутины нет → завести на хабе</td></tr>
+<tr><td>Grok-диалоги → волт</td><td class="s none">❌ нет</td><td>рутины не существует → построить импортёр</td></tr>
+<tr><td>Gemini-диалоги → волт</td><td class="s none">❌ нет</td><td>рутины не существует → построить импортёр</td></tr>
+<tr><td>Волт постоянно реиндексируется</td><td class="s ok">✅ есть</td><td>Brain Reindex Daily + Watchdog + Weekly full — все зелёные</td></tr>
+<tr><td>Все сессии CC → волт</td><td class="s warn">🟡 наполовину</td><td>Session Archive ✅ + session-push с Mac ✅, но «Sessions to Vault Daily» = отключена — выяснить почему</td></tr>
+<tr><td>AI-retro сессий → волт</td><td class="s warn">🟡 полуручное</td><td>/retro пишет в волт, но только когда запущен руками; авто-ретро нет</td></tr>
+<tr><td>Мониторить Telegram</td><td class="s ok">✅ есть</td><td>tg-fast-peek 60с (Mac) · TgWatch · Lead Reply Watch · Members Sweep · Chats Index (хаб)</td></tr>
+<tr><td>Мониторить WhatsApp</td><td class="s warn">🟡 ждёт тебя</td><td>мост на Mac16 собран, нужен твой QR-скан; потом завести ночной сбор → волт</td></tr>
+<tr><td>YouTube + Chrome история → волт</td><td class="s ok">✅ есть*</td><td>Browser History to Vault Daily ✅; *отдельной YouTube-истории (Takeout) нет</td></tr>
+<tr><td>Google-поиски / intentions → волт</td><td class="s none">❌ нет</td><td>есть разовый /takeout-pull → поставить на расписание</td></tr>
+<tr><td>Парсить чаты/группы под задачи</td><td class="s ok">✅ есть</td><td>WatchChannelsNightly ✅ + скилл /watch-channel</td></tr>
+</table></div>
+
+<h2>Реестры рутин по машинам (авто-шарды, обновляются ночью сами)</h2>
+<div class="wrap"><table>
+<tr><th>Машина</th><th>Шард</th><th>Роботов</th><th>Состояние 10.07</th></tr>
+<tr><td>Хаб A-2022BAYAREA</td><td>System-Automations.md (из system.db, скан 05:45)</td><td>106</td><td class="ok">96 ok · <span class="bad">1 сломан</span> · 9 откл.</td></tr>
+<tr><td>Маяк (VPS)</td><td>System-Automations-MAYAK.md</td><td>0</td><td class="warn">⚠️ шард пуст — генератор не видит cron, чинить</td></tr>
+<tr><td>MacBook-Anton (Mac16)</td><td>System-Automations-MacBook-Anton.md — <b>НОВЫЙ</b>, launchd 21:25</td><td>11</td><td class="ok">10 ok · WA-мост ждёт QR</td></tr>
+<tr><td>Ноут ZBOOKG8</td><td class="none">❌ шарда нет</td><td>?</td><td class="none">gap — нужен близнец генератора</td></tr>
+<tr><td>MacBook-Ruslana</td><td class="none">❌ шарда нет</td><td>?</td><td class="none">gap — нужен близнец генератора</td></tr>
+<tr><td>MyOwnPC-Natalia</td><td class="none">❌ шарда нет</td><td>?</td><td class="none">gap — нужен близнец генератора</td></tr>
+</table></div>
+
+<h2>Живые смотровые окна (уже существуют)</h2>
+<div class="wrap"><table>
+<tr><th>Окно</th><th>Что показывает</th></tr>
+<tr><td><a href="System-Health.html">System-Health.html</a></td><td>здоровье всей системы хаба: score, 2637 активов, что сломано (ночной скан)</td></tr>
+<tr><td><a href="Fleet-Checklist.html">Fleet-Checklist.html</a></td><td>машины флота: пульс, доктор, роль — «должно vs работает»</td></tr>
+<tr><td><a href="Robot-Registry.html">Robot-Registry.html</a></td><td>140 роботов с вердиктами Claude «оставить/решить/убрать» (снимок 05.07)</td></tr>
+<tr><td><a href="Brain-Health.html">Brain-Health.html</a></td><td>здоровье второго мозга (RAG/индекс)</td></tr>
+</table></div>
+
+<div class="note">🧒 Простыми словами: у нас уже была «карта роботов» на главном компе — она живёт и сама
+обновляется каждую ночь. Чего не было: карты роботов на остальных компах и сверки с твоим списком желаний.
+Теперь у этого Мака своя карта (тоже сама обновляется), а эта страница — сверка: 6 желаний уже работают,
+1 сломалось (ChatGPT-сбор), 4 работают наполовину, 3 ещё не построены.</div>
+</body>
+</html>

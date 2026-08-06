@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Анти-AI-slop: отчёт по четырём ресерчам</title>
+<style>
+  :root {
+    --bg: #fbfaf8; --fg: #1c1b19; --muted: #6b6660; --line: #e2ded7;
+    --card: #ffffff; --accent: #8a5a2b; --ok: #2f7a3e; --warn: #9a6b00; --bad: #a33224;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#161513; --fg:#eceae6; --muted:#9c968d; --line:#2f2d29; --card:#1e1d1a;
+            --accent:#d9a066; --ok:#6bbf7b; --warn:#d6a83a; --bad:#e07a6c; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+    font: 16px/1.55 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 72px; }
+  h1 { font-size: 28px; line-height:1.2; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 28px; font-size: 14px; }
+  h2 { font-size: 20px; margin: 40px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  h3 { font-size: 16px; margin: 22px 0 8px; }
+  p { margin: 0 0 12px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+  .card h3 { margin-top:0; }
+  .tag { display:inline-block; font-size:11px; letter-spacing:.04em; text-transform:uppercase;
+         padding:2px 8px; border-radius:20px; border:1px solid var(--line); color:var(--muted); }
+  .ok { color:var(--ok); border-color:var(--ok); }
+  .warn { color:var(--warn); border-color:var(--warn); }
+  .bad { color:var(--bad); border-color:var(--bad); }
+  .scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; margin: 0 0 14px; }
+  table { border-collapse: collapse; width:100%; min-width: 640px; font-size:14px; }
+  th, td { text-align:left; vertical-align:top; padding:9px 10px; border-bottom:1px solid var(--line); }
+  th { font-weight:600; color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+  code { background:rgba(128,128,128,.14); padding:1px 5px; border-radius:4px; font-size:13px; }
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  li { margin-bottom: 5px; }
+  .note { border-left:3px solid var(--accent); padding:10px 14px; background:var(--card);
+          border-radius:0 8px 8px 0; margin: 14px 0; }
+  .foot { margin-top:44px; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+  .kids { background:var(--card); border:1px dashed var(--line); border-radius:10px; padding:14px 16px; margin-top:28px; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Agent-Teams-When.html">&larr; Agent-Teams-When</a> · <a href="Anton-Interest-Map-15y.html">Anton-Interest-Map-15y &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>Анти-AI-slop: отчёт по четырём ресерчам</h1>
+<p class="sub">DR26-07-30-MACANTON-01-1456 · заказал Антон 30.07.2026 около 03:43, один вопрос в четыре вендора · отчёт собран 31.07.2026 на машине MyOwnPC-Natalia · три ноги прочитаны в первоисточнике, четвёртая только по пересказу</p>
+
+<h2>1. Четыре ноги: что есть на руках</h2>
+<div class="scroll">
+<table>
+<tr><th>Нога</th><th>Объём и язык</th><th>Читал ли я первичку</th><th>Где лежит</th></tr>
+<tr>
+  <td><b>ChatGPT</b></td>
+  <td>10 371 б, EN, без библиографии</td>
+  <td><span class="tag ok">да, целиком</span></td>
+  <td>принесла Наташа 31.07 → <code>_transit\antislop-dr-legs-20260731\</code></td>
+</tr>
+<tr>
+  <td><b>Grok</b></td>
+  <td>PDF 3.6 МБ, 6 страниц, RU. Внутри картинки, текстового слоя нет</td>
+  <td><span class="tag ok">да, постранично</span></td>
+  <td>там же, PDF</td>
+</tr>
+<tr>
+  <td><b>Gemini</b></td>
+  <td>51 150 б, RU, 34 источника</td>
+  <td><span class="tag ok">да, целиком</span></td>
+  <td>там же</td>
+</tr>
+<tr>
+  <td><b>Claude.ai</b></td>
+  <td>неизвестен</td>
+  <td><span class="tag bad">нет, только пересказ</span></td>
+  <td><b>не найдена нигде.</b> Искал: диски Наташи, весь волт, 621 файл импорта claude.ai, шина, живой claude.ai в двух Chrome</td>
+</tr>
+</table>
+</div>
+
+<div class="note">
+<b>Главный долг отчёта.</b> Именно из ненайденной claude.ai-ноги взяты все научные цифры, которыми мы обосновываем канон: 379 слов-паразитов ИИ (Kobak et al., Science Advances 2025), 61.3% ложных срабатываний детекторов на тех, для кого английский неродной (Liang et al. 2023), точка в конце фразы как сигнал резкости (Gunraj et al. 2016), статья 50 EU AI Act с 02.08.2026. Проверить их сейчас не по чему. Запросы на поиск ушли на MacBook-Anton и на хаб.
+</div>
+
+<h2>2. Консенсус: что сказали все четверо</h2>
+<p>Это ядро, на нём стоит скилл <code>/ai-slop</code>. Совпадение независимых вендоров, а не одно мнение.</p>
+<div class="grid">
+  <div class="card"><h3>Слоп это кластер</h3><p>Не один признак, а связка: длинное тире, ё, эмодзи, канцелярит, «не просто X, а Y», ровный ритм, введение и вывод, буллеты.</p></div>
+  <div class="card"><h3>Пересборка, не синонимы</h3><p>Замена слов не лечит. Лечит сокращение до сути (ориентир 50-70%), суть первой строкой, обрыв сразу после последнего факта.</p></div>
+  <div class="card"><h3>Рваный ритм</h3><p>Чередование ультракоротких фраз со средними. Одинаковая длина предложений и есть машинный метроном.</p></div>
+  <div class="card"><h3>Русская casual-норма</h3><p>ё в «е», длинное тире в дефис или ничего, лёгкая небрежность пунктуации. Это делает текст человечнее, а не хуже.</p></div>
+</div>
+
+<h2>3. Что каждая нога дала своего</h2>
+
+<h3>ChatGPT: практические эвристики и трезвость</h3>
+<ul>
+  <li>Готовый псевдо-ruleset: список филлеров на выпил, словарь замен («utilize» в «use»), правило «предложение длиннее 25 слов делим надвое».</li>
+  <li>Метрики проверки результата: Flesch-Kincaid, Hemingway, падение уверенности детектора.</li>
+  <li><b>Единственный, кто предупредил о перегибе:</b> избыток личных деталей и ошибок бьёт по доверию, текст без структуры становится рубленым до нечитаемости.</li>
+  <li>Честно назвал предел: алгоритм не может знать, какие детали из жизни добавить, если ему не дали персону.</li>
+</ul>
+
+<h3>Grok: самый операционный</h3>
+<ul>
+  <li><b>Порог срабатывания:</b> «кластер из 3+ маркеров разных категорий это высокий сигнал, один мягкий маркер недостаточен». Прямая поправка к нашему судье.</li>
+  <li>Техники ранжированы по силе: сокращение → ритм → ban-листы → конкретика → casual → позиция → механические замены.</li>
+  <li>Эталоны голоса занятого человека по именам: Jensen Huang (5-6 строк, одно предложение на строку), Smart Brevity (абзац 2-3 предложения), founder-регистр, русский телеграм занятых.</li>
+  <li>Русская специфика с опорой на правила 1956 года: ё факультативна, точку в очень коротком сообщении опускают, и это читается как быстро, а не холодно.</li>
+  <li>Назвал уверенность честно: High по маркерам, Medium по точным процентам сокращения.</li>
+</ul>
+
+<h3>Gemini: объясняет причину, но с гнильцой</h3>
+<ul>
+  <li><b>Математика под правилами:</b> перплексия (машина всегда берёт самое ожидаемое слово) и burstiness (разброс длин). Единственная нога, объясняющая почему наши правила работают.</li>
+  <li>Русский эталон чистки: инфостиль Ильяхова, отглагольные существительные, пассив в актив.</li>
+  <li>Инженерия под Claude: XML-теги, запреты в начало файла, few-shot из 3-5 примеров, отдельный проход рассуждений. Проверено: в нашем SKILL.md это уже так и сделано.</li>
+  <li>Назвала третий внешний репозиторий: <code>stop-slop</code>.</li>
+  <li><span class="tag bad">риск</span> Рамка всего документа: обойти детекторы Turnitin, GPTZero, Copyleaks. Это не наша задача и противоречит подписи Майкрофта.</li>
+  <li><span class="tag bad">риск</span> Предлагает выдумывать бытовые детали «даже если полностью сгенерированы искусственно».</li>
+  <li><span class="tag warn">возраст</span> Модельная база устарела (рассуждает про Claude 3.5 Sonnet), часть источников это SEO-мусор.</li>
+</ul>
+
+<h3>Claude.ai: доказательная база (по пересказу в синтезе)</h3>
+<ul>
+  <li>Kobak et al., Science Advances 2025: 379 слов, которые ИИ употребляет в разы чаще людей, «delves» в 28 раз.</li>
+  <li>Liang et al. 2023: детекторы ошибочно метят как машинный текст людей с неродным английским в 61.3% случаев. Это аргумент против ставки на детекторы.</li>
+  <li>Protect-list из проекта kjmagnan1s/anti-slop: список того, что чистка трогать не должна.</li>
+  <li>Gunraj et al. 2016: точка в конце короткого сообщения читается как резкость.</li>
+  <li>EU AI Act, статья 50: с 2 августа 2026 AI-контент положено маркировать. Ложится на нашу плашку «писал Майкрофт».</li>
+</ul>
+
+<h2>4. Расхождения и как они решены</h2>
+<div class="scroll">
+<table>
+<tr><th>Спор</th><th>Кто что говорит</th><th>Решение</th></tr>
+<tr>
+  <td>Выдумывать ли живые детали</td>
+  <td>Gemini: можно, даже полностью выдуманные. Остальные: только из реального контекста</td>
+  <td><span class="tag ok">закрыт 30.07</span> Отклонено. Нет детали в контексте, значит placeholder или обходимся без неё. Выдуманный якорь это фейк данных</td>
+</tr>
+<tr>
+  <td>Цель работы</td>
+  <td>Gemini и частично ChatGPT: обойти детекторы. Claude.ai: детекторам верить нельзя, нужна маркировка</td>
+  <td><span class="tag ok">закрыт</span> Мы не маскируемся. Ставим плашку авторства, это ещё и требование EU AI Act</td>
+</tr>
+<tr>
+  <td>Рубленые фразы</td>
+  <td>Наш скилл и Grok: рецепт. Внешний humanizer: маркер робота (#31). ru-text: избыточная парцелляция (AD-2)</td>
+  <td><span class="tag warn">открыт</span> У Антона рваный ритм замерен и реален (33-50% коротких предложений). Предложение: рецепт оставить, добавить предупреждение на 3+ обрубка подряд без нового факта</td>
+</tr>
+<tr>
+  <td>Насколько резать</td>
+  <td>Все называют 50-70%, Grok и ChatGPT оговариваются что это не догма</td>
+  <td><span class="tag ok">закрыт</span> Режем воду, а не квоту. Плотный текст без воды сокращается на 0-20% и это норма</td>
+</tr>
+</table>
+</div>
+
+<h2>5. Что из этого уже работает</h2>
+<div class="scroll">
+<table>
+<tr><th>Деталь</th><th>Что делает</th><th>Статус</th></tr>
+<tr><td><code>/ai-slop</code></td><td>Переписчик: 12 жёстких запретов, инварианты, 8 шагов, примеры до и после</td><td><span class="tag ok">построен 30.07</span> обязателен для любого ИИ-текста от лица Антона наружу</td></tr>
+<tr><td><code>slop_gate.py</code></td><td>Судья без ИИ: коды 0, 1, 2. Правила формы и опасного содержания</td><td><span class="tag ok">разложен на все 5 узлов</span> включая эту машину</td></tr>
+<tr><td><code>vanilla_scan.py</code> и <code>/taste-check</code></td><td>Частотный фильтр ванильности и вкусовой гейт</td><td><span class="tag ok">работает</span></td></tr>
+<tr><td>Спека конвейера</td><td>Писатель → гейт → рерайтер → 24 часа Наташе → копилка → публикация с хаба</td><td><span class="tag ok">описана 29.07</span></td></tr>
+</table>
+</div>
+
+<h2>6. Что не взято, но стоит взять</h2>
+<ul>
+  <li><b>Порог кластера</b> (Grok). Сейчас гейт валит пост по одному правилу. Один мягкий маркер должен давать предупреждение, а брак только связка из трёх.</li>
+  <li><b>Отдельный проход-аудит</b> (внешний humanizer). После переписывания задать себе два вопроса: что ещё звучит как ИИ и не выдумал ли я факт.</li>
+  <li><b>Исключения к каждому запрету</b> (ru-text). У них к каждому маркеру прописано, когда приём законен. У нас запреты без исключений, поэтому они рискуют срезать живой голос.</li>
+  <li><b>Эталоны по именам</b> (Grok). В скилле стиль описан прилагательными, а работает камертон.</li>
+  <li><b>Проверка на людях.</b> Мы меряли только форму текста. Ни один замер не проверял, читают ли посты лучше после обработки.</li>
+</ul>
+
+<h2>7. Внешние стандарты, которые нам порекомендовали</h2>
+<div class="scroll">
+<table>
+<tr><th>Репозиторий</th><th>Что даёт</th><th>Брать ли</th></tr>
+<tr><td><b>blader/humanizer</b><br>32.3k звёзд, MIT</td><td>33 паттерна на базе Википедии «Signs of AI writing», цикл черновик-аудит-финал, правило «образец голоса автора бьёт правила скилла»</td><td><span class="tag ok">да</span> как источник паттернов, форк не нужен</td></tr>
+<tr><td><b>talkstream/ru-text</b><br>173 звезды, MIT</td><td>17 русских маркеров с исключениями, 92 стоп-слова инфостиля, пары до и после, рубрика оценки</td><td><span class="tag warn">частично</span> типографику НЕ брать: она ставит ёлочки и длинное тире против прямого запрета Антона</td></tr>
+<tr><td><b>stop-slop</b><br>назван в gemini-ноге</td><td>skill-файл того же класса</td><td><span class="tag warn">не смотрели</span></td></tr>
+</table>
+</div>
+<p>Наше преимущество перед всеми тремя: у нас есть замеры на своих данных. 42 наших черновика против реальных текстов Антона (28.07) и 105 постов пяти живых RU-каналов про ИИ (29.07). Ни один внешний репозиторий не откалиброван под конкретного автора.</p>
+
+<div class="kids">
+<b>🧒 Простыми словами.</b> Антон задал один и тот же вопрос четырём разным умным программам: как переписывать текст робота, чтобы он читался как текст живого занятого человека. Три ответа мы прочитали, четвёртый потерялся, и обидно, что как раз в нём были все научные доказательства. Все четверо сошлись в главном: робота выдаёт не одно слово, а связка привычек, и лечится это не заменой слов, а безжалостным сокращением и рваным ритмом. Один советчик предлагал придумывать случаи из жизни, которых не было, и обманывать проверяльщиков. Мы отказались: врать в фактах нельзя, а под своими текстами мы честно пишем, что их писал робот.
+</div>
+
+<div class="foot">
+Собрано 31.07.2026, машина MyOwnPC-Natalia, оператор Наталья. Три ноги прочитаны в первоисточнике, содержимое claude.ai-ноги дано по пересказу в синтезе от 30.07 и помечено как непроверенное. Файлы посылки для хаба: <code>C:\Obsidian\_machine-bus\_transit\antislop-dr-legs-20260731\</code>
+</div>
+
+</div>
+</body>
+</html>

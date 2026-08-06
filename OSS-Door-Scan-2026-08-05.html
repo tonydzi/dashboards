@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Замер дверей в вендорских репо — 05.08.2026</title>
+<style>
+  :root { --bg:#0f1115; --card:#171a21; --line:#262b36; --ink:#e6e9ef; --dim:#9aa3b2;
+          --green:#3fb950; --yellow:#d29922; --red:#f85149; --blue:#58a6ff; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:28px 20px 60px; background:var(--bg); color:var(--ink);
+         font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif; }
+  .wrap { max-width:1080px; margin:0 auto; }
+  h1 { font-size:23px; margin:0 0 4px; font-weight:650; }
+  .sub { color:var(--dim); font-size:13px; margin-bottom:22px; }
+  .verdict { background:var(--card); border:1px solid var(--line); border-left:4px solid var(--green);
+             border-radius:10px; padding:16px 18px; margin-bottom:24px; }
+  .verdict b { color:var(--green); }
+  h2 { font-size:15px; text-transform:uppercase; letter-spacing:.06em; color:var(--dim);
+       margin:28px 0 10px; font-weight:600; }
+  .scroll { overflow-x:auto; border:1px solid var(--line); border-radius:10px; }
+  table { border-collapse:collapse; width:100%; min-width:760px; background:var(--card); }
+  th,td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--dim); font-weight:600; }
+  tr:last-child td { border-bottom:none; }
+  td.no { color:var(--yellow); white-space:nowrap; font-weight:600; }
+  td.yes { color:var(--green); white-space:nowrap; font-weight:600; }
+  .mono { font-family:ui-monospace,Consolas,monospace; font-size:13px; }
+  a { color:var(--blue); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .note { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          padding:14px 18px; margin-top:14px; }
+  .note h3 { margin:0 0 6px; font-size:14px; }
+  .note p { margin:0 0 8px; color:var(--dim); font-size:14px; }
+  .kv { color:var(--dim); font-size:13px; }
+  code { background:#0b0d11; padding:1px 5px; border-radius:4px; font-size:13px; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Миссия и проекты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Mission-Pulse-2026-08-03.md">&larr; Mission-Pulse-2026-08-03</a> · <a href="github-clawrush-mockup.html">github-clawrush-mockup &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>Куда мы стучались этой ночью — и почему не постучались</h1>
+<div class="sub">Хаб A-2022BAYAREA · 05.08.2026, 00:15–00:50 · замер живьём через <code>gh</code>, не по памяти</div>
+
+<div class="verdict">
+  <b>Итог: 0 новых PR — и это зелёный результат.</b><br>
+  По всем четырём направлениям забраны <b>ВСЕ</b> открытые issue (не выборка), совпадений,
+  которые чинит наша наработка, — ноль. Одно действие всё же сделано: фактическая строка
+  в единственный живой тред, где нас ждут (<a href="https://github.com/google-gemini/cookbook/pull/1296">gemini/cookbook #1296</a>).
+</div>
+
+<h2>Кандидаты: репо → дверь → берём/не берём</h2>
+<div class="scroll">
+<table>
+  <tr>
+    <th>Репо</th><th>Наша наработка</th><th>Что нашёл полный забор issue</th>
+    <th>Очередь</th><th>Вердикт</th>
+  </tr>
+  <tr>
+    <td class="mono">openai/<br>openai-cookbook</td>
+    <td>#1 proof-of-work gate<br>(0 searches → dead)</td>
+    <td>73 из 73 issue. Совпадения только слабые и случайные: <a href="https://github.com/openai/openai-cookbook/issues/2908">#2908</a> (слово «web search» в теле),
+        <a href="https://github.com/openai/openai-cookbook/issues/2461">#2461</a> (криптоподпись авторизации агента — другая тема).</td>
+    <td>171 открытых PR · медиана 43 дн · 31% без комментария · 70% мержей в день подачи</td>
+    <td class="no">🟡 не берём</td>
+  </tr>
+  <tr>
+    <td class="mono">anthropics/<br>claude-cookbooks</td>
+    <td>#2 состязательное ревью<br>как ритуал</td>
+    <td><a href="https://github.com/anthropics/claude-cookbooks/issues/713">#713</a> по теме — но 31.07 его <b>взял @******dugame</b>, и мы там уже 01.08 выложили материал явно «не как заявку». Второй раз входить = отбирать чужую работу.</td>
+    <td>225 открытых PR · медиана 45 дн · 52% без комментария · наших 6, холодных 5</td>
+    <td class="no">🟡 не берём<br><span class="kv">(дверь занята)</span></td>
+  </tr>
+  <tr>
+    <td class="mono">anthropics/<br>skills</td>
+    <td>#2 то же, форматом скилла</td>
+    <td>309 из 309 issue. <a href="https://github.com/anthropics/skills/issues/1385">#1385</a> — лейн самого автора: @******in2005 уже подал 4 своих PR по этому же пайплайну. Остальное — совпадения по слову «fallback».</td>
+    <td>750 открытых PR · <b>86% без единого комментария</b> · наших 2, обе холодные</td>
+    <td class="no">🟡 не берём</td>
+  </tr>
+  <tr>
+    <td class="mono">google-gemini/<br>cookbook</td>
+    <td>#3 free-tier 429 →<br>деградация в «не проверено»</td>
+    <td>21 из 21 issue. Единственное совпадение <a href="https://github.com/google-gemini/cookbook/issues/1197">#1197</a> — слово «degrade» в теле про Bidi-стриминг, не наша тема.</td>
+    <td>18 открытых PR · медиана 96 дн · 0% без комментария · 8 мержей «с улицы» из 15</td>
+    <td class="no">🟡 не берём<br><span class="kv">(но репо живое)</span></td>
+  </tr>
+  <tr>
+    <td class="mono">google-gemini/<br>gemini-cli</td>
+    <td>#4 многострочный промпт<br>→ <code>--prompt-file</code></td>
+    <td>735 из 735 issue. Ближайшее <a href="https://github.com/google-gemini/gemini-cli/issues/20293">#20293</a> — про <b>интерактивную вставку</b> в TUI (bracketed paste), а у нас argv-квотинг в headless. Разные корни, наш фикс его не чинит.</td>
+    <td>очередь не мерилась — отсечены на этапе двери</td>
+    <td class="no">🟡 не берём</td>
+  </tr>
+</table>
+</div>
+
+<h2>Что сделано вместо PR</h2>
+<div class="note">
+  <h3>Одна строка в единственную живую дверь</h3>
+  <p>Замер 29.07 уже показал: из 33 наших открытых PR смержено 0, а живой человек ответил ровно там,
+     где мы отвечали <b>конкретному человеку</b>. Такая дверь сегодня одна — ревьюер @***rpal
+     в <span class="mono">google-gemini/cookbook #1296</span> сказал «сделайте чеки зелёными и двигаем».
+     Все 10 чеков зелёные, ветка mergeable, ход за ним 4 дня → отправлен короткий фактический статус.</p>
+  <p class="kv">→ <a href="https://github.com/google-gemini/cookbook/pull/1296#issuecomment-5185571522">комментарий</a></p>
+</div>
+<div class="note">
+  <h3>Долгов молчания нет</h3>
+  <p>Проверены все 33 наших открытых PR: живых тредов, где нам ответили, а мы молчим, — ноль.
+     Во всех трёх (skills #1479, cookbook #1296, cookbooks #787) последнее слово наше.</p>
+</div>
+
+<h2>Найденный класс граблей — починен в коде</h2>
+<div class="note">
+  <h3>Гейт слышал собственное эхо</h3>
+  <p><code>/issue-match</code> выдал три «🟢 живая дверь» подряд с подписью
+     «человек писал 3 дн назад <b>(@**lo-Alto-AI-Research-Lab)</b>». Это были наши же комментарии
+     от 01.08, на которые никто не ответил. Движок отсекал от живости ботов и наши собственные issue —
+     но не наши комментарии. То есть постучаться самому было достаточно, чтобы дверь засчиталась живой.</p>
+  <p>Ошибка была «в нашу пользу» и потому невидимая: зелёный вердикт никого не заставляет перепроверять.</p>
+  <p><b>Фикс:</b> живость считается только по чужим человеческим комментариям.
+     Проверено после починки: #682 из дверей исчез, #713 честно показал реального @******dugame,
+     #1385 — 25 дней вместо 3.</p>
+</div>
+<div class="note">
+  <h3>Выборка врёт молча</h3>
+  <p>Движок смотрит 60 issue. У <span class="mono">skills</span> их 309, у
+     <span class="mono">gemini-cli</span> — 735. Прежде чем писать «дверей нет», забор должен быть полным
+     (REST, 5000 запросов в час, без search-квоты). Сегодня полный забор по 4 репо дал ноль дверей —
+     и это уже вывод, а «⚠ смотрели 60 из 309» выводом не было.</p>
+</div>
+
+</div>
+</body>
+</html>

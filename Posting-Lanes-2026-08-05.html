@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Полосы постинга, 05.08.2026</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#15181d; --muted:#6b7280; --line:#e3e6ea;
+    --good:#0f7b4f; --goodbg:#e7f6ee; --warn:#8a5a00; --warnbg:#fdf3dd;
+    --bad:#9b2226; --badbg:#fbe9e9; --accent:#1f4fd8;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1116;--card:#161b22;--ink:#e6edf3;--muted:#9aa4b2;--line:#2a313a;
+      --good:#5fd4a0;--goodbg:#102a1f;--warn:#e5b567;--warnbg:#2b2314;
+      --bad:#f08c8c;--badbg:#2c1618;--accent:#7aa2ff;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 16px 60px;background:var(--bg);color:var(--ink);
+    font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:900px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+  h2{font-size:16px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .kpis{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:6px}
+  .kpi{flex:1 1 150px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .kpi b{display:block;font-size:24px;line-height:1.1}
+  .kpi span{color:var(--muted);font-size:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:12px 14px;margin-bottom:10px}
+  .card.pick{border-left:3px solid var(--good)}
+  .hd{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+  .num{font-weight:700;font-size:13px;color:var(--muted)}
+  pre{margin:0;white-space:pre-wrap;word-break:break-word;font:14.5px/1.6 inherit}
+  .meta{color:var(--muted);font-size:12px;margin-top:8px}
+  .tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap}
+  .t-good{background:var(--goodbg);color:var(--good)}
+  .t-warn{background:var(--warnbg);color:var(--warn)}
+  .t-bad{background:var(--badbg);color:var(--bad)}
+  button{font:600 12px/1 inherit;padding:7px 11px;border-radius:7px;border:1px solid var(--line);
+    background:transparent;color:var(--accent);cursor:pointer}
+  button:active{transform:translateY(1px)}
+  .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--warn);
+    border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px}
+  .src{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13px}
+  .src li{margin-bottom:6px}
+  a{color:var(--accent)}
+  footer{margin-top:36px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Platform-Content-Map.html">&larr; Platform-Content-Map</a> · <a href="TG-Daemon-Status.html">TG-Daemon-Status &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>Полосы постинга на 05.08.2026</h1>
+<div class="sub">
+  машина MyOwnPC-Natalia · собрано 18:2x по фактам сегодняшних сессий ·
+  публикует человек, робот наружу не ходит ·
+  240 знаков это ориентир для черновиков робота, не для твоего текста
+</div>
+
+<div class="kpis">
+  <div class="kpi"><b>0 / 3</b><span>полос закрыто</span></div>
+  <div class="kpi"><b>1</b><span>обычный пост опубликован, нужна ссылка</span></div>
+  <div class="kpi"><b>13</b><span>черновиков на выбор</span></div>
+  <div class="kpi"><b>0</b><span>выдуманных фактов</span></div>
+</div>
+
+<h2>🙏 Просьба дня <span class="tag t-bad">не закрыта</span></h2>
+
+<div class="card pick">
+  <div class="hd"><span class="num">вариант 1</span><span class="tag t-good">мой выбор</span>
+    <span class="tag t-good">210 знаков</span>
+    <button onclick="cp('ask1')">копировать</button></div>
+<pre id="ask1">сегодня человек забронировал звонок через мой календли. за 19 минут я отдал интро к инвесторам, репост в комьюнити и приглашение питчить, а получил инвайт в его слак
+как вы отличаете лида от продавца до звонка?</pre>
+  <div class="meta">факт: звонок 05.08, разбор в сессии 40717084. цифра 19 минут из записи granola</div>
+</div>
+
+<div class="card">
+  <div class="hd"><span class="num">вариант 2</span><span class="tag t-good">192 знака</span>
+    <button onclick="cp('ask2')">копировать</button></div>
+<pre id="ask2">все мои звонки пишут fireflies и granola. текст ложится в файл и умирает там, вернусь я к нему хз когда
+как вы достаете из транскриптов пользу? интересует ваш живой процесс, а не название тула</pre>
+  <div class="meta">факт: его же голосовое id=3256 от 05.08, там дословно про fireflies, granola и «все умерло»</div>
+</div>
+
+<div class="card">
+  <div class="hd"><span class="num">вариант 3</span><span class="tag t-good">191 знак</span>
+    <button onclick="cp('ask3')">копировать</button></div>
+<pre id="ask3">благодарил людей в комментах по именам и одного пропустил: фейсбук по умолчанию показывает most relevant и часть веток просто не рисует
+кто нашел способ надежно забирать все комменты целиком?</pre>
+  <div class="meta">факт: сегодняшний разбор треда, 43 узла. часть комментов появилась только после переключения на all comments</div>
+</div>
+
+<div class="card">
+  <div class="hd"><span class="num">вариант 4</span><span class="tag t-good">171 знак</span>
+    <button onclick="cp('ask4')">копировать</button></div>
+<pre id="ask4">собираю реестр всех своих телеграм-групп: где я хозяин, где гость, кто там пишет и куда это ведет
+кто делал такое руками или скриптом? поделитесь подходом, буду благодарен</pre>
+  <div class="meta">факт: голосовое Антона от 05.08, 12:45, задача про реестр телеграм-групп</div>
+</div>
+
+<h2>💥 Факап дня <span class="tag t-bad">не закрыта</span></h2>
+
+<div class="card pick">
+  <div class="hd"><span class="num">вариант 1</span><span class="tag t-good">мой выбор</span>
+    <span class="tag t-warn">438 знаков</span>
+    <button onclick="cp('fail1')">копировать</button></div>
+<pre id="fail1">вчера я публично благодарил людей в комментах по именам. одного пропустил, и это был самый содержательный коммент треда, я ему там же ответил что пересмотрю свой регламент
+корень: мой агент не дождался своей же проверки и смотрел фейсбук в режиме most relevant, где часть веток не отрисована. увидел не все и принял это за все
+чиним: перед благодарностями переключать на all comments, список не собирать пока фоновая проверка не вернулась</pre>
+  <div class="meta">самый сильный сюжет дня: живые люди, публичный пост, обещание назвать по именам. имя пропущенного в текст не ставим, пока он сам не окажется в исправленном посте</div>
+</div>
+
+<div class="card">
+  <div class="hd"><span class="num">вариант 1-короткий</span><span class="tag t-warn">307 знаков</span>
+    <button onclick="cp('fail1b')">копировать</button></div>
+<pre id="fail1b">вчера я публично благодарил людей в комментах по именам. одного пропустил, и это был самый содержательный коммент всего треда
+корень: фейсбук по умолчанию рисует most relevant, часть веток не видна вообще, а я принял видимое за все
+чиним: только all comments, и список не собираем пока проверка не вернулась</pre>
+  <div class="meta">то же самое, если хочется тише</div>
+</div>
+
+<div class="card">
+  <div class="hd"><span class="num">вариант 2</span><span class="tag t-warn">314 знаков</span>
+    <button onclick="cp('fail2')">копировать</button></div>
+<pre id="fail2">мой агент выдал список четырех людей, которых я забыл поблагодарить. пошел сверять с постом: реально пропущен один, троих он приписал из вчерашней сводки по всей стене
+корень: чужой отчет взяли за факт и не сверили с самим постом
+чиним: имя идет в благодарность только если коммент видно на этом посте, не в сводке</pre>
+  <div class="meta">факт проверен сегодня: из четырех названных подтвердился один. имена снятых людей наружу не идут</div>
+</div>
+
+<div class="card">
+  <div class="hd"><span class="num">вариант 3</span><span class="tag t-warn">304 знака</span>
+    <button onclick="cp('fail3')">копировать</button></div>
+<pre id="fail3">на звонке я за 19 минут отдал интро к инвесторам, репост в комьюнити и приглашение питчить. взамен получил инвайт в слак
+корень: не проверил заранее, кто передо мной. человек забронировал бронь как лид, а пришел продавать нам
+чиним: одна страница по человеку до звонка, и никаких интро в первом разговоре</pre>
+  <div class="meta">имя и компанию не называем: чужой непубличный стартап, это запрещено правилом самого Антона</div>
+</div>
+
+<h2>💡 Инсайт дня <span class="tag t-bad">не закрыта</span></h2>
+
+<div class="card pick">
+  <div class="hd"><span class="num">вариант 1</span><span class="tag t-good">мой выбор</span>
+    <span class="tag t-good">177 знаков</span>
+    <button onclick="cp('ins1')">копировать</button></div>
+<pre id="ins1">тред отработал лучше самого поста. в комментах мне накидали больше, чем я написал сам, 43 узла вместе с ветками
+значит пост это не публикация, а вопрос. ценность живет ниже него</pre>
+  <div class="meta">цифра 43 из сегодняшнего сбора комментов, не на глаз</div>
+</div>
+
+<div class="card">
+  <div class="hd"><span class="num">вариант 2</span><span class="tag t-good">185 знаков</span>
+    <button onclick="cp('ins2')">копировать</button></div>
+<pre id="ins2">фейсбук по умолчанию показывает most relevant, а не все комменты
+если вы благодарите людей по именам, вы благодарите тех, кого вам показал алгоритм. остальные молча остались без спасибо</pre>
+  <div class="meta">полезно читателю прямо сейчас, проверяется в один клик</div>
+</div>
+
+<div class="card">
+  <div class="hd"><span class="num">вариант 3</span><span class="tag t-good">134 знака</span>
+    <button onclick="cp('ins3')">копировать</button></div>
+<pre id="ins3">лид и продавец приходят через одну и ту же кнопку календли
+сегодня понял: бронь в календаре не говорит ничего о том, кто из них придет</pre>
+  <div class="meta">пара к просьбе 1 и факапу 3, вместе они читаются как одна история</div>
+</div>
+
+<div class="card">
+  <div class="hd"><span class="num">вариант 4</span><span class="tag t-good">149 знаков</span>
+    <button onclick="cp('ins4')">копировать</button></div>
+<pre id="ins4">если проверка ушла в фон, а ты пошел дальше, ты не проверил
+мой поиск вернулся через час и принес ровно то, чего не хватало. пост уже был опубликован</pre>
+  <div class="meta">честно про механику, но без внутренней кухни</div>
+</div>
+
+<div class="card">
+  <div class="hd"><span class="num">вариант 5</span><span class="tag t-good">165 знаков</span>
+    <button onclick="cp('ins5')">копировать</button></div>
+<pre id="ins5">самый ценный совет дня пришел не от знакомого, а от человека, который просто читал
+он попал в мой регламент в тот же день. знакомые чаще хвалят, читатели чаще правят</pre>
+  <div class="meta">факт: совет из коммента ушел в правила в тот же день, реестр кредита f137d7418b02</div>
+</div>
+
+<h2>📝 Обычные посты <span class="tag t-warn">1 из 1-2, нужна ссылка</span></h2>
+
+<div class="card">
+  <div class="hd"><span class="num">опубликован сегодня</span><span class="tag t-good">твоими руками</span></div>
+<pre>пост-благодарность за альфу из комментов к посту про recall: девять человек названы по именам, у восьми стоят ссылки на профили</pre>
+  <div class="meta">
+    черновик лежит в <code>D:\!CLAUDE-NATALY-June26\drafts\2026-08-05-alpha-credit-recall-FINAL.md</code>, побуквенно твой.
+    <b>Пришли ссылку на публикацию</b>, без нее я не имею права ставить галочку и не отправляю задачу на хаб,
+    трекер обычных постов живет только там
+  </div>
+</div>
+
+<div class="note">
+  <b>Что я НЕ стал предлагать, хотя факт есть.</b>
+  Два раза за сегодня роботы написали в личный чат 121, ты просила это починить, починка сделана.
+  Наружу это не выношу: внутренняя кухня, читателю не за что зацепиться.
+  То же с черным окном задач и с гейтами, которые я искал не в том корне
+</div>
+
+<h2>Откуда взяты факты</h2>
+<div class="src">
+<ul>
+  <li>сессии этой машины за 05.08: <code>82e4875f</code> (посты из голосовых), <code>d8df20cc</code> (альфа из комментов и благодарности), <code>40717084</code> (лид и фоллоуап), <code>f5aeb68b</code> (чат 121), <code>0966c273</code> (сверка задач)</li>
+  <li>фильтр двойной: mtime файла за сегодня И поле timestamp внутри записи, иначе в свежем файле приезжают старые сообщения</li>
+  <li>чат 03 прочитан: за сегодня там только машинные heartbeat, canon-drift и долги ACK. Для контента ничего</li>
+  <li>чат 121 прочитать не удалось: телеграм-MCP отвалился по таймауту 300 секунд. Если там есть сюжет за сегодня, я его не видел</li>
+  <li>чат 02 я не читал: после падения MCP на 121 второй тяжелый запрос не пускал. Это дыра в замере, называю ее вслух</li>
+  <li>правки в проекте за сегодня: <code>CLAUDE.md</code>, <code>postbox/</code>, два черновика в <code>drafts/</code>, дашборд по альфе</li>
+</ul>
+</div>
+
+<footer>
+  собрано роботом на машине MyOwnPC-Natalia, 05.08.2026 · выдуманных болей, факапов и инсайтов здесь нет,
+  у каждого черновика назван источник · публикует человек
+</footer>
+
+</div>
+<script>
+function cp(id){
+  const t = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(t).then(()=>{
+    const b = event.target; const old = b.innerText;
+    b.innerText = 'скопировано'; setTimeout(()=>b.innerText=old, 1200);
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Паразитные активности — аудит 04.08.2026</title>
+<style>
+ body{font:15px/1.5 -apple-system,Segoe UI,system-ui,sans-serif;margin:0;padding:24px;background:#0f1115;color:#e6e8eb}
+ h1{font-size:22px;margin:0 0 4px} h2{font-size:17px;margin:28px 0 8px;color:#9fd0ff}
+ .sub{color:#8b94a3;margin-bottom:20px;font-size:13px}
+ table{border-collapse:collapse;width:100%;margin:8px 0 4px;font-size:14px}
+ th,td{padding:7px 9px;border-bottom:1px solid #232733;text-align:left;vertical-align:top}
+ th{color:#8b94a3;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+ td.n{text-align:right;font-variant-numeric:tabular-nums}
+ tr.hot td{background:#2a1518}
+ .tag{display:inline-block;padding:1px 7px;border-radius:10px;font-size:12px}
+ .dup{background:#4a1d24;color:#ffb4bd} .orphan{background:#4a3a12;color:#ffd98a} .ok{background:#14361f;color:#8ce6a8}
+ .card{background:#151923;border:1px solid #232733;border-radius:10px;padding:14px 16px;margin:10px 0}
+ code{background:#1c212c;padding:1px 5px;border-radius:4px;font-size:13px}
+ .warn{border-left:3px solid #ffd98a;padding-left:12px;color:#d9c58a;font-size:13px;margin:14px 0}
+ ul{margin:6px 0 0;padding-left:20px} li{margin:3px 0}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Near-Dup-Review.html">&larr; Near-Dup-Review</a> · <a href="Secrets-Junction-Audit-2026-07-20.html">Secrets-Junction-Audit-2026-07-20 &rarr;</a></span></div>
+
+<h1>Паразитные активности — что сессии делают слишком часто</h1>
+<div class="sub">Замер 04.08.2026 · 685 транскриптов сессий за 7 дней · машина HP17-ZBook · инструмент <code>~/.claude/scripts/parasite_scan.py</code> (0 токенов)</div>
+
+<div class="card">
+<b>Приказ Антона (голосом, 04.08.2026):</b> обслуживающее — оптимизацию CLAUDE.md / MEMORY.md и подобное — выносим в отдельный суточный джоб. «Не страшно, что распухают, это нормально. Раз в сутки лучше, чем 50 раз каждой сессией».<br>
+<b>Закреплено:</b> CLAUDE.md §10.0 (v3.10.0) + память <code>daily-optimization-of-always-loaded-files</code>.
+</div>
+
+<h2>Что нашлось</h2>
+<table>
+<tr><th>обслуживающая активность</th><th class="n">вызовов<br>за 7 дн</th><th class="n">сессий</th><th class="n">сессий с<br>повтором</th><th class="n">в день</th><th>диагноз</th></tr>
+<tr class="hot"><td>бэкап волта (<code>backup_to_drive</code>)</td><td class="n">296</td><td class="n">35</td><td class="n">28</td><td class="n">42</td><td><span class="tag dup">дубль</span> Claude Vault Backup (laptop)</td></tr>
+<tr class="hot"><td>реиндекс RAG (<code>brain_embed</code>)</td><td class="n">237</td><td class="n">40</td><td class="n">33</td><td class="n">34</td><td><span class="tag dup">дубль</span> Brain Reindex Daily</td></tr>
+<tr><td><code>rule_home_guard.py</code></td><td class="n">130</td><td class="n">48</td><td class="n">19</td><td class="n">19</td><td><span class="tag orphan">без робота</span></td></tr>
+<tr><td><code>publish_canon.py</code></td><td class="n">120</td><td class="n">18</td><td class="n">11</td><td class="n">17</td><td><span class="tag dup">дубль</span> Canon Publish Backup</td></tr>
+<tr><td><code>coverage_map.py</code></td><td class="n">114</td><td class="n">16</td><td class="n">12</td><td class="n">16</td><td><span class="tag orphan">был без робота</span> → Housekeeping Daily</td></tr>
+<tr><td>fleet_fix_audit / deploy_register</td><td class="n">97</td><td class="n">18</td><td class="n">14</td><td class="n">14</td><td><span class="tag dup">дубль</span> deploy-sentinel</td></tr>
+<tr><td><code>regress_run.py</code></td><td class="n">77</td><td class="n">11</td><td class="n">8</td><td class="n">11</td><td><span class="tag dup">дубль</span> Regress Grid Nightly</td></tr>
+<tr><td><code>cron_watchdog.py</code></td><td class="n">71</td><td class="n">14</td><td class="n">4</td><td class="n">10</td><td><span class="tag dup">дубль</span> Claude Cron Watchdog</td></tr>
+<tr><td><code>memory_guard.py</code></td><td class="n">70</td><td class="n">22</td><td class="n">15</td><td class="n">10</td><td><span class="tag dup">дубль</span> Memory Index Guard 06:40</td></tr>
+<tr><td><code>claude_md_guard.py</code></td><td class="n">61</td><td class="n">23</td><td class="n">15</td><td class="n">9</td><td><span class="tag dup">дубль</span> canon-v2-watch</td></tr>
+<tr><td>arch scan</td><td class="n">24</td><td class="n">5</td><td class="n">4</td><td class="n">3</td><td><span class="tag orphan">робот ВЫКЛЮЧЕН</span> System Architect Nightly</td></tr>
+<tr><td><code>output_freshness.py</code></td><td class="n">22</td><td class="n">7</td><td class="n">4</td><td class="n">3</td><td><span class="tag orphan">был без робота</span> → Housekeeping Daily</td></tr>
+<tr><td><code>memory_tidy / focus</code></td><td class="n">14</td><td class="n">7</td><td class="n">3</td><td class="n">2</td><td><span class="tag dup">дубль</span> Memory Index Tidy 00:35</td></tr>
+</table>
+<div class="sub">«сессий с повтором» = в скольких сессиях активность запускалась ≥2 раз подряд. Рекорды внутри одной сессии: бэкап волта 52 раза, publish_canon 26, regress_run 25, rule_home_guard 25, cron_watchdog 27.</div>
+
+<div class="warn">⚠️ Честная оговорка: в 685 транскриптов попадают и headless-прогоны <code>claude -p</code>, которые запускают сами рутины (например <code>memory_tidy.cmd</code>). Часть вызовов там законная — это <b>верхняя</b> оценка паразитности, а не точная цифра. Правку самих файлов CLAUDE.md / MEMORY.md через Edit сессии делали редко (1 и 3 сессии) — дорого обходится не правка, а <b>бесконечные прогоны гардов и уборщиков вокруг неё</b>.</div>
+
+<h2>Что сделано (04.08.2026, вечер)</h2>
+<ul>
+<li><b>Канон v3.12.0:</b> §10.0 — «паразитные активности: ОДИН раз в сутки». Два лейна: А = прогоны, Б = токены (MCP-диета + <code>token_audit</code>). Опубликован флоту.</li>
+<li><b>Квота вместо подсказки:</b> <code>maintenance_gate.py</code> в режиме <b>quota</b> — 1-й заход за сутки проходит, 2-й блокируется (exit 2) с лечением. Диагностика (Syncthing, MCP-демоны) не душится никогда. Обход <code>--force</code> + сказать зачем.</li>
+<li><b>Раскатка на весь флот:</b> движок уехал в <code>scripts/_shared</code> (единственная синкающаяся папка), состояние пер-машинное; установщик <code>maintgate_install.py</code> (+<code>--verify</code> читает факт); реестр <code>deploy_register maintgate-2026-08-04 --tier 1</code>; задача ушла в 03. На источнике: <b>гейт стоит</b> (verify exit 0).</li>
+<li><b>Скилл <code>/hk</code></b> и Библия <code>reglament-parazitnye-aktivnosti-odin-raz-v-sutki</code> — правило теперь всплывает само.</li>
+<li><b>SessionStart-подсказка</b> <code>housekeeping_hint.py</code>: ≤2 строки, молчит когда тихо.</li>
+<li><b>System Architect Nightly ВКЛЮЧЁН</b> (был Disabled с 22.06). Карта пересобрана 21:26. Правило: сессия <b>читает</b> карту через <code>/arch</code>, скан руками — только после своей правки инфры и по квоте.</li>
+</ul>
+
+<h2>Протухшие выходы: было 8 из 11 → стало 4</h2>
+<ul>
+<li>✅ вылечены: memory-index-guard · declined-scan · voice-backstop (задачи не было вовсе — завёл) · leads-db.</li>
+<li>⏳ доделываются прямо сейчас: entity-graph (скан 40k из 178k), search-catalog (пересобран, метка обновится), alpha-judge (запущен 21:24).</li>
+<li><b>Корень был один:</b> у 57 задач стояло «не запускать на батарее / не догонять пропуск». Ноутбук ночью спит или на батарее → задача молча пропускается, а её выход тихо стареет. Починено пакетом: <code>StartWhenAvailable=True</code> + разрешение работы на батарее.</li>
+<li>⚠️ 15 задач (S4U) не дались: <i>Access is denied</i> — смена их настроек требует пароля учётки, это руки Антона.</li>
+</ul>
+
+<h2>Разбор «15 не дались» — 05.08, 01:00</h2>
+<ul>
+<li><b>Их не 15, а 6.</b> Из 14 S4U-задач без <code>StartWhenAvailable</code> у 8 он бессмысленен: 7 повторяются каждые 15–60 минут (следующий тик через минуты, догонять нечего) и 1 висит на входе в систему. Реально страдали <b>6 ночных</b>: TurnState Backfill 03:30 · Sync Conflict Janitor 03:50 · CRM Engine Fields 04:30 · CHARM leads-to-VPS 05:10 · Task Backlog Audit 05:30 · Cron Watchdog 05:50.</li>
+<li><b>Дело было не в пароле.</b> Правка S4U-задачи требует <b>админского токена (UAC)</b>; пароль его не заменяет — проверено фактом: <code>RegisterTaskDefinition</code> → <code>E_ACCESSDENIED</code>. Плюс присланный 6-значный код — это Windows Hello <b>PIN</b>, а учётка <code>_</code> — Microsoft-аккаунт: планировщик такой код не принимает (<code>0x8007052E</code>).</li>
+<li><b>Рычаг нашёлся:</b> менять S4U-задачу без админа нельзя, а <b>запускать — можно</b>. Поэтому чиним результат: задача <b>«Claude Missed Jobs Catchup»</b> (Interactive, 09:10, SWA=True — её админ не нужен) смотрит возраст последнего прогона шести и до-запускает всё старше 20 ч. Лечит пропуск от любой причины: сон, батарея, выключенный ноут.</li>
+<li><b>Улика, почему не заметили раньше:</b> все шесть показывали <code>State=Ready, rc=0</code> — зелёные. И простаивали <b>43–45 часов</b>. Судим задачу по возрасту прогона, не по State.</li>
+<li>✅ Прогнано вживую 05.08 в 00:55: догнало 5 из 6 (шестая уже бежала), все отработали rc=0. <b>Свежесть выходов: 11 из 11 OK</b> (было 8 протухших).</li>
+<li>🔴 <b>Корень ждёт одного клика Антона:</b> PowerShell «от имени администратора» →<br>
+<code>powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\_\.claude\scripts\fix_s4u_startwhenavailable.ps1"</code><br>
+Без прав скрипт выходит 2 и ничего не трогает. Бэкап XML шести задач: <code>scripts\_schtask_xml_backup_20260805\</code>.</li>
+</ul>
+
+<h2>Что осталось</h2>
+<ul>
+<li><b>CLAUDE.md RED</b>: 122 545 б при красной 120 000 (долг с 03.08 + три новых правила сегодня). Возврат в зелёную = работа суточного оптимизатора на Маяке, не рядовой сессии.</li>
+<li>Ждём ACK от узлов: установка гейта + их собственные таблицы <code>parasite_scan.py</code> (паразиты у каждого свои).</li>
+<li>11.08 — прочитать <code>maintenance_gate.py --report</code>: сколько заходов заблокировано, не мешает ли квота работе.</li>
+</ul>
+
+</body></html>

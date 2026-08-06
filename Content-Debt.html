@@ -1,0 +1,46 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Контент-долг и дистрибуция</title><style>
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;margin:0;padding:24px;background:#f6f7f9;color:#16181d}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:28px 0 10px}
+.sub{color:#666;font-size:13px;margin-bottom:18px}
+.v{display:inline-block;padding:6px 14px;border-radius:8px;font-weight:700;font-size:15px}
+.v.GREEN{background:#dcf5e3;color:#0d6b2f}.v.RED{background:#fde3e3;color:#8b1111}
+table{border-collapse:collapse;width:100%;background:#fff;border-radius:10px;overflow:hidden;
+box-shadow:0 1px 3px rgba(0,0,0,.08);font-size:14px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid #eceef1;vertical-align:top}
+th{background:#f0f2f5;font-weight:600;font-size:13px}
+tr:last-child td{border-bottom:none}
+.b{font-weight:600;white-space:nowrap}
+.ok{color:#0d6b2f}.red{color:#8b1111}.stale{color:#a35a00}.dead{color:#444}
+.why{color:#666;font-size:13px}
+.cards{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 4px}
+.card{background:#fff;border-radius:10px;padding:12px 16px;min-width:150px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card .n{font-size:26px;font-weight:700}.card .t{color:#666;font-size:12px}
+ul{margin:6px 0 0 18px;padding:0}li{margin:3px 0;font-size:14px}
+a{color:#1a5fb4}code{background:#eceef1;padding:1px 5px;border-radius:4px;font-size:12px}
+.foot{color:#888;font-size:12px;margin-top:26px;line-height:1.6}
+@media(prefers-color-scheme:dark){body{background:#15171b;color:#e6e8ec}table,.card{background:#1e2126;box-shadow:none}
+th{background:#252930}th,td{border-color:#2c3037}.sub,.why,.card .t,.foot{color:#9aa0a8}
+code{background:#2c3037}a{color:#7aa8f0}.v.GREEN{background:#12331f;color:#7fdca0}.v.RED{background:#3a1616;color:#ff9c9c}
+.ok{color:#7fdca0}.red{color:#ff9c9c}.stale{color:#f0b45c}.dead{color:#aab}}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Alpha-Recall-Post-2026-08-05.html">&larr; Alpha-Recall-Post-2026-08-05</a> · <a href="Content-Drafts-Backlog.html">Content-Drafts-Backlog &rarr;</a></span></div>
+<h1>Контент-долг и дистрибуция</h1>
+<div class="sub">Замер 2026-08-05 23:40 · узел A-2022BAYAREA · окно 30 дн · <span class="v RED">RED</span></div>
+<h2>Что сломано прямо сейчас</h2><ul><li class='red'>X / Twitter: замер протух: источник x_wall_window.json не обновлялся 31 дн (порог 7) -- НЕ ЗНАЮ, публиковалось ли</li><li class='red'>Telegram @ClawRus: замер протух: источник pubmetrics.db не обновлялся 11 дн (порог 7) -- НЕ ЗНАЮ, публиковалось ли</li><li class='red'>Telegram @******aw_lab: замер протух: источник pubmetrics.db не обновлялся 25 дн (порог 7) -- НЕ ЗНАЮ, публиковалось ли</li><li class='red'>Medium: замер протух: источник pubmetrics.db не обновлялся 25 дн (порог 14) -- НЕ ЗНАЮ, публиковалось ли</li><li class='red'>Threads: замер протух: источник pubmetrics.db не обновлялся 25 дн (порог 14) -- НЕ ЗНАЮ, публиковалось ли</li><li class='red'>дедлайн плана 2026-08-04 ПРОСРОЧЕН, долг 73 не закрыт</li></ul>
+<h2>1. Доехало ли наружу (возраст ВЫХОДА по каналам)</h2>
+<table><tr><th>Канал</th><th>Статус</th><th>Последняя публикация</th><th>За 30 дн</th><th>Чем доказано</th></tr>
+<tr><td class='b'>GitHub-дневник (clawrush)</td><td class='b ok'>🟢 доехало</td><td>2026-08-05 (0 дн назад)</td><td class='b'>79</td><td class='why'>последний коммит (origin/HEAD): Add longread + devlog: measure the door, and everything looked green</td></tr><tr><td class='b'>Facebook (стена Антона)</td><td class='b ok'>🟢 доехало</td><td>2026-08-05 (0 дн назад)</td><td class='b'>25</td><td class='why'><a href="https://www.facebook.com/100000728083116/posts/28489333900674166">последняя ссылка</a> </td></tr><tr><td class='b'>X / Twitter</td><td class='b stale'>🟠 замер протух<div class="why">замер протух: источник x_wall_window.json не обновлялся 31 дн (порог 7) -- НЕ ЗНАЮ, публиковалось ли</div></td><td>2026-07-05 (31 дн назад)</td><td class='b'>0</td><td class='why'><a href="https://x.com/Tony_Stef_/status/2073792360610214327">последняя ссылка</a> </td></tr><tr><td class='b'>Telegram @ClawRus</td><td class='b stale'>🟠 замер протух<div class="why">замер протух: источник pubmetrics.db не обновлялся 11 дн (порог 7) -- НЕ ЗНАЮ, публиковалось ли</div></td><td>2026-07-16 (20 дн назад)</td><td class='b'>18</td><td class='why'><a href="https://t.me/ClawRus/16518">последняя ссылка</a> </td></tr><tr><td class='b'>Telegram @******aw_lab</td><td class='b stale'>🟠 замер протух<div class="why">замер протух: источник pubmetrics.db не обновлялся 25 дн (порог 7) -- НЕ ЗНАЮ, публиковалось ли</div></td><td>2026-07-10 (26 дн назад)</td><td class='b'>4</td><td class='why'><a href="https://t.me/openclaw_lab/290">последняя ссылка</a> </td></tr><tr><td class='b'>Medium</td><td class='b stale'>🟠 замер протух<div class="why">замер протух: источник pubmetrics.db не обновлялся 25 дн (порог 14) -- НЕ ЗНАЮ, публиковалось ли</div></td><td>2026-07-07 (29 дн назад)</td><td class='b'>4</td><td class='why'><a href="https://medium.com/@dzyatkovskiy.a2/my-computers-learned-to-negotiate-then-they-started-cheating-a36911c80833">последняя ссылка</a> </td></tr><tr><td class='b'>Threads</td><td class='b stale'>🟠 замер протух<div class="why">замер протух: источник pubmetrics.db не обновлялся 25 дн (порог 14) -- НЕ ЗНАЮ, публиковалось ли</div></td><td>2026-07-10 (26 дн назад)</td><td class='b'>12</td><td class='why'><a href="https://www.threads.com/@antondzi/post/Damrh-QCgwu">последняя ссылка</a> </td></tr></table>
+<h2>2. Долг: сколько готового висит неопубликованным</h2>
+<div class="cards"><div class='card'><div class='n'>73</div><div class='t'>висит готового (леджер)</div></div><div class='card'><div class='n'>24</div><div class='t'>отмечено опубликованным</div></div><div class='card'><div class='n'>8</div><div class='t'>осознанно похоронено</div></div><div class='card'><div class='n'>1619</div><div class='t'>пойманo в воронку всего</div></div><div class='card'><div class='n'>977</div><div class='t'>public, ни разу не тронуто</div></div><div class='card'><div class='n'>51.4</div><div class='t'>ловим единиц в день</div></div></div>
+<ul><li>devlog — 2</li><li>episode — 52</li><li>intention — 3</li><li>plan-cluster — 16</li></ul>
+<h2>3. План v1.1 (арифметика, не на глаз)</h2>
+<ul><li>Долг сегодня: <b>73</b> готовых единиц.</li><li>Дедлайн плана v1: <b>2026-08-04</b>, осталось <b>-1</b> дн → пришлось бы <b>73/день</b>.</li><li>Реалистичный горизонт 30 дн (до <b>2026-09-04</b>): <b>3 старых/день</b>.</li><li>Свежее: ловим <b>51.4</b> единиц/день — из них план v1 требует публиковать в тот же день хотя бы <b>3</b> (devlog + тизер RU + тизер EN).</li><li>Итого дневная норма: <b>3 старых + 3 свежих</b> публикации.</li></ul>
+<div class="foot">Источники (все локальные, 0 токенов): git-лог <code>E:\GitHub\clawrush</code> · <code>fb_posts_scan.json</code> ·
+<code>x_wall_window.json</code> · <code>registry\pubmetrics.db</code> · <code>debt_ledger.json</code> · <code>triage\posts.jsonl</code>.<br>
+Сторож меряет ВОЗРАСТ ВЫХОДА, а не факт своего запуска. Пустой/протухший источник = ТРЕВОГА, а не «ОК»:
+🔴 молчит = источник жив и говорит «публикаций нет»; 🟠 замер протух = я не знаю, публиковалось ли;
+⚫ источник мёртв = файла нет / он пуст / не парсится.<br>
+Движок: <code>_imports\content-factory\content_debt_watch.py</code> · паспорт:
+<code>00-System\Content-Debt-Watch.md</code> · задача Windows: <code>Content-Distribution-Watch</code> (23:40 Лиссабон).</div>
+</body></html>

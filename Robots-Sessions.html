@@ -1,0 +1,51 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<title>Роботы Claude — кто плодит сессии</title>
+<style>
+ body{font:14px/1.5 system-ui,Segoe UI,sans-serif;margin:24px;color:#1a1a1a;background:#faf9f7}
+ h1{font-size:20px;margin:0 0 4px} .sub{color:#666;margin:0 0 16px}
+ .stat{display:inline-block;background:#fff;border:1px solid #e5e2dc;border-radius:10px;padding:8px 14px;margin:0 8px 16px 0}
+ .stat b{font-size:20px;display:block}
+ table{border-collapse:collapse;width:100%;background:#fff;border:1px solid #e5e2dc;border-radius:10px;overflow:hidden}
+ th,td{padding:8px 11px;border-bottom:1px solid #f0ede7;text-align:left;vertical-align:top}
+ th{background:#f5f3ef}
+ .num{text-align:right;font-variant-numeric:tabular-nums}
+ .flood{background:#fde8e8}
+ .on{color:#137333;font-weight:600}.off{color:#999}
+ .bad{color:#c5221f;font-weight:700}
+ .desc{color:#555;font-size:12.5px;max-width:520px}
+ .bar{height:9px;background:#e5e2dc;border-radius:4px;overflow:hidden;min-width:60px}
+ .bar>div{height:100%;background:#c5221f}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Natasha-Tasks-2026-07-30.html">&larr; Natasha-Tasks-2026-07-30</a> · <a href="Routines-Registry.html">Routines-Registry &rarr;</a></span></div>
+<h1>🤖 Роботы Claude — кто наполняет сайдбар сессиями</h1>
+<p class=sub>Хаб A-2022BayArea · 24 июня 2026 · источник: scheduled-tasks + поле scheduledTaskId в карточках сессий</p>
+<div>
+<span class=stat><b>20</b>роботов всего</span>
+<span class=stat><b>286</b>сессий ими создано</span>
+<span class=stat><b class=bad>262</b>из них = ОДИН dryrun (91%)</span>
+<span class=stat><b>1</b>уже выключен</span>
+</div>
+<table>
+<thead><tr><th>Робот</th><th>Что делает</th><th>Расписание</th><th>Вкл?</th><th class=num>Сессий</th><th>Доля</th></tr></thead>
+<tbody>
+<tr class=flood><td><b>cross-machine-robot-dryrun</b></td><td class=desc>Тестовый «сухой прогон» межмашинной шины — классифицирует входящие, пишет только в лог, ничего не исполняет. ⚠️ ВИНОВНИК потопа.</td><td>каждые <b>25 минут</b></td><td class=off>ВЫКЛ ✅</td><td class="num bad">262</td><td><div class=bar><div style="width:100%"></div></div></td></tr>
+<tr><td>coach-morning</td><td class=desc>Утренний коуч: зеркало + камень дня → Telegram</td><td>ежедн. 08:04</td><td class=on>вкл</td><td class=num>3</td><td><div class=bar><div style="width:1.1%"></div></div></td></tr>
+<tr><td>gmail-digest-morning</td><td class=desc>Тихий сторож 3 почт; пишет только если нужно лично тебе</td><td>ежедн. 08:16</td><td class=on>вкл</td><td class=num>2</td><td><div class=bar><div style="width:0.8%"></div></div></td></tr>
+<tr><td>tg-calendar-agenda</td><td class=desc>Утренняя повестка из Google Календаря</td><td>ежедн. 08:08</td><td class=on>вкл</td><td class=num>2</td><td><div class=bar><div style="width:0.8%"></div></div></td></tr>
+<tr><td>connector-health-daily</td><td class=desc>Сторож всех коннекторов (Telegram/WA/Gmail/Cal/n8n)</td><td>ежедн. 07:50</td><td class=on>вкл</td><td class=num>2</td><td><div class=bar><div style="width:0.8%"></div></div></td></tr>
+<tr><td>tg-watchdog-silentfail</td><td class=desc>Проверяет фоновые задачи, пишет только если что-то сломалось</td><td>ежедн. 08:11</td><td class=on>вкл</td><td class=num>2</td><td><div class=bar><div style="width:0.8%"></div></div></td></tr>
+<tr><td>tg-leads-today</td><td class=desc>Кому из лидов писать сегодня (черновики на одобрение)</td><td>будни 08:33</td><td class=on>вкл</td><td class=num>2</td><td><div class=bar><div style="width:0.8%"></div></div></td></tr>
+<tr><td>preference-sweep-daily</td><td class=desc>Скан свежих чатов на повторяющиеся предпочтения (review-only)</td><td>ежедн. 09:17</td><td class=on>вкл</td><td class=num>2</td><td><div class=bar><div style="width:0.8%"></div></div></td></tr>
+<tr><td>facebook-diary-daily</td><td class=desc>Вечерний честный FB-дневник твоим голосом (черновик)</td><td>ежедн. 21:21</td><td class=on>вкл</td><td class=num>2</td><td><div class=bar><div style="width:0.8%"></div></div></td></tr>
+<tr><td>content-factory-daily</td><td class=desc>Утром собирает вчера → контент-план в Telegram на одобрение</td><td>ежедн. 08:45</td><td class=on>вкл</td><td class=num>2</td><td><div class=bar><div style="width:0.8%"></div></div></td></tr>
+<tr><td>system-architect-red-alert</td><td class=desc>Пинг, только если System Architect нашёл «красное»</td><td>ежедн. 06:27</td><td class=on>вкл</td><td class=num>2</td><td><div class=bar><div style="width:0.8%"></div></div></td></tr>
+<tr><td>coach-evening</td><td class=desc>Вечерний разбор дня + настроение → Telegram</td><td>ежедн. 21:05</td><td class=on>вкл</td><td class=num>1</td><td><div class=bar><div style="width:0.4%"></div></div></td></tr>
+<tr><td>skill-gap-daily</td><td class=desc>Аудит «какой скилл строить дальше» (пишет только если новое)</td><td>ежедн. 18:45</td><td class=on>вкл</td><td class=num>1</td><td><div class=bar><div style="width:0.4%"></div></div></td></tr>
+<tr><td>vault-janitor-nightly</td><td class=desc>Ночной уборщик волта: очередь перелинковки сирот (review-only)</td><td>ежедн. 04:07</td><td class=on>вкл</td><td class=num>1</td><td><div class=bar><div style="width:0.4%"></div></div></td></tr>
+<tr><td>tg-relationships-weekly</td><td class=desc>Дни рождения недели + давно-не-общались лиды</td><td>пн 09:06</td><td class=on>вкл</td><td class=num>0</td><td></td></tr>
+<tr><td>tg-weekly-digest</td><td class=desc>Недельный свод: что сделано / что зависло</td><td>вс 19:05</td><td class=on>вкл</td><td class=num>0</td><td></td></tr>
+<tr><td>health-weekly-sync</td><td class=desc>Подтягивает 7 health-чатов Telegram в волт</td><td>пн 09:59</td><td class=on>вкл</td><td class=num>0</td><td></td></tr>
+<tr><td>faaa-weekly-sync</td><td class=desc>Подтягивает FAAA follow-up звонки в CRM</td><td>пн 10:24</td><td class=on>вкл</td><td class=num>0</td><td></td></tr>
+<tr><td>obsidian-backup-healthcheck</td><td class=desc>Проверка, что offsite-бэкап волта жив</td><td>пн 11:01</td><td class=on>вкл</td><td class=num>0</td><td></td></tr>
+</tbody></table>
+<p class=sub style="margin-top:14px">💡 Вывод: сайдбар топил ОДИН тестовый робот (каждые 25 мин), и он уже выключен. Остальные — твои нужные рутины по 1-2 сессии в день. Осталось убрать 262 уже созданные dryrun-сессии из облачного списка (через claude.ai/code или фильтр).</p>
+</body></html>

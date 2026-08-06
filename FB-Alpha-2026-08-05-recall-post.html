@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Альфа из комментов — пост про recall (03.08.2026)</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#15181d; --muted:#6b7280; --line:#e3e6ea;
+    --good:#0f7b4f; --goodbg:#e7f6ee; --warn:#8a5a00; --warnbg:#fdf3dd;
+    --bad:#9b2226; --badbg:#fbe9e9; --accent:#1f4fd8;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1116;--card:#161b22;--ink:#e6edf3;--muted:#9aa4b2;--line:#2a313a;
+      --good:#5fd4a0;--goodbg:#102a1f;--warn:#e5b567;--warnbg:#2b2314;
+      --bad:#f08c8c;--badbg:#2c1618;--accent:#7aa2ff;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 16px 60px;background:var(--bg);color:var(--ink);
+    font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1120px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+  .sub a{color:var(--accent)}
+  h2{font-size:16px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .kpis{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:6px}
+  .kpi{flex:1 1 150px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .kpi b{display:block;font-size:24px;line-height:1.1}
+  .kpi span{color:var(--muted);font-size:12px}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;min-width:720px;background:var(--card);
+    border:1px solid var(--line);border-radius:10px}
+  th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:13.5px}
+  th{background:transparent;color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+  tr:last-child td{border-bottom:0}
+  .tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap}
+  .t-good{background:var(--goodbg);color:var(--good)}
+  .t-warn{background:var(--warnbg);color:var(--warn)}
+  .t-bad{background:var(--badbg);color:var(--bad)}
+  a{color:var(--accent)}
+  .q{border-left:3px solid var(--line);padding:2px 0 2px 10px;color:var(--muted);font-style:italic}
+  .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--warn);
+    border-radius:8px;padding:12px 14px;margin-top:12px;font-size:13.5px}
+  footer{margin-top:36px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Content-Taxonomy.html">&larr; Content-Taxonomy</a> · <a href="FB-Comments-LLM-Tools-2026-08-04.html">FB-Comments-LLM-Tools-2026-08-04 &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>Альфа из комментов: «Вы делаете recall перед КАЖДОЙ сессией?»</h1>
+<div class="sub">
+  Пост Антона от 03.08.2026 ·
+  <a href="https://www.facebook.com/share/p/1KSoFV1px8/">facebook.com/share/p/1KSoFV1px8</a> ·
+  снято 05.08.2026, 09:0x Lisbon · 8 верхних комментов, 43 узла с ветками ·
+  все названные инструменты проверены фетчем, а не переписаны из коммента
+</div>
+
+<div class="kpis">
+  <div class="kpi"><b>4</b><span>инструмента названо</span></div>
+  <div class="kpi"><b>3</b><span>подтверждено фетчем</span></div>
+  <div class="kpi"><b>5</b><span>ходов берём в работу</span></div>
+  <div class="kpi"><b>11</b><span>человек в треде</span></div>
+  <div class="kpi"><b>3</b><span>карточки CRM есть</span></div>
+  <div class="kpi"><b>3</b><span>незакрытых хвоста</span></div>
+</div>
+
+<h2>🧪 Инструменты — проверены, не переписаны</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>Что</th><th>Кто назвал</th><th>Что оказалось на самом деле</th><th>Есть ли у нас</th><th>Вердикт</th></tr></thead>
+<tbody>
+<tr>
+  <td><b>mem0</b><br><a href="https://github.com/mem0ai/mem0">mem0ai/mem0</a></td>
+  <td>****imir ***tsov (дважды, «yc backed кстати»)</td>
+  <td>✅ живой: 62,6k⭐, Apache-2.0, 2562 коммита. Ход: <b>ADD-only извлечение за один LLM-вызов</b> (без UPDATE/DELETE), мульти-сигнальный retrieval — semantic + BM25 + entity-matching в параллель с fusion, темпоральное ранжирование. LoCoMo 92,5.</td>
+  <td>Дверь mem0 мы уже мерили 28.07 → 🔴 <i>не пушим</i> (520 открытых PR, 35% без комментария). Но мерили как <b>дверь для PR</b>, не как архитектуру.</td>
+  <td><span class="tag t-good">берём ход</span><br>auto-capture</td>
+</tr>
+<tr>
+  <td><b>XERJ</b><br><a href="https://xerj.org/">xerj.org</a> · <a href="https://github.com/xerj-org/xerj">xerj-org/xerj</a></td>
+  <td>**sha ***geev («нечто вроде elasticsearch плюс обвязка»)</td>
+  <td>✅ живой, но <b>v0.1, 2026</b>. Rust-бинарь, wire-совместим с Elasticsearch, BM25+HNSW в одном проходе, <code>/_memory</code> REST на агента, Apache-2.0. <b>Их собственный замер:</b> агент на XERJ — 9/10 верных ответов, голый grep+python — 10/10. Ничья по точности.</td>
+  <td>У нас SQLite-факты + RAG-смысл + grep — та самая «голая» рельса, которая в их же тесте не проиграла.</td>
+  <td><span class="tag t-warn">в бэклог</span><br>не сейчас</td>
+</tr>
+<tr>
+  <td><b>CodeIndexer</b><br><a href="https://codeindexer.dev/">codeindexer.dev</a></td>
+  <td>Ihar Paliashchuk</td>
+  <td>✅ продукт есть: Rust-бинарь, MCP, call-graph + семантический поиск, «решения и роадмапы переживают сессию», бесплатно до 3 проектов, <b>проприетарный</b>, NetTechnologys s.r.o. (Чехия).<br>⚠️ 🤔 <b>Гипотеза, не факт:</b> продуктов с именем CodeIndexer минимум три (ещё Zilliz и DeusData). Какой имел в виду Ihar — он не сказал, я не проверил.</td>
+  <td>Нашего аналога call-graph по коду нет.</td>
+  <td><span class="tag t-warn">уточнить</span><br>спросить у него</td>
+</tr>
+<tr>
+  <td><b>Google Antigravity 2</b></td>
+  <td>***ill ***akov («доделываю свой ouroboros»)</td>
+  <td>🤔 не проверял — он говорит о своём проекте внутри чужой среды, ссылки не дал.</td>
+  <td>—</td>
+  <td><span class="tag t-bad">не подтверждено</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>💡 Ходы, которые стоит забрать</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>Ход</th><th>Чей</th><th>Что именно</th><th>Почему это про нас</th></tr></thead>
+<tbody>
+<tr>
+  <td><b>1. Скилл = доменная память, топик в телеге = персональный advisor</b></td>
+  <td>*kk *ng</td>
+  <td class="q">«travel, med, education, communication, publishreport, financeadvisor. Каждый отдельный скил накачиваешь конкретными знаниями по теме… Потом просишь всё это сохранить в скиле. Конкретные скилы выставляешь себе топиками в телеге, получаются персональные тематические advisors»</td>
+  <td>Самый сильный ход треда и единственный, которого у нас нет в таком виде. У нас 200+ скиллов и телега как шина — но скилл как <b>накопитель домена</b> и топик как <b>витрина советчика</b> не связаны. Это ответ на вопрос «зачем recall, если знание лежит в том, что и так грузится».</td>
+</tr>
+<tr>
+  <td><b>2. Агент пишет факты сам, человек только валидирует спорное</b></td>
+  <td>****imir ***tsov (через mem0)</td>
+  <td class="q">«Никакого ручного recall. Вы формулируете задачу — контекст подтягивается автоматически… „Актуализировать наработки каждый раз“ — это работа, которую вы делаете за машину. Переверните: агент актуализирует, вы только валидируете спорное»</td>
+  <td>Бьёт прямо в наше §8.4: у нас RECALL — это <b>правило</b>, то есть дисциплина. У mem0 это <b>механизм</b>. Правило умирает тихо, механизм — громко.</td>
+</tr>
+<tr>
+  <td><b>3. Вопрос вместо экскурсии</b></td>
+  <td>**son **omt</td>
+  <td class="q">«Раньше: посмотри файлы проекта и скажи как понимаешь. Теперь упростил — посмотри и ответь на такой-то вопрос. Он набирает контекст и разогревается»</td>
+  <td>Стоит ноль, работает сразу. Антон уже ответил «украли» — значит ход принят, но кредит человеку не отдан.</td>
+</tr>
+<tr>
+  <td><b>4. Память обновляется на каждом коммите</b></td>
+  <td>***riy *****kevych</td>
+  <td class="q">«перед каждым коммитом поддерживает обновлёнными: 1) описание проекта 2) учёт всех выполненных задач 3) TODO на запланированные. Плюс скилл, который можно вызвать в любой момент, чтобы обновить память и сделать reset сессии»</td>
+  <td>У нас обновление памяти привязано к <b>концу сессии</b> (/retro) — то есть к моменту, который легко не наступить. Коммит наступает всегда.</td>
+</tr>
+<tr>
+  <td><b>5. Три слоя памяти + глубина по импульсу</b></td>
+  <td>Николай Владимирович Махов</td>
+  <td class="q">«короткая-точечная, средняя-контекстная, длинная-проектная… не надо ему ничего напоминать, просто дать импульс, за что цепляться, и он сам идёт по всем трём слоям, насколько глубоко ему нужно»</td>
+  <td>Формально у нас это есть (MEMORY.md → волт → RAG), но <b>лестница глубины не описана</b> — я каждый раз решаю заново, докуда копать.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>⚔️ Спор, который стоит держать открытым</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>Тезис</th><th>Кто</th><th>Наша позиция</th></tr></thead>
+<tbody>
+<tr>
+  <td><b>«Obsidian — зло в чистом виде»</b>: память, спроектированная для человеческого чтения, а не для машинного retrieval</td>
+  <td>****imir ***tsov</td>
+  <td>Антон ответил ровно нашим каноном: <i>«obsidian витрина, retrieval на sqlite»</i> — и Vladimir согласился («молодец, всё правильно писал»). Спор закрыт в нашу пользу, но <b>только на словах</b>: доказательства, что витрина не тормозит retrieval, мы не приводили.</td>
+</tr>
+<tr>
+  <td><b>Граф: «сделай graphify, чтобы агент не сканировал лишнее»</b> vs <b>«граф — ненужное говно»</b></td>
+  <td>**mur ***dik ⟷ Николай Махов</td>
+  <td>🎯 У нас на этот вопрос <b>уже крутится замер</b>: A/B в <code>brain_ask --ab</code>, A = вектор, B = вектор+граф. То есть комьюнити спорит ровно о том, что мы меряем цифрами. Это готовый сюжет для поста — и повод наконец свести A/B.</td>
+</tr>
+<tr>
+  <td><b>Инвариантность RAG: f(A+B) = f(A) + f(B)</b> — задать структуре памяти это свойство, тогда чат держит 100 000+ сообщений без амнезий</td>
+  <td>***ill ***akov (наш advisor, карточка есть)</td>
+  <td>Заявка сильная и непроверенная, кода он не даёт («сори, что не делюсь, не успеваю»). Но это <b>единственное в треде утверждение про причину деградации</b>, а не про инструмент. Кандидат в вопрос ему напрямую — он в реестре советчиков по харнесам.</td>
+</tr>
+<tr>
+  <td><b>Одна база vs база на проект</b></td>
+  <td>**mur ***dik</td>
+  <td>Антон: «одна база, срез под проект». Наша позиция, спорить не о чем.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>👤 Люди — сверка с CRM</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>Кто</th><th>Карточка</th><th>Кто это</th><th>Что дал</th><th>Следующий ход</th></tr></thead>
+<tbody>
+<tr><td><b>****imir ***tsov</b></td><td><span class="tag t-good">есть</span> peer · mentor-peer</td><td>lifetracker.startup, founder, «говорит правду в лицо»</td><td>mem0 + самый жёсткий аргумент против нашей архитектуры</td><td>Спорил и был прав по форме — стоит вернуться с замером, а не с согласием</td></tr>
+<tr><td><b>***ill ***akov</b></td><td><span class="tag t-good">есть</span> peer-ai-builder · warm-lead</td><td>Monosnap / General AI Lab, San Francisco</td><td>Тезис про инвариантность и алгебру памяти</td><td>Он в реестре советчиков по харнесам — можно спросить прямо</td></tr>
+<tr><td><b>***riy *****kevych</b></td><td><span class="tag t-good">есть</span> lead</td><td>Nicnames, founder/CEO, Ukraine / Austin</td><td>Память на каждом коммите</td><td>Тёплый, последний контакт 26.05 — есть повод вернуться</td></tr>
+<tr><td><b>*kk *ng</b></td><td><span class="tag t-bad">нет</span></td><td>неизвестен, но строит систему скиллов-advisors</td><td>Лучший ход треда, отдал бесплатно, ответа не получил</td><td>🔴 <b>Приоритет:</b> ответить + завести карточку</td></tr>
+<tr><td><b>Николай Владимирович Махов</b></td><td><span class="tag t-bad">нет</span></td><td>неизвестен</td><td>Три слоя памяти (4 лайка — топ треда)</td><td>Завести карточку</td></tr>
+<tr><td><b>Ihar Paliashchuk</b></td><td><span class="tag t-bad">нет</span></td><td>строит своего агента, использует CodeIndexer</td><td>Многослойная память в кодинге</td><td>Завести карточку + уточнить, какой именно CodeIndexer</td></tr>
+<tr><td><b>**mur ***dik</b></td><td><span class="tag t-bad">нет</span></td><td>неизвестен</td><td>Граф над большой базой, база на проект</td><td>Завести карточку</td></tr>
+<tr><td><b>**son **omt</b></td><td><span class="tag t-bad">нет</span></td><td>неизвестен</td><td>Вопрос вместо экскурсии</td><td>Ответить на «В смысле?» + карточка</td></tr>
+<tr><td>**sha ***geev · Alex Savenok · Johnny GiliPsy</td><td><span class="tag t-bad">нет</span></td><td>неизвестны</td><td>XERJ · уточнение · «проверь личку»</td><td>Карточки</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>📋 Хвосты — уехали в реестр задач</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>Что висит</th><th>Сколько висит</th><th>Цена молчания</th></tr></thead>
+<tbody>
+<tr><td><b>*kk *ng ответил на прямой вопрос Антона</b> («приведи примеры таких скиллов, оч любопытно») — развёрнуто, с примерами. Ответа нет.</td><td>3 часа</td><td>Отдал лучший ход треда бесплатно. Второй раз так не напишет.</td></tr>
+<tr><td><b>Johnny GiliPsy</b>: «проверь личку» → «на какой акк?» → «на этот». Личку не проверили.</td><td>сутки</td><td>Неизвестно, что там — может быть что угодно.</td></tr>
+<tr><td><b>**son **omt</b>: «В смысле?» после шутки «украли».</td><td>сутки</td><td>Ход у человека забрали, кредит не отдали.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="note">
+  Карточка задачи: <code>D:\OBSIDIAN\Anton-Knowledge\10-Tasks\task-2026-08-05-hvosty-fb-post-recall.md</code>.
+  Отвечать этот разбор не умеет и не должен — исходящее живёт в <code>/fb-reply</code> и <code>/local-fb-messenger</code>,
+  публикация на этой машине только руками Наташи.
+</div>
+
+<footer>
+  Собрано скиллом <code>/fb-alpha</code> · машина MyOwnPC-Natalia · 05.08.2026 ·
+  каждый URL открыт и прочитан, ни одна ссылка не переписана из коммента на веру
+</footer>
+
+</div>
+</body>
+</html>

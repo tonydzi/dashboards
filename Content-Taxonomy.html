@@ -1,0 +1,97 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Карта контента волта</title>
+<style>
+:root{--bg:#0f1117;--panel:#171a23;--ink:#e6e9f0;--mut:#9aa3b5;--line:#262b38}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:var(--mut);margin-bottom:20px;font-size:13px}
+.kpis{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px;min-width:150px}
+.kpi .v{font-size:26px;font-weight:700}
+.kpi .l{color:var(--mut);font-size:12px;margin-top:2px}
+.kpi.alert .v{color:#ff6b6b} .kpi.good .v{color:#2bbf7a}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+.card-h{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.card-h .cnt{margin-left:auto;font-weight:700;font-size:17px}
+.shelf{color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;letter-spacing:.4px}
+.chips{margin-top:9px;display:flex;flex-wrap:wrap;gap:5px}
+.chip{background:#11141c;border:1px solid var(--line);border-radius:20px;padding:2px 9px;font-size:11px;color:var(--mut)}
+.chip.warn{color:#ffb86b;border-color:#5a3a1a}
+.section{margin:26px 0 10px;font-size:15px;font-weight:700;color:#c5ccdb}
+.gap{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.gaprow{display:flex;align-items:center;gap:12px;margin:9px 0}
+.gaprow .nm{width:170px;font-size:13px} .gaprow .pc{width:90px;text-align:right;color:var(--mut);font-size:12px}
+.bar{flex:1;height:10px;background:#11141c;border-radius:6px;overflow:hidden}
+.fill{height:100%}
+.note{color:var(--mut);font-size:12px;margin-top:8px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Content-Posting-Status-P19-P38.html">&larr; Content-Posting-Status-P19-P38</a> · <a href="FB-Alpha-2026-08-05-recall-post.html">FB-Alpha-2026-08-05-recall-post &rarr;</a></span></div>
+<h1>🗂️ Карта контента волта — что у нас есть и что без порядка</h1>
+<div class="sub">Скан 2026-08-06 02:46:53 · 181,338 заметок за 29.0с · read-only, 0 токенов · онтология ЭССЕНЦИЯ/ЭВИДЕНЦИЯ (решение 25-июн)</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">181,338</div><div class="l">всего заметок (.md)</div></div>
+  <div class="kpi good"><div class="v">3,064</div><div class="l">курированный «Ум» (concept+insight+belief+decision)</div></div>
+  <div class="kpi"><div class="v">106</div><div class="l">разных значений <code>type</code> (нужно свести к ~15)</div></div>
+  <div class="kpi alert"><div class="v">148241</div><div class="l">с полем <code>stage</code> (сырец/дистиллят/склейка)</div></div>
+  <div class="kpi alert"><div class="v">9</div><div class="l">с <code>evidence_refs</code> (дистиллят→сырец)</div></div>
+  <div class="kpi alert"><div class="v">108</div><div class="l">альфа/A-B файлов БЕЗ тегов и вне графа</div></div>
+</div>
+
+<div class="section">Все типы контента, разложенные по полкам (текущие цифры)</div>
+<div class="grid">
+    <div class="card" style="border-left:4px solid #7c5cff">
+      <div class="card-h"><span class="shelf" style="background:#7c5cff">ЭССЕНЦИЯ</span>
+        <b>🧠 Семантика (Ум) — «что я думаю»</b><span class="cnt">3 064</span></div>
+      <div class="chips"><span class="chip">concept · 280</span> <span class="chip">insight · 1 508</span> <span class="chip">belief · 14</span> <span class="chip">decision · 1 262</span></div>
+    </div>
+    <div class="card" style="border-left:4px solid #7c5cff">
+      <div class="card-h"><span class="shelf" style="background:#7c5cff">ЭССЕНЦИЯ</span>
+        <b>📋 Процедурное — правила/инструкции</b><span class="cnt">3 005</span></div>
+      <div class="chips"><span class="chip">reglament · 2 758</span> <span class="chip">protocol · 247</span></div>
+    </div>
+    <div class="card" style="border-left:4px solid #7c5cff">
+      <div class="card-h"><span class="shelf" style="background:#7c5cff">ЭССЕНЦИЯ</span>
+        <b>🎞️ Эпизодическое — дистиллят сессий/звонков</b><span class="cnt">980</span></div>
+      <div class="chips"><span class="chip">retro · 980</span></div>
+    </div>
+    <div class="card" style="border-left:4px solid #3aa0ff">
+      <div class="card-h"><span class="shelf" style="background:#3aa0ff">СТРУКТУРА</span>
+        <b>🗺️ Структура — MOC / мост / шаблон</b><span class="cnt">738</span></div>
+      <div class="chips"><span class="chip">moc · 189</span> <span class="chip">bridge · 526</span> <span class="chip">template · 23</span></div>
+    </div>
+    <div class="card" style="border-left:4px solid #ff7b3a">
+      <div class="card-h"><span class="shelf" style="background:#ff7b3a">НОВОЕ</span>
+        <b>🧪 Эксперимент / гипотеза / A-B / альфа  (НЕТ ДОМА)</b><span class="cnt">13</span></div>
+      <div class="chips"><span class="chip">experiment · 13</span></div>
+    </div>
+    <div class="card" style="border-left:4px solid #2bbf7a">
+      <div class="card-h"><span class="shelf" style="background:#2bbf7a">ЭВИДЕНЦИЯ-факты</span>
+        <b>🗃️ Факты — компании/лиды/контакты (→ leads.db)</b><span class="cnt">61 255</span></div>
+      <div class="chips"><span class="chip">company · 15 786</span> <span class="chip">crm-lead · 14 147</span> <span class="chip">contact · 8 501</span> <span class="chip">person · 13 233</span> <span class="chip">vc-fund · 6 093</span> <span class="chip">vc-investor · 3 206</span> <span class="chip">vc-project · 289</span></div>
+    </div>
+    <div class="card" style="border-left:4px solid #8a93a6">
+      <div class="card-h"><span class="shelf" style="background:#8a93a6">ЭВИДЕНЦИЯ-сырьё</span>
+        <b>📦 Сырьё — переписки/посты/транскрипты/логи</b><span class="cnt">103 466</span></div>
+      <div class="chips"><span class="chip">dm-conversation · 71 681</span> <span class="chip">telegram-post · 8 392</span> <span class="chip">facebook-post · 4 810</span> <span class="chip">transcript · 4 372</span> <span class="chip">session-ledger · 4 867</span> <span class="chip">ai-conversation · 6 036</span> <span class="chip">apple-note · 615</span> <span class="chip">diary · 1 414</span> <span class="chip">external-channel-post · 731</span> <span class="chip">telegram-day-ledger · 333</span> <span class="chip">resource · 215</span></div>
+    </div></div>
+<div class="note">Не разложено по полкам: <b>7,247</b> в 76 прочих типах · <b>604</b> вообще без <code>type</code>. Полный список — в taxonomy-summary.json.</div>
+
+<div class="section">Пробелы в метаданных (по курированному ядру, 148,922 заметок)</div>
+<div class="gap">
+  <div class="gaprow"><div class="nm">stage (этап обработки)</div><div class="bar"><div class="fill" style="width:99.5%;background:#ff7b3a"></div></div><div class="pc">148241 / 148,922</div></div>
+  <div class="gaprow"><div class="nm">evidence_refs (провенанс)</div><div class="bar"><div class="fill" style="width:0.0%;background:#ff7b3a"></div></div><div class="pc">9 / 148,922</div></div>
+  <div class="gaprow"><div class="nm">status</div><div class="bar"><div class="fill" style="width:6.6%;background:#3aa0ff"></div></div><div class="pc">9781 / 148,922</div></div>
+  <div class="gaprow"><div class="nm">layer (override-only ✓)</div><div class="bar"><div class="fill" style="width:0.2%;background:#2bbf7a"></div></div><div class="pc">229 / 148,922</div></div>
+  <div class="note">⚠️ <b>stage</b> и <b>evidence_refs</b> — это новые поля из решения 25-июн, ещё не проставлены → ГЛАВНЫЙ пробел. <b>layer</b> намеренно редкий (метка = только оверрайд, дефолт берётся по папке) — это НЕ дефект.</div>
+</div>
+
+<div class="section">Главный очаг беспорядка</div>
+<div class="gap">
+  <b>Альфа / поиск альфы / A-B / эксперименты висят ВНЕ графа.</b>
+  <div class="note">~3000+ намайненных пунктов в 9 базах + 108 файлов <code>_imports\alpha\candidates\*.md</code> — БЕЗ frontmatter, без тегов, без вики-ссылок, не в RAG. Таблицы промоушена пустые → ни одна находка автоматически не доехала до дома-инсайта. Плюс типа заметки <code>experiment</code>/<code>hypothesis</code> в волте НЕТ вообще (0). Это Этап 4 плана.</div>
+</div>
+</body></html>

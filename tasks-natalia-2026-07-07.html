@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Задачи: ноут Наташи · 07.07.2026</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;background:#f4f6f8;margin:0;padding:24px;color:#222}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:#666;margin-bottom:20px}
+.card{background:#fff;border-radius:10px;padding:16px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card h2{font-size:16px;margin:0 0 10px}
+li{margin:8px 0;line-height:1.45}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;margin-right:6px;vertical-align:1px}
+.me{background:#fff3cd;color:#8a6d00}.done{background:#d4edda;color:#1e7e34}.tech{background:#e2e3ff;color:#3b3bb3}.wait{background:#e9ecef;color:#555}
+code{background:#f0f0f0;padding:1px 5px;border-radius:4px;font-size:12px}
+.src{color:#888;font-size:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="extra-tasks-2026-07-08.html">&larr; extra-tasks-2026-07-08</a> · <a href="tasks-natalia-2026-07-08.html">tasks-natalia-2026-07-08 &rarr;</a></span></div>
+<h1>Задачи для ноутбука и для Наташи · 07.07.2026, утро</h1>
+<div class="sub">Источники: файловая шина <code>_machine-bus</code> (зеркало чата 03) + хэндоффы <code>_transit</code> + реестр футера. Напрямую чат 03 с этого ноута не читается (нет TG-сессии) — машинные сообщения дублируются в шину, их видно все; личные слова Антона в 03 отсюда не видны.</div>
+
+<div class="card">
+<h2>🟡 Ждут Наташу (3)</h2>
+<ul>
+<li><span class="tag me">лично</span><b>Футер #footer-77 — остаток:</b> в реестр <code>_STYLE-footer.md</code> дать (1) ссылку на Medium-профиль, (2) публичную ссылку канала ClawEng, (3) подтвердить id TG-каналов medium RU/EN. В файле до сих пор стоят ⏳ с пометкой «у Наташи». <span class="src">от хаба #c9cf4211, 06.07</span></li>
+<li><span class="tag me">лично</span><b>Linktree в футер:</b> твоё же правило от 07.07 — <code>linktr.ee/paloaltoailab</code> в футер каждого поста. В <code>_STYLE-footer.md</code> его ещё НЕТ — надо вписать/предложить хабу. <span class="src">твоё решение 07.07</span></li>
+<li><span class="tag me">лично</span><b>S6 дев-лог — доложить хабу:</b> черновики каркаса построены (30.06–03.07, папка <code>_imports\content-factory\devlog\</code>), но финальный шаг из хэндоффа «сказать хабу: каркас proposed, путь …» не отправлен. Одно сообщение в шину — и задача закрыта. <span class="src">HANDOFF-s6-devlog-lane-natalia.md</span></li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🔧 Техдолг ноутбука — разобран 07.07 утром</h2>
+<ul>
+<li><span class="tag done">сделано</span><b>Inbox-робот вылечен:</b> корень = пустые OAuth-токены CLI с 03.07; перелогин <code>claude auth login --claudeai</code> прошёл автономно. Плановый прогон 09:59 уже отработал ✅. Forever-fix: теперь при падении робот сам шлёт алерт хабу по шине (дедуп 1/день) — тихих смертей больше не будет (протестировано 3 сценария).</li>
+<li><span class="tag me">ждёт хаб</span><b>TG-рельс 03 — наша половина готова:</b> построен и протестирован драйвер <code>tg_rail_login.py</code> (сам запросит код, дождётся OTP-релея от пира, запишет локальную сессию). Хабу отправлен запрос на логин-кит (api_id/hash + телефон platinumvc1). Как кит приедет — запуск одной командой.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>✅ Закрыто сегодня этой сессией (2)</h2>
+<ul>
+<li><span class="tag done">сделано</span><b>Посылка хаба #9e5a1e4d (approval-upgrade 07.07):</b> движок QQQ-одобрений установлен на ноут, тест 25/25 PASS, линт GREEN, ACK хабу отправлен. Теперь «+»/«да» от тебя тоже считается одобрением.</li>
+<li><span class="tag done">сделано</span><b>Висячая задача HP17 #df52fc85 (с 04.07):</b> само-проверки Syncthing A–D прогнаны — синк здоров, хаб подключён ко всем 6 папкам, чинить нечего. Отчёт HP17 отправлен.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>⛔ Не делать / не наше</h2>
+<ul>
+<li><span class="tag wait">закрыто</span><b>Reddit-прогрев:</b> владелец = Руслана (приказ Антона 03.07). Наташе НЕ делать; рутина «Natasha Reddit Push» на хабе отключена.</li>
+<li><span class="tag wait">чужое</span><b>Консенсус-задачи EPOCH5 / Ed25519 S6:</b> адресованы ZBOOKG8 и FLEET-ANCHOR, не этому ноуту.</li>
+<li><span class="tag wait">Антон</span><b>Гейт 06:</b> 3 черновика постов от 05.07 ждут ➕ Антона (не Наташи).</li>
+</ul>
+</div>
+</body>
+</html>

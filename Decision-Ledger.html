@@ -1,0 +1,153 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Решения — кивни или поправь</title><style>
+*{box-sizing:border-box}
+body{background:#fff;color:#000;font-family:-apple-system,Segoe UI,Arial,sans-serif;
+     font-size:20px;line-height:1.45;margin:0;padding:16px;max-width:860px}
+h1{font-size:30px;margin:0 0 2px;letter-spacing:1px}
+.stamp{font-size:16px;font-weight:bold;margin-bottom:4px}
+.legend{font-size:16px;border-bottom:3px solid #000;padding-bottom:10px;margin-bottom:16px}
+.card{border:3px solid #000;border-radius:8px;padding:14px 16px;margin:0 0 16px}
+.card.major{border-width:6px}
+.said{font-size:23px;font-weight:bold;margin-bottom:8px}
+.why{font-size:20px;margin-bottom:8px}
+.small{font-size:15px;color:#555}
+.badge{display:inline-block;font-size:14px;font-weight:bold;border:2px solid #000;
+       border-radius:6px;padding:1px 8px;margin-right:6px}
+.btns{margin-top:12px}
+button{font-size:20px;font-weight:bold;font-family:inherit;padding:8px 16px;margin-right:8px;
+       border:3px solid #000;border-radius:8px;background:#fff;cursor:pointer}
+button:hover{background:#eee}
+.card[data-v="+"]{background:#f0fff4}.card[data-v="-"]{background:#fff0f0}
+.card[data-v="?"]{background:#fffdf0}
+.card[data-v="+"] .b-yes,.card[data-v="-"] .b-no,.card[data-v="?"] .b-fix{background:#000;color:#fff}
+input.fix{font-size:18px;font-family:inherit;padding:6px;width:100%;margin-top:8px;
+          border:2px solid #000;border-radius:6px}
+.hidden{display:none}
+#bar{position:sticky;bottom:0;background:#fff;border-top:6px solid #000;padding:12px 0;margin-top:8px}
+#line{font-size:17px;font-family:Consolas,monospace;background:#f4f4f4;border:2px solid #000;
+      border-radius:6px;padding:8px;word-break:break-all;margin-top:8px}
+.foot{margin-top:14px;border-top:3px solid #000;padding-top:8px;font-size:15px;color:#555}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Day-Ledger.html">&larr; Day-Ledger</a> · <a href="Entity-Lane-AB.html">Entity-Lane-AB &rarr;</a></span></div>
+<h1>🧠 Что я понял про твои решения</h1>
+<div class="stamp">собрано 03.08.2026 05:40 · ждут кивка: 83 (показываю 5) · подтверждено всего: 19 · отвергнуто: 0</div>
+<div class="legend">Это <b>догадки машины</b>, а не факты. Пока ты не кивнул — в двойника
+как факт они НЕ идут. Три кнопки, полминуты, и архив становится правдой.</div>
+
+<div class="card major" data-id="5678">
+  <div><span class='badge'>🔴 крупное — предложу карточку решения</span> <span class='badge'>процесс</span> <span class='badge'>2026-07-04</span> <span class='badge'>уверен на 93%</span></div>
+  <div class="said">Я так понял: ты решил <b>быть максимально автономным ночью, пока Антон спит, и не требовать его ввода для продолжения сессии</b></div>
+  <div class='why'>…потому что <b>Антон — биологическое существо, которому нужно спать; постоянно нажимать клавиши для продолжения сессии неудобно</b></div>
+  <div class="small">контекст: какой режим работы применять ночью, пока Антон спит</div>
+  <div class='small'>вместо: ждать подтверждений Антона ночью — отвергнуто: мешает биологическому существу спать</div>
+  <div class="btns">
+    <button class="b-yes" onclick="mark('5678','+')">✅ так и было</button>
+    <button class="b-no"  onclick="mark('5678','-')">❌ нет, не так</button>
+    <button class="b-fix" onclick="mark('5678','?')">✏️ поправить</button>
+  </div>
+  <input class="fix hidden" placeholder="как на самом деле?"
+         oninput="note('5678',this.value)">
+</div>
+<div class="card major" data-id="9842">
+  <div><span class='badge'>🔴 крупное — предложу карточку решения</span> <span class='badge'>процесс</span> <span class='badge'>2026-07-29</span> <span class='badge'>уверен на 92%</span></div>
+  <div class="said">Я так понял: ты решил <b>ввести «Голос Майкрофта»: если текст написан ассистентом — всегда это упоминать и писать в этом стиле; если написал Антон — это Антон</b></div>
+  <div class='why'>…но <b>почему</b> — в переписке не сказано, я не выдумываю.</div>
+  <div class="small">контекст: Как идентифицировать авторство контента, написанного ассистентом от лица Антона — раскрывать или нет</div>
+  <div class='small'>вместо: Писать от лица Антона без раскрытия авторства ассистента</div>
+  <div class="btns">
+    <button class="b-yes" onclick="mark('9842','+')">✅ так и было</button>
+    <button class="b-no"  onclick="mark('9842','-')">❌ нет, не так</button>
+    <button class="b-fix" onclick="mark('9842','?')">✏️ поправить</button>
+  </div>
+  <input class="fix hidden" placeholder="как на самом деле?"
+         oninput="note('9842',this.value)">
+</div>
+<div class="card major" data-id="1594">
+  <div><span class='badge'>🔴 крупное — предложу карточку решения</span> <span class='badge'>продукт</span> <span class='badge'>2026-06-08</span> <span class='badge'>уверен на 88%</span></div>
+  <div class="said">Я так понял: ты решил <b>выбрать подход «Платформа + код вокруг»</b></div>
+  <div class='why'>…но <b>почему</b> — в переписке не сказано, я не выдумываю.</div>
+  <div class="small">контекст: выбор архитектурного подхода к CRM: строить с нуля или взять платформу и писать код вокруг неё</div>
+  <div class='small'>вместо: строить CRM с нуля</div>
+  <div class="btns">
+    <button class="b-yes" onclick="mark('1594','+')">✅ так и было</button>
+    <button class="b-no"  onclick="mark('1594','-')">❌ нет, не так</button>
+    <button class="b-fix" onclick="mark('1594','?')">✏️ поправить</button>
+  </div>
+  <input class="fix hidden" placeholder="как на самом деле?"
+         oninput="note('1594',this.value)">
+</div>
+<div class="card major" data-id="5550">
+  <div><span class='badge'>🔴 крупное — предложу карточку решения</span> <span class='badge'>деньги</span> <span class='badge'>2026-07-03</span> <span class='badge'>уверен на 85%</span></div>
+  <div class="said">Я так понял: ты решил <b>написать founder-memo прямо сейчас и обсудить его с Наташей и Русланой</b></div>
+  <div class='why'>…потому что <b>memo стоит ноль, но даёт доверие почти как доля — они видят, что планы зафиксированы</b></div>
+  <div class="small">контекст: как зафиксировать обещание доли Наташе и Руслане — словом, полноценным юридическим документом или промежуточным founder-memo</div>
+  <div class='small'>вместо: оставить обещание устным — отвергнуто: нет бумаги — нет доверия; оформить полноценный договор с долями — отвергнуто: &quot;тушу медведя не делим&quot; — преждевременно до появления прибыльной структуры</div>
+  <div class="btns">
+    <button class="b-yes" onclick="mark('5550','+')">✅ так и было</button>
+    <button class="b-no"  onclick="mark('5550','-')">❌ нет, не так</button>
+    <button class="b-fix" onclick="mark('5550','?')">✏️ поправить</button>
+  </div>
+  <input class="fix hidden" placeholder="как на самом деле?"
+         oninput="note('5550',this.value)">
+</div>
+<div class="card major" data-id="1592">
+  <div><span class='badge'>🔴 крупное — предложу карточку решения</span> <span class='badge'>продукт</span> <span class='badge'>2026-06-08</span> <span class='badge'>уверен на 82%</span></div>
+  <div class="said">Я так понял: ты решил <b>выбрать Платформу + код вокруг</b></div>
+  <div class='why'>…но <b>почему</b> — в переписке не сказано, я не выдумываю.</div>
+  <div class="small">контекст: Выбор архитектуры CRM: строить с нуля или взять платформу + кастомный код вокруг</div>
+  <div class='small'>вместо: строить свою CRM с нуля</div>
+  <div class="btns">
+    <button class="b-yes" onclick="mark('1592','+')">✅ так и было</button>
+    <button class="b-no"  onclick="mark('1592','-')">❌ нет, не так</button>
+    <button class="b-fix" onclick="mark('1592','?')">✏️ поправить</button>
+  </div>
+  <input class="fix hidden" placeholder="как на самом деле?"
+         oninput="note('1592',this.value)">
+</div>
+
+<div id="bar">
+  <b>Готово?</b> <span id="cnt" class="small"></span>
+  <div id="line"></div>
+  <div style="margin-top:8px">
+    <button id="cp" onclick="copyLine()">📋 скопировать ответ</button>
+    <button onclick="resetAll()">сбросить</button>
+  </div>
+  <div class="small" style="margin-top:6px">Вставь эту строку Клоду в чат — он проставит
+  подтверждения. Подтверждённые (и только они) идут в цифрового двойника как ФАКТ.</div>
+</div>
+<div class="foot">журнал: 02-Decisions/_Ledger-*.md · сборщик: _imports/decision_dashboard.py ·
+судья: decision_judge.py (Sonnet, ночью) · детектор: decision_miner.py (0 токенов)</div>
+<script>
+const S = JSON.parse(localStorage.getItem('decLedger')||'{}');
+function paint(){
+  document.querySelectorAll('.card').forEach(c=>{
+    const id=c.dataset.id, v=S[id];
+    if(v){c.dataset.v=v.mark;}else{c.removeAttribute('data-v');}
+    const inp=c.querySelector('.fix');
+    if(inp){ inp.classList.toggle('hidden', !v || v.mark!=='?'); if(v&&v.note) inp.value=v.note; }
+  });
+  const parts=[];
+  Object.keys(S).forEach(id=>{
+    const v=S[id];
+    parts.push(v.mark+'D-'+id+((v.mark==='?'&&v.note)?(' "'+v.note.replace(/"/g,"'")+'"'):''));
+  });
+  const done=Object.keys(S).length, all=document.querySelectorAll('.card').length;
+  document.getElementById('line').textContent = parts.length? ('РЕШЕНИЯ: '+parts.join(' ')) : '— ещё ничего не отмечено —';
+  document.getElementById('cnt').textContent = done+' из '+all+' отмечено';
+  localStorage.setItem('decLedger', JSON.stringify(S));
+}
+function mark(id,m){
+  if(S[id]&&S[id].mark===m){delete S[id];}else{S[id]={mark:m,note:(S[id]||{}).note||''};}
+  paint();
+}
+function note(id,val){ if(S[id]){S[id].note=val;} paint(); }
+function copyLine(){
+  const t=document.getElementById('line').textContent;
+  navigator.clipboard.writeText(t).then(()=>{
+    const b=document.getElementById('cp'); b.textContent='✓ скопировано — вставь Клоду в чат';
+    setTimeout(()=>b.textContent='📋 скопировать ответ',2500);
+  });
+}
+function resetAll(){ Object.keys(S).forEach(k=>delete S[k]); paint(); }
+paint();
+</script></body></html>

@@ -1,0 +1,61 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Token Spend Audit — 2026-06-30</title>
+<style>
+body{font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;background:#0f1115;color:#e6e8ec;margin:0;padding:28px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;color:#9aa4b2;margin:26px 0 10px;font-weight:600}
+.sub{color:#7c8696;font-size:13px;margin-bottom:18px}
+.cards{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 8px}
+.card{background:#171a21;border:1px solid #232833;border-radius:12px;padding:14px 18px;min-width:150px}
+.card .n{font-size:24px;font-weight:700}.card .l{color:#8a93a3;font-size:12px;margin-top:2px}
+.live{color:#4ade80}.bg{color:#fb923c}.crit{color:#f87171}
+table{border-collapse:collapse;width:100%;margin-top:6px}
+td,th{padding:8px 10px;border-bottom:1px solid #232833;text-align:left}
+th{color:#8a93a3;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.bar{height:9px;border-radius:5px;background:#2a64d8}.bar.o{background:#fb923c}.bar.r{background:#f87171}.bar.g{background:#4ade80}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{font-size:11px;padding:2px 7px;border-radius:6px;background:#232833;color:#9aa4b2}
+.flag{background:#3a1d1d;color:#f87171}.box{background:#171a21;border:1px solid #232833;border-radius:12px;padding:16px 20px;margin-top:10px}
+.box b{color:#fbbf24}small{color:#7c8696}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Token-Audit-2026-07-05.html">&larr; Token-Audit-2026-07-05</a> · <a href="Vault-Audit-2026-07-07.html">Vault-Audit-2026-07-07 &rarr;</a></span></div>
+<h1>🔎 Куда ушли токены в Claude Code — сегодня</h1>
+<div class="sub">2026-06-30 · хаб A-2022BAYAREA · источник: 137 сессий из ~/.claude/projects/*.jsonl (реальные usage-логи)</div>
+
+<div class="cards">
+<div class="card"><div class="n">320.0M</div><div class="l">всего токенов за день</div></div>
+<div class="card"><div class="n live">231.4M · 72%</div><div class="l">👤 твоя ЖИВАЯ работа</div></div>
+<div class="card"><div class="n bg">88.6M · 28%</div><div class="l">🤖 ФОНОВЫЕ сервисы</div></div>
+<div class="card"><div class="n crit">60.5M · 19%</div><div class="l">⚠️ 2 сторожа-цикла</div></div>
+</div>
+<small>85% объёма — дешёвый cache_read. Но фон = 77 запусков, каждый заново грузит весь контекст.</small>
+
+<h2>Фоновые пожиратели (по сервисам)</h2>
+<table>
+<tr><th>Сервис</th><th>Запусков</th><th class="num">Токены</th><th>%</th><th></th></tr>
+<tr><td>🤖 <b>robot-inbox</b> (проверка машинной шины)</td><td>18×</td><td class="num">39.7M</td><td>12.4%</td><td><div class="bar r" style="width:100%"></div></td></tr>
+<tr><td>🛡️ <b>bus-wipe-guard</b> (сторож шины)</td><td><span class="tag flag">59×!</span></td><td class="num">20.8M</td><td>6.5%</td><td><div class="bar r" style="width:52%"></div></td></tr>
+<tr><td>🎙️ voice-triage</td><td>2×</td><td class="num">7.2M</td><td>2.2%</td><td><div class="bar o" style="width:18%"></div></td></tr>
+<tr><td>🧹 vault-janitor-nightly</td><td>1×</td><td class="num">4.5M</td><td>1.4%</td><td><div class="bar o" style="width:11%"></div></td></tr>
+<tr><td>☕ coach-morning</td><td>1×</td><td class="num">3.3M</td><td>1.0%</td><td><div class="bar o" style="width:8%"></div></td></tr>
+<tr><td>📥 claudeai-sync-daily</td><td>1×</td><td class="num">2.7M</td><td>0.9%</td><td><div class="bar o" style="width:7%"></div></td></tr>
+<tr><td>🔌 connector-health-daily</td><td>1×</td><td class="num">2.7M</td><td>0.8%</td><td><div class="bar o" style="width:7%"></div></td></tr>
+<tr><td>📨 alpha-to-tg</td><td>1×</td><td class="num">1.9M</td><td>0.6%</td><td><div class="bar o" style="width:5%"></div></td></tr>
+<tr><td colspan="5"><small>+ ещё ~9 разовых ночных задач (tg-leads, hanging-tasks, gmail-digest, brain-health, arch-red-alert, tg-watchdog…) по 0.7–1.2M каждая</small></td></tr>
+</table>
+
+<h2>🎯 Корень проблемы (5 почему)</h2>
+<div class="box">
+<b>ПРОБЛЕМА:</b> 28% всех токенов жгут фоновые роботы, хотя «работы» у них почти нет.<br><br>
+<b>КОРЕНЬ:</b> два сторожа — <b>robot-inbox</b> (18×/день) и <b>bus-wipe-guard</b> (<b>59×/день</b>) — это полноценные запуски <code>claude -p</code>. Каждый «глянуть, нет ли чего» <b>заново холодно грузит весь контекст</b> (CLAUDE.md ~40KB + MEMORY.md + список скиллов + схемы MCP) ещё ДО того, как что-то проверить. 77 проверок × полный контекст = ~60M токенов почти впустую.<br><br>
+<b>⚠️ Это нарушает твоё же правило</b> <code>[[llm-free-transport-dumb-detector-first]]</code>: «никакого always-on LLM-слушателя; детект = тупой Python на 0 токенов, LLM будим только на реальное попадание». Сейчас эти два сторожа будят LLM, чтобы просто спросить «есть что?».
+</div>
+
+<h2>🔧 Лечение (AK-47, закрывает класс)</h2>
+<table>
+<tr><th></th><th>ДО (сейчас)</th><th>ПОСЛЕ (фикс)</th></tr>
+<tr><td><b>bus-wipe-guard</b></td><td>59 LLM-запусков/день, 20.8M ток.</td><td>тупой Python-чек (0 ток.), будит LLM только если шина реально пуста/битая → ~0.3M/день</td></tr>
+<tr><td><b>robot-inbox</b></td><td>18 LLM-запусков/день, 39.7M ток.</td><td>Python читает шину; LLM только если ЕСТЬ новое сообщение → экономия ~80%</td></tr>
+<tr><td><b>частота</b></td><td>каждые ~15–20 мин круглосуточно</td><td>детектор может чаще (бесплатно), LLM — только по факту</td></tr>
+</table>
+<div class="box" style="margin-top:14px"><b>Потенциальная экономия: ~55–60M токенов/день (≈18% всего расхода)</b>, без потери ни одной функции — роботы продолжают будить тебя на реальные события, просто перестают жечь токены на холостые проверки.</div>
+
+<p style="color:#7c8696;font-size:12px;margin-top:22px">Сборка: парсинг usage из jsonl-логов сессий · фон vs интерактив разделён по тегу <code>&lt;scheduled-task&gt;</code> и первому промпту · 0 внешних вызовов.</p>
+</body></html>

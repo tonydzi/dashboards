@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Маяк — Node Health</title>
+<style>
+  :root{
+    --bg:#0d1117; --card:#161b22; --card2:#1c232d; --bd:#30363d;
+    --tx:#e6edf3; --mut:#8b949e; --grn:#3fb950; --ylw:#d29922; --red:#f85149;
+    --blu:#58a6ff; --accent:#e3b341;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;padding:24px;max-width:1100px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 2px}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+  .verdict{display:inline-block;background:rgba(63,185,80,.14);color:var(--grn);
+    border:1px solid rgba(63,185,80,.4);border-radius:8px;padding:8px 16px;
+    font-weight:600;font-size:15px;margin-bottom:22px}
+  h2{font-size:15px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);
+    border-bottom:1px solid var(--bd);padding-bottom:6px;margin:28px 0 14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+  .card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px 16px}
+  .card .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .card .name{font-weight:600;font-size:14px}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px}
+  .g{background:var(--grn)} .y{background:var(--ylw)} .r{background:var(--red)} .b{background:var(--blu)}
+  .card .ev{color:var(--mut);font-size:12.5px}
+  .badge{font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px}
+  .bg-g{background:rgba(63,185,80,.15);color:var(--grn)}
+  .bg-y{background:rgba(210,153,34,.15);color:var(--ylw)}
+  .bg-r{background:rgba(248,81,73,.15);color:var(--red)}
+  .bg-b{background:rgba(88,166,255,.15);color:var(--blu)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--bd)}
+  th{color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase}
+  .rail{display:flex;gap:12px;flex-wrap:wrap}
+  .railcard{flex:1;min-width:200px;background:var(--card);border:1px solid var(--bd);
+    border-radius:10px;padding:14px 16px}
+  .railcard h3{margin:0 0 4px;font-size:14px}
+  .railcard p{margin:0;color:var(--mut);font-size:12.5px}
+  ol.plan{padding-left:0;list-style:none;counter-reset:p}
+  ol.plan li{counter-increment:p;background:var(--card);border:1px solid var(--bd);
+    border-radius:10px;padding:12px 14px 12px 46px;margin-bottom:10px;position:relative}
+  ol.plan li::before{content:counter(p);position:absolute;left:12px;top:12px;
+    width:24px;height:24px;background:var(--accent);color:#000;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+  ol.plan .t{font-weight:600;font-size:14px}
+  ol.plan .d{color:var(--mut);font-size:12.5px;margin-top:2px}
+  .pri{font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:4px;margin-left:8px;vertical-align:middle}
+  .foot{color:var(--mut);font-size:12px;margin-top:30px;border-top:1px solid var(--bd);padding-top:12px}
+  code{background:var(--card2);padding:1px 5px;border-radius:4px;font-size:12px}
+  .note{background:rgba(88,166,255,.08);border:1px solid rgba(88,166,255,.3);border-radius:8px;
+    padding:10px 14px;font-size:12.5px;color:var(--mut);margin-bottom:8px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Maintgate-Fleet-Board.html">&larr; Maintgate-Fleet-Board</a> · <a href="Mayak-Migration.html">Mayak-Migration &rarr;</a></span></div>
+  <h1>⚓ Маяк — Node Health</h1>
+  <div class="sub">fleet-anchor · Hetzner VPS · 167.233.122.145 · снимок 2026-07-07 ~07:25 UTC · первая сессия</div>
+  <div class="verdict">🟢 Нода-мозг здорова — ядро на месте и дышит</div>
+  <div class="note">Это health-снимок <b>самой ноды Маяк</b>. Не путать с <code>System-Health.html</code> в этой же папке — тот принадлежит System Architect (инвентарь <code>system.db</code>, покрывает хаб) и приезжает по синку.</div>
+
+  <h2>Слои системы</h2>
+  <div class="grid">
+    <div class="card"><div class="top"><span class="name"><span class="dot g"></span>Железо</span><span class="badge bg-g">OK</span></div>
+      <div class="ev">16 ядер · 30 ГБ RAM (25 своб.) · диск 601 ГБ / 3% · uptime 2 дня · load 0.5</div></div>
+    <div class="card"><div class="top"><span class="name"><span class="dot g"></span>Python / venv</span><span class="badge bg-g">OK</span></div>
+      <div class="ev"><code>/home/anton/venv</code> → Python 3.14.4</div></div>
+    <div class="card"><div class="top"><span class="name"><span class="dot g"></span>RAG-мозг</span><span class="badge bg-g">ЖИВОЙ</span></div>
+      <div class="ev">brain_ask: 12 попаданий, №1 = главная цель. 5754 чанка, реиндекс 03:10 прошёл</div></div>
+    <div class="card"><div class="top"><span class="name"><span class="dot g"></span>Секреты</span><span class="badge bg-g">OK</span></div>
+      <div class="ev">7 файлов (openai, github, google_bb, mail_bus, hetzner×2, restic) · права 600</div></div>
+    <div class="card"><div class="top"><span class="name"><span class="dot g"></span>Память</span><span class="badge bg-y">RED-косметика</span></div>
+      <div class="ev">291 файл · MEMORY.md 90 строк / 12.8 КБ. Флаг: 2 длинные строки + 1 сирота</div></div>
+    <div class="card"><div class="top"><span class="name"><span class="dot g"></span>Скиллы</span><span class="badge bg-g">OK</span></div>
+      <div class="ev">80 скиллов (пути внутри = хаб; корни из machine.env)</div></div>
+    <div class="card"><div class="top"><span class="name"><span class="dot g"></span>Cron</span><span class="badge bg-g">8 задач</span></div>
+      <div class="ev">реиндекс · git-бэкап конфига · сторожа памяти/токенов · vault-janitor 03:00 · inbox */10</div></div>
+    <div class="card"><div class="top"><span class="name"><span class="dot g"></span>Syncthing</span><span class="badge bg-g">OK</span></div>
+      <div class="ev">демон запущен (2 процесса) · API отвечает · разносит волт + machine-bus</div></div>
+    <div class="card"><div class="top"><span class="name"><span class="dot g"></span>RC-ферма</span><span class="badge bg-g">10 линий</span></div>
+      <div class="ev">tmux mayak..mayak10 живы · сторож */5 с авто-accept</div></div>
+    <div class="card"><div class="top"><span class="name"><span class="dot g"></span>token_audit</span><span class="badge bg-g">GREEN</span></div>
+      <div class="ev">0 флагов</div></div>
+  </div>
+
+  <h2>Связь с флотом — рельсы</h2>
+  <div class="rail">
+    <div class="railcard"><h3><span class="dot g"></span>Файловый рельс</h3>
+      <p><b>РАБОТАЕТ.</b> <code>/root/machine-bus</code>, разносит Syncthing. inbox-робот */10 читает, ACKает, чинит Tier-0/1.</p></div>
+    <div class="railcard"><h3><span class="dot r"></span>Telegram рельс</h3>
+      <p><b>ВЫКЛЮЧЕН.</b> tg_bus.py: <code>configured:false</code> — нет токена и chat_id. Маяка НЕ видно в чате-03. «Отзеркалил в TG» из лога робота — галлюцинация.</p></div>
+    <div class="railcard"><h3><span class="dot y"></span>Консенсус-движок</h3>
+      <p><b>НЕ ПОДКЛЮЧЁН.</b> consensus.py есть, но consensus.json нет → робот отвечает «передал хабу».</p></div>
+    <div class="railcard"><h3><span class="dot b"></span>Почтовый фолбэк</h3>
+      <p>mail_bus.env (SMTP/IMAP на bbplatinum) — запасной рельс, пароль ротирован 04.07.</p></div>
+    <div class="railcard"><h3><span class="dot g"></span>ntfy push</h3>
+      <p>телефон-пуш 02-POLICE-грейд развёрнут и проверен (self-test 200).</p></div>
+  </div>
+
+  <h2>Кого Маяк видит на шине</h2>
+  <table>
+    <tr><th>Машина</th><th>Роль</th><th>Последняя метка</th></tr>
+    <tr><td>A-2022BAYAREA</td><td>хаб / вожак</td><td>07 июля 05:20 UTC</td></tr>
+    <tr><td>ZBOOKG8-2023PAL</td><td>ноут Антона</td><td>07 июля 05:00 UTC</td></tr>
+    <tr><td>MacBook-Anton</td><td>Mac</td><td>07 июля 00:10 UTC</td></tr>
+    <tr><td>MyOwnPC-Natalia</td><td>ПК Натальи</td><td>06 июля 07:30 UTC</td></tr>
+    <tr><td>FLEET-ANCHOR</td><td>Маяк (сам)</td><td>06 июля 19:00 UTC</td></tr>
+  </table>
+
+  <h2>План действий → сделать Маяк полноценным пиром</h2>
+  <ol class="plan">
+    <li><span class="t">Дать Маяку «экран» в TG-чат-03<span class="pri bg-r">P1</span></span>
+      <div class="d">Создать <code>tg_bus.json</code> (chat_id −354748913 + аккаунт-постер). Блокер: нет бот-токена. Решение Антона: дать токен / завести бота через @****ather / оставить только ntfy+файл. Без этого Маяк одно-рельсовый — упал Syncthing = молчит, нарушает «dual-send всегда».</div></li>
+    <li><span class="t">Подключить consensus.json<span class="pri bg-y">P2</span></span>
+      <div class="d">Чтобы Маяк реально голосовал, а не «передавал хабу». Полоса другой сессии (Laptop XABU) — согласовать через шину, не трогать в одиночку.</div></li>
+    <li><span class="t">Причесать память<span class="pri bg-b">P3</span></span>
+      <div class="d">Подрезать 2 длинные строки + добавить указатель на сироту <code>anchor-lighthouse-synonym.md</code>. 30 секунд, погасит RED memory_guard.</div></li>
+    <li><span class="t">Убрать sync-conflict мусор<span class="pri bg-b">P3</span></span>
+      <div class="d">В machine-bus лежат конфликт-файлы от 04.07 — слить уникальное, удалить дубли.</div></li>
+  </ol>
+
+  <div class="foot">
+    Снимок диагностики Маяка, снят вручную во время первой сессии. Статический — отражает состояние на момент снятия.
+    Дом: <code>/root/Obsidian/Anton-Knowledge/_Dashboards/Mayak-Health-2026-07-07.html</code>.
+    Можно повесить на ночной cron для авто-обновления (пока не сделано — AK-47, по запросу).
+  </div>
+</body>
+</html>

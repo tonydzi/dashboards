@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Задачи 04–07.07.2026 — сводка отовсюду</title>
+<style>
+  body{font-family:-apple-system,'Segoe UI',sans-serif;margin:0;background:#f4f5f7;color:#1a1a2e;line-height:1.45}
+  header{background:#1a1a2e;color:#fff;padding:18px 24px}
+  header h1{margin:0;font-size:20px}
+  header p{margin:6px 0 0;font-size:13px;opacity:.75}
+  main{max-width:980px;margin:0 auto;padding:20px}
+  section{background:#fff;border-radius:10px;padding:16px 20px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  h2{font-size:16px;margin:0 0 10px;padding-bottom:6px;border-bottom:2px solid #eee}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  td{padding:7px 8px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+  td.n{width:26px;color:#999;font-weight:700}
+  td.st{width:34px;text-align:center;font-size:16px}
+  td.src{width:110px;color:#888;font-size:11.5px;white-space:nowrap}
+  .done{opacity:.55}
+  .done .t{text-decoration:line-through}
+  .hot{background:#fff4f2}
+  .tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:9px;background:#eef;color:#446;margin-left:6px;white-space:nowrap}
+  .tag.red{background:#fde8e8;color:#a33}
+  .tag.grn{background:#e6f6e6;color:#2a7}
+  .sub{color:#777;font-size:12px;margin-top:2px}
+  footer{font-size:11.5px;color:#999;padding:0 24px 24px;max-width:980px;margin:0 auto}
+  .legend{font-size:12px;color:#666;margin-bottom:14px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Task-Backlog.html">&larr; Task-Backlog</a> · <a href="Telegram-MCP-Setup.md">Telegram-MCP-Setup &rarr;</a></span></div>
+<header>
+  <h1>📋 Все задачи: суббота 04.07 → понедельник 07.07.2026</h1>
+  <p>Источники: чат 03 (рабочий) · чат 02 POLICE · личка Антон↔Руслана · личка Наташа↔Руслана · память Claude · волт. Собрано Claude@MacBook-Ruslana 07.07 ~10:00 UTC.</p>
+</header>
+<main>
+<div class="legend">✅ сделано · ❌ не сделано · 🟡 частично / в работе · ❓ статус не подтверждён. Очередь = порядок, в котором браться.</div>
+
+<section>
+<h2>🟡 ОЧЕРЕДЬ РУСЛАНЫ (наш мак) — не сделано, по приоритету</h2>
+<table>
+<tr class="hot"><td class="n">1</td><td class="st">❌</td><td><span class="t"><b>Reddit-прогрев u/Ok-Tip-1318 — СТАРТ + ACK в 03</b></span><span class="tag red">Антон ждёт 3-й день</span>
+<div class="sub">Антон дал QQQ=B ещё 05.07: отдельный чистый Chrome-профиль ТОЛЬКО под a2+Reddit (забаненный u/Shot_Employee7786 там не открывать), логин через Google → *******vskiy.a2@gmail.com (пароль в secrets store), без VPN. День 1: чтение + ≤4–5 комментов. Хаб держит батч тредов замороженным из-за нас; karma=1.</div></td><td class="src">03, 05.07 07:48</td></tr>
+<tr><td class="n">2</td><td class="st">🟡</td><td><span class="t"><b>Session-archive: дослать ответ хабу</b></span>
+<div class="sub">ACK «в работе» дан 06.07 23:46, но 2 вопроса без ответа: (1) жив ли session_archive.py в расписании, (2) работала ли Руслана в CC 05–06.07 (ответ: нет — поездка, телефон сломался). #921d4d80</div></td><td class="src">03, 06.07 21:08</td></tr>
+<tr><td class="n">3</td><td class="st">❌</td><td><span class="t"><b>Поднять оба рельса мака: Syncthing (флапает) + Telethon (🔴 не запущен) + heartbeat</b></span>
+<div class="sub">Флот видит узел ⚪ «нет беата» — отмечено в мандате Антона по FLEET-чеклистам (07.07 09:38). Пока не поднимем — каждый день новые алерты «мак тёмен».</div></td><td class="src">03, 07.07</td></tr>
+<tr><td class="n">4</td><td class="st">❌</td><td><span class="t"><b>Директива оптимизации флота (приказ Антона): прогнать само-оптимизацию как HP17</b></span>
+<div class="sub">Дубли MCP-процессов, зомби, автозагрузка. ACK + отчёт в 03. Mac-Anton уже принял; наш ACK не дан.</div></td><td class="src">03, 07.07 08:21</td></tr>
+<tr><td class="n">5</td><td class="st">❌</td><td><span class="t"><b>Запостить 4 FB-поста из очереди 04.07</b> (руками из чата «00 » 05», 2 касания на пост)</span>
+<div class="sub">«Мой ИИ прочитал гения» → «Бум ИИ съел оперативку» → «Я снова стал курьером» → «Бессмертие за $40» (после «Оперативки»). Файл: _drafts/FB-posts-ready-2026-07-04.md. Издатель 06.07 показывал 0/3 — скорее всего ничего не запощено (ты была без связи).</div></td><td class="src">личка+волт, 04.07</td></tr>
+<tr><td class="n">6</td><td class="st">❌</td><td><span class="t"><b>Вставить Linktree в шапки профилей/подписи</b>: linktr.ee/paloaltoailab</span>
+<div class="sub">Просьба Наташи всем. Старый linktr.ee/AAAPadSF мёртв.</div></td><td class="src">03, 06.07 09:41</td></tr>
+<tr><td class="n">7</td><td class="st">❌</td><td><span class="t"><b>Пакет мелких ACK/приёмок</b></span>
+<div class="sub">(а) Fireflies-апдейт хаба — подтвердить разделение труда (мы = живой follow-up по звонкам); (б) положить tg_coord.py и файлы чтеца 03 в _transit/tg-coord-for-laptop/ для ноута (запрос висит с 04.07, Антон одобрил); (в) принять approval-upgrade пакет из _transit/approval/ («+»=да, авто-перепинг 02).</div></td><td class="src">03, 04–07.07</td></tr>
+<tr><td class="n">8</td><td class="st">⏳</td><td><span class="t"><b>Fleet-чеклист: верифицировать CHECKLIST-MacBook-Ruslana и снять -DRAFT</b></span>
+<div class="sub">Мандат Антона 07.07 (аудио 09:35). Ждём, когда хаб/Mac-Anton доложит наш драфт в _machine-bus/_fleet/.</div></td><td class="src">03, 07.07 09:38</td></tr>
+<tr><td class="n">9</td><td class="st">❌</td><td><span class="t"><b>DR26-07-03-15 «Полный автопостинг X+FB без банов» (твой заказ) — висит 96ч</b></span>
+<div class="sub">Промпт выдан 03.07, результат из внешней LLM не собран. Собрать или перевыпустить.</div></td><td class="src">03, DR-реестр</td></tr>
+</table>
+</section>
+
+<section>
+<h2>🔴 ЖДУТ АНТОНА</h2>
+<table>
+<tr><td class="st">❌</td><td><b>Письмо Intrum Portugal (взыскание долга)</b> — нужен лично Антон.</td><td class="src">03, 06.07 утро</td></tr>
+<tr><td class="st">❌</td><td><b>5 застоявшихся задач «НУЖЕН ТЫ»</b>: task-legacy-4, -35, -56, -57, -59 (из борда ПУЛЬС; там же 37 открытых, 5 stale).</td><td class="src">02, 07.07 09:25</td></tr>
+<tr><td class="st">❌</td><td><b>fb-watch: 4 тизера RU+EN готовы (Opus), ждут QQQ на публикацию</b>.</td><td class="src">03, 06.07 12:17</td></tr>
+<tr><td class="st">❓</td><td><b>#682f54b5</b> (старый ASK из 02) — явное NO так и не сказано, формально не закрыт.</td><td class="src">02, 05.07</td></tr>
+</table>
+</section>
+
+<section>
+<h2>👩‍💻 НАТАША</h2>
+<table>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>Linktree paloaltoailab собран и анонсирован всем</b></span></td><td class="src">03, 06.07 09:41</td></tr>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>Помогла Руслане с доступом к почте «Детковский А»</b></span></td><td class="src">личка, 04.07</td></tr>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>Сверка Reddit-пушей закрыта</b>: владелец прогрева = Руслана, хабовская рутина «Natasha Reddit Push» отключена</span></td><td class="src">03, 06.07 19:02</td></tr>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>Сняла ложную задачу «проверь чат 97»</b> (опечатка, имелся в виду 07)</span></td><td class="src">03, 06.07 11:29</td></tr>
+<tr><td class="st">❓</td><td><b>Финучёт компании (money.json, «от Макса»)</b> — TASK на её MYOWNPC, ACK не виден.</td><td class="src">03, 05.07</td></tr>
+<tr><td class="st">⏳</td><td><b>Ответить на пинг «включайся»</b> (наш пинг 07.07 08:45; в 07:12 сама спрашивала «в рабочем режиме?» — на связи).</td><td class="src">личка, 07.07</td></tr>
+</table>
+</section>
+
+<section>
+<h2>✅ ЗАКРЫТО за окно 04–07.07 (Руслана / наш мак)</h2>
+<table>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>FB-пост «Silicon Valley vs Bay Area» запощен</b>, ссылка отдана Наташе</span></td><td class="src">личка, 04.07 12:58</td></tr>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>Отбой ложной тревоги «узел Русланы лежит с 25.06»</b> + задача хабу #stale-device-cleanup (мёртвая device-запись)</span></td><td class="src">личка+03, 04.07</td></tr>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>CONSENSUS-2.0 S1 на маке</b>: fleet_sign init, selftest PASS 4/4, ключ в реестре (работает и в S6-enforce)</span></td><td class="src">03, 04.07 00:46</td></tr>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>approval.json обновлён: 3 подписанта QQQ</b> (Антон, Руслана, Наталья) — подтверждено маком</span></td><td class="src">03, 04.07 00:22</td></tr>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>SEED-MAC v1.5 отработал</b>: по нашему сиду онбордирован MacBook-Anton — узел полностью GREEN 07.07</span></td><td class="src">03, 06–07.07</td></tr>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>ЧП с телефоном</b>: Антон и Наташа предупреждены (06.07 ночью), возвращение 07.07 к 9:00 на планёрку</span></td><td class="src">личка, 06.07</td></tr>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>Сегодня</b>: пинг Наташи «включайся» (личка+03), сообщения Антону/Наташе об отлучке на 15 мин</span></td><td class="src">личка+03, 07.07</td></tr>
+</table>
+</section>
+
+<section>
+<h2>⚙️ ФОН: машины (для контекста, не твоя очередь)</h2>
+<table>
+<tr class="done"><td class="st">✅</td><td><span class="t">EPOCH5→S6: подписи Ed25519 обязательны; канал 02 POLICE починен (был мёртв, алерты терялись); консенсус переехал жить в TG-03</span></td><td class="src">03, 05–06.07</td></tr>
+<tr class="done"><td class="st">✅</td><td><span class="t"><b>claude-consensus запущен на Product Hunt</b> (07.07 07:11); «Маяк» ожил в TG; VPS-якорь Hetzner в строю</span></td><td class="src">03, 07.07</td></tr>
+<tr><td class="st">❌</td><td>Хаб: краны 🔴 47/49, Fleet Manifest RED (фантомный хэш), inbox-робот флапает, Gmail invalid_grant, CLAUDE.md 90KB&gt;82KB</td><td class="src">03, 07.07</td></tr>
+<tr><td class="st">🟡</td><td>Волт на MacBook-Tony-US-2019 застрял на 81.7% синка (~2900 файлов); ГИПЕР-ИЗДАТЕЛЬ 0/3 поста в день</td><td class="src">03, 07.07</td></tr>
+</table>
+</section>
+</main>
+<footer>Файл: _Dashboards/Tasks-Audit-2026-07-04-to-07.html · Собрано из: чат 03 (~1500 сообщ., 4 дампа), чат 02 (50 уникальных), личные переписки, память, волт. Статусы на 07.07 ~10:00 UTC.</footer>
+</body>
+</html>

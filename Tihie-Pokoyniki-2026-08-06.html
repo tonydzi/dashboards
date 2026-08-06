@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тихие покойники — MyOwnPC-Natalia, 06.08.2026</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --fg:#1c1c1a; --muted:#6b6b66; --line:#e0dfda; --card:#fff;
+    --dead:#b3261e; --susp:#9a6700; --live:#1a7f37; --deadbg:#fdeceb; --suspbg:#fff8e5; --livebg:#eaf6ec;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#16171a;--fg:#e8e8e4;--muted:#9a9a94;--line:#2e3035;--card:#1e2024;
+          --dead:#ff7b72;--susp:#e3b341;--live:#5fd97f;--deadbg:#2a1a19;--suspbg:#2a2418;--livebg:#17251b;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 18px 60px;background:var(--bg);color:var(--fg);
+       font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px;font-weight:650}
+  h2{font-size:19px;margin:34px 0 10px;font-weight:620}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:20px}
+  .cards{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 8px}
+  .c{flex:1 1 150px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .c b{display:block;font-size:28px;line-height:1.1}
+  .c span{color:var(--muted);font-size:12px}
+  .c.dead b{color:var(--dead)} .c.susp b{color:var(--susp)} .c.live b{color:var(--live)}
+  .tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+  table{border-collapse:collapse;width:100%;min-width:900px;font-size:13.5px}
+  th,td{padding:9px 11px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{background:rgba(128,128,128,.08);font-weight:600;font-size:12.5px;position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td.m{font-weight:600;white-space:nowrap}
+  .v{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11.5px;font-weight:650;white-space:nowrap}
+  .v.d{background:var(--deadbg);color:var(--dead)}
+  .v.s{background:var(--suspbg);color:var(--susp)}
+  .v.l{background:var(--livebg);color:var(--live)}
+  code{font:12px/1.45 Consolas,monospace;background:rgba(128,128,128,.13);padding:1px 5px;border-radius:4px;word-break:break-all}
+  .note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--dead);
+        border-radius:8px;padding:14px 16px;margin:14px 0}
+  .note.k{border-left-color:var(--susp)}
+  .note.g{border-left-color:var(--live)}
+  ol,ul{padding-left:22px} li{margin:5px 0}
+  .eli{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:14px 16px;margin-top:26px}
+  .foot{color:var(--muted);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="System-Health.html">&larr; System-Health</a> · <a href="Voice-Bez-Kupyur-2026-08-05.html">Voice-Bez-Kupyur-2026-08-05 &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>Тихие покойники — узел MyOwnPC-Natalia</h1>
+<div class="sub">Замер 06.08.2026, 14:35–15:10 (Екатеринбург) · оператор Наталья · только чтение ·
+инструмент <code>D:\!CLAUDE-NATALY-June26\tools\dead_audit.py</code> + ручные пробы.
+Судим по <b>возрасту выхода</b>, а не по факту запуска. Всё, что ниже, замерено НА ЭТОЙ машине;
+о хабе и других узлах отсюда не сужу.</div>
+
+<div class="cards">
+  <div class="c dead"><b>19</b><span>мёртв, доказано</span></div>
+  <div class="c susp"><b>6</b><span>🤔 подозрительный</span></div>
+  <div class="c live"><b>28</b><span>жив, есть свежий выход</span></div>
+  <div class="c"><b>31</b><span>файл удалён с диска, git помнит</span></div>
+  <div class="c"><b>559</b><span>недоставленных сообщений в чат 02</span></div>
+</div>
+
+<div class="note">
+<b>Один корень у половины списка.</b> 31.07.2026 в 20:32 из <code>~/.claude/scripts/</code> пропал 31 файл
+(git-бэкап конфига помнит их все, последний коммит — ровно 20:32:02, дальше репозиторий замер).
+Среди пропавших — обёртки, которые зовут <b>шесть</b> задач Планировщика и <b>два</b> хука SessionStart.
+Никто не заметил, потому что обёртка <code>wscript run_hidden.vbs</code> на несуществующий файл возвращает
+<b>ERRORLEVEL 0</b> (замерено прямым прогоном) — Планировщик показывает зелёное.
+</div>
+
+<h2>А. Мёртв — доказано</h2>
+<div class="tw"><table>
+<thead><tr><th>Механизм</th><th>Что обязан производить</th><th>Возраст выхода</th><th>Вердикт</th><th>Чем доказано</th><th>Как чинить</th></tr></thead>
+<tbody>
+
+<tr><td class="m">scripts/: 31 удалённый файл</td>
+<td>сами файлы-обёртки, которые зовут задачи и хуки</td><td>удалены 31.07, 5.8 д</td>
+<td><span class="v d">мёртв</span></td>
+<td><code>git -C ~/.claude/scripts status --porcelain | grep "^ D"</code> = 31 строка; последний коммит бэкапа 31.07 20:32:02</td>
+<td>сперва выяснить у хаба, не флот ли их удалил намеренно (Syncthing разносит удаления). Если нет — <code>git checkout -- &lt;файл&gt;</code> по списку</td></tr>
+
+<tr><td class="m">Аски Антону в чат 02</td>
+<td>доставленное сообщение в TG <code>-5567667817</code></td><td>ни одно не доходит с 21.07 (16 д)</td>
+<td><span class="v d">мёртв</span></td>
+<td><code>scripts/_outbox_undelivered.jsonl</code>: 559 строк, обе рельсы падают — user «no REFRESH_* session», bot «not a member of that chat». Последняя запись сегодня 04:47 — просьба ОК на применение канона #48394c6d</td>
+<td>поднять user-сессию TG на этом узле либо ввести бота в чат 02; до починки — все аски отсюда невидимы Антону</td></tr>
+
+<tr><td class="m">Claude Config Backup 15min</td>
+<td>git-коммит в <code>~/.claude/*/</code> каждые 15 мин</td><td>5.8 д</td>
+<td><span class="v d">мёртв</span></td>
+<td>задача rc=0 каждые 15 мин, а <code>config_backup_commit.cmd</code> не существует; последний коммит 31.07 20:32:02; <code>_config_backup_log.txt</code> — 5.8 д</td>
+<td>вернуть обёртку из git; задачу перевести на <code>python config_backup_commit.py</code> напрямую, без vbs</td></tr>
+
+<tr><td class="m">syncthing-guard</td>
+<td>перезапуск залипшего Syncthing, строка в <code>_syncthing_guard_log.txt</code></td><td>9.9 д</td>
+<td><span class="v d">мёртв</span></td>
+<td>задача каждые 5 мин, rc=4294770688 (PowerShell: файла нет); <code>syncthing_guard.ps1</code> отсутствует; лог замер 27.07 16:56</td>
+<td>вернуть <code>syncthing_guard.ps1</code> из git-бэкапа</td></tr>
+
+<tr><td class="m">session-archive-hourly</td>
+<td>транскрипты узла в волте <code>_session-archive/transcripts/MyOwnPC-Natalia</code></td><td>5.8 д</td>
+<td><span class="v d">мёртв</span></td>
+<td>rc=1 ежечасно, <code>session_archive_hourly.cmd</code> нет. В волте у этого узла свежесть 5.8 д, у соседей 0.0–0.5 д (HP17 0.5 · MacBook-Anton 0.2 · MacBook-Ruslana 0.0 · PaloAlto-Desktop 0.2)</td>
+<td>вернуть обёртку; в git лежат ещё и два .bak от 26.06 — разобрать, какая версия боевая</td></tr>
+
+<tr><td class="m">natalia-session-push</td>
+<td>выкладка сессий в шину <code>_session-archive-inbound</code></td><td>5.8 д</td>
+<td><span class="v d">мёртв</span></td>
+<td>rc=1 ежечасно; <code>session_push.cmd</code> нет — рядом лежит <code>session_push.command</code> (macOS-имя), похоже на неудачное переименование; <code>_session_push_log.txt</code> 5.8 д</td>
+<td>вернуть <code>.cmd</code> из git либо перевести задачу на существующий файл</td></tr>
+
+<tr><td class="m">session-wait-watchdog</td>
+<td>пинг про забытые окна сессий + дашборд Waiting-Sessions</td><td>5.8 д</td>
+<td><span class="v d">мёртв</span></td>
+<td>rc=0, <code>session_wait_watchdog_run.cmd</code> нет. Последняя строка лога — своя же ошибка: путь дашборда <code>C:\Users\Huawei\Obsidian\...</code> не существует (волт на D:)</td>
+<td>вернуть обёртку И починить путь дашборда на <code>$OBSIDIAN_VAULT\_Dashboards</code></td></tr>
+
+<tr><td class="m">Claude Sync Monitor</td>
+<td>строка «N/N peers connected» в <code>_sync_monitor.log</code> каждые 20 мин</td><td>5.8 д</td>
+<td><span class="v d">мёртв</span></td>
+<td>rc=0, <code>sync_monitor.cmd</code> нет; лог обрывается 31.07 20:31:02</td>
+<td>вернуть обёртку из git</td></tr>
+
+<tr><td class="m">Scripts Publish to Transit</td>
+<td>копия скриптов в <code>_transit\scripts-from-MyOwnPC-Natalia</code></td><td>по расписанию — 5.8 д</td>
+<td><span class="v d">мёртв</span></td>
+<td>rc=0, <code>publish_scripts.cmd</code> нет. Лог выглядит свежим (сегодня 09:44) — но это ручной прогон <code>.py</code> из вчерашней сессии, не задача. Классическая ловушка «свежий mtime при мёртвом писателе»</td>
+<td>вернуть обёртку; проверять не mtime, а строку лога с меткой запуска задачи</td></tr>
+
+<tr><td class="m">Fleet Tools Sync</td>
+<td>раскатка общих инструментов, запись в <code>_fleet_tools_sync.log</code></td><td>5.8 д</td>
+<td><span class="v d">мёртв</span></td>
+<td>rc=0, <code>fleet_tools_sync.cmd</code> нет; в логе последняя строка «ничего не записано (нет --apply)»</td>
+<td>вернуть обёртку и решить, нужен ли ей <code>--apply</code>, иначе она и живая ничего не делает</td></tr>
+
+<tr><td class="m">SessionStart → inbox_read.cmd</td>
+<td>показ входящих из шины при старте сессии</td><td>файла нет</td>
+<td><span class="v d">мёртв</span></td>
+<td>хук зарегистрирован в settings.json, <code>ls</code> файла не находит; харнес при этом печатает «hook success»</td>
+<td>вернуть из git; параллельно вживую есть <code>/inbox</code></td></tr>
+
+<tr><td class="m">SessionStart → sync_conflict_watch.cmd</td>
+<td>предупреждение о свежих <code>*.sync-conflict</code></td><td>файла нет</td>
+<td><span class="v d">мёртв</span></td>
+<td>то же: хук есть, файла нет, харнес рапортует успех. А конфликты копятся: в волте лежат sync-conflict-копии от 05.08 (Coverage-Map) и 28.07 (_Voices-Registry)</td>
+<td>вернуть из git</td></tr>
+
+<tr><td class="m">turnstate_hook (UserPromptSubmit + Stop)</td>
+<td>строку на каждый ход в <code>_imports/turnstate/turnstate.db</code></td><td>22.8 д</td>
+<td><span class="v d">мёртв</span></td>
+<td>в базе 3 строки, все селф-тесты 14.07. В <code>%TEMP%</code> нет НИ ОДНОГО файла <code>claude-turnstate-*.off</code>, кроме моего пробного — значит хук не доходит даже до записи офсета. При этом ручной прогон пишет строку мгновенно, а база доступна на запись (<code>BEGIN IMMEDIATE</code> проходит). Причина, по которой харнес его не отрабатывает — 🤔 гипотеза, не факт</td>
+<td>довести до конца отдельной задачей: включить временный лог в первой строке хука и посмотреть, зовут ли его вообще</td></tr>
+
+<tr><td class="m">ab_recall (замер вектор vs вектор+граф)</td>
+<td>таблицу <code>ab_recall</code> в turnstate.db</td><td>таблицы нет вовсе</td>
+<td><span class="v d">мёртв</span></td>
+<td>прямой прогон <code>ab_recall.py run --if-due</code>: «база ab_recall … строк: таблицы нет», отказ с кодом <code>E_NO_NUMPY</code> — на узле нет numpy и нет .npy-индексов (они по замыслу не синкаются)</td>
+<td>на этом узле не чинится и чиниться не должен. Вопрос к хабу: собирается ли замер ТАМ — публично обещано «отвечу цифрами»</td></tr>
+
+<tr><td class="m">ack-coverage-watch</td>
+<td><code>_ack_coverage_state.json</code> — измеренное покрытие ACK по чату 03</td><td>файла нет ни разу</td>
+<td><span class="v d">мёртв</span></td>
+<td>задача rc=0 каждые 6 ч. <code>--dry</code> печатает: «SKIP #15 подряд: живой забор истории не удался — покрытие НЕ измерено», причина «не собрал креды: path should be string… not NoneType»</td>
+<td>починить путь к кредам TG на этом узле (та же рельса, что и у аска в 02 — вероятно один корень)</td></tr>
+
+<tr><td class="m">leads.db этого узла</td>
+<td>пересобранную CRM-базу (люди, компании, warm-матчи)</td><td>20.9 д, файл 0 байт</td>
+<td><span class="v d">мёртв</span></td>
+<td><code>output_freshness</code> красит STALE (лимит 30 ч). Его подсказка зовёт задачи «Unified SQL Refresh» и «VC Nightly Warm Refresh» — <b>таких задач в Планировщике этого узла НЕТ</b>: у артефакта нет писателя вообще</td>
+<td>либо завести писателя здесь, либо честно снять пункт из реестра сторожа как «принадлежит хабу»</td></tr>
+
+<tr><td class="m">dialogs/chats.db, dialogs/tg_archive.db</td>
+<td>импортированные диалоги</td><td>32 д, оба 0 байт</td>
+<td><span class="v d">мёртв</span></td>
+<td>размер 0 при возрасте 32 д — импортёр создал файл и не наполнил</td>
+<td>решить: воскрешать импорт на этом узле или снести пустышки, чтобы не выглядели данными</td></tr>
+
+<tr><td class="m">pubmetrics.db (метрики публикаций)</td>
+<td>снимки охватов/комментов по нашим постам</td><td>21.6 д</td>
+<td><span class="v d">мёртв</span></td>
+<td>максимум по таблицам: publications и snapshots 15.07 23:02, comments 15.07 09:30</td>
+<td>найти писателя снимков; без него «как заходит контент» мы не знаем, а посты идут каждый день</td></tr>
+
+<tr><td class="m">content_miner (§9.4 рефлекс)</td>
+<td>строку в <code>content-factory/miner/captured.jsonl</code></td><td>20.1 д</td>
+<td><span class="v d">мёртв</span></td>
+<td>последняя поимка 17.07; triage/posts.jsonl тоже 20.1 д. Правило требует кидать черновик «сразу, не дожидаясь просьбы»</td>
+<td>это не робот, а мой рефлекс — лечится не кодом, а прогоном <code>content_miner.py mine</code> в ночном backstop</td></tr>
+
+</tbody></table></div>
+
+<h2>Б. 🤔 Подозрительные — нужна названная перепроверка</h2>
+<div class="tw"><table>
+<thead><tr><th>Механизм</th><th>Что смущает</th><th>Какая команда даст ответ</th></tr></thead>
+<tbody>
+<tr><td class="m">Regress Grid Nightly</td>
+<td>LastRunTime «никогда» (rc=267011). Но задача создана СЕГОДНЯ в 09:43, первый прогон ночью в 02:40 — «никогда» тут пока законно. Настораживает другое: в <code>00-System</code> лежат Regression-Status для хаба, MacBook-Anton и ZBOOK, а для MyOwnPC-Natalia нет ни одного — значит сетка из 128 тестов на этом узле по расписанию не гонялась никогда</td>
+<td><code>Get-ScheduledTaskInfo "Regress Grid Nightly"</code> завтра после 03:00 + наличие <code>00-System\Regression-Status-MyOwnPC-Natalia.md</code></td></tr>
+
+<tr><td class="m">Claude Housekeeping Daily</td>
+<td>то же «никогда», создана сегодня 09:43. Плюс внутри <code>housekeeping_daily.cmd</code> зовётся <code>dr_to_content.py</code>, которого на узле НЕТ — то есть первый же прогон споткнётся на этом шаге</td>
+<td>завтра: <code>Get-ScheduledTaskInfo</code> + <code>ls ~/.claude/scripts/dr_to_content.py</code></td></tr>
+
+<tr><td class="m">Claude Missed Jobs Catchup</td>
+<td>LastRunTime «никогда», но <code>_missed_jobs_catchup_NATALY-WIN-NB.jsonl</code> свежий (0.2 д) — значит его дёргают мимо Планировщика. Либо у задачи нет триггера, либо работу делает кто-то другой</td>
+<td><code>(Get-ScheduledTask "Claude Missed Jobs Catchup").Triggers</code></td></tr>
+
+<tr><td class="m">session_brief (бриф на старте)</td>
+<td>usage-лог пишет «shown» в 14:30 и 14:37, но в контекст ЭТОЙ сессии (старт 14:35) бриф не попал; вместо трёх хуков SessionStart в консоли отпечатался голый баннер cmd.exe</td>
+<td>чистый рестарт сессии и глазами проверить, что блок «🧠 БРИФ НА СТАРТЕ» реально виден; сверить с новой строкой в <code>tools/logs/session_brief_usage.jsonl</code></td></tr>
+
+<tr><td class="m">_injection_detector_log.jsonl</td>
+<td>15 МБ, пишется прямо сейчас, потребителя не нашёл — растёт ли он в пустоту</td>
+<td><code>grep -rl "_injection_detector_log" ~/.claude/scripts</code> — есть ли читатель, а не только писатель</td></tr>
+
+<tr><td class="m">zalp_delta.db (9.4 д), labeling.db arXiv (9.6 д), alpha/claudedev (6.9 д)</td>
+<td>возраст больше недели, но у этих штук может быть законно редкий темп — лимит нигде не объявлен</td>
+<td>назвать лимит возраста для каждой и завести в <code>output_freshness</code>; без объявленного лимита вердикт невозможен в принципе</td></tr>
+</tbody></table></div>
+
+<h2>В. Живые — есть свежий выход</h2>
+<div class="tw"><table>
+<thead><tr><th>Механизм</th><th>Свежесть выхода</th><th>Чем доказано</th></tr></thead>
+<tbody>
+<tr><td class="m">Stop-хуки: no_silent_wait, dead_claim_guard</td><td>сегодня 14:40</td><td><code>hooks/_no_silent_wait.log</code> пишется по каждому ходу — попутно доказывает, что Stop-хуки как класс живы, и потому молчание turnstate — его личная беда</td></tr>
+<tr><td class="m">receiveonly_edit_guard</td><td>сегодня 14:41</td><td>134 КБ лога, каждая правка классифицируется</td></tr>
+<tr><td class="m">av_spawn_guard · spawn_slot_guard · dr_start_guard · computer_use_grant</td><td>сегодня</td><td>свои логи в <code>hooks/</code> и <code>logs/</code> моложе суток</td></tr>
+<tr><td class="m">ack_format_guard (0.8 д) · chip_guard (3.2 д) · blackbox_session_guard (3.2 д)</td><td>&lt;4 д</td><td>пишут только при срабатывании — возраст нормальный</td></tr>
+<tr><td class="m">MCP Daemons Watchdog</td><td>сейчас</td><td><code>mcp_diet_verify.py</code>: «all shared daemons alive»</td></tr>
+<tr><td class="m">output-freshness</td><td>сегодня 14:01</td><td>сам завёлся, нашёл 2 протухших выхода и отправил алярм в 03. Его rc=1 = «нашёл протухшее», это жёлтое, а не падение</td></tr>
+<tr><td class="m">fleet_manifest check</td><td>сегодня</td><td>«9 ok, 1 drift → cc-review/secondop.py»; rc=1 = найден дрейф, не сбой</td></tr>
+<tr><td class="m">ab_recall движок</td><td>сегодня 14:43</td><td>честно отказался с <code>no_capability</code> и записал это в usage-лог — образец правильного поведения: не притворился зелёным</td></tr>
+<tr><td class="m">session_brief · domain_advisor · alpha_credit · dashboard_usage · browser-usage</td><td>сегодня</td><td>свои JSONL-счётчики моложе суток</td></tr>
+<tr><td class="m">approvals.db</td><td>0.2 д</td><td>16 pending, свежая запись</td></tr>
+<tr><td class="m">Задачи с rc=0 и свежим выходом</td><td>сегодня</td><td>Proc Patrol · peer-watch · node-health-beat · inbox-robot · inbox-ack-fast · ack-watchdog · Token Audit · Posting Dashboard Rebuild · Canon-Apply-Catchup · Consensus Config Guard · Claude Session Reaper · Power-Thermal Logger</td></tr>
+</tbody></table></div>
+
+<h2>Обобщение: какой это класс ошибки</h2>
+<div class="note k">
+<b>Класс: «рамка зелёная, потому что она глотает отсутствие работы».</b> Три разных обёртки в нашей системе
+одинаково превращают «цели нет» в «всё хорошо»:
+<ol>
+<li><code>wscript run_hidden.vbs &lt;нет файла&gt;</code> → <b>ERRORLEVEL 0</b>. Замерено прямым прогоном на выдуманном
+имени <code>NO_SUCH_FILE_XYZ.cmd</code>. Так зеленеют шесть задач.</li>
+<li><code>cmd /c &lt;нет файла&gt;</code> в хуке → харнес печатает <b>«hook success»</b>. Так зеленеют два хука SessionStart.</li>
+<li>питон-хук с <code>except Exception: pass</code> и <code>sys.exit(0)</code> в конце → <b>exit 0</b> при любой беде.
+Так молчит turnstate.</li>
+</ol>
+Во всех трёх случаях сломанное и исправное выглядят <b>побуквенно одинаково</b>. Именно поэтому 31 июля
+из системы вынули 31 файл, и за 5.8 дня ни один прибор не пикнул.
+</div>
+
+<div class="note g">
+<b>Одна проверка, которая ловит весь класс сразу.</b> Не «прогонялась ли работа», а два вопроса подряд:
+<ol>
+<li><b>ЦЕЛЬ СУЩЕСТВУЕТ.</b> Разобрать все действия Планировщика и все хуки <code>settings.json</code>,
+вытащить путь к файлу, проверить <code>os.path.exists</code>. Ноль токенов, секунды.
+Эта половина ловит <b>10 находок из 19</b> мгновенно — и поймала бы их 1 августа.</li>
+<li><b>ВЫХОД МОЛОЖЕ ЛИМИТА.</b> Это уже написано и работает — <code>scripts/_shared/output_freshness.py</code>.
+Проблема не в нём, а в охвате: в его реестре 15 позиций, а работ на узле 30+ задач и 22 хука.
+Работа, не заведённая в реестр, сегодня <b>невидима</b> — ровно так и умер turnstate: его там нет.</li>
+</ol>
+Поэтому предлагаемый сторож <code>liveness_map.py</code> добавляет третью строку вердикта:
+не только 🔴 «протух» и 🟢 «свеж», но и <b>🟡 «работа зарегистрирована, а артефакта в реестре нет — судить нечем»</b>.
+Сегодня такие просто не существуют для приборов.
+</div>
+
+<h2>Что заказываем хабу и другим узлам</h2>
+<ol>
+<li>Проверить у СЕБЯ те же 31 файл: <code>git -C ~/.claude/scripts status --porcelain | grep "^ D"</code>.
+Если на хабе они на месте — значит удаление было локальным и Syncthing тут ни при чём.
+Если удалены и там — искать, кто и чем их снёс 31.07 около 20:30.</li>
+<li>Проверить у себя <code>wscript run_hidden.vbs</code> на выдуманное имя: возвращает ли 0.
+Если да — обёртка одинаково слепа на всём флоте, и это правка одного файла на всех.</li>
+<li>Сказать, живёт ли turnstate на хабе: <code>python turnstate_show.py --stats</code>. Если и там 0 —
+то «чёрный ящик» и скилл <code>/1</code>, который на него опирается, мертвы флотом, а не узлом.</li>
+<li>Сказать, собирается ли замер <code>ab_recall</code> на хабе. Публично обещано «отвечу цифрами»;
+на этом узле цифр нет и быть не может.</li>
+<li>Проверить свои <code>_outbox_undelivered.jsonl</code>: не копятся ли и там недоставленные аски в 02.</li>
+</ol>
+
+<div class="eli">
+<b>🧒 Простыми словами.</b> У нас в доме много маленьких роботов: один каждые 15 минут делает копию настроек,
+другой сторожит синхронизацию, третий складывает записи разговоров. 31 июля кто-то вынес из шкафа 31 их инструмент.
+Роботы после этого продолжали «ходить на работу» и каждый раз докладывали «всё хорошо» — потому что докладывать
+плохое их никто не научил: если инструмента нет, они просто разводят руками и ставят зелёную галочку.
+Шесть дней никто ничего не заметил. Ещё одна беда отдельная: все записки «Антон, дай добро» с 21 июля
+не доходят вообще — 559 штук лежат в ящике «не отправлено», и он никому не показывается.
+Чинить надо не каждого робота по отдельности, а правило: сначала проверь, что твой инструмент вообще
+лежит на месте, и только потом говори «готово».
+</div>
+
+<div class="foot">
+Замер только на MyOwnPC-Natalia · базы открывались строго <code>mode=ro</code> · ничего не чинилось и не удалялось ·
+единственные побочные следы: пробная копия turnstate.db в scratch и в <code>~/.claude/turnstate/</code> (создана пробой, данных не несёт)
+и одно служебное сообщение сторожа output-freshness в чат 03 (ушло при его штатном прогоне).
+</div>
+
+</div>
+</body>
+</html>

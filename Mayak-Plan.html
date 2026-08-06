@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🗼 Маяк — план переезда и обкатки</title>
+<style>
+:root{--bg:#0f1420;--card:#1a2232;--ink:#e8ecf4;--mut:#8b96ab;--line:#2a3550;
+--green:#3ddc84;--yellow:#ffd166;--red:#ff6b6b;--blue:#5aa9ff;--purple:#b58cff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);padding:24px;max-width:1200px;margin:0 auto}
+h1{font-size:26px;margin-bottom:4px}
+.sub{color:var(--mut);margin-bottom:20px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h2{font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.badge{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:600}
+.b-live{background:#173d2a;color:var(--green)}
+.b-now{background:#3d3517;color:var(--yellow)}
+.b-staged{background:#2a2440;color:var(--purple)}
+.b-never{background:#3d1a1a;color:var(--red)}
+.b-done{background:#173d2a;color:var(--green)}
+ul{list-style:none}
+li{padding:7px 4px;border-bottom:1px solid var(--line);font-size:13.5px;display:flex;gap:8px;align-items:flex-start;line-height:1.45}
+li:last-child{border-bottom:none}
+li .why{color:var(--mut);font-size:12px;display:block}
+.ico{flex-shrink:0}
+input[type=checkbox]{margin-top:3px;accent-color:var(--green);width:15px;height:15px;flex-shrink:0}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px}
+.fact b{display:block;font-size:17px;color:var(--green)}
+.model-box{background:#1f2a1a;border:1px solid #3a5a2a;border-radius:12px;padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.6}
+.model-box b{color:var(--green)}
+.howto{background:#1a2440;border:1px solid #2a3a60;border-radius:12px;padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7}
+code{background:#0c1018;padding:2px 7px;border-radius:5px;font-size:12.5px;color:#9fd4ff}
+.eli5{background:#241f33;border:1px solid #3a3555;border-radius:12px;padding:16px;font-size:14px;line-height:1.65;margin-top:8px}
+.foot{color:var(--mut);font-size:12px;margin-top:16px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Mayak-Migration.html">&larr; Mayak-Migration</a> · <a href="Mayak-Primary-Plan.html">Mayak-Primary-Plan &rarr;</a></span></div>
+<h1>🗼 Маяк (fleet-anchor) — план переезда и обкатки</h1>
+<div class="sub">Собрано 10 июля 2026 · хаб-сессия · живой инвентарь по SSH · обновляй галочки — они запоминаются в браузере</div>
+
+<div class="facts">
+<div class="fact">CPU <b>16 ядер</b></div>
+<div class="fact">RAM <b>30 GB</b></div>
+<div class="fact">Диск <b>4% занят</b>559 GB свободно</div>
+<div class="fact">GPU <b style="color:var(--red)">нет</b>тяжёлый счёт = хаб</div>
+<div class="fact">Аптайм <b>6+ дней</b>always-on</div>
+<div class="fact">Модели <b>Fable ✓ Opus ✓</b>два бака: bb Max + a2</div>
+<div class="fact">Миграция 11.07 <b>волны 1-2 ✅</b>~45 активностей на Маяке · 23 хаб-двойника OFF</div>
+</div>
+
+<div class="model-box">
+🎛️ <b>Модельное правило Маяка (Антон, 10.07):</b> живые сессии Антона → <b>Fable 5</b> (можно).
+Рутины/кроны/роботы Маяка → <b>Opus</b> (мышление) / <b>Sonnet</b> (грунт), <b style="color:var(--red)">Fable для рутин нельзя</b> — подписка Fable лимитна, бережём для живой работы. Записано в память model-routing.
+</div>
+
+<div class="howto">
+🚀 <b>Как запустить свою сессию на Маяке</b> (уже работает, ничего ставить не надо):<br>
+1. В терминале: <code>ssh mayak</code><br>
+2. Там: <code>mx</code> — откроется именованная Claude-сессия в tmux (переживает разрыв связи; <code>mx имя</code> — вторая параллельная; <code>mxls</code> — список).<br>
+3. Модель Fable: внутри сессии <code>/model claude-fable-5</code>. Аккаунт уже залогинен (bb Max, тот же что на хабе).
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h2>✅ Уже живёт на Маяке <span class="badge b-live">LIVE</span></h2>
+<ul>
+<li><span class="ico">⚖️</span>Арбитр консенсуса (leader, tick */10) — 3 живых спора решил</li>
+<li><span class="ico">🛡️</span>Leader-down failover — сам построил и провёл через консенсус 10.07</li>
+<li><span class="ico">🤖</span>Inbox-робот */10 + heartbeat + presence</li>
+<li><span class="ico">🧠</span>RAG-мозг: ночной reindex (OpenAI API) + brain_ask</li>
+<li><span class="ico">🧹</span>Ночные LLM-рутины: vault-janitor (Sonnet), pref-sweep, arch-scan, alpha-miners, skill-gap</li>
+<li><span class="ico">📋</span>Task-index (журнал задач, primary writer 03:30)</li>
+<li><span class="ico">💾</span>Бэкапы restic ×2 (локально + offsite storagebox) + git-автосейв конфига</li>
+<li><span class="ico">🌐</span>CHARM-MCP (публичный read-брокер) + дашборд-сервер :8899</li>
+<li><span class="ico">🔭</span>Сторожа: syncthing_watchdog, memory_guard, token_audit, ntfy phone-push</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🧪 Обкатка сессий — лестница <span class="badge b-now">СЕЙЧАС</span></h2>
+<ul>
+<li><input type="checkbox" checked disabled><div><b>S1 читать-и-докладывать</b> ✅ пройдено — само-аудит 10.07<span class="why">вердикт: справился идеально, нашёл нюанс сам</span></div></li>
+<li><input type="checkbox" checked disabled><div><b>S2 построить-и-доказать</b> ✅ пройдено — leader-down fix, тесты 7/7, консенсус<span class="why">уровень сложности: инженерная работа с тестами — тянет</span></div></li>
+<li><input type="checkbox" checked disabled><div><b>S3 запись в волт + проверка синка</b> ✅ пройдено 11.07 — заметка сходила туда-обратно за ~3.5 мин, без конфликтов</div></li>
+<li><input type="checkbox" checked disabled><div><b>S4 исходящее в 03/02</b> ✅ пройдено 11.07 — Маяк сам спатчил bus_send (консенсус #06125f0f), постит от своего имени по обоим рельсам</div></li>
+<li><input type="checkbox" checked disabled><div><b>S5 длинная параллель</b> ✅ пройдено 11.07 — 2 Opus-сессии одновременно (lead-reply + дашборды), полосы через CLAIMS, ни одного конфликта</div></li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🚀 Запускаем на этой неделе <span class="badge b-now">ПЛАН</span></h2>
+<ul>
+<li><input type="checkbox" checked disabled><div><b>Approval-сторож (QQQ-перепинги)</b> ✅ стоит 11.07 — крон */15 на Маяке; попутно Маяк нашёл и вылечил корень (старая approval.py была без команды due)<span class="why">лимит: видит аски своей машины; кросс-машинный леджер = staged</span></div></li>
+<li><input type="checkbox" checked disabled><div><b>Полный TG-рельс</b> ✅ готов 11.07 — bus_send портируемый, ратифицирован (#06125f0f), стоит на хабе+Маяке</div></li>
+<li><input type="checkbox" checked disabled><div><b>Lead-reply watch</b> ✅ ПЕРЕЕХАЛ 11.07 — первый настоящий cutover: крон */30 на Маяке (чистый прогон, seen-state перенесён), хаб-дубль «Lead Reply Watch» выключен (обратимо), консенсус #2845a3c4</div></li>
+<li><input type="checkbox" checked disabled><div><b>Fleet-дашборды зеркалом</b> ✅ живёт 11.07 — <a href="http://100.74.43.25:8899/" style="color:#5aa9ff">http://100.74.43.25:8899/</a> (tailnet): свой индекс + все 96 дашбордов из синка</div></li>
+</ul>
+</div>
+
+<div class="card">
+<h2>⏸️ Осталось после волн 1-2 (11.07) <span class="badge b-staged">ХВОСТЫ</span></h2>
+<ul>
+<li><span class="ico">📱</span>TG-логины: @***ySsd (сегодня) → t0x0aa → tonydzi (нужен твой OTP, 30 сек); @*****numvc1 ✅ уже живёт</li>
+<li><span class="ico">🤖</span>TG assistant daemon + members sweeps — порт после логинов (карта в W2A-отчёте)</li>
+<li><span class="ico">🧠</span>Memory-синк на Маяк → разблокирует memory-tidy; turnstate-пилот → ab-eval/dream</li>
+<li><span class="ico">🔧</span>Мелочь: gh CLI+токены (pub-коллекторы), aibus-порт, FLEET-ANCHOR в манифест, dr-nightly root-прогон проверить ночью</li>
+<li><span class="ico">👑</span>Волна 3 (git-хостинг флота, canon-издатель, CRM-синк) — по твоему слову</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>⛔ Не едет никогда <span class="badge b-never">ХАБ</span></h2>
+<ul>
+<li><span class="ico">🎮</span>Всё GPU: Whisper-транскрипция, локальные эмбеддинги e5, тяжёлый реиндекс</li>
+<li><span class="ico">🌍</span>Всё Chrome: fb-пайплайны, claudeai-sync, dr-fanout, notebooklm, браузер-логины</li>
+<li><span class="ico">🪟</span>Windows-стек: WhatsApp MCP, computer-use, Pulse-монитор, Task Scheduler-специфика</li>
+<li><span class="ico">📀</span>Полный волт-архив с _originals (Маяк держит рабочее зеркало + restic)</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🎯 Что это даёт (зачем переезд)</h2>
+<ul>
+<li><span class="ico">🔌</span><b>«Хаб перезагрузился» перестаёт ронять флот</b>: арбитр, сторожа, напоминалки, задачи — всё живо на Маяке</li>
+<li><span class="ico">✈️</span><b>Отъезд на 45 дней</b>: критичные функции не зависят от домашнего компа</li>
+<li><span class="ico">⚡</span><b>Хаб разгружается</b> под то, что умеет только он: GPU + Chrome + Windows</li>
+<li><span class="ico">🧪</span><b>Обкатка показала</b>: инженерные задачи S1-S2 Маяк уже тянет на отлично</li>
+</ul>
+</div>
+
+</div>
+
+<div class="eli5">
+🧒 <b>Простыми словами:</b> У нас есть облачный компьютер Маяк — он никогда не выключается. Мы проверили: он уже умный (там работают и Fable, и Опус) и уже делает кучу ночной работы. План такой: (1) ты можешь садиться за него как за обычный комп — две команды, и готово; (2) на этой неделе переселим к нему «сторожей» — тех, кто будит тебя и следит за письмами, чтобы они не умирали вместе с домашним компом; (3) потом остальное, по голосованию машин. А видеокарту и браузер оставим дома — у Маяка их просто нет.
+</div>
+
+<div class="foot">Файл: _Dashboards\Mayak-Plan.html · канон: память vps-anchor-node + own-fleet-peer-equality + model-routing · галочки сохраняются локально в браузере</div>
+
+<script>
+document.querySelectorAll('input[data-k]').forEach(cb=>{
+  const k='mayak-plan-'+cb.dataset.k;
+  cb.checked=localStorage.getItem(k)==='1';
+  cb.addEventListener('change',()=>localStorage.setItem(k,cb.checked?'1':'0'));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><title>Арсёнов: аудит альфы 2026-07-03</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;background:#0f1420;color:#e8ecf4;margin:0;padding:24px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:26px 0 8px;color:#9fb4d8}
+.sub{color:#8090ac;font-size:13px;margin-bottom:18px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{background:#1a2336;text-align:left;padding:8px 10px;color:#b9c7e2}
+td{padding:8px 10px;border-top:1px solid #232e46;vertical-align:top}
+tr:hover td{background:#161e30}
+.ok{color:#4ade80;font-weight:600}.part{color:#fbbf24;font-weight:600}.no{color:#f87171;font-weight:600}.info{color:#93c5fd}
+.badge{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11.5px;margin-right:4px}
+.b-imp{background:#14532d;color:#86efac}.b-part{background:#57430c;color:#fde68a}.b-no{background:#5b1a1a;color:#fca5a5}.b-ours{background:#1e3a5f;color:#93c5fd}
+.foot{margin-top:26px;color:#68789a;font-size:12px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Alpha-Usage-Audit.html">&larr; Alpha-Usage-Audit</a> · <a href="DR-2127-Weekly-PR-Plan.html">DR-2127-Weekly-PR-Plan &rarr;</a></span></div>
+<h1>🧲 Арсёнов (looi) → наш стек: аудит альфы</h1>
+<div class="sub">Собрано 2026-07-03 · источник: 12 статей + anti-drift verbatim (E:\Obsidian\_originals\arsenov-looi\full\) · исполнители: сессии A(координатор)/B/C/D · все 4 ретро на месте ✅</div>
+
+<h2>🥇 Топ-альфа (4 куска)</h2>
+<table>
+<tr><th>#</th><th>Идея Арсёнова</th><th>Статус</th><th>Что построено у нас</th><th>Работает?</th><th>Остаток</th></tr>
+<tr><td>1</td><td><b>Fallback-цепочка моделей для cron</b> (Sonnet→Ollama→Gemini→Groq)</td><td><span class="badge b-imp">ВНЕДРЕНО</span></td><td>claude_run.py v2: <code>--fallback sonnet,haiku</code> (только подписка, без платных API) + <code>--alert</code> → громкая строка в TG-03 (bus_ping --post). Пилоты: alpha-judge, chatgpt-freshness. Ollama-ярус сознательно отложен (джобы агентные).</td><td class="ok">✅ /tt 9/9 + живой смоук + реальный алерт в 03</td><td>⚠️ Хаб не подтвердил установку (3 перепинга); боевой ночной прогон впереди</td></tr>
+<tr><td>2</td><td><b>Граф сущностей</b> (spaCy NER + FTS5, 50k сущностей)</td><td><span class="badge b-imp">ВНЕДРЕНО</span></td><td>brain_entity.py + entity-полоса в brain_ask (канал B «Ассоциативная»). Без spaCy: переиспользованы СВОИ активы (names.db = NER, name_norm = RU-токенайзер). Прототип 39MB. Задача «Entity Graph Nightly» на ноуте: Ready.</td><td class="ok">✅ A/B: «Синклер» из мусора в топ-1; мой смоук нашёл дубль Арсёнова</td><td>Хаб-нянька nightly без ACK; недельный A/B-вердикт судит Антон</td></tr>
+<tr><td>3</td><td><b>Skill taste</b> (352 сигнала + 64 принципа, гейт-рубильник)</td><td><span class="badge b-imp">ВНЕДРЕНО</span></td><td>Skill /taste-check: pass / fail / manual-review ДО показа Антону; принципы только из реальных сигналов (rule_scan + memory). Калибровка Антоном: целостность данных = hardstop, косметика (тире) = нет.</td><td class="ok">✅ живые вердикты на свежих заметках; уже используется сессиями</td><td>Привычка «прогонять сам перед показом» приживается; принципы пополняются</td></tr>
+<tr><td>4</td><td><b>Soul Daemon</b>: сбор = Python, LLM = только решение ($0.08→$0.002)</td><td><span class="badge b-imp">ВНЕДРЕНО</span></td><td>chatgpt-nag: 25k токенов/вызов → <b>0</b> (nag_send.py, LLM остался fallback'ом); creator-watcher: cw_gate/cw_eval/cw_translate рефакторинг; дашборд Watcher-Token-Audit.html.</td><td class="ok">✅ /tt сессии B</td><td>Хвост аудита остальных watcher'ов — по списку в дашборде B</td></tr>
+</table>
+
+<h2>🥈 Второй эшелон (6 + бонус)</h2>
+<table>
+<tr><th>Идея</th><th>Статус</th><th>Комментарий</th></tr>
+<tr><td><b>Radar + Council</b> (200+ источников / 20 мин, мульти-модельный кросс-чек)</td><td><span class="badge b-no">НЕ ВНЕДРЕНО</span></td><td>Сознательно: пересекается с нашим alpha-extraction (10 майнеров) и creator-watcher. Кандидат на потом, не дыра.</td></tr>
+<tr><td><b>Hard-stop Quality Gate</b> (гейт обязан останавливать)</td><td><span class="badge b-part">ЧАСТИЧНО</span></td><td>/taste-check = FAIL-рубильник, /tt = done-гейт. Калибровка Антона легла в скилл. Полный охват (все точки деплоя) — постепенно.</td></tr>
+<tr><td><b>3 уровня зрелости</b> Assistant→Operator→Architect</td><td><span class="badge b-no">НЕ ВНЕДРЕНО</span></td><td>Дешёвая доработка: колонка зрелости в automation-inventory (~30 мин). Предложено ниже.</td></tr>
+<tr><td><b>SOUL.md</b> (файл идентичности агента)</td><td><span class="badge b-part">СВОИМ ПУТЁМ</span></td><td>У нас уже глубже: cofounder-identity + growth-log + system-prompt Майкрофта (пережил смену модели). Отдельный SOUL.md не нужен (AK-47).</td></tr>
+<tr><td><b>Grounding в курируемую knowledge-model</b>, не сырой корпус</td><td><span class="badge b-ours">УЖЕ БЫЛО</span></td><td>Наш vault-data-architecture (SQLite факты + RAG смысл). Подтверждение курса, действий не требует.</td></tr>
+<tr><td><b>Локальный embed-fallback</b> (Gemini→Ollama)</td><td><span class="badge b-ours">УЖЕ БЫЛО</span></td><td>Мы local-first на RTX 5060 Ti — даже сильнее его схемы.</td></tr>
+<tr><td><b>Anti-Drift Review</b> (бонус-находка: проверка AI-документов на пустые утверждения/скрытые допущения)</td><td><span class="badge b-no">НЕ ВНЕДРЕНО</span></td><td>Кандидат: влить чек-лист в /taste-check (режим «AI-документ») или мини-скилл /anti-drift для DR-отчётов. Verbatim лежит (файл 13).</td></tr>
+</table>
+
+<h2>💎 Побочная альфа дня (не из статей)</h2>
+<table>
+<tr><th>Находка</th><th>Статус</th></tr>
+<tr><td>Арсёнов = <b>живой negotiating-лид</b> (звонок 13.04, Руслана; обещал питч-дек, тишина 2.5 мес). Карточки слиты, DM-драфт + follow-up готовы.</td><td class="part">ждёт отправки Антоном</td></tr>
+<tr><td>Правило Библии «всегда хвали источник вдохновения» (+память, +MEMORY.md, кросс-линк с mycroft-атрибуцией)</td><td class="ok">✅ внедрено</td></tr>
+<tr><td>claude_run v1 не стоял на ноуте → ночные джобы падали тихо (обрыв propagate)</td><td class="ok">✅ вылечено v2</td></tr>
+<tr><td>Класс «пульс жив, робот мёртв» (хаб 4ч, потом наш ноут той же ночью) → метрика inbox-robot в heartbeat v3 (грант Антона)</td><td class="part">внедряется консенсусом</td></tr>
+<tr><td>ACK-сторож только на хабе → приказы ноут→хаб никто не догонял</td><td class="no">ждёт ОК (Tier-2): поставить ack-watchdog на ноут</td></tr>
+<tr><td>Stale hub-IP в памяти (.140 → реальный .44)</td><td class="part">править канон = хаб</td></tr>
+</table>
+
+<h2>🔧 Осталось доработать (приоритет)</h2>
+<table>
+<tr><th>#</th><th>Задача</th><th>Цена</th><th>Блокер</th></tr>
+<tr><td>1</td><td>Хаб: установить claude_run v2 + bus_ping --post (файлы в _transit, sha 945b089d.. / 4a57becf..)</td><td>2 мин на хабе</td><td>его inbox-робот молчит; можно руками утром</td></tr>
+<tr><td>2</td><td>Боевая проверка fallback: дождаться реального ночного прогона пилотов + увидеть алерт/деградацию в 03</td><td>0 (ждать)</td><td>—</td></tr>
+<tr><td>3</td><td>ack-watchdog на ноут</td><td>~15 мин</td><td>твой ОК (Tier-2 конфиг)</td></tr>
+<tr><td>4</td><td>Anti-drift режим в /taste-check (или /anti-drift)</td><td>~30 мин</td><td>твой +</td></tr>
+<tr><td>5</td><td>Колонка зрелости A/O/A в automation-inventory</td><td>~30 мин</td><td>твой +</td></tr>
+<tr><td>6</td><td>Серия thanks-постов (№1 fallback — драфт готов) + DM Арсёнову</td><td>драфты готовы</td><td>твоя отправка</td></tr>
+<tr><td>7</td><td>Транскрипты 8 YouTube-докладов Арсёнова</td><td>сессия</td><td>опционально</td></tr>
+</table>
+
+<div class="foot">Ретро всех сессий: arsenov-deep-research (A) · watcher-token-audit (B) · entity-lane-arsenov-recipe (C) · taste-check-content-gate + calibration (D). Полные тексты статей: _originals\arsenov-looi\full\01-13. Досье: 07-People\person-artur-arsenov.md</div>
+</body></html>

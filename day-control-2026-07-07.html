@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Контроль дня · Наташа · 07.07.2026</title>
+<style>
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f6f8;margin:0;padding:24px;color:#222}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:#666;margin-bottom:20px;font-size:14px}
+  .card{background:#fff;border-radius:10px;padding:16px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .card h2{font-size:17px;margin:0 0 10px}
+  li{margin:8px 0;line-height:1.5}
+  .tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;margin-right:6px;vertical-align:1px;font-weight:600}
+  .wait{background:#e9ecef;color:#555}.go{background:#d4edda;color:#1e7e34}.stop{background:#f8d7da;color:#a71d2a}.ask{background:#fff3cd;color:#8a6d00}
+  code{background:#f0f0f0;padding:1px 5px;border-radius:4px;font-size:12px}
+  .src{color:#888;font-size:12px}
+  a{color:#2563ab}
+  input[type=checkbox]{transform:scale(1.2);margin-right:8px}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  th,td{text-align:left;padding:6px 10px;border-bottom:1px solid #e5e9ef;vertical-align:top}
+  th{color:#777;font-weight:600}
+  .risk{color:#a71d2a}
+</style>
+<script>
+  // галочки запоминаются в браузере
+  window.addEventListener('load',()=>{document.querySelectorAll('input[type=checkbox]').forEach((c,i)=>{
+    const k='dc0707-'+i; c.checked=localStorage.getItem(k)==='1';
+    c.addEventListener('change',()=>localStorage.setItem(k,c.checked?'1':'0'));});});
+</script>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="day-2026-07-23.html">&larr; day-2026-07-23</a> · <a href="svertka-02-03-121-2026-08-04.html">svertka-02-03-121-2026-08-04 &rarr;</a></span></div>
+<h1>🎛️ Контроль дня · 4 задачи · 07.07.2026</h1>
+<div class="sub">Оператор: Наталья · машина Nataly-Win-NB · собрано 12:20. Утренний разбор ноута: <a href="tasks-natalia-2026-07-07.html">tasks-natalia-2026-07-07.html</a> (там ещё 3 личных хвоста: футер, linktree, S6)</div>
+
+<div class="card">
+<h2>1️⃣ Артур Арсёнов · контроль подключения <span class="tag wait">ждём ответа хаба</span></h2>
+<ul>
+  <li>Что уже есть: сид онбординга <code>SEED-artur-peer-onboarding.md</code> готов 06.07 (Антон готовил на этом ноуте). Хэндофф «звонок с Артуром в волт» тоже отправлен хабу 06.07.</li>
+  <li>Чего НЕ видно с этого ноута: отправил ли Антон сид Артуру, создан ли LAB-чат, был ли ACK от Claude Артура. TG-зеркало чата 03 на этом ноуте пока не читается (ждём логин-кит от хаба).</li>
+  <li>✅ Сделано сейчас: запрос статуса хабу по шине, сообщение <b>#2df778f9</b> (4 вопроса: сид отправлен · LAB-чат создан · ACK/инвентаризация от Артура · звонок в волте).</li>
+</ul>
+<b>Чек-лист подключения (Definition of Done сида):</b>
+<ul style="list-style:none;padding-left:4px">
+  <li><input type="checkbox">Антон отправил сид Артуру</li>
+  <li><input type="checkbox">LAB-чат создан, Артур вступил</li>
+  <li><input type="checkbox">Claude Артура прислал ACK + INVENTORY-artur-setup.md</li>
+  <li><input type="checkbox">Выбран канал обмена файлами (GitHub / Syncthing)</li>
+</ul>
+<div class="src">Если хаб молчит больше ~30 мин: перепинг, потом вопрос Антону лично.</div>
+</div>
+
+<div class="card">
+<h2>2️⃣ Инвайт на Хабр · площадки найдены <span class="tag ask">покупка = решение Антона</span></h2>
+<p>Сначала важное: наши посты 1 и 2 УЖЕ на модерации Хабра (Песочница). Если модератор пропустит, аккаунт станет полноправным и инвайт вообще не нужен. Это официальный бесплатный путь.</p>
+<table>
+<tr><th>Площадка</th><th>Что</th><th>Цена</th></tr>
+<tr><td><a href="https://plati.market/itm/invite-invitation-to-habrahabr-ru/1719161">Plati.market</a></td><td>инвайт</td><td>~33$</td></tr>
+<tr><td><a href="https://invite.name/habrahabr/">invite.name</a></td><td>инвайт</td><td>по прайсу сайта</td></tr>
+<tr><td><a href="https://invitez.ru/37-habrcom.html">invitez.ru</a></td><td>инвайт или готовый аккаунт</td><td>по прайсу сайта</td></tr>
+<tr><td><a href="https://kupi-ig.ru/ru/item/product/5569836">kupi-ig.ru</a></td><td>инвайт</td><td>по прайсу сайта</td></tr>
+</table>
+<ul>
+  <li class="risk">⚠️ Риск: администрация Хабра прямо предупреждает, что за покупные инвайты БЛОКИРУЮТ аккаунт (<a href="https://habr.com/ru/docs/help/registration/">официальные правила</a>). Можно потерять и деньги, и аккаунт с постами.</li>
+  <li>Бесплатные пути: дождаться модерации Песочницы · попросить инвайт у знакомого хабровчанина с хорошей кармой (в ClawRus наверняка есть свои!) · конкурсы Хабра в соцсетях.</li>
+  <li>Покупка = деньги = решение Антона. Мой совет: подождать модерацию + кинуть клич в ClawRus, покупку держать запасным.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>3️⃣ Реддит Антона · прогрев и постинг <span class="tag stop">СТОП: конфликт с решением Антона</span></h2>
+<ul>
+  <li>Стоячее решение Антона (03-04.07): аккаунт = <b>u/Ok-Tip-1318</b> (личный акк Антона, 5 лет, Premium), прогрев кармы ведёт <b>Руслана</b> со своего Mac. Наташе задачу тогда явно СНЯЛИ, рутину «Natasha Reddit Push» на хабе отключили. Новые аккаунты не создаём.</li>
+  <li>Локальный план на этом ноуте (<code>Reddit-Warmup-Plan.html</code> + напоминалка) от 02-03.07, то есть ДО отмены: он устарел, не работай по нему.</li>
+  <li class="risk">⚠️ Техриск: второй человек в том же аккаунте с другого устройства/IP плюс двойной темп комментов = красный флаг для Reddit, аккаунт Антона терять нельзя.</li>
+  <li><b>Что делаю:</b> если Антон это переиграл (например, передал тебе от Русланы), нужно его подтверждение. Скажи «+», и я отправлю Антону запрос-подтверждение (через 02/шину): «Reddit-прогрев переходит Наташе, да/нет». До ответа по Реддиту руками ничего не делаем.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>4️⃣ Сторис по актуальным постам <span class="tag go">готово к постингу</span></h2>
+<ul>
+  <li>Ресёрч был сделан 06.07, вердикт: пилот руками 1-2 недели, 1 сторис в день, карточка 9:16 со ссылкой на пост.</li>
+  <li>✅ Подготовлено сейчас: <a href="stories-2026-07-07.html"><b>3 сторис-карточки</b></a>: П9 «интеллект из крана» (RU → пост /734) · П12 «команда в час ночи» (EN → пост /1829) · П13 запасная (ждёт публикации поста про голос за $100).</li>
+  <li>Перед первой сторис: проверь бусты канала (Statistics → Boosts; уровень 1 = 1 сторис/день). Личный акк Антона: Premium есть, там можно сразу.</li>
+</ul>
+<b>Сегодня:</b>
+<ul style="list-style:none;padding-left:4px">
+  <li><input type="checkbox">Проверить уровень бустов @PaloAltoAiRu (и @PaloAltoAi)</li>
+  <li><input type="checkbox">Опубликовать сторис 1 (П9) днём</li>
+  <li><input type="checkbox">Вписать факт публикации в трекер дистрибуции</li>
+</ul>
+</div>
+
+</body>
+</html>

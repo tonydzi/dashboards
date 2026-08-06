@@ -1,0 +1,74 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TG-Демон · Табло</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--bd:#30363d;--tx:#e6edf3;--mut:#8b949e;
+--ok:#2ea043;--err:#f85149;--warn:#d29922;--acc:#58a6ff;}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);
+font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:18px;}
+h1{font-size:19px;margin:0 0 2px}.sub{color:var(--mut);font-size:12px;margin-bottom:16px}
+.banner{padding:16px 18px;border-radius:12px;font-size:18px;font-weight:700;margin-bottom:16px;
+border:1px solid var(--bd)}
+.banner.ok{background:rgba(46,160,67,.12);border-color:var(--ok)}
+.banner.err{background:rgba(248,81,73,.12);border-color:var(--err)}
+.note{font-weight:400;font-size:13px;color:var(--mut);margin-top:6px}
+.grid{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px 16px;min-width:120px}
+.kpi .n{font-size:24px;font-weight:700}.kpi .l{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
+.kpi.err .n{color:var(--err)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;margin-bottom:16px}
+.card h2{font-size:14px;margin:0 0 10px;color:var(--acc)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--bd);vertical-align:top}
+th{color:var(--mut);font-weight:600;font-size:11px;text-transform:uppercase}
+td.t{color:var(--mut);white-space:nowrap;font-variant-numeric:tabular-nums}
+td.trig{color:var(--tx);max-width:220px}td.repl{color:var(--mut);max-width:300px}
+.badge{padding:2px 7px;border-radius:6px;font-size:11px;white-space:nowrap}
+.badge.ok{background:rgba(46,160,67,.15);color:#5dd57a}
+.badge.err{background:rgba(248,81,73,.15);color:#ff7b72}
+.badge.warn{background:rgba(210,153,34,.15);color:#e3b341}
+.badge.muted{background:#21262d;color:var(--mut)}
+.muted{color:var(--mut)}ul{margin:0;padding-left:18px}li{margin:3px 0}
+code{background:#21262d;padding:1px 5px;border-radius:4px;font-size:12px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Posting-Lanes-2026-08-05.html">&larr; Posting-Lanes-2026-08-05</a> · <a href="TG-Stories-Research-2026-07-06.html">TG-Stories-Research-2026-07-06 &rarr;</a></span></div>
+<h1>📟 Табло Telegram-демона <span class="muted">(@*****numvc1 · «вахта»)</span></h1>
+<div class="sub">машина: <code>A-2022BAYAREA</code> · обновлено: 2026-07-04 00:50:36 · источник: lock 47921 + JSONL + assistant_state.db</div>
+
+<div class="banner ok">🟢 ДЕМОН ЖИВ
+<div class="note">Демон держит singleton-лок — слушает Telegram прямо сейчас.</div></div>
+
+<div class="grid">
+  <div class="kpi"><div class="n">2 ч назад</div><div class="l">посл. активность</div></div>
+  <div class="kpi"><div class="n">0</div><div class="l">событий сегодня</div></div>
+  <div class="kpi"><div class="n">88</div><div class="l">за 24 часа</div></div>
+  <div class="kpi err"><div class="n">48</div><div class="l">ошибок 24ч</div></div>
+  <div class="kpi "><div class="n">0</div><div class="l">эскалаций 24ч</div></div>
+  <div class="kpi"><div class="n">583</div><div class="l">всего в логе</div></div>
+</div>
+
+<div class="card"><h2>🚩 Красные флаги (ошибки / эскалации, 7 дней)</h2><ul><li><b>2026-07-03T21:50:46</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T19:54:25</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T19:42:16</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T19:41:27</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T19:36:27</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T18:41:35</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T18:40:50</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T18:39:59</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T18:38:48</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T18:27:58</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T18:21:52</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T18:20:57</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T18:20:03</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T18:19:04</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li><li><b>2026-07-03T18:18:25</b> · error ·  — You cannot send plain results in this chat (caused by SendMessageRequest)</li></ul></div>
+
+<div class="card"><h2>📜 Последние события (что принял и что сделал)</h2>
+<table><tr><th>время</th><th>режим</th><th>статус</th><th>чат</th><th>триггер</th><th>ответ (фрагмент)</th></tr>
+<tr><td class='t'>2026-07-03T21:51:16</td><td>coach</td><td><span class='badge muted'>⏭ пропуск</span></td><td>All Assistant’s tasks 77</td><td class='trig'>Дай мне несколько самых крупных солнечных панелей с их сайта.
+
+«
+***
+Перевела: GPT-5.4 + 1</td><td class='repl'>SKIP</td></tr><tr><td class='t'>2026-07-03T21:50:46</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T19:54:25</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T19:42:16</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T19:41:27</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T19:36:55</td><td>coach</td><td><span class='badge muted'>⏭ пропуск</span></td><td>All Assistant’s tasks 77</td><td class='trig'>Саше-электронику нужно изучить документацию по LEGO Mindstorms. Когда он в следующий раз п</td><td class='repl'>SKIP</td></tr><tr><td class='t'>2026-07-03T19:36:27</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:41:35</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:40:50</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:39:59</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:39:11</td><td>coach</td><td><span class='badge muted'>⏭ пропуск</span></td><td>Покупки approve Assistan</td><td class='trig'>Оксана два часа назад попросила отгрузить позиции: зайти на сайт, зарегистрироваться и офо</td><td class='repl'>SKIP</td></tr><tr><td class='t'>2026-07-03T18:38:48</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:36:40</td><td>coach</td><td><span class='badge muted'>⏭ пропуск</span></td><td>All Assistant’s tasks 77</td><td class='trig'>Помните, я просил помочь с машиной: разбита фара, поцарапаны оба бока. Я уже дал инструкци</td><td class='repl'>SKIP</td></tr><tr><td class='t'>2026-07-03T18:28:27</td><td>coach</td><td><span class='badge muted'>⏭ пропуск</span></td><td>Покупки approve Assistan</td><td class='trig'>У нас есть два велосипеда, документы и губки/расходники. Нужно уточнить: требуется «строеч</td><td class='repl'>SKIP</td></tr><tr><td class='t'>2026-07-03T18:27:58</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:21:52</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:20:57</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:20:03</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:19:27</td><td>coach</td><td><span class='badge muted'>⏭ пропуск</span></td><td>All Assistant’s tasks 77</td><td class='trig'>Продавец сообщил, что в евро стоимость заказа - 250 евро.
+Эта стоиомсть включает товар и д</td><td class='repl'>SKIP</td></tr><tr><td class='t'>2026-07-03T18:19:04</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:18:25</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:17:49</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:17:07</td><td>task</td><td><span class='badge err'>🔴 ОШИБКА</span></td><td></td><td class='trig'></td><td class='repl'>You cannot send plain results in this chat (caused by SendMessageRequest)</td></tr><tr><td class='t'>2026-07-03T18:16:25</td><td>coach</td><td><span class='badge muted'>⏭ пропуск</span></td><td>Покупки approve Assistan</td><td class='trig'>Быстрее отгружай!
+
+«
+***
+Перевела: GPT-5.4 + 11labs  
+Делегировано: не указано  
+Срок/что </td><td class='repl'>SKIP</td></tr><tr><td class='t'>2026-07-03T18:16:02</td><td>coach</td><td><span class='badge muted'>⏭ пропуск</span></td><td>All Assistant’s tasks 77</td><td class='trig'>Здесь можно заполнить претензию, для этого нужны фотографии.
+
+***
+Перевела: GPT-5.4 + 11la</td><td class='repl'>SKIP</td></tr></table></div>
+
+<div class="card"><h2>⚙️ Служебное</h2>
+<div class="muted">watermark (посл. обработанный msg): -1001571208214: msg 68748 · -1001859973669: msg 79112 · 432963868: msg 1067379 · 6407925545: msg 1067608</div>
+<div class="muted">boot-log: watching chats=[-1001859973669, -1001571208214] principals=[432963868, 6407925545]</div>
+<div class="muted">parse-ошибок JSONL: 0 · записей task в БД: 298</div>
+</div>
+</body></html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Координация пиров — корневой разбор · 2026-07-02</title>
+<style>
+  :root { --bg:#0f1419; --card:#1a2129; --line:#2a3441; --txt:#dce3ea; --dim:#8a97a5;
+          --red:#ff6b6b; --yel:#ffd166; --grn:#6ee7a0; --blu:#6bb6ff; --pur:#c39bff; }
+  * { box-sizing:border-box; }
+  body { background:var(--bg); color:var(--txt); font:15px/1.55 "Segoe UI",system-ui,sans-serif; margin:0; padding:24px; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  h2 { font-size:19px; margin:34px 0 12px; border-bottom:1px solid var(--line); padding-bottom:6px; }
+  .sub { color:var(--dim); margin-bottom:22px; }
+  .grid { display:grid; gap:14px; }
+  .nodes { grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+  .card h3 { margin:0 0 8px; font-size:16px; }
+  .tag { display:inline-block; padding:1px 9px; border-radius:20px; font-size:12px; font-weight:600; margin-left:6px; vertical-align:middle; }
+  .t-red { background:#3a1b1b; color:var(--red); } .t-yel { background:#3a331b; color:var(--yel); }
+  .t-grn { background:#1b3a26; color:var(--grn); } .t-blu { background:#1b2a3a; color:var(--blu); }
+  ul { margin:6px 0; padding-left:20px; } li { margin:4px 0; }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--dim); font-weight:600; white-space:nowrap; }
+  .rootcard { border-left:4px solid var(--pur); }
+  .rootcard b { color:var(--pur); }
+  .fix { color:var(--grn); }
+  .cols { grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); }
+  .small { font-size:13px; color:var(--dim); }
+  .chk li { list-style:none; margin-left:-16px; }
+  .qqq { background:#2b2436; border:1px solid #4a3a66; border-radius:10px; padding:14px 16px; }
+  .eli5 { background:#12251a; border:1px solid #1f4630; border-radius:10px; padding:14px 16px; margin-top:30px; }
+  code { background:#0b0f14; padding:1px 6px; border-radius:5px; font-size:12.5px; color:var(--blu); }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="OpenClaw-Parity-Roadmap.html">&larr; OpenClaw-Parity-Roadmap</a> · <a href="Peer-Export-Manual-Decisions.html">Peer-Export-Manual-Decisions &rarr;</a></span></div>
+
+<h1>🕸️ Координация пиров — корневой разбор</h1>
+<div class="sub">2026-07-02 · аудит 24.06–02.07 · источники: 385 сессий (19 релевантных) + журнал консенсуса (62 события) + TG-03 (240 сообщений) + живой опрос пиров · собрано: хаб A-2022BAYAREA (Fable 5 + 2 Sonnet-агента)</div>
+
+<h2>Узлы флота — кто чем болеет</h2>
+<div class="grid nodes">
+  <div class="card"><h3>🖥️ Хаб A-2022BAYAREA <span class="tag t-yel">🟡 работает, датчик врёт</span></h3>
+    <ul><li>inbox-робот жив, LLM-петля замыкается ✅</li>
+    <li>Экспорт сессий починен этой ночью (+60 сессий, +StartWhenAvailable) ✅</li>
+    <li>⚠️ heartbeat кричит «краны 38/40 🔴», а schtasks видит живыми почти всех — <b>врёт счётчик</b>, разобрать</li>
+    <li>⚠️ coach-morning/evening молчат 51–58 ч (MCP-краны)</li>
+    <li>⚠️ consensus-tick: баг self-ACCEPT (18 повторов #f60135de)</li></ul></div>
+  <div class="card"><h3>💻 Ноут HP17-ZBook <span class="tag t-yel">🟡 жив, недолечен</span></h3>
+    <ul><li>Сам нашёл корень F5VYGLV: «start-race при logon/wake», применил фикс, предложил #e53fd7fe ✅</li>
+    <li>⚠️ Архиватор сессий молчит с 24.06 → капер-сессия и всё после 24.06 не в волте</li>
+    <li>⚠️ Свой heartbeat: «sync 0/0 пиров» при доезжающих файлах — датчик мерит не то</li>
+    <li>⚠️ Спит с крышкой → консенсусы умирают об него по таймауту</li></ul></div>
+  <div class="card"><h3>🪟 MyOwnPC-Natalia <span class="tag t-yel">🟡 робот жив, обвес не доехал</span></h3>
+    <ul><li>Робот и heartbeat живые, HANDOFF-задачи шлёт ✅</li>
+    <li>⚠️ <code>No module named cron_watchdog</code> — модуль не доставлен (propagate!)</li>
+    <li>⚠️ Бэкап устарел ~140 часов</li>
+    <li>⚠️ <code>claude /login</code> не подтверждён — робот может тикать вхолостую</li></ul></div>
+  <div class="card"><h3>🍎 MacBook-Ruslana <span class="tag t-red">🔴 робот мёртв 7 суток</span></h3>
+    <ul><li>Syncthing флапает (спящий Мак), но робот не подал ни одного признака с 25.06</li>
+    <li>Ни одного файла <code>__from-MacBook-Ruslana</code> вообще не существует</li>
+    <li>Задачи хаба (Tailscale 30.06) висят без ответа</li>
+    <li>→ нужно физически открыть Мак и перезапустить launchd-робота</li></ul></div>
+</div>
+
+<h2>5 системных корней (лечим классы, не симптомы)</h2>
+<div class="grid cols">
+  <div class="card rootcard"><b>1. Нет флот-манифеста версий</b><br>
+  Пути (C:/D:/E:), Device ID, имена машин, версии скриптов дрейфуют. Фикс едет туда, где шла отладка; раскладка на памяти → propagate нарушен ≥3 раза.<br>
+  <span class="fix">Лечение: манифест «компонент→версия→машина» + ночная хэш-сверка (расширить /arch до флота).</span></div>
+  <div class="card rootcard"><b>2. Сторожа без предохранителя</b><br>
+  Watchdog убивал Syncthing по ложному 403 (пила 18 сек, 2 машины); tick лидера спамил self-ACCEPT ×18; heartbeat «38/40 🔴» при живых задачах.<br>
+  <span class="fix">Лечение: circuit-breaker каждому сторожу + «красный вердикт = 2 независимых источника до действия».</span></div>
+  <div class="card rootcard"><b>3. «Жив» ≠ «несёт службу»</b><br>
+  Роботы тикают, но не исполняют обязанности: тикал — не отвечал; heartbeat зелёный — архиватор мёртв 8 дней.<br>
+  <span class="fix">Лечение: heartbeat v3 = дата последнего УСПЕХА по каждой обязанности (архив/respond/ACK/бэкап).</span></div>
+  <div class="card rootcard"><b>4. Протокол считает всех always-on</b><br>
+  Always-on только хаб. Ноут и Мак спят → предложения консенсуса умирают по таймауту об спящих.<br>
+  <span class="fix">Лечение: классы узлов (always-on/спящий) с разными SLA + durable-очередь приказов до пробуждения.</span></div>
+  <div class="card rootcard"><b>5. Шум хоронит сигнал</b><br>
+  ~90% чата 03 = heartbeat/алерты. QQQ-запросы к Антону тонут в спаме роботов.<br>
+  <span class="fix">Лечение: heartbeats в отдельный поток / почасовой rollup; 03 = только события и вопросы.</span></div>
+  <div class="card" style="border-left:4px solid var(--grn)"><b style="color:var(--grn)">Что уже РАБОТАЕТ — не трогать</b><br>
+  Per-sender файлы шины (нет конфликтов записи) · dual-send c авто-failover в TG (доказан ночью) · 5 полных циклов консенсуса · конвергентный диагноз хаб+ноут по start-race.</div>
+</div>
+
+<h2>Хроника мучений — 10 классов за 8 дней (24.06–02.07)</h2>
+<table>
+<tr><th>#</th><th>Класс</th><th>Повторов</th><th>Статус</th><th>Суть / остаток</th></tr>
+<tr><td>1</td><td>Доставка в шине (пути, вложенные папки, split-brain)</td><td>≥6</td><td><span class="tag t-grn">починен</span></td><td>Root-fix = per-sender файлы; остатки чинились слоями (env-кэш explorer, D:/C:)</td></tr>
+<tr><td>2</td><td>Watchdog-403-пила (сторож убивал Syncthing)</td><td>2 машины</td><td><span class="tag t-yel">частично</span></td><td>403=жив + STGUIAPIKEY ✅; circuit-breaker так и не построен</td></tr>
+<tr><td>3</td><td>Дрейф идентичности (Device ID, имена, AUTH_KEY)</td><td>≥4</td><td><span class="tag t-yel">частично</span></td><td>FIX B (пер-машинные TG-сессии) не доехал до хаба; реестр ID создан</td></tr>
+<tr><td>4</td><td>Робот тикает, но не действует / жжёт токены</td><td>≥5</td><td><span class="tag t-yel">частично</span></td><td>call в батнике, commit-on-wake ✅; respond-шаг консенсуса не подключён (чинится в спавн-задаче)</td></tr>
+<tr><td>5</td><td>Зомби-процессы (20×WhatsApp-MCP, 35×claude.exe)</td><td>3</td><td><span class="tag t-yel">частично</span></td><td>Разово убиты; корень «каждая сессия плодит» не закрыт</td></tr>
+<tr><td>6</td><td>sync-conflict мусор / дубль-рутины на 2 машинах</td><td>3</td><td><span class="tag t-yel">частично</span></td><td>.stignore-fix есть, но per-device; 43+15+5 конфликтов лежат</td></tr>
+<tr><td>7</td><td>Telethon/TG-API слои (TypeNotFound, InvitedUsers)</td><td>3</td><td><span class="tag t-yel">частично</span></td><td>Смягчено; апгрейд Telethon не сделан — риск дубль-групп</td></tr>
+<tr><td>8</td><td>Windows-грабли (env-кэш, call, песочница, EPERM)</td><td>4</td><td><span class="tag t-grn">точечно</span></td><td>Каждая закрыта обёрткой/правкой</td></tr>
+<tr><td>9</td><td>ВАЙП истории шины на ноуте (29.06)</td><td>1 🔥</td><td><span class="tag t-red">не подтверждён</span></td><td>1350 файлов спасено на хаб; восстановление ноута застряло 89%→4.5%, финал не сверен</td></tr>
+<tr><td>10</td><td>Лестница резервных рельсов (7 каналов)</td><td>—</td><td><span class="tag t-blu">построено</span></td><td>git-bus/n8n-bridge без peer-ACK; email не подтверждён; /bus-heal не собран</td></tr>
+</table>
+
+<h2>Ждёт твоего решения (QQQ)</h2>
+<div class="qqq"><ul>
+<li><b>#e53fd7fe</b> — зеркалировать фикс «start-race при logon/wake» на весь флот (хаб уже согласен, диагноз сошёлся с двух сторон). <b>QQQ / NO</b></li>
+<li><b>#0b1d5d4f</b> — план по рецидиву F5VYGLV ноута + ревизия осцилляции сторожей. <b>QQQ / NO</b></li>
+<li><b>Дубль-группа с Русланой</b> (создана демоном без санкции 25.06) — удалить или оставить? Висит неделю.</li>
+</ul></div>
+
+<h2>План лечения</h2>
+<div class="grid cols">
+  <div class="card"><h3>🤖 Сделаю сам (Tier-1)</h3><ul class="chk">
+    <li>☐ Разобрать враньё «краны 38/40» на хабе (датчик vs schtasks)</li>
+    <li>☐ Патч self-ACCEPT-бага consensus.py (+ разложить в _transit с хэшами)</li>
+    <li>☐ Доставить cron_watchdog Наталье через _transit + грант</li>
+    <li>☐ Heartbeat v3 (duty-метрики) — черновик на консенсус</li>
+    <li>☐ Вычистить 43+15+5 sync-conflict (свериться с dedup-тулами)</li>
+    <li>◐ Роботы-respond для консенсуса — уже чинится в спавн-задаче</li></ul></div>
+  <div class="card"><h3>👤 Физически на людях</h3><ul class="chk">
+    <li>☐ <b>Руслана:</b> открыть Мак, перезапустить launchd-робота (7 дней тишины)</li>
+    <li>☐ <b>Наталья:</b> claude /login на её машине</li>
+    <li>☐ <b>Антон:</b> DHCP-резервация IP хаба на роутере</li>
+    <li>☐ <b>Антон:</b> ноут держать открытым до VERIFY #a7c918ff (транскрипты с 24.06)</li></ul></div>
+  <div class="card"><h3>📋 Недоделки-хвосты (бэклог)</h3><ul class="chk">
+    <li>☐ /bus-heal (авто-слияние конфликтов) — обещан, не собран</li>
+    <li>☐ Circuit-breaker сторожам</li>
+    <li>☐ Email-рельс: App Password подтвердить</li>
+    <li>☐ git-bus + n8n-bridge: peer-ACK флота</li>
+    <li>☐ Апгрейд Telethon (TypeNotFoundError)</li>
+    <li>☐ FIX B: пер-машинные TG-сессии → хаб</li>
+    <li>☐ Вайп-восстановление ноута: финальная сверка счётчиков</li></ul></div>
+</div>
+
+<div class="eli5"><b>🧒 Простыми словами:</b> у нас четыре компьютера-робота, которые учатся жить одной семьёй. За восемь дней они наступили на десять разных граблей, большинство уже починили. Но есть пять «болезней семьи», а не отдельных ушибов: нет общего списка «у кого какая деталь стоит», сторожа иногда крушат то, что охраняют, роботы умеют говорить «я жив», но не «я сделал работу», правила написаны как будто все никогда не спят (а спят почти все), и в общем чате такой галдёж, что важное тонет. Лекарства для каждой болезни выписаны выше: часть я сделаю сам, три вопроса ждут твоего «да», и три вещи могут сделать только люди руками.</div>
+
+<div class="small" style="margin-top:18px">Канон: 02-Decisions/decision-peer-coordination-roots-2026-07-02.md · агентские отчёты в сессии 60be8b5f · собрано автономно по мандату «разберись в корне»</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контент-фабрика v2 — ветки S0–S6</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#181b22; --card2:#1f232c; --ink:#e8eaed; --dim:#9aa3b2;
+    --green:#3ecf8e; --yellow:#f2c14e; --gray:#5b6472; --blue:#5b9dff; --red:#ff6b6b;
+    --line:#2a2f3a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:28px}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 22px;font-size:13px}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:24px;font-size:14px}
+  .flow b{color:var(--blue)}
+  .arrow{color:var(--gray)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;position:relative}
+  .card h3{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:.3px}
+  .t-done{background:rgba(62,207,142,.15);color:var(--green)}
+  .t-part{background:rgba(242,193,78,.15);color:var(--yellow)}
+  .t-open{background:rgba(91,100,114,.2);color:var(--dim)}
+  .role{color:var(--dim);font-size:13px;margin:0 0 10px}
+  .meta{font-size:12.5px;color:var(--dim);border-top:1px solid var(--line);padding-top:9px;margin-top:9px}
+  .meta code{background:var(--card2);padding:1px 5px;border-radius:5px;color:#cbd3e1;font-size:11.5px}
+  .sid{position:absolute;top:14px;right:14px;font-size:26px;font-weight:800;color:#2c3340}
+  .wave{grid-column:1/-1;color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:10px 0 -4px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .tiers{margin-top:24px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  table{border-collapse:collapse;width:100%;font-size:13px;margin-top:8px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:600}
+  .op{color:var(--yellow);font-weight:700}
+  .open-box{margin-top:24px;background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.3);border-radius:12px;padding:16px}
+  .open-box h3{margin:0 0 10px;color:var(--red)}
+  .open-box li{margin-bottom:6px}
+  .foot{color:var(--gray);font-size:11.5px;margin-top:22px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Voice-To-Content.html">&larr; Voice-To-Content</a> · <a href="content-factory-process-flow.html">content-factory-process-flow &rarr;</a></span></div>
+  <h1>🏭 Контент-фабрика v2 — ветки S0–S6</h1>
+  <p class="sub">Голос Антона → публичное reality-show по площадкам. Реконструировано из волта 2026-07-01 · машина: MyOwnPC-Natalia · вольт: <code>D:\OBSIDIAN\Anton-Knowledge</code></p>
+
+  <div class="flow">
+    <b>ГОЛОС + авто-логи</b><span class="arrow">→</span>
+    ТРИАЖ <span style="color:var(--yellow)">🔧задача</span>/<span style="color:var(--blue)">💎альфа</span>/<span style="color:var(--green)">📝пост</span><span class="arrow">→</span>
+    <b>центральная база (волт)</b><span class="arrow">→</span>
+    ЭПИЗОД<span class="arrow">→</span>
+    тиры: тизер · средний · лонгрид · дев-лог<span class="arrow">→</span>
+    <b>площадки</b> (draft-first)
+  </div>
+
+  <div class="grid">
+    <div class="wave">Волна 1 — дизайн + ресёрч (read-only)</div>
+
+    <div class="card"><span class="sid">S0</span>
+      <h3>Аудит фабрик <span class="tag t-done">DONE</span></h3>
+      <p class="role">Что паузим/сливаем при переходе на v2</p>
+      Инвентарь всех контент-рутин: KEEP / PAUSE / MERGE / DROP. Живой <code>list_scheduled_tasks</code>, не по памяти.
+      <div class="meta">📄 <code>factories-audit.md</code> · вход для S1 · 2 решения ждут Антона (см. ниже)</div>
+    </div>
+
+    <div class="card"><span class="sid">S1</span>
+      <h3>Архитектор топологии <span class="tag t-done">DONE</span></h3>
+      <p class="role">Единый контракт тиров (источник истины)</p>
+      Формализовал матрицу тир×площадка×язык в decision-note <b>v2</b> §7. S4/S5/S6 реализуют его 1:1.
+      <div class="meta">📄 <code>decision-content-pipeline-reality-show.md</code> (status: v2-spec)</div>
+    </div>
+
+    <div class="card"><span class="sid">S2</span>
+      <h3>GEO / дистрибуция <span class="tag t-done">DONE</span></h3>
+      <p class="role">Где постить, чтобы видели люди И AI</p>
+      GEO-плейбук: Reddit=топ-цитируемость, GitHub-markdown=канон, VC.ru/Хабр приняты. llms.txt + GEO-чеклист.
+      <div class="meta">📄 <code>decision-geo-distribution-playbook.md</code> v1 + <code>geo-distribution-playbook.md</code></div>
+    </div>
+
+    <div class="card"><span class="sid">S3</span>
+      <h3>Reality-show стиль <span class="tag t-done">DONE</span></h3>
+      <p class="role">Драматургия поверх голоса Антона (не заменяя)</p>
+      Палитра приёмов: cold open, клиффхэнгер, ставки, арка/сезон, каст, running gag + анти-фальшь-предохранитель.
+      <div class="meta">📄 <code>08-Templates\style-reality-show.md</code></div>
+    </div>
+
+    <div class="wave">Волна 2 — стройка по спеке S1</div>
+
+    <div class="card"><span class="sid">S4</span>
+      <h3>Вход: голос → пост-материал <span class="tag t-done">DONE</span></h3>
+      <p class="role">Поток голосовых → «эпизоды-заготовки»</p>
+      <code>voice_triage.py</code> (рутина 10/15/20) дописывает <code>posts.jsonl</code> — машинный стык с S5. Фикс cp1251 применён.
+      <div class="meta">📄 <code>voice_triage.py</code> · стор: 13 записей (11 public / 2 personal) · контракт <code>triage\HANDOFF.md</code></div>
+    </div>
+
+    <div class="card"><span class="sid">S5</span>
+      <h3>Адаптеры по тирам <span class="tag t-done">DONE · /tt PASS</span></h3>
+      <p class="role">1 пост-материал → 7 черновиков (тир×язык)</p>
+      <code>episode_adapter.py</code>: teaser/medium/longread ×ru/en + devlog. Длина-гейт, кросс-ссылки, CTA co-founder зашиты. Голос=Opus.
+      <div class="meta">📄 <code>episode_adapter.py</code> + скилл <code>/episode</code> · export→<code>content_publish.py</code></div>
+    </div>
+
+    <div class="card"><span class="sid">S6</span>
+      <h3>Дев-лог GEO-лейн <span class="tag t-part">ПОЧТИ</span></h3>
+      <p class="role">НЕ-курированный firehose для LLM (GEO)</p>
+      <code>devlog_collect.py</code> (/tt PASS): ретро+DR+TurnState → EN-скелет. Ночной сбор + GitHub Pages = ждут «+».
+      <div class="meta">📄 <code>devlog_collect.py</code> · репо <code>clawrush</code> · git push = Tier-2</div>
+    </div>
+  </div>
+
+  <div class="tiers">
+    <h3 style="margin:0">📐 Контракт тиров (S1 §7.2 — S5 реализует 1:1)</h3>
+    <table>
+      <tr><th>Тир</th><th>Длина</th><th>Площадки (RU / EN)</th><th>Голос</th><th>Ссылка вниз</th></tr>
+      <tr><td><b>Тизер</b></td><td>240–370 зн <span class="op">HARD</span></td><td>ClawRush · X</td><td>Opus</td><td>→ свой лонгрид; X↔RU-в-TG</td></tr>
+      <tr><td><b>Средний</b></td><td>~800–2500</td><td>FB (RU) · TG @PaloAltoAiRu (RU) · TG @PaloAltoAi (EN)</td><td>Opus дневник</td><td>FB: ссылка в 1-м комменте; TG: в теле + вопрос + CTA</td></tr>
+      <tr><td><b>Лонгрид</b></td><td>4000+ нарратив</td><td>ClawRush·VC.ru·Хабр · GitHub</td><td>Opus</td><td>← тизер; → дев-лог; canonical→GitHub</td></tr>
+      <tr><td><b>Дев-лог</b></td><td>сухой лог</td><td>GitHub (канон) · Reddit</td><td>Sonnet+Opus</td><td>→ лонгрид; ссылки на Deep Research</td></tr>
+    </table>
+  </div>
+
+  <div class="open-box">
+    <h3>🔴 Открыто — ждёт решения Антона</h3>
+    <ul>
+      <li><b>S0-1:</b> <code>facebook-diary-daily</code> = дубль FB-тира → <b>MERGE→PAUSE</b> (оставить пока FB-адаптер S5 не армирован, затем свернуть — не удалять). Делаем? да/нет</li>
+      <li><b>S0-2:</b> <code>ufo-digest-weekly</code> — оставить или выключить? (жив ли UFO/UAP-пивот CHARM)</li>
+      <li><b>S6:</b> ночная scheduled-задача на сбор дев-лога — предложена, ждёт «+». GitHub Pages / домен / sitemap = <code>[ждёт infra]</code>.</li>
+      <li><b>Публикация наружу</b> (ClawRush/X/GitHub/Reddit) = Tier-2 → только по явному «публикуем».</li>
+    </ul>
+  </div>
+
+  <p class="foot">Реконструировано из: decision-content-pipeline-reality-show.md §7 · CONTENT-FACTORY-V2-SESSIONS.md · HANDOFF-NATALIA · factories-audit.md · S1/S4/S5/S6 handoffs (_machine-bus\_transit\handoffs). Пути на этой машине: волт=D:\OBSIDIAN\Anton-Knowledge, движки=D:\OBSIDIAN\_imports\content-factory.</p>
+</body>
+</html>

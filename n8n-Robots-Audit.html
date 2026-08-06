@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>n8n — Аудит всех роботов</title>
+<style>
+:root{--bg:#0f1115;--card:#191c23;--card2:#20242d;--ink:#e9edf3;--mut:#9aa4b2;--line:#2a2f3a;
+--ok:#37d39a;--amber:#f5b longest;--amber:#f5b342;--red:#ff5c6c;--idle:#6b7280;--blue:#5b9dff;--violet:#b48cff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:22px}
+h1{font-size:24px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 18px}
+.kpis{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-width:120px}
+.kpi b{font-size:20px;display:block}.kpi span{color:var(--mut);font-size:12px}
+.callout{background:#241318;border:1px solid #5a2230;border-radius:12px;padding:14px 16px;margin:14px 0}
+.callout h3{margin:0 0 6px;color:var(--red)}
+.callout.green{background:#0f231b;border-color:#1f5340}.callout.green h3{color:var(--ok)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:5}
+.bar button{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 12px;cursor:pointer;font-size:13px}
+.bar button.on{background:var(--blue);border-color:var(--blue);color:#06101f;font-weight:600}
+.bar input{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:6px 14px;flex:1;min-width:160px}
+.grp{margin:22px 0 6px;font-size:13px;letter-spacing:.5px;text-transform:uppercase;color:var(--mut);border-bottom:1px solid var(--line);padding-bottom:6px}
+.row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0;display:grid;grid-template-columns:1fr;gap:6px}
+.row .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.row .nm{font-weight:600;font-size:15px}
+.row .why{color:#cdd5e0}
+.row .meta{color:var(--mut);font-size:12px;display:flex;gap:14px;flex-wrap:wrap}
+.tag{font-size:11px;padding:2px 8px;border-radius:10px;border:1px solid var(--line);white-space:nowrap}
+.t-on{color:var(--ok);border-color:#1f5340;background:#0f231b}
+.t-off{color:var(--idle);border-color:#34384200;background:#23262e}
+.t-red{color:#fff;background:#a31d2e;border-color:#a31d2e}
+.t-amber{color:#1a1206;background:var(--amber);border-color:var(--amber)}
+.t-broken{color:#fff;background:#7a3b12;border-color:#7a3b12}
+.t-busy{color:var(--blue);border-color:#2b4a78;background:#10203a}
+.t-fixed{color:#06101f;background:var(--ok);border-color:var(--ok)}
+.mono{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--violet)}
+.foot{color:var(--mut);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="n8n-Automation-Audit.html">&larr; n8n-Automation-Audit</a></span></div><div class="wrap">
+<h1>🤖 n8n — аудит всех роботов</h1>
+<p class="sub">Снято 26 июня 2026 · инстанс <span class="mono">n8n.palo-alto.ai</span> · 89 воркфлоу (63 активных) · активность по выборке последних ~2000 запусков</p>
+
+<div class="kpis">
+<div class="kpi"><b>89</b><span>всего роботов</span></div>
+<div class="kpi"><b>63</b><span>включены</span></div>
+<div class="kpi"><b>~2000</b><span>запусков в выборке</span></div>
+<div class="kpi"><b style="color:var(--red)">5</b><span>🔴 на дорогом gpt‑5.4</span></div>
+<div class="kpi"><b style="color:var(--ok)">6</b><span>✅ починил сегодня</span></div>
+<div class="kpi"><b style="color:var(--amber)">3</b><span>⚠️ падают</span></div>
+</div>
+
+<div class="callout"><h3>🔴 Главный остаток по деньгам — кластер «Summary»</h3>
+Боты-дайджесты (<b>Telegram Chats Summary, BD in Web3 ×2, Canton Network, Lobster DAO Summary</b>) сидят на дорогом флагмане <span class="mono">gpt‑5.4</span> по <b>6 агентов в каждом</b> и читают целые истории каналов → это самый тяжёлый расход за один прогон. Формально помечены «выключены», НО несколько <b>реально запускались сегодня</b> (04:05 и 07:56). Это прайм-подозреваемый по остаточному расходу. Рекомендация: (1) перевести их на <span class="mono">gpt‑5.1</span>, (2) убедиться, что они действительно не запускаются.</div>
+
+<div class="callout green"><h3>✅ Что я уже починил сегодня</h3>
+Перевёл с дорогого флагмана на <span class="mono">gpt‑5.1</span>: <b>CHARM CRM Main Agent, CHARM CRM Inner Agent, aaaZeroInbound, Kira Agent core, Audio to text flow, Audio to text flow 11labs</b>. Вернул в строй случайно выключенные Inner Agent и aaaZeroInbound. <b>Personal Audio Summary</b> оставлен на премиум <span class="mono">gpt‑5.5</span> — твой закон «макс качество для расшифровок войса».</div>
+
+<div class="bar">
+<button data-f="all" class="on">Все</button>
+<button data-f="on">Включены</button>
+<button data-f="off">Выключены</button>
+<button data-f="red">🔴 Дорогие</button>
+<button data-f="busy">Активно работают</button>
+<button data-f="broken">⚠️ Падают</button>
+<input id="q" placeholder="поиск по имени / назначению…">
+</div>
+<div id="list"></div>
+
+<div class="foot">Источник: live n8n REST API → <span class="mono">_imports/n8n/audit_dump.py</span> (0 токенов). Полные дампы воркфлоу: <span class="mono">_imports/n8n/raw/audit_20260626_133643/</span>. Флаги: 🔴=дорогой gpt‑5.4 · ✅=починен сегодня · 🟡=премиум намеренно · ⚠️=падает · 💤=спит (0 запусков).</div>
+</div>
+<script>
+const R=[
+// ===== CRM CORE =====
+{n:"CHARM CRM Main Agent",id:"0SK29AY5w5JHGE4s",c:"CRM — ядро воронки",a:1,m:"gpt-5.1 ×2",t:"вебхук + тик 5 мин",e:798,er:0,last:"26.06 12:35",f:["fixed"],p:"Главный CRM-агент: ловит входящих лидов (MTProto-вебхук + опрос каждые 5 мин), решает что делать и вызывает инструменты (ответ лиду / тег / звонок / эскалация супервайзеру). Самый нагруженный робот — ядро лид-машины."},
+{n:"CHARM CRM Inner Agent",id:"zCSv16MjzkJgBj16",c:"CRM — ядро воронки",a:1,m:"o3 / gpt-4.1 / gpt-5.1 (селектор)",t:"вебхуки от CRM-панели",e:5,er:0,last:"26.06 06:58",f:["fixed"],p:"Мозг CRM-интерфейса: выполняет действия из CRM-панели (19 инструментов — лиды, теги, рассылки, звонки, статистика). Модель выбирается на лету (Model Selector). Сегодня вернул в строй (был случайно выключен)."},
+// ===== INBOUND =====
+{n:"aaaZeroInbound",id:"IDfBHxJYrcbqOnGH",c:"Входящие лиды (авто-ответ)",a:1,m:"gpt-5.1 / 5.2 / 4.1",t:"Telegram-триггер",e:0,er:0,last:"—",f:["fixed","idle"],p:"Авто-ответчик на входящие личные сообщения лидам в Telegram (бизнес-аккаунт): транскрибит голос, отвечает агентом, ведёт диалог. Сейчас 0 запусков — входящие, похоже, идут через Main Agent. Сегодня вернул в строй."},
+{n:"aaaZeroInbound DEV",id:"CTZ7Km9LaZGv0h48",c:"Входящие лиды (авто-ответ)",a:0,m:"gpt-5.1 / 5.2 ×2 / 4.1",t:"Telegram-триггер",e:0,er:0,last:"—",f:["off"],p:"Дев-копия входящего бота. ВЫКЛЮЧЕН (я отключил — дубль продакшена; включать незачем)."},
+{n:"send_msg_to_lead_tool",id:"I0rLKLW0JIBrd62y",c:"Входящие лиды (авто-ответ)",a:1,m:"o3",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Инструмент входящего бота: формирует и отправляет сообщение лиду (Postgres + MTProto)."},
+{n:"send_msg_to_lead_tool DEV",id:"H2XLH1sXATi3sEEt",c:"Входящие лиды (авто-ответ)",a:1,m:"o3",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Дев-версия инструмента отправки сообщения лиду."},
+// ===== VOICE =====
+{n:"Personal Audio Summary",id:"uX0qVIWJODfbVE1v",c:"🎙️ Голос (личные расшифровки)",a:1,m:"gpt-5.5 ×4",t:"Telegram-триггер",e:444,er:27,last:"26.06 12:35",f:["amber"],p:"ТВОЙ личный голосовой саммари: войс → транскрипт → структурированное саммари в Telegram. На премиум gpt-5.5 — по твоему закону «макс качество для расшифровок войса», модель НЕ трогаю. ⚠️ 27 ошибок из 444 — стоит починить надёжность (ретраи), не модель."},
+{n:"Audio to text flow",id:"RMmmzdHXSST5JaHg",c:"🎙️ Голос (личные расшифровки)",a:1,m:"gpt-5.1",t:"под-воркфлоу",e:2,er:1,last:"25.06 07:57",f:["fixed"],p:"Подпоток транскрипции голоса (Whisper) — вызывается другими ботами на каждое голосовое. Был на дорогом gpt-5.4 → сегодня перевёл на gpt-5.1."},
+{n:"Audio to text flow 11labs",id:"94IExOwfT6Ui5yHV",c:"🎙️ Голос (личные расшифровки)",a:1,m:"gpt-4.1 / gpt-5.1",t:"под-воркфлоу",e:1,er:0,last:"24.06 17:33",f:["fixed"],p:"То же, но транскрипция через ElevenLabs STT. Был gpt-5.4 → сегодня gpt-5.1."},
+{n:"Youtube to text",id:"dHsThAjo0mMCLo3d",c:"🎙️ Голос (личные расшифровки)",a:1,m:"—",t:"Telegram-триггер",e:13,er:0,last:"26.06 06:20",f:[],p:"YouTube-ссылка → текстовый транскрипт в Telegram. Работает (13 запусков)."},
+{n:"AI vocabulary",id:"ApUj6bl6ZN0wbwYS",c:"🎙️ Голос (личные расшифровки)",a:1,m:"gpt-4o / gpt-4.1 / tts-1-hd",t:"Telegram + ручной",e:0,er:0,last:"—",f:["idle"],p:"Бот изучения слов: озвучка (TTS) + Airtable-словарь. Сейчас спит."},
+{n:"Number verification",id:"dp20wm6emPgM2zJg",c:"🎙️ Голос (личные расшифровки)",a:1,m:"gpt-4.1",t:"Telegram-триггер",e:0,er:0,last:"—",f:["idle"],p:"Верификация телефонных номеров через Telegram. Спит."},
+{n:"Talk back bot v2",id:"kIl76CHlWFWlOF6M",c:"🎙️ Голос (личные расшифровки)",a:1,m:"gpt-4.1",t:"Telegram ×2",e:0,er:0,last:"—",f:["idle"],p:"Голосовой «поговори со мной» бот (ответ голосом, ElevenLabs). Спит."},
+// ===== SUMMARY (cost) =====
+{n:"Telegram Chats Summary",id:"OsKVXUopNOgAGXJ6",c:"📰 Дайджесты каналов",a:0,m:"gpt-5.4 ×4",t:"расписание (:01/:05) + ручной",e:4,er:0,last:"26.06 04:05",f:["red"],p:"Читает заданные TG-чаты и делает дайджест. 🔴 на дорогом gpt-5.4 ×4 агента. Помечен «выключен», но запускался СЕГОДНЯ 04:05 — подозреваемый по расходу."},
+{n:"BD in Web3 Summary",id:"XETcCm9QoIYZCQkv",c:"📰 Дайджесты каналов",a:0,m:"gpt-5.4 ×6",t:"расписание (:01/:05) + ручной",e:4,er:2,last:"26.06 04:05",f:["red"],p:"Дайджест чатов «BD в Web3». 🔴 gpt-5.4 ×6. «Выключен», но запуск сегодня 04:05 (2 ошибки)."},
+{n:"BD in Web3 Summary (dup)",id:"B07ARHEidyWLZB7z",c:"📰 Дайджесты каналов",a:0,m:"gpt-5.4 ×6",t:"расписание + ручной",e:0,er:0,last:"—",f:["red","off"],p:"Дубликат предыдущего. 🔴 gpt-5.4 ×6. Выключен, не запускается — кандидат на удаление."},
+{n:"Canton Network Summary",id:"PAnw5CtbfbaUt6r6",c:"📰 Дайджесты каналов",a:0,m:"gpt-5.4 ×6",t:"еженедельно (пн 03:01)",e:1,er:0,last:"26.06 07:56",f:["red"],p:"Недельный дайджест по Canton Network. 🔴 gpt-5.4 ×6. «Выключен», но запуск сегодня 07:56."},
+{n:"Lobster DAO Summary",id:"AlQe6MET2tIN7mjF",c:"📰 Дайджесты каналов",a:0,m:"gpt-5.4 ×6",t:"расписание (:01/:05) + ручной",e:4,er:0,last:"26.06 04:05",f:["red"],p:"Дайджест LobsterDAO. 🔴 gpt-5.4 ×6. «Выключен», но запуск сегодня 04:05."},
+{n:"Channel list reading and summary",id:"yBtjApqoDBEFA3Gu",c:"📰 Дайджесты каналов",a:0,m:"gpt-5.4-mini",t:"расписание (02:02)",e:1,er:1,last:"25.06 06:02",f:["off"],p:"Читает список каналов и тегирует/саммаризует посты (это была классификация 11.5к постов). На дешёвом gpt-5.4-mini. Выключен."},
+{n:"LobsterDAO Translation",id:"0q90pxu3WFXKWo03",c:"📰 Дайджесты каналов",a:1,m:"gpt-5.1-chat-latest",t:"вебхук + тик 5 мин",e:594,er:53,last:"26.06 12:35",f:["broken","busy"],p:"Переводит сообщения LobsterDAO каждые 5 мин и постит. Очень активен (594), но ⚠️ 53 ошибки (9%) — надёжность хромает. Модель дешёвая, по деньгам ок."},
+// ===== POSTING =====
+{n:"Events Posting",id:"gXgKU4cQwU3MZjAy",c:"📣 Постинг контента",a:1,m:"—",t:"расписание (10:00) + ручной",e:2,er:1,last:"25.06 14:00",f:["broken"],p:"Постит события в ~16 TG-групп в 10:00. ⚠️ всё ещё падает (1 из 2) — известный баг кодовой ноды. Надо добить."},
+{n:"Everyday group posting",id:"b3t8IsRCCM9kb0h3",c:"📣 Постинг контента",a:1,m:"—",t:"расписание (03:00)",e:2,er:0,last:"26.06 07:00",f:[],p:"Ежедневный пост в группу в 03:00. Работает (2/0)."},
+// ===== AAAPAD =====
+{n:"aaapad chat agent",id:"Yv6UWFbH967epqOX",c:"🧬 aaapad (longevity)",a:1,m:"gpt-4.1",t:"чат + вебхуки",e:49,er:0,last:"26.06 10:44",f:["busy"],p:"Чат-агент aaapad (тема долголетия/Huberman): отвечает в чате, RAG (pgvector) + голос (ElevenLabs). Активно работает (49)."},
+{n:"aaapad longevity agent",id:"NVOTAaZrNsi5STSO",c:"🧬 aaapad (longevity)",a:1,m:"gpt-5.1-chat-latest",t:"чат + вебхуки",e:49,er:0,last:"26.06 10:44",f:["busy"],p:"Longevity-агент aaapad (вторая ветка). Активно работает (49), модель уже недорогая."},
+// ===== DOCS / RAG =====
+{n:"Kira Agent core",id:"n5eGjPVZXgdJhjcT",c:"📚 Документация / RAG",a:1,m:"gpt-5.1",t:"под-воркфлоу",e:0,er:0,last:"—",f:["fixed","idle"],p:"Ядро бота-документатора Kira (поддержка по докам/GitBook, 3 инструмента, RAG pgvector). Был на дорогом gpt-5.4 → сегодня перевёл на gpt-5.1."},
+{n:"Gitbook Kira support bot",id:"2VdAgulPkWk7ITaz",c:"📚 Документация / RAG",a:0,m:"gpt-4.1-mini",t:"Telegram-триггер",e:16,er:0,last:"25.06 07:16",f:["off"],p:"Telegram-бот поддержки по GitBook (Kira). Сейчас выключен, но недавно работал (16)."},
+{n:"Gitbook update",id:"UOg7iMG7CnKD1Ns4",c:"📚 Документация / RAG",a:1,m:"—",t:"расписание",e:2,er:0,last:"26.06 04:00",f:[],p:"Обновляет содержимое GitBook → индекс pgvector (RAG) по расписанию. Работает."},
+{n:"PG RAG",id:"xfGzh1QdRZFKV5dI",c:"📚 Документация / RAG",a:1,m:"—",t:"форма",e:0,er:0,last:"—",f:["idle"],p:"RAG-эндпоинт (веб-форма) поверх pgvector. Спит."},
+// ===== CODEX / DEV =====
+{n:"Codex cron",id:"2l0taViPjrdBgcuX",c:"🛠️ Codex / разработка",a:1,m:"—",t:"крон КАЖДУЮ минуту",e:0,er:0,last:"—",f:["idle"],p:"Авто-кодинг через Codex+Airtop (браузер) по крону каждую минуту — но 0 запусков (заброшен ещё с лета, триггер фактически не стреляет). Кандидат в архив."},
+{n:"Edit PR in Codex",id:"JIB9YXbBkxhChVeO",c:"🛠️ Codex / разработка",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:["idle"],p:"Правит pull-request через Codex/Airtop. Спит."},
+{n:"Github PR webhook",id:"rdHrKw3uuQ1IM48W",c:"🛠️ Codex / разработка",a:1,m:"—",t:"вебхук",e:0,er:0,last:"—",f:["idle"],p:"Вебхук на PR из GitHub → уведомление в Telegram / запись в Airtable. Спит."},
+// ===== TASKS =====
+{n:"Tasks assistant",id:"xA3H97FAKy3wfpmb",c:"✅ Задачи (Airtable)",a:1,m:"gpt-4.1",t:"под-воркфлоу",e:0,er:0,last:"—",f:["idle"],p:"Ассистент задач поверх Airtable task-tracker (5 инструментов). Спит."},
+{n:"Get tasks airtable",id:"4X1Hj2NPdR7KnLww",c:"✅ Задачи (Airtable)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Подпоток: читает задачи из Airtable."},
+{n:"Create task in airtable",id:"QvpB0JrJFsxGVNnY",c:"✅ Задачи (Airtable)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Подпоток: создаёт задачу в Airtable."},
+{n:"Update task in airtable",id:"QucNFWQmQSncbjm1",c:"✅ Задачи (Airtable)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Подпоток: обновляет задачу в Airtable."},
+// ===== ELIZA =====
+{n:"Eliza Agent Core",id:"XeNy3uSblcbC867T",c:"🤝 Eliza (ассистент персонала)",a:1,m:"gpt-4.1-mini",t:"под-воркфлоу",e:0,er:0,last:"—",f:["idle"],p:"Ядро Eliza — ассистент для персонала (5 инструментов, RAG Postgres). Подпоток, сейчас спит."},
+{n:"Eliza AI Agent TG bot",id:"IOyRb4sx4Xjq8xxe",c:"🤝 Eliza (ассистент персонала)",a:0,m:"gpt-4.1-mini + gpt-5.4 ×1",t:"Telegram + ручной",e:9,er:1,last:"25.06 07:55",f:["off"],p:"Telegram-бот Eliza (ассистент персонала, 9 инструментов). Выключен. Есть 1 узел на gpt-5.4 🔴 (но т.к. выключен — не тратит)."},
+// ===== MTPROTO =====
+{n:"MTProto Telegram",id:"eEovNXinCqPwRcGW",c:"📡 Инфраструктура",a:1,m:"gpt-4o / gpt-4o-mini",t:"вебхук + ручной",e:0,er:0,last:"—",f:["idle"],p:"Мост MTProto (отправка/чтение Telegram как пользователь) + Google Drive. Используется другими ботами как движок отправки. Сам по себе спит."},
+// ===== MISC =====
+{n:"Calories counter",id:"lWChp6sjqz0jKqSM",c:"⚙️ Прочее / утилиты",a:1,m:"o3",t:"Telegram-триггер",e:0,er:0,last:"—",f:["idle"],p:"Счётчик калорий по фото/тексту в Telegram. Спит."},
+// ===== CRM TOOLS (sub-workflows, run inside the agents) =====
+{n:"Charm CRM tool",id:"anwK4xg5kszvikfx",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"gpt-4.1-mini",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Базовый CRM-инструмент агента. 0 своих запусков = норма (работают ВНУТРИ агентов)."},
+{n:"Tag lead tool",id:"ZvywuoXVJRypbvgo",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"o3",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Ставит теги лиду."},
+{n:"autotag_lead_charm_tool",id:"hWBRtBug3Rs8W5ZJ",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"o3",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Авто-тегирование лида по содержанию диалога."},
+{n:"find_lead_in_crm_tool",id:"UakThvgyeUUWjlg0",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Ищет лида в CRM (MongoDB)."},
+{n:"update_lead_info_tool",id:"6FhYAKtnqbh5A4CR",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Обновляет данные лида."},
+{n:"add_remove_tag_tool",id:"fiYYuj78YLZgj5z8",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Добавляет/снимает тег."},
+{n:"create_tag_tool",id:"UEZiZrv7usXfxSbw",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Создаёт новый тег."},
+{n:"get_tags_tool",id:"XkOFdbluXbiuoQYx",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Возвращает список тегов."},
+{n:"count_leads_with_tags_tool",id:"yfZvOkOmqpYg6Vbs",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Считает лидов по тегам."},
+{n:"get_leads_listing_info_tool",id:"5j9UNWUiQIWVRmnu",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Сводка списка лидов."},
+{n:"get_leads_individual_info_tool",id:"eRDl2q1GPzWD1xMi",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Карточка конкретного лида."},
+{n:"get_accounts_tool",id:"9BXqhYssdu5k0s4t",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Возвращает аккаунты."},
+{n:"get_employees_tool",id:"WWKf6tuXYG9GhT6z",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Возвращает сотрудников."},
+{n:"get_crm description",id:"UQ85qAyYBy8A0P7g",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Отдаёт агенту описание CRM (контекст)."},
+{n:"get_automatic_actions_listing_info_tool",id:"pUneaQJvrTxW10id",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Список авто-действий."},
+{n:"upsert_chat_template_tool",id:"ZG2Ul0rHRNgZZCE8",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Создаёт/обновляет шаблон сообщения."},
+{n:"send_message_in_crm_tool",id:"jcdr6ZAq12XdNYr1",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Отправляет сообщение из CRM."},
+{n:"send_message_to_lead_tool",id:"IDJ208OBqTDfwUW9",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"o3",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Готовит и шлёт сообщение лиду."},
+{n:"approve_lead_tool",id:"tSpBpqjRJqQwJkiU",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Одобряет лида."},
+{n:"reject_lead_tool",id:"catd5vkOrPpyiNpE",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Отклоняет лида."},
+{n:"ask_superviser_tool",id:"Mg9ssEy9JtNdT9Qw",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Спрашивает супервайзера (эскалация человеку)."},
+{n:"approve_request_superviser_tool",id:"dImYY5FtvUJ86KqE",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Обрабатывает одобрение от супервайзера."},
+{n:"calls_tool",id:"9i1AkM9hoKXkT5f5",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"gpt-4.1",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Работа со звонками (5 под-инструментов)."},
+{n:"create_call_tool",id:"I8HAqU6FZeAgeAeu",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Создаёт запись звонка."},
+{n:"edit_call_tool",id:"IuHeGS6IUwExUDJo",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Редактирует запись звонка."},
+{n:"newsletters_tool",id:"X57I55imM2iORmTS",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"o3",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Работа с рассылками (5 под-инструментов)."},
+{n:"create_newsletter_tool",id:"6U7mES7aXxnp6PrS",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Создаёт рассылку."},
+{n:"edit_newsletter_tool",id:"IqTx3Xg4oFc1y8yd",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Редактирует рассылку."},
+{n:"get_newsletter_tool",id:"TD148yz4oNQH2GmS",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Возвращает рассылку."},
+{n:"get_newsletter_messages_tool",id:"IFOoIqtX8rYrrMRZ",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Сообщения рассылки."},
+{n:"get_newsletter_sent_messages_tool",id:"0OofWUdQeJtVEAIX",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Отправленные сообщения рассылки."},
+{n:"get_newsletters_listing_info_tool",id:"KB3nMYehEBXRd7lg",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Список рассылок."},
+{n:"Unassign lead",id:"R72uSfg1hM3oamRH",c:"🧰 CRM-инструменты (под-воркфлоу)",a:1,m:"—",t:"под-воркфлоу",e:0,er:0,last:"—",f:[],p:"Снимает назначение лида с менеджера."},
+// ===== DORMANT / SCRAPS =====
+{n:"add employees to crm",id:"AXbSxp9SoGSVd0DF",c:"🗄️ Спящие / черновики",a:0,m:"—",t:"ручной",e:0,er:0,last:"—",f:["off"],p:"Разовая загрузка сотрудников в CRM. Выключен."},
+{n:"audio to text",id:"vi5dM7dndMTCw8MJ",c:"🗄️ Спящие / черновики",a:0,m:"gpt-4.1",t:"Telegram",e:0,er:0,last:"—",f:["off"],p:"Старая версия транскрипции. Выключена (есть новые)."},
+{n:"Check if calls in crm",id:"Esl4xWpN81VRlEfT",c:"🗄️ Спящие / черновики",a:0,m:"—",t:"расписание (02:00)",e:0,er:0,last:"—",f:["off"],p:"Проверка наличия звонков в CRM. Выключена."},
+{n:"Codex Agent Chat",id:"Whf9LBNfA8QjdBmT",c:"🗄️ Спящие / черновики",a:0,m:"gpt-4.1",t:"вебхук",e:0,er:0,last:"—",f:["off"],p:"Чат-агент Codex. Выключен."},
+{n:"crm export to google",id:"3x2SZ0KRmVXPaXfGqYRo2",c:"🗄️ Спящие / черновики",a:0,m:"—",t:"ручной",e:0,er:0,last:"—",f:["off"],p:"Экспорт CRM в Google. Выключен."},
+{n:"crm linkedin search and export",id:"rQBB9FzHK4L3aZ5dCJwtU",c:"🗄️ Спящие / черновики",a:0,m:"—",t:"ручной",e:0,er:0,last:"—",f:["off"],p:"LinkedIn-поиск и экспорт в CRM. Выключен."},
+{n:"Export dialogues",id:"W1C45vn5D9G1Zcg3",c:"🗄️ Спящие / черновики",a:0,m:"—",t:"ручной",e:0,er:0,last:"—",f:["off"],p:"Экспорт диалогов. Выключен."},
+{n:"Export tasks to text",id:"BFRKEWH0yFHGc5Xd",c:"🗄️ Спящие / черновики",a:0,m:"—",t:"ручной",e:0,er:0,last:"—",f:["off"],p:"Экспорт задач в текст. Выключен."},
+{n:"Get Card Balance",id:"v00yM1NMtIjopML4",c:"🗄️ Спящие / черновики",a:0,m:"—",t:"расписание (13:00)",e:0,er:0,last:"—",f:["off"],p:"Баланс карты в 13:00. Выключен."},
+{n:"Lobster Daily Translation",id:"ylOB161jw2nMNRDv",c:"🗄️ Спящие / черновики",a:0,m:"gpt-5.1-chat-latest",t:"вебхук",e:0,er:0,last:"—",f:["off"],p:"Старая ежедневная версия перевода Lobster. Выключена (есть live-версия)."},
+{n:"Multi Posting Telegram",id:"WGXdCOlcngmvgPVZ",c:"🗄️ Спящие / черновики",a:0,m:"gpt-4o-mini",t:"вебхук",e:0,er:0,last:"—",f:["off"],p:"Мульти-постинг в Telegram. Выключен (⚠️ делил вебхук-путь с MTProto Telegram)."},
+{n:"HH Agent",id:"ms4kmO0xRc8Dn18y",c:"🗄️ Спящие / черновики",a:0,m:"o3 / gpt-5 / gpt-5.2",t:"вебхук + крон",e:0,er:0,last:"—",f:["off"],p:"Рекрутинг-агент (HeadHunter). Выключен. Содержит голый gpt-5 🔴, но не тратит (off)."},
+{n:"mongo test",id:"8ZbVkUJckCxt5XPl",c:"🗄️ Спящие / черновики",a:0,m:"—",t:"ручной",e:0,er:0,last:"—",f:["off"],p:"Тест MongoDB. Кандидат на удаление."},
+{n:"My workflow",id:"9ENYw9cKSmjGbiqo",c:"🗄️ Спящие / черновики",a:0,m:"—",t:"ручной",e:0,er:0,last:"—",f:["off"],p:"Пустой черновик. Кандидат на удаление."},
+{n:"test python node",id:"POnz2taEm0MCQnmh",c:"🗄️ Спящие / черновики",a:0,m:"—",t:"чат",e:0,er:0,last:"—",f:["off"],p:"Тест python-ноды. Кандидат на удаление."},
+{n:"Tagging test",id:"EUvUgQOyBFraqNlF",c:"🗄️ Спящие / черновики",a:0,m:"gpt-4.1-mini",t:"чат",e:0,er:0,last:"—",f:["off"],p:"Тест тегирования. Кандидат на удаление."},
+{n:"Talk back bot",id:"Fg48a3LY8eydweW7",c:"🗄️ Спящие / черновики",a:0,m:"gpt-4o",t:"Telegram",e:0,er:0,last:"—",f:["off"],p:"Старая версия 'поговори со мной' (есть v2)."}
+];
+const flag={red:["🔴 gpt-5.4","t-red"],amber:["🟡 премиум","t-amber"],fixed:["✅ починен","t-fixed"],broken:["⚠️ падает","t-broken"],busy:["⚡ активен","t-busy"],idle:["💤 спит","t-off"],off:["выкл","t-off"]};
+let F="all",Q="";
+const list=document.getElementById('list');
+function match(r){
+  if(Q&&!(r.n.toLowerCase().includes(Q)||r.p.toLowerCase().includes(Q)||r.c.toLowerCase().includes(Q)))return false;
+  if(F==="all")return true;
+  if(F==="on")return r.a===1;
+  if(F==="off")return r.a===0;
+  if(F==="red")return r.f.includes("red");
+  if(F==="busy")return r.e>=40;
+  if(F==="broken")return r.f.includes("broken");
+  return true;
+}
+function render(){
+  list.innerHTML="";
+  const groups={};
+  R.filter(match).forEach(r=>{(groups[r.c]=groups[r.c]||[]).push(r)});
+  const order=["CRM — ядро воронки","Входящие лиды (авто-ответ)","🎙️ Голос (личные расшифровки)","📰 Дайджесты каналов","📣 Постинг контента","🧬 aaapad (longevity)","📚 Документация / RAG","🛠️ Codex / разработка","✅ Задачи (Airtable)","🤝 Eliza (ассистент персонала)","📡 Инфраструктура","⚙️ Прочее / утилиты","🧰 CRM-инструменты (под-воркфлоу)","🗄️ Спящие / черновики"];
+  let any=false;
+  order.forEach(g=>{if(!groups[g])return;any=true;
+    const h=document.createElement('div');h.className='grp';h.textContent=g+"  ·  "+groups[g].length;list.appendChild(h);
+    groups[g].forEach(r=>{
+      const d=document.createElement('div');d.className='row';
+      const st=r.a?'<span class="tag t-on">включён</span>':'<span class="tag t-off">выключен</span>';
+      const fl=(r.f||[]).map(f=>flag[f]?`<span class="tag ${flag[f][1]}">${flag[f][0]}</span>`:"").join("");
+      d.innerHTML=`<div class="top"><span class="nm">${r.n}</span>${st}${fl}</div>
+      <div class="why">${r.p}</div>
+      <div class="meta"><span>🧠 ${r.m||'—'}</span><span>⏱️ ${r.t}</span><span>▶️ запусков: ${r.e} ${r.er?('· ошибок '+r.er):''}</span><span>🕐 ${r.last}</span><span class="mono">${r.id}</span></div>`;
+      list.appendChild(d);
+    });
+  });
+  if(!any)list.innerHTML='<p style="color:var(--mut)">Ничего не найдено.</p>';
+}
+document.querySelectorAll('.bar button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.bar button').forEach(x=>x.classList.remove('on'));b.classList.add('on');F=b.dataset.f;render()});
+document.getElementById('q').oninput=e=>{Q=e.target.value.toLowerCase().trim();render()};
+render();
+</script></body></html>

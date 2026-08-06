@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Единая система планирования — ДО → ПОСЛЕ</title>
+<style>
+  :root{
+    --bg:#0f1216; --card:#171b21; --card2:#1c2129; --ink:#e8ecf1; --muted:#9aa6b2;
+    --line:#2a313b; --before:#e0574a; --before-bg:#2a1a18; --after:#3fbf7f; --after-bg:#16271f;
+    --accent:#5b9dff; --accent2:#c08bff; --warn:#e0b64a;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f5f7fa; --card:#ffffff; --card2:#f0f3f7; --ink:#1a2028; --muted:#5a6672;
+      --line:#dde3ea; --before:#c23b2e; --before-bg:#fbecea; --after:#1f9e63; --after-bg:#e6f5ec;
+      --accent:#2f6fe0; --accent2:#7d43c9; --warn:#b8860b; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:24px}
+  .wrap{max-width:1120px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 24px;font-size:14px}
+  h2{font-size:19px;margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--card2);color:var(--muted);border:1px solid var(--line);vertical-align:middle;margin-left:8px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  .col{border-radius:12px;padding:16px;border:1px solid var(--line)}
+  .before{background:var(--before-bg);border-color:color-mix(in srgb,var(--before) 40%,var(--line))}
+  .after{background:var(--after-bg);border-color:color-mix(in srgb,var(--after) 40%,var(--line))}
+  .col h3{margin:0 0 12px;font-size:15px;letter-spacing:.3px}
+  .before h3{color:var(--before)} .after h3{color:var(--after)}
+  ul{margin:0;padding-left:0;list-style:none}
+  li{padding:7px 0 7px 24px;position:relative;font-size:14px;border-top:1px dashed var(--line)}
+  li:first-child{border-top:none}
+  .before li::before{content:"✕";position:absolute;left:2px;color:var(--before);font-weight:700}
+  .after li::before{content:"✓";position:absolute;left:2px;color:var(--after);font-weight:700}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
+  .flow{background:var(--card2);border-radius:10px;padding:16px;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-x:auto;white-space:pre;color:var(--ink)}
+  .pill{display:inline-block;padding:2px 9px;border-radius:6px;font-size:12px;font-weight:600;margin:2px 3px}
+  .p-idea{background:#3a3140;color:#d9b8ff} .p-hyp{background:#3a3520;color:#e6cf7a} .p-com{background:#1e3350;color:#8fc0ff} .p-ship{background:#16331f;color:#7ee6a0}
+  @media(prefers-color-scheme:light){.p-idea{background:#efe4fb;color:#7d43c9}.p-hyp{background:#faf0d0;color:#9a7b12}.p-com{background:#e0ecff;color:#2f6fe0}.p-ship{background:#dcf3e4;color:#1f9e63}}
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:13.5px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+  .seam td:first-child{color:var(--before);font-weight:600;white-space:nowrap}
+  .k{color:var(--accent);font-weight:600}
+  .muted{color:var(--muted)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.two{grid-template-columns:1fr}}
+  .src{font-size:12px;color:var(--muted);margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
+  .tag{font-size:11px;padding:1px 7px;border-radius:5px;background:var(--card2);border:1px solid var(--line);color:var(--muted)}
+  .kill{color:var(--before);font-weight:600}
+  .foot{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .chip{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13px;flex:1;min-width:220px}
+  .chip b{color:var(--accent)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="PhD.html">&larr; PhD</a> · <a href="Pokupki-Dashboard.html">Pokupki-Dashboard &rarr;</a></span></div>
+<div class="wrap">
+  <h1>🧩 Единая система планирования <span class="badge">ДО → ПОСЛЕ · 2026-07-18</span></h1>
+  <p class="sub">Как 4 разрозненных реестра склеиваются в один организм. Источник: два DR — <b>DR26-07-16-HUB-06</b> (публичный роадмап) + <b>DR26-07-17-FLEE-01</b> (воронка/бэклог).</p>
+
+  <h2>1 · Что было ДО → что станет ПОСЛЕ</h2>
+  <div class="grid2">
+    <div class="col before">
+      <h3>ДО — 4 разрезанных списка</h3>
+      <ul>
+        <li>alpha-backlog, improvement-backlog, реестр задач, ROADMAP — 4 <b>раздельных ручных файла</b>, не связаны</li>
+        <li>Промоут = <b>копипаст</b> между файлами → дрейф, разные ID, потеря истории</li>
+        <li>Роадмап набивается руками, <b>расходится с реальностью</b>; Ship-log вручную</li>
+        <li>Жёлтые гипотезы <b>гниют без замера</b> — болото</li>
+        <li>Битые/обрезанные строки (H04) проходят незамеченными</li>
+        <li>Идеи, гипотезы, задачи, релизы — <b>свалены одинаковыми строками</b></li>
+        <li>Публичный роадмап = отдельный ручной список, формат ad-hoc</li>
+        <li>Метрики потока нет — <b>сколько идей доходит до отгрузки, неизвестно</b></li>
+      </ul>
+    </div>
+    <div class="col after">
+      <h3>ПОСЛЕ — один поток, много видов</h3>
+      <ul>
+        <li><b>Одна карточка на элемент</b> (ставка): стабильный ID + стадия. 4 списка = <b>авто-генерируемые виды</b></li>
+        <li>Промоут = <b>команда перехода</b> на той же карточке; история пишется сама</li>
+        <li>Роадмап + Ship-log <b>генерируются</b> из карточек, руками не трогать → не дрейфуют</li>
+        <li>Жёлтые: лимит замеров + aging + expiry → жёлтый = <b>сигнал</b>, не болото</li>
+        <li>Схема-валидатор ловит битые строки на входе</li>
+        <li><b>Ставка ≠ задача</b>: воронку считаем по ставкам, задачи — их дети</li>
+        <li>Публичный роадмап = <b>отфильтрованное окно</b> на карточки, формат Hybrid-Trust</li>
+        <li>Метрики: throughput, конверсия по воротам, lead-time, aging</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>2 · Как всё СКЛЕЕНО в один организм</h2>
+  <div class="card">
+    <div class="flow">ВНУТРИ (движок — DR FLEE-01)                      НАРУЖУ (витрина — DR HUB-06)
+
+  одна карточка-ставка                              публичный роадмап
+  <span class="p-idea">IDEA</span> ─G1─ <span class="p-hyp">HYPOTHESIS</span> ─G2─ <span class="p-com">COMMITTED</span> ─G3─ <span class="p-ship">SHIPPED</span>          North Star → Now / Next / Later (эпики)
+        │              │                              → «Передумали» → Ship-log (пруф)
+        └ задача       └ задачи (дети, 1:N)                   ▲
+                                                              │  генерируется, руками не трогать
+        └──────────────►  ЕДИНЫЙ ИСТОЧНИК  ────────────────────┘
+                          (карточки в /ops/items)
+
+  из ОДНИХ карточек рисуются САМИ:
+    alpha-backlog · improvement-backlog · task-registry · ROADMAP · Ship-log
+</div>
+    <p class="muted" style="margin:12px 0 0;font-size:13.5px">Два DR — не два проекта, а <b>две половины одного</b>: FLEE-01 даёт <span class="k">движок</span> (как элемент живёт внутри), HUB-06 даёт <span class="k">кожу</span> (как это показать наружу, чтобы верили). Скилл <span class="k">/roadmap</span> держит витрину по формату HUB-06. Отдельная сессия-сборка собирает движок по плану. Внутренняя воронка <b>кормит</b> публичный роадмап автоматически — ноль ручного дубля.</p>
+  </div>
+
+  <h2>3 · Витрина: формат роадмапа, которому верят <span class="badge">DR HUB-06 · 10 кейсов</span></h2>
+  <div class="two">
+    <div class="card" style="margin:0">
+      <b>Шаблон Hybrid-Trust:</b>
+      <div class="flow" style="margin-top:8px">North Star
+  → Now / Next / Later   (только эпики,
+                          10-20 пунктов, не 70 задач)
+  → «Передумали»         (лог отменённого)
+  → Ship-log             (датировано + ссылки:
+                          commit/релиз/демо/dev-log)</div>
+      <p class="muted" style="font-size:13px;margin:10px 0 0">Поля пункта: Title-как-проблема · Status · <b>Confidence H/M/L</b> (вместо дат) · Почему важно · <b>Owner: Human/AI/Shared</b> · Proof target · Links · Last moved.</p>
+    </div>
+    <div class="card" style="margin:0">
+      <b class="kill">3 убийцы доверия:</b>
+      <ul style="margin-top:8px">
+        <li style="border:none;padding-left:22px"><span class="kill">Обещанные даты</span> — Tauri проехал «early 2024»→окт, потом убрал даты. → Confidence-ярлыки, не кварталы.</li>
+        <li style="padding-left:22px"><span class="kill">Тихие удаления</span> — хуже задержек (GitHub: «неуважение»). → двигать в «Передумали» с 1 честной фразой.</li>
+        <li style="padding-left:22px"><span class="kill">Зомби «in progress»</span>, что не закрываются никогда.</li>
+      </ul>
+      <p class="muted" style="font-size:13px;margin:10px 0 0">Каденс: конец сессии 3 мин · неделя 20 мин («что сдвинулось») · месяц 15 мин уборки. Обновлять, когда работа сдвинулась — не отдельной админкой.</p>
+    </div>
+  </div>
+
+  <h2>4 · Движок: механика воронки <span class="badge">DR FLEE-01</span></h2>
+  <div class="card">
+    <p style="margin:0 0 10px"><span class="pill p-idea">IDEA</span> идея под гейтом &nbsp;→&nbsp; <span class="pill p-hyp">HYPOTHESIS</span> ставка, готовность = ЦИФРА &nbsp;→&nbsp; <span class="pill p-com">COMMITTED</span> работа, готовность = ФАКТ &nbsp;→&nbsp; <span class="pill p-ship">SHIPPED</span> отгружено с пруфом</p>
+    <table>
+      <tr><th>Гейт</th><th>Переход</th><th>Что нужно, чтобы пройти</th></tr>
+      <tr><td class="k">G1</td><td>idea → hypothesis</td><td>проблема · гипотеза «если X → метрика Y» · baseline или задача его добыть · порог успеха · owner · срок → <b>авто-создаётся задача замера</b></td></tr>
+      <tr><td class="k">G2</td><td>hypothesis → committed</td><td>evidence-вердикт (supported/rejected) <b>И</b> shape (appetite · acceptance · свободная capacity) → ставит <b>только оператор</b></td></tr>
+      <tr><td class="k">G3</td><td>committed → shipped</td><td>acceptance пройден · артефакт deployed · ship_ref · release_note → <b>авто-рендер</b> роадмапа + Ship-log</td></tr>
+    </table>
+    <p class="muted" style="font-size:13px;margin:12px 0 0"><b>Ставка ≠ задача:</b> идея/гипотеза/ставка — объект решения (4 стадии); задача — объект исполнения, ребёнок ставки (1:N). Воронку считаем по ставкам, не задачам.</p>
+  </div>
+
+  <h2>5 · Как чинятся 4 шва, что ты назвал</h2>
+  <div class="card">
+    <table>
+      <tr class="seam"><td>Воскресный слив</td><td>промоут = формальный переход (замерить/отложить/дубль/в-знание/выкинуть), приземляется в реальное состояние — не «галочка»</td></tr>
+      <tr class="seam"><td>Дрейф роадмапа</td><td>роадмап + Ship-log = генерируемые, редактировать нельзя; release_note = обязательное поле отгрузки</td></tr>
+      <tr class="seam"><td>Жёлтые замеры</td><td>лимит 2 активных замера · 7д тишины = warning · 30 = авто-в-архив; «supported», не «доказано»</td></tr>
+      <tr class="seam"><td>Битая строка H04</td><td>схема-валидатор: строка без обязательных полей не проходит гейт</td></tr>
+    </table>
+  </div>
+
+  <div class="foot">
+    <div class="chip"><b>Сборка →</b> отдельная сессия (чип «Собрать единую планировочную воронку»), shadow-first, 4 фазы. Ф0-2 безопасны, 🔴 Ф3 (замена файлов) — по твоему GO.</div>
+    <div class="chip"><b>Витрина →</b> находки HUB-06 уходят в скилл <b>/roadmap</b> отдельной задачей.</div>
+    <div class="chip"><b>Метрика потока →</b> считать по shipped-ставкам: throughput, конверсия ворот, lead-time (median+p85), aging.</div>
+  </div>
+
+  <div class="src">
+    <b>Источники:</b>
+    <span class="tag">DR26-07-16-HUB-06 — публичный роадмап (ChatGPT, 43K, 10 кейсов: GitHub/Zed/Tauri/Plausible/Trigger.dev/Canny/Atlassian/GitLab/Supabase/Linear; Gemini-лег дожимается)</span>
+    <span class="tag">DR26-07-17-FLEE-01 — воронка/бэклог (ChatGPT gpt-5-6-pro; Grok-лег ждёт)</span><br>
+    <span class="muted">Полные: 02-Decisions/decision-2026-07-18-unified-planning-funnel… · 03-Insights/insight-DR-DR26-07-17-HUB-05-world-class-public-roadmaps… · план: 04-Projects/plan-unified-planning-funnel-build.md</span>
+  </div>
+</div>
+</body>
+</html>

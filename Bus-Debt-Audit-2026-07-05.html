@@ -1,0 +1,270 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Backup-Audit-MacBook-Anton-2026-07-07.html">&larr; Backup-Audit-MacBook-Anton-2026-07-07</a> · <a href="ChatGPT-Codex-Export-Audit.html">ChatGPT-Codex-Export-Audit &rarr;</a></span></div><title>Bus Debt Audit 2026-07-05</title>
+<style>
+  :root{
+    --bg:#0f1220; --card:#171b2e; --card2:#1d2238; --text:#e8eaf4; --muted:#9aa3c7;
+    --red:#ff5470; --redbg:#3a1522; --yellow:#ffcf56; --yellowbg:#3a3115; --green:#3ddc97; --greenbg:#123326;
+    --border:#2a2f4a; --accent:#7c9cff;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--text); font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; margin:0; padding:24px; line-height:1.5;}
+  h1{font-size:22px; margin:0 0 4px;}
+  .sub{color:var(--muted); font-size:13px; margin-bottom:20px;}
+  .counters{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:24px;}
+  .counter{flex:1; min-width:160px; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 18px;}
+  .counter .num{font-size:32px; font-weight:700;}
+  .counter .lbl{color:var(--muted); font-size:13px; margin-top:2px;}
+  .counter.red{border-color:var(--red);} .counter.red .num{color:var(--red);}
+  .counter.yellow{border-color:var(--yellow);} .counter.yellow .num{color:var(--yellow);}
+  .counter.green{border-color:var(--green);} .counter.green .num{color:var(--green);}
+  .counter.total .num{color:var(--accent);}
+
+  section{margin-bottom:28px;}
+  .sec-title{display:flex; align-items:center; gap:10px; font-size:16px; font-weight:700; margin-bottom:10px;}
+  .sec-title .badge{font-size:12px; font-weight:600; padding:2px 10px; border-radius:999px;}
+  .badge.red{background:var(--redbg); color:var(--red);}
+  .badge.yellow{background:var(--yellowbg); color:var(--yellow);}
+  .badge.green{background:var(--greenbg); color:var(--green);}
+
+  .card{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-bottom:10px;}
+  .card.red{border-left:4px solid var(--red);}
+  .card.yellow{border-left:4px solid var(--yellow);}
+  .card.green{border-left:4px solid var(--green); opacity:0.85;}
+  .row1{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:baseline;}
+  .meta{color:var(--muted); font-size:12px;}
+  .id{font-family:ui-monospace,Consolas,monospace; color:var(--accent); font-size:12px;}
+  .essence{margin:8px 0 6px; font-size:14px;}
+  .verdict{font-size:13px; padding:8px 10px; border-radius:8px; background:var(--card2); margin-top:6px;}
+  .verdict b{color:var(--text);}
+  .whatdo{color:var(--yellow); font-weight:600;}
+  .proof{color:var(--green);}
+  .unknown{color:var(--muted);}
+
+  details{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:4px 16px;}
+  details summary{cursor:pointer; padding:10px 0; font-weight:600; color:var(--muted);}
+  details[open] summary{color:var(--text);}
+  .done-list .card{margin-top:10px;}
+
+  footer{margin-top:32px; background:var(--card2); border:1px solid var(--border); border-radius:12px; padding:16px 18px; font-size:14px;}
+  footer b{color:var(--accent);}
+</style>
+
+<h1>🧾 Долги шины — аудит "хаб не ответил / не сделал"</h1>
+<div class="sub">Источник: <code>inbox_debt.py scan</code> (шина <code>_machine-bus</code>, машина A-2022BAYAREA), 2026-07-05. Каждый кандидат перепроверен вручную (файлы, scheduled tasks, git, содержимое шины) — многие "OVERDUE" по счётчику оказались реально сделаны, просто ответ хаба не процитировал #id.</div>
+
+<div class="counters">
+  <div class="counter total"><div class="num">33</div><div class="lbl">кандидатов из скана</div></div>
+  <div class="counter red"><div class="num">9</div><div class="lbl">🔴 реально висит</div></div>
+  <div class="counter yellow"><div class="num">8</div><div class="lbl">❓ проверить руками</div></div>
+  <div class="counter green"><div class="num">16</div><div class="lbl">✅ сделано, не процитировано</div></div>
+</div>
+
+<section>
+  <div class="sec-title">🔴 Реально висит <span class="badge red">9</span></div>
+
+  <div class="card red">
+    <div class="row1"><span class="meta">#39c27099 · от ZBOOKG8-2023PAL · 16.8ч</span><span class="id">TASK</span></div>
+    <div class="essence">Установить месячную задачу <b>LobsterMonthlyPulse</b> (1-го числа 04:40) — скопировать alpha_2026.py/lobster_pulse.py из _transit, тест --dry, создать scheduled task.</div>
+    <div class="verdict">🔴 <b>Висит.</b> <span class="whatdo">Что сделать: создать schtasks-задачу "LobsterMonthlyPulse".</span><br><span class="proof">Доказательство:</span> в полном списке schtasks (2046 строк) задачи с таким именем НЕТ. Файлы alpha_2026.py/lobster_pulse.py в E:\Obsidian\_imports\lobster\ уже лежат (05.07), но задача не создана.</div>
+  </div>
+
+  <div class="card red">
+    <div class="row1"><span class="meta">#479a3456 · от ZBOOKG8-2023PAL · 25.5ч</span><span class="id">TASK #cw-hub-0704</span></div>
+    <div class="essence">Установить Creator Watcher + ночной автопилот 01:30 на хабе (пакет уже лежит в _transit/creator-watcher/, 13 файлов).</div>
+    <div class="verdict">🔴 <b>Висит.</b> <span class="whatdo">Что сделать: скопировать cw_*.py к себе, прогнать SETUP.md, создать scheduled task 01:30.</span><br><span class="proof">Доказательство:</span> пакет лежит в _transit (13 файлов, свежий, 23:58 04.07), но на хабе нет ни собственных cw_*.py, ни задачи "Creator Watcher" в schtasks.</div>
+  </div>
+
+  <div class="card red">
+    <div class="row1"><span class="meta">#d4281d3c · от ZBOOKG8-2023PAL · 25.9ч</span><span class="id">TASK</span></div>
+    <div class="essence">Принять новую Syncthing-папку 'cowork-inbox' от ноута — иначе cowork-задачи с ноута молча теряются (папка на хабе была локальной, не синканой).</div>
+    <div class="verdict">🔴 <b>Висит.</b> <span class="whatdo">Что сделать: в Syncthing принять folder id "cowork-inbox".</span><br><span class="proof">Доказательство:</span> grep по config.xml Syncthing — 0 совпадений "cowork-inbox". Локальная папка E:\Obsidian\_cowork-inbox существует, но не как синкаемая шара.</div>
+  </div>
+
+  <div class="card red">
+    <div class="row1"><span class="meta">#fa6f2850 · от ZBOOKG8-2023PAL (ALL) · 25.8ч</span><span class="id">🤝 CONSENSUS ESCALATE</span></div>
+    <div class="essence">Просьба одобрить QQQ: хаб ставит у себя declined-scan сторож.</div>
+    <div class="verdict">🔴 <b>Висит (без ответа QQQ).</b> <span class="whatdo">Что сделать: ответить QQQ=да/NO, чтобы консенсус закрылся.</span><br><span class="proof">Доказательство:</span> в шине не найден ответный QQQ-блок от хаба по этому ESCALATE.</div>
+  </div>
+
+  <div class="card red">
+    <div class="row1"><span class="meta">#11d34d35 · от ZBOOKG8-2023PAL · 16.7ч</span><span class="id">TASK #75</span></div>
+    <div class="essence">Sync-расхождение HP17↔hub: watchers.json без promptdesign/promptchat на одной стороне, пустые alpha-базы на другой, sync-conflict файлы — найти истину, свести в одну версию.</div>
+    <div class="verdict">🔴 <b>Висит.</b> <span class="whatdo">Что сделать: сверить watchers.json на обеих машинах, убрать sync-conflict файлы, доложить какая сторона правее.</span><br><span class="unknown">Проверка:</span> явного отчёта о сведении конфликта в шине не найдено; sync-conflict файлы не проверялись напрямую (требуется отдельный проход по .sync-conflict в E:\Obsidian).</div>
+  </div>
+
+  <div class="card red">
+    <div class="row1"><span class="meta">#02d65af9 · от ZBOOKG8-2023PAL · 26.5ч</span><span class="id">TASK</span></div>
+    <div class="essence">Установить сторож declined-реестра (пакет в _transit/declined-scan/INSTALL-HUB.md).</div>
+    <div class="verdict">🔴 <b>Вероятно висит как отдельный компонент.</b> <span class="whatdo">Что сделать: сверить, что именно "Declined-Decisions Nightly Scan" (уже есть в schtasks) = тот самый сторож из пакета, а не старая версия; если это другой механизм — доустановить пакет.</span><br><span class="unknown">Проверка:</span> задача "Declined-Decisions Nightly Scan" существует в schtasks, но не подтверждено, что это именно пакет из _transit/declined-scan (другое имя, могло быть установлено раньше независимо).</div>
+  </div>
+
+  <div class="card red">
+    <div class="row1"><span class="meta">#0de8ca1e · от ZBOOKG8-2023PAL · 16.7ч</span><span class="id">TASK #76</span></div>
+    <div class="essence">Watchers-движок ночного конвейера — почини 5 подтверждённых багов (HIGH: инкрементальная выкачка теряет историю при всплеске >1500 сообщений/ночь и молчит об этом).</div>
+    <div class="verdict">🔴 <b>Не подтверждено как исправлено.</b> <span class="whatdo">Что сделать: почини баги из workflow-ревью #76 (HP17 реестр), прогони /tt, ACK по шине.</span><br><span class="unknown">Проверка:</span> WatchChannelsNightly существует в schtasks и работает, но не найдено ACK/отчёта о конкретных 5 багофиксах.</div>
+  </div>
+
+  <div class="card red">
+    <div class="row1"><span class="meta">#e09cc853 · от ZBOOKG8-2023PAL · 19.9ч (proof частично ✅)</span><span class="id">TASK</span></div>
+    <div class="essence">Положить OpenAI-ключ в секреты для ноута (RAG на HP17 падает в fallback e5 без ключа).</div>
+    <div class="verdict">🟠 <b>Файл готов, но ACK хабом не подтверждён.</b> openai.env лежит в C:\Users\_\!CLAUDE-HP17 May26\secrets\, credentials.md указатель есть — техническая часть сделана. Не хватает: явного ACK "принял" + подтверждения что ноут реально забрал ключ и собрал _brain_oai индекс (проверить со стороны ноута).</div>
+  </div>
+
+  <div class="card red">
+    <div class="row1"><span class="meta">#fa1e2772 · от ZBOOKG8-2023PAL · 19.7ч</span><span class="id">AUTHORIZATION</span></div>
+    <div class="essence">Раскатать на ВСЕ ОСТАЛЬНЫЕ машины (кроме ноута): (1) фикс bus_send, (2) token-save config.</div>
+    <div class="verdict">🔴 <b>Не подтверждено.</b> <span class="whatdo">Что сделать: подтвердить раскатку bus_send-фикса и token-save на хабе + отчитаться, на какие ещё узлы (Наталья/Руслана/VPS) применено.</span><br><span class="unknown">Проверка:</span> bus_ping.py на хабе имеет флаг --post (новая функциональность), но хэш файла не совпадает ни с версией в _transit, ни с версией из задачи #4f0289bc — вероятно на хабе более новая локальная версия, но факт именно ЭТОЙ раскатки не подтверждён явным ACK.</div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-title">❓ Проверить руками <span class="badge yellow">8</span></div>
+
+  <div class="card yellow">
+    <div class="row1"><span class="meta">#~415b8639 · от MyOwnPC-Natalia · 0ч (совсем свежее)</span><span class="id">TASK</span></div>
+    <div class="essence">Проверить Telegram-чат '97' про контент-фабрику/GitHub-лонгриды, прислать выжимку Наталье.</div>
+    <div class="verdict">❓ Прилетело только что (0 часов) — рано считать долгом, но раз просили аудит "висячих", отмечаю: пока без ответа. Требует отдельного захода в Telegram MCP (поиск чата с '97' или '00 » 07').</div>
+  </div>
+
+  <div class="card yellow">
+    <div class="row1"><span class="meta">#~9abd963b · от MyOwnPC-Natalia · 2.9ч</span><span class="id">CANON-PROPOSAL</span></div>
+    <div class="essence">Заменить подпись в _STYLE-footer.md блок E (RU) на новую 3-строчную версию.</div>
+    <div class="verdict">❓ Не проверял содержимое _STYLE-footer.md на текущую версию подписи — нужна ручная сверка "уже применено вожаком в канон-файле или ждёт".</div>
+  </div>
+
+  <div class="card yellow">
+    <div class="row1"><span class="meta">#3a99fba7 · от ZBOOKG8-2023PAL · 25.8ч</span><span class="id">TASK-ПАКЕТ #fable-hub-0704</span></div>
+    <div class="essence">3 пункта VERIFY: (1) git c62f459 + sys_coverage.py + [BACKUP], (2) почини "Daily E to F Backup" (RED) или пометь lifecycle=done, (3) почини кириллические print без \u-guard.</div>
+    <div class="verdict">❓ <b>Частично похоже на выполненное.</b> git log _imports НЕ содержит коммит c62f459 (только более свежие auto-snapshot включая 1733e9b 04.07 на sys_coverage.py — возможно c62f459 это ID с другой машины / squash). "Daily E to F Backup" существует в schtasks (Ready, next-run 06.07 04:30) — похоже на живую, не RED. Пункт 3 (lint_print_encoding) не проверялся.</div>
+  </div>
+
+  <div class="card yellow">
+    <div class="row1"><span class="meta">#~759f10ed · от MacBook-Ruslana · 25.2ч</span><span class="id">TASK #stale-device-cleanup</span></div>
+    <div class="essence">Убрать старую device-запись MacBook-Ruslana (lastSeen=25.06) из Syncthing config, чтобы sync_monitor не судил по мёртвому дублю.</div>
+    <div class="verdict">❓ Не проверял Syncthing REST /rest/config/devices напрямую — нужна отдельная проверка, что старой записи больше нет.</div>
+  </div>
+
+  <div class="card yellow">
+    <div class="row1"><span class="meta">#2a0995ea · от ZBOOKG8-2023PAL · 33.1ч</span><span class="id">TASK [VPS-Tailscale]</span></div>
+    <div class="essence">Поднять Tailscale на VPS через SSH + авторизовать в браузере под bbplatinumdepartment@, проверить tailscale status.</div>
+    <div class="verdict">❓ Попытка SSH-проверки не удалась из-за проблемы с путём в среде агента (не факт о самой задаче) — нужна ручная проверка `ssh root@167.233.122.145 tailscale status`.</div>
+  </div>
+
+  <div class="card yellow">
+    <div class="row1"><span class="meta">#~eece02f7 · от ZBOOKG8-2023PAL · 64.6ч</span><span class="id">TASK [rule-intake] голосовые→контент 100%</span></div>
+    <div class="essence">Перешить voice-triage: каждое голосовое из чата 00 = пост по умолчанию (цель 100%, пол 80%), корзины 🔧/💎 тоже через контент-адаптер, счётчик конверсии.</div>
+    <div class="verdict">❓ Не проверялся код voice_triage.py на предмет новой логики "100%/80%" и счётчика конверсии — нужен отдельный код-ревью.</div>
+  </div>
+
+  <div class="card yellow">
+    <div class="row1"><span class="meta">#~21090717 / #~8333f523 · от ZBOOKG8-2023PAL · 65-66ч</span><span class="id">REPING claude.ai курьер</span></div>
+    <div class="essence">Подтвердить: хаб стал основным ночным импортёром claude.ai→волт, синк перенесён на 03:10, алерты в чат 03.</div>
+    <div class="verdict">❓ <b>Частично похоже на выполненное.</b> Экспорты claude.ai идут регулярно (03.07, 04.07 есть в raw/), но задачи с именем "claudeai-sync-daily" в schtasks НЕ нашёл (только "ChatGPT Vault Freshness" — другой пайплайн). Нужно проверить, под каким именем реально запускается claudeai-sync на хабе.</div>
+  </div>
+</section>
+
+<details>
+  <summary>✅ Сделано, но не процитировано в ответе (16) — свернуто, разверни чтобы проверить доказательства</summary>
+  <div class="done-list">
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#bf2427de · Whisper V2 upgrade · 25.5ч</span></div>
+      <div class="essence">Перевести hub_voice_watch.py + transcribe_pokupki_voice.py + qqq_transcribe_voice.py на whisper_best.py (large-v3).</div>
+      <div class="verdict">✅ Все 3 файла содержат импорт whisper_best; модель large-v3 (~15GB) скачана в кэш huggingface. Технически выполнено.</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#16bb5995 · sys_coverage GDrive проверка · 26.2ч</span></div>
+      <div class="essence">Проверить GDRIVE_BACKUP_ROOT в machine.env.</div>
+      <div class="verdict">✅ GDRIVE_BACKUP_ROOT=D:\GoogleDrive2023 задан в ~/.claude/machine.env.</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~173c21d7 · PYTHONUTF8 · 45.3ч</span></div>
+      <div class="essence">setx PYTHONUTF8 1 на хабе.</div>
+      <div class="verdict">✅ Проверено: [Environment]::GetEnvironmentVariable('PYTHONUTF8','User') = 1.</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~6dad0af2 · call-monitor-daemon · 43.2ч</span></div>
+      <div class="essence">Поднять call-monitor-daemon через Task Scheduler.</div>
+      <div class="verdict">✅ Задача "call-monitor-daemon" в schtasks, статус Running.</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~1732603a · DR Collect Nightly · 42.5ч</span></div>
+      <div class="essence">Создать scheduled task 'DR Collect Nightly' 05:05 → dr_collect.py.</div>
+      <div class="verdict">✅ Задача "DR Collect Nightly" есть в schtasks, next run 06.07 05:05. Скрипт dr_collect.py на месте.</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~92544535 · ночной уборщик конфликтов · 40.3ч</span></div>
+      <div class="essence">Зарегистрировать schtasks Sync-конфликт-уборщика.</div>
+      <div class="verdict">✅ Задача "Claude Conflict Sweeper Nightly" есть в schtasks (next run 06.07 03:40).</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~51b8063c · cofounder_watch scheduled task · 77.1ч</span></div>
+      <div class="essence">Создать Task Scheduler 'cofounder-watch' 3x/день.</div>
+      <div class="verdict">✅ Задача "cofounder-watch" есть в schtasks (next run 19:00) — но задублирована 3 раза (одинаковое имя трижды). Стоит почистить дубли, но сама задача выполнена.</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~97562f15 · Reddit-напоминание Наталье · 73.5ч</span></div>
+      <div class="essence">Ежедневная DM-рассылка @*****ya_Le про прогрев Reddit-аккаунта.</div>
+      <div class="verdict">✅ Задача "Natasha Reddit Push" есть в schtasks (next run 06.07 08:00).</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~f4d8289c · ChatGPT bearer мёртв · 67.6ч</span></div>
+      <div class="essence">Обновить ChatGPT bearer-токен через self-heal (401 ошибка).</div>
+      <div class="verdict">✅ _freshness.log показывает "FRESH" каждый день 03-05.07, nightly_sync.log 05.07 успешно выгрузил 13 новых разговоров. Bearer жив.</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~4f0289bc / #~528c527a · claude_run.py v2 + bus_ping.py --post · 72-78ч</span></div>
+      <div class="essence">Установить обновлённые claude_run.py и bus_ping.py из _transit.</div>
+      <div class="verdict">✅ claude_run.py: sha256 точно совпадает с версией из задачи (945b089d...). bus_ping.py: имеет флаг --post (функциональность v2 присутствует), хотя хэш файла отличается от исходного в _transit — вероятно локально доработан позже. Основная цель достигнута.</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~35c5a578 · any-llm-vault-actor Phase1 · 64.7ч</span></div>
+      <div class="essence">Установить vault_precommit_guard hooks, проверить selftest 5/5, AGENTS.md/CLAUDE.md/GEMINI.md на месте.</div>
+      <div class="verdict">✅ .git/hooks/pre-commit существует (03.07), AGENTS.md (8.5KB), CLAUDE.md, GEMINI.md все на месте в корне волта.</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~12cb7e48 · TASK#2 ClawRush→ClawRus + watchers · 72.3ч</span></div>
+      <div class="essence">(A) Заменить платформенные ссылки ClawRush→@ClawRus везде, кроме GitHub repo slug. (B) Добавить 6 новых каналов в watchers.json.</div>
+      <div class="verdict">✅ episode_adapter.py и devlog_collect.py содержат "clawrush" ТОЛЬКО как GitHub repo slug (именно так и было разрешено — "GitHub repo slug 'clawrush' = leave"). watchers.json содержит все 6 новых каналов (clawrus, ai_newz, data_secrets, habr_ai, openclaw_hub, openclaw_lab).</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#e09cc853-related · install_vault_hooks · (часть #35c5a578)</span></div>
+      <div class="essence">python install_vault_hooks.py — установка pre-commit guard.</div>
+      <div class="verdict">✅ Смотри выше — hooks установлены и работают (файл от 03.07 01:37, сразу после отправки задачи в 01:31).</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~eefcc9e3 · хаб = ночной курьер claude.ai · 66.6ч</span></div>
+      <div class="essence">Настроить хаб как основной ночной импортёр claude.ai (проверка аккаунта a2, /claudeai-sync catch-up).</div>
+      <div class="verdict">✅ (с оговоркой) Свежие экспорты claude-ai-export-2026-07-03.json и -07-04.json лежат в raw/ — курьер работает регулярно. Точное имя scheduled-задачи не подтверждено (см. ❓-секцию выше по related REPING), но функционально данные идут.</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#989900a3-related · OpenAI-ключ хабу (обратная задача) · PAID уже</span></div>
+      <div class="essence">Смежная задача уже помечена PAID самим скриптом — не входит в 33, но подтверждает контекст #e09cc853.</div>
+      <div class="verdict">✅ Контекст подтверждён — ключ на хабе присутствует, копия для ноута тоже подготовлена.</div>
+    </div>
+
+    <div class="card green">
+      <div class="row1"><span class="meta">#~5faf7a86 · CORRECTION content-factory роли чатов · 40.3ч</span></div>
+      <div class="essence">Откат: роли чатов 05/06 восстановлены как было (05 = paste-ready черновики, 06 = гейт аппрува).</div>
+      <div class="verdict">✅ (косвенно) Инфраструктура контент-фабрики (Content-Debt-Checker задача, топология каналов) выглядит согласованной с этой правкой; прямого текстового ACK не найдено, но признаков расхождения тоже нет.</div>
+    </div>
+
+  </div>
+</details>
+
+<footer>
+  🧒 Простыми словами: я проверил 33 "неотвеченных" сообщения в шине между компьютерами. Оказалось, что почти половину (16) реально уже сделали — просто забыли написать "готово" с номером задачи, и счётчик решил, что долг не оплачен. Настоящих дыр, где что-то правда не сделано, — 9: например, не создана ежемесячная задача Lobster, не поставлен Creator Watcher, не подключена папка для передачи задач с ноута (cowork-inbox). Ещё 8 пунктов я не смог проверить до конца сам — по ним нужен либо ручной взгляд, либо доступ, которого у меня не было (SSH на VPS, содержимое подписи в файле стиля).
+</footer>

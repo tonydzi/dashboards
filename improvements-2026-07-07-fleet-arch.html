@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Реестр улучшений — сессия 2026-07-07 (флот-архитектура)</title>
+<style>
+  :root{
+    --bg:#0e1116; --card:#171b22; --line:#2a313c; --tx:#e6edf3; --dim:#9aa7b4;
+    --done:#3fb950; --agreed:#58a6ff; --ratify:#a371f7; --defer:#d29922; --ask:#f85149; --no:#6e7681;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:24px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 18px;font-size:13px}
+  .counts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+  .pill{border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+  .pill b{font-weight:800}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 16px}
+  section h2{font-size:16px;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+  .bar{width:4px;height:18px;border-radius:2px;display:inline-block}
+  ul{margin:0;padding:0;list-style:none}
+  li{padding:9px 0;border-top:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
+  li:first-child{border-top:none}
+  .k{font-weight:700;min-width:52px;color:var(--dim);font-size:12px;padding-top:2px;flex-shrink:0}
+  .t{flex:1}
+  .t .why{color:var(--dim);font-size:13px;display:block;margin-top:2px}
+  .own{font-size:11px;font-weight:700;border-radius:5px;padding:2px 7px;flex-shrink:0;margin-top:1px}
+  .o-mac{background:#12331f;color:#3fb950}
+  .o-hub{background:#0d2b45;color:#58a6ff}
+  .o-anton{background:#3a1d10;color:#f0883e}
+  .o-fleet{background:#2a2140;color:#a371f7}
+  .legend{color:var(--dim);font-size:12px;margin-top:6px}
+  code{background:#0d1117;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="_sync-conflicts-ALERT.html">&larr; _sync-conflicts-ALERT</a></span></div>
+  <h1>🏗️ Реестр улучшений — сессия 2026-07-07</h1>
+  <p class="sub">Флот-архитектура · DR-синтез · консенсус #5ae54526 · основано на Decision Memo + PLAN + консенсус-леджере</p>
+
+  <div class="counts">
+    <span class="pill" style="border-color:var(--done);color:var(--done)"><b>10</b> ✅ сделано</span>
+    <span class="pill" style="border-color:var(--agreed);color:var(--agreed)"><b>7</b> 🤝 согласовано (хаб)</span>
+    <span class="pill" style="border-color:var(--ratify);color:var(--ratify)"><b>7</b> 🧩 арх-решения</span>
+    <span class="pill" style="border-color:var(--defer);color:var(--defer)"><b>4</b> ⏳ отложено</span>
+    <span class="pill" style="border-color:var(--ask);color:var(--ask)"><b>1</b> 🔴 ждёт тебя</span>
+    <span class="pill" style="border-color:var(--no);color:var(--no)"><b>7</b> ❌ решили НЕ делать</span>
+  </div>
+
+  <section>
+    <h2><span class="bar" style="background:var(--done)"></span>✅ Сделано этой сессией (Мак, всё /tt-протестировано)</h2>
+    <ul>
+      <li><span class="k">C-fix</span><span class="t">robot_scan видит <code>ORDER:</code>/<code>ACK-REQ:</code>, не только <code>TASK:</code><span class="why">md5 447cd95d… копия в _transit</span></span><span class="own o-mac">MAC</span></li>
+      <li><span class="k">D-fix</span><span class="t">node_health пишет beat-файл ВСЕГДА — узел с TG-direct не исчезает для соседей<span class="why">md5 a31cb56…</span></span><span class="own o-mac">MAC</span></li>
+      <li><span class="k">peer_watch</span><span class="t">взаимный надзор узлов по mtime heartbeat (хаб тоже под надзором), launchd 1800с</span><span class="own o-mac">MAC</span></li>
+      <li><span class="k">fold_all</span><span class="t">единый дворник шардов (семьи dr+machines → _folded/); правило «новый реестр = семья, не скрипт»</span><span class="own o-mac">MAC</span></li>
+      <li><span class="k">node_doctor</span><span class="t">техосмотр узла, 18 контрактов, exit=число ❌ (Мак: ГОДЕН 17✅/1⚠️)</span><span class="own o-mac">MAC</span></li>
+      <li><span class="k">node_env</span><span class="t">W1 — единый env узла (лечит «обёртка забыла export» → ложный peer-unreachable, немой peek)</span><span class="own o-mac">MAC</span></li>
+      <li><span class="k">консенсус</span><span class="t">движок доукомплектован bus-deps + <b>установлен в канон</b> ~/.claude/scripts — корень сегодняшнего бута (был немой в 03)</span><span class="own o-mac">MAC</span></li>
+      <li><span class="k">DR-сбор</span><span class="t">Grok 3/3 + ChatGPT 3/3 полные verbatim собраны + архивированы + Decision Memo обновлён до консенсуса</span><span class="own o-mac">MAC</span></li>
+      <li><span class="k">TG-рельса</span><span class="t">поднята (Telethon session + MCP 4/4) — из Фазы G бутстрапа</span><span class="own o-mac">MAC</span></li>
+      <li><span class="k">карта узла</span><span class="t">machine__from-MacBook-Anton.json (single-writer) + W6 канал «04 TELEMETRY» создан</span><span class="own o-mac">MAC</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="bar" style="background:var(--agreed)"></span>🤝 Согласовано консенсусом #5ae54526 — исполняет ХАБ (по DoD-гейтам)</h2>
+    <ul>
+      <li><span class="k">Ф0</span><span class="t">канонизировать всё сделанное Маком + Windows-порты (C-fix/D-fix/peer_watch/fold_all/node_doctor/node_env.cmd)<span class="why">дёшево — «принять готовое», не строить</span></span><span class="own o-hub">ХАБ</span></li>
+      <li><span class="k">Ф0</span><span class="t">переезд heartbeat в «04 TELEMETRY» (id -5385350376) → узлы раскомментируют TELEMETRY_GROUP</span><span class="own o-hub">ХАБ</span></li>
+      <li><span class="k">Ф0</span><span class="t">подписать 3 правила: пароли-в-семье · TG-два-стека · ведомые-обслуживают-реестры-сами</span><span class="own o-hub">ХАБ</span></li>
+      <li><span class="k">W2</span><span class="t">шара <code>clan-secrets</code> (receive-only узлам, пополнение через secrets-inbox)</span><span class="own o-hub">ХАБ</span></li>
+      <li><span class="k">W3</span><span class="t">память флота: 2 шары + fold-демон + MEMORY.md компилируется локально + dry-run неделю<span class="why">обобщить fold_all-паттерн, ручей знаний от ведомых вверх</span></span><span class="own o-hub">ХАБ</span></li>
+      <li><span class="k">W5</span><span class="t">канон-дистрибуция: Git+Syncthing+apply-агент + minisign + observe→enforce + canary<span class="why">убрать ручную md5-сверку в 03, лечит дрейф скриптов</span></span><span class="own o-hub">ХАБ</span></li>
+      <li><span class="k">md5→SHA</span><span class="t">апгрейд наших сверок (fold_all/патчи) на SHA-256 + канонизация JSON перед хэшем</span><span class="own o-hub">ХАБ</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="bar" style="background:var(--ratify)"></span>🧩 Ратифицированные арх-решения (из кросс-вендор DR)</h2>
+    <ul>
+      <li><span class="k">хэш</span><span class="t">SHA-256 вместо md5 везде (факты/манифесты/расписания/аттестации)</span></li>
+      <li><span class="k">память</span><span class="t">MEMORY.md — компилируется локально на узле и <b>НЕ синкается</b> (лечит бюджет + класс «две машины правят один файл»)</span></li>
+      <li><span class="k">шары</span><span class="t">две шары: canon (хаб send-only, узлы receive-only) + uplink (узел пишет только свой префикс)</span></li>
+      <li><span class="k">fold</span><span class="t">priority-lattice (owner-fleet &gt; owner-node-shadow &gt; verified-obs &gt; agent-inference; ничьи → effective_at→created_at→id)</span></li>
+      <li><span class="k">fold</span><span class="t">supersede ≠ shadow · решения append-only · факты иммутабельны (правка = новый файл)</span></li>
+      <li><span class="k">безопасн.</span><span class="t">никогда не исполнять из синк-папки (verify → копия в live/base → только её видит планировщик)</span></li>
+      <li><span class="k">безопасн.</span><span class="t">blocked_local_edit — не клоббрить локальный фикс · observe-only → enforce после 2 rollback-учений</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="bar" style="background:var(--defer)"></span>⏳ Решили делать, но ПОЗЖЕ (отложено осознанно)</h2>
+    <ul>
+      <li><span class="k">E</span><span class="t">мозг-API (FastAPI RAG-поиск хаба для флота) — строить <b>ПОСЛЕДНИМ</b>, после W3/W5, отдельным решением<span class="why">⚠️ усложнение: сервис+порт+watchdog — самый тяжёлый</span></span><span class="own o-hub">ХАБ</span></li>
+      <li><span class="k">E/MCP</span><span class="t">MCP-слой мозг-API — после стабильного REST (оба вендора: сначала boring HTTP)</span><span class="own o-hub">ХАБ</span></li>
+      <li><span class="k">консенсус</span><span class="t">доустановить движок в канон на ОСТАЛЬНЫХ узлах (ноут/Наталья/Руслана) — по мере онбординга</span><span class="own o-fleet">ФЛОТ</span></li>
+      <li><span class="k">Gemini</span><span class="t">третий DR-голос — собрать ТОЛЬКО если захочешь (два вендора уже сошлись, не критично)</span><span class="own o-anton">ТВОЁ</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="bar" style="background:var(--ask)"></span>🔴 Ждёт ТВОЕГО решения (rollout-гейт, «меняет все машины»)</h2>
+    <ul>
+      <li><span class="k">авто-tick</span><span class="t">вписать <code>consensus.py tick</code> в inbox-роботы <b>всего флота</b> + объявить каноном → машины сами голосуют по предложениям без меня-погонщика (0 токенов, обратимо)<span class="why">рекомендую ДА — ты сам дважды сказал «03/вы сами». Сейчас: 0 tick-строк в роботах, консенсус водится вручную</span></span><span class="own o-anton">ТВОЁ</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="bar" style="background:var(--no)"></span>❌ Решили НЕ делать (отвергнуто с обоснованием из DR)</h2>
+    <ul>
+      <li><span class="k">память</span><span class="t">SQLite-синк как общая память (арх. C)<span class="why">один писатель, WAL требует один хост, синк БД по сети = коррупция</span></span></li>
+      <li><span class="k">дистриб.</span><span class="t">git pull на каждом узле (W5 option c)<span class="why">operator-hostile: merge-конфликты/dirty-tree на «бытовых» узлах</span></span></li>
+      <li><span class="k">память</span><span class="t">шина-брокер / NATS для памяти (арх. D)<span class="why">слишком много движущихся частей для 4-6 машин; нужен always-on брокер</span></span></li>
+      <li><span class="k">мозг-API</span><span class="t">несколько uvicorn worker'ов<span class="why">каждый worker дублирует индекс+reranker в памяти — именно то, чего нельзя на хабе · 🔁 ноут: держать дешёвым рычагом ЕСЛИ мозг-API станет бутылочным горлом при конкурентных запросах флота</span></span></li>
+      <li><span class="k">планир.</span><span class="t">registration-trigger в Windows Task Scheduler<span class="why">обновление такой задачи её ЗАПУСКАЕТ — сюрприз в rollout</span></span></li>
+      <li><span class="k">мозг-API</span><span class="t">готовые self-hosted RAG (Onyx/AnythingLLM) как ядро<span class="why">тяжелее, требуют переиндексации; наш e5+reranker тоньше · 🔁 ноут: годен для read-only дашборда/UI, НЕ трогая ядро</span></span></li>
+      <li><span class="k">оплата</span><span class="t">платный API как фолбэк<span class="why">сначала лимиты подписки; платное — только по согласованию</span></span></li>
+    </ul>
+  </section>
+
+  <p class="legend">Владельцы: <span class="own o-mac">MAC</span> сделано мной · <span class="own o-hub">ХАБ</span> исполняет always-on хаб · <span class="own o-fleet">ФЛОТ</span> по узлам · <span class="own o-anton">ТВОЁ</span> твоё решение. Источники: <code>02-Decisions/decision-2026-07-07-fleet-arch-W3-W5-E-dr-synthesis.md</code> · <code>_transit/HUB-BUILD-PLAN-2026-07-07…</code> · консенсус #5ae54526.</p>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Задачи на 23 июля — Наталья</title>
+<style>
+  :root{--canvas:#010409;--bg:#0d1117;--panel:#161b22;--border:#30363d;--border2:#21262d;
+  --ink:#e6edf3;--dim:#8b949e;--link:#2f81f7;--green:#3fb950;--amber:#d29922;--red:#f85149;--purple:#bc8cff;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.55 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:24px;max-width:920px;margin:0 auto}
+  h1{font-size:25px;margin:0 0 4px}
+  .ts{color:var(--dim);font-size:13px;margin-bottom:18px}
+  .barwrap{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:0 0 22px;position:sticky;top:12px;z-index:10;backdrop-filter:blur(6px)}
+  .barrow{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}
+  .barrow b{font-size:19px}
+  .track{height:12px;background:#0a0d12;border:1px solid var(--border);border-radius:99px;overflow:hidden}
+  .fill{height:100%;background:linear-gradient(90deg,#238636,#3fb950);width:0;transition:width .35s ease}
+  .reset{background:none;border:1px solid var(--border);color:var(--dim);border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer}
+  .reset:hover{border-color:var(--red);color:var(--red)}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);margin:26px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--border)}
+  .task{display:flex;gap:13px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:14px 16px;margin:9px 0;cursor:pointer;transition:.15s}
+  .task:hover{border-color:#3d444d}
+  .task.done{opacity:.5;background:#0a1a0f;border-color:#14532d}
+  .box{flex:none;width:26px;height:26px;border:2px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;color:transparent;transition:.15s;margin-top:1px}
+  .task.done .box{background:var(--green);border-color:var(--green);color:#04140a}
+  .body{flex:1;min-width:0}
+  .ttl{font-weight:650;font-size:15.5px}
+  .task.done .ttl{text-decoration:line-through}
+  .sub{color:var(--dim);font-size:13.5px;margin-top:5px}
+  .sub div{margin:3px 0}
+  .flag{color:var(--amber)} .lock{color:var(--red)} .ok{color:var(--green)} .no{color:var(--red)}
+  a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline}
+  code{background:#21262d;padding:1px 6px;border-radius:5px;font-size:12.5px}
+  .note{background:#0d1f3a;border:1px solid #1f6feb;border-radius:10px;padding:13px 16px;margin:22px 0 6px;font-size:13.5px;color:#c9d9f5}
+  .eli5{background:#0d2e18;border:1px solid #14532d;border-radius:10px;padding:14px 16px;margin:20px 0 40px;font-size:14px}
+  .eli5 b{color:var(--green)}
+  .done-note{display:none}
+  .task.done .done-note{display:block;color:var(--green);font-size:12.5px;margin-top:6px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="cofounder-application-form.html">&larr; cofounder-application-form</a> · <a href="day-control-2026-07-07.html">day-control-2026-07-07 &rarr;</a></span></div>
+
+<h1>✅ Задачи на 23 июля</h1>
+<p class="ts">Наталья · NATALY-WIN-NB · нажимай на задачу, чтобы отметить. Галочки сохраняются в этом браузере автоматически.</p>
+
+<div class="barwrap">
+  <div class="barrow"><b id="cnt">0 из 9 сделано</b><button class="reset" onclick="resetAll()">сбросить всё</button></div>
+  <div class="track"><div class="fill" id="fill"></div></div>
+</div>
+
+<h2>🔴 Блок 1 — люди и найм</h2>
+
+<div class="task" data-id="t1">
+  <div class="box">✓</div>
+  <div class="body">
+    <div class="ttl">1. Выбрать 2 кандидаток — выход ЗАВТРА, 24.07</div>
+    <div class="sub">
+      <div>Финальный выбор из шорт-листа, подтвердить каждой выход на 24.07.</div>
+      <div class="flag">⚠️ Выход завтра — тянуть нельзя, людям нужно время собраться.</div>
+    </div>
+    <div class="done-note">✅ сделано</div>
+  </div>
+</div>
+
+<div class="task" data-id="t2">
+  <div class="box">✓</div>
+  <div class="body">
+    <div class="ttl">2. Выбрать 3 кандидаток — выход в АВГУСТЕ</div>
+    <div class="sub"><div>Выбрать, обозначить ориентировочную дату, держать тёплыми до выхода.</div></div>
+    <div class="done-note">✅ сделано</div>
+  </div>
+</div>
+
+<div class="task" data-id="t3">
+  <div class="box">✓</div>
+  <div class="body">
+    <div class="ttl">3. Подготовить и подписать NDA со всеми (2 + 3 = 5 человек)</div>
+    <div class="sub">
+      <div>Единый шаблон на всех → разослать → собрать подписанные.</div>
+      <div class="flag">⚠️ «Отправлено» ≠ «подписано» — проследить возврат.</div>
+      <div class="lock">🔒 Текст NDA готовлю/помогаю; подпись и правки условий — за тобой/Антоном (Tier-2).</div>
+    </div>
+    <div class="done-note">✅ сделано</div>
+  </div>
+</div>
+
+<h2>📣 Блок 2 — контент</h2>
+
+<div class="task" data-id="t4">
+  <div class="box">✓</div>
+  <div class="body">
+    <div class="ttl">4. 1 пост по голосовому (контент-фабрика)</div>
+    <div class="sub">
+      <div>Свежее голосовое Антона → каскад GitHub-first (лонгрид+девлог → RU-канал+тизер → EN-канал+тизер → X → Medium), draft-first.</div>
+      <div>Аккаунты: RU→tonydzi, EN→tonyssd, личный natalya не использовать.</div>
+    </div>
+    <div class="done-note">✅ сделано</div>
+  </div>
+</div>
+
+<div class="task" data-id="t5">
+  <div class="box">✓</div>
+  <div class="body">
+    <div class="ttl">5. Постинг 2 тизеров по региональным чатам (20 чатов)</div>
+    <div class="sub">
+      <div>Шаблон: <code>drafts\BROADCAST-2026-07-21-teaser.md</code> (20 telegram_id + эталон текста).</div>
+      <div class="flag">⚠️ Темп 60–120 сек между чатами, НЕ залпом (21.07 было 13 сек — повезло). Лучше пусть гонит хаб скриптом.</div>
+      <div>Массовая рассылка = Tier-2 → «+» Антона в 02 POLICE. Выбрать 2 поста.</div>
+    </div>
+    <div class="done-note">✅ сделано</div>
+  </div>
+</div>
+
+<h2>⚙️ Блок 3 — настройка каналов</h2>
+
+<div class="task" data-id="t7">
+  <div class="box">✓</div>
+  <div class="body">
+    <div class="ttl">6. Подключить Facebook Антона (комментарии + постинг)</div>
+    <div class="sub">
+      <div>Настроить доступ к FB Антона на ноуте для разбора комментариев и постинга.</div>
+      <div class="ok">🔑 Логин делаю сам (пароль из SSS-чата). Чтение комментариев — свободно.</div>
+      <div class="lock">⛔ Постинг от лица Антона = публичный контент → гейт Наташи. FB Русланы по П30/П31 уже висит — свериться, не задвоить.</div>
+    </div>
+    <div class="done-note">✅ сделано</div>
+  </div>
+</div>
+
+<div class="task" data-id="t8">
+  <div class="box">✓</div>
+  <div class="body">
+    <div class="ttl">7. Хабр: подготовить ещё одну статью для Песочницы</div>
+    <div class="sub">
+      <div>Написать/адаптировать вторую техническую статью (кейс), выложить в Песочницу.</div>
+      <div>Параллельно: добыть инвайт для ПЕРВОЙ статьи — заготовки <code>drafts\habr-invite-request-2026-07-21.md</code>, разослать 2-3 знакомым лично (не веером).</div>
+    </div>
+    <div class="done-note">✅ сделано</div>
+  </div>
+</div>
+
+<div class="task" data-id="t9">
+  <div class="box">✓</div>
+  <div class="body">
+    <div class="ttl">8. Substack: разобраться и завести наш аккаунт</div>
+    <div class="sub">
+      <div>Изучить платформу, решить структуру (что публикуем, язык, связь с каналами).</div>
+      <div class="lock">🔒 Регистрацию делаешь ТЫ сама (мне нельзя заводить аккаунты/вводить пароли). Я готовлю название, описание, план рубрик, первую публикацию.</div>
+    </div>
+    <div class="done-note">✅ сделано</div>
+  </div>
+</div>
+
+<h2>🖥 Блок 4 — задачи от флота</h2>
+
+<div class="task" data-id="t10">
+  <div class="box">✓</div>
+  <div class="body">
+    <div class="ttl">9. Задачи из чатов 02, 03, 121 для этого ноутбука</div>
+    <div class="sub">
+      <div>Прочитать 02 POLICE (<code>-5567667817</code>), 03 MAIN (<code>-354748913</code>), 121 (<code>-1003795877912</code>).</div>
+      <div>Выбрать адресованное NATALY-WIN-NB / Наталье → выполнить → ACK по каждой.</div>
+      <div class="flag">⚠️ 23.07 Telegram-коннектор зависал — если повторится, переждать/читать через <code>tg_bus_read.py</code>.</div>
+    </div>
+    <div class="done-note">✅ сделано</div>
+  </div>
+</div>
+
+<div class="note">
+  <b>Дзен снят:</b> проверено — новых глав нет (последняя = День 46, «край канона»), постить нечего.
+  <br><b>Хвосты с 21.07:</b> FB по П30/П31 у Русланы · Reddit ждёт апелляцию (прогрев заморожен) · 1-я статья Хабра в Песочнице.
+</div>
+
+<div class="eli5">
+  <b>🧒 Простыми словами:</b> это твой список на сегодня, как в телефоне. Нажимаешь на дело — оно зачёркивается и становится зелёным, полоска сверху ползёт вправо. Компьютер сам запоминает, что ты отметила, даже если закроешь окно. Замочек 🔒 значит «это дело нельзя доверить роботу целиком, часть за тобой».
+</div>
+
+<script>
+  const KEY='nataly-tasks-2026-07-23';
+  const tasks=[...document.querySelectorAll('.task')];
+  const total=tasks.length;
+  function load(){return JSON.parse(localStorage.getItem(KEY)||'{}')}
+  function save(s){localStorage.setItem(KEY,JSON.stringify(s))}
+  function render(){
+    const s=load();let done=0;
+    tasks.forEach(t=>{const id=t.dataset.id;if(s[id]){t.classList.add('done');done++}else{t.classList.remove('done')}});
+    document.getElementById('cnt').textContent=done+' из '+total+' сделано';
+    document.getElementById('fill').style.width=(done/total*100)+'%';
+  }
+  tasks.forEach(t=>t.addEventListener('click',()=>{const s=load();const id=t.dataset.id;s[id]=!s[id];save(s);render()}));
+  function resetAll(){if(confirm('Снять все галочки?')){localStorage.removeItem(KEY);render()}}
+  render();
+</script>
+</body></html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Дашборд по максимуму — раскатка правила §2.4 (04.08.2026)</title>
+<style>
+ body{font:15px/1.5 -apple-system,Segoe UI,system-ui,sans-serif;margin:0;padding:24px;background:#0f1115;color:#e6e8eb}
+ h1{font-size:22px;margin:0 0 4px} h2{font-size:17px;margin:28px 0 8px;color:#9fd0ff}
+ .sub{color:#8b94a3;margin-bottom:20px;font-size:13px}
+ table{border-collapse:collapse;width:100%;margin:8px 0 4px;font-size:14px}
+ th,td{padding:7px 9px;border-bottom:1px solid #232733;text-align:left;vertical-align:top}
+ th{color:#8b94a3;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+ td.n{text-align:right;font-variant-numeric:tabular-nums}
+ tr.hot td{background:#2a1518}
+ .tag{display:inline-block;padding:1px 7px;border-radius:10px;font-size:12px;white-space:nowrap}
+ .ok{background:#14361f;color:#8ce6a8} .wait{background:#4a3a12;color:#ffd98a}
+ .bad{background:#4a1d24;color:#ffb4bd} .info{background:#1b2c44;color:#9fd0ff}
+ .card{background:#151923;border:1px solid #232733;border-radius:10px;padding:14px 16px;margin:10px 0}
+ code{background:#1c212c;padding:1px 5px;border-radius:4px;font-size:13px}
+ .warn{border-left:3px solid #ffd98a;padding-left:12px;color:#d9c58a;font-size:13px;margin:14px 0}
+ .quote{border-left:3px solid #9fd0ff;padding-left:12px;color:#cfe4ff;margin:10px 0;font-size:14px}
+ ul{margin:6px 0 0;padding-left:20px} li{margin:3px 0}
+ .kpi{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+ .kpi div{background:#151923;border:1px solid #232733;border-radius:10px;padding:10px 16px;min-width:120px}
+ .kpi b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
+ .kpi span{color:#8b94a3;font-size:12px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Community-Bio-Tracker.html">&larr; Community-Bio-Tracker</a> · <a href="Day-Ledger.html">Day-Ledger &rarr;</a></span></div>
+
+<h1>«Дашборд по максимуму» — правило §2.4 и его раскатка по флоту</h1>
+<div class="sub">обновлено 05.08.2026, 00:55 · узел-источник HP17-ZBook (<code>ZBOOKG8-2023PAL</code>) · канон <code>v4.0.0</code>, md5 <code>2d702c4e</code> (v3.13.0 <code>ee83c96f</code> поглощён полной ревизией параллельной сессии; §2.4 уцелел дословно)</div>
+
+<div class="card">
+<b>Приказ Антона (04.08.2026):</b>
+<div class="quote">«я хочу тебя всегда попросить делать мне такие дашборды, <b>прямо по максимуму</b>. если на ЭТОТ тип задач мне дашборд НЕ нужен — я тебе это буду говорить. после недели активностей мы сделаем выводы и возможно какие-то сессии делаем БЕЗ дашбордов. но В ЦЕЛОМ — мне дашборды ооооочень удобны и НАГЛЯДНЫ для принятия РЕШЕНИЙ.»</div>
+<b>Повод:</b> дашборд <code>Parasite-Activity-Audit.html</code> — решение принято с одного взгляда.<br>
+<b>Что перевернулось:</b> было «сначала подумай, не сделать ли дашборд» + «предлагаю, не навязываю» (08.06 / 13.06) → стало <b>дефолт = строю молча</b>. Вкус исполнителя больше не решает; отказ объявляет <b>только Антон</b>.
+</div>
+
+<div class="kpi">
+  <div><b>6</b><span>узлов в раскатке</span></div>
+  <div><b>4</b><span>канон v4.0.0 GREEN</span></div>
+  <div><b>2</b><span>применили посылку</span></div>
+  <div><b>2</b><span>Мака вне Syncthing</span></div>
+  <div><b>7</b><span>дней замера</span></div>
+  <div><b>221</b><span>дашбордов уже в <code>_Dashboards</code></span></div>
+</div>
+
+<h2>1. Само правило (что теперь делаю)</h2>
+<table>
+<tr><th>ситуация</th><th>что делаю</th></tr>
+<tr><td>Результат несёт <b>&gt;1 факта, по которому Антон принимает решение</b> (данные · статус · счётчики · аудит · список · сравнение · «покажи X»)</td><td><span class="tag ok">ДАШБОРД</span> самодостаточный HTML в <code>_Dashboards\</code>, молча, без «а давайте?»</td></tr>
+<tr><td>Не тянет на HTML</td><td><span class="tag info">минимум</span> чистая markdown-таблица. Стена текста = нарушение правила</td></tr>
+<tr><td>Однострочный ответ · «готово» · 1–2 факта · спор/диалог без данных</td><td><span class="tag wait">без дашборда</span> — и это записывается в счётчик как <code>skipped</code> с причиной</td></tr>
+<tr><td>Антон сказал «тут дашборд не нужен»</td><td><span class="tag bad">opt-out</span> — единственный законный отказ; пишется в счётчик как <code>optout</code> с типом задачи</td></tr>
+</table>
+<div class="sub">Подача: дашборд <b>не заменяет</b> ответ в чате. Ссылки Антону не кликаются → файл уходит через <code>SendUserFile</code> + абсолютный путь текстом.</div>
+
+<h2>2. Дома правила (матрица §8.4 — каждый дом получает явный вердикт)</h2>
+<table>
+<tr><th>дом</th><th>вердикт</th><th>что именно</th></tr>
+<tr><td>Библия (волт)</td><td><span class="tag ok">✅ записано</span></td><td><code>05-Resources\Protocols\reglament-otchet-antonu-vizualno-dashboard-ne-stena-cli.md</code> → раздел «⭐ Поправка 2026-08-04», <code>amended: 2026-08-04</code></td></tr>
+<tr><td>CLAUDE.md (always-loaded)</td><td><span class="tag ok">✅ записано</span></td><td>§2.4 переписан в «⭐ ДАШБОРД ПО МАКСИМУМУ», версия <b>v3.13.0</b> + строка в <code>CLAUDE.CHANGELOG.md</code></td></tr>
+<tr><td>Память + MEMORY.md</td><td><span class="tag ok">✅ записано</span></td><td><code>prefer-visual-dashboards.md</code> — новый блок «ПОПРАВКА 04.08» + обновлён <code>description</code>; строка-указатель в INBOX <code>MEMORY.md</code></td></tr>
+<tr><td>Скилл</td><td><span class="tag info">⛔ не нужен</span></td><td>Правило — это <b>дефолт поведения</b>, а не команда по триггеру. Исполнитель постройки уже есть: <code>data:build-dashboard</code></td></tr>
+<tr><td>Hook / рутина</td><td><span class="tag info">⛔ не нужен</span></td><td>Событие «результат готов» хук не видит. Робот вместо меня дашборд не построит — это работа живой сессии</td></tr>
+<tr><td>MOC</td><td><span class="tag ok">✅ авто</span></td><td>Правило уже в <code>_Operations-Bible-MOC</code>; каталог пересобирается сканом диска (MOC Catalog Nightly)</td></tr>
+</table>
+
+<h2>3. Раскатка по флоту (tier 1, посылка <code>dashboard-max-260804-v2</code>)</h2>
+<table>
+<tr><th>узел</th><th>кто</th><th>канон v4.0.0</th><th>посылка</th><th>факт (05.08, 00:55)</th></tr>
+<tr><td>HP17-ZBook <code>ZBOOKG8-2023PAL</code></td><td>Антон</td><td><span class="tag ok">✅ 2d702c4e</span></td><td><span class="tag ok">✅ применена</span></td><td>verify exit 0; ACK честный: <code>2d702c4e == манифест</code></td></tr>
+<tr><td>Хаб <code>A-2022BAYAREA</code></td><td>Антон</td><td><span class="tag ok">✅ 2d702c4e</span></td><td><span class="tag ok">✅ применена</span></td><td>ack 04.08 20:31Z; из списка отставших ушёл</td></tr>
+<tr><td>Маяк <code>FLEET-ANCHOR</code></td><td>Антон</td><td><span class="tag ok">✅ 2d702c4e</span></td><td><span class="tag wait">⏳ PENDING</span></td><td>ack 04.08 20:30Z; канон догнал, посылку ещё не применил</td></tr>
+<tr><td>Ноут Натальи <code>MyOwnPC-Natalia</code></td><td>Наталья</td><td><span class="tag ok">✅ 2d702c4e</span></td><td><span class="tag wait">⏳ PENDING</span></td><td>ack 04.08 22:47Z; канон догнал, посылку ещё не применил</td></tr>
+<tr class="hot"><td>MacBook-Anton</td><td>Антон</td><td><span class="tag bad">🔴 3 дня</span></td><td><span class="tag bad">🔴 не доедет</span></td><td><b>ФАКТ: устройства с таким именем нет в этом Syncthing.</b> Стоит на <code>c9276cb3</code></td></tr>
+<tr class="hot"><td>MacBook-Ruslana</td><td>Руслана</td><td><span class="tag bad">🔴 9 дней</span></td><td><span class="tag bad">🔴 не доедет</span></td><td><b>ФАКТ: устройства с таким именем нет в этом Syncthing.</b> Стоит на <code>cdff46de</code></td></tr>
+</table>
+<div class="sub">Задача ушла на шину dual-send: <code>syncthing:OK (broadcast → every machine)</code> + <code>tg-03:OK</code>. Verify на каждом узле: <code>python3 "$HOME/.claude/scripts/verify_dashboard_rule.py"</code> → exit 0 = применено.</div>
+<div class="warn">⚠️ Тишина ≠ ок (§7.3-бис). Пять узлов пока НЕ применили — «раскатано» я напишу только когда verify вернёт 0 на каждом. Два Мака вообще не видны в Syncthing: посылка к ним не доедет, пока не восстановят парность — это не «медленно», это <b>разрыв</b>.</div>
+
+<h2>4. Замер 04.08 → 11.08 (критерии названы ДО старта, §5.7)</h2>
+<div class="card">
+<b>Инструмент:</b> <code>~/.claude/scripts/dashboard_log.py</code> (0 токенов, только stdlib, лог <code>~/.claude/dashboard_usage.jsonl</code>).<br>
+<b>Команды:</b> <code>dashboard_log.py built --type audit --file &lt;путь&gt;</code> · <code>optout --type &lt;тип&gt; --note "слова Антона"</code> · <code>skipped --type &lt;тип&gt; --note "почему"</code> · <code>report</code>.<br>
+<b>Что считаем по типу задачи:</b> построено · Антон сказал «не нужен» · я сам не стал.<br>
+<b>Решение 11.08 принимает Антон</b> по таблице: типы с накопленным <code>optout</code> уходят в «без дашборда» и попадают в §2.4 как исключения.<br>
+<b>Гипотеза может не подтвердиться</b> — тогда откатываем честно, а не подгоняем цифры.
+</div>
+<table>
+<tr><th>качество детали (§5.8)</th><th>статус</th></tr>
+<tr><td>тест</td><td><span class="tag ok">✅</span> <code>--self-test</code> → 7 ok, 0 fail; <b>краснеет на сломанном коде</b> (мутант «подмена поля outcome» → 6 ok, 1 fail, exit 1)</td></tr>
+<tr><td>док-паспорт</td><td><span class="tag ok">✅</span> <code>~/.claude/scripts/docs/dashboard_log.md</code> — вход/выход/кто дёргает/что ломается/как починить</td></tr>
+<tr><td>счётчик использования</td><td><span class="tag ok">✅</span> сам инструмент и есть счётчик; строка канона §5.8: <code>ts·node·actor·event·task_type·outcome</code></td></tr>
+</table>
+
+<h2>5. Что нашлось по дороге (честные хвосты)</h2>
+<table>
+<tr><th>находка</th><th>серьёзность</th><th>что с этим делать</th></tr>
+<tr class="hot"><td><b>4 посылки для этой машины не применяются</b>: <code>deploy-cmd-portability-gate-20260803</code>, <code>firefox-max-order-20260804</code>, <code>regress-machine-key-20260804</code>, <code>proc-patrol-nokill-without-delta-260804</code> — verify падает (exit 1/2), у первой физически <b>нет файла</b> <code>_test_deploy_cmd_portability.py</code></td><td><span class="tag bad">высокая</span></td><td>Похоже, полезная нагрузка посылок не доехала по синку. Это не моя раскатка — отдельная задача, не тащу в этот заход</td></tr>
+<tr><td><code>python3</code> на этой машине — это <b>другой интерпретатор</b> (Store-шим, pythoncore 3.14), чем <code>python</code> (3.12). Мои скрипты stdlib-only, потому verify зелёный на обоих</td><td><span class="tag wait">средняя</span></td><td>Знать при написании посылок: «модуля нет» из одного питона ≠ «модуля нет»</td></tr>
+<tr><td>Первую посылку я зарегистрировал с непортируемым <code>python ~/…</code> (на Маках это ложное «отстал»). Перерегистрировал как <code>-v2</code> с <code>python3 "$HOME/…"</code></td><td><span class="tag wait">средняя</span></td><td>Старый id <code>dashboard-max-2026-08-04</code> оставлен закрытым на этом узле; ориентир для флота — <b>v2</b></td></tr>
+<tr><td><b>CLAUDE.md был в КРАСНОЙ зоне</b> (122,8 KB при пороге 120) → <b>закрыто</b>: параллельная сессия провела полную ревизию до <b>v4.0.0, 108,6 KB</b>. Долг с v3.4.0 снят</td><td><span class="tag ok">закрыто</span></td><td>Правило §2.4 после ревизии проверено на факт: текст уцелел дословно, verify exit 0. Гонка двух писателей по одному файлу обошлась без потерь — но это удача, а не механизм (§7.7)</td></tr>
+<tr><td>Обслуживающие команды пришлось гонять через <code>--force</code> (<code>publish_canon</code> 3-й заход, <code>fleet_fix_audit</code> 2-й) — квота §10.0</td><td><span class="tag info">низкая</span></td><td>Причина названа вслух, как требует правило: приказ «раскатать немедленно». Гейт отработал верно</td></tr>
+</table>
+
+<div class="sub" style="margin-top:26px">Файл: <code>E:\Obsidian\Anton-Knowledge\_Dashboards\Dashboard-Max-Rollout.html</code> · собран сессией Claude Code на HP17-ZBook 04.08.2026 · это первый дашборд, построенный ПО новому правилу (dogfood: правило про дашборды отчитывается дашбордом).</div>
+
+</body></html>

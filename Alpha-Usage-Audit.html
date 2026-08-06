@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Аудит: пользуемся ли мы альфой</title>
+<style>
+  :root{
+    --bg:#0e1116; --card:#171b22; --edge:#252b34; --ink:#e6edf3; --dim:#8b96a5;
+    --green:#2ea043; --amber:#d29922; --red:#da5b4a; --blue:#4c8dff;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f5f7fa; --card:#fff; --edge:#e2e7ee; --ink:#1c2430; --dim:#5c6773;
+           --green:#1a7f37; --amber:#9a6700; --red:#c1361f; --blue:#2f6bd6; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:28px 20px 60px}
+  .wrap{max-width:940px;margin:0 auto}
+  h1{font-size:23px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 24px;font-size:14px}
+  .verdict{background:var(--card);border:1px solid var(--edge);border-left:4px solid var(--amber);border-radius:12px;padding:18px 20px;margin-bottom:26px}
+  .verdict b{color:var(--amber)}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:28px}
+  .kpi{background:var(--card);border:1px solid var(--edge);border-radius:12px;padding:14px 16px}
+  .kpi .n{font-size:28px;font-weight:700;line-height:1}
+  .kpi .l{color:var(--dim);font-size:12.5px;margin-top:6px}
+  .green{color:var(--green)} .amber{color:var(--amber)} .red{color:var(--red)} .blue{color:var(--blue)}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);margin:26px 0 10px}
+  .row{background:var(--card);border:1px solid var(--edge);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start}
+  .dot{width:10px;height:10px;border-radius:50%;margin-top:6px;flex:0 0 auto}
+  .d-g{background:var(--green)} .d-a{background:var(--amber)} .d-r{background:var(--red)}
+  .row .body{flex:1}
+  .row .t{font-weight:600}
+  .row .m{color:var(--dim);font-size:13.5px;margin-top:3px}
+  .bar{height:7px;border-radius:4px;background:var(--edge);margin-top:9px;overflow:hidden}
+  .bar span{display:block;height:100%}
+  .tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap;margin-top:4px}
+  .t-used{background:rgba(46,160,67,.15);color:var(--green)}
+  .t-thin{background:rgba(210,153,34,.15);color:var(--amber)}
+  .t-dead{background:rgba(218,91,74,.15);color:var(--red)}
+  .foot{color:var(--dim);font-size:12.5px;margin-top:26px;border-top:1px solid var(--edge);padding-top:14px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Alpha-Recall-Verdicts-2026-08-06.html">&larr; Alpha-Recall-Verdicts-2026-08-06</a> · <a href="Arsenov-Alpha-Audit.html">Arsenov-Alpha-Audit &rarr;</a></span></div>
+<div class="wrap">
+  <h1>Аудит: насколько мы пользуемся альфой — и польза</h1>
+  <p class="sub">Mac16 · 2026-07-14 · тест на потребление всей альфа-машинерии · цифры детерминированные (grep/stat волта)</p>
+
+  <div class="verdict">
+    <b>Вердикт одной строкой:</b> добыча работает (94 промоушена), а <b>потребление тонкое</b> — из 94 отобранных золотых идей механизмом стали ~9 (≈10%). Машинерия, построенная против «зоопарка непроверенных идей», <b>сама стала зоопарком</b>: /adopt не запускается, ANSS 1 день и само-референсный, слоты без вердиктов. Узкое место — не добыть, а <b>внедрить</b>.
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n green">94</div><div class="l">промоушена в alpha_review.db (добыто и отсужено)</div></div>
+    <div class="kpi"><div class="n red">~9</div><div class="l">стали реальным механизмом (правило/скилл/поле)</div></div>
+    <div class="kpi"><div class="n red">10%</div><div class="l">коэффициент внедрения (drain rate)</div></div>
+    <div class="kpi"><div class="n amber">0</div><div class="l">вердиктов на доске испытаний</div></div>
+    <div class="kpi"><div class="n blue">7</div><div class="l">слоёв машинерии построено</div></div>
+  </div>
+
+  <h2>🟢 Используется — работает, есть потребитель</h2>
+  <div class="row"><div class="dot d-g"></div><div class="body">
+    <div class="t">Апстрим-движок: harvest → judge → promote <span class="tag t-used">USED</span></div>
+    <div class="m">alpha_review.db: 140 items · 138 verdicts · 94 promotions. Ночные майнеры: sostav, watchers, social-alpha (Руслана, с 09.07). Потребитель = home-заметки золота. Это ЖИВАЯ, работающая часть.</div>
+    <div class="bar"><span class="d-g" style="width:100%"></span></div>
+  </div></div>
+
+  <h2>🟡 Тонко / не обкатано — построено, едва используется</h2>
+  <div class="row"><div class="dot d-a"></div><div class="body">
+    <div class="t">ANSS-контракт хэндофов <span class="tag t-thin">1 ДЕНЬ</span></div>
+    <div class="m">2 отправки — обе мои, обе про сам trial (само-референс). 0 реальных рабочих хэндофов, 0 у пиров. Построен сегодня — рано судить, но пока «использование» = разговор о самом себе.</div>
+    <div class="bar"><span class="d-a" style="width:14%"></span></div>
+  </div></div>
+  <div class="row"><div class="dot d-a"></div><div class="body">
+    <div class="t">Доска испытаний / слоты <span class="tag t-thin">0 ВЕРДИКТОВ</span></div>
+    <div class="m">3 слота заведены 07.07. Слот 1 (ANSS) запущен только сегодня. Слоты 2 (NotebookLM-мост) и 3 (вики-приём) — 0 движения за 3 дня, оба на «шаг 0: чтение». Ни одного KEEP/DROP.</div>
+    <div class="bar"><span class="d-a" style="width:12%"></span></div>
+  </div></div>
+
+  <h2>🔴 Write-only / заглохло — построено, не потребляется</h2>
+  <div class="row"><div class="dot d-r"></div><div class="body">
+    <div class="t">94 промоушена → механизм <span class="tag t-dead">~90% ЛЕЖИТ</span></div>
+    <div class="m">Только ~9 из 94 отобранных золотых идей превратились в правило/скилл/поле (7 нот + 2 скилла трассируются к альфе). Остальные 85 — «отсудили и записали», дальше тишина. Это и есть исходный зоопарк, теперь измеренный.</div>
+    <div class="bar"><span class="d-r" style="width:10%"></span></div>
+  </div></div>
+  <div class="row"><div class="dot d-r"></div><div class="body">
+    <div class="t">ADOPT · тезис-1 (поле enables:) <span class="tag t-dead">РАЗОВЫЙ БЭКФИЛЛ</span></div>
+    <div class="m">14/275 концепт-нот (5%). Из них 13 залиты ОДНИМ прогоном 07.07 12:13, с тех пор 0. Не живая практика — одноразовая заливка. Остальные 261 ноты без поля.</div>
+    <div class="bar"><span class="d-r" style="width:5%"></span></div>
+  </div></div>
+  <div class="row"><div class="dot d-r"></div><div class="body">
+    <div class="t">ADOPT · тезис-2 (поле changelog:) <span class="tag t-dead">0</span></div>
+    <div class="m">Решено внедрить — не внедрено ни в одной ноте.</div>
+    <div class="bar"><span class="d-r" style="width:2%"></span></div>
+  </div></div>
+  <div class="row"><div class="dot d-r"></div><div class="body">
+    <div class="t">Скилл /adopt <span class="tag t-dead">НЕ ЗАПУСКАЛСЯ</span></div>
+    <div class="m">SKILL.md есть, но 0 следов прогонов, 0 adopt-cards, 1 нота с ADOPT-терминалом. «Первый прогон» = ручная заливка enables:, не вызов /adopt. Инструмент внедрения сам не внедрён.</div>
+    <div class="bar"><span class="d-r" style="width:6%"></span></div>
+  </div></div>
+
+  <div class="foot">
+    Источник цифр: grep/stat по волту (06-Concepts, 08-Templates, _machine-bus, ~/.claude/skills), 2026-07-14. alpha_review.db — с хаба (140/138/94, отчёт 03). «Механизм» = правило/скилл/поле/решение, чей источник трассируется к альфа-движку. Дашборд честный: где не смог доказать использование — считал как «не используется».
+  </div>
+</div>
+</body>
+</html>

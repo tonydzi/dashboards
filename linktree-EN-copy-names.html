@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Linktree EN — названия кнопок для копирования</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1117;color:#e8e8f0;padding:28px;max-width:780px;margin:0 auto}
+  h1{font-size:20px;margin-bottom:6px}
+  .sub{color:#9aa0b4;font-size:13px;margin-bottom:14px;line-height:1.5}
+  .warn{background:#2a2418;border:1px solid #5a4a1f;border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:13px;line-height:1.55;color:#ffd98a}
+  .row{display:flex;align-items:center;gap:12px;background:#1a1d27;border:1px solid #2a2e42;border-radius:12px;padding:12px 16px;margin-bottom:10px}
+  .num{color:#9aa0b4;font-size:13px;width:22px;flex-shrink:0}
+  .name{flex:1;font-size:16px}
+  .hint{color:#9aa0b4;font-size:12px;margin-top:2px}
+  .url{color:#6ea8ff;font-size:12px;margin-top:3px;word-break:break-all}
+  button{background:#7c5cff;border:none;color:#fff;border-radius:9px;padding:10px 18px;cursor:pointer;font-size:14px;font-weight:600;flex-shrink:0}
+  button:hover{background:#9b82ff}
+  button.done{background:#3ddc84;color:#0f1117}
+  h2{font-size:16px;margin:26px 0 10px;color:#c9b8ff}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="content-factory-process-flow.html">&larr; content-factory-process-flow</a> · <a href="linktree-copy-names.html">linktree-copy-names &rarr;</a></span></div>
+<h1>📋 Linktree #2 (English-only) — названия кнопок</h1>
+<div class="sub">Жми «Копировать» → вставляй в Linktree (Ctrl+V). Порядок сверху вниз = правильный порядок кнопок. Тут ТОЛЬКО англ. каналы — RU (ClawRus, PaloAltoAiRu) сюда не входят.</div>
+
+<div class="warn">⚠️ Второй Linktree нужен НОВЫЙ аккаунт (Free = 1 страница на email). Заведи на другой email, username предложи <b>paloaltoai</b> или <b>paloaltoai-en</b>.</div>
+
+<div class="row"><div class="num">1</div><div class="name">📅 Book a 1-on-1 call<div class="url">https://calendly.com/paloaltolab/1-on-1</div></div><button onclick="cp(this,'📅 Book a 1-on-1 call')">Копировать</button></div>
+<div class="row"><div class="num">2</div><div class="name">💬 WhatsApp us<div class="url">https://wa.me/13412229178</div></div><button onclick="cp(this,'💬 WhatsApp us')">Копировать</button></div>
+<div class="row"><div class="num">3</div><div class="name">🌐 palo-alto.ai — Website<div class="url">https://palo-alto.ai/</div></div><button onclick="cp(this,'🌐 palo-alto.ai — Website')">Копировать</button></div>
+<div class="row"><div class="num">4</div><div class="name">🇬🇧 ClawEng — community chat<div class="url">https://t.me/ClawEng</div></div><button onclick="cp(this,'🇬🇧 ClawEng — community chat')">Копировать</button></div>
+<div class="row"><div class="num">5</div><div class="name">🇬🇧 Palo Alto AI — Telegram<div class="url">https://t.me/PaloAltoAi</div></div><button onclick="cp(this,'🇬🇧 Palo Alto AI — Telegram')">Копировать</button></div>
+<div class="row"><div class="num">6</div><div class="name">▶️ YouTube — Palo Alto VC<div class="url">https://www.youtube.com/@PaloAltoVC</div></div><button onclick="cp(this,'▶️ YouTube — Palo Alto VC')">Копировать</button></div>
+<div class="row"><div class="num">7</div><div class="name">🐦 X — Tony<div class="url">https://x.com/Tony_Stef_</div></div><button onclick="cp(this,'🐦 X — Tony')">Копировать</button></div>
+<div class="row"><div class="num">8</div><div class="name">📘 Facebook — Anton Dzyatkovskiy<div class="url">https://www.facebook.com/AntonyDzi</div></div><button onclick="cp(this,'📘 Facebook — Anton Dzyatkovskiy')">Копировать</button></div>
+<div class="row"><div class="num">9</div><div class="name">✍️ Medium — longreads<div class="url">https://medium.com/@dzyatkovskiy.a2</div></div><button onclick="cp(this,'✍️ Medium — longreads')">Копировать</button></div>
+<div class="row"><div class="num">10</div><div class="name">💻 GitHub — Research Lab<div class="url">https://github.com/Palo-Alto-AI-Research-Lab</div></div><button onclick="cp(this,'💻 GitHub — Research Lab')">Копировать</button></div>
+
+<h2>Дополнительно</h2>
+<div class="row"><div class="name">Био профиля (English)<div class="hint">вставить в Bio целиком</div></div><button onclick="cp(this,'Autonomous AI Agents Launchpad · Palo Alto AI Research Lab 🎓 📍 San Francisco 👇')">Копировать</button></div>
+
+<script>
+function cp(btn,txt){navigator.clipboard.writeText(txt).then(()=>{btn.textContent='✓ Скопировано';btn.classList.add('done');setTimeout(()=>{btn.textContent='Копировать';btn.classList.remove('done');},1500);});}
+</script>
+</body>
+</html>

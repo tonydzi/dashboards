@@ -1,0 +1,161 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Bus-Debt-Audit-2026-07-05.html">&larr; Bus-Debt-Audit-2026-07-05</a> · <a href="Code-Census.html">Code-Census &rarr;</a></span></div><!doctype html>
+<meta charset="utf-8">
+<title>Выгрузка ChatGPT + Codex — аудит 29.07.2026</title>
+<style>
+  :root { --bg:#0f1216; --card:#171b21; --line:#252b34; --fg:#e6e9ee; --dim:#8b95a3;
+          --ok:#3fb950; --warn:#d29922; --bad:#f85149; --acc:#58a6ff; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f6f7f9; --card:#fff; --line:#e3e6ea; --fg:#1b1f24; --dim:#5a6472;
+            --ok:#1a7f37; --warn:#9a6700; --bad:#cf222e; --acc:#0969da; }
+  }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:24px }
+  h1 { font-size:22px; margin:0 0 4px }
+  h2 { font-size:17px; margin:28px 0 10px; }
+  .sub { color:var(--dim); margin-bottom:18px; font-size:13px }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin-bottom:14px }
+  table { border-collapse:collapse; width:100%; font-size:14px }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top }
+  th { color:var(--dim); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.04em }
+  .ok{color:var(--ok);font-weight:600} .warn{color:var(--warn);font-weight:600} .bad{color:var(--bad);font-weight:600}
+  .dim{color:var(--dim)} code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-size:13px}
+  .big{font-size:26px;font-weight:700} .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .wrap{overflow-x:auto}
+  li{margin-bottom:6px}
+</style>
+
+<h1>Выгрузка ChatGPT + Codex — аудит и починка</h1>
+<div class="sub">29–31.07.2026 · замер с Mac16 (MacBook-Anton) · все цифры получены прогоном, не по памяти</div>
+
+<div class="card">
+  <b>Обновление 31.07.</b> Ночная рельса ChatGPT отработала на новом мульти-аккаунтном коде: <b>rc=0, +2 чата</b>,
+  сторож свежести тоже зелёный (10:00, rc=0) — рельса живёт в бою, не только в тесте.
+  Codex пересобран починенным движком на трёх узлах: <b>хаб 231/231, Mac16 49/49, Маяк 16/16</b> (было 173, 43, 15 —
+  разница и есть тихо потерянные сессии). HP17 и Mac Русланы пока на старом движке, им ушли задания.
+  <span class="warn">Фикс движка Codex один раз откатило Syncthing'ом</span> (две сессии правили один файл параллельно) —
+  переналожен и разложен по узлам явным scp со сверкой md5, а не «доедет само».
+</div>
+
+<div class="card">
+  <b>Главное в двух строчках.</b> ChatGPT выгружался <b>только с одного аккаунта из трёх</b> — <code>dzyatkovskiy.a2</code>;
+  чаты <code>bbplatinum</code> и <code>au0474281029</code> не выгружались <b>никогда</b>. История Codex не выгружалась
+  <b>нигде и никогда</b> — ни на одной машине.
+  Сегодня: Codex поехал на 3 узлах из 4, рельса ChatGPT переведена на мульти-аккаунт и <b>проверена живым прогоном на хабе</b>,
+  осталась одна разовая ручная вещь на аккаунт — снять токен в браузере, где он залогинен.
+</div>
+
+<h2>1. Две РАЗНЫЕ оси — из-за них «выгрузить всё с хаба» невозможно</h2>
+<div class="card">
+  <table>
+    <tr><th>Ось</th><th>Что по ней едет</th><th>Где живёт история</th><th>Кто может её забрать</th></tr>
+    <tr><td><b>АККАУНТ</b></td><td>чаты ChatGPT · облачные задачи Codex</td><td>на сервере OpenAI</td>
+        <td class="ok">любая машина с токеном этого аккаунта → делаем с <b>хаба</b> (24/7, там же каноническая БД)</td></tr>
+    <tr><td><b>МАШИНА</b></td><td>сессии Codex CLI (<code>~/.codex/sessions/**/rollout-*.jsonl</code>)</td>
+        <td class="warn">только на диске той машины — сервер их не отдаёт</td>
+        <td class="bad">только сам узел. Хаб физически не видит роллауты Mac16/Маяка/HP17</td></tr>
+  </table>
+  <p class="dim" style="margin-bottom:0">Отсюда ответ на вопрос «на каком компьютере выгружать»: ChatGPT — <b>на хабе</b>,
+  Codex CLI — <b>на каждой машине своей рутиной</b>, третьего варианта нет.</p>
+</div>
+
+<h2>2. ChatGPT по аккаунтам</h2>
+<div class="wrap"><div class="card">
+  <table>
+    <tr><th>Аккаунт</th><th>Где залогинен (со слов Антона)</th><th>Заметок в волте</th><th>Статус</th><th>Что нужно</th></tr>
+    <tr>
+      <td><b>dzyatkovskiy.a2</b><br><span class="dim">Pro, «CryptoPunk Dz2»</span></td>
+      <td>хаб (токен рельсы), HP17, Mac16, Codex на всех узлах</td>
+      <td class="big">3&nbsp;210</td>
+      <td class="ok">✅ едет с 13.06</td>
+      <td class="dim">ничего — работает</td>
+    </tr>
+    <tr>
+      <td><b>bbplatinum</b></td><td>Chrome хаба</td><td class="big bad">0</td>
+      <td class="bad">❌ не выгружался никогда</td>
+      <td>разовая жатва <code>session_token</code> в Chrome хаба → <code>secrets/bb/</code>. TASK хабу отправлен.</td>
+    </tr>
+    <tr>
+      <td><b>au0474281029</b><br><span class="dim">профиль «Eva Ch»</span></td><td>второй вход в ChatGPT на Mac16</td>
+      <td class="big bad">0</td><td class="bad">❌ не выгружался никогда</td>
+      <td>жатва в Chrome Mac16. <span class="warn">Нужен выбор браузера у Антона</span> (в MCP видны 3 подключённых Chrome).</td>
+    </tr>
+  </table>
+  <p class="dim" style="margin-bottom:0">Доказательство «был только a2»: JWT из <code>secrets/bearer.txt</code> → <code>profile.email = *******vskiy.a2@gmail.com</code>,
+  а <code>backend-api/accounts/check</code> с этим токеном видит ровно один персональный аккаунт. Второй аккаунт = отдельный логин, отдельная кука.</p>
+</div></div>
+
+<h2>3. Codex CLI по машинам</h2>
+<div class="wrap"><div class="card">
+  <table>
+    <tr><th>Узел</th><th>Аккаунт Codex</th><th>Сессий на диске</th><th>Заметок в волте</th><th>Статус</th></tr>
+    <tr><td><b>Mac16</b> (MacBook-Anton)</td><td>dzyatkovskiy.a2</td><td>49</td><td class="big">49</td>
+        <td class="ok">✅ 1:1, движок починенный</td></tr>
+    <tr><td><b>Хаб</b> (A-2022BAYAREA)</td><td>dzyatkovskiy.a2</td><td>231</td><td class="big">231</td>
+        <td class="ok">✅ 1:1 (было 173 — 58 заметок возвращены из коллизий)</td></tr>
+    <tr><td><b>Маяк</b> (FLEET-ANCHOR)</td><td>dzyatkovskiy.a2</td><td>16</td><td class="big">16</td>
+        <td class="ok">✅ 1:1</td></tr>
+    <tr><td><b>HP17</b> (ZBOOKG8)</td><td class="dim">не подтверждён</td><td class="dim">?</td><td>79</td>
+        <td class="warn">⚠️ сам выгрузился, но СТАРЫМ движком (имена head-named ⇒ часть сессий потеряна). ssh нет, TASK ушёл через шину</td></tr>
+    <tr><td><b>Mac Русланы</b></td><td class="dim">не подтверждён</td><td class="dim">?</td><td>12</td>
+        <td class="warn">⚠️ то же самое — TASK ушёл</td></tr>
+    <tr><td><b>Ноут Натальи</b></td><td class="dim">—</td><td class="dim">?</td><td class="dim">0</td>
+        <td class="dim">не отвечал; TASK ушёл, ответ «NOTFORME, Codex не стоит» тоже закрывает строку</td></tr>
+  </table>
+</div></div>
+
+<h2>4. Что было сломано и что починено сегодня</h2>
+<div class="card">
+  <table>
+    <tr><th>#</th><th>Поломка</th><th>Чем доказано</th><th>Лечение</th></tr>
+    <tr><td>1</td><td><b>Имя заметки Codex бралось из первых 8 символов id.</b> У UUIDv7 это ВРЕМЯ — две сессии из одного окна
+        дают одинаковое имя, и одна молча затирает другую.</td>
+        <td>42 роллаута → 40 нот; 3 пары-коллизии; потеряна сессия <code>019f86d0-18d2-…</code></td>
+        <td class="ok">хвост id вместо головы + тест на коллизию (его в сетке не было вообще)</td></tr>
+    <tr><td>2</td><td><b>Пересборка заметок Codex перезаписывала обогащённые.</b> Любая ручная/концептная разметка стиралась.</td>
+        <td>в коде безусловный <code>write_text()</code>; у рельсы ChatGPT такой защиты нет только здесь</td>
+        <td class="ok">preserve по <code>related_concepts: []</code> + тест</td></tr>
+    <tr><td>3</td><td><b>Рельса ChatGPT физически одноаккаунтная</b> — путь к токену захардкожен.</td>
+        <td>единственный <code>secrets/bearer.txt</code>, у заметок нет поля откуда чат</td>
+        <td class="ok">реестр <code>accounts.json</code>, флаги <code>--secrets/--out/--account</code>, <code>--all-accounts</code>;
+        аккаунт без токена = «пропуск», а не «провал»</td></tr>
+    <tr><td>4</td><td><b>У 3209 старых заметок не было пометки аккаунта</b> — после подключения bb/au04 было бы не разобрать, что откуда.</td>
+        <td>ни одной строки <code>account:</code> в frontmatter</td>
+        <td class="ok">проштампованы все 3209 (миграция идемпотентна)</td></tr>
+    <tr><td>5</td><td><b>Сторож свежести ChatGPT был ВЫКЛЮЧЕН с 10.07</b> — рельса могла молчать 19 дней, и никто бы не узнал.</td>
+        <td><code>schtasks</code>: Status=Disabled, последний запуск 10.07</td>
+        <td class="ok">включён, следующий прогон 30.07 10:00</td></tr>
+    <tr><td>6</td><td><b>Шара <code>claude-imports</code> игнорит <code>*.json</code></b> — новый реестр аккаунтов не доехал бы до хаба
+        (а именно хаб и запускает выгрузку). Syncthing при этом рапортует «idle, 0 needed».</td>
+        <td>hub ignores содержит <code>*.json</code>; файл отсутствовал на хабе при «синк чистый»</td>
+        <td class="ok">довезён scp + в <code>.stignore.shared</code> добавлено исключение ВЫШЕ <code>*.json</code></td></tr>
+  </table>
+</div>
+
+<h2>5. Что сознательно НЕ делаем</h2>
+<div class="card">
+  <ul>
+    <li><b>Облачные задачи Codex</b> (chatgpt.com/codex): рельса доступна тем же токеном, но замер показал у a2 всего
+      <b>2 задачи</b> (январь–март). Отдельный движок под 2 записи не строим — по правилу «внедряю только критичное сейчас».
+      Пересчитать, когда подключим bb/au04.</li>
+    <li><b>Картинки и вложения ChatGPT</b>: экспорт сохраняет текст (в т.ч. Canvas — он инлайном), но файлы/картинки не скачивает.
+      Это известный, не закрытый сегодня пробел.</li>
+    <li><b>Полная история bb/au04</b> — пока нет их токенов, объём неизвестен; после жатвы забирается одним прогоном с <code>cutoff 2023-01-01</code>.</li>
+  </ul>
+</div>
+
+<h2>6. Что дальше и от кого зависит</h2>
+<div class="card">
+  <table>
+    <tr><th>Кто</th><th>Что</th></tr>
+    <tr><td class="bad">🔴 Антон</td><td><b>Переключи ChatGPT на аккаунт au0474281029</b> в том Chrome на Mac16 (Browser 1) — и всё.
+        Проверено 31.07: в этом браузере активен вход <b>a2</b> (его и так выгружаем), а au04 — отдельный логин.
+        Переключать аккаунты в твоей живой сессии сам не стал: если что-то пойдёт не так, выкинет из a2. Переключишь — токен снимаю за один заход.</td></tr>
+    <tr><td class="warn">🟡 Хаб</td><td>снять токен <b>bbplatinum</b> из своего Chrome (TASK отправлен) + пересобрать свои заметки Codex починенным движком</td></tr>
+    <tr><td class="warn">🟡 HP17</td><td>прогнать выгрузку Codex у себя и назвать, под какими аккаунтами он залогинен (TASK отправлен)</td></tr>
+    <tr><td class="dim">⏳ Маяк</td><td>пересборка заметок Codex починенным движком</td></tr>
+  </table>
+</div>
+
+<p class="dim">Движки: <code>_imports/chatgpt/</code> (accounts.json · nightly_sync.py · incremental_pull.py · backfill_account_stamp.py ·
+_test_chatgpt_accounts.py — 22/22 зелёных и на Mac16, и на хабе) · <code>_imports/codex/codex_lib.py</code> (selftest 21/21).
+Живой прогон рельсы на хабе после правок: exit 0, 21 чат свёрнут, MOC 3210.</p>

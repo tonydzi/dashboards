@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Доп-задачи · распределение выполнения · 08.07.2026</title>
+<style>
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f6f8;margin:0;padding:24px;color:#222}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:#666;margin-bottom:18px;font-size:14px}
+  .card{background:#fff;border-radius:10px;padding:16px 20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .card h2{font-size:16px;margin:0 0 8px}
+  li{margin:6px 0;line-height:1.45}
+  .tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;margin-right:6px;font-weight:600;vertical-align:1px}
+  .me{background:#d4edda;color:#1e7e34}.hub{background:#e2e3ff;color:#3b3bb3}.ask{background:#fff3cd;color:#8a6d00}.stop{background:#f8d7da;color:#a71d2a}
+  code{background:#f0f0f0;padding:1px 5px;border-radius:4px;font-size:12px}
+  a{color:#2563ab}
+  .who{font-size:12px;color:#888;margin-top:4px}
+  .legend{font-size:13px;color:#555;margin-bottom:16px}
+  .legend span{margin-right:14px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Waiting-Sessions.html">&larr; Waiting-Sessions</a> · <a href="tasks-natalia-2026-07-07.html">tasks-natalia-2026-07-07 &rarr;</a></span></div>
+<h1>🧩 6 доп-задач · кто что делает · 08.07.2026</h1>
+<div class="sub">Оператор: Наталья · Nataly-Win-NB. Живой Telegram/Airtable исполняется на хабе (тут нет TG-сессии). Рабочие тексты: <a href="../drafts/TASKS-2026-07-08-linktree-cta-content.md">TASKS-2026-07-08</a> · спека рассылки: <a href="../drafts/SPEC-teaser-broadcast-safe.md">SPEC-teaser-broadcast-safe</a></div>
+<div class="legend">
+  <span><span class="tag me">я на ноуте</span>готовлю сам</span>
+  <span><span class="tag hub">хаб</span>живой TG/браузер</span>
+  <span><span class="tag ask">решение</span>нужен твой выбор</span>
+  <span><span class="tag stop">Tier-2</span>наружу/риск → «+»</span>
+</div>
+
+<div class="card" style="border-left:4px solid #1e7e34">
+<h2>✅ Выполнено сегодня (дистрибуция)</h2>
+<ul>
+  <li><b>Комьюнити-чаты → воронка:</b> оформление 20 чатов (16 региональных CHARM + 4 флагмана SV) ведёт в @PaloAltoAi + @ClawEng, охват ~12 360. Дашборд Community-Bio-Tracker.</li>
+  <li><b>Medium:</b> 2 EN-лонгрида опубликованы (Пост 1, Пост 2), ссылки внесены в трекер posting-structure-map. <a href="https://medium.com/@dzyatkovskiy.a2/the-week-i-built-a-machine-that-turns-my-coding-into-a-show-e130cac7a1dc">Пост 1</a> · <a href="https://medium.com/@dzyatkovskiy.a2/how-i-stopped-being-a-courier-between-two-ais-and-built-them-their-own-chat-1ccb40f26161">Пост 2</a></li>
+  <li><b>Дзен — книга «Signed by Both»:</b> 4 главы (Дни 1–4) опубликованы на dzen.ru/signedbyboth, ссылки в реестре DISTRIBUTION-REGISTRY. <a href="https://dzen.ru/a/akz2j0ByqV0sG_1g">Д1</a> · <a href="https://dzen.ru/a/ak0nfgkJoCuBfo1S">Д2</a> · <a href="https://dzen.ru/a/ak5YBuk1_Vflh_Sk">Д3</a> · <a href="https://dzen.ru/a/ak5bquZ3JQGMNi1E">Д4</a></li>
+</ul>
+</div>
+
+<div class="card">
+<h2>1️⃣+2️⃣ Авто-рассылка тизеров по НАШИМ чатам <span class="tag hub">хаб</span></h2>
+<ul>
+  <li>✅ Уточнение 08.07: чужих чатов нет — только наши (мы админы). Бан-риск снят, автоматизация безопасна.</li>
+  <li>Тизер веером во все наши группы (основные @ClawRus/@ClawEng + региональные) по языку. «Заходить/выходить» не нужно — мы уже внутри, только постим по очереди с паузами.</li>
+  <li>Единственный риск — флуд-лимит аккаунта при залпе → гасим темпом (паузы, лимит/день), как в fb_guard.</li>
+  <li>План: движок <code>teaser_broadcast.py</code> (draft-first, лог). Первый прогон — добить тизеры Поста 2. Спека: <a href="../drafts/SPEC-teaser-broadcast-safe.md">SPEC-teaser-broadcast-safe</a>.</li>
+</ul>
+<div class="who">Исполнение: хаб (live TG). Нужен список наших чатов по языкам — хаб вытащит из TG / Наташа подтвердит структуру.</div>
+</div>
+
+<div class="card">
+<h2>3️⃣ Два линктри — RU и EN <span class="tag me">я готовлю</span></h2>
+<ul>
+  <li>✅ Готово: структура обеих страниц (кнопки, порядок CTA→каналы→соцсети, био RU/EN) в <a href="../drafts/TASKS-2026-07-08-linktree-cta-content.md">TASKS-файле</a>.</li>
+  <li>RU → RU-каналы + Дзен + FB; EN → EN-каналы + GitHub + Medium + X + YouTube.</li>
+  <li>Регистрация страниц — в браузере (ты с телефона / хаб), аккаунт <code>**********department@gmail.com</code>.</li>
+</ul>
+<div class="who">Контент: я ✅. Регистрация: браузер.</div>
+</div>
+
+<div class="card">
+<h2>4️⃣ Все чаты — придаток к основным Claw <span class="tag hub">хаб</span></h2>
+<ul>
+  <li>@ClawRus / @ClawEng = главные комьюнити-хабы; каналы и саттелиты ведут в них.</li>
+  <li>Готово: конфиг-план (назначить Claw-чат группой-обсуждением канала, закрепы, описания, футер). В TASKS-файле блок 4.</li>
+</ul>
+<div class="who">Настройка в TG: хаб. План: я ✅.</div>
+</div>
+
+<div class="card">
+<h2>5️⃣ Рубрика полезностей (второй мозг, продуктивность) <span class="tag me">я готовлю</span></h2>
+<ul>
+  <li>✅ Готово: рубрика 🧰 «Полезное»/«Toolbox», формат, частота 2-3/нед, очередь из 6 первых тем. В TASKS-файле блок 5.</li>
+  <li>Ценность читателю, не реклама; каждая полезность закрывается CTA-линией кофаундера.</li>
+</ul>
+<div class="who">План+темы: я ✅. Тексты: Opus по очереди. Постинг: хаб.</div>
+</div>
+
+<div class="card">
+<h2>6️⃣ Линия «кофаундер → форма» + Airtable <span class="tag me">я готовлю</span><span class="tag ask">Airtable?</span></h2>
+<ul>
+  <li>✅ Готово: единый CTA-блок RU+EN для футеров (TASKS-файл блок 6). Форма уже построена: <a href="cofounder-application-form.html">cofounder-application-form.html</a> (навыки из старой Airtable-базы).</li>
+  <li>Развилка: A) захостить готовую HTML-форму на GitHub Pages сегодня (заявки → Telegram Антону); B) живая Airtable-база на структуре старых баз (нужен доступ к Airtable). Рекоменд.: A сейчас, B параллельно.</li>
+</ul>
+<div class="who">Форма+CTA: я ✅. Хостинг/Airtable: решение + хаб.</div>
+</div>
+
+</body>
+</html>

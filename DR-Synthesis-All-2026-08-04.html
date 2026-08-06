@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Синтез всех ДР — 340 отчётов на 04.08.2026</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--line:#262b36;--tx:#e6e9ef;--dim:#9aa4b8;--ok:#3ddc84;--warn:#ffb84d;--bad:#ff6b6b;--acc:#6ea8fe}
+@media(prefers-color-scheme:light){:root{--bg:#f6f7f9;--card:#fff;--line:#e2e6ee;--tx:#1a1d24;--dim:#5b6577;--acc:#2563eb}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:19px;margin:34px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.sub{color:var(--dim);margin-bottom:22px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.c{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.c .n{font-size:28px;font-weight:700}.c .l{color:var(--dim);font-size:13px;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+.scroll{overflow-x:auto}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:13px}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;min-width:90px}
+.bar i{display:block;height:100%;background:var(--ok)}
+.bar.w i{background:var(--warn)}.bar.b i{background:var(--bad)}
+.box{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:8px;padding:14px 16px;margin:14px 0}
+.box.warn{border-left-color:var(--warn)}.box.bad{border-left-color:var(--bad)}.box.ok{border-left-color:var(--ok)}
+.box h3{margin:0 0 6px;font-size:16px}
+code{background:var(--line);padding:1px 5px;border-radius:4px;font-size:13px}
+.mono{font-family:ui-monospace,Consolas,monospace;font-size:13px}
+.dim{color:var(--dim)}
+.spark{display:flex;align-items:flex-end;gap:6px;height:90px;margin-top:10px}
+.spark div{flex:1;background:var(--acc);border-radius:3px 3px 0 0;position:relative;opacity:.85}
+.spark span{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-size:11px;color:var(--dim)}
+.spark b{position:absolute;top:-18px;left:0;right:0;text-align:center;font-size:11px}
+footer{margin-top:40px;color:var(--dim);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="DR-Registry.html">&larr; DR-Registry</a> · <a href="DR-voice-finetune-ZB-12.html">DR-voice-finetune-ZB-12 &rarr;</a></span></div><div class="wrap">
+
+<h1>Синтез всех Deep Research</h1>
+<div class="sub">340 отчётов · декабрь 2025 — 4 августа 2026 · машинная истина = <code>dr_registry.py</code> (мастер + 5 шардов)</div>
+
+<div class="cards">
+  <div class="c"><div class="n">340</div><div class="l">всего ДР</div></div>
+  <div class="c"><div class="n" style="color:var(--ok)">207</div><div class="l">applied — легло в решение</div></div>
+  <div class="c"><div class="n" style="color:var(--warn)">103</div><div class="l">parked — исследовали и отложили</div></div>
+  <div class="c"><div class="n">25</div><div class="l">dead (из них 11 — легаси без отчёта)</div></div>
+  <div class="c"><div class="n">88</div><div class="l">Decision Memo, которые они накормили</div></div>
+  <div class="c"><div class="n">0</div><div class="l">висит с отчётом без решения</div></div>
+</div>
+
+<div class="box ok"><h3>Главное, что видно по цифрам</h3>
+Конвейер <b>не течёт</b>: ни одного отчёта, который собрали и бросили без вердикта. Это редкость — обычно ровно здесь всё и умирает.
+Но «закрыто» ≠ «применено»: <b>каждый третий закрытый ДР — это <i>parked</i></b>, то есть «прочитали и решили не брать». Это нормально как дисциплина и тревожно как объём.
+</div>
+
+<h2>По темам: где исследование превращается в дело, а где нет</h2>
+<div class="scroll"><table>
+<tr><th>Тема</th><th>Всего</th><th>Применено</th><th>Отложено</th><th>Доля применённого</th></tr>
+<tr><td><b>Модели / вендоры / LLM</b></td><td>80</td><td>58</td><td>19</td><td><div class="bar"><i style="width:72%"></i></div>72%</td></tr>
+<tr><td><b>Память / второй мозг</b></td><td>65</td><td>20</td><td>41</td><td><div class="bar b"><i style="width:30%"></i></div>30%</td></tr>
+<tr><td><b>Контент / дистрибуция</b></td><td>48</td><td>18</td><td>25</td><td><div class="bar b"><i style="width:37%"></i></div>37%</td></tr>
+<tr><td><b>Агенты / мультиагент</b></td><td>46</td><td>37</td><td>5</td><td><div class="bar"><i style="width:80%"></i></div>80%</td></tr>
+<tr><td><b>Инфра / флот / синк</b></td><td>38</td><td>34</td><td>2</td><td><div class="bar"><i style="width:89%"></i></div>89%</td></tr>
+<tr><td>Прочее</td><td>37</td><td>19</td><td>7</td><td><div class="bar w"><i style="width:51%"></i></div>51%</td></tr>
+<tr><td><b>Найм / заметность / DevRel</b></td><td>17</td><td>14</td><td>3</td><td><div class="bar"><i style="width:82%"></i></div>82%</td></tr>
+<tr><td>Лиды / CRM / аутрич</td><td>4</td><td>4</td><td>0</td><td><div class="bar"><i style="width:100%"></i></div>100%</td></tr>
+<tr><td>Люди / OSINT</td><td>4</td><td>3</td><td>1</td><td><div class="bar"><i style="width:75%"></i></div>75%</td></tr>
+</table></div>
+
+<div class="box bad"><h3>🔴 Вывод №1 — мы больше всего исследуем ровно то, что меньше всего строим</h3>
+<b>«Память / второй мозг» — 65 ДР, самая большая содержательная тема. И худшая конверсия из всех: 30%. 41 отчёт отложен.</b><br><br>
+Рядом: инфра флота — 38 ДР и <b>89%</b> применения, агенты — <b>80%</b>. Разница не в качестве отчётов, а в природе задачи.
+Про флот вопрос звучит «как починить вот это» — ответ сразу превращается в скрипт. Про память вопрос звучит «как правильно устроить»
+— ответ превращается в ещё один вариант архитектуры, а вариант не требует действия. <b>Отложенное исследование памяти — это не лень, это отсутствие
+принудительного шага «померить и решить».</b><br><br>
+Что с этим делать конкретно: у ДР про память обязателен потребитель-<i>эксперимент</i>, а не потребитель-<i>решение</i>.
+Не «какое решение кормит», а «какой замер этот отчёт обязан породить в ближайшие 7 дней». Иначе он уйдёт в parked, как ушёл 41 предыдущий.
+</div>
+
+<div class="box warn"><h3>🟡 Вывод №2 — четверть всей разведки ушла на саму разведку</h3>
+<b>80 ДР из 340 — про модели, вендоров, квоты и рельсы.</b> Это мета-работа: исследование о том, как исследовать.
+Конверсия у неё высокая (72%), потому что такие выводы сразу становятся правилом в скилле. Но это <b>инструментальный, а не содержательный</b> капитал:
+он делает следующую разведку дешевле, он не двигает продукт.<br><br>
+Здоровая пропорция — вопрос вкуса, но 1 из 4 на обслуживание собственного инструмента — это много. Сигнал следить, не повод резать сегодня.
+</div>
+
+<h2>Ритм: как это накапливалось</h2>
+<div class="spark">
+  <div style="height:2%"><b>1</b><span>12.25</span></div>
+  <div style="height:2%"><b>1</b><span>04.26</span></div>
+  <div style="height:2%"><b>1</b><span>05.26</span></div>
+  <div style="height:20%"><b>51</b><span>06.26</span></div>
+  <div style="height:100%"><b>254</b><span>07.26</span></div>
+  <div style="height:13%"><b>32</b><span>08.26</span></div>
+</div>
+<p class="dim" style="margin-top:30px">
+<b>254 из 340 отчётов — один месяц, июль.</b> Пиковые дни: 28.07 — 34 ДР, 14.07 и 04.07 — по 21.
+Это прямое следствие мандата «квоты не экономим» (14.07). Мандат сработал: поток есть, труба не забилась (0 висящих).
+Но именно в этот пик родился и главный дефект качества — см. ниже.
+</p>
+
+<h2>Что разведка реально изменила: 88 Decision Memo</h2>
+<div class="scroll"><table>
+<tr><th>ДР</th><th>Решение, которое оно накормило</th></tr>
+<tr><td>8</td><td class="mono">decision-2026-07-07-fleet-arch — архитектура флота</td></tr>
+<tr><td>6</td><td class="mono">decision-agent-stack-dr-bundle-synthesis-2026-07-14 — агентный стек</td></tr>
+<tr><td>5</td><td class="mono">decision-2026-07-14-codex-claude-consensus-chat — второе мнение Codex</td></tr>
+<tr><td>5</td><td class="mono">decision-2026-07-29-publikaciya-dr-kak-kontent — ДР как контент</td></tr>
+<tr><td>5</td><td class="mono">decision-2026-07-28-second-brain-organs-without-nerves — органы без нервов</td></tr>
+<tr><td>4</td><td class="mono">decision-multi-llm-vendor-independence — независимость от вендора</td></tr>
+<tr><td>4</td><td class="mono">decision-2026-07-28-qa-process-and-test-harness — QA и тест-харнес</td></tr>
+<tr><td>4</td><td class="mono">decision-voice-to-content-100-conveyor · decision-lead-temperature-and-monetization</td></tr>
+</table></div>
+<p class="dim">Самые «питательные» темы — флот и агенты. Ни одно решение по памяти не собрало больше двух ДР: разведка по памяти растекается, а не сходится.</p>
+
+<h2>🔴 Дефект качества, вскрытый сегодня</h2>
+<div class="box bad"><h3>Мы браковали живые отчёты по сломанному прибору</h3>
+Строка над ChatGPT-виджетом <code>Research completed in Nm · 0 citations · 0 searches</code> считалась доказательством, что вендор не искал.
+<b>Она нулевая у всех connector-прогонов, включая те, чьи отчёты мы приняли и использовали.</b><br><br>
+Аудит волны ZB 04.08 — перепроверены все забракованные прогоны, у которых сохранился адрес чата. <b>4 из 4 оказались живыми:</b>
+<div class="scroll"><table style="margin-top:8px">
+<tr><th>ДР</th><th>Что мы записали</th><th>Что в backend</th></tr>
+<tr><td>ZB-01 sci-fi</td><td>dead ×2, «таблица целиком из памяти»</td><td><b>57 цитат</b>, 15 162 симв.</td></tr>
+<tr><td>ZB-02 Харари</td><td>dead ×2, «отчёт из памяти»</td><td><b>106 цитат</b>, 25 423 симв.</td></tr>
+<tr><td>ZB-03 пантеон</td><td>канал dead, ушли в обход</td><td><b>52 цитаты</b>, 22 828 симв.</td></tr>
+<tr><td>ZB-04 HackerNoon</td><td>dead, «в синтез НЕ берём»</td><td><b>108 цитат</b>, 18 185 симв.</td></tr>
+</table></div><br>
+У ZB-01 ChatGPT-вендора в волте не было вообще — веер шёл двумя вендорами вместо трёх, и мы этого не заметили.
+Все четыре подняты, лежат в <code>_originals</code> с пометкой <code>recovered_from</code>, реестр обновлён.<br><br>
+<b>Урок шире ДР:</b> прибор, по которому мы объявляем что-то мёртвым, сам обязан быть проверен. Вывод «вендор сломан» был мне удобен —
+он вёл к «вендором меньше, можно закрывать» — и поэтому не встретил сопротивления.
+</div>
+
+<h2>Что делать дальше — три пункта</h2>
+<div class="box"><h3>1. Разморозить память</h3>
+Из 41 отложенного ДР по памяти выбрать <b>один</b> и довести до замера на этой неделе. Кандидат уже назван:
+fan-penalty + time-decay в 1-hop граф-расширении против нынешнего гейта по типу запроса. По нему сейчас идёт четвёртая экспертиза (GLM, <code>DR26-08-04-ZB-14-2214</code>).
+</div>
+<div class="box"><h3>2. Перечитать вердикты о вендорах</h3>
+Замер качества вендоров (H24, 29.07) частично опирался на тот же счётчик и на артефакты нашего захвата. Ранг ChatGPT там занижен — это сказано в самой заметке. Пересчитать после аудита.
+</div>
+<div class="box"><h3>3. Потребитель-эксперимент вместо потребителя-решения</h3>
+Для класса «память/архитектура» менять поле <code>--for</code> с «какое решение кормит» на «какой замер обязан породить». Это единственная правка,
+которая бьёт по корню 30%-конверсии.
+</div>
+
+<footer>
+Собрано детерминированно из реестра ДР (0 токенов на подсчёт), кластеризация по ключевым словам темы — приблизительная, ±несколько ДР на границах тем.
+Числа статусов и Decision Memo — точные. HP17-ZBook · Антон · 4 августа 2026.
+</footer>
+</div></body></html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Трекер постинга на Medium</title>
+<style>
+  :root{
+    --canvas:#010409; --bg:#0d1117; --panel:#161b22; --border:#30363d; --border2:#21262d;
+    --ink:#e6edf3; --dim:#8b949e; --link:#2f81f7; --green:#3fb950; --amber:#d29922; --red:#f85149; --gray:#6e7681;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--canvas);color:var(--ink);font:14px/1.55 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:24px;max-width:1080px;margin:0 auto}
+  a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline}
+  h1{font-size:23px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 6px;font-size:14px}
+  .ts{color:var(--gray);font-size:12px;margin-bottom:18px}
+  h2{font-size:16px;margin:28px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+  .cards{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+  .kpi{border:1px solid var(--border);border-radius:10px;background:var(--bg);padding:10px 16px;min-width:120px}
+  .kpi .n{font-size:22px;font-weight:700}
+  .kpi .l{font-size:12px;color:var(--dim)}
+  .kpi.ok .n{color:var(--green)} .kpi.wait .n{color:var(--amber)} .kpi.bad .n{color:var(--red)}
+  .wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border2);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.3px;background:var(--panel);position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td.num{font-weight:700;white-space:nowrap;color:var(--dim)}
+  .st{font-weight:600;white-space:nowrap}
+  .st-ok{color:var(--green)} .st-wait{color:var(--amber)} .st-bad{color:var(--red)}
+  .rowdim{color:var(--dim)}
+  .flag{background:#3a1d1d;border:1px solid #5c2626;color:#ff9d96;border-radius:8px;padding:12px 14px;margin:10px 0;font-size:13px}
+  .info{background:#0d2e18;border:1px solid #14532d;border-radius:8px;padding:12px 14px;margin:10px 0;font-size:13px}
+  .info b{color:var(--green)}
+  code{background:#21262d;padding:1px 6px;border-radius:5px;font-size:12px;word-break:break-all}
+  .eli5{background:#0d2e18;border:1px solid #14532d;border-radius:10px;padding:14px 16px;margin:26px 0 6px}
+  .eli5 b{color:var(--green)}
+  ul{margin:6px 0;padding-left:20px} li{margin:3px 0}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="linktree-copy-names.html">&larr; linktree-copy-names</a> · <a href="posting-snapshot.html">posting-snapshot &rarr;</a></span></div>
+  <div style="background:#0d2e18;border:1px solid #14532d;color:#3fb950;border-radius:10px;padding:14px 16px;margin:0 0 20px;font-size:14px">
+    ✅ <b>ЖИВОЙ трекер Medium.</b> Полный список статей серии на Medium (p1–p36). Сверен по RSS-ленте аккаунта <a href="https://medium.com/@dzyatkovskiy.a2" target="_blank" style="color:#79c0ff">@dzyatkovskiy.a2</a>; обновляется по мере публикации.
+  </div>
+  <h1>📊 Трекер постинга на Medium</h1>
+  <p class="sub">Что из серии постов (p1–p36) уже на Medium, а что ждёт публикации. Источник истины по Medium — RSS-лента аккаунта <a href="https://medium.com/@dzyatkovskiy.a2" target="_blank">@dzyatkovskiy.a2</a>.</p>
+  <p class="ts">Наталья · машина NATALY-WIN-NB · обновлено 2026-07-28 · Medium-статусы сверены по RSS + подтверждённым URL от Антона</p>
+
+  <div class="cards">
+    <div class="kpi ok"><div class="n">42</div><div class="l">✅ на Medium (p1–p42)</div></div>
+    <div class="kpi wait"><div class="n">0</div><div class="l">⬜ очередь пуста · ждём p43 в drafts/</div></div>
+    <div class="kpi ok"><div class="n">0</div><div class="l">дублей нет · дыр нет</div></div>
+  </div>
+
+  <h2>Серия постов p1–p42</h2>
+  <div class="wrap">
+  <table>
+    <tr><th>Пост</th><th>Тема / заголовок</th><th>Medium</th><th>Ссылка</th><th>Источник</th></tr>
+
+    <tr><td class="num">p1</td><td>The week I built a machine (контент-фабрика как сериал)</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/the-week-i-built-a-machine-that-turns-my-coding-into-a-show-e130cac7a1dc" target="_blank">medium…e130cac7a1dc</a></td><td class="rowdim">на хабе</td></tr>
+
+    <tr><td class="num">p2</td><td>How I stopped being a courier between two AIs</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/how-i-stopped-being-a-courier-between-two-ais-and-built-them-their-own-chat-1ccb40f26161" target="_blank">medium…1ccb40f26161</a></td><td class="rowdim">на хабе</td></tr>
+
+    <tr><td class="num">p3</td><td>I became a live USB cable between two AIs ($50 a run)</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/i-became-a-live-usb-cable-between-two-ais-and-it-saved-me-50-a-run-d1478bff2d05" target="_blank">medium…d1478bff2d05</a></td><td class="rowdim">p3-medium-source.md</td></tr>
+
+    <tr><td class="num">p4</td><td>My AI Read the Genius for Me</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/my-ai-read-the-genius-for-me-39253834295f" target="_blank">medium…39253834295f</a></td><td class="rowdim">на хабе</td></tr>
+
+    <tr><td class="num">p5</td><td>The One Word the Valley Uses to Spot Outsiders (и почему мы валим тест нарочно)</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/the-one-word-the-valley-uses-to-spot-outsiders-and-why-we-fail-the-test-on-purpose-7d1754ee520f" target="_blank">medium…7d1754ee520f</a></td><td class="rowdim">на хабе</td></tr>
+
+    <tr><td class="num">p6</td><td>The Ghost in My Machine: Will My Mycroft Wake Up?</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/the-ghost-in-my-machine-will-my-mycroft-wake-up-63265d452e7e" target="_blank">medium…63265d452e7e</a></td><td class="rowdim">на хабе</td></tr>
+
+    <tr><td class="num">p7</td><td>The Six-Step Ladder (как устроен мир AI-агентов, простыми словами)</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/the-six-step-ladder-how-the-ai-agent-world-actually-works-in-plain-words-fe466c44347f" target="_blank">medium…fe466c44347f</a></td><td class="rowdim">на хабе</td></tr>
+
+    <tr><td class="num">p8</td><td>The Day I Gave My AI a Standing Sales Mandate</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/the-day-i-gave-my-ai-a-standing-sales-mandate-b36036db958a" target="_blank">medium…b36036db958a</a></td><td class="rowdim">на хабе</td></tr>
+
+    <tr><td class="num">p9</td><td>When Intelligence Starts Flowing from the Tap (AI как commodity / вода из крана)</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/when-intelligence-starts-flowing-from-the-tap-what-ai-is-becoming-a-commodity-actually-means-e0e629eb0f95" target="_blank">medium…e0e629eb0f95</a></td><td class="rowdim">p9-teasers-clawrus-claweng.md</td></tr>
+
+    <tr><td class="num">p10</td><td>My Computers Learned to Negotiate. Then They Started Cheating</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/my-computers-learned-to-negotiate-then-they-started-cheating-a36911c80833" target="_blank">medium…a36911c80833</a></td><td class="rowdim">p10-medium-source.md</td></tr>
+
+    <tr><td class="num">p11</td><td>The Thirty-Dollar Aqueduct (страх за второй мозг)</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/the-thirty-dollar-aqueduct-how-i-stopped-fearing-for-my-digital-brain-97405860b401" target="_blank">medium…97405860b401</a></td><td class="rowdim">p11-medium-source.md</td></tr>
+
+    <tr><td class="num">p12</td><td>The Most Magical Command (растянул лимит токенов в 1 ночи)</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/the-most-magical-command-how-i-stretched-a-dead-token-limit-at-1-am-a082ae5ac9f1" target="_blank">medium…a082ae5ac9f1</a></td><td class="rowdim">p12-medium-source.md</td></tr>
+
+    <tr><td class="num">p13</td><td>The Hundred-Dollar Voice (GPU-кирпич проиграл облаку)</td><td class="st st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/the-hundred-dollar-voice-why-my-brick-sized-gpu-lost-to-the-cloud-14019d04c729" target="_blank">medium…14019d04c729</a></td><td class="rowdim">p13-medium-source.md</td></tr>
+
+    <tr><td class="num">p14</td><td>Stopped Watching YouTube Tutorials — The Tool Teaches Itself</td><td class="st st-ok">✅ 2026-07-11</td><td><a href="https://medium.com/@dzyatkovskiy.a2/stopped-watching-youtube-tutorials-for-claude-code-the-tool-teaches-itself-6c6b5be2eb0b" target="_blank">medium…6c6b5be2eb0b</a></td><td class="rowdim">p14-medium-source.md</td></tr>
+
+    <tr><td class="num">p15</td><td>The Baby Might Grow Into a Monster (страх делегировать код)</td><td class="st st-ok">✅ 2026-07-11</td><td><a href="https://medium.com/@dzyatkovskiy.a2/the-baby-might-grow-into-a-monster-my-fear-of-delegating-code-to-ai-9d361bd32066" target="_blank">medium…9d361bd32066</a></td><td class="rowdim">p15-medium-source.md</td></tr>
+
+    <tr><td class="num">p16</td><td>I Am Not Afraid of the Machine. I Am Afraid of People.</td><td class="st st-ok">✅ 2026-07-11</td><td><a href="https://medium.com/@dzyatkovskiy.a2/i-am-not-afraid-of-the-machine-i-am-afraid-of-people-040de30732b7" target="_blank">medium…040de30732b7</a></td><td class="rowdim">p16-medium-source.md</td></tr>
+
+    <tr><td class="num">p17</td><td>The first thing I teach anyone (второй мозг / память)</td><td class="st st-ok">✅ 2026-07-11</td><td><a href="https://medium.com/@dzyatkovskiy.a2/the-first-thing-i-teach-anyone-is-not-what-you-think-c1d0f6cbe28d" target="_blank">medium…c1d0f6cbe28d</a></td><td class="rowdim">p17-medium-source.md</td></tr>
+
+    <tr><td class="num">p18</td><td>Is it really cheaper abroad? (лайфстайл, стоимость жизни)</td><td class="st st-ok">✅ 2026-07-11</td><td><a href="https://medium.com/@dzyatkovskiy.a2/is-it-really-cheaper-abroad-lets-actually-count-851c3a7247b8" target="_blank">medium…851c3a7247b8</a></td><td class="rowdim">p18-medium-source.md</td></tr>
+
+    <tr><td class="num">p19</td><td>Your AI should know everything about you. You keep the keys.</td><td class="st st-ok">✅ 2026-07-11</td><td><a href="https://medium.com/@dzyatkovskiy.a2/your-ai-should-know-everything-about-you-you-keep-the-keys-6d81e2837cae" target="_blank">medium…6d81e2837cae</a></td><td class="rowdim">p19-medium-source.md</td></tr>
+
+    <tr><td class="num">p20</td><td>We build your second brain, and we do not look inside</td><td class="st st-ok">✅ 2026-07-13</td><td><a href="https://medium.com/@dzyatkovskiy.a2/we-build-your-second-brain-and-we-do-not-look-inside-b5c361d8ed01" target="_blank">medium…b5c361d8ed01</a></td><td class="rowdim">p20-medium-source.md</td></tr>
+
+    <tr><td class="num">p21</td><td>We test everything on ourselves first (dogfooding)</td><td class="st st-ok">✅ 2026-07-13</td><td><a href="https://medium.com/@dzyatkovskiy.a2/we-test-everything-on-ourselves-first-0e2c50502ece" target="_blank">medium…0e2c50502ece</a></td><td class="rowdim">p21-medium-source.md</td></tr>
+    <tr><td class="num">p22</td><td>Why AI writing reads like a robot</td><td class="st st-ok">✅ 2026-07-16</td><td><a href="https://medium.com/@dzyatkovskiy.a2/why-ai-writing-reads-like-a-robot-896c54f7afa6" target="_blank">medium…896c54f7afa6</a></td><td class="rowdim">p22-medium-source.md</td></tr>
+    <tr><td class="num">p23</td><td>Two bets on living longer (body + digital copy)</td><td class="st st-ok">✅ 2026-07-16</td><td><a href="https://medium.com/@dzyatkovskiy.a2/two-bets-on-living-longer-b75f7b553034" target="_blank">medium…b75f7b553034</a></td><td class="rowdim">p23-medium-source.md</td></tr>
+    <tr><td class="num">p24</td><td>How my AI agents stop tripping over each other</td><td class="st st-ok">✅ 2026-07-16</td><td><a href="https://medium.com/@dzyatkovskiy.a2/how-my-ai-agents-stop-tripping-over-each-other-1158546cbec3" target="_blank">medium…1158546cbec3</a></td><td class="rowdim">p24-medium-source.md</td></tr>
+    <tr><td class="num">p25</td><td>My retro button: every session becomes memory</td><td class="st st-ok">✅ 2026-07-16</td><td><a href="https://medium.com/@dzyatkovskiy.a2/my-retro-button-every-session-becomes-memory-2e79b216e8d0" target="_blank">medium…2e79b216e8d0</a></td><td class="rowdim">p25-medium-source.md</td></tr>
+    <tr><td class="num">p26</td><td>When your ship becomes a pizzeria: drift sessions</td><td class="st st-ok">✅ 2026-07-16</td><td><a href="https://medium.com/@dzyatkovskiy.a2/when-your-ship-becomes-a-pizzeria-drift-sessions-41242ae5639f" target="_blank">medium…41242ae5639f</a></td><td class="rowdim">p26-medium-source.md</td></tr>
+    <tr><td class="num">p27</td><td>Non-coders need Claude Code too</td><td class="st st-ok">✅ 2026-07-16</td><td><a href="https://medium.com/@dzyatkovskiy.a2/non-coders-need-claude-code-too-223e6332a695" target="_blank">medium…223e6332a695</a></td><td class="rowdim">p27-medium-source.md</td></tr>
+    <tr><td class="num">p28</td><td>Claude forgets the middle of my instructions</td><td class="st st-ok">✅ 2026-07-16</td><td><a href="https://medium.com/@dzyatkovskiy.a2/claude-forgets-the-middle-of-my-instructions-5387f8a4f268" target="_blank">medium…5387f8a4f268</a></td><td class="rowdim">p28-medium-source.md</td></tr>
+    <tr><td class="num">p29</td><td>A second brain for everyone on the team</td><td class="st st-ok">✅ 2026-07-16</td><td><a href="https://medium.com/@dzyatkovskiy.a2/a-second-brain-for-everyone-on-the-team-b41fbc06b4ee" target="_blank">medium…b41fbc06b4ee</a></td><td class="rowdim">p29-medium-source.md</td></tr>
+    <tr><td class="num">p30</td><td>Building in the open, in Karpathy's line</td><td class="st st-ok">✅ 2026-07-21</td><td><a href="https://medium.com/@dzyatkovskiy.a2/building-in-the-open-in-karpathys-line-eec10d0c66c5" target="_blank">medium…eec10d0c66c5</a></td><td class="rowdim">p30-medium-source.md</td></tr>
+    <tr><td class="num">p31</td><td>Running all my Claude sessions from one phone</td><td class="st st-ok">✅ 2026-07-21</td><td><a href="https://medium.com/@dzyatkovskiy.a2/running-all-my-claude-sessions-from-one-phone-81fa93233cdf" target="_blank">medium…81fa93233cdf</a></td><td class="rowdim">p31-medium-source.md</td></tr>
+    <tr><td class="num">p32</td><td>A second opinion: my Codex checks my Claude before I act</td><td class="st st-ok">✅ 2026-07-23</td><td><a href="https://medium.com/@dzyatkovskiy.a2/a-second-opinion-my-codex-checks-my-claude-before-i-act-39606207d88d" target="_blank">medium…39606207d88d</a></td><td class="rowdim">p32-medium-source.md</td></tr>
+    <tr><td class="num">p33</td><td>A gotcha-checker that mines my AI's own mistakes across every machine</td><td class="st st-ok">✅ 2026-07-24</td><td><a href="https://medium.com/@dzyatkovskiy.a2/a-gotcha-checker-that-mines-my-ais-own-mistakes-across-every-machine-3409ef681269" target="_blank">medium…3409ef681269</a></td><td class="rowdim">p33-medium-source.md</td></tr>
+    <tr><td class="num">p34</td><td>Putting our work on arXiv, cross-linked with the open code on GitHub</td><td class="st st-ok">✅ 2026-07-26</td><td><a href="https://medium.com/@dzyatkovskiy.a2/putting-our-work-on-arxiv-cross-linked-with-the-open-code-on-github-0de0bafc5e3b" target="_blank">medium…0de0bafc5e3b</a></td><td class="rowdim">p34-medium-source.md</td></tr>
+    <tr><td class="num">p35</td><td>How is your voice-note pipeline set up?</td><td class="st st-ok">✅ 2026-07-28</td><td><a href="https://medium.com/@dzyatkovskiy.a2/how-is-your-voice-note-pipeline-set-up-2d1954264236" target="_blank">medium…2d1954264236</a></td><td class="rowdim">p35-medium-source.md</td></tr>
+    <tr><td class="num">p36</td><td>A registry of all my routines, so none of them dies in silence</td><td class="st st-ok">✅ 2026-07-28</td><td><a href="https://medium.com/@dzyatkovskiy.a2/a-registry-of-all-my-routines-so-none-of-them-dies-in-silence-e8fa9ffbce02" target="_blank">medium…e8fa9ffbce02</a></td><td class="rowdim">p36-medium-source.md</td></tr>
+    <tr><td class="num">p37</td><td>I listen to my own second brain as a podcast (NotebookLM)</td><td class="st st-ok">✅ 2026-07-29</td><td><a href="https://medium.com/@dzyatkovskiy.a2/i-listen-to-my-own-second-brain-as-a-podcast-d9f8e56ce9b3" target="_blank">medium…d9f8e56ce9b3</a></td><td class="rowdim">p37-medium-source.md</td></tr>
+    <tr><td class="num">p38</td><td>What do you put in the brief so your AI does not write AI-slop?</td><td class="st st-ok">✅ 2026-07-30</td><td><a href="https://medium.com/@dzyatkovskiy.a2/what-do-you-put-in-the-brief-so-your-ai-does-not-write-ai-slop-d6cde645796d" target="_blank">medium…d6cde645796d</a></td><td class="rowdim">p38-medium-source.md</td></tr>
+    <tr><td class="num">p39</td><td>My AI pulls the alpha out of every call, so nothing valuable drowns</td><td class="st st-ok">✅ 2026-07-31</td><td><a href="https://medium.com/@dzyatkovskiy.a2/my-ai-pulls-the-alpha-out-of-every-call-so-nothing-valuable-drowns-8ed442d864fe" target="_blank">medium…8ed442d864fe</a></td><td class="rowdim">p39-medium-source.md</td></tr>
+    <tr><td class="num">p40</td><td>A full recall before every session, or the work does not start</td><td class="st st-ok">✅ 2026-08-03</td><td><a href="https://medium.com/@dzyatkovskiy.a2/a-full-recall-before-every-session-or-the-work-does-not-start-9a0c16d18cf5" target="_blank">medium…9a0c16d18cf5</a></td><td class="rowdim">p40-medium-source.md</td></tr>
+    <tr><td class="num">p41</td><td>I make my AI smarter every day, and I never trust one model blindly</td><td class="st st-ok">✅ 2026-08-03</td><td><a href="https://medium.com/@dzyatkovskiy.a2/i-make-my-ai-smarter-every-day-and-i-never-trust-one-model-blindly-888ba4faba8e" target="_blank">medium…888ba4faba8e</a></td><td class="rowdim">p41-medium-source.md</td></tr>
+    <tr><td class="num">p42</td><td>I am looking for the most ambitious case of a synthetic person</td><td class="st st-ok">✅ 2026-08-04</td><td><a href="https://medium.com/@dzyatkovskiy.a2/i-am-looking-for-the-most-ambitious-case-of-a-synthetic-person-and-i-mean-it-seriously-15b48842c3e4" target="_blank">medium…15b48842c3e4</a></td><td class="rowdim">p42-medium-source.md</td></tr>
+  </table>
+  </div>
+
+  <div class="info">
+    <b>✅ Серия p1–p42 полностью сведена (2026-08-04):</b> все 42 поста сопоставлены с Medium-URL, дублей нет, дыр нет. Свежие сверены по живой RSS-ленте, ранние подтверждены записанными URL и подтверждениями Антона.
+  </div>
+
+  <div class="info">
+    <b>Правила футера Medium (действуют на p14+):</b>
+    <ul>
+      <li>Линктри только англоязычная: <code>https://linktr.ee/PaloAltoAI</code></li>
+      <li>Без ссылки на русскоязычный чат <code>@ClawRus</code> в футере (follow только EN: @PaloAltoAi).</li>
+      <li>Ссылка на Airtable-форму кандидатов-кофаундеров + приглашение: <code>https://airtable.com/appO6Ibr619VvT36t/shrWRs2keedx3YXW2</code></li>
+      <li>Canonical link в настройках истории → GitHub-URL лонгрида.</li>
+    </ul>
+  </div>
+
+  <div class="eli5">
+    <b>🧒 Простыми словами:</b> это табличка-светофор «что уже на Medium». Сейчас все посты с 1 по 42 выложены и стоят зелёными — очередь пустая, копий нет, все номера на местах.
+  </div>
+</body>
+</html>

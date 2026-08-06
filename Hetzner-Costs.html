@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hetzner — расходы и план экономии</title>
+<style>
+  :root{
+    --bg:#0e1116; --card:#171b22; --card2:#1e232c; --line:#2a313c;
+    --tx:#e7ecf3; --mut:#9aa6b5; --grn:#3fb950; --amb:#d29922; --red:#f85149;
+    --blu:#58a6ff; --accent:#d0343a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);
+    font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;padding:24px;max-width:1100px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 2px} h2{font-size:17px;margin:26px 0 12px;color:var(--mut);font-weight:600;
+    text-transform:uppercase;letter-spacing:.5px}
+  .sub{color:var(--mut);margin:0 0 18px;font-size:13px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .kpi .big{font-size:30px;font-weight:700;margin:4px 0}
+  .kpi .lbl{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+  .kpi .note{color:var(--mut);font-size:12px;margin-top:4px}
+  .amber{color:var(--amb)} .red{color:var(--red)} .grn{color:var(--grn)} .blu{color:var(--blu)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+  th{color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+  tr:last-child td{border-bottom:none}
+  .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600}
+  .p-grn{background:rgba(63,185,80,.15);color:var(--grn)}
+  .p-amb{background:rgba(210,153,34,.15);color:var(--amb)}
+  .p-red{background:rgba(248,81,73,.15);color:var(--red)}
+  .p-blu{background:rgba(88,166,255,.15);color:var(--blu)}
+  .server{background:var(--card2)}
+  .bar{height:7px;border-radius:4px;background:#2a313c;overflow:hidden;margin-top:6px}
+  .bar > i{display:block;height:100%;border-radius:4px}
+  .step{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .step:last-child{border-bottom:none}
+  .chk{width:20px;height:20px;flex:0 0 20px;border:2px solid var(--line);border-radius:5px;margin-top:2px}
+  .step h4{margin:0 0 4px;font-size:15px}
+  .step p{margin:0;color:var(--mut);font-size:13px}
+  .tag{font-size:11px;font-weight:700;padding:1px 7px;border-radius:5px;margin-left:6px;vertical-align:middle}
+  code{background:#0c0f14;padding:1px 6px;border-radius:5px;font-size:12px;color:#c9d5e5}
+  .foot{color:var(--mut);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
+  .warn{background:rgba(210,153,34,.08);border:1px solid rgba(210,153,34,.3);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:13px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Health-Dashboard.html">&larr; Health-Dashboard</a> · <a href="LLM-Desktop-Apps.html">LLM-Desktop-Apps &rarr;</a></span></div>
+  <h1>💶 Hetzner — расходы и план экономии</h1>
+  <p class="sub">Снято живьём 05.07.2026 · счета из accounts.hetzner.com · железо по SSH на боевом сервере</p>
+
+  <div class="grid">
+    <div class="card kpi">
+      <div class="lbl">Платим сейчас / мес</div>
+      <div class="big">€99<span style="font-size:16px">.13</span></div>
+      <div class="note">было €95.49 (янв–апр) → €99.13 (май–июнь)</div>
+    </div>
+    <div class="card kpi">
+      <div class="lbl">Ран-рейт с 24 июля</div>
+      <div class="big amber">≈ €230</div>
+      <div class="note">+ €130.49 «Маячок» впервые попадёт в счёт 24.07</div>
+    </div>
+    <div class="card kpi">
+      <div class="lbl">Потенциал экономии</div>
+      <div class="big grn">≈ €95<span style="font-size:16px">/мес</span></div>
+      <div class="note">схлопнуть в один уже оплаченный сервер</div>
+    </div>
+  </div>
+
+  <h2>История счетов (billing 24-го числа)</h2>
+  <div class="card">
+    <table>
+      <tr><th>Дата</th><th>№ счёта</th><th>Сумма</th><th>Статус</th></tr>
+      <tr><td>24 июн 2026</td><td>088000980437</td><td>€99.13</td><td><span class="pill p-red">pending — к оплате</span></td></tr>
+      <tr><td>24 май 2026</td><td>080000925482</td><td>€99.13</td><td><span class="pill p-grn">оплачено</span></td></tr>
+      <tr><td>24 апр 2026</td><td>086000815519</td><td>€95.49</td><td><span class="pill p-grn">оплачено</span></td></tr>
+      <tr><td>24 мар 2026</td><td>081000788963</td><td>€95.49</td><td><span class="pill p-grn">оплачено</span></td></tr>
+      <tr><td>24 фев 2026</td><td>086000705762</td><td>€95.49</td><td><span class="pill p-grn">оплачено</span></td></tr>
+      <tr><td>24 янв 2026</td><td>081000677087</td><td>€95.49</td><td><span class="pill p-grn">оплачено</span></td></tr>
+    </table>
+    <div class="warn">⚠️ Построчная разбивка «за что» — за кнопкой <b>Details</b> в счёте, а она за анти-ботом Heray (проходит только живой Антон). Автоматический таб Claude не пускает.</div>
+  </div>
+
+  <h2>Серверы — что это за €</h2>
+
+  <div class="card server" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <div><b>noahotc</b> — БОЕВОЙ <span class="pill p-red">деньги: сайт + CRM</span></div>
+      <div><code>188.40.100.249</code> · Hetzner Dedicated (Robot)</div>
+    </div>
+    <p class="sub" style="margin:8px 0 0">Intel i7-4770 (Haswell, ~2013) · 8 потоков · 32 GB RAM · диск 1.8 TB · 27 контейнеров: <code>palo-alto.ai</code>, CRM/лиды, TG-боты. Bare-metal, аптайм 47 недель.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px">
+      <div><div class="lbl" style="font-size:11px;color:var(--mut)">RAM: 19 / 32 GB</div>
+        <div class="bar"><i style="width:60%;background:var(--amb)"></i></div></div>
+      <div><div class="lbl" style="font-size:11px;color:var(--mut)">Диск: 263 GB / 1.8 TB (16%)</div>
+        <div class="bar"><i style="width:16%;background:var(--grn)"></i></div></div>
+    </div>
+    <p class="sub" style="margin:10px 0 0">CPU почти простаивает (load 1.0). <b>≈ основная часть €95/мес.</b> Старое железо 2013 г.</p>
+  </div>
+
+  <div class="card server" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <div><b>fleet-anchor</b> «Маячок» <span class="pill p-blu">новый · растим сюда</span></div>
+      <div><code>167.233.122.145</code> · Hetzner Cloud CPX62 · Falkenstein</div>
+    </div>
+    <p class="sub" style="margin:8px 0 0">16 vCPU · 32 GB RAM · 640 GB · куплен 03.07 · <b class="amber">€130.49/мес</b>. Мощнее старого noahotc, но почти пустой (~1 из 30 GB занято).</p>
+    <div style="margin-top:12px"><div class="lbl" style="font-size:11px;color:var(--mut)">RAM: ~1 / 30 GB — простаивает</div>
+      <div class="bar"><i style="width:4%;background:var(--blu)"></i></div></div>
+    <p class="sub" style="margin:10px 0 0">Первый счёт — 24 июля. Сейчас платим за <b>два больших сервера сразу</b>.</p>
+  </div>
+
+  <div class="card server">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <div><b>n8n-хост</b> <span class="pill p-amb">пробел</span></div>
+      <div><code>n8n.palo-alto.ai</code> · origin-IP НЕИЗВЕСТЕН</div>
+    </div>
+    <p class="sub" style="margin:8px 0 0">Отдельный VPS, 89 workflow. У нас записан только URL за Cloudflare — <b class="amber">физический адрес и стоимость нигде не зафиксированы.</b> Не знаем, где живёт → не контролируем при оффбординге. Закрыть при захвате аккаунта 15.07.</p>
+  </div>
+
+  <h2>План экономии</h2>
+  <div class="card">
+    <div class="step">
+      <div class="chk"></div>
+      <div><h4>1. Погасить DEV-копии на боевом сервере <span class="tag p-grn" style="background:rgba(63,185,80,.15);color:var(--grn)">СЕЙЧАС · 0 риска</span></h4>
+        <p>На money-сервере 24/7 крутятся <code>leads-crm_development</code>, <code>websites_development</code>, <code>tgbot_development</code>. Жрут RAM/CPU впустую. Выключить — боевого не касается. Освобождает ресурс, снимает повод держать большой сервер.</p></div>
+    </div>
+    <div class="step">
+      <div class="chk"></div>
+      <div><h4>2. Мигрировать боевое на «Маячок» → отказаться от старого выделенника <span class="tag p-amb" style="background:rgba(210,153,34,.15);color:var(--amb)">ПОСЛЕ 15.07 · Tier-2</span></h4>
+        <p><b>−€95/мес.</b> Маячок (€130, уже платим) больше и мощнее noahotc. Один сервер вместо зоопарка, вся инфра под нашим контролем. Только после полного захвата Hetzner-аккаунта (оффбординг), с бэкапом и планом отката. Деньги+CRM+живой сайт → нужен твой ОК.</p></div>
+    </div>
+    <div class="step">
+      <div class="chk"></div>
+      <div><h4>⚑ Развилка: если консолидацию НЕ делаем — ужать Маячок <span class="tag p-blu" style="background:rgba(88,166,255,.15);color:var(--blu)">взаимоисключает п.2</span></h4>
+        <p>CPX62 (16/32) избыточен под witness+RAG. Даунсайз до CPX41/ARM CAX вернёт ~€85–100/мес. Держать ДВА больших сервера = платить дважды. Выбрать одно: растим Маячок (п.2) ИЛИ ужимаем его.</p></div>
+    </div>
+    <div class="step">
+      <div class="chk"></div>
+      <div><h4>3. Найти + задокументировать n8n-хост, свести n8n в общий сервер <span class="tag p-amb" style="background:rgba(210,153,34,.15);color:var(--amb)">15.07</span></h4>
+        <p>Origin-IP неизвестен. Найти при захвате аккаунта, оценить стоимость, при консолидации перенести 89 workflow на единый сервер.</p></div>
+    </div>
+    <div class="step">
+      <div class="chk"></div>
+      <div><h4>⓪ Prereq: РЕЗЕЧ по бест-практикам миграции <span class="tag p-blu" style="background:rgba(88,166,255,.15);color:var(--blu)">до п.2</span></h4>
+        <p>Deep Research <code>DR26-07-05-HUB-08</code> — zero-downtime cutover Docker-инфры (деньги/CRM), бэкап, откат. Промпт выдан в чат для внешних LLM.</p></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    Совет кофаундера: <b>п.1 сейчас</b> + <b>п.2 после 15.07</b> (по итогам DR26-07-05-HUB-08). Схлопываем в один уже оплаченный сервер → −€95/мес, минус железо 2013 г., вся инфра в одном месте.<br>
+    Источники: accounts.hetzner.com/invoice · SSH root@noahotc · память [[vps-anchor-node]], [[access-offboarding-2026-07]], [[n8n]].
+  </div>
+</body>
+</html>

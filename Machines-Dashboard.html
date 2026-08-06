@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Реестр машин — где работает Claude</title>
+<style>
+  :root{
+    --bg:#0f1216; --card:#171c22; --card2:#1d242c; --ink:#e8edf2; --muted:#9aa7b4;
+    --line:#2a323b; --accent:#e08a4b; --green:#4caf72; --red:#e25555; --amber:#e0b04b; --blue:#4b8fe0;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f4f6f8; --card:#ffffff; --card2:#f0f3f6; --ink:#1c2126; --muted:#5a6b7a; --line:#dde3e9; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:28px}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 22px;font-size:13px}
+  .banner{background:var(--card2);border:1px solid var(--accent);border-radius:12px;padding:14px 16px;margin:0 0 22px;font-size:14px}
+  .banner b{color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:relative}
+  .card.hub{border-color:var(--green)}
+  .card.tbd{border-style:dashed;opacity:.92}
+  .card h2{font-size:17px;margin:0 0 2px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .role{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 8px;border-radius:20px}
+  .role.hub{background:rgba(76,175,114,.18);color:var(--green)}
+  .role.sat{background:rgba(75,143,224,.18);color:var(--blue)}
+  .role.tbd{background:rgba(154,167,180,.18);color:var(--muted)}
+  .host{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--muted);margin:0 0 10px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  td{padding:4px 0;vertical-align:top}
+  td.k{color:var(--muted);width:38%;padding-right:8px}
+  .mouse{margin-top:11px;font-size:13px;font-weight:600;padding:7px 10px;border-radius:9px}
+  .mouse.full{background:rgba(76,175,114,.14);color:var(--green)}
+  .mouse.limited{background:rgba(226,85,85,.14);color:var(--red)}
+  .mouse.unk{background:rgba(154,167,180,.14);color:var(--muted)}
+  .legend{margin-top:24px;color:var(--muted);font-size:12.5px}
+  .legend span{display:inline-block;margin-right:18px}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="LobsterDAO-Mine.html">&larr; LobsterDAO-Mine</a> · <a href="Night-Report-2026-07-29.html">Night-Report-2026-07-29 &rarr;</a></span></div>
+  <h1>🖥️ Реестр машин — где работает Claude</h1>
+  <p class="sub">Один Claude живёт на нескольких компах Антона; облако (Syncthing) синкает волт+память на все. Метка машины = как понять, кто что сделал. · обновлено 2026-06-20 · канон для меня = память <code>session-machine-tagging</code></p>
+
+  <div class="banner">
+    <b>✅ Решено (пока):</b> «свободная» мышь — это <b>десктоп-ХАБ A-2022BAYAREA</b>. Им можно пользоваться <b>УЖЕ сейчас</b>: <b>всегда свободен 23:00–07:00 по Лиссабону</b>; в остальное время тоже можно — <b>пока Антон не попросит притормозить</b>, если сам на нём работает. Рулю им через его же локального Claude (он сам водит свои 3 монитора); задачу шлю по шине bus → <code>A-2022BAYAREA</code>. Окончательный выделенный комп Антон ещё может назначить. <b>Mac Pro Артура (сына)</b> — будущий спутник, Claude+волт поставим позже.
+  </div>
+
+  <div class="grid">
+
+    <div class="card hub">
+      <h2>PaloAlto-Desktop <span class="role hub">HUB · always-on</span></h2>
+      <p class="host">A-2022BAYAREA · user: Anton</p>
+      <table>
+        <tr><td class="k">Роль</td><td>Центр: волт + автоматизации + RAG, 2 игровых GPU</td></tr>
+        <tr><td class="k">ОС</td><td>Windows · 2× GPU</td></tr>
+        <tr><td class="k">Мониторы</td><td>3 (предположительно — подтвердить)</td></tr>
+        <tr><td class="k">Рабочая папка</td><td><code>C:\Users\Anton\!CLAUDE-HP17 May26</code></td></tr>
+        <tr><td class="k">Claude</td><td>крутится НА нём (конфиг+память+волт синканы)</td></tr>
+        <tr><td class="k">Окно</td><td>всегда 23:00–07:00 Лиссабон; вне — пока Антон не скажет «пауза»</td></tr>
+        <tr><td class="k">Syncthing</td><td><code>2KPYBY4…7RFKEAI</code> · LAN 192.168.1.147:22000</td></tr>
+      </table>
+      <div class="mouse full">🖱️ Мышь: ПОЛНАЯ свобода — это free-mouse / GUI-Cowork машина (используем уже сейчас)</div>
+    </div>
+
+    <div class="card">
+      <h2>HP17-ZBook <span class="role sat">satellite</span></h2>
+      <p class="host">ZBOOKG8-2023PAL (ZbookG8-2023PaloAlto) · user: _</p>
+      <table>
+        <tr><td class="k">Роль</td><td>Был главным; HUB-роль ушла на десктоп. Эта сессия идёт ОТСЮДА</td></tr>
+        <tr><td class="k">ОС</td><td>Windows 11 Pro · RTX A3000 6GB</td></tr>
+        <tr><td class="k">Мониторы</td><td>встроенный + DASUNG Paperlike (e-ink, 2-й)</td></tr>
+        <tr><td class="k">Волт</td><td><code>E:\Obsidian\Anton-Knowledge</code></td></tr>
+        <tr><td class="k">Рабочая папка</td><td><code>C:\Users\_\!CLAUDE-HP17 May26</code></td></tr>
+        <tr><td class="k">Syncthing</td><td><code>JR2M6T4…KWFOQAR</code></td></tr>
+      </table>
+      <div class="mouse limited">🖱️ Мышь: ОГРАНИЧЕНА — GUI-Cowork сорвался 2026-06-20 из-за e-ink 2-го монитора</div>
+    </div>
+
+    <div class="card tbd">
+      <h2>Mac Pro (Артура) <span class="role tbd">satellite · PLANNED</span></h2>
+      <p class="host">hostname: заполнить при первой встрече · user: Артур (сын Антона)</p>
+      <table>
+        <tr><td class="k">ОС</td><td>macOS · POSIX-пути <code>/Users/…</code></td></tr>
+        <tr><td class="k">Роль</td><td>будущий спутник Антона; Claude+волт поставим позже (2026-06-20)</td></tr>
+        <tr><td class="k">Claude</td><td>пока НЕ стоит — установим позже</td></tr>
+      </table>
+      <div class="mouse unk">🖱️ Мышь: неизвестно</div>
+    </div>
+
+    <div class="card tbd">
+      <h2>MacBook <span class="role tbd">satellite</span></h2>
+      <p class="host">hostname: заполнить при первой встрече</p>
+      <table>
+        <tr><td class="k">ОС</td><td>macOS · POSIX-пути <code>/Users/…</code></td></tr>
+        <tr><td class="k">Роль</td><td>спутник (мобильный)</td></tr>
+        <tr><td class="k">Claude</td><td>через синканые волт+конфиг</td></tr>
+      </table>
+      <div class="mouse unk">🖱️ Мышь: неизвестно</div>
+    </div>
+
+  </div>
+
+  <h1 style="margin-top:34px">👥 Стая — пользователи системы</h1>
+  <p class="sub">Кто работает в нашей ОДНОЙ системе. Антон называет каждого нового — я никогда не угадываю. Автор сессии = машина + человек. · канон = память <code>user-registry</code></p>
+  <div class="banner">
+    <b>Единая СИСТЕМА (Антон 2026-06-21):</b> несколько компов и операторов — но волт / знания / конфиг ОДНО. Правка на одной машине = правка во всей системе → прокидываю сам, без вопроса.
+  </div>
+  <div class="grid">
+
+    <div class="card hub">
+      <h2>Антон <span class="role hub">ВЕДУЩИЙ · вожак</span></h2>
+      <p class="host">семья: принципал (владелец всего)</p>
+      <table>
+        <tr><td class="k">Роли</td><td>основатель · владелец волта · финальная власть (Tier-2) · «вожак» governance-модели</td></tr>
+        <tr><td class="k">Машины</td><td>HP17-ZBook + PaloAlto-Desktop (обоими всегда сам)</td></tr>
+        <tr><td class="k">Член семьи</td><td>да</td></tr>
+      </table>
+      <div class="mouse full">🧭 Только он авторизует Tier-2 (деньги/outbound/необратимое/конфиг)</div>
+    </div>
+
+    <div class="card">
+      <h2>Руслана <span class="role sat">ведомая</span></h2>
+      <p class="host">ассистент (не семья)</p>
+      <table>
+        <tr><td class="k">Роли</td><td>живой ассистент · действует ОТ ЛИЦА Антона по Библии · опс/координация/быт</td></tr>
+        <tr><td class="k">Машины</td><td>PaloAlto-Desktop (тоже работает); её сессия → <code>CLAUDE_OPERATOR=Ruslana</code></td></tr>
+        <tr><td class="k">Член семьи</td><td>нет · Tier-2 всё равно только Антон</td></tr>
+      </table>
+      <div class="mouse unk">кандидат: операционный «зам» на время (succession — обсуждается)</div>
+    </div>
+
+    <div class="card tbd">
+      <h2>Артур <span class="role tbd">TBD · сын</span></h2>
+      <p class="host">семья: сын Антона</p>
+      <table>
+        <tr><td class="k">Роли</td><td>будущий пользователь; возможный наследник линии (succession)</td></tr>
+        <tr><td class="k">Машины</td><td>Mac Pro (Claude+волт поставим позже)</td></tr>
+        <tr><td class="k">Член семьи</td><td>да</td></tr>
+      </table>
+      <div class="mouse unk">кандидат: наследник вдолгую (succession — обсуждается)</div>
+    </div>
+
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:var(--green)"></span>ПОЛНАЯ свобода мыши — GUI-Cowork сюда</span>
+    <span><span class="dot" style="background:var(--red)"></span>Ограничена</span>
+    <span><span class="dot" style="background:var(--muted)"></span>Неизвестно / заполнить</span>
+  </div>
+</body>
+</html>

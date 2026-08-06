@@ -1,0 +1,126 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Entity-Lane-AB.html">&larr; Entity-Lane-AB</a> · <a href="GDrive-Sheets-Catalog.html">GDrive-Sheets-Catalog &rarr;</a></span></div><!doctype html>
+<meta charset="utf-8">
+<title>Лиса: раскатка счётчика + attach — 04.08.2026</title>
+<style>
+  :root{--bg:#faf9f7;--fg:#1c1b19;--mut:#6b6862;--line:#e2ded7;--ok:#1e7a4a;--bad:#b3261e;--warn:#a86a00;--card:#fff}
+  @media (prefers-color-scheme:dark){:root{--bg:#16150f;--fg:#eceae4;--mut:#9b978e;--line:#2f2d26;--ok:#4cc38a;--bad:#ff6b5e;--warn:#e0a13a;--card:#1e1d16}}
+  *{box-sizing:border-box}
+  body{margin:0;padding:28px 20px 60px;background:var(--bg);color:var(--fg);
+       font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:900px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px;font-weight:650}
+  .sub{color:var(--mut);margin:0 0 26px;font-size:14px}
+  h2{font-size:17px;margin:32px 0 10px;font-weight:600}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--mut);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.03em}
+  tr:last-child td{border-bottom:none}
+  .ok{color:var(--ok);font-weight:600}
+  .bad{color:var(--bad);font-weight:600}
+  .warn{color:var(--warn);font-weight:600}
+  .scroll{overflow-x:auto}
+  .big{font-size:30px;font-weight:650;line-height:1.1}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .lbl{color:var(--mut);font-size:13px;margin-top:2px}
+  code{background:rgba(128,128,128,.14);padding:1px 5px;border-radius:4px;font-size:13.5px}
+  .eli{border-left:3px solid var(--warn);padding-left:14px;color:var(--fg)}
+  ul{margin:8px 0;padding-left:20px}
+  li{margin:4px 0}
+</style>
+<div class="wrap">
+
+<h1>Лиса: раскатка счётчика и проверка attach</h1>
+<p class="sub">4 августа 2026, ночь · узел HP17-ZBook · замер идёт до 18.08, решает Антон</p>
+
+<h2>1. Раскатка счётчика по флоту</h2>
+<div class="card grid">
+  <div><div class="big ok">3<span style="color:var(--mut);font-size:18px"> / 6</span></div><div class="lbl">узлов применили</div></div>
+  <div><div class="big warn">2<span style="color:var(--mut);font-size:18px"> / 6</span></div><div class="lbl">реально пишут строки</div></div>
+  <div><div class="big bad">4 / 5</div><div class="lbl">нужно по критерию + хаб обязателен</div></div>
+</div>
+
+<div class="card">
+<b>Критерий уточнён 05.08 (решено в режиме «реши сам»).</b> Было «4 из 6» — но Маяк
+физически не умеет браузер, и мёртвый слот в знаменателе читался бы как провал раскатки.
+Стало: <b>знаменатель — 5 браузерных узлов, порог ≥4 из 5</b> (доля не ослаблена, а ужесточена:
+было 67%, стало 80%), а <b>хаб A-2022BAYAREA — жёсткое условие</b>: нет его строк, значит
+замер не состоялся, независимо от арифметики. Порог под факт недораскатки не понижаем —
+это то же самое, что завысить цифру. Машина уже печатает обе строки в отчёте.
+</div>
+
+<div class="card scroll">
+<table>
+<tr><th>Узел</th><th>Роль</th><th>Применено</th><th>Пишет строки</th><th>Чем доказано</th></tr>
+<tr><td>HP17-ZBook</td><td>ноут</td><td class="ok">да</td><td class="ok">да</td><td><code>--check-hook</code> OK + живой заход в шарде</td></tr>
+<tr><td>Маяк (VPS)</td><td>якорь</td><td class="ok">да</td><td class="warn">нет</td><td>поставил по SSH, 27 тестов прошли. Браузера на узле нет — писать нечего</td></tr>
+<tr><td>MacBook-Anton</td><td>Mac</td><td class="ok">да</td><td class="ok">да</td><td>своя версия движка, 132 строки в шарде</td></tr>
+<tr><td>A-2022BAYAREA</td><td><b>хаб</b></td><td class="bad">нет</td><td class="bad">нет</td><td>SSH-ключа нет, ждёт самоприменения из шины</td></tr>
+<tr><td>MacBook-Ruslana</td><td>пир</td><td class="bad">нет</td><td class="bad">нет</td><td>ждёт самоприменения</td></tr>
+<tr><td>MyOwnPC-Natalia</td><td>пир</td><td class="bad">нет</td><td class="bad">нет</td><td>ждёт самоприменения</td></tr>
+</table>
+</div>
+
+<div class="card">
+<b>Корень, почему стояло на одном узле.</b> В реестре раскатки команда применения звала
+<code>browser_usage_log.py</code> — файла, которого не было ни на одном узле кроме Mac16.
+Команда падала бы на всех шести. Посылка не была собрана вообще.
+Сейчас посылка лежит в шине, команда переписана на неё, установщик идемпотентный.
+</div>
+
+<div class="card">
+<b>Честная оговорка про цифры.</b> Метрику «Chrome без причины → 0» пока нельзя читать суммой:
+у Mac16 своя версия движка, где причина — константа «БЕЗ ПРИЧИНЫ», а у остальных выводится
+из домена. До сведения в один источник читаем по узлам. Маяк применил, но браузера там нет —
+значит реалистичный потолок писателей 5, а не 6.
+</div>
+
+<h2>2. Attach к Лисе — проверено на нашем железе</h2>
+<div class="card scroll">
+<table>
+<tr><th>Критерий (назван ДО прогона)</th><th>Результат</th></tr>
+<tr><td>Firefox с <code>--marionette</code> + <code>--remote-debugging-port</code></td><td class="ok">оба порта слушают</td></tr>
+<tr><td>Mozilla MCP <code>--connectExisting</code> отвечает</td><td class="ok">0.9.15, официальный Mozilla</td></tr>
+<tr><td>Отдал рабочий набор инструментов</td><td class="ok">31 тул</td></tr>
+<tr><td>Браузер пережил отключение клиента</td><td class="ok">да — это и есть residency</td></tr>
+<tr><td>Повторное подключение</td><td class="ok">прошло</td></tr>
+<tr><td>Firefox headless на ноуте</td><td class="ok">FF 153, живой</td></tr>
+</table>
+</div>
+
+<div class="card">
+<b>Что это значит.</b> Дыра «браузер умирает вместе с агентом» лечится на Лисе.
+<b>Chrome ради удержания сессии не нужен.</b> Спор Grok против Codex закрыт первоисточником:
+пакет официальный Mozilla.
+<ul>
+<li>Флаг называется <code>--connectExisting</code>, а не <code>--connect-existing</code> — в прошлом синтезе записано неверно, исправлено.</li>
+<li>Порт Marionette задаётся настройкой профиля, а не переменной окружения. Переменную Firefox молча игнорирует, и снаружи это выглядит как «attach невозможен».</li>
+</ul>
+<b>Стройку боевой рельсы не запускаю</b>: менять рельсу в середине замера значит испортить замер. Правильный момент — после 18.08 или по твоему прямому решению раньше.
+</div>
+
+<h2>3. Что запущено дальше</h2>
+<div class="card">
+<table>
+<tr><th>Что</th><th>Состояние</th></tr>
+<tr><td>ДР про браузеры с родным MCP, <code>DR26-08-04-ZB-13-2207</code></td><td class="ok">в очереди, 5 рельс включая GLM</td></tr>
+<tr><td>Сессия-исполнитель веера</td><td class="ok">поднята, стартует в 01:00</td></tr>
+<tr><td>Сторож раскатки, добивает отставшие узлы</td><td class="ok">ежедневно 08:30</td></tr>
+</table>
+</div>
+
+<h2>🧒 Простыми словами</h2>
+<div class="card eli">
+Мы поспорили: Лиса лучше Chrome или нет. Чтобы не спорить словами, поставили счётчик —
+он сам записывает, каким браузером мы работали и получилось ли. Оказалось, счётчик стоял
+только на одном компьютере из шести, а команда установки была сломана: она звала файл,
+которого нигде не было. Я собрал посылку, поставил на три компьютера и проверил своими
+глазами. Три оставшихся поставят себя сами, а утром робот проверит и добьёт.
+<br><br>
+Ещё проверил главное: можно ли оставить Лису открытой всё время и подходить к ней, когда надо.
+Можно. Открыл, отошёл, вернулся — она стоит и ждёт. Значит Chrome для этого больше не нужен.
+Но переделывать всё прямо сейчас нельзя: мы как раз меряем, и если поменять инструмент
+посреди замера, замер станет бессмысленным. Подождём до 18 августа.
+</div>
+
+</div>

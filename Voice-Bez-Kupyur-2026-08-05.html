@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>БЕЗ КУПЮР — правило 05.08.2026</title>
+<style>
+  :root{ --bg:#faf9f7; --fg:#1c1b19; --dim:#6b6862; --line:#e0ddd6;
+         --card:#fff; --red:#b3261e; --green:#1f6f3f; --amber:#8a6100; --accent:#2b5aa0; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#16161a; --fg:#e9e7e2; --dim:#9a968e; --line:#2e2e34;
+           --card:#1e1e23; --red:#f2887f; --green:#7fd0a0; --amber:#e2b657; --accent:#8ab4f8; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 16px 60px;background:var(--bg);color:var(--fg);
+       font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1000px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 4px;font-weight:650}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:26px}
+  h2{font-size:17px;margin:34px 0 12px;font-weight:600}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+        padding:16px 18px;margin-bottom:14px}
+  .quote{border-left:3px solid var(--accent);padding:2px 0 2px 14px;margin:10px 0;
+         color:var(--fg);font-style:italic}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  .scroll{overflow-x:auto}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em}
+  code{font:13px ui-monospace,Consolas,monospace;background:rgba(128,128,128,.14);
+       padding:1px 5px;border-radius:4px}
+  .ok{color:var(--green);font-weight:600}
+  .bad{color:var(--red);font-weight:600}
+  .warn{color:var(--amber);font-weight:600}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.split{grid-template-columns:1fr}}
+  .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);margin-bottom:6px}
+  .strike{color:var(--red)}
+  .keep{color:var(--green)}
+  .note{font-size:13px;color:var(--dim);margin-top:8px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Tihie-Pokoyniki-2026-08-06.html">&larr; Tihie-Pokoyniki-2026-08-06</a> · <a href="Voice-Finetune-ZB-12.html">Voice-Finetune-ZB-12 &rarr;</a></span></div>
+<div class="wrap">
+
+  <h1>БЕЗ КУПЮР — слова Антона не смягчаются</h1>
+  <div class="sub">Правило из голосовой 05.08.2026 12:18 UTC · чат «00 Архив ГОЛОСА» · <code>hub:5155</code> · узел ZBOOKG8-2023PAL</div>
+
+  <div class="card">
+    <div class="lbl">Что сказал Антон (дословно)</div>
+    <div class="quote">«Вот если я сказал „говно“ или сказал про цвет кожи и так далее — значит, так и надо говорить… Запрещено как-то изменять смысл, улучшать, подшлифовывать, потому что таким образом убирается эмоциональная сила этого поста… У меня в принципе этого нет, но даже если робот показал, что она есть, — он не прав.»</div>
+  </div>
+
+  <h2>Живая улика: приглаживание уже происходило</h2>
+  <div class="card">
+    <div class="note">Замерено на этой же голосовой. Слева — что он сказал, справа — что показывал конвейер: <code>voice_sessions.py pull</code> печатал выжимку бота, а не расшифровку.</div>
+    <div class="split" style="margin-top:12px">
+      <div>
+        <div class="lbl">ЕГО СЛОВА (transcript)</div>
+        <div class="keep">«У меня в принципе этого нет, но даже если робот показал, что она есть, — <b>он не прав</b>.»</div>
+      </div>
+      <div>
+        <div class="lbl">ЧТО ВИДЕЛА СЕССИЯ (summary бота)</div>
+        <div class="strike">«…это <b>ошибка распознавания или интерпретации</b>. Убирать или исправлять это без моего запроса запрещено.»</div>
+      </div>
+    </div>
+    <div class="note">Бот выдумал объяснение, которого Антон не давал: плоское «он не прав» стало техническим оправданием. Это не сокращение, это смена смысла.</div>
+  </div>
+
+  <h2>Где сидела шлифовка (5 мест)</h2>
+  <div class="card"><div class="note" style="margin:0 0 12px">Явной инструкции «смягчай» в конвейере <b>не было ни одной</b>. Шлифовка держалась на местах, где рерайт разрешён, а сохранность формулировки не потребована.</div>
+  <div class="scroll">
+  <table>
+    <tr><th>Место</th><th>Было</th><th>Стало</th></tr>
+    <tr>
+      <td><code>voice_sessions.py</code><br><span class="note">cmd_pull</span></td>
+      <td class="bad">печатал выжимку бота</td>
+      <td class="ok">печатает полную расшифровку</td>
+    </tr>
+    <tr>
+      <td><code>episode_adapter.py</code></td>
+      <td class="bad">в плейсхолдер шли ★ЭТАЛОН и АНТИ-ВАНИЛЬ, про сохранность формулировок — ничего</td>
+      <td class="ok">константа <code>ANTICENSOR</code> в каждом плейсхолдере; «обобщать» сужено до приватного, не резкости</td>
+    </tr>
+    <tr>
+      <td>скилл <code>/episode</code></td>
+      <td class="bad">«НИКАКОГО copy-paste — НАТИВНЫЙ рерайт» без оговорки</td>
+      <td class="ok">рерайт = ФОРМА, не смысл и не острота</td>
+    </tr>
+    <tr>
+      <td>скилл <code>/taste-check</code></td>
+      <td class="bad">P10 «текст Антона дословен» стоял в классе C (дедуп) и не судил посты его голосом</td>
+      <td class="ok">новый <b>P31 ⛔ (B)</b>; P10 расширен на <b>(B,C)</b></td>
+    </tr>
+    <tr>
+      <td>скилл <code>/voice-sessions</code></td>
+      <td class="bad">сид: «ЧТО СКАЗАЛ АНТОН: &lt;<b>смысл</b> расшифровки&gt;»</td>
+      <td class="ok">«&lt;дословно, БЕЗ КУПЮР&gt;» + запрет в строке <code>kind: post</code></td>
+    </tr>
+  </table>
+  </div></div>
+
+  <h2>Дома правила</h2>
+  <div class="card"><div class="scroll">
+  <table>
+    <tr><th>Дом</th><th>Вердикт</th><th>Что именно</th></tr>
+    <tr><td>Библия</td><td class="ok">✅</td><td><code>reglament-golosovye-antona-bez-kupyur</code></td></tr>
+    <tr><td>CLAUDE.md</td><td class="ok">✅</td><td>§9.7, версия v4.3.0 + строка в журнале</td></tr>
+    <tr><td>Память + MEMORY.md</td><td class="ok">✅</td><td><code>voice-verbatim-no-sanitizing</code> + строка в INBOX</td></tr>
+    <tr><td>Скиллы</td><td class="ok">✅</td><td><code>/episode</code>, <code>/taste-check</code>, <code>/voice-sessions</code></td></tr>
+    <tr><td>Дверь + расписание</td><td class="ok">✅</td><td><code>_test_anticensor.py</code> → ночная Regress Grid</td></tr>
+    <tr><td>MOC</td><td class="ok">✅</td><td><code>_Bible-Rules-MOC</code>, сирот 0</td></tr>
+    <tr><td>Hook</td><td class="warn">⛔ не нужен</td><td>правило не «каждый раз когда X»; его страхует дверь-тест, не хук</td></tr>
+  </table>
+  </div></div>
+
+  <h2>Доказательство</h2>
+  <div class="card"><div class="scroll">
+  <table>
+    <tr><th>Проверка</th><th>Результат</th></tr>
+    <tr><td><code>rule_home_guard.py voice-verbatim-no-sanitizing</code></td><td class="ok">exit 0 — след в always-loaded есть</td></tr>
+    <tr><td><code>_test_anticensor.py</code></td><td class="ok">9 проверок, 0 провалов</td></tr>
+    <tr><td>тест краснеет на сломанном коде</td><td class="ok">убрал <code>lines.append(ANTICENSOR)</code> → exit 1 с точным диагнозом; вернул → exit 0</td></tr>
+    <tr><td>дверь в ночной сетке</td><td class="ok"><code>regress_run.py --list</code> её находит; шард узла свежий (04.08, 220 тестов)</td></tr>
+    <tr><td>соседние движки не сломаны</td><td class="ok"><code>_test_slop_gate</code>, <code>_test_platform_gate</code>, <code>_test_voice_sessions</code> — зелёные</td></tr>
+    <tr><td><b>живой ДО→ПОСЛЕ</b></td><td class="ok">старый бандл: директив «БЕЗ КУПЮР» <b>0</b> · новый бандл из голосовой 5155: <b>2</b>, слово «говно» выжило во <b>всех 8</b> черновиках</td></tr>
+  </table>
+  </div></div>
+
+  <h2>Честная граница</h2>
+  <div class="card">
+    «Не приглаживать Антона» и «правила площадки» — разные вещи.
+    <ul style="margin:10px 0 0;padding-left:20px">
+      <li>Мы <b>не смягчаем его смысл и не переписываем его слова</b>. Никогда.</li>
+      <li>Площадка может отклонить или ограничить пост — это решение о <b>ПУБЛИКАЦИИ</b> (куда и в каком виде идёт текст), <b>не</b> разрешение редактировать смысл.</li>
+      <li>Конфликт → текст остаётся как есть, а «постить сюда или нет» решает <b>Антон</b>. Втихую редактурой это не решается.</li>
+    </ul>
+    <div class="note">⛔ Правило <b>не</b> разрешает генерировать оскорбления от себя — оно ровно про слова Антона. Гейт Наташи, матрица площадок и Tier-2 не ослаблены.</div>
+  </div>
+
+  <h2>Хвосты</h2>
+  <div class="card">
+    <div>⚠️ CLAUDE.md записан в <b>жёлтой зоне</b> (109.8 KB; preflight требовал освободить 11.8 KB). Использован карв-аут §10.0 «приём правила = одна строка, не ревизия». Файл ждёт <code>/canon-revision</code>.</div>
+    <div style="margin-top:8px">⚠️ <code>rule_liveness.py --gate</code> показывает 🟡 «дверь никто не дёргает» — его карта не знает, что <code>regress_run.py</code> подхватывает <code>_test_*.py</code> автоматически. Расхождение карты с фактом, не дыра в правиле.</div>
+    <div style="margin-top:8px">ℹ️ Наружу не ушло ничего: бандл <code>bez-kupyur-voice-verbatim</code> — черновики.</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Сторис в Telegram: ресёрч и вердикт (06.07.2026)</title>
+<style>
+  body { font-family: 'Segoe UI', sans-serif; background:#0f1420; color:#e8ecf4; margin:0; padding:32px; line-height:1.55; }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  .sub { color:#8b96ad; margin-bottom:28px; }
+  h2 { font-size:19px; margin:34px 0 12px; color:#7fc4ff; border-bottom:1px solid #26304a; padding-bottom:6px; }
+  .verdict { background:#12331f; border:1px solid #2e7d4f; border-radius:12px; padding:18px 22px; margin:22px 0; font-size:16px; }
+  .verdict b { color:#6fe09a; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
+  .card { background:#171e30; border:1px solid #26304a; border-radius:12px; padding:16px 18px; }
+  .card h3 { margin:0 0 8px; font-size:15px; color:#ffd479; }
+  .card p, .card li { font-size:14px; color:#c9d2e3; margin:6px 0; }
+  table { width:100%; border-collapse:collapse; font-size:14px; margin:10px 0; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid #26304a; vertical-align:top; }
+  th { color:#8b96ad; font-weight:600; }
+  .ok { color:#6fe09a; } .warn { color:#ffd479; } .bad { color:#ff8a8a; }
+  .pill { display:inline-block; background:#26304a; border-radius:20px; padding:2px 10px; font-size:12px; margin-right:6px; }
+  .eli5 { background:#1d2440; border:1px solid #3a4a7a; border-radius:12px; padding:16px 20px; margin-top:34px; font-size:15px; }
+  ul { padding-left:20px; margin:8px 0; }
+  li { margin:5px 0; }
+  .steps li { margin:10px 0; }
+  .muted { color:#8b96ad; font-size:13px; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="TG-Daemon-Status.html">&larr; TG-Daemon-Status</a> · <a href="Threads-Posting-Status.md">Threads-Posting-Status &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>📱 Сторис в Telegram: что можно, как автоматизировать, делать или нет</h1>
+<div class="sub">Ресёрч 06.07.2026 · 2 агента · официальные доки core.telegram.org + практика SMM · цель: сторис параллельно к постам из голосовых Антона</div>
+
+<div class="verdict">
+<b>Вердикт: ДЕЛАТЬ, но поэтапно.</b> Начать с ручного пилота на 1-2 недели (сторис = тизер к посту), замерить охваты. Автоматизировать только после того, как цифры покажут, что сторис реально смотрят. Полной автоматики «в один клик» у Telegram нет: встроенной отложки для сторис не существует, официальный API есть только для бизнес-аккаунтов.
+</div>
+
+<h2>1. Что вообще умеют сторис в Telegram (июль 2026)</h2>
+<div class="cards">
+  <div class="card">
+    <h3>Личный аккаунт</h3>
+    <p>Нужен <b>Premium</b> (иначе 1-3 сторис/день или вообще нельзя, зависит от региона). Premium: до 100/день, срок жизни 6/12/24/48ч, текст до 2048 символов.</p>
+  </div>
+  <div class="card">
+    <h3>Канал (@ClawRus)</h3>
+    <p>Нужны <b>бусты</b>: уровень канала = сколько сторис в день. Уровень 1 = 1 сторис/день. Один Premium-подписчик даёт 4 буста. Маленькому каналу хватит нескольких бустов.</p>
+  </div>
+  <div class="card">
+    <h3>Форматы</h3>
+    <p>Вертикаль 9:16. Фото 1080×1920, видео 720×1280 до 60 сек, файл до 30 МБ. До 3 ссылок-областей поверх сторис, реакции, гео, закреп в профиле.</p>
+  </div>
+  <div class="card">
+    <h3>Где показываются</h3>
+    <p>Лента кружков вверху списка чатов. Сторис канала видят подписчики. Это «второе касание» аудитории поверх постов.</p>
+  </div>
+</div>
+
+<h2>2. Пути автоматизации: сравнение</h2>
+<table>
+<tr><th>Путь</th><th>Для чего работает</th><th>Риск бана</th><th>Комментарий</th></tr>
+<tr>
+  <td><b>Bot API (postStory)</b><br><span class="pill">официальный</span></td>
+  <td>Только личный аккаунт с Telegram Business + бот с правом can_manage_stories</td>
+  <td class="ok">Нулевой</td>
+  <td>Единственный официальный способ. Business входит в Premium. Каналы НЕ поддерживаются. Появился в Bot API 9.0 (апрель 2025).</td>
+</tr>
+<tr>
+  <td><b>MTProto (stories.sendStory)</b><br><span class="pill">серая зона</span></td>
+  <td>Личный аккаунт (Premium) и канал (с бустами). Библиотеки: kurigram (готовый send_story), Telethon (raw-вызов)</td>
+  <td class="warn">Средний</td>
+  <td>Работает через юзер-сессию (как наш Telegram MCP). Банят не за факт, а за «нечеловеческое» поведение. 1-2 сторис/день с паузами = низкий риск, но аккаунт Антона терять нельзя.</td>
+</tr>
+<tr>
+  <td><b>SMM-сервисы</b> (Postmypost, SMMplanner...)</td>
+  <td>Заявляют сторис, под капотом тот же MTProto</td>
+  <td class="bad">Средний + утечка</td>
+  <td>Надо отдать сессию/доступ чужому сервису. Наше правило: сессии не покидают машину. Не рекомендую.</td>
+</tr>
+<tr>
+  <td><b>Встроенная отложка Telegram</b></td>
+  <td>Для постов есть, для сторис <b>НЕТ</b></td>
+  <td class="ok">-</td>
+  <td>Сторис можно только сохранить в черновик и опубликовать руками. Планировщика нет даже в свежих версиях.</td>
+</tr>
+</table>
+
+<h2>3. Что учесть (грабли)</h2>
+<ul>
+  <li><b>Лимиты и flood-wait:</b> у API есть недельные/месячные скрытые лимиты, при превышении: ошибка с таймером ожидания. При 1-2 сторис/день не упрёмся.</li>
+  <li><b>Ссылки в сторис:</b> до 3 областей-ссылок, это и есть мост «сторис → пост». Главная механика тизера.</li>
+  <li><b>Контент 9:16:</b> из текстового поста сторис сама не родится, нужен шаблон-карточка (заголовок + 1 мысль + стрелка «читать пост»). Это отдельный маленький генератор картинок.</li>
+  <li><b>Прайм-тайм:</b> сторис живёт 24ч, постить надо днём, когда аудитория онлайн (не в ночное окно рутин).</li>
+  <li><b>Музыка/чужой контент:</b> права не проверены, безопаснее свои картинки без музыки.</li>
+  <li><b>Метрики есть:</b> Telegram отдаёт views_per_story / reactions_per_story в статистике канала, пилот можно замерить честно.</li>
+  <li><b>Охваты неизвестны:</b> публичных данных «сторис канала дают X% от охвата поста» нет. Поэтому сначала пилот, потом автоматизация.</li>
+</ul>
+
+<h2>4. Рекомендуемый план (АК-47, поэтапно)</h2>
+<ol class="steps">
+  <li><b>Фаза 0, пилот руками (1-2 недели):</b> к каждому посту из голосовых делаем 1 сторис-тизер (карточка 9:16 + ссылка на пост). Клод готовит картинку и текст, человек публикует с телефона за 30 секунд. Забустить @ClawRus до уровня 1 (бусты Premium-аккаунтов своих же).</li>
+  <li><b>Фаза 1, замер:</b> через 2 недели смотрим views_per_story против охвата постов. Мало смотрят: закрываем тему, дёшево отделались. Смотрят: идём дальше.</li>
+  <li><b>Фаза 2, полуавтомат:</b> Клод генерит карточку автоматически из готового поста (шаблон), кидает в чат «вот сторис, запостить?», публикация по «+».</li>
+  <li><b>Фаза 3, автомат (если оправдано):</b> для личного аккаунта Антона: официальный путь через Telegram Business + бот (риск 0). Для канала: MTProto через существующую сессию, 1 сторис/день, с человеческими паузами.</li>
+</ol>
+
+<h2>5. Открытые вопросы</h2>
+<ul>
+  <li>Есть ли у @ClawRus сейчас бусты и какой уровень? (проверяется в Statistics → Boosts)</li>
+  <li>Постим только в канал или ещё в личный профиль Антона? (личный: официальная автоматизация через Business возможна)</li>
+  <li>Кто рисует шаблон карточки 9:16? (один раз сделать, дальше генерится само)</li>
+</ul>
+
+<div class="eli5">
+🧒 <b>Простыми словами:</b> сторис в Телеграме — это кружочки сверху, как в Инстаграме. Робот-кнопки «запланируй сторис» у Телеграма нет. Робота сделать можно, но по-хитрому: для личной странички есть честный официальный способ, для канала — только «как бы рукой человека», а за это иногда ругают. Поэтому сначала две недели постим сами и смотрим: а смотрит ли их вообще кто-нибудь? Если да, тогда строим робота. Если нет, мы сэкономили кучу времени.
+</div>
+
+<p class="muted">Источники: core.telegram.org/api/stories · core.telegram.org/bots/api-changelog (Bot API 9.0-10.1) · telegram.org/blog/channel-stories · код Telethon/Pyrogram/kurigram на GitHub · обзоры SMM-сервисов 2025-2026.</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Syncthing: боль, костыли и куда бежать</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2230; --line:#2a3242;
+    --ink:#e6edf3; --mut:#9aa7b4; --dim:#6b7684;
+    --red:#ff5c66; --amber:#ffb020; --green:#3fb950; --blue:#58a6ff; --violet:#bc8cff; --teal:#39d3c3;
+    --shadow:0 8px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px 80px}
+  section{padding:40px 0;border-bottom:1px solid var(--line)}
+  h1{font-size:40px;line-height:1.1;margin:0 0 10px;letter-spacing:-.5px}
+  h2{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin:0 0 18px;font-weight:700}
+  h3{font-size:22px;margin:0 0 8px}
+  p{margin:0 0 12px;color:var(--ink)}
+  .mut{color:var(--mut)}
+  .dim{color:var(--dim)}
+  small{color:var(--dim);font-size:12px}
+  code{background:#0b0f16;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12.5px;
+    font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;color:var(--teal)}
+  .cover{padding:64px 0 44px;text-align:left}
+  .kicker{display:inline-block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--violet);
+    border:1px solid var(--line);border-radius:100px;padding:5px 14px;margin-bottom:22px}
+  .lede{font-size:18px;color:var(--mut);max-width:760px}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:1fr 1fr 1fr}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:800px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;box-shadow:var(--shadow)}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+  .stat b{display:block;font-size:30px;line-height:1;margin-bottom:6px}
+  .stat span{font-size:12.5px;color:var(--mut)}
+  .verdict{background:linear-gradient(180deg,#132014,#101711);border:1px solid #24402a;border-left:4px solid var(--green);
+    border-radius:14px;padding:22px 22px 8px}
+  .pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;padding:3px 9px;border-radius:100px;text-transform:uppercase}
+  .p-red{background:rgba(255,92,102,.14);color:var(--red);border:1px solid rgba(255,92,102,.35)}
+  .p-amber{background:rgba(255,176,32,.14);color:var(--amber);border:1px solid rgba(255,176,32,.35)}
+  .p-green{background:rgba(63,185,80,.14);color:var(--green);border:1px solid rgba(63,185,80,.35)}
+  .p-blue{background:rgba(88,166,255,.14);color:var(--blue);border:1px solid rgba(88,166,255,.35)}
+  .painrow{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line)}
+  .painrow:first-of-type{border-top:none}
+  .painnum{flex:0 0 34px;height:34px;border-radius:9px;background:var(--panel2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--red)}
+  .painbody{flex:1}
+  .painbody .ev{font-size:12.5px;color:var(--dim);margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  .tblscroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+  th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--panel2);color:var(--mut);font-size:11.5px;letter-spacing:.6px;text-transform:uppercase;position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  .yes{color:var(--green);font-weight:700}
+  .no{color:var(--red);font-weight:700}
+  .mid{color:var(--amber);font-weight:700}
+  .rowhi{background:rgba(63,185,80,.06)}
+  .diagram{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .flow{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}
+  .node{flex:1;min-width:150px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+  .node b{display:block;margin-bottom:4px}
+  .arrow{align-self:center;color:var(--dim);font-size:22px}
+  .split{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  @media(max-width:800px){.split{grid-template-columns:1fr}}
+  .phase{border-left:3px solid var(--blue);padding:2px 0 2px 16px;margin-bottom:20px}
+  .phase h3{margin-bottom:4px}
+  ul.tight{margin:6px 0 0;padding-left:18px}
+  ul.tight li{margin:4px 0;color:var(--mut);font-size:14px}
+  .eli5{background:linear-gradient(180deg,#1a1726,#141019);border:1px solid #33285a;border-radius:14px;padding:20px}
+  .eli5 h3{color:var(--violet)}
+  a{color:var(--blue)}
+  .src{font-size:12px;color:var(--dim)}
+  .src a{color:var(--dim)}
+  .tag{font-size:11px;color:var(--dim);font-family:"SF Mono",ui-monospace,monospace}
+  .foot{padding-top:26px;color:var(--dim);font-size:12.5px}
+  .badge-hub{color:var(--teal)}
+  .prompt{background:#0b0f16;border:1px solid var(--line);border-radius:12px;padding:16px;white-space:pre-wrap;
+    font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--mut);overflow-x:auto}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Sync-Propagation-Audit.html">&larr; Sync-Propagation-Audit</a> · <a href="System-Health-MAYAK.html">System-Health-MAYAK &rarr;</a></span></div>
+<div class="wrap">
+
+  <!-- COVER -->
+  <section class="cover" style="border-bottom:none">
+    <span class="kicker">Deep Research · инфраструктура · 07 июля 2026</span>
+    <h1>Syncthing: боль, костыли<br>и куда бежать</h1>
+    <p class="lede">Мы поймали много геморроя с «синк-синком». Здесь — все наши <b style="color:var(--red)">грабли</b> и все <b style="color:var(--amber)">костыли</b>, которые мы наворотили вокруг него, и честный разбор <b style="color:var(--green)">альтернатив</b> под нашу реальную задачу.</p>
+    <p class="tag" style="margin-top:16px">Собрано с живой машины MacBook-Anton (Mac16) · факты по альтернативам сверены на 2026</p>
+  </section>
+
+  <!-- TLDR / VERDICT -->
+  <section>
+    <h2>TL;DR — короткий ответ</h2>
+    <div class="verdict">
+      <p style="font-size:17px"><b>Проблема не в Syncthing. Проблема в том, что мы навесили на него три разные работы сразу</b>, а он умеет только одну.</p>
+      <p class="mut">Syncthing — это «репликатор файлов, где все равны и нет главного». А мы гоняем через него: (1) <b>склад</b> — 180 тыс. файлов волта; (2) <b>конфиг</b> — скиллы/память/CLAUDE.md; (3) <b>рацию</b> — межмашинную связь, консенсус, одобрения. Третье он в принципе не умеет — отсюда весь зоопарк костылей.</p>
+      <p style="color:var(--green);font-weight:600">Лечение — не «сменить Syncthing на X», а <b>разделить три работы по трём разным инструментам</b> и назначить хаб единственным хозяином. Тогда 80% боли и почти все костыли исчезают. Детали — в конце.</p>
+    </div>
+  </section>
+
+  <!-- HOW WE USE IT -->
+  <section>
+    <h2>Как мы это используем сейчас</h2>
+    <div class="grid g4" style="margin-bottom:18px">
+      <div class="stat"><b style="color:var(--blue)">180 202</b><span>файла / 6.1 ГБ в волте (одна папка!)</span></div>
+      <div class="stat"><b style="color:var(--red)">959</b><span>конфликт-копий <code>*.sync-conflict</code> накоплено</span></div>
+      <div class="stat"><b style="color:var(--violet)">6+1</b><span>синк-папок (+1 битая пустая запись)</span></div>
+      <div class="stat"><b style="color:var(--amber)">14</b><span>костыль-скриптов вокруг синка</span></div>
+    </div>
+    <div class="card">
+      <p class="mut" style="margin-bottom:10px">Реальная раскладка папок (с живого конфига Mac16):</p>
+      <div class="tblscroll">
+      <table>
+        <tr><th>Папка</th><th>Режим</th><th>Что это</th><th>Боль</th></tr>
+        <tr><td><code>anton-knowledge</code></td><td><span class="mid">sendreceive</span></td><td>Весь волт, 180k файлов</td><td class="dim">На грани возможностей Syncthing по числу файлов</td></tr>
+        <tr><td><code>claude-home</code> / <code>skills</code> / <code>memory</code> / <code>imports</code></td><td><span class="p-red pill">receiveonly</span></td><td>Конфиг Claude, только приём</td><td class="dim">Локальная правка молча откатывается</td></tr>
+        <tr><td><code>machine-bus</code></td><td><span class="mid">sendreceive</span></td><td>«Рация» между машинами</td><td class="dim">Файл-папка в роли месседж-шины — отстаёт</td></tr>
+        <tr><td><code>id=""</code> path=""</td><td><span class="p-red pill">битая</span></td><td>Пустая запись-призрак в config.xml</td><td class="dim">Мусор в конфиге, тихий источник ошибок</td></tr>
+      </table>
+      </div>
+      <p class="src" style="margin-top:10px">Связь только по LAN (<code>192.168.1.44:22000</code>), 1 активное соединение с хабом. Прямо сейчас статус зелёный: idle, 0 ошибок, 0 needFiles — <b>но это «сейчас»</b>, а история шрамов ниже.</p>
+    </div>
+  </section>
+
+  <!-- GRABLI -->
+  <section>
+    <h2>🩹 Грабли — на что мы наступали</h2>
+    <div class="card">
+      <div class="painrow"><div class="painnum">1</div><div class="painbody">
+        <b>Конфликты — хронические, не разовые.</b> <span class="pill p-red">критично</span><br>
+        <span class="mut">По всему home накопилось <b style="color:var(--red)">959 конфликт-копий</b> <code>*.sync-conflict</code>. Бьют по координационным/индексным файлам: <code>_DR-Registry</code> (8×), каталоги сессий, <code>Task-Backlog</code>, <code>_heartbeat-*</code>, MOC-и, дашборды. 4 июля отдельно раскололо always-loaded <code>MEMORY.md</code>, <code>declined-decisions</code>, <code>cofounder-growth-log</code>.</span>
+        <div class="ev">Улика: <code>find ~ -name "*.sync-conflict-*"</code> → 959; папка <code>_conflict-fix-bak-20260704/</code>. Два узла правят один файл → тихий clobber. Это не «однажды не повезло», это фон.</div>
+      </div></div>
+      <div class="painrow"><div class="painnum">2</div><div class="painbody">
+        <b>Ловушка receive-only.</b> <span class="pill p-amber">частая</span><br>
+        <span class="mut">Конфиг Claude на followers — только приём. Пишешь скилл/память локально — Syncthing молча откатывает. Отсюда правило «пишущая память только в GDrive-проекте».</span>
+        <div class="ev">Улика: <code>claude-home/skills/memory/imports</code> = receiveonly в config.xml. Выглядит как «мои правки пропали».</div>
+      </div></div>
+      <div class="painrow"><div class="painnum">3</div><div class="painbody">
+        <b>Масштаб: 180k файлов — у края обрыва.</b> <span class="pill p-amber">растёт</span><br>
+        <span class="mut">Комьюнити Syncthing: папки &gt;200k файлов начинают тормозить на сканировании, &gt;500k — подвисают/ломаются. Наш волт уже 180k и растёт (+ _imports, + медиа).</span>
+        <div class="ev">Сканирование замирает, индекс-БД пухнет, старт синка медленный. Лечится тюнингом (SSD-индекс, GOMEMLIMIT, .stignore), но это потолок архитектуры.</div>
+      </div></div>
+      <div class="painrow"><div class="painnum">4</div><div class="painbody">
+        <b>Пир отвалился → «рация» замолчала.</b> <span class="pill p-red">критично</span><br>
+        <span class="mut">Одна машина офлайн/за VPN — и <code>_machine-bus</code> застревает. Межмашинная связь встаёт, пока не поднимешь пира. P2P глушится NAT/VPN (у нас по факту работает только по локалке).</span>
+        <div class="ev">Отсюда 3 слоя self-heal и переезд консенсуса в Telegram. Улика вживую: watchdog <b>сегодня в 12:52</b> сам перезапускал Syncthing (лог <code>_syncthing_watchdog_log.txt</code>) — костыль работает прямо сейчас.</div>
+      </div></div>
+      <div class="painrow"><div class="painnum">5</div><div class="painbody">
+        <b>Задержка + «файл не доехал» ≠ «файла нет».</b> <span class="pill p-amber">частая</span><br>
+        <span class="mut">fsWatcher копит 10с, при флапе леджер отстаёт до ~часа. Файл в пути / машина выключена / не тот диск (C: vs E:) → выглядит как потеря данных, и есть соблазн пересоздать поверх.</span>
+        <div class="ev">Правило «сначала проверь другой диск/бэкап/машину, не пересоздавай» — прямое следствие этой грабли.</div>
+      </div></div>
+      <div class="painrow"><div class="painnum">6</div><div class="painbody">
+        <b>Миграция вычистила живой конфиг.</b> <span class="pill p-red">было больно</span><br>
+        <span class="mut">Однажды синк/чистка молча опустошила <code>~/.claude/skills</code> — спасла ручная копия. Отсюда обязательный git-бэкап конфига на каждой машине + снимок со счётчиками до→после.</span>
+        <div class="ev">Класс «тихое удаление при репликации»: пусто без ошибки = красный флаг.</div>
+      </div></div>
+      <div class="painrow"><div class="painnum">7</div><div class="painbody">
+        <b>Файл-папка в роли месседж-шины.</b> <span class="pill p-amber">архитектурное</span><br>
+        <span class="mut">Консенсус/одобрения/heartbeat пытались жить в синкаемой папке. Но синхронизация папок — это eventual consistency, а не очередь сообщений. «Молчит в леджере» почти всегда значило «просто ещё не доехало».</span>
+        <div class="ev">Пришлось объявить Telegram первичной рацией, а файловый леджер — лишь архивом.</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- KOSTYLI -->
+  <section>
+    <h2>🔧 Костыли — что мы построили, чтобы это терпеть</h2>
+    <p class="mut" style="margin-bottom:16px">По каждой грабле мы дописывали подпорку. Получился целый слой middleware поверх «просто синка файлов». Само его существование — главный симптом: <b>мы вручную дособираем распределённую систему, которой Syncthing не является.</b></p>
+    <div class="grid g3">
+      <div class="card"><span class="pill p-blue">сторожа</span>
+        <p style="margin:8px 0 4px"><b>Watchdog-и живучести</b></p>
+        <ul class="tight">
+          <li><code>syncthing_follower_watchdog.sh</code> (5 мин)</li>
+          <li><code>peer_watch.py</code> — жив ли пир</li>
+          <li>авто-nudge упавшему пиру в TG</li>
+        </ul>
+      </div>
+      <div class="card"><span class="pill p-blue">рация-дубль</span>
+        <p style="margin:8px 0 4px"><b>Telegram-шина вместо файлов</b></p>
+        <ul class="tight">
+          <li><code>bus_send.py</code> / <code>bus_ping.py</code></li>
+          <li><code>tg_bus.py</code> / <code>tg_bus_read.py</code></li>
+          <li><code>machine_bus.py</code> — failover-курьер</li>
+        </ul>
+      </div>
+      <div class="card"><span class="pill p-blue">доставка</span>
+        <p style="margin:8px 0 4px"><b>«Посылки» — форс-применение</b></p>
+        <ul class="tight">
+          <li><code>deploy_check / apply / register</code></li>
+          <li>манифест <code>PENDING-&lt;host&gt;</code></li>
+          <li>«синк доставил» ≠ «применено»</li>
+        </ul>
+      </div>
+      <div class="card"><span class="pill p-blue">координация</span>
+        <p style="margin:8px 0 4px"><b>Замки от гонок правок</b></p>
+        <ul class="tight">
+          <li><code>onair.py</code> — доска ON AIR</li>
+          <li>lease с TTL ~15 мин</li>
+          <li>прескан <code>*.sync-conflict</code> перед правкой</li>
+        </ul>
+      </div>
+      <div class="card"><span class="pill p-blue">консенсус</span>
+        <p style="margin:8px 0 4px"><b>Договорённости машин</b></p>
+        <ul class="tight">
+          <li><code>consensus.py</code> (переехал в TG)</li>
+          <li><code>inbox_robot.command</code></li>
+          <li>ACK-квитанции вручную</li>
+        </ul>
+      </div>
+      <div class="card"><span class="pill p-blue">страховка</span>
+        <p style="margin:8px 0 4px"><b>Бэкапы и сверка</b></p>
+        <ul class="tight">
+          <li>git-бэкап <code>~/.claude</code> (15 мин)</li>
+          <li>снимок + счётчики до→после</li>
+          <li>ручная чистка <code>_conflict-fix-bak</code></li>
+        </ul>
+      </div>
+    </div>
+    <p class="src" style="margin-top:14px">≈14 скриптов + десяток правил в CLAUDE.md/памяти существуют <b>только</b> чтобы компенсировать поведение синка. Это не «мы плохо настроили» — это цена использования P2P-репликатора не по назначению.</p>
+  </section>
+
+  <!-- ROOT CAUSE -->
+  <section>
+    <h2>🎯 Корень проблемы (5 почему)</h2>
+    <div class="diagram">
+      <p class="mut" style="margin-bottom:16px">Syncthing спроектирован как <b>«много равных узлов, нет главного, файлы догоняют друг друга когда-нибудь»</b>. Мы просим у него три вещи, две из которых он делать не обязан:</p>
+      <div class="flow">
+        <div class="node" style="border-color:#3a2a2a"><b class="badge-hub">1 · Склад</b><span class="dim" style="font-size:12.5px">180k файлов волта + медиа</span><br><span class="mid" style="font-size:12px">умеет, но на пределе</span></div>
+        <div class="arrow">+</div>
+        <div class="node" style="border-color:#3a2a2a"><b class="badge-hub">2 · Конфиг</b><span class="dim" style="font-size:12.5px">скиллы, память, CLAUDE.md</span><br><span class="mid" style="font-size:12px">умеет, но нужен «главный»</span></div>
+        <div class="arrow">+</div>
+        <div class="node" style="border-color:#4a2530"><b style="color:var(--red)">3 · Рация</b><span class="dim" style="font-size:12.5px">связь, консенсус, одобрения</span><br><span class="no" style="font-size:12px">НЕ умеет вообще</span></div>
+      </div>
+      <p style="margin-top:16px;color:var(--amber)"><b>Почему больно?</b> → потому что нет единого хозяина (все пишут) <b>и</b> мы используем «когда-нибудь доедет» там, где нужна мгновенная очередь сообщений. Оба — не про Syncthing.</p>
+    </div>
+  </section>
+
+  <!-- ALTERNATIVES TABLE -->
+  <section>
+    <h2>🧭 Альтернативы — под нашу реальную задачу</h2>
+    <p class="mut" style="margin-bottom:14px">Оценка против наших нужд: near-real-time · Win+Mac · тянет 180k файлов · синкает и конфиг · ясный «единый источник правды» · простота (АК-47) · цена.</p>
+    <div class="tblscroll">
+    <table>
+      <tr>
+        <th>Вариант</th><th>Модель</th><th>Real-time</th><th>Единый хозяин</th><th>Конфиг+бус</th><th>Цена</th><th>Вердикт под нас</th>
+      </tr>
+      <tr class="rowhi">
+        <td><b>Syncthing + тюнинг</b><br><small>оставить, но починить</small></td>
+        <td>P2P репликатор</td><td class="yes">да</td><td class="no">нет (все равны)</td><td class="mid">частично</td><td class="yes">$0</td>
+        <td><span class="pill p-green">базовый шаг</span> Убрать битую папку, <code>.stignore</code> на медиа/кэши, хаб = единственный писатель always-loaded. Дёшево, снимает часть боли.</td>
+      </tr>
+      <tr>
+        <td><b>Resilio Sync</b></td>
+        <td>P2P (BitTorrent)</td><td class="yes">да</td><td class="no">нет</td><td class="mid">частично</td><td class="mid">free / $</td>
+        <td><span class="pill p-amber">вбок</span> Быстрее по WAN, проще UI, но тот же класс (eventual, нет главного, проприетарное). Координацию не лечит.</td>
+      </tr>
+      <tr>
+        <td><b>rclone bisync</b></td>
+        <td>по расписанию</td><td class="no">нет</td><td class="mid">через облако</td><td class="no">нет</td><td class="yes">$0</td>
+        <td><span class="pill p-red">не для жизни</span> Не real-time, опасен при одновременных правках, нужны <code>--resilient/--recover</code>. Хорош как бэкап в облако, не как живой синк.</td>
+      </tr>
+      <tr>
+        <td><b>Obsidian Sync</b></td>
+        <td>централизованный (их сервер)</td><td class="yes">да</td><td class="yes">да</td><td class="mid">волт+настройки, не ~/.claude</td><td class="mid">$4/мес</td>
+        <td><span class="pill p-green">для волта — топ</span> E2E-шифрование, история версий, до 10 волтов, 10 ГБ. Чисто решает половину «волт». Но не синкает <code>~/.claude</code> и не рация.</td>
+      </tr>
+      <tr>
+        <td><b>Облако-диск</b><br><small>Google Drive / Dropbox / iCloud</small></td>
+        <td>централизованный</td><td class="mid">почти</td><td class="yes">да (облако)</td><td class="mid">да, как папка</td><td class="mid">есть у нас</td>
+        <td><span class="pill p-amber">АК-47-путь</span> Mac16 <b>уже</b> на Google Drive. Просто, один источник правды. Минус: слабые конфликты, тормоза материализации файлов, не мгновенно.</td>
+      </tr>
+      <tr class="rowhi">
+        <td><b>Seafile на хабе</b></td>
+        <td>централизованный (свой сервер)</td><td class="yes">да</td><td class="yes"><b>да, хаб=сервер</b></td><td class="mid">файлы да, бус — нет</td><td class="yes">$0 (self-host)</td>
+        <td><span class="pill p-green">склад — топ</span> C-движок, в 2–3× быстрее Nextcloud, надёжный. Хаб всегда включён → идеальный сервер. Централизованный хозяин убивает конфликт-неоднозначность.</td>
+      </tr>
+      <tr>
+        <td><b>Nextcloud на хабе</b></td>
+        <td>централизованный</td><td class="yes">да</td><td class="yes">да</td><td class="mid">файлы да</td><td class="yes">$0</td>
+        <td><span class="pill p-amber">тяжелее</span> Функций море (PHP), но медленнее и сложнее в поддержке. Против АК-47.</td>
+      </tr>
+      <tr class="rowhi">
+        <td><b>Git (для конфига/текста)</b></td>
+        <td>версионный, хаб=origin</td><td class="no">нет (pull)</td><td class="yes"><b>да</b></td><td class="yes"><b>конфиг — идеально</b></td><td class="yes">$0</td>
+        <td><span class="pill p-green">конфиг — топ</span> Уже бэкапим <code>~/.claude</code> гитом! Версии, понятные конфликты, крошечный объём. Убивает receiveonly-ловушку и «тихое удаление».</td>
+      </tr>
+    </table>
+    </div>
+    <p class="src" style="margin-top:10px">Никакой <b>один</b> инструмент не закрывает все три работы. Поэтому — не «заменить», а «разделить».</p>
+  </section>
+
+  <!-- RECOMMENDATION -->
+  <section>
+    <h2>✅ Рекомендация — разделить три работы</h2>
+    <div class="split" style="margin-bottom:22px">
+      <div class="card" style="border-top:3px solid var(--teal)">
+        <span class="pill p-green">склад</span>
+        <p style="margin:8px 0 4px"><b>Волт (180k файлов)</b></p>
+        <p class="mut" style="font-size:13.5px">Хаб = единственный хозяин. Либо Syncthing с хаб-авторитетом + <code>.stignore</code> (медиа/кэши/.git вон → число файлов вниз), либо <b>Obsidian Sync</b> для заметок + тяжёлые медиа на Google Drive с указателями (правило у нас уже есть).</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--green)">
+        <span class="pill p-green">конфиг</span>
+        <p style="margin:8px 0 4px"><b>~/.claude (скиллы/память)</b></p>
+        <p class="mut" style="font-size:13.5px">Перевести на <b>git</b>: хаб = origin, followers делают pull. Уже бэкапится гитом — осталось сделать его основным каналом. Убирает receiveonly-ловушку, «тихое удаление» и конфликты always-loaded файлов разом.</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--violet)">
+        <span class="pill p-blue">рация</span>
+        <p style="margin:8px 0 4px"><b>Связь / консенсус / одобрения</b></p>
+        <p class="mut" style="font-size:13.5px"><b>Telegram — единственная рация</b> (уже почти так). Файловую <code>_machine-bus</code> вывести из роли шины полностью. Это выключает целый класс костылей: watchdog-пиров, failover-курьера, прескан конфликтов.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <h3>Фаза 0 — сегодня, почти бесплатно</h3>
+      <ul class="tight">
+        <li>Удалить битую пустую запись папки (<code>id=""</code>) из config.xml.</li>
+        <li><b>Ужесточить существующий <code>.stignore</code></b> (он уже есть, рядом бэкап от отката d2 25 июня): исключить <code>_originals</code>-медиа, <code>.git</code>, <code>.stversions</code>, кэши эмбеддингов, node_modules → срезать число файлов из зоны риска 180k.</li>
+        <li>Вычистить 959 старых <code>*.sync-conflict</code>-копий (после сверки, что живые версии целы).</li>
+        <li>Жёсткое правило: always-loaded файлы (<code>MEMORY.md</code>, канон) правит <b>только хаб</b>. На одной машине за раз.</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h3>Фаза 1 — разнести конфиг и рацию</h3>
+      <ul class="tight">
+        <li>Конфиг Claude → git-канал (хаб origin, followers pull). Syncthing по конфигу выключить.</li>
+        <li>Telegram сделать единственной шиной; файловый леджер оставить только как архив.</li>
+        <li>Отключить костыли, ставшие ненужными (peer-watchdog, failover-курьер) — по одному, с проверкой.</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h3>Фаза 2 — если волт всё ещё болит</h3>
+      <ul class="tight">
+        <li>Поднять <b>Seafile</b> на всегда-включённом хабе как единый источник правды для волта. Все узлы — клиенты хаба, а не P2P-пиры. Центральный хозяин убивает неоднозначность «кто прав».</li>
+        <li>Или перевести заметки на Obsidian Sync ($4/мес) и не держать их в Syncthing вообще.</li>
+      </ul>
+    </div>
+    <p class="src">Результат: Syncthing (или его замена) делает <b>одну</b> работу — реплицирует файлы под единым хозяином. Конфиг живёт в git (версии, откат). Связь — в Telegram (мгновенно, видно людям). ~80% боли и почти весь костыль-слой отмирают.</p>
+  </section>
+
+  <!-- ELI5 -->
+  <section>
+    <div class="eli5">
+      <h3>🧒 Простыми словами</h3>
+      <p class="mut">Представь, что Syncthing — это <b>копир-мальчик</b>, который бегает между твоими компами и делает так, чтобы у всех лежали одинаковые бумажки. Он хороший, но мы нагрузили его тремя делами сразу: таскать <b>гору бумаг</b> (180 тысяч!), носить <b>твои настройки</b>, и ещё быть <b>рацией</b>, чтобы компы переговаривались. Рацией он быть не умеет — вот и получается, что мы приклеили к нему кучу подпорок скотчем, чтобы он не падал.</p>
+      <p class="mut">Правильно — не выгонять мальчика, а <b>раздать три дела трём помощникам</b>: гору бумаг держит один главный компьютер-хаб (все берут у него), настройки возить через «git» (он помнит все версии и ничего не теряет), а переговоры вести по Telegram (быстро и видно глазами). Тогда мальчику остаётся одно простое дело — и скотч больше не нужен.</p>
+    </div>
+  </section>
+
+  <!-- DR PROMPT -->
+  <section>
+    <h2>🔬 Промпт для внешнего Deep Research <span class="tag">(независимая вторая проверка · DR26-07-07-MAC16-01)</span></h2>
+    <p class="mut" style="margin-bottom:12px">Скопируй в ChatGPT/Gemini Deep Research, если хочешь независимо перепроверить вывод перед решением:</p>
+    <div class="prompt">Роль: инженер по распределённым системам. Задача: сравнить решения для синхронизации файлов между 4 машинами (1 всегда-включённый Windows-хаб + Windows-ноут + 2 macOS) для трёх РАЗНЫХ нагрузок:
+(1) СКЛАД: ~180 000 преимущественно мелких текстовых файлов (Obsidian-волт) + медиа, растёт;
+(2) КОНФИГ: каталог настроек AI-агента (скрипты, память, ~150 файлов), критична версионность и откат, недопустимо тихое удаление;
+(3) КООРДИНАЦИЯ: near-real-time обмен сообщениями/консенсус/одобрения между машинами.
+
+Текущее решение — Syncthing на всё сразу; боль: конфликты always-loaded файлов, ловушка receive-only, деградация на >200k файлов, задержки при флапе P2P/VPN, использование синкаемой папки как message-bus.
+
+Сравни (2026): Syncthing (+тюнинг), Resilio Sync, rclone bisync, Obsidian Sync, Seafile, Nextcloud, git-как-канал-конфига, облачные диски (Google Drive/Dropbox/iCloud), Mutagen, Unison. Для каждого: real-time?, нужен ли центральный сервер/хозяин, поведение при одновременных правках и удалениях, потолок по числу файлов, кросс-ОС Win+Mac, простота поддержки для не-инженера, цена, риск потери данных.
+Дай: (а) рекомендованную АРХИТЕКТУРУ (можно разные инструменты под разные нагрузки), (б) что оставить в Syncthing, (в) поэтапный план миграции с минимальным риском, (г) конкретные настройки .stignore/тюнинга если Syncthing остаётся. Приведи источники 2026 года.</div>
+  </section>
+
+  <section style="border-bottom:none">
+    <h2>Источники</h2>
+    <p class="src">
+      Syncthing scaling: <a href="https://forum.syncthing.net/t/large-number-of-files-performance/13701">forum</a> · <a href="https://docs.syncthing.net/users/tuning.html">docs/tuning</a> · <a href="https://github.com/syncthing/syncthing/issues/8602">issue #8602</a> ·
+      Resilio vs Syncthing: <a href="https://technologycounter.com/compare/resilio-sync-vs-syncthing">technologycounter</a> · <a href="https://fast.io/resources/syncthing-alternative/">fast.io</a> ·
+      rclone bisync: <a href="https://rclone.org/bisync/">rclone.org</a> · <a href="https://forum.rclone.org/t/is-bisync-ready-for-prime-time/30109">forum</a> ·
+      Obsidian Sync: <a href="https://obsidian.md/pricing">obsidian.md/pricing</a> ·
+      Seafile/Nextcloud: <a href="https://computingforgeeks.com/nextcloud-vs-owncloud-vs-seafile-vs-syncthing/">computingforgeeks</a> · <a href="https://www.ssdnodes.com/blog/nextcloud-vs-seafile-dropbox-alternative/">ssdnodes</a>
+    </p>
+    <p class="foot">Собрано Claude (Max, ветка Mac16) с живой машины MacBook-Anton · 07.07.2026 · грабли/костыли — по факту с диска, альтернативы сверены на 2026. Не решение за тебя — карта, чтобы решить самому.</p>
+  </section>
+
+</div>
+</body>
+</html>

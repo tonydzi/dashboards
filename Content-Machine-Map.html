@@ -1,0 +1,77 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Content Machine — карта конвейера</title>
+<style>
+body{font:15px/1.5 system-ui,Segoe UI,sans-serif;margin:24px;color:#1a1a1a;background:#faf9f7;max-width:1150px}
+h1{font-size:22px;margin:0 0 4px} .sub{color:#666;margin:0 0 18px}
+.stage{background:#fff;border:1px solid #e5e2dc;border-radius:12px;padding:14px 18px;margin:0 0 10px;position:relative}
+.stage h2{font-size:16px;margin:0 0 8px} .arrow{text-align:center;color:#999;font-size:18px;margin:2px 0}
+table{border-collapse:collapse;width:100%} td,th{padding:5px 9px;border-bottom:1px solid #f0ede7;text-align:left;vertical-align:top;font-size:13.5px}
+th{color:#888;font-weight:600} .ok{color:#137333;font-weight:700} .new{color:#0b57d0;font-weight:700} .todo{color:#b06000;font-weight:700}
+.tag{display:inline-block;border-radius:6px;padding:1px 7px;font-size:11.5px;font-weight:700;margin-right:6px}
+.t-ok{background:#e6f4ea;color:#137333}.t-new{background:#e8f0fe;color:#0b57d0}.t-todo{background:#fef7e0;color:#b06000}
+.legend{margin:0 0 14px} code{background:#f5f3ef;padding:1px 5px;border-radius:5px;font-size:12.5px}
+.law{background:#fff8f0;border:1px solid #f0e2cc;border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:13.5px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Dashboards-On-Hub-Rollout.html">Dashboards-On-Hub-Rollout &rarr;</a></span></div>
+<h1>🏭 Content Machine — карта конвейера (кто/что/каким реестром)</h1>
+<p class="sub">Обновлено 2026-07-11 · собрано после сверки с каноном битов · <span class="tag t-ok">ЕСТЬ</span><span class="tag t-new">НОВОЕ (10–11.07)</span><span class="tag t-todo">СЛЕДУЮЩЕЕ</span></p>
+
+<div class="law">⚖️ <b>Законы поверх всех стадий:</b> draft-first (наружу только по «+» Антона) · «событие → сначала БИТ в канон → потом пост» · «одна волна = одна история = один канал в день» (петля вместо ковра) · нативный рерайт под площадку, никакого copy-paste · голос Антона = Opus/Fable, не Sonnet · секреты/CRM/чужие имена не выходят.</div>
+
+<div class="stage"><h2>0. СЕНСОРЫ — ловят сырьё</h2><table>
+<tr><th>Робот</th><th>Что ловит</th><th>Реестр/выход</th><th></th></tr>
+<tr><td>content_miner (рефлекс capture + ночник 23:1x)</td><td>моменты в сессиях Claude Code (все машины)</td><td>triage/posts.jsonl (source_kind=session) + captured.jsonl</td><td class="new">НОВОЕ</td></tr>
+<tr><td>voice_triage (10:10)</td><td>голосовые Антона (чат 00)</td><td>triage/posts.jsonl (voice)</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>intention_mine</td><td>боли/вопросы Антона → ask-посты</td><td>intentions.db</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>fb-watch (13:00)</td><td>посты на стене FB без тизера</td><td>fb_teaser_ledger.json</td><td class="ok">ЕСТЬ</td></tr>
+</table></div>
+<div class="arrow">⬇️</div>
+
+<div class="stage"><h2>1. КАНОН — единственный источник ИСТОРИИ (биты)</h2><table>
+<tr><th>Кто пишет</th><th>Куда</th><th>Правило</th><th></th></tr>
+<tr><td>Писатель канона (живая сессия хаба / continuity-прогон)</td><td>show-canon/beats/ (+arcs/loops/season)</td><td>«не было в каноне = не было»; 3 оси статуса; forward-only с 08.07</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>Сенсоры (майнер и др.)</td><td>show-canon/<b>beats-inbox/</b> — черновики битов</td><td>в beats/ напрямую нельзя; писатель разбирает инбокс</td><td class="new">НОВОЕ</td></tr>
+<tr><td>canon_render.py</td><td>публичные реестры канона на GitHub (the-journey/canon)</td><td>reveal-фильтр; leak-scan; пуш по «+»</td><td class="ok">ЕСТЬ</td></tr>
+</table></div>
+<div class="arrow">⬇️</div>
+
+<div class="stage"><h2>2. РЕЕСТР ЗАГОТОВОК — что можно испечь</h2><table>
+<tr><th>Реестр</th><th>Внутри</th><th></th></tr>
+<tr><td>triage/posts.jsonl (машинный) + posts.md (человеческий)</td><td>169 заготовок, из них 129 session-историй из архива (долг закрыт 10.07: 326 отсужено → 123 + 4 live + 2 меты)</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>гейты: _GATE-cooldown (green/amber/red выдержка) · /taste-check (proofreader) · priority.json (вехи вне очереди)</td><td>эмоция публикуется обработанной; вкус-контроль до показа</td><td class="ok">ЕСТЬ</td></tr>
+</table></div>
+<div class="arrow">⬇️</div>
+
+<div class="stage"><h2>3. НАРЕЗЧИК — один материал → нативные версии («разными голосами»)</h2><table>
+<tr><th>Робот</th><th>Выход</th><th></th></tr>
+<tr><td>episode_adapter.py + писатель (голос = Opus/Fable)</td><td>8 нативных рерайтов: teaser RU(@ClawRus)/EN(X) · medium(FB) · longread RU/EN(GitHub-canonical)/VC.ru/Хабр · dev-log(GitHub) — у каждой площадки свой style-файл (_STYLE-vcru/-habr/-positioning/-footer)</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>check-линтер адаптера</td><td>длины (тизер 240–370 HARD), CTA, пустые — FAIL=0 до ревью</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>/speak-as</td><td>голосовые движки (Антон / Гершуни-влияние)</td><td class="ok">ЕСТЬ</td></tr>
+</table></div>
+<div class="arrow">⬇️</div>
+
+<div class="stage"><h2>4. РЕЕСТР ПУБЛИКАЦИЙ — очередь + лимиты + журнал фактов</h2><table>
+<tr><th>Компонент</th><th>Что делает</th><th></th></tr>
+<tr><td>registry/pub_registry.py</td><td><code>queue</code> (в очередь, needs-plus) · <code>next</code> (светофор: что МОЖНО постить сейчас) · <code>posted</code> (факт+URL) · <code>status/render</code> (зеркало PUB-REGISTRY.md)</td><td class="new">НОВОЕ</td></tr>
+<tr><td>registry/limits.json</td><td>безопасные лимиты: FB 1/день·5/нед · @ClawRus 2/день · X 2/день · VC/Хабр 1/нед · reddit PAUSED (карма) · GitHub без лимита · глобально 1 новая история наружу/день</td><td class="new">НОВОЕ</td></tr>
+</table></div>
+<div class="arrow">⬇️</div>
+
+<div class="stage"><h2>5. ДИСТРИБУЦИЯ — руки и машина, только по «+»</h2><table>
+<tr><th>Рельса</th><th>Площадка</th><th></th></tr>
+<tr><td>content_approve.py → content_publish.py</td><td>превью в чат 03; реальные каналы = Tier-2</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>/fb-post (Chrome, живой акк)</td><td>стена FB</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>git push (standing-мандат + leak-scan)</td><td>GitHub canonical + canon-реестры</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>руки Антона/Наташи</td><td>VC.ru · Хабр · X · reddit (после прогрева)</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>дисциплина: каждый пост → <code>pub_registry.py posted</code></td><td>журнал фактов един</td><td class="new">НОВОЕ</td></tr>
+</table></div>
+<div class="arrow">⬇️</div>
+
+<div class="stage"><h2>6. ПОСЛЕ ПУБЛИКАЦИИ — петля вовлечения и метрик</h2><table>
+<tr><th>Робот</th><th>Что делает</th><th></th></tr>
+<tr><td>fb-reply-daily (16:00)</td><td>5–10 коротких ответов-шуток на комменты (fb_guard ≤40/день)</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>aqs.py</td><td>Audience Quality Score — качество аудитории, не vanity-лайки</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>lead-reply-watch → CRM</td><td>ответившие на интеншн-посты → лиды</td><td class="ok">ЕСТЬ</td></tr>
+<tr><td>pub_metrics.py + pubmetrics.db (ночной сбор 03:40) · tg_comments_collect.py + утренний дайджест неотвеченных в 03 (05:35)</td><td>206 публикаций с пруфами; снапшоты метрик; комменты TG-площадок (построено параллельной сессией 11.07; дыры: FB Graph-токен, X)</td><td class="ok">ЕСТЬ</td></tr>
+</table></div>
+
+<p class="sub" style="margin-top:14px">Файлы: движок <code>E:\Obsidian\_imports\content-factory\</code> · канон <code>04-Projects\show-canon\</code> · реестр публикаций <code>content-factory\registry\</code> (PUB-REGISTRY.md — человеческое зеркало).</p>
+</body></html>

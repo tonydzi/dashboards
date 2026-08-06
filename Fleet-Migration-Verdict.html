@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang=ru><head><meta charset=UTF-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Вердикт по 89 кандидатам на переезд</title><style>
+:root{--bg:#0f1420;--card:#1a2232;--ink:#e8ecf4;--mut:#8b96ab;--line:#2a3550;
+--g:#3ddc84;--y:#ffd166;--r:#ff6b6b;--b:#5aa9ff;--p:#c58aff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);padding:22px;max-width:1150px;margin:0 auto;line-height:1.45}
+h1{font-size:25px}.sub{color:var(--mut);font-size:13px;margin:6px 0 18px}
+.score{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px}
+.s{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;min-width:150px;flex:1}
+.s b{display:block;font-size:32px;line-height:1.1}.s span{color:var(--mut);font-size:12px}
+.s.r b{color:var(--r)}.s.g b{color:var(--g)}.s.y b{color:var(--y)}.s.m b{color:var(--mut)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.box h2{font-size:17px;margin-bottom:4px}.box .lead{color:var(--mut);font-size:13px;margin-bottom:12px}
+ul{list-style:none}
+li{padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+li:last-child{border-bottom:none}
+li b{color:#fff}li span{display:block;color:var(--mut);font-size:12.5px;margin-top:3px}
+em{font-style:normal;font-size:11px;padding:1px 7px;border-radius:20px;margin-left:7px;white-space:nowrap}
+.ok{background:rgba(61,220,132,.15);color:var(--g)}
+.warn{background:rgba(255,209,102,.15);color:var(--y)}
+.h0{border-left:4px solid var(--r)}.h1{border-left:4px solid var(--g)}
+.h2{border-left:4px solid var(--y)}.h3{border-left:4px solid var(--mut)}
+.note{background:#14202e;border:1px solid var(--line);border-left:4px solid var(--b);border-radius:10px;padding:14px 18px;margin-bottom:16px;font-size:13.5px}
+.note b{color:var(--b)}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line)}
+th{color:var(--mut);font-weight:600;font-size:12px}
+.foot{color:var(--mut);font-size:11.5px;margin-top:18px}
+.eli{background:#16241a;border:1px solid #24422e;border-radius:12px;padding:16px 18px;margin-bottom:16px;font-size:14px}
+.eli h2{font-size:16px;margin-bottom:8px;color:var(--g)}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Fleet-Fix-Audit.html">&larr; Fleet-Fix-Audit</a> · <a href="Fleet-Migration.html">Fleet-Migration &rarr;</a></span></div>
+
+<h1>Вердикт по 89 «кандидатам на переезд» хаб &rarr; Маяк</h1>
+<div class=sub>Судил по доктрине узлов v2 · 2026-07-25 21:57 · каждая задача ровно в одной волне (сверка сошлась: 13+13+24+39=89)</div>
+
+<div class=score>
+<div class="s r"><b>13</b><span>уже дубль — работает на двух машинах</span></div>
+<div class="s g"><b>13</b><span>волна 1 — переезжает сейчас</span></div>
+<div class="s y"><b>24</b><span>волна 2 — после проверки привязки</span></div>
+<div class="s m"><b>39</b><span>волна 3 — не трогаем</span></div>
+</div>
+
+<div class=note>
+<b>Главное, что вскрылось.</b> Список «89 кандидатов» никогда не был суждением — это арифметический остаток
+«включено минус захардкоженный список». Проверка показала три вещи:
+<b>(1)</b> 13 задач уже работают ОДНОВРЕМЕННО на хабе и на Маяке — это не будущий риск, это происходит каждую ночь;
+<b>(2)</b> 5 задач попали в список по ошибке — их имена записаны с лишними пробелами, и сравнение их не узнало;
+<b>(3)</b> реально переехать прямо сейчас может лишь 13 из 89 — остальное либо привязано к железу, либо требует
+сначала перенести данные. Ничего не переносил и не выключал: это вердикт и план, кнопку жмёт Антон.
+</div>
+
+<div class="box h0">
+<h2>🔴 Волна 0 — дубли: одна работа, два таймера (13)</h2>
+<div class=lead>Это не «кандидаты на переезд». Они УЖЕ переехали, но на хабе остались включёнными.
+Доказательство по каждой: свежий лог на Маяке + задача включена на хабе. Лечение — гасить на хабе, а не переносить.</div>
+<ul><li><b>System Architect Nightly</b> <em class=ok>доказан</em><span>Маяк routine-32 отработал 25.07 03:50 и пишет в ту же синкаемую папку _imports/arch — общий system.db правят обе машины</span></li><li><b>Claude Preference Sweep Daily</b> <em class=ok>доказан</em><span>Маяк routine-27 отработал 25.07 03:20, тот же обход волта</span></li><li><b>Win Portability Guard</b> <em class=ok>доказан</em><span>Маяк routine-33 отработал 25.07 03:05, тот же скан переносимости</span></li><li><b>Claude Gmail Digest Morning</b> <em class=ok>доказан</em><span>Маяк w2b с флагом --post отработал 25.07 04:15 — дайджест Антону уходит дважды</span></li><li><b>DR Hub Janitor Nightly</b> <em class=ok>доказан</em><span>Маяк w1b-6 взведён (ARM-файл dr-nightly) и отработал 25.07 04:20</span></li><li><b>Memory Dream Consolidation</b> <em class=ok>доказан</em><span>Маяк w1b-4 отработал 25.07 01:40 по той же turnstate-БД</span></li><li><b>Memory AB Eval Nightly</b> <em class=ok>доказан</em><span>Маяк w1b-3 отработал 25.07 01:32 по той же turnstate-БД</span></li><li><b>Pub-Metrics-Nightly</b> <em class=ok>доказан</em><span>Маяк w2c-pubmetrics ежедневно; задача числится «перевезённой» в старом дашборде, а на хабе включена</span></li><li><b>Vault Orphan Index Refresh</b> <em class=ok>доказан</em><span>Маяк w2c-orphan ежедневно; та же история — помечена перевезённой, но включена</span></li><li><b>Alpha Miners Weekly</b> <em class=ok>доказан</em><span>Маяк routine-29 отработал в воскресенье 19.07 (недельная)</span></li><li><b>Claude Skill Gap Daily</b> <em class=ok>доказан</em><span>Маяк routine-30 skill-gap-weekly отработал 19.07 (недельная)</span></li><li><b>Memory Index Tidy</b> <em class=ok>доказан</em><span>Маяк w1b-2 memory-tidy: ARM-файл взведён 14.07, двухфазный гейт открыт</span></li><li><b>Claude Approval Reping</b> <em class=warn>проверить: не двойной ли пинг</em><span>Маяк approval-due-watchdog каждые 15 мин (лог 25.07 20:45) — обе стороны пингуют по одной очереди approvals</span></li></ul>
+</div>
+
+<div class="box h1">
+<h2>🟢 Волна 1 — переезжает сейчас (13)</h2>
+<div class=lead>Железа не касаются, состояние держат в общем волте, польза от переживания офлайна хаба очевидна.</div>
+<ul><li><b>Mission2 GitHub Traffic Snapshot</b><span>чистый вызов GitHub API в волт; окно traffic-API всего 14 дней — пропуск = потеря цифр навсегда, значит должна пережить офлайн хаба</span></li><li><b>Claude Hanging Tasks Digest</b><span>LLM поверх волта, железа не касается — вопрос 3 доктрины, бак a2</span></li><li><b>Claude Intention Daily</b><span>LLM поверх волта, железа нет</span></li><li><b>Claude Wisdom Distill Weekly</b><span>LLM поверх волта, железа нет</span></li><li><b>Claude Five Hard Monthly</b><span>LLM поверх волта, железа нет</span></li><li><b>Claude Coach Morning Weekly</b><span>LLM поверх волта, железа нет</span></li><li><b>Claude Content Factory Daily</b><span>LLM поверх волта, железа нет; ночное окно и так свободно</span></li><li><b>Channel Topup Weekly</b><span>детерминированный обход волта, внешних сессий не трогает</span></li><li><b>cofounder-watch</b><span>детерминированный обход волта, железа нет</span></li><li><b>Zalp1 Delta Board</b><span>считает дельту по волту и рисует таблицу — чистая арифметика</span></li><li><b>Originals Shrink Guard</b><span>сторож размера _originals; сторож обязан пережить падение того, что сторожит</span></li><li><b>output-freshness</b><span>сторож свежести выходов флота — живя на хабе, он молча умрёт вместе с хабом</span></li><li><b>Pub-Comments-Morning-03</b><span>читает pubmetrics.db, которую пишет уже Маяк — потребитель должен стоять рядом с писателем</span></li></ul>
+</div>
+
+<div class="box h2">
+<h2>🟡 Волна 2 — переезжает после проверки (24)</h2>
+<div class=lead>Каждая тянет за собой привязку — она названа поимённо. Пока привязка не переехала, задача не поедет.</div>
+<ul><li><b>CRM-Retag-Nightly</b><span>единственный писатель БД crm-engine в E:\Obsidian\_imports — переносить только вместе с БД</span></li><li><b>CRM-Sensors-Nightly</b><span>та же БД crm-engine плюс listener.py, который держит состояние</span></li><li><b>CRM-Backup-Pull</b><span>приёмник бэкапа — локальный диск хаба</span></li><li><b>Devlog Collect Nightly</b><span>пишет в SQLite контент-фабрики в _imports</span></li><li><b>TurnState Backfill Nightly</b><span>turnstate.db пилота памяти; Маяк уже трогает её из dream/ab-eval — сперва решить, чья она</span></li><li><b>Telegram Chats Index Refresh</b><span>Telethon-сессия + chats.db; у Маяка уже свой parallel-индекс — риск двух разных индексов</span></li><li><b>TG Members Sweep AM</b><span>Telethon-сессия + БД участников; вдобавок AM и PM — один и тот же скрипт дважды в день</span></li><li><b>TG Members Sweep PM</b><span>та же команда, что у AM — сначала подтвердить, что двойной прогон намеренный</span></li><li><b>Telegram Groups Weekly Maintenance</b><span>Telethon-сессия, пишет в волт</span></li><li><b>Claude Tg Weekly Digest</b><span>читает телеграм-данные, собранные сессией хаба</span></li><li><b>Claude Tg Relationships Weekly</b><span>то же: опирается на локальный телеграм-индекс</span></li><li><b>Claude Tg Calendar Agenda</b><span>Telegram плюс OAuth календаря — нужны токены на Маяке</span></li><li><b>Claude FAAA Weekly Sync</b><span>Telethon-сессия к группе звонков + запись в CRM</span></li><li><b>Claude Health Weekly Sync</b><span>токены health-сервисов лежат в store хаба</span></li><li><b>Takeout Pull Weekly</b><span>дедлайн ссылки Takeout — просится на Маяк, но упирается в Google-сессию и папку загрузок</span></li><li><b>Claude Weekly Brain Audio Digest</b><span>NotebookLM требует живой Google-сессии</span></li><li><b>oauth-probe</b><span>образцовый сторож кранов, ему место вне хаба — но он читает OAuth-токены из secrets хаба</span></li><li><b>Claude Connector Health Daily</b><span>проверяет MCP-коннекторы, которые живут внутри сессии хаба</span></li><li><b>DR-Queue-Robot</b><span>очередь DR упирается в браузер на последнем шаге</span></li><li><b>DR FSM Shadow Bake</b><span>состояние shadow-пилота FSM лежит на хабе</span></li><li><b>aibus-bridge-sync</b><span>работает из папки E:\!CLAUDE-PaloAltoPC-June26, которая не синкается</span></li><li><b>Claude Obsidian Backup Healthcheck</b><span>проверяет бэкап на локальный диск F: — с Маяка этого диска не видно</span></li><li><b>Claude Voice Triage Daily</b><span>голосовые файлы лежат локально рядом с транскрайбером на GPU</span></li><li><b>Credential Expiry Watch</b><span>у задачи в реестре пустая команда — разобрать, что она вообще запускает, до любого решения</span></li></ul>
+</div>
+
+<div class="box h3">
+<h2>⚪ Волна 3 — не трогаем (39)</h2>
+<div class=lead>Сначала 5 фантомов — они вообще не должны были попасть в список.</div>
+<ul><li><b>Brain Reindex Daily  incremental</b><span>фантом списка: она и так в «остаётся навсегда» (GPU), но имя записано с двойным пробелом и не совпало</span></li><li><b>GDrive Index Refresh  monthly</b><span>фантом списка: уже помечена «навсегда» (диски G:/H:), имя с лишним пробелом</span></li><li><b>Search UI Server  AtLogon</b><span>фантом списка: локальный веб-сервер, уже помечен «навсегда»</span></li><li><b>Second Brain Search Server  AtLogon</b><span>фантом списка: локальный сервер поиска, уже помечен «навсегда»</span></li><li><b>Second Brain Server Watchdog  Daily</b><span>фантом списка: сторож локального сервера, уже помечен «навсегда»</span></li></ul>
+<div class=lead style="margin-top:14px">Остальные 34 держит железо, локальный процесс или пер-машинная роль.
+Две последние строки — те, что сперва выглядели дублями, но внешняя проверка это опровергла.</div>
+<ul><li><b>Claude FB Watch Daily</b><span>Facebook привязан к резидентному IP и профилю Chrome — с датацентрового IP это бан</span></li><li><b>Claude Facebook Diary Daily</b><span>публикация в FB тем же резидентным IP и живым профилем</span></li><li><b>ClaudeAI Sync Nightly</b><span>тянет чаты claude.ai живой сессией Chrome</span></li><li><b>Alpha Planerki Post</b><span>исходные данные даёт Granola — десктопное приложение хаба</span></li><li><b>LobsterMonthlyPulse</b><span>десктопный источник плюс локальная БД</span></li><li><b>Claude Desktop Watchdog</b><span>сторожит десктопное приложение Claude на этой машине</span></li><li><b>Claude Desktop Nightly Restart</b><span>перезапускает то самое десктопное приложение</span></li><li><b>TG Assistant Daemon Boot</b><span>локальный демон-бот, поднимается по загрузке хаба</span></li><li><b>Telegram MCP Janitor</b><span>чистит зависшие MCP-процессы этой машины</span></li><li><b>Claude n8n Watchdog</b><span>n8n крутится на хабе, сторож должен быть рядом</span></li><li><b>Hub Power-Thermal Logger</b><span>снимает датчики железа хаба — на Маяке снимать нечего</span></li><li><b>Hub Boot Self-Report</b><span>срабатывает на событие загрузки хаба</span></li><li><b>wake-listener</b><span>триггер входа в систему на хабе</span></li><li><b>signal-dispatcher</b><span>локальная рельса сигналов approval на хабе</span></li><li><b>Fleet Migration Dashboard</b><span>читает планировщик Windows этой машины</span></li><li><b>Fleet Routines Registry</b><span>каждая машина рапортует свои рутины — переносить нечего</span></li><li><b>Fleet Deadman Ping</b><span>взаимный пинг: у Маяка свой близнец, так и задумано</span></li><li><b>Fleet Manifest Check</b><span>разделено намеренно: хаб постит, Маяк только проверяет</span></li><li><b>Canon-Apply-Backstop</b><span>симметричная рельса канона, у Маяка свой конец по дизайну</span></li><li><b>Deploy Sweep Guard</b><span>пер-машинная гигиена приёмки посылок</span></li><li><b>Consensus Config Guard</b><span>пер-машинная проверка своего конфига консенсуса</span></li><li><b>Tailnet Guard</b><span>сторожит tailscale-клиент этой машины</span></li><li><b>CLI Visibility Doctor</b><span>проверяет CLI именно этой машины</span></li><li><b>Claude Session Archive</b><span>архивирует сессии Claude Code, лежащие локально</span></li><li><b>Claude Dashboard Refresh Daily</b><span>рисует дашборды из тех же локальных сессий</span></li><li><b>Claude Session-Wait Watchdog</b><span>следит за живой сессией на этой машине</span></li><li><b>ClaudeHealthArch</b><span>сторож локального сервиса хаба</span></li><li><b>ClaudeHealthBrain</b><span>сторож локального сервиса хаба</span></li><li><b>ClaudeHealthTgWatch</b><span>сторож локального сервиса хаба</span></li><li><b>SecondOp Broker</b><span>мост к Codex CLI, который стоит на хабе</span></li><li><b>SecondOp Digest</b><span>отчёт по состоянию того же локального брокера</span></li><li><b>Claude Token Spend Watchdog</b><span>считает расход по локальным логам Claude Code хаба</span></li><li><b>Quarantine-Watch</b><span>выглядел дублем, но сторож пер-машинный: алерты дедуплицируются по имени хоста, каждая машина стережёт свои посылки</span></li><li><b>Revert Wave Guard</b><span>выглядел дублем, но скрипт читает COMPUTERNAME и работает по своей машине</span></li></ul>
+</div>
+
+<div class=box>
+<h2>🧪 Отдельная проверка: кто на самом деле дерётся за файлы</h2>
+<div class=lead>Искал следы одновременной записи в общий волт (файлы sync-conflict). Результат оказался
+неожиданным и важным.</div>
+<table>
+<tr><th>Что померил</th><th>Цифра</th></tr>
+<tr><td>Файлов-конфликтов всего в волте</td><td>3695 (почти все — в архиве версий .stversions)</td></tr>
+<tr><td>Живых конфликтов сейчас</td><td>38</td></tr>
+<tr><td>Самый спорный файл</td><td>Waiting-Sessions.html — 275 конфликтов</td></tr>
+<tr><td>Дальше</td><td>ACTIVE_NOW.md — 56 · Quarantine.html — 44 · aibus-brain-approved — 44 · _DR-Registry — 30</td></tr>
+<tr><td>Кто дерётся (по метке устройства)</td><td>хаб · ноут ZBook · MacBook-Anton</td></tr>
+<tr><td>Маяк в конфликтах</td><td><b style="color:#3ddc84">не встречается ни разу</b></td></tr>
+</table>
+<p style="margin-top:12px;font-size:13.5px;color:#cdd6e6">
+Вывод: переезд на Маяк конфликтов не создал — Маяк пишет аккуратно. Драка идёт между
+человеческими машинами: одна и та же рутина крутится на трёх компьютерах и все трое пишут в один общий
+дашборд. Это отдельная болезнь, лечится назначением одного писателя на файл, и к плану миграции
+отношения не имеет.</p>
+</div>
+
+<div class=eli>
+<h2>🧒 Простыми словами</h2>
+<p>Есть большой компьютер дома (хаб) и арендованный в интернете (Маяк). Маяк почти всё время
+спит — работает на 4 процента из 100. Был список из 89 дел, которые «можно бы переложить на Маяк»,
+но этот список никто не читал: его просто посчитали вычитанием.</p>
+<p>Я прочитал каждое дело. Оказалось: 13 дел уже делаются ДВА раза — и дома, и на Маяке.
+Как будто два будильника на одно утро: письмо с утренней сводкой Антону уходит дважды.
+Ещё 5 дел попали в список по глупой причине — в их названиях лишние пробелы, и программа их не узнала.
+По-настоящему переложить прямо сейчас можно 13 дел. Ещё 24 — можно, но сперва надо перевезти их вещи
+(записные книжки, ключи). А 37 дел никуда не поедут: им нужна видеокарта, браузер или домашний интернет.</p>
+<p>Свой вывод я дал проверить чужой программе-критику. Она нашла ошибку: два дела я записал в
+«делается дважды» зря — они специально запускаются на каждом компьютере отдельно. Исправил.</p>
+<p>Ничего не выключал и не переносил — только разложил по полочкам. Нажимать кнопку будет Антон.</p>
+</div>
+
+<div class=foot>Источники цифр: живой опрос планировщика Windows на хабе · crontab и логи Маяка по ssh ·
+поиск sync-conflict по волту · реестры рутин в _machine-bus\_fleet-routines. Закон размещения — доктрина узлов v2
+(CLAUDE.md §7.1). Перенос и выключение задач = Tier-2, отдельным решением Антона.</div>
+</body></html>

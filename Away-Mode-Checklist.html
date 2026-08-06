@@ -1,0 +1,100 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Ask-Debt.html">&larr; Ask-Debt</a> · <a href="Browser-History-Dashboard.html">Browser-History-Dashboard &rarr;</a></span></div><meta charset="utf-8">
+<title>Away Mode — 45 дней без Антона</title>
+<style>
+  :root{--bg:#0f1115;--card:#1a1d24;--ink:#e7e9ee;--mut:#9aa3b2;--line:#2a2f3a;
+        --anton:#e5484d;--me:#f5a623;--buy:#3b82f6;--done:#16a34a;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--mut);margin:0 0 20px;font-size:13px}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));max-width:1200px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card h2{font-size:14px;margin:0 0 12px;display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.5px}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .anton .dot{background:var(--anton)} .me .dot{background:var(--me)} .buy .dot{background:var(--buy)}
+  ul{list-style:none;margin:0;padding:0}
+  li{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);align-items:flex-start}
+  li:first-child{border-top:0}
+  input[type=checkbox]{margin-top:3px;width:16px;height:16px;flex:0 0 auto;cursor:pointer}
+  .t{flex:1}
+  .t b{font-weight:600}
+  .t small{display:block;color:var(--mut);font-size:12.5px;margin-top:2px}
+  li.done .t b{text-decoration:line-through;color:var(--mut)}
+  .tag{font-size:10px;padding:1px 6px;border-radius:20px;border:1px solid var(--line);color:var(--mut);white-space:nowrap;margin-top:2px}
+  .layer{max-width:1200px;margin:22px 0 0;color:var(--mut);font-size:13px}
+  .layer b{color:var(--ink)}
+  footer{max-width:1200px;color:var(--mut);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+  .prog{height:6px;background:var(--line);border-radius:6px;overflow:hidden;max-width:1200px;margin:8px 0 20px}
+  .prog i{display:block;height:100%;background:var(--done);width:0;transition:.3s}
+</style>
+<h1>🧳 Away Mode — комп живёт 45 дней сам</h1>
+<p class="sub">Хаб A-2022BAYAREA · Windows 11 Pro 25H2 · подготовка к отъезду Антона. Галочки сохраняются в этом браузере. 🔴 = только Антон · 🟡 = делает Claude · 🔵 = купить.</p>
+<div class="prog"><i id="bar"></i></div>
+
+<div class="grid">
+
+  <div class="card anton">
+    <h2><span class="dot"></span>🔴 Только Антон</h2>
+    <ul>
+      <li><input type="checkbox" checked><div class="t"><b>Перелогинить Gmail bb</b><small>✅ Сделано 11.07 (ночь): Claude сам прошёл OAuth через Chrome (сессия bb была жива), токен перевыпущен, whoami: a + a2 + bb все живы. Твой клик не понадобился.</small></div></li>
+      <li><input type="checkbox" checked><div class="t"><b>Дать пароль Windows</b><small>✅ Сделано — пароль в secrets, блокер автологина снят.</small></div></li>
+      <li><input type="checkbox" checked><div class="t"><b>Один раз нажать «Да» в UAC</b><small>✅ Не нужен: на хабе элевация тихая (ConsentPromptBehaviorAdmin=0). Закалка применена 11.07: TermService=Automatic + авто-рестарт AnyDesk/Tailscale/RDP (проверено sc qfailure).</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>BIOS: «Restore on AC Power Loss» → On</b><small>Чтобы после отключения света комп сам включился. Это физически в BIOS (F2/Del при загрузке). Могу провести по шагам со скриншотами.</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>Google: «доверенный компьютер» в каждом профиле Chrome</b><small>За 7+ дней до отъезда (у Google 7-дневное окно доверия). Я открою страницы, клики твои.</small><span class="tag">за 7+ дней</span></div></li>
+      <li><input type="checkbox"><div class="t"><b>Google: passkey/Prompt на телефон + backup-коды</b><small>Чтобы редкий запрос «это вы?» ты подтвердил одним касанием с телефона. Backup-коды сохрани в менеджер паролей на телефоне.</small><span class="tag">за 7+ дней</span></div></li>
+      <li><input type="checkbox"><div class="t"><b>НЕ менять пароль Google все 45 дней</b><small>Смена пароля = мгновенный разлог всех Gmail-токенов И браузерных сессий. Железное правило на время отъезда.</small></div></li>
+      <li><input type="checkbox" checked><div class="t"><b>BitLocker recovery-ключ — себе в телефон</b><small>✅ Не применимо: BitLocker ВЫКЛЮЧЕН на всех дисках (C/D/E/F, проверено manage-bde 11.07). Ключа не существует, экран ключа хабу не грозит — для away-mode это плюс. Отчёт ушёл тебе в TG.</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>Телефон с WhatsApp держать активным</b><small>Linked-device отвяжется, если телефон не открывать WhatsApp >14 дней. Просто пользуйся как обычно.</small></div></li>
+    </ul>
+  </div>
+
+  <div class="card me">
+    <h2><span class="dot"></span>🟡 Делает Claude (обратимо, 1 скрипт под UAC)</h2>
+    <ul>
+      <li><input type="checkbox"><div class="t"><b>Закрепить Windows на 25H2</b><small>TargetReleaseVersion — чтобы не прыгнул на новую версию без присмотра.</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>Обновления → «только уведомлять» (AU=2)</b><small>Windows не будет сам скачивать и проситься ребутнуться.</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>Выключить Fast Startup</b><small>Сейчас включён — мешает чистому автологину после ребута.</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>Настроить автологин</b><small>После твоего пароля — Sysinternals Autologon (пароль в LSA, не в открытом реестре).</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>Не спать / не спрашивать пароль при пробуждении</b><small>Сон на питании уже «никогда» ✅ — закреплю + отключу гибернацию.</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>Автостарт агента + коннекторов после входа</b><small>Проверю, что Claude и все MCP (TG/WA/Gmail) сами поднимаются после ребута.</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>Бэкап Chrome-профилей + Telegram-сессии</b><small>Чтобы кривое обновление не стёрло авторизации.</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>Heartbeat на телефон</b><small>Пинг тебе в Telegram, если комп упал или коннектор умер (watchdog уже есть, добавлю «жив/умер»).</small></div></li>
+      <li><input type="checkbox" checked><div class="t"><b>Удалённый доступ — уже 2 пути live</b><small>✅ AnyDesk (служба, автостарт, ID 1599042873, Google-независим, переживает ребут) + ✅ RDP через Tailscale (100.122.143.5). Это и есть «оба софтовых троса» — CRD+RustDesk ставить НЕ нужно (дубль). Осталось только проверить оба с телефона перед отъездом + PiKVM (см. 🔵).</small></div></li>
+    </ul>
+  </div>
+
+  <div class="card buy">
+    <h2><span class="dot"></span>🔵 Купить</h2>
+    <ul>
+      <li><input type="checkbox"><div class="t"><b>UPS (бесперебойник)</b><small>Чтобы моргание света не убило комп на середине записи. ~$80–150. Подберу модель под мощность хаба.</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>PiKVM (железный KVM с управлением питанием)</b><small>Твой выбор 3+4. Видит комп даже на экране BIOS/BitLocker, может физически перезагрузить с телефона. ~$150. Подберу модель + помогу подключить.</small></div></li>
+      <li><input type="checkbox"><div class="t"><b>Умная розетка (опц.)</b><small>Дешёвая ($15) страховка «выключить-включить питание» с телефона, если PiKVM не хочется.</small></div></li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="layer">
+  <b>4 слоя защиты (стратегия):</b>
+  1. <b>Gmail-токены</b> — уже решены, от браузера не зависят (умирают только от смены пароля Google / 100+ разрешений / полугода простоя).
+  2. <b>Google в Chrome</b> — держим «знакомость» устройства: свой профиль на аккаунт, доверенный компьютер, стабильный интернет, без VPN-скачков.
+  3. <b>Windows</b> — закрепить версию + запрет автоустановки + автологин, чтобы ребут не стёр состояние.
+  4. <b>Спасательный трос</b> — AnyDesk-служба (Google-независим) + RDP-Tailscale уже live; PiKVM добавит доступ к BIOS/BitLocker и питанию.
+</div>
+
+<footer>
+  Источник: Deep Research report (58) + recall (gmail-connector, credential-store, connector-health-watchdog).
+  Decision Memo: Alpha Protocol L2. Обновляется Claude по мере выполнения.
+</footer>
+
+<script>
+  const boxes=[...document.querySelectorAll('input[type=checkbox]')];
+  const KEY='awaymode_v1';
+  const saved=JSON.parse(localStorage.getItem(KEY)||'[]');
+  boxes.forEach((b,i)=>{ if(i<saved.length) b.checked=!!saved[i]; b.closest('li').classList.toggle('done',b.checked);
+    b.addEventListener('change',()=>{ b.closest('li').classList.toggle('done',b.checked); save(); }); });
+  if(!saved.length) save();  // persist HTML-default checks on first load
+  function save(){ localStorage.setItem(KEY,JSON.stringify(boxes.map(b=>b.checked))); prog(); }
+  function prog(){ const n=boxes.filter(b=>b.checked).length; document.getElementById('bar').style.width=(100*n/boxes.length)+'%'; }
+  prog();
+</script>

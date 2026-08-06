@@ -1,0 +1,178 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Hetzner-Costs.html">&larr; Hetzner-Costs</a> · <a href="LLM-Subscription-Utilization.html">LLM-Subscription-Utilization &rarr;</a></span></div><!doctype html><html lang="ru"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Desktop-приложения LLM + агрегаторы подписок</title><style>
+:root{--bg:#0f1115;--card:#171a21;--fg:#e8eaed;--dim:#9aa0a6;--line:#2a2f3a;--acc:#5b9dd9;
+--ok:#2f9e4f;--warn:#c9922b;--bad:#c0503a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;padding:20px}
+.w{max-width:1180px;margin:0 auto}h1{font-size:24px;margin:0 0 4px}
+h2{font-size:18px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{font-size:15px;margin:18px 0 6px;color:var(--acc)}
+.sub{color:var(--dim);margin-bottom:18px;font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#1e2330;color:var(--dim);font-weight:600}
+.scroll{overflow-x:auto}
+a{color:var(--acc)}
+.yes{color:var(--ok);font-weight:700}.no{color:var(--bad);font-weight:700}.mid{color:var(--warn);font-weight:700}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:12px;background:#243040;color:var(--acc)}
+.warn{background:#3a2a12;border-color:#6b4c17}
+.danger{background:#3a1a15;border-color:#6b2a20}
+.good{background:#132a1b;border-color:#255c36}
+small{color:var(--dim)}
+code{background:#12151b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:12.5px}
+ul{margin:6px 0 6px 18px;padding:0}li{margin:3px 0}
+.path{font-family:Consolas,monospace;font-size:12.5px;color:#cbd3dd;word-break:break-all}
+</style><div class="w">
+
+<h1>Desktop-приложения LLM + «все подписки в одном окне»</h1>
+<div class="sub">Собрано 05.08.2026 на узле HP17-ZBook · источник задачи: голосовая Антона в «00 Архив ГОЛОСА», hub:5135 · каждый вердикт с уликой (официальная страница вендора), не по памяти.</div>
+
+<div class="card good">
+<b>Коротко.</b> Официальное desktop-приложение есть у <b>4 из 7</b> сервисов, которыми мы пользуемся: ChatGPT, Codex, Claude, ZCode (GLM/Z.ai). У Gemini приложение есть <b>только для macOS</b> (значит — на MacBook Антона, на Windows нет). У Grok-чата и Mistral Le Chat официального приложения нет вообще, только веб.
+Сторонний агрегатор, который подключает <b>твои существующие подписки</b> и показывает их лимиты, — <b>в готовом виде не существует</b>; всё, что продаётся под этим лозунгом, это перепродажа своей подписки поверх API. Подробности ниже.
+</div>
+
+<h2>1. Таблица: у кого есть официальное desktop-приложение</h2>
+<div class="card scroll">
+<table>
+<tr><th>Сервис</th><th>Официальное приложение</th><th>Платформы</th><th>Улика (официальная страница)</th><th>Стоит на HP17</th></tr>
+
+<tr><td><b>ChatGPT</b> (OpenAI)</td><td class="yes">ДА</td><td>Windows, macOS</td>
+<td><a href="https://chatgpt.com/download">chatgpt.com/download</a> · winget/MSIX <code>OpenAI.ChatGPT-Desktop</code></td>
+<td class="yes">✅ уже стояло<br><small>v1.2026.190.0, Status Ok</small></td></tr>
+
+<tr><td><b>Codex</b> (OpenAI)</td><td class="yes">ДА</td><td>Windows, macOS</td>
+<td>MSIX <code>OpenAI.Codex</code>, издатель OpenAI (тот же PFN <code>2p2nqsd0c76g0</code>, что у ChatGPT)</td>
+<td class="yes">✅ уже стояло<br><small>v26.727.6591.0, Status Ok</small></td></tr>
+
+<tr><td><b>Claude</b> (Anthropic)</td><td class="yes">ДА</td><td>Windows, macOS</td>
+<td><a href="https://claude.ai/download">claude.ai/download</a> · <code>winget install Anthropic.Claude</code></td>
+<td class="yes">✅ уже стояло<br><small>v1.25927.0.0, Status Ok</small></td></tr>
+
+<tr><td><b>GLM / Z.ai</b></td><td class="yes">ДА — <b>ZCode</b></td><td>Windows (x64/ARM64), macOS (Intel/ARM), Linux (AppImage, бета)</td>
+<td><a href="https://zcode.z.ai/en/docs/install">zcode.z.ai/en/docs/install</a><br><small>подпись установщика проверена: CN=北京智谱华章科技股份有限公司 (Zhipu), Status Valid</small></td>
+<td class="yes">✅ <b>поставил сегодня</b><br><small>v3.6.5, запущен, окно есть</small></td></tr>
+
+<tr><td><b>Gemini</b> (Google)</td><td class="mid">только macOS</td><td>macOS 15+ <b>Apple Silicon</b>. Windows-версии НЕТ.</td>
+<td><a href="https://gemini.google/mac/">gemini.google/mac</a> · файл <span class="path">dl.google.com/release2/j33ro/release/Gemini.dmg</span> · <a href="https://blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-mac-os/">анонс Google</a></td>
+<td class="no">— нельзя (Windows)<br><small>задача ушла на MacBook-Anton</small></td></tr>
+
+<tr><td><b>Grok</b> (xAI) — чат</td><td class="no">НЕТ</td><td>только веб <a href="https://grok.com">grok.com</a> (можно «Install app» = PWA из Chrome/Edge)</td>
+<td>xAI не выпускала standalone-клиент; всё, что лежит в интернете как «Grok Desktop» — сторонние Electron-обёртки (напр. GitHub AnRkey/Grok-Desktop), <b>не ставим</b></td>
+<td class="no">— нет приложения</td></tr>
+
+<tr><td><b>Grok Build</b> (xAI) — агент</td><td class="yes">ДА (CLI/TUI)</td><td>Windows, macOS, Linux</td>
+<td><a href="https://x.ai/cli">x.ai/cli</a> · <code>winget install xAI.GrokBuild</code> · издатель xAI Corp.</td>
+<td class="yes">✅ <b>поставил сегодня</b><br><small>grok 0.2.118, проверен <code>--version</code></small></td></tr>
+
+<tr><td><b>Mistral Le Chat</b><br><small>(с мая 2026 переименован в Mistral Vibe)</small></td><td class="no">НЕТ</td><td>только веб + мобильные (iOS/Android)</td>
+<td>официального desktop-клиента Mistral не выпускала; на GitHub есть сторонние обёртки — <b>не ставим</b></td>
+<td class="no">— нет приложения<br><small>+ у нас ещё нет аккаунта (регистрация за Антоном)</small></td></tr>
+
+<tr><td><b>Perplexity</b> <small>(не наша рельса, для полноты)</small></td><td class="yes">ДА</td><td>Windows, macOS</td>
+<td><code>winget install Perplexity.Perplexity</code> (v1.7.0, издатель Perplexity AI) + браузер Comet</td>
+<td class="mid">не ставил — не в наших рельсах, скажи если нужно</td></tr>
+</table>
+</div>
+
+<h2>2. Что я поставил сегодня и чем это доказано</h2>
+<div class="card">
+<table>
+<tr><th>Что</th><th>Откуда</th><th>Доказательство «запускается», не «скачал»</th></tr>
+<tr><td>ZCode 3.6.5 (GLM)</td><td>официальный CDN Z.ai, подпись Zhipu валидна</td><td>процесс <code>ZCode</code> PID 17656, <code>MainWindowTitle = ZCode</code> — окно реально открылось</td></tr>
+<tr><td>Grok Build 0.2.118</td><td>winget → <span class="path">x.ai/cli/grok-0.2.118-windows-x86_64.exe</span>, хэш проверен winget'ом</td><td><code>grok --version</code> → <code>grok 0.2.118 (1e1687c1cf)</code></td></tr>
+</table>
+<p><small>Уже стояли и подтверждены как установленные пакеты (Status Ok): ChatGPT Desktop, Codex, Claude Desktop.</small></p>
+</div>
+
+<h2>3. Раскатка на флот — круг потребителей назван ДО раскатки</h2>
+<div class="card scroll">
+<table>
+<tr><th>Узел</th><th>ОС / владелец</th><th>Решение</th><th>Состояние</th></tr>
+<tr><td>HP17-ZBook (ZB)</td><td>Windows · Антон</td><td>ставлю сам</td><td class="yes">✅ сделано (см. §2)</td></tr>
+<tr><td>Хаб A-2022BAYAREA</td><td>Windows · Антон</td><td>ставит своя сессия по шине</td><td class="mid">📨 TASK отправлен (dual-send: _machine-bus + TG-03), жду ACK</td></tr>
+<tr><td>MacBook-Anton</td><td>macOS · Антон</td><td>ставит своя сессия по шине — <b>главный приз: Gemini для Mac</b></td><td class="mid">📨 TASK отправлен, жду ACK</td></tr>
+<tr><td>Маяк (VPS)</td><td>Linux headless · Антон</td><td class="no">NOTFORME</td><td>нет графики — desktop-приложение там бессмысленно</td></tr>
+<tr><td>Наталья-ноут</td><td>Windows · Наталья</td><td class="no">NOTFORME</td><td>это подписки Антона; софт на машину коллеги через плечо не ставим</td></tr>
+<tr><td>MacBook-Ruslana</td><td>macOS · Руслана</td><td class="no">NOTFORME</td><td>то же самое</td></tr>
+</table>
+<p><small>⚠️ Тишина ≠ ок: пока не придут ACK от хаба и MacBook, раскатка НЕ считается выполненной.</small></p>
+</div>
+
+<h2>4. Агрегаторы «все подписки в одном интерфейсе» — что реально существует</h2>
+
+<div class="card danger">
+<b>Главный вывод, который ломает ожидание.</b> Продуктов, которые подключают <b>твои уже оплаченные подписки</b> (ChatGPT Plus, Claude Max, SuperGrok, GLM-план) и гоняют задачи через <b>их собственные лимиты</b>, в честном готовом виде <b>нет</b>. Всё, что рекламируется этими словами, делится на три семейства — и ни одно не делает ровно то, что ты просил.
+</div>
+
+<h3>Семейство A. Перепродавцы («одна подписка — все модели»)</h3>
+<div class="card">
+<b>Кто:</b> Mammouth.ai (€10–60/мес), Aizolo (~$9.9/мес), Aymo/Geeky.chat (до $12/мес), MultipleChat, Poe.<br>
+<b>Как устроено:</b> компания сама покупает API у OpenAI/Anthropic/Google и продаёт тебе доступ пачкой. Улика: на <a href="https://mammouth.ai/">mammouth.ai</a> прайс идёт «GPT/Claude/Gemini по €20/мес каждая», ни слова про подключение своего аккаунта или своего API-ключа.<br>
+<span class="no">Минус, который убивает:</span> это <b>одиннадцатая</b> подписка поверх твоих десяти. Твои лимиты не используются вообще. Истории чатов из твоих аккаунтов там не видно.
+</div>
+
+<h3>Семейство B. Клиенты на своих API-ключах</h3>
+<div class="card">
+<b>Кто:</b> Cherry Studio, Chatbox, Msty, LibreChat, Open WebUI, 5ire, Jan, LM Studio (последний — только локальные модели).<br>
+<b>Как устроено:</b> красивое единое окно, переключение моделей одной кнопкой, история локально. Но модель дёргается по <b>API-ключу</b>.<br>
+<span class="no">Минус:</span> API-ключ — это оплата за токены, отдельный кошелёк. Подписочные лимиты (Plus / Max / SuperGrok) через API <b>не работают</b> — это два разных счёта у одного вендора.<br>
+<small>⚠️ Отдельно: с 19.02.2026 в ToS Anthropic прямо записано, что OAuth-токен подписки Free/Pro/Max нельзя использовать в сторонних инструментах (исполнение с 04.04.2026). То есть «подключить свою подписку Claude в чужой клиент» — не серая зона, а прямой запрет.</small>
+</div>
+
+<h3>Семейство C. Оболочки поверх веб-сессий — единственные, кто реально ест твои подписки</h3>
+<div class="card">
+<b>Кто:</b> ChatALL (open-source, Apache-2.0), WebCatalog, Wavebox, Rambox, Shift.<br>
+<b>Как устроено:</b> внутри одного окна открывается <b>настоящий веб-интерфейс</b> каждого сервиса, ты логинишься своим аккаунтом → работают твои подписочные лимиты, видна твоя настоящая история чатов. ChatALL умеет ещё и разослать один промпт сразу во все и показать ответы рядом.<br>
+<b>Честные минусы:</b>
+<ul>
+<li><b>Хрупкость.</b> Сами авторы ChatALL пишут, что веб-подключения держатся на реверс-инжиниринге интерфейсов и «регулярно ломаются», и рекомендуют API там, где он есть.</li>
+<li><b>Безопасность — главное.</b> Такое приложение держит у себя <b>cookie-сессии всех твоих AI-аккаунтов</b> сразу. Плюс ChatALL: он open-source, «вся история, настройки и данные логина хранятся локально на твоём компьютере», ничего не уходит на чужой сервер — это проверяемо. Минус любого закрытого аналога: проверить это невозможно.</li>
+<li class="no"><b>Красная линия:</b> любой продукт, который просит ввести <b>пароли</b> от твоих AI-подписок (а не залогиниться внутри его окна на официальной странице вендора) — <b>отказ без обсуждения</b>. Это выдача ключей от десяти аккаунтов третьей стороне. Наши пароли живут в <span class="path">secrets\</span> и наружу не уходят.</li>
+</ul>
+</div>
+
+<div class="card warn">
+<b>Рекомендация.</b> Начать с <b>ChatALL</b> — единственный из списка, который (а) бесплатный и open-source, (б) хранит логины локально, (в) реально гоняет через твои подписки, (г) умеет «один вопрос → все модели рядом», что закрывает твоё «видеть глазами». Ставить <b>только с официального репозитория</b> <a href="https://github.com/ai-shifu/ChatALL">github.com/ai-shifu/ChatALL</a>. Если хочется просто аккуратных отдельных окон без общей корзины — <b>WebCatalog</b> (каждый сервис в своей песочнице Chromium, сессии изолированы).<br>
+<small>Не рекомендую покупать Mammouth/Aizolo: платить одиннадцатый раз за то, что уже оплачено десять раз.</small><br>
+<small>Замечание: у тебя на HP17 уже стоит <b>All-in-One Messenger</b> — это ровно тот же класс (семейство C), только для мессенджеров. Логика та же.</small>
+</div>
+
+<h2>5. «Хочу глазами видеть, как ведутся сессии в Gemini / Grok / Codex / GLM»</h2>
+<div class="card">
+Это <b>другая задача</b>, чем агрегатор чатов, и решается другими инструментами — оркестраторами параллельных агентных сессий:
+<ul>
+<li><b>Claude Squad</b> (~7.5k★, Go) — TUI, tmux + git worktree, умеет Claude Code, Codex, Gemini, Aider в одном экране;</li>
+<li><b>Conductor</b> (macOS) — параллельные Claude Code / Codex агенты, каждый в своём worktree, дифф-ревью;</li>
+<li><b>Crystal</b>, <b>Sculptor</b> (Docker-изоляция), <b>Omnara</b> ($9/мес, смотреть с телефона);</li>
+<li><b>Vibe Kanban</b> — <span class="no">не брать</span>: Bloop закрыл проект 10.04.2026, живёт только как community-форк.</li>
+</ul>
+<small>Источник — наш же прошлый ресёрч (§6). Отдельная развилка: у нас уже есть своя видимость сессий (<code>/sessions</code>, FleetView). Если хочется картинку, а не список — скажи, соберу дашборд живых сессий по всем узлам.</small>
+</div>
+
+<h2>6. Прошлый ресёрч — нашёлся</h2>
+<div class="card good">
+<b>Он не в ChatGPT, а в claude.ai.</b> Чат «Управление несколькими подписками Claude через единый интерфейс» от <b>25.07.2026</b> (uuid <code>246baf5c-b357-43a4-bdc2-48856d265aa2</code>), артефакт «Managing a Pool of Paid LLM Subscriptions for Parallel Coding: Tools, Dashboards, and Routers», забран в волт 30.07.2026:<br>
+<span class="path">E:\Obsidian\Anton-Knowledge\01-Conversations\Claude-AI\artifacts\claudeai-art-managing-a-pool-of-paid-llm-subscriptions-for-parallel-codin-b6b104.md</span>
+<p>Там 25 КБ по делу: три слоя экосистемы (переключатели аккаунтов и мониторы лимитов → оркестраторы сессий → роутеры с пулом аккаунтов), точные заголовки лимитов <code>anthropic-ratelimit-unified-5h-*</code>, разбор «легальной» архитектуры на <code>CLAUDE_CONFIG_DIR</code> против прокси-мультиплексирования, за которое банят волнами, и хронология ToS (09.01.2026 блокировка сторонних харнесов, 19.02.2026 запрет в ToS, 04.04.2026 исполнение).</p>
+<p><b>Где искал, чтобы не соврать «нет»:</b> реестр ДР (<code>dr_registry.py</code>) — совпадений нет; импорт ChatGPT в волте (3253 чата, свежий до 02.08.2026) — по теме ничего; импорт claude.ai — <b>нашлось</b>.</p>
+<p class="mid">⚠️ Честная дыра: в волте лежит <b>один</b> экспорт ChatGPT. Второй аккаунт как отдельный экспорт не опознаётся — если ресёрч был там, он в волт не доехал. Проверка второго аккаунта = вход в веб, оставил Антону (см. §7).</p>
+</div>
+
+<h2>7. Что осталось за руками Антона</h2>
+<div class="card warn">
+<ul>
+<li><b>Второй аккаунт ChatGPT.</b> Сказать, какой именно (почта) — тогда сделаю экспорт и импорт в волт, и вопрос «где ещё это обсуждалось» закроется цифрой, а не догадкой.</li>
+<li><b>Mistral.</b> Аккаунта Le Chat / Mistral Vibe у нас нет — регистрация за тобой (уже висит как шестая рельса ДР).</li>
+<li><b>ChatALL ставить?</b> Скажи «+» — поставлю с официального репозитория на HP17 и хаб, залогинюсь сам в твоих аккаунтах. Пароли не набираю руками — подаёт Chrome/store.</li>
+<li><b>Perplexity-приложение</b> — ставить или мимо (не наша рельса).</li>
+</ul>
+</div>
+
+<div class="sub" style="margin-top:26px">
+Файл: <span class="path">E:\Obsidian\Anton-Knowledge\_Dashboards\LLM-Desktop-Apps.html</span> · карточка задачи: <span class="path">E:\Obsidian\Anton-Knowledge\10-Tasks\task-2026-08-05-llm-desktop-apps-audit.md</span>
+</div>
+</div>
+</html>
