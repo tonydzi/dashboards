@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Прочее · [← Night-Report-2026-07-29](Night-Report-2026-07-29.html) · [Parasite-Discover →](Parasite-Discover.html)
+[все дашборды](index.html) · категория: Прочее · [← Dashboard-Max-Rollout](Dashboard-Max-Rollout.html) · [_doc_tracker_write →](_doc_tracker_write.md)
 
 # NotPeople - драфты питчей (50) - НА АППРУВ
 

@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Инфраструктура и рутины · [← DR-Delivery-Sessions](DR-Delivery-Sessions.html) · [HANDOFF-monitor-session →](HANDOFF-monitor-session.md)
+[все дашборды](index.html) · категория: Инфраструктура и рутины · [← HANDOFF-alpha-recall-comments](HANDOFF-alpha-recall-comments.md) · [HANDOFF-monitor-session →](HANDOFF-monitor-session.md)
 
 # HANDOFF — продолжение сессии «бот-бронировщик звонков»
 

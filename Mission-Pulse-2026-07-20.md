@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Миссия и проекты · [← Journey-Chapters](Journey-Chapters.html) · [Mission-Pulse-2026-07-27 →](Mission-Pulse-2026-07-27.md)
+[все дашборды](index.html) · категория: Флот и узлы · [← Mayak-Primary-Plan](Mayak-Primary-Plan.html) · [Mission-Pulse-2026-07-27 →](Mission-Pulse-2026-07-27.md)
 
 ---
 title: "Mission-Pulse 2026-07-20 — Миссия №2, конец W1 / канун ЗАЛПА"

@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Прочее · [← GDrive-Sheets-Triage](GDrive-Sheets-Triage.html) · [HN-Account-Setup →](HN-Account-Setup.html)
+[все дашборды](index.html) · категория: Инфраструктура и рутины · [← HANDOFF-monitor-session](HANDOFF-monitor-session.md) · [Hanging-Tasks-Dashboard →](Hanging-Tasks-Dashboard.html)
 
 ---
 title: "HANDOFF — S6 Дев-лог / GEO-лейн (для Натальи, ноут MYOWNPC)"

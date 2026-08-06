@@ -18,7 +18,7 @@ td.q{color:#b9c0cc} .ok{color:#5fd08a} .bad{color:#ff7b72} .empty{color:#7a8394;
 </style>
 <h1>Вектор против вектор+граф - замер recall</h1>
 <div class=sub>узел MyOwnPC-Natalia · движок ab_recall 1.0.0 · набор v1 ·
-собрано 2026-08-06 14:51</div>
+собрано 2026-08-06 15:09</div>
 
 <div class=card>
 <div class=verdict>⚠️ ДАННЫХ МАЛО</div>
@@ -37,7 +37,7 @@ td.q{color:#b9c0cc} .ok{color:#5fd08a} .bad{color:#ff7b72} .empty{color:#7a8394;
 </div>
 
 <div class=card><b>Частичный срез по историческим строкам таблицы <code>ab_recall</code></b> — 288 строк, узлы ab-recall-table-fleetanchor-20260806, 2026-07-14T13:26:57 .. 2026-08-06T01:33:04<div class=note>⚠️ строк 288, но РАЗНЫХ запросов всего <b>12</b> (24.0 повтора одного и того же): ночная рутина гоняет один набор каждую ночь. Всё ниже считается ПО ЗАПРОСАМ, а не по строкам, иначе уверенность завышается в 24.0 раза.<br>⚠️ и считается ТОЛЬКО новизна: баллов и эталонов в таблице нет, их не пишет ab_eval.py. На спор целиком это не отвечает.</div><div class=grid style='margin-top:12px'><div class=kpi><div class=v>12</div><div class=l>разных запросов (реальный размер выборки)</div></div><div class=kpi><div class=v>2.0</div><div class=l>новых от графа на запрос (медиана)</div></div><div class=kpi><div class=v>33.3%</div><div class=l>запросов, где граф не дал ничего</div></div><div class=kpi><div class=v>1.82</div><div class=l>пришло через граф/entity (среднее)</div></div></div></div>
-<div class=card><b>Ночные A/B-рутины по флоту</b><div class=note>Источник — собственные отчёты узлов в шине (<code>_heartbeat</code>), отчёт от 2026-08-06T09:37:06Z. ⚠️ Зелёный тут значит «задача отработала», а НЕ «строки легли в ab_recall»: это разные утверждения, второе проверяется только выгрузкой таблицы.</div><table><tr><th>узел</th><th>рутина</th><th>статус</th><th>последний успех</th><th>возраст, мин</th></tr><tr><td>A-2022BAYAREA</td><td>Memory AB Eval Nightly</td><td class='ok'>green</td><td>2026-08-06T04:10:01Z</td><td class=n>327</td></tr></table></div>
+<div class=card><b>Ночные A/B-рутины по флоту</b><div class=note>Источник — собственные отчёты узлов в шине (<code>_heartbeat</code>), отчёт от 2026-08-06T10:07:06Z. ⚠️ Зелёный тут значит «задача отработала», а НЕ «строки легли в ab_recall»: это разные утверждения, второе проверяется только выгрузкой таблицы.</div><table><tr><th>узел</th><th>рутина</th><th>статус</th><th>последний успех</th><th>возраст, мин</th></tr><tr><td>A-2022BAYAREA</td><td>Memory AB Eval Nightly</td><td class='ok'>green</td><td>2026-08-06T04:10:01Z</td><td class=n>357</td></tr></table></div>
 
 <div class="card warn">
 <b>Может ли этот узел мерить: НЕТ - E_NO_NUMPY</b>

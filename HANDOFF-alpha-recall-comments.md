@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Исследования и альфа · [← Foxpod-Alpha](Foxpod-Alpha.html) · [HF-Alpha-Radar →](HF-Alpha-Radar.html)
+[все дашборды](index.html) · категория: Инфраструктура и рутины · [← GDrive-Sheets-Triage](GDrive-Sheets-Triage.html) · [HANDOFF-booking-session →](HANDOFF-booking-session.md)
 
 ---
 type: handoff
