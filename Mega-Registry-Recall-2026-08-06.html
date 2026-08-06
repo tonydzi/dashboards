@@ -17,7 +17,7 @@ tr:last-child td{border-bottom:none}
 .ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
 code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-size:12.5px}
 .wrap{overflow-x:auto}
-</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Мозг и волт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Dedup-Dashboard.html">&larr; Dedup-Dashboard</a> · <a href="Memory-AB-Demo.html">Memory-AB-Demo &rarr;</a></span></div><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Мозг и волт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Dedup-Dashboard.html">&larr; Dedup-Dashboard</a> · <a href="Memory-AB-Demo.html">Memory-AB-Demo &rarr;</a></span></div>
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Мозг и волт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Dedup-Dashboard.html">&larr; Dedup-Dashboard</a> · <a href="Memory-AB-Demo.html">Memory-AB-Demo &rarr;</a></span></div>
 
 <h1>Мега-реестр задач: реколл «что уже сделано»</h1>
 <div class="sub">Хаб A-2022BAYAREA · 6 августа 2026, 15:00 · ответ на голосовую Антона от 05.08 21:32 (единый реестр + будильник + зависимости)</div>
@@ -27,7 +27,7 @@ code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-siz
   <div class="k"><b class="ok">14/14</b><span>полей из голосовой уже в схеме</span></div>
   <div class="k"><b class="ok">8</b><span>статусов (все, что просил)</span></div>
   <div class="k"><b class="warn">63</b><span>просрочены проверкой</span></div>
-  <div class="k"><b class="bad">0</b><span>сессий поднял диспетчер</span></div>
+  <div class="k"><b class="ok">6</b><span>сессий поднято 06.08</span></div>
   <div class="k"><b class="warn">29</b><span>блокеров прозой (машина не видит)</span></div>
 </div>
 
@@ -40,7 +40,7 @@ code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-siz
 <tr><td>Дата следующей проверки («померим через месяц»)</td><td class="ok">✅ поле есть, заполнено у 376</td><td><code>review_after:</code>; ближайшие даты: 11.08 (дашборды), 18.08 (Firefox), 01.09 (пачка legacy)</td></tr>
 <tr><td>Зависимости «после A,B,C делаем D»</td><td class="warn">🟡 поле есть, но 29 блокеров записаны прозой</td><td><code>blocked_by</code> ждёт ссылок <code>[[task-...]]</code>, иначе задача ждёт вечно</td></tr>
 <tr><td>Робот, который сам будит по дате и по закрытым зависимостям</td><td class="ok">✅ построен 05.08 вечером</td><td><code>registry_wake.py</code> + задача Windows «Claude Registry Wake» 05:00; сегодня отработала в 05:00, вернула «есть что будить»</td></tr>
-<tr><td>Робот сам стартует сессии, а не шлёт четвёртый дайджест</td><td class="bad">❌ не подключён</td><td><code>registry_dispatch.py</code> написан (отбор + сид + кап 3/сутки + маршрут «сам / чип Антону»), но сессии-диспетчера в расписании НЕТ и леджер <code>_registry_dispatch.jsonl</code> пуст</td></tr>
+<tr><td>Робот сам стартует сессии, а не шлёт четвёртый дайджест</td><td class="ok">✅ включено 06.08</td><td><code>registry-dispatcher-daily</code> в 05:15; первая партия 6 сессий поднята сегодня, леджер записал 6 строк, дедуп проверен вживую (повторный отбор дал ДРУГИЕ карточки)</td></tr>
 <tr><td>Регулярный review (неделя / месяц)</td><td class="warn">🟡 частично</td><td>ночной аудит + «Claude Hanging Tasks Digest» 05:52 живы; недельного разбора полки <code>someday</code> (34 карточки) как рутины нет</td></tr>
 <tr><td>Склейка roadmap / backlog / улучшений / DR</td><td class="ok">✅ ссылками, не копией</td><td><code>04-Projects/ROADMAP.md</code> · <code>00-System/_Improvements-Backlog.md</code> · <code>_DR-Registry</code> · <code>_Registry-of-Registries.md</code></td></tr>
 </table></div>
@@ -64,7 +64,20 @@ code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-siz
 <tr><td>05.08</td><td>по этой самой голосовой построены будильник и диспетчер; замер в тот день: 57 задач с наступившим сроком, старейшая ждала с 12 июля</td></tr>
 </table></div>
 
-<h2>4. Вывод</h2>
+<h2>4. Включено 06.08 в 15:40 и цена вопроса</h2>
+<p>Приказ Антона: «включай диспетчер, все ставь на автозапуск, у меня нет времени нажимать ЧИПЫ, 1 раз в сутки норм». Чип-лейн выключен как класс: <code>MAX_CHIP</code> 3 → 0, <code>MAX_AUTO</code> 3 → 6. Сессия-диспетчер <code>registry-dispatcher-daily</code> в 05:15, сразу после будильника в 05:00. Первая партия из 6 сессий поднята вручную сегодня, с разносом 20 минут.</p>
+<div class="wrap"><table>
+<tr><th>Статья</th><th>Цифра</th><th>Откуда</th></tr>
+<tr><td>Одна задачная сессия, output</td><td>медиана 97 тыс. · p75 147 тыс.</td><td class="warn">замер 91 живой сессии за 7 дней (60-200 ходов)</td></tr>
+<tr><td>Одна задачная сессия, cache_read</td><td>медиана 18,4 млн</td><td>там же (кэш дешевле свежего входа)</td></tr>
+<tr><td>6 сессий в сутки, output</td><td>~150-600 тыс.</td><td class="warn">🤔 прогноз: авто-сессий ещё не было, считаем по соседям</td></tr>
+<tr><td>Сам диспетчер</td><td>5-10 тыс. в сутки</td><td>механическая работа, без исследования</td></tr>
+<tr><td>Текущий расход хаба</td><td>5,8 млн output в сутки</td><td class="ok">факт: 40,4 млн за 7 дней, 1314 рабочих сессий</td></tr>
+<tr><td><b>Прирост от автозапуска</b></td><td class="ok"><b>+3-10%</b></td><td>то есть в пределах дневного шума, не новый порядок</td></tr>
+</table></div>
+<p>Сверка факта с прогнозом 13.08, вместе с пользой (сколько карточек реально сменило состояние) и границами (ни одного ухода наружу самотёком): <code>task-2026-08-13-registry-dispatcher-token-measure</code>.</p>
+
+<h2>5. Вывод</h2>
 <p>Реестр строить заново не нужно: он есть, схема закрывает голосовую почти целиком. Дырка ровно одна и она последняя в трубе: <b>будильник звонит, но никто не встаёт</b>. Диспетчер написан, но не подключён к планировщику, поэтому 63 просроченных проверки лежат так же, как лежали.</p>
 
 </body></html>
