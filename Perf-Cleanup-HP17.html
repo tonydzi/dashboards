@@ -1,0 +1,108 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Natasha-Tasks-2026-07-30.html">&larr; Natasha-Tasks-2026-07-30</a> · <a href="Robot-Registry.html">Robot-Registry &rarr;</a></span></div><meta charset="utf-8">
+<title>Очистка ноута HP17 — анализ производительности</title>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--bd:#30363d;--tx:#e6edf3;--mut:#8b949e;--grn:#3fb950;--yel:#d29922;--red:#f85149;--blu:#58a6ff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--tx);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px;max-width:1100px;margin:0 auto}
+  h1{font-size:26px;margin-bottom:4px}
+  .sub{color:var(--mut);margin-bottom:20px;font-size:13px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:22px}
+  .card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px}
+  .big{font-size:34px;font-weight:700;line-height:1}
+  .lbl{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+  .ok{color:var(--grn)} .warn{color:var(--yel)} .bad{color:var(--red)}
+  .sec{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:18px 20px;margin-bottom:18px}
+  .sec h2{font-size:18px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .bar{height:22px;border-radius:5px;background:var(--blu);position:relative}
+  .row{display:grid;grid-template-columns:180px 1fr 70px;align-items:center;gap:10px;margin:6px 0;font-size:13px}
+  .row .track{background:#0d1117;border-radius:5px;overflow:hidden;border:1px solid var(--bd)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--bd)}
+  th{color:var(--mut);font-weight:600;font-size:11px;text-transform:uppercase}
+  .tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600}
+  .t-keep{background:#1a3a2a;color:var(--grn)} .t-rm{background:#3a1a1a;color:var(--red)} .t-hub{background:#2a2440;color:#b392f0}
+  .eli5{background:#12243a;border:1px solid #1f4a6b;border-radius:12px;padding:16px 20px;margin-top:20px}
+  .eli5 b{color:var(--blu)}
+  .win{border-left:3px solid var(--grn);padding-left:12px;margin:10px 0}
+  code{background:#0d1117;padding:1px 6px;border-radius:4px;font-size:12px;color:#79c0ff}
+</style>
+
+<h1>🧹 Очистка ноута HP17-ZBook</h1>
+<div class="sub">ZBOOKG8-2023PAL · i9-11900H · 79.7 ГБ RAM · RTX A3000 · снято живьём 07.07.2026 08:20</div>
+
+<div class="grid">
+  <div class="card"><div class="lbl">Память</div><div class="big ok">63%</div><div class="sub" style="margin:0">занято · свободно 29 ГБ из 79.7</div></div>
+  <div class="card"><div class="lbl">Процессор</div><div class="big ok">6%</div><div class="sub" style="margin:0">почти простаивает</div></div>
+  <div class="card"><div class="lbl">Видеокарта</div><div class="big ok">1%</div><div class="sub" style="margin:0">1.9 из 6 ГБ · ничего тяжёлого</div></div>
+  <div class="card"><div class="lbl">Всего процессов</div><div class="big warn">~1400</div><div class="sub" style="margin:0">вот где мусор ↓</div></div>
+</div>
+
+<div class="sec" style="border-color:#1f4a6b;background:#12243a">
+  <h2>💬 Что делает Claude Code на железе прямо сейчас</h2>
+  <p style="color:var(--mut);font-size:14px">Ничего тяжёлого. CPU 6%, GPU 1% — <b style="color:var(--grn)">никаких вычислений, эмбеддингов или транскрипции сейчас не крутится</b>. На видеокарте висят только Kaspersky и HP Sure Click (браузер-песочница) — это не мы. Claude Code сейчас «весит» не расчётами, а <b style="color:var(--yel)">множеством накопившихся процессов-спутников</b> одной старой сессии, которая открыта уже 31 час.</p>
+</div>
+
+<div class="sec">
+  <h2>🥇 Кто съедает память (топ по ГБ)</h2>
+  <div class="row"><span>Chrome (73 процесса)</span><div class="track"><div class="bar" style="width:100%;background:var(--red)"></div></div><span>14.9 ГБ</span></div>
+  <div class="row"><span>node (167 проц. — дети Claude/Codex)</span><div class="track"><div class="bar" style="width:61%;background:var(--yel)"></div></div><span>9.1 ГБ</span></div>
+  <div class="row"><span>Memory Compression (Windows)</span><div class="track"><div class="bar" style="width:48%;background:var(--mut)"></div></div><span>7.2 ГБ</span></div>
+  <div class="row"><span>claude (24 проц.)</span><div class="track"><div class="bar" style="width:41%;background:var(--yel)"></div></div><span>6.1 ГБ</span></div>
+  <div class="row"><span>python (45 проц. — MCP-серверы)</span><div class="track"><div class="bar" style="width:39%;background:var(--red)"></div></div><span>5.8 ГБ</span></div>
+  <div class="row"><span>conhost + cmd + powershell (306 проц!)</span><div class="track"><div class="bar" style="width:20%;background:var(--yel)"></div></div><span>3.0 ГБ</span></div>
+  <div class="row"><span>Telegram Desktop</span><div class="track"><div class="bar" style="width:9%;background:var(--mut)"></div></div><span>1.4 ГБ</span></div>
+  <div class="row"><span>ChatGPT + Codex (десктоп-приложения)</span><div class="track"><div class="bar" style="width:11%;background:var(--mut)"></div></div><span>1.7 ГБ</span></div>
+</div>
+
+<div class="sec" style="border-color:#5a2a2a">
+  <h2>🐛 Корень проблемы №1 — 28 копий Telegram-MCP</h2>
+  <p style="font-size:14px"><b class="bad">28 одинаковых</b> процессов <code>telegram-mcp\main.py</code> = <b class="bad">5.4 ГБ</b> впустую. Каждой сессии/переподключению нужен ОДИН, а их наплодилось 28 — старые не умирают.</p>
+  <div class="win" style="border-color:var(--yel)">Уборщик <code>Telegram MCP Janitor</code> отработал в 08:14 «успешно» (код 0), но <b class="bad">28 дублей на месте</b> — он чистит только «сироты» с мёртвым родителем, а эти висят на живой старой сессии. То есть <b>уборщик не лечит класс</b> — это и есть корень.</p>
+  <p style="font-size:13px;color:var(--mut)">26 из 28 — от вчерашней сессии (спавнились с 06.07 19:44). Их можно освободить сразу → <b class="ok">+5.2 ГБ</b>, обратимо (MCP переподключится сам при надобности).</p>
+</div>
+
+<div class="sec">
+  <h2>⚙️ Автозагрузка — что оставить / убрать</h2>
+  <table>
+    <tr><th>Программа</th><th>Решение</th><th>Почему</th></tr>
+    <tr><td>Syncthing + watchdog</td><td><span class="tag t-keep">оставить</span></td><td>хребет синка между машинами</td></tr>
+    <tr><td>Tailscale</td><td><span class="tag t-keep">оставить</span></td><td>VPN-сетка флота</td></tr>
+    <tr><td>Google Drive FS</td><td><span class="tag t-keep">оставить</span></td><td>диски G:/H: с твоими файлами</td></tr>
+    <tr><td>TREZOR Bridge</td><td><span class="tag t-keep">оставить</span></td><td>аппаратный кошелёк (крипта)</td></tr>
+    <tr><td>Claude-Compact-Hotkey</td><td><span class="tag t-keep">оставить</span></td><td>твой рабочий хоткей</td></tr>
+    <tr><td>Roblox</td><td><span class="tag t-rm">убрать из автозапуска</span></td><td>игра стартует в трей на рабочем ноуте</td></tr>
+    <tr><td>Discord</td><td><span class="tag t-rm">убрать из автозапуска</span></td><td>запустишь вручную когда нужен</td></tr>
+    <tr><td>OneDrive</td><td><span class="tag t-rm">убрать</span></td><td>ты пользуешься Google Drive, не OneDrive</td></tr>
+    <tr><td>Adobe Acrobat Synchronizer</td><td><span class="tag t-rm">убрать</span></td><td>фоновый синк Acrobat, не нужен всегда</td></tr>
+    <tr><td>Microsoft Edge авто-запуск</td><td><span class="tag t-rm">убрать</span></td><td>Edge сам открывается при входе</td></tr>
+  </table>
+  <p style="font-size:12px;color:var(--mut);margin-top:8px">Автозагрузка в целом чистая — эти 5 дают немного RAM, но убирают фоновый шум и ускоряют вход в систему.</p>
+</div>
+
+<div class="sec" style="border-color:#3a3060">
+  <h2>🏠 Кандидаты «убрать с ноута → на хаб» (твоё правило: минимум ноута, максимум хаба)</h2>
+  <p style="font-size:13px;color:var(--mut);margin-bottom:10px">Тяжёлые постоянные фоновые задачи, которым место на всегда-включённом десктопе-хабе. <b>Не выключаю сам</b> — сперва проверю, не дублирует ли их хаб, чтобы не оборвать конвейер.</p>
+  <table>
+    <tr><th>Задача на ноуте</th><th>Что делает</th><th></th></tr>
+    <tr><td>Brain Reindex Daily</td><td>переиндексация RAG (GPU/CPU)</td><td><span class="tag t-hub">→ хаб</span></td></tr>
+    <tr><td>Entity Graph Nightly</td><td>строит граф сущностей</td><td><span class="tag t-hub">→ хаб</span></td></tr>
+    <tr><td>TG Full Archive</td><td>полный архив Telegram</td><td><span class="tag t-hub">→ хаб</span></td></tr>
+    <tr><td>WhatsApp Nightly Sync</td><td>ночной синк WhatsApp</td><td><span class="tag t-hub">→ хаб</span></td></tr>
+    <tr><td>Second Brain Search Server</td><td>постоянный сервер поиска</td><td><span class="tag t-hub">→ хаб</span></td></tr>
+    <tr><td>CHARM leads-to-VPS</td><td>выгрузка лидов на VPS</td><td><span class="tag t-hub">→ хаб</span></td></tr>
+  </table>
+</div>
+
+<div class="sec" style="border-color:#1a3a2a">
+  <h2>✅ План очистки — по силе эффекта</h2>
+  <div class="win"><b>1. Убить 26 дублей Telegram-MCP</b> → <b class="ok">+5.2 ГБ сразу</b>, обратимо. Могу сделать в один клик.</div>
+  <div class="win"><b>2. Закрыть старую 31-часовую сессию Claude</b> (PID 79740, простаивает — 267 сек CPU за 31 ч) → освободит гору node/conhost/cmd. Решаешь ты.</div>
+  <div class="win"><b>3. Закрыть лишние окна Chrome</b> (73 процесса = 15 ГБ) → до <b class="ok">+10 ГБ</b>. Твоё действие.</div>
+  <div class="win"><b>4. Починить корень:</b> научить <code>Telegram MCP Janitor</code> схлопывать дубли в рамках сессии, а не только сироты — чтобы 28 копий не наросли снова.</div>
+  <div class="win"><b>5. Убрать 5 программ из автозагрузки</b> (Roblox, Discord, OneDrive, Adobe, Edge).</div>
+  <div class="win"><b>6. Перенести 6 фоновых задач на хаб</b> — после сверки, что хаб их уже тянет.</div>
+</div>
+
+<div class="eli5">
+  <b>🧒 Простыми словами:</b> Твой ноут не болеет — у него ещё куча свободного места (29 ГБ) и он почти отдыхает. Просто в углу комнаты незаметно накопилась гора одинаковых коробок: <b>28 копий одной и той же программы-телеграма</b> заняли 5 ГБ, плюс вчерашнее окно Claude весь день стоит открытым и тащит за собой толпу мелких помощников. Я могу выкинуть 28 лишних коробок прямо сейчас (это безопасно, вернутся если понадобятся), ты закроешь старое окно и лишние вкладки Chrome — и ноут задышит. А тяжёлую ночную работу перевесим на большой домашний компьютер, как ты и любишь.
+</div>

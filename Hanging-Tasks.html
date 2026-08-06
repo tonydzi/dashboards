@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Висячие задачи — доска по владельцам</title>
+<style>
+  :root { --bg:#0f1115; --card:#181b22; --txt:#e8eaf0; --dim:#9aa3b2; --line:#2a2f3a;
+          --red:#ff5a5a; --yellow:#ffc94d; --blue:#5ab0ff; --green:#5ad18a; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:24px; background:var(--bg); color:var(--txt);
+         font:15px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .sub { color:var(--dim); font-size:13px; margin-bottom:20px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-bottom:22px; }
+  .kpi { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+  .kpi b { font-size:24px; display:block; }
+  .kpi span { color:var(--dim); font-size:12px; }
+  h2 { font-size:16px; margin:26px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  .item { background:var(--card); border:1px solid var(--line); border-left:4px solid var(--line);
+          border-radius:8px; padding:10px 14px; margin-bottom:8px; display:flex; gap:10px; align-items:flex-start; }
+  .r { border-left-color:var(--red); } .y { border-left-color:var(--yellow); }
+  .w { border-left-color:var(--blue); } .g { border-left-color:var(--green); opacity:.75; }
+  .item input { margin-top:4px; transform:scale(1.2); accent-color:var(--green); }
+  .t { font-weight:600; }
+  .d { color:var(--dim); font-size:13px; margin-top:2px; }
+  .a { font-size:13px; margin-top:4px; }
+  .a b { color:var(--yellow); font-weight:600; }
+  .g .a b { color:var(--green); }
+  .badge { font-size:11px; color:var(--dim); border:1px solid var(--line); border-radius:20px;
+           padding:1px 8px; margin-left:6px; white-space:nowrap; }
+  code { background:#11141a; border:1px solid var(--line); border-radius:4px; padding:0 5px; font-size:12.5px; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Hanging-Tasks-Natalia-2026-07-27.html">&larr; Hanging-Tasks-Natalia-2026-07-27</a> · <a href="Infra-Tasks-2026-07-17.html">Infra-Tasks-2026-07-17 &rarr;</a></span></div>
+<h1>📋 Висячие задачи — кто что должен</h1>
+<div class="sub">Пересобрано 2026-07-16 ~22:30 Лиссабона (Fable, режим кофаундера «сделай всё сам»). Прошлая доска от 04.07 устарела на 12 дней — из её шести 🔴 живым остался НОЛЬ: всё закрыто флотом или мной сегодня. Галочки — визуальные.</div>
+
+<div class="grid">
+  <div class="kpi"><b style="color:var(--red)">3</b><span>🔴 ждут Антона (до вылета!)</span></div>
+  <div class="kpi"><b style="color:var(--yellow)">3</b><span>🟡 на Клоде</span></div>
+  <div class="kpi"><b style="color:var(--blue)">4</b><span>⏳ машины / внешнее</span></div>
+  <div class="kpi"><b style="color:var(--green)">10</b><span>✅ закрыто (04.07→сегодня)</span></div>
+</div>
+
+<h2>🔴 Ждут Антона — всё связано с вылетом 17.07 (память away-mode)</h2>
+<div class="item r"><input type="checkbox"><div>
+  <div class="t">Ребут-тест хаба перед отъездом <span class="badge">away-mode чеклист</span></div>
+  <div class="d">Хаб остаётся один до ~сентября. Ребут → сам ли поднимается всё (hub-boot-selfreport доложит в 03/02).</div>
+  <div class="a"><b>Действие:</b> перезагрузить хаб один раз и глянуть доклад в 03.</div>
+</div></div>
+<div class="item r"><input type="checkbox"><div>
+  <div class="t">BIOS: AC-power auto-on на хабе <span class="badge">away-mode чеклист</span></div>
+  <div class="d">Отключение света в Пало-Альто без auto-on = мёртвый хаб до сентября. Только руки на месте.</div>
+  <div class="a"><b>Действие:</b> BIOS → Restore on AC Power Loss = Power On.</div>
+</div></div>
+<div class="item r"><input type="checkbox"><div>
+  <div class="t">Google-клики (коннекторы) из чеклиста away-mode <span class="badge">2 мин</span></div>
+  <div class="d">Последние подтверждения в браузере, которые нельзя сделать за тебя (окна согласия Google).</div>
+  <div class="a"><b>Действие:</b> по списку в away-mode памяти / чате 02.</div>
+</div></div>
+
+<h2>🟡 На Клоде</h2>
+<div class="item y"><input type="checkbox"><div>
+  <div class="t">RU-лонгрид «таможенник» — судьба хвоста серии zero-trust</div>
+  <div class="d">Гейт 06 msg 1791608, taste ✅. В @ClawRus не выходил. Теперь путь = гейт Наташи (чат 121). Подготовлю ей на ОК утром — ночью перед вылетом не сую.</div>
+</div></div>
+<div class="item y"><input type="checkbox"><div>
+  <div class="t">ChatGPT nightly: авто-self-heal токена <span class="badge">из tidy 25.07</span></div>
+  <div class="d">Забрано из памяти при архивации chatgpt-export-pipeline (импорт DONE, hub self-sufficiency закрыт 07-16). Остаток: увязать nightly RC=7 → авто-триггер self-heal сессии, чтобы смерть токена лечилась без человека.</div>
+</div></div>
+<div class="item y"><input type="checkbox"><div>
+  <div class="t">any-LLM Phase 3 остаток (не срочно) <span class="badge">из tidy 25.07</span></div>
+  <div class="d">Забрано при архивации any-llm-vault-actor (Phase 1-3 built+tested). Остаток: routing-метрики + критерий выбора 4-го вендора. Низкий приоритет, канон уже в Bible + CLAUDE.md §4.4.</div>
+</div></div>
+
+<h2>⏳ Машины / внешнее</h2>
+<div class="item w"><input type="checkbox"><div>
+  <div class="t">Хаб: TG-daemon (assistant-bot) err24=48 <span class="badge">guard не чинить — приказ</span></div>
+  <div class="d">Живёт на хабе (C:\mcp\assistant-bot), guard перезапускает сам. Ошибки копятся — разбор после вылета, не блокер.</div>
+</div></div>
+<div class="item w"><input type="checkbox"><div>
+  <div class="t">Маяк: W3-флип (перо у Антона, HOLD)</div>
+  <div class="d">Канон-рельса подписана, волны 0-2 ✅. Флип — когда Антон скажет, не раньше (память vps-anchor-node).</div>
+</div></div>
+<div class="item w"><input type="checkbox"><div>
+  <div class="t">T0x0AA рельса на Маяке ⏳ <span class="badge">mayak-tg-rails</span></div>
+  <div class="d">3 из 4 аутрич-рельс 🟢; личная — в процессе, не пере-чеканивать живое.</div>
+</div></div>
+<div class="item w"><input type="checkbox"><div>
+  <div class="t">arXiv endorse-watch <span class="badge">блокер W2 25.07</span></div>
+  <div class="d">Сторож q-fin.GN тикает каждые 4ч (endorse_watch.py). Ждём грант — машина сама доложит.</div>
+</div></div>
+
+<h2>✅ Закрыто (моя доска 04.07 → сегодня, с доказательствами)</h2>
+<div class="item g"><input type="checkbox" checked><div><div class="t">headless Sonnet 401</div><div class="a"><b>Закрыто флотом; проверил боем 16.07:</b> <code>claude -p sonnet</code> → «ок» по подписке.</div></div></div>
+<div class="item g"><input type="checkbox" checked><div><div class="t">bb Gmail app-password / email-рельса</div><div class="a"><b>Закрыто флотом:</b> коннекторы GREEN 16.07, bb жив.</div></div></div>
+<div class="item g"><input type="checkbox" checked><div><div class="t">Zero-trust пост #65</div><div class="a"><b>Опубликован 04.07 08:06</b> (лента 07 + ClawRus/16309, проверено 08.07). Registry #65+#84 done.</div></div></div>
+<div class="item g"><input type="checkbox" checked><div><div class="t">Папка cowork-inbox на хаб</div><div class="a"><b>Принята, 100% синк</b> (проверено /db/completion 16.07). Корневой фикс острова добит.</div></div></div>
+<div class="item g"><input type="checkbox" checked><div><div class="t">Мост cowork-watch на ноуте</div><div class="a"><b>Снят мной 16.07</b> (Disabled): хаб — единственный владелец, диспетчер тикает (beat 21:10).</div></div></div>
+<div class="item g"><input type="checkbox" checked><div><div class="t">travel-vienna-portugal в леджере</div><div class="a"><b>Закрыл решением кофаундера 16.07:</b> cancelled (25 дней, поездка спланирована другим путём). Леджер чист.</div></div></div>
+<div class="item g"><input type="checkbox" checked><div><div class="t">Замер --bare vs --strict-mcp-config</div><div class="a"><b>Сделан 16.07:</b> strict = «ок» по подписке; bare = «Not logged in». Вердикт: wake = strict (дефолт кода верен). route:wake технически разблокирован.</div></div></div>
+<div class="item g"><input type="checkbox" checked><div><div class="t">tonydzi 2FA для CRM-робота</div><div class="a"><b>Закрыто флотом 16.07:</b> рельса tonydzi 🟢 на Маяке (mayak-tg-rails).</div></div></div>
+<div class="item g"><input type="checkbox" checked><div><div class="t">TG-daemon ZOMBIE на ноуте</div><div class="a"><b>Мёртв:</b> ни процесса, ни Run-ключа (проверено 16.07). Живой демон переехал на хаб под guard.</div></div></div>
+<div class="item g"><input type="checkbox" checked><div><div class="t">ai-creator ресёрч (69 КБ)</div><div class="a"><b>Потреблён лучше, чем вплетён:</b> из него вырос конвейер Creator-Watch в 05-Resources. Оригинал preserved.</div></div></div>
+
+<div class="sub" style="margin-top:22px">Дом доски: <code>E:\Obsidian\_Dashboards\Hanging-Tasks.html</code> · обновляю по «+ дашборд» и на /retro. Канон: hanging-tasks-dashboard.</div>
+</body>
+</html>

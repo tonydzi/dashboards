@@ -1,5 +1,3 @@
-[все дашборды](index.html) · категория: Контент и публикации · [← TG-Stories-Research-2026-07-06](TG-Stories-Research-2026-07-06.html) · [Threads-Posts-Bank →](Threads-Posts-Bank.md)
-
 ---
 title: Threads — что опубликовано
 аккаунт: threads.com/@antondzi (RU, 612 подписчиков на 29.07.2026)

@@ -1,0 +1,101 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Люди, привычки, быт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Entity-Lane-AB.html">&larr; Entity-Lane-AB</a> · <a href="Health-Dashboard.html">Health-Dashboard &rarr;</a></span></div><title>Как мы используем сторонние LLM (06.08.2026)</title>
+<style>
+  :root{--bg:#fff;--fg:#1a1a1a;--mut:#666;--line:#e3e3e3;--card:#fafafa;--ok:#1a7f37;--no:#b3261e;--wait:#8a6d00;--accent:#0b57d0}
+  @media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#ececec;--mut:#9a9a9a;--line:#2e2e2e;--card:#1d1d1d;--ok:#4ac26b;--no:#f26d63;--wait:#e0b341;--accent:#7aa7ff}}
+  :root[data-theme="dark"]{--bg:#141414;--fg:#ececec;--mut:#9a9a9a;--line:#2e2e2e;--card:#1d1d1d;--ok:#4ac26b;--no:#f26d63;--wait:#e0b341;--accent:#7aa7ff}
+  :root[data-theme="light"]{--bg:#fff;--fg:#1a1a1a;--mut:#666;--line:#e3e3e3;--card:#fafafa;--ok:#1a7f37;--no:#b3261e;--wait:#8a6d00;--accent:#0b57d0}
+  body{background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;padding:24px;max-width:1020px}
+  h1{font-size:22px;margin:0 0 4px} h2{font-size:17px;margin:26px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .sub{color:var(--mut);font-size:14px;margin-bottom:16px}
+  .root{background:var(--card);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0}
+  .red{border-left-color:var(--no)} .green{border-left-color:var(--ok)}
+  .wrap{overflow-x:auto} table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+  th,td{border-bottom:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top}
+  th{color:var(--mut);font-weight:600;font-size:13px}
+  .ok{color:var(--ok);font-weight:600}.no{color:var(--no);font-weight:600}.wait{color:var(--wait);font-weight:600}
+  .bar{display:inline-block;height:10px;border-radius:5px;background:var(--accent);vertical-align:middle}
+  .bar.dim{background:var(--mut);opacity:.45}
+  ul{margin:6px 0 0 18px;padding:0} li{margin:6px 0}
+  code{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:13px}
+  .big{font-size:26px;font-weight:700}
+  .cards{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;min-width:150px;flex:1}
+  .kpi .lbl{color:var(--mut);font-size:13px}
+</style>
+
+<h1>Как мы используем сторонние LLM прямо сейчас</h1>
+<div class="sub">Замер 06.08.2026, 12:40 Лиссабон, машина HP17 (ZBOOKG8-2023PAL). Источники: <code>_dr/queue</code> (веер ДР, весь флот), <code>cc-review/bridge-state/usage.jsonl</code> (второе мнение, только HP17), <code>outsource_ledger.jsonl</code> (аутсорс кода, только HP17). Всё посчитано скриптом по файлам на диске, ничего по памяти.</div>
+
+<div class="cards">
+  <div class="kpi"><div class="big">3</div><div class="lbl">лейна, где живут сторонние LLM</div></div>
+  <div class="kpi"><div class="big">49</div><div class="lbl">ДР-карточек за 7 дней</div></div>
+  <div class="kpi"><div class="big">92</div><div class="lbl">боевых вызовов второго мнения (21.07-05.08)</div></div>
+  <div class="kpi"><div class="big no">46 ч</div><div class="lbl">простоя аутсорса кода (последняя задача 04.08 15:23)</div></div>
+</div>
+
+<div class="root red">
+  <b>Главное одной строкой.</b> Сторонние LLM у нас реально работают в ОДНОМ лейне из трёх - в исследовании. Второе мнение живёт наполовину (за последние двое суток почти все прогоны были тестовыми, а не боевыми), а лейн, ради которого весь режим и затевался - <b>«код пишут внешние LLM» - стоит вторые сутки</b>: последняя запись в леджере 04.08, при том что неделя 1 пилота идёт до 09.08.
+</div>
+
+<h2>Лейн 1. Исследование - ДР-веер (живёт лучше всех)</h2>
+<div class="sub">49 карточек тронуто за 7 дней, 42 из них с отчётами, 7 свежих ещё в работе. Считаем, кто из рельс реально доставил отчёт.</div>
+<div class="wrap"><table>
+<tr><th>Рельса</th><th>Доставила отчётов</th><th>Доля карточек</th><th></th><th>Состояние</th></tr>
+<tr><td><b>ChatGPT</b></td><td>41</td><td>98%</td><td><span class="bar" style="width:196px"></span></td><td class="ok">рабочая лошадь</td></tr>
+<tr><td><b>Grok</b></td><td>40</td><td>95%</td><td><span class="bar" style="width:190px"></span></td><td class="ok">рабочая лошадь</td></tr>
+<tr><td><b>Gemini</b></td><td>13</td><td>31%</td><td><span class="bar" style="width:62px"></span></td><td class="wait">через раз</td></tr>
+<tr><td><b>GLM (z.ai)</b></td><td>3</td><td>7%</td><td><span class="bar dim" style="width:14px"></span></td><td class="wait">только вручную через веб</td></tr>
+<tr><td><b>Mistral Le Chat</b></td><td>0</td><td>0%</td><td></td><td class="no">аккаунта нет (регистрация за Антоном)</td></tr>
+</table></div>
+
+<div class="root red">
+  <b>Кворум 4 из 6 не выполняется.</b> Из 42 карточек с отчётами четыре и более рельсы набрали <b>только 3 карточки (7%)</b>. Типичный ДР - это 2 рельсы: 27 карточек. То есть по бумаге у нас шестирельсовый веер, по факту - <b>дуэт ChatGPT + Grok</b>, а «независимость источников» держится на двух вендорах.
+  <br><span class="sub">Оговорка честности: в карточке не записано, сколько целей было ЗАКАЗАНО. Часть ДР заказывалась на 2-3 цели, и для них 2 отчёта - это не недобор. Отдельная дыра: заказ не фиксируется, значит недобор нельзя отличить от малого заказа автоматически.</span>
+</div>
+
+<h2>Лейн 2. Второе мнение и /tt-панель</h2>
+<div class="sub">92 боевых вызова с 21.07 по 05.08 (плюс 72 тестовых прогона - они в цифры ниже НЕ входят).</div>
+<div class="wrap"><table>
+<tr><th>Движок</th><th>Боевых вызовов</th><th>Отработал без ошибки</th><th>Доля успеха</th></tr>
+<tr><td><b>Codex</b> (писатель №1)</td><td>61</td><td>41</td><td class="no">67%</td></tr>
+<tr><td><b>Gemini</b></td><td>17</td><td>16</td><td class="ok">94%</td></tr>
+<tr><td><b>Grok</b></td><td>13</td><td>11</td><td class="ok">85%</td></tr>
+<tr><td><b>GLM</b></td><td>1</td><td>1</td><td class="wait">выборка 1</td></tr>
+</table></div>
+<ul>
+<li>Ритуалы: <code>/tt</code> 68 вызовов, <code>implement</code> 11, <code>panel</code> 6, без метки 7.</li>
+<li><b>Находки в 60 вызовах из 92 (65%)</b> - то есть в двух случаях из трёх внешний ломатель что-то реально сказал, а не отписался.</li>
+<li class="no">Codex - худший по надёжности из всех рельс (67%), при том что именно он назначен писателем №1. Это не про качество текста, а про то, что вызов срывается: таймауты, отказ песочницы, пустой выход.</li>
+<li class="wait">За последние двое суток (05-06.08) боевых вызовов всего 4, зато 72 тестовых. Панель в эти дни <b>чинили, а не использовали</b>.</li>
+</ul>
+
+<h2>Лейн 3. Аутсорс написания кода - тот самый режим</h2>
+<div class="wrap"><table>
+<tr><th>Метрика</th><th>Аутсорс (Codex)</th><th>База (пишу я)</th><th>Вывод</th></tr>
+<tr><td>Задач в окне 7 дней</td><td>5</td><td>2</td><td>выборка мала</td></tr>
+<tr><td>Токенов оркестратора на задачу</td><td class="ok">6 800</td><td>25 500</td><td class="ok">экономия 73%</td></tr>
+<tr><td>Доля переделок</td><td class="no">20% (1 из 5)</td><td>0% (0 из 2)</td><td class="no">хуже базы</td></tr>
+<tr><td>Вердикт <code>/tt</code></td><td colspan="2">ok 6, partial 1, fail 0 (85.7%)</td><td>приемлемо</td></tr>
+<tr><td>Кругов правок</td><td colspan="2">среднее 1.29, максимум 3, на капе 2 - две задачи</td><td>кап держится</td></tr>
+</table></div>
+<div class="root red">
+  <b>ФЛИП: НЕТ.</b> Экономия токенов огромная (73%, при цели 30%), но доля переделок у аутсорса выше базы, а критерий флипа требует «без роста переделок». И главное - <b>с 04.08 в леджер не легло ни одной новой задачи</b>, хотя неделя 1 пилота идёт до 09.08. Пилот не провалился по цифрам, он просто <b>остановился</b>.
+</div>
+
+<h2>Что сломано и держит лейн 3</h2>
+<div class="wrap"><table>
+<tr><th>Дыра</th><th>Состояние на 06.08 12:40</th><th>Кто чинит</th></tr>
+<tr><td><b>Писатель не может прогнать тест</b><br>в песочнице <code>codex exec -s workspace-write</code> нет питона: PATH пользователя срезан, запуск из AppData запрещён</td><td class="ok">ПОЧИНЕНО 06.08 12:5x. Машинный Python 3.11.9 в <code>C:\Program Files</code> + обёртка сама подмешивает его в PATH писателя. Боевое доказательство: писатель прогнал <code>python demo.py</code> и вернул <code>4</code>. Гейт <code>_test_writer_env_python.py</code>, флоту раскатано посылкой <code>sandbox-python-path-20260806</code></td><td class="ok">закрыто</td></tr>
+<tr><td><b>Cursor не залогинен</b></td><td class="wait">CLI и IDE стоят, регистрация упирается в SMS-верификацию телефона</td><td>физически руки Антона</td></tr>
+<tr><td><b>Antigravity (agy) не залогинен</b></td><td class="wait">стоит 1.1.10, окно вставки OAuth-кода 60 секунд против латентности агента; оснастка <code>agy_auth.ps1</code> готова</td><td>я</td></tr>
+<tr><td><b>Mistral - шестая рельса</b></td><td class="no">аккаунта Le Chat нет</td><td>регистрация за Антоном</td></tr>
+<tr><td><b>Заказ рельс в ДР не фиксируется</b></td><td class="no">в карточке нет списка заказанных целей, только доставленные отчёты - недобор кворума нельзя отличить от малого заказа</td><td>я, правка <code>dr_start.py</code></td></tr>
+</table></div>
+
+<h2>Что это значит для решения</h2>
+<ul>
+<li><b>Неделю 2 (добавить Grok Build писателем) включать рано.</b> Неделя 1 недожата: 5 задач вместо ежедневного потока, и двое суток простоя. Сначала добить неделю 1 боевыми задачами.</li>
+<li><b>Cursor Pro $20 не покупаем.</b> Условие недели 3 было «многофайловые задачи накопились в леджере». В леджере 7 строк и ноль многофайловых. Цифр за покупку нет.</li>
+<li><b>Питон в песочнице закрыт сегодня</b> - но это значит, что все 7 строк леджера сняты в условиях, когда писатель НЕ мог краснить свой тест. Их «first-pass ok» завышен, и честно сравнивать можно только задачи с 06.08 и дальше. Прежние цифры оставляем в леджере как есть, но помечаем как снятые до починки.</li>
+<li><b>Веер ДР надо честно назвать двухрельсовым</b> либо добить Gemini и GLM до автоматических. Сейчас «кворум 4 из 6» - правило, которое машина не исполняет и никто не краснеет.</li>
+</ul>

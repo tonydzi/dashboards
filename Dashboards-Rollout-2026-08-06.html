@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дашборды: витрина и раскатка правил · 06.08.2026</title>
+<style>
+ :root{--canvas:#010409;--bg:#0d1117;--panel:#161b22;--border:#30363d;--border2:#21262d;
+ --ink:#e6edf3;--dim:#8b949e;--link:#2f81f7;--green:#3fb950;--amber:#d29922;--red:#f85149;}
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--canvas);color:var(--ink);
+      font:15px/1.55 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;padding:26px 18px 60px}
+ .wrap{max-width:1080px;margin:0 auto}
+ h1{font-size:23px;margin:0 0 6px;font-weight:650}
+ .sub{color:var(--dim);font-size:13.5px;margin:0 0 22px}
+ .hero{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--green);
+       border-radius:8px;padding:14px 17px;margin:0 0 22px}
+ .hero a{color:var(--link);text-decoration:none;font-size:16px;font-weight:600}
+ .hero a:hover{text-decoration:underline}
+ .quote{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--amber);
+        border-radius:8px;padding:12px 16px;margin:0 0 22px;font-size:14.5px}
+ h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);
+    margin:30px 0 11px;font-weight:600}
+ .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px}
+ .kpi{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:13px 15px}
+ .kpi .n{font-size:26px;font-weight:650;line-height:1.15}
+ .kpi .l{color:var(--dim);font-size:12.5px;margin-top:3px}
+ .g{color:var(--green)}.a{color:var(--amber)}.r{color:var(--red)}
+ .scroll{overflow-x:auto;border:1px solid var(--border);border-radius:8px;background:var(--panel)}
+ table{border-collapse:collapse;width:100%;min-width:620px;font-size:13.5px}
+ th{text-align:left;padding:9px 13px;color:var(--dim);font-weight:600;
+    border-bottom:1px solid var(--border);white-space:nowrap;background:var(--bg)}
+ td{padding:9px 13px;border-bottom:1px solid var(--border2);vertical-align:top}
+ tr:last-child td{border-bottom:none}
+ code{background:var(--bg);border:1px solid var(--border2);border-radius:4px;
+      padding:1px 5px;font-size:12.5px}
+ .pill{display:inline-block;padding:1px 8px;border-radius:11px;font-size:12px;font-weight:600;white-space:nowrap}
+ .pill.ok{background:rgba(63,185,80,.14);color:var(--green)}
+ .pill.wait{background:rgba(210,153,34,.14);color:var(--amber)}
+ .pill.no{background:rgba(248,81,73,.14);color:var(--red)}
+ .bars{display:grid;gap:6px}
+ .bar{display:grid;grid-template-columns:190px 1fr 42px;align-items:center;gap:10px;font-size:13px}
+ .bar .t{color:var(--dim)}
+ .bar .f{height:15px;background:var(--link);border-radius:3px;min-width:3px}
+ .bar .v{text-align:right;color:var(--dim)}
+ ul{margin:8px 0 0;padding-left:20px}li{margin:6px 0}
+ .eli5{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--link);
+       border-radius:8px;padding:13px 16px;margin-top:26px;font-size:14px}
+ .ts{color:var(--dim);font-size:12px;margin-top:26px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Dashboard-Max-Rollout.html">&larr; Dashboard-Max-Rollout</a> · <a href="Embed-Bakeoff.html">Embed-Bakeoff &rarr;</a></span></div><div class="wrap">
+
+<h1>Дашборды: витрина и раскатка правил</h1>
+<p class="sub">06.08.2026 · собрано на узле MyOwnPC-Natalia</p>
+
+<div class="hero">Витрина живая:
+<a href="https://palo-alto-ai-research-lab.github.io/dashboards/">palo-alto-ai-research-lab.github.io/dashboards</a>
+<div class="sub" style="margin:6px 0 0">Открывается у любого пира без синка, VPN и логина.</div></div>
+
+<div class="quote"><b>Антон, 06.08.2026:</b> «Всегда стараться делать визуализацию в любой
+сессии · все созданные визуализации перелинковываются с текущими и выкладываются на гитхаб ·
+ссылку ВСЕГДА ДАЁШЬ СРАЗУ ЖЕ КАК СДЕЛАЛ дашборд, и открываешь его в правой части экрана».</div>
+
+<h2>Инвентарь за всё время</h2>
+<div class="kpis">
+  <div class="kpi"><div class="n">270</div><div class="l">дашбордов найдено</div></div>
+  <div class="kpi"><div class="n g">218</div><div class="l">опубликовано и перелинковано</div></div>
+  <div class="kpi"><div class="n a">52</div><div class="l">придержано как CRM</div></div>
+  <div class="kpi"><div class="n g">0</div><div class="l">секретов утекло</div></div>
+  <div class="kpi"><div class="n g">0</div><div class="l">искажённых цифр</div></div>
+</div>
+
+<h2>Категории витрины</h2>
+<div class="bars">
+  <div class="bar"><span class="t">Флот и узлы</span><span class="f" style="width:100%"></span><span class="v">51</span></div>
+  <div class="bar"><span class="t">Инфраструктура и рутины</span><span class="f" style="width:73%"></span><span class="v">37</span></div>
+  <div class="bar"><span class="t">Задачи и планирование</span><span class="f" style="width:53%"></span><span class="v">27</span></div>
+  <div class="bar"><span class="t">Контент и публикации</span><span class="f" style="width:51%"></span><span class="v">26</span></div>
+  <div class="bar"><span class="t">Качество и аудиты</span><span class="f" style="width:35%"></span><span class="v">18</span></div>
+  <div class="bar"><span class="t">Люди, привычки, быт</span><span class="f" style="width:31%"></span><span class="v">16</span></div>
+  <div class="bar"><span class="t">Исследования и альфа</span><span class="f" style="width:27%"></span><span class="v">14</span></div>
+  <div class="bar"><span class="t">Миссия и проекты</span><span class="f" style="width:25%"></span><span class="v">13</span></div>
+  <div class="bar"><span class="t">Мозг и волт</span><span class="f" style="width:14%"></span><span class="v">7</span></div>
+  <div class="bar"><span class="t">Правила и канон</span><span class="f" style="width:10%"></span><span class="v">5</span></div>
+  <div class="bar"><span class="t">Прочее</span><span class="f" style="width:8%"></span><span class="v">4</span></div>
+</div>
+
+<h2>Три гейта, через которые проходит каждый файл</h2>
+<div class="scroll"><table>
+<tr><th>Гейт</th><th>Что делает</th><th>Замер 06.08</th></tr>
+<tr><td>Секреты</td><td>сработал детектор — файл не публикуется вовсе</td><td><span class="pill ok">0 утечек</span></td></tr>
+<tr><td>CRM</td><td>панели про людей, лиды и контакты наружу не едут</td><td><span class="pill ok">52 придержано</span></td></tr>
+<tr><td><b>Цифры</b></td><td>все числа сверяются до и после; разошлись — файл не едет, прогон красный</td><td><span class="pill ok">0 расхождений</span></td></tr>
+</table></div>
+<p class="sub" style="margin-top:9px">Маска трогает только имена, компании, почты и телефоны:
+половина символов под звёздочками. Цифры внутри маски не трогаются никогда.</p>
+
+<h2>Раскатка по 6 узлам</h2>
+<div class="scroll"><table>
+<tr><th>Посылка</th><th>Что везёт</th><th>На этом узле</th></tr>
+<tr><td><code>dash-skill-20260806</code></td><td>скилл <code>/dash</code> + движок витрины + паспорт</td><td><span class="pill ok">применено + верифицировано</span></td></tr>
+<tr><td><code>dash-home-hub-20260806</code></td><td>дверь <code>dashboard_home_guard.py</code></td><td><span class="pill ok">применено + верифицировано</span></td></tr>
+<tr><td><code>rulehome-permem-20260806</code></td><td>фикс сторожа домов правил</td><td><span class="pill ok">применено + верифицировано</span></td></tr>
+<tr><td><code>dash-home-clean-20260806</code></td><td>узел чист: панели только в общем каталоге</td><td><span class="pill wait">ждёт канон-строку с хаба</span></td></tr>
+</table></div>
+
+<h2>Что починено по дороге</h2>
+<div class="scroll"><table>
+<tr><th>Баг</th><th>Цена, если бы не нашли</th></tr>
+<tr><td>Маска съедала цифры внутри хендлов и почт</td><td>8 панелей не публиковались, а причина выглядела как «сбой сборщика»</td></tr>
+<tr><td>Детектор секретов ловил обычное слово <code>task-</code></td><td>23 здоровые панели снимались с публикации; ложный сторож перестают читать</td></tr>
+<tr><td>CRM-фильтр сравнивал подстроки: «Recall» содержит «call»</td><td>наши же панели про recall уходили в закрытые</td></tr>
+<tr><td>Сторож домов правил искал память по пути машины Антона</td><td>на всех остальных узлах он врал «следа нет»</td></tr>
+</table></div>
+
+<h2>Осталось на других</h2>
+<ul>
+<li><b>Хабу:</b> влить пакет <code>_transit/canon-proposals/dashboards-live-on-hub-20260806/</code> — два реглумента в Библию, блок §2.4, строка MEMORY.md, замена файла памяти, скилл в канонический namespace. Плюс поставить ночную перепубликацию витрины.</li>
+<li><b>Маяку:</b> <code>Quarantine-*.html</code> пишутся в шину, переключить на его волт.</li>
+<li><b>Антону, Tier-2:</b> мёртвая копия волта <code>_STALE-PHANTOM-...-20260626</code> с 11 панелями. Удаление невозвратно, сам не трогаю.</li>
+<li><b>Антону, решение по синку:</b> шара <code>anton-knowledge</code> на пире стоит только на приём. Панель, рождённая у Наташи, по синку наружу не уезжает вообще. Именно поэтому доставка идёт через GitHub, а не через общую папку.</li>
+</ul>
+
+<div class="eli5">🧒 <b>Простыми словами:</b> раньше таблички лежали по разным папкам и их видел
+только тот, кто их сделал. Теперь все они на нашем сайте, связаны друг с другом по темам, и
+ссылку на любую можно дать кому угодно. Таблички про людей на сайт не поехали. Все цифры
+настоящие: есть робот, который не пропускает табличку наружу, если в ней поменялась хоть одна
+циферка.</div>
+
+<p class="ts">Собрано автоматически · узел MyOwnPC-Natalia · 06.08.2026</p>
+</div></body></html>

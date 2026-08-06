@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5 почему × ТРИЗ — одна процедура</title>
+<style>
+  :root{--bg:#f7f6f3;--card:#fff;--ink:#1d1d1b;--muted:#6b6b66;--line:#e3e1db;
+        --green:#2f7d4f;--red:#b3402f;--amber:#a8760f;--blue:#2b4c7e}
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#17171a;--card:#202024;--ink:#eceae4;--muted:#9a978f;--line:#33333a;
+          --green:#6fbf8b;--red:#e08a78;--amber:#e0b055;--blue:#8fb0dd}}
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 16px 60px;background:var(--bg);color:var(--ink);
+       font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px;letter-spacing:-.4px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:18px}
+  h2{font-size:17px;margin:0 0 12px}
+  .scroll{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+  th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+  th{color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+  tr:last-child td{border-bottom:none}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.two{grid-template-columns:1fr}}
+  .half{border:1px solid var(--line);border-radius:10px;padding:14px}
+  .half h3{margin:0 0 8px;font-size:15px}
+  .lft{border-top:3px solid var(--blue)}
+  .rgt{border-top:3px solid var(--amber)}
+  .fork{font-family:ui-monospace,Consolas,monospace;font-size:13px;background:var(--bg);
+        border:1px solid var(--line);border-radius:8px;padding:14px;white-space:pre;overflow-x:auto}
+  .no{color:var(--red);font-weight:600}
+  .yes{color:var(--green);font-weight:600}
+  .m{color:var(--muted)}
+  ol{padding-left:20px;margin:8px 0 0}ol li{margin-bottom:6px}
+  .quote{border-left:3px solid var(--line);padding-left:12px;color:var(--muted);font-size:14px}
+  .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;
+       padding:2px 9px;font-size:12px;margin-right:5px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="FIX-B-Rollout.html">&larr; FIX-B-Rollout</a> · <a href="NotPeople-Pitch-Drafts.md">NotPeople-Pitch-Drafts &rarr;</a></span></div><div class="wrap">
+
+<h1>5 почему × ТРИЗ</h1>
+<div class="sub">Синтез двух разведок одного дня · 6 августа 2026 · одна процедура из двух половин</div>
+
+<div class="card">
+  <h2>Главное: они не конкуренты, они стоят друг за другом</h2>
+  <div class="two">
+    <div class="half lft">
+      <h3>Карта условий («5 почему»)</h3>
+      <p style="margin:0"><b>Вопрос:</b> что совпало, чтобы это произошло<br>
+      <b>Время:</b> прошлое, расследование<br>
+      <b>Падает так:</b> придумывает стройную цепочку и встаёт на «человек ошибся»</p>
+    </div>
+    <div class="half rgt">
+      <h3>Карточка противоречия (ТРИЗ)</h3>
+      <p style="margin:0"><b>Вопрос:</b> как развязать требования, которые дерутся<br>
+      <b>Время:</b> будущее, проектирование<br>
+      <b>Падает так:</b> придумывает умный механизм со скрытым состоянием</p>
+    </div>
+  </div>
+  <p style="margin:14px 0 0"><b>Стык односторонний:</b> ТРИЗ включается <b>только после доказанной
+  причины</b>. Иначе отсутствие приборов переименуется в красивую «изобретательскую задачу».</p>
+</div>
+
+<div class="card">
+  <h2>Развилка — где расследование передаёт эстафету</h2>
+  <div class="fork">причина доказана?
+├── <span class="no">НЕТ</span>  → честный стоп. ⛔ ТРИЗ ЗАПРЕЩЕНА
+├── ДА, очевидный фикс НЕ создаёт нового вреда
+│        → просто чинишь. ТРИЗ не нужна   ← <span class="m">это БОЛЬШИНСТВО случаев</span>
+└── <span class="yes">ДА, но очевидный фикс создаёт КОНКРЕТНЫЙ новый вред</span>
+         → противоречие реально → карточка</div>
+  <p style="margin:12px 0 0" class="m">«Новый вред» обязан быть предъявлен одной проверяемой фразой.
+  Не называется → противоречия нет, есть нежелание чинить.</p>
+</div>
+
+<div class="card">
+  <h2>Как половины страхуют друг друга</h2>
+  <div class="scroll"><table>
+    <tr><th>Болезнь метода</th><th>Чем лечится из другой половины</th></tr>
+    <tr><td>«5 почему» встаёт на «человек ошибся» / «не наша зона»</td>
+        <td><b>ИКР ломает это механически:</b> в формуле «узла не существует, функция выполняется» винить некого — там нет места человеку</td></tr>
+    <tr><td>ТРИЗ тянет изобретать механизм</td>
+        <td><b>Карта условий + красный список:</b> если условие устраняется удалением, изобретать нечего</td></tr>
+    <tr><td>«5 почему» рисует одну ветку</td>
+        <td><b>Четыре разделения</b> показывают, что требование можно развести, а не выбрать одно из двух</td></tr>
+    <tr><td>ТРИЗ тянет к элегантности</td>
+        <td><b>АК-идеальность:</b> ремонтопригодность и минуты на починку новичком стоят в формуле явно</td></tr>
+  </table></div>
+</div>
+
+<div class="card">
+  <h2>Два правила, общие для обеих половин</h2>
+  <ol>
+    <li><b>Противоречие — тоже claim.</b> Метки <span class="tag">✅ доказано</span>
+        <span class="tag">🤔 гипотеза</span> <span class="tag">❌ опровергнуто</span>
+        <span class="tag">❓ неизвестно</span> распространяются не только на причины, но и на саму
+        формулировку противоречия и на заявленный вред. Общий враг один — конфабуляция.</li>
+    <li><b>Единица анализа — серия, а не случай.</b> Компромисс, проживший один раз, — не компромисс,
+        а ошибка. Тесты класса защищают обе половины: ложный класс гарантирует ложное противоречие.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h2>«Готово» — определения разные, нужны оба</h2>
+  <div class="two">
+    <div class="half lft"><h3>По «5 почему»</h3>
+      <p style="margin:0">Класс закрыт: симптом воспроизведён до фикса · тест пройден после ·
+      откат существует · объявленный объём прогонов набран · факт проверен на узлах.</p></div>
+    <div class="half rgt"><h3>По ТРИЗ</h3>
+      <p style="margin:0">Противоречие <b>растворено, а не разменяно</b>. Проверка: после фикса оба
+      требования выполняются <b>одновременно</b>? Нет, просто выбрали одно → класс вернётся.</p></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Прогон на самой упрямой грабле: «доставка ≠ применение»</h2>
+  <p style="margin:0 0 10px" class="m">Класс выбран замером, не на ощупь: 47 задач про доставку и раскатку
+  + 42 смежных про синк, по 644 файлам реестра задач. Чинился многократно и возвращается.</p>
+  <div class="scroll"><table>
+    <tr><th>Шаг</th><th>Что вышло</th></tr>
+    <tr><td>Общий механизм</td><td><b>Есть:</b> шаг <code>apply</code> зарегистрирован как проза, а <code>verify</code> читает намерение, а не факт. Отсюда буквальная строка «не проверяем автоматом»</td></tr>
+    <tr><td>Тест замещения</td><td>Посылка с исполнимой командой <b>выкинута</b> из серии — другой механизм</td></tr>
+    <tr><td>Контроли</td><td>«DR-оригиналы не доезжают» → в классе. Выключенный узел → <b>не объяснился</b>, класс подтверждён</td></tr>
+    <tr><td>Корень</td><td><b>У применения нет собственного прибора:</b> apply бывает прозой, verify — намерением, а доставка засчитывается за применение</td></tr>
+    <tr><td>Развилка</td><td>Очевидный фикс уже записан в канон — и симптом вернулся. Вред предъявлен → карточка законна</td></tr>
+    <tr><td>Противоречие</td><td>Строго машинные apply/verify → посылки доказуемы, <b>но</b> починки на чужой ОС и с ручным шагом нельзя зарегистрировать вообще — уходят в тишину</td></tr>
+    <tr><td>Физическое</td><td>Посылка должна быть машинно-проверяемой (чтобы верить) и не обязана быть (чтобы существовать)</td></tr>
+    <tr><td class="yes">Разделение по условию</td><td>Развести не посылки, а <b>СТАТУСЫ</b>: проверяемая может получить <code>applied</code>; непроверяемая — потолок <code>заявлено</code> и в «раскатано» не считается</td></tr>
+    <tr><td>ИКР</td><td>Очереди непринятых посылок не существует: узел сравнивает свой факт с эталоном, расхождение САМО есть задача</td></tr>
+    <tr><td>Тримминг</td><td>Удаляются очередь и статус «доставлено» — их функцию уже несёт Syncthing. ⚠️ Человекочитаемая инструкция сохраняется, но с честным потолком</td></tr>
+  </table></div>
+  <p style="margin:12px 0 0"><b>Что ТРИЗ дала честно:</b> pull-конвергенцию она не изобрела, это пересказ gitops.
+  Но она <b>сняла размен</b>, в котором мы сидели годами: «строго машинно» против «регистрируем всё».
+  Разделение по условию позволяет и то, и другое — по статусам, а не по посылкам.</p>
+  <p style="margin:10px 0 0" class="m">Статус: разбор сделан, починка не начата — это отдельная сессия.
+  Опровергающее наблюдение записано ДО починки.</p>
+</div>
+
+<div class="card">
+  <h2>Честная граница</h2>
+  <p class="quote" style="margin:0">Оба метода из семейства со слабой доказательной базой: обзор 2020 года
+  по разборам в медицине нашёл улучшение только в 2 исследованиях из 21; для ТРИЗ в софте контролируемых
+  сравнений нет вовсе. Складывая два слабо доказанных метода, мы не получаем один доказанный.
+  Защищает не ритуал, а замер эффекта.</p>
+  <p style="margin:12px 0 0" class="m">Дом процедуры: 05-Resources/Protocols/reglament-pyat-pochemu-koren-po-serii-sessiy.md</p>
+</div>
+
+</div></body></html>

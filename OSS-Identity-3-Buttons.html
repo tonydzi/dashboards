@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Три дела — GitHub-подпись</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --ink:#1a1a1a; --mut:#666; --ok:#1a7f37; --bad:#c8102e; --warn:#9a6700; --line:#e3e5e8; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:24px 16px 60px; background:var(--bg); color:var(--ink);
+         font:16px/1.55 -apple-system,Segoe UI,Roboto,Arial,sans-serif; }
+  .wrap { max-width:840px; margin:0 auto; }
+  h1 { font-size:26px; margin:0 0 6px; }
+  .sub { color:var(--mut); margin:0 0 26px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px;
+          padding:20px 22px; margin:0 0 18px; }
+  .step { display:flex; align-items:center; gap:12px; margin:0 0 14px; }
+  .num { flex:none; width:38px; height:38px; border-radius:50%; background:var(--ink); color:#fff;
+         display:grid; place-items:center; font-weight:700; font-size:19px; }
+  .num.done { background:var(--ok); }
+  h2 { font-size:20px; margin:0; }
+  .why { background:#f0f4f8; border-left:4px solid #8ba3bd; padding:10px 14px; border-radius:0 8px 8px 0;
+         margin:12px 0; color:#31465c; font-size:15px; }
+  .field { margin:16px 0; }
+  .label { font-weight:600; font-size:14px; color:var(--mut); margin-bottom:5px; }
+  .row { display:flex; gap:8px; align-items:stretch; }
+  .val { flex:1; background:#f4f5f7; border:1px solid var(--line); border-radius:8px; padding:11px 13px;
+         font:14px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace; word-break:break-word; }
+  button.cp { flex:none; background:var(--ink); color:#fff; border:0; border-radius:8px; padding:0 16px;
+              font-size:14px; font-weight:600; cursor:pointer; }
+  button.cp:active { transform:translateY(1px); }
+  button.cp.ok { background:var(--ok); }
+  a.go { display:inline-block; background:#0969da; color:#fff; text-decoration:none; padding:11px 18px;
+         border-radius:8px; font-weight:600; margin-top:6px; }
+  .variant { border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:12px 0; }
+  .variant h3 { margin:0 0 4px; font-size:16px; }
+  .variant p { margin:0 0 8px; color:var(--mut); font-size:14px; }
+  .done-box { background:#e8f5ec; border:1px solid #a8d5b8; border-radius:12px; padding:16px 20px; margin:0 0 18px; }
+  .done-box b { color:var(--ok); }
+  ul.plain { margin:10px 0 0; padding-left:20px; }
+  ul.plain li { margin:5px 0; }
+  .warnbox { background:#fff8e5; border:1px solid #e6d08a; border-radius:10px; padding:12px 16px; margin:12px 0; color:#6b4e00; }
+  .foot { color:var(--mut); font-size:14px; text-align:center; margin-top:30px; }
+  code { background:#eceef1; padding:2px 6px; border-radius:5px; font-size:14px; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Миссия и проекты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="OSS-Door-Scan-2026-08-05.html">&larr; OSS-Door-Scan-2026-08-05</a> · <a href="Path-to-Anthropic.html">Path-to-Anthropic &rarr;</a></span></div>
+<div class="wrap">
+
+  <h1>Три дела — и подпись под нашей работой перестаёт быть пустой</h1>
+  <p class="sub">Проверено живьём 28.07. Главное: <b>вход одним новым аккаунтом закрывает сразу два дела из трёх.</b></p>
+
+  <div class="done-box">
+    <b>✅ Что уже сделано — трогать не надо</b>
+    <ul class="plain">
+      <li>Google-CLA <b>уже подписан</b> (27.07 утром). PR <code>#173</code> зелёный.</li>
+      <li>deepset-CLA <b>уже подписан аккаунтом лаборатории</b> — но этого не хватило, см. дело №2.</li>
+      <li>Подпись коммитов на хабе переставлена на аккаунт лаборатории.</li>
+    </ul>
+  </div>
+
+  <!-- STEP 0 -->
+  <div class="card">
+    <div class="step"><div class="num">1</div><h2>Войти в GitHub вторым аккаунтом</h2></div>
+
+    <div class="why">
+      <b>Зачем.</b> У тебя два GitHub-аккаунта. В браузере сейчас сидит только «лаборатория».
+      А на всех наших коммитах стоит подпись <b>второго</b>, личного — <code>antondziatkovskii</code>.
+      Он пустой: нет имени, нет описания, нет фотографии. Мейнтейнер кликает по имени автора,
+      видит пустоту и закрывает вкладку. Пароля от него у меня нет, поэтому вход — твой.
+    </div>
+
+    <p><b>Как:</b> на github.com нажми свою аватарку справа вверху → маленькая иконка <b>⇄</b> рядом с именем →
+    <b>Add account</b> → войди как <code>antondziatkovskii</code>.</p>
+    <p style="color:var(--mut);font-size:14px">Старый аккаунт никуда не денется — GitHub умеет держать два сразу и переключаться той же кнопкой ⇄.</p>
+    <a class="go" href="https://github.com/settings/profile" target="_blank">Открыть GitHub-настройки</a>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="card">
+    <div class="step"><div class="num">2</div><h2>Заполнить пустой профиль</h2></div>
+    <p>Уже под аккаунтом <code>antondziatkovskii</code> открой
+      <a href="https://github.com/settings/profile" target="_blank">настройки профиля</a> и вставь по кнопкам ниже.</p>
+
+    <div class="warnbox">Проверь глазами вверху страницы: должно быть написано <b>antondziatkovskii</b>, а не Palo Alto Ai Research Lab. Если лаборатория — переключись кнопкой ⇄.</div>
+
+    <div class="field">
+      <div class="label">Поле «Name» (имя)</div>
+      <div class="row"><div class="val" id="f1">**ton ******ovskii</div><button class="cp" data-t="f1">Копировать</button></div>
+    </div>
+
+    <p style="margin:18px 0 4px"><b>Поле «Bio» — выбери ОДИН вариант из двух:</b></p>
+
+    <div class="variant">
+      <h3>Вариант А — по-человечески</h3>
+      <p>«Нетехнический фаундер, строю с AI-кофаундером». Мягче, про личность.</p>
+      <div class="row"><div class="val" id="f2">Non-technical founder building with an AI cofounder. OSS ships as @**lo-Alto-AI-Research-Lab — agent consensus, governance, memory.</div><button class="cp" data-t="f2">Копировать</button></div>
+    </div>
+
+    <div class="variant">
+      <h3>Вариант Б — по-деловому</h3>
+      <p>«Фаундер лаборатории, вклады идут под её именем». Суше, под инженера на разборе.</p>
+      <div class="row"><div class="val" id="f3">Founder, Palo Alto AI Research Lab. My contributions ship as @**lo-Alto-AI-Research-Lab: deterministic guardrails for LLM agents.</div><button class="cp" data-t="f3">Копировать</button></div>
+    </div>
+
+    <div class="field">
+      <div class="label">Поле «Company» — самое важное, тут собака зарыта</div>
+      <div class="row"><div class="val" id="f4">@**lo-Alto-AI-Research-Lab</div><button class="cp" data-t="f4">Копировать</button></div>
+      <p style="color:var(--mut);font-size:14px;margin-top:6px">Со «собачкой» GitHub сам превратит это в ссылку. Человек кликнет — и из пустого аккаунта попадёт на нормальный, где 28 репозиториев.</p>
+    </div>
+
+    <div class="field">
+      <div class="label">Поле «URL» (сайт)</div>
+      <div class="row"><div class="val" id="f5">https://palo-alto.ai</div><button class="cp" data-t="f5">Копировать</button></div>
+    </div>
+
+    <div class="field">
+      <div class="label">Фотография</div>
+      <div class="val" style="background:#fff">Поставь любое своё фото или тот же оранжевый значок, что у лаборатории. Пустой серый котик кричит «аккаунт заброшен» громче, чем пустое описание.</div>
+    </div>
+
+    <p style="margin-top:16px"><b>Внизу страницы нажми зелёную кнопку «Update profile».</b></p>
+    <p style="color:var(--mut);font-size:14px">Это чинит задним числом все 16 уже отправленных PR: профиль подтягивается в тот момент, когда человек по нему кликает.</p>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="card">
+    <div class="step"><div class="num">3</div><h2>Подписать deepset — тем же аккаунтом</h2></div>
+
+    <div class="why">
+      <b>Почему лаборатория не сработала.</b> Я проверил: лаборатория эту бумагу <b>уже подписала</b>,
+      я нажал «пересчитать» — галочка всё равно красная. Значит бумагу требуют
+      с того, кто числится автором коммита, а это личный аккаунт. Поэтому — сразу после шага 2,
+      не выходя из него.
+    </div>
+
+    <p>Открой ссылку, проверь что слева вверху написано <b>antondziatkovskii</b>, пролистай вниз и нажми <b>«I agree»</b>.</p>
+    <a class="go" href="https://cla-assistant.io/deepset-ai/haystack?pullRequest=12142" target="_blank">Открыть бумагу deepset</a>
+
+    <p style="margin-top:14px">Дальше робот сам: он обещал в комментарии, что как только галочка позеленеет — вернёт PR из черновика и назначит ревьюера.</p>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="card">
+    <div class="step"><div class="num">4</div><h2>Нажать «Rescan» у Google</h2></div>
+
+    <div class="why">
+      <b>Зачем.</b> Тут подписывать нечего — всё подписано. Просто одна проверка застряла:
+      она отработала 23-го, за четыре дня <i>до</i> подписи, и с тех пор так и висит красной.
+      Надо попросить пересчитать. Там капча — я её решать не имею права, поэтому это твой клик.
+    </div>
+
+    <p><b>Поставь галочку «I'm not a robot» → нажми серую кнопку «Rescan».</b></p>
+    <a class="go" href="https://cla.developers.google.com/github/rescan?pr=google%2Fadk-python-community%2Fpull%2F172" target="_blank">Открыть страницу Rescan</a>
+
+    <div class="warnbox" style="margin-top:16px">
+      <b>Если после этого всё равно красное</b> — значит мешает строчка «Co-Author: ***eply@anthropic.com»
+      в том коммите, и она не подписывается никогда. Тогда ничего не чиним: PR <code>#172</code> и <code>#173</code> —
+      это <b>одна и та же фича, поданная дважды</b>. Просто скажешь мне — и я закрою <code>#172</code>,
+      останется зелёный <code>#173</code>. Заодно уйдёт вид «навалил два одинаковых PR».
+    </div>
+  </div>
+
+  <p class="foot">Как сделаешь — скажи, и я проверю все три фактом, а не на слово.</p>
+</div>
+
+<script>
+document.querySelectorAll('button.cp').forEach(function(b){
+  b.addEventListener('click', function(){
+    var t = document.getElementById(b.dataset.t).textContent;
+    navigator.clipboard.writeText(t).then(function(){
+      var old = b.textContent;
+      b.textContent = 'Скопировано ✓'; b.classList.add('ok');
+      setTimeout(function(){ b.textContent = old; b.classList.remove('ok'); }, 1600);
+    });
+  });
+});
+</script>
+</body>
+</html>

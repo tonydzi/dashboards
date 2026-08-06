@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Синтез ДР: «5 почему» по серии + ТРИЗ · 06.08.2026</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#171a21; --line:#262b36; --txt:#e6e9ef; --dim:#9aa4b6;
+    --ok:#3fb950; --warn:#d29922; --bad:#f85149; --acc:#58a6ff;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f7f9; --card:#fff; --line:#e1e4e8; --txt:#1c2128; --dim:#5b6472; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--txt);
+       font:15px/1.55 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:18px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .sub{color:var(--dim);margin-bottom:20px}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .card h3{margin:0 0 8px;font-size:15px}
+  .big{font-size:26px;font-weight:700}
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:13px}
+  .wrap{overflow-x:auto}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)} .dim{color:var(--dim)}
+  .tag{display:inline-block;padding:1px 7px;border-radius:99px;font-size:12px;border:1px solid var(--line)}
+  code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-size:13px}
+  ul{margin:6px 0 0 18px;padding:0} li{margin:4px 0}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="DR-Best-Practices.html">&larr; DR-Best-Practices</a> · <a href="DR-Rails-Live.html">DR-Rails-Live &rarr;</a></span></div>
+
+<h1>Синтез двух разведок: «5 почему» по серии · ТРИЗ против АК-47</h1>
+<div class="sub">DR26-08-06-HUB-02-1055 и DR26-08-06-HUB-01-1055 · хаб A-2022BAYAREA · 6 августа 2026</div>
+
+<div class="grid">
+  <div class="card"><h3>Плечи по 5 Why</h3><div class="big warn">3 / 4</div>
+    <div class="dim">grok ✅ · gemini ✅ · codex ✅ (добран headless) · glm пусто</div></div>
+  <div class="card"><h3>Плечи по ТРИЗ</h3><div class="big ok">4 / 4</div>
+    <div class="dim">grok ✅ · glm ✅ · gemini ✅ · codex ✅ (добран headless)</div></div>
+  <div class="card"><h3>Наше правило</h3><div class="big warn">4 ✅ · 3 спорны</div>
+    <div class="dim">четвёртое плечо оспорило порог, триггер и раскатку</div></div>
+  <div class="card"><h3>Найдено дыр</h3><div class="big bad">2 + 3</div>
+    <div class="dim">склейка класса · линейная цепочка · плюс три правки от codex</div></div>
+</div>
+
+<h2>1. Что литература сказала про наше правило «5 почему по серии»</h2>
+<div class="wrap"><table>
+<tr><th>Пункт нашего правила</th><th>Вердикт</th><th>Чем подпёрто</th></tr>
+<tr><td>Единица анализа — серия, не инцидент</td><td class="ok">поддержан</td><td>ITIL Problem Management, агрегация постмортемов Google SRE, FRACAS, 8D</td></tr>
+<tr><td>Порог — 3 случая</td><td class="warn">частично</td><td>Weibull работает на N=3–5; но это повод расследовать, а не доказанный общий корень</td></tr>
+<tr><td>Триггер — рецидив, не тяжесть</td><td class="ok">поддержан</td><td>problem management — паттерн-driven; частые мелочи копят невидимый долг</td></tr>
+<tr><td>Чиним отдельной сессией</td><td class="ok">поддержан</td><td>8D жёстко делит D3 «сдержать» и D5 «исправить навсегда»</td></tr>
+<tr><td>Каждое «потому что» = доказано или гипотеза</td><td class="ok">поддержан сильно</td><td>гасит и человеческую предвзятость, и конфабуляцию LLM</td></tr>
+<tr><td>Фикс закрывает класс гейтом/тестом</td><td class="ok">поддержан</td><td>8D D7 «prevent recurrence», замкнутый цикл FRACAS</td></tr>
+<tr><td>Раскатка на весь флот</td><td class="ok">поддержан</td><td>стандартное устранение known error по парку машин</td></tr>
+</table></div>
+
+<h2>1-бис. Где четвёртое плечо (codex) с нами ПОСПОРИЛО</h2>
+<div class="wrap"><table>
+<tr><th>Наш пункт</th><th>grok + gemini</th><th>codex</th></tr>
+<tr><td>Триггер = рецидив, <b>а не</b> тяжесть</td><td class="ok">поддержан</td>
+    <td class="bad">противоречит: тяжесть, новизна, потеря данных, безопасность и сбой самого мониторинга запускают разбор <b>параллельно, с первого случая</b></td></tr>
+<tr><td>Три случая защитимы статистикой</td><td class="warn">«защитимо, Weibull N=3–5»</td>
+    <td class="bad">опровергнуто NIST: при &lt;5 отказов оценка часто очень неточна, ~20 наблюдений для контрольных карт. Три = дешёвый будильник, не доказательство</td></tr>
+<tr><td>Раскатка фикса на ВСЕ машины</td><td class="ok">поддержан</td>
+    <td class="bad">не поддержан и <b>потенциально опасен</b>: только на узлы с тем же механизмом, сначала канарейка. Одновременная правка флота сама создаёт common-mode failure</td></tr>
+</table></div>
+<div class="card" style="margin-top:10px">
+<b>⚠️ Открытое возражение, решает Антон.</b> Третья строка спорит с §7.3-бис CLAUDE.md
+(«любая починка раскатывается на весь флот, в том же заходе», origin: anton). Правило я <b>не
+менял</b> — зафиксировал возражение в реглументе. Совместимая середина: меняется <i>порядок</i>
+(канарейка → остальные), обязательность «дошло до всех и доказано чтением факта» остаётся.
+</div>
+
+<h2>2. Две дыры, которые оба плеча нашли независимо</h2>
+<div class="grid">
+  <div class="card"><h3 class="bad">Дыра 1 · ложная склейка класса</h3>
+    <p>«Все проблемы с браузером» — ярлык по симптому. Склеили по внешнему сходству → уверенно нашли фальшивый общий корень.</p>
+    <ul>
+      <li><b>Тест общего механизма:</b> тот же путь в коде / сигнатура лога / срок жизни токена?</li>
+      <li><b>Тест замещения:</b> если бы корень был устранён, этот инцидент всё равно бы случился? Да → он не в классе.</li>
+      <li><b>Двое размечают вслепую;</b> разошлись — класс считается ложным.</li>
+      <li>Детектор жадности: доля отклонённых классов &gt; ~30% → склейка слишком широкая.</li>
+    </ul></div>
+  <div class="card"><h3 class="bad">Дыра 2 · линейная цепочка</h3>
+    <p>«Почему? почему?» идёт по одной ветке. В разборе Card (BMJ 2017) так нашли <b>2 причинных пути из 30</b>.</p>
+    <ul>
+      <li>Вопрос меняется на: <b>какие условия должны были совпасть одновременно?</b></li>
+      <li>Выход — список условий, а не цепочка; каждое с меткой доказано/гипотеза.</li>
+      <li>Живой спор оставлен: STAMP/Safety-II вообще отрицают единственный корень в сложных системах.</li>
+    </ul></div>
+</div>
+
+<h2>3. Приговор чистому методу «5 почему»</h2>
+<div class="wrap"><table>
+<tr><th>Претензия</th><th>Кто</th><th>Суть</th></tr>
+<tr><td>Однопутевость</td><td>Card, BMJ Qual Saf 2017</td><td>2 пути из 30; пример Мемориала Линкольна — фикс внедрён и не сработал</td></tr>
+<tr><td>Произвольная остановка</td><td>Leveson, Dekker</td><td>останавливаются на политически удобном: «не наша команда»</td></tr>
+<tr><td>Невоспроизводимость</td><td>Minoura (Toyota)</td><td>два инженера на одном инциденте дают разные «корни»</td></tr>
+<tr><td>«Человек ошибся» как финал</td><td>Dekker, Hollnagel, Woods, Cook</td><td>это откуда расследование НАЧИНАЕТСЯ, а не где кончается</td></tr>
+<tr><td>Тойота так не делала</td><td>Ohno (первоисточник)</td><td>«пять» не сакрально; ответы добывались наблюдением на месте, не дедукцией в переговорке</td></tr>
+</table></div>
+
+<h2>4. ТРИЗ: три плеча, одна рекомендация</h2>
+<div class="grid">
+  <div class="card"><h3>Доказательная база</h3>
+    <ul>
+      <li>Обзор 2016: развитие ТРИЗ «никогда не проходило обычной научной валидации»</li>
+      <li>Попадание матрицы противоречий — <b>27–50%</b>, ретроспективно</li>
+      <li>Intel $212.5M и Samsung $100M+ — <span class="warn">самоотчёт заинтересованных</span></li>
+      <li>В софте/SRE: обзор 2019 — «в самой начальной фазе», к 2026 без изменений</li>
+    </ul></div>
+  <div class="card"><h3>Что берём</h3>
+    <ul>
+      <li>Противоречие → четыре разделения → <b>ИКР</b> → тримминг</li>
+      <li>Цена входа 2–8 часов; без матрицы, Су-поля, АРИЗ, сертификации</li>
+      <li>Применяем к тому же порогу рецидива, не к каждому багу</li>
+      <li>Статус: <span class="tag warn">тень с замером 30 дней</span></li>
+    </ul></div>
+  <div class="card"><h3 class="bad">Конфликт с АК-47 — реальный</h3>
+    <ul>
+      <li>Идеальность максимизирует <b>функций на деталь</b></li>
+      <li>АК-47 максимизирует <b>диагностируемость на деталь</b></li>
+      <li>Тримминг — ложный друг: не удаляет функцию, а перекладывает → рост связности</li>
+      <li>Красный список: вложенность, универсальность, посредник, обратная связь, самообслуживание</li>
+    </ul></div>
+</div>
+
+<h2>5. Единственный случай, где ТРИЗ дала неочевидный ход</h2>
+<div class="card">
+<p>Из четырёх наших живых противоречий три ТРИЗ просто <span class="dim">пересказала</span>
+(сторож на другой машине · pull вместо push · персистентный профиль). Заработала она один раз:</p>
+<p><b>«Тихий индикатор против тишина ≠ живой»</b>. ИКР — «индикатора не существует, но функция
+выполняется» — заставляет прийти к <b>dead-man's switch</b>: отсутствие пульса и есть тревога,
+зелёной лампочки, способной самой умереть, больше нет. Два плеча из трёх назвали именно этот
+случай единственным неочевидным. Это ровно наш класс «зелёный индикатор — мёртвый конвейер»,
+который в чужой статье 2026 года называется <code>fail-plausible</code>.</p>
+</div>
+
+<h2>6. Что меняется прямо сейчас</h2>
+<div class="wrap"><table>
+<tr><th>Изменение</th><th>Где</th><th>Статус</th></tr>
+<tr><td>Шаг 1а: тест общего механизма до разбора</td><td>реглумент «Пять почему» v2</td><td class="ok">внесено</td></tr>
+<tr><td>Шаг 1б: тест замещения достаточной причины</td><td>там же</td><td class="ok">внесено</td></tr>
+<tr><td>Шаг 2: карта условий вместо цепочки «почему»</td><td>там же</td><td class="ok">внесено</td></tr>
+<tr><td>Шаг 3а: улика проверяется дословным поиском в сыром логе</td><td>там же</td><td class="ok">внесено</td></tr>
+<tr><td>Карточка противоречия (ТРИЗ-минимум)</td><td>реглумент, раздел «родственный инструмент»</td><td class="warn">в тени, замер 30 дней</td></tr>
+<tr><td>Детектор рецидива + гейт в /tt и /retro + счётчик</td><td>задача task-2026-08-06-five-whys-recurrence-detector</td><td class="bad">не построено</td></tr>
+<tr><td>Раскатка на флот</td><td>—</td><td class="bad">не сделано</td></tr>
+</table></div>
+
+<h2>7. Честная граница этого синтеза</h2>
+<div class="card">
+<ul>
+<li><b>Кворум 4/6 по телам НЕ набран.</b> По ТРИЗ живых плеча четыре, по 5 Why — три.
+GLM по 5 Why приехал пустым (в файле только промпт). Браузерное плечо ChatGPT снять не удалось:
+Chrome-MCP на хабе не подключён, других поверхностей с куками для chatgpt.com на узле нет.</li>
+<li>Четвёртое плечо добрано <b>обходной рельсой того же вендора</b> — Codex CLI headless, без
+браузера, 313k токенов на прогон. Его выводы внесены дельтой поверх первой редакции, синтез не
+переписывался. Оговорка: это не тот же продукт, что браузерный Deep Research, — режим поиска другой.</li>
+<li>Честно не доказано и в источниках: что разбор по классу снижает рецидив <b>сильнее</b>
+поштучного. Направление верное, контролируемых замеров почти нет.</li>
+<li>Сильнейшее возражение против ТРИЗ-минимума оставлено в полный рост: подмножество никем не
+проверялось как подмножество, есть риск принять «плацебо с советским брендингом».</li>
+</ul>
+</div>
+
+</body>
+</html>

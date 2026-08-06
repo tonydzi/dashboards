@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex — контракт коллаборации</title>
+<style>
+  :root{--bg:#0f1115;--card:#181b22;--edge:#262b36;--tx:#e6e9ef;--mut:#9aa4b2;
+        --grn:#2ecc71;--red:#ff5c5c;--amb:#ffb020;--blu:#5b9dff;--pur:#b98bff}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--mut);margin:0 0 20px;font-size:13px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:880px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--edge);border-radius:12px;padding:16px 18px}
+  .card h2{font-size:15px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  ul{margin:6px 0 0;padding-left:18px}
+  li{margin:5px 0}
+  .can li::marker{color:var(--grn)}
+  .cant li::marker{color:var(--red)}
+  .how li::marker{color:var(--blu)}
+  code{background:#0b0d11;border:1px solid var(--edge);border-radius:5px;padding:1px 5px;font-size:12px;color:#cdd6e4}
+  .golden{grid-column:1/-1;background:linear-gradient(180deg,#1d2330,#181b22);border-color:#33405a}
+  .golden h2{color:var(--pur)}
+  .tier{grid-column:1/-1;border-color:#4a2020;background:linear-gradient(180deg,#241416,#181b22)}
+  .paths{grid-column:1/-1}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  td{border-top:1px solid var(--edge);padding:6px 8px;vertical-align:top}
+  td:first-child{color:var(--mut);white-space:nowrap;width:38%}
+  .foot{color:var(--mut);font-size:12px;margin-top:18px;text-align:center}
+  .warn{grid-column:1/-1;border-color:#5a4a1a;background:linear-gradient(180deg,#241f10,#181b22)}
+  .warn h2{color:var(--amb)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Arhitektura-Vedomyh-Memo-2026-08-06.html">&larr; Arhitektura-Vedomyh-Memo-2026-08-06</a> · <a href="Dashboard-Max-Rollout.html">Dashboard-Max-Rollout &rarr;</a></span></div>
+  <h1>🤝 Codex — контракт коллаборации</h1>
+  <p class="sub">Второй контур рядом с Claude над одним Vault · v1.0 · хаб A-2022BAYAREA · источник: <code>C:\Users\Anton\.codex\CODEX-COLLABORATION.md</code></p>
+
+  <div class="grid">
+    <div class="card golden">
+      <h2><span class="dot" style="background:var(--pur)"></span>Золотое правило</h2>
+      Истина = git-коммит + состояние задачи в SQL + тест. История чата и «я написал done» — <b>НЕ истина</b>.
+      Codex <b>никогда не объявляет «готово» сам</b> — только <code>artifact.proposed</code>; verified = после независимого ревью Claude (<code>cc_review.py</code>) + тестов + человека на рискованном. Не уверен → СТОП и спросить.
+    </div>
+
+    <div class="card can">
+      <h2><span class="dot" style="background:var(--grn)"></span>МОЖЕТ (CAN)</h2>
+      <ul>
+        <li>Читать весь Vault, RAG, SQL-факты (диск <b>E:</b>)</li>
+        <li>Писать/править заметки — бэкап-до + журнал-после</li>
+        <li>Импорты, реиндекс, детерминированные скрипты</li>
+        <li>Ресёрч, анализ, черновики, код</li>
+        <li>Предлагать дифф (Claude ревьюит)</li>
+        <li>Читать коннекторы (TG/Gmail/Calendar/WA)</li>
+        <li>Автологины (OTP+2FA из стора)</li>
+        <li>Поднимать синк, сверяться с <code>/arch</code></li>
+        <li>Предлагать правки канона (не коммитить)</li>
+      </ul>
+    </div>
+
+    <div class="card cant">
+      <h2><span class="dot" style="background:var(--red)"></span>НЕЛЬЗЯ / только с ОК (Tier-2)</h2>
+      <ul>
+        <li>Объявлять «done» сам</li>
+        <li>Деньги: платежи, переводы, торги</li>
+        <li>Любой outbound от лица Антона</li>
+        <li><b>Авторский голос Антона</b> (посты) — вообще не Codex, только Opus</li>
+        <li>Секреты наружу / в события / в память</li>
+        <li>Менять КАНОН (только Антон через хаб)</li>
+        <li>Необратимое / mass-delete без бэкапа</li>
+        <li>Защищённые зоны: Библия, <code>concept-*</code>/<code>person-*</code>, шаблоны, <code>_machine-bus</code>, <code>_originals</code></li>
+        <li>Прямая запись в approved-память</li>
+        <li>Прод-сервер кроме read-only</li>
+        <li>Платный API без согласования</li>
+        <li>Чужая зона файлов без lease</li>
+      </ul>
+    </div>
+
+    <div class="card how">
+      <h2><span class="dot" style="background:var(--blu)"></span>КАК (процедуры)</h2>
+      <ul>
+        <li><b>Запись в волт:</b> <code>vault_backup.py</code> ДО (один на батч) → правка → <code>log_write.py --by codex</code> ПОСЛЕ → no-orphan</li>
+        <li><b>Тест-перед-готово:</b> прогнать вживую → поломать нарочно → слой видимости → корень → вердикт ✅</li>
+        <li><b>Корень не симптом</b>, AK-47, усложнения помечать</li>
+        <li><b>Хэндофф:</b> <code>aibus_lite.py</code> (claim/lease/propose/review) или файлы task/result/patch</li>
+        <li><b>Связь:</b> единый <code>bus_send.py</code> (дуалит оба рельса), ACK + heartbeat</li>
+        <li><b>Сбой:</b> идемпотентно; после 2 провалов — СТОП + <code>task.blocked</code></li>
+      </ul>
+    </div>
+
+    <div class="card how">
+      <h2><span class="dot" style="background:var(--blu)"></span>Роли и QQQ</h2>
+      <ul>
+        <li>Обычно Codex = <b>implementer</b>; reviewer = Claude (гетеро-пара 69.8% vs 53.1%)</li>
+        <li>Роль <b>не самопровозглашаю</b> — только по назначению</li>
+        <li><b>QQQ</b> (Антон не у терминала): пинг в «03» → <code>QQQ</code> с его аккаунта = да</li>
+        <li>QQQ одноразовый, окно 15 мин, привязан к <code>#id</code>; проверка через <code>approval.py check</code></li>
+      </ul>
+    </div>
+
+    <div class="card tier">
+      <h2><span class="dot" style="background:var(--red)"></span>Если сомнение — СТОП</h2>
+      Нет данных · противоречие · упёрся в Tier-2 · роль неясна · зона чужая → не угадывать, не выдумывать событие/ack/результат, не прятать упавший тест. Публикую <code>task.blocked</code> или спрашиваю Антона (<code>QQQ</code>).
+    </div>
+
+    <div class="card paths">
+      <h2><span class="dot" style="background:var(--mut)"></span>Точные инструменты и пути</h2>
+      <table>
+        <tr><td>Vault (общий Второй Мозг)</td><td><code>E:\Obsidian\Anton-Knowledge</code></td></tr>
+        <tr><td>Бэкап до записи</td><td><code>python E:\Obsidian\_imports\vault_backup.py</code></td></tr>
+        <tr><td>Журнал записей / owner</td><td><code>...\vault-writes\log_write.py --file "&lt;путь&gt;" --by codex</code></td></tr>
+        <tr><td>Ревью диффа (Claude)</td><td><code>...\cc-review\cc_review.py --repo "&lt;репо&gt;" --model sonnet</code></td></tr>
+        <tr><td>Сверка правил Claude↔Codex</td><td><code>...\agents-drift\check_drift.py</code></td></tr>
+        <tr><td>Код-контракт ролей/событий</td><td><code>docs\agent-protocol.md</code></td></tr>
+        <tr><td>Шина задач + замки</td><td><code>aibus_lite.py</code></td></tr>
+        <tr><td>Дистанц. одобрение</td><td><code>~/.claude/scripts/approval.py</code></td></tr>
+      </table>
+    </div>
+
+    <div class="card warn">
+      <h2><span class="dot" style="background:var(--amb)"></span>⚠️ Корневая задача (не построена)</h2>
+      Канон <b>«любая LLM = равноправный актор»</b> (Антон «++» 2026-06-29) требует двухслойный <code>SHARED-CANON/CORE.md</code> (≤1 стр, все LLM грузят целиком) + <code>rules/*.md</code> по надобности + <b>механические git pre-commit хуки</b> (работают без живого Claude). Сейчас вместо этого правила накапливаются в раздутом <code>AGENTS.md</code> (134 КБ = анти-паттерн: кап Codex 32 КБ, «lost in the middle»). Форевер-фикс = собрать CORE, а не дописывать AGENTS.md.
+    </div>
+  </div>
+
+  <p class="foot">Сгенерировано Claude Code · открывать в браузере · полный текст = CODEX-COLLABORATION.md</p>
+</body>
+</html>

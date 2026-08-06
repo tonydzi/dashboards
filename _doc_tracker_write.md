@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Прочее · [← NotPeople-Pitch-Drafts](NotPeople-Pitch-Drafts.md)
+[все дашборды](index.html) · категория: Прочее · [← What-Is-Red-2026-06-28](What-Is-Red-2026-06-28.html)
 
 # Паспорт: tracker_write.py — запись размещений в трекер в момент публикации
 

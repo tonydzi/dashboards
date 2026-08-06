@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8">
+<title>Судейство A/B — always-on память (вердикт графа), 2026-07-25</title>
+<style>body{font:14px/1.45 Segoe UI,sans-serif;max-width:1100px;margin:20px auto;padding:0 16px;background:#111;color:#ddd}
+h1{font-size:20px}h3{margin:2px 0;font-size:15px;color:#eee}h4{margin:8px 0 4px;color:#bbb;font-size:12px;font-weight:normal}
+.card{background:#1b1b22;border:1px solid #333;border-radius:10px;padding:12px 16px;margin:12px 0}
+.card.voted-good{border-color:#2ea043;background:#16201a}.card.voted-noise{border-color:#a03030;background:#221717}
+.hit{font:12.5px/1.55 Consolas,monospace;color:#9ecbff;padding-left:14px;text-indent:-14px}
+.hit.stable{color:#7ee787}.badge{font:10px Segoe UI;color:#e3b341;border:1px solid #6a5b1e;border-radius:6px;padding:0 5px;margin-left:6px}
+.note{color:#888;font-size:12px;margin:4px 0}
+.sum{background:#20262e;border-radius:10px;padding:12px 16px;margin:12px 0}
+.warn{background:#2d1a1a;border:1px solid #6e2c2c;border-radius:10px;padding:12px 16px;margin:12px 0;color:#f0b0b0}
+.reco{background:#1a2433;border:1px solid #2c4a6e;border-radius:10px;padding:12px 16px;margin:12px 0}
+.qrow{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+button{font:13px Segoe UI;border:1px solid #444;border-radius:8px;background:#262630;color:#ddd;padding:6px 14px;cursor:pointer}
+button:hover{background:#33333f}button.picked{outline:2px solid #e3b341}
+.btns{display:flex;gap:8px;flex-shrink:0}
+#tally{position:sticky;top:0;background:#111c;border-bottom:1px solid #333;padding:8px 4px;backdrop-filter:blur(4px);z-index:5;font-size:14px}
+#cmdbox{width:100%;height:110px;background:#0d1117;color:#9ecbff;font:12px Consolas,monospace;border:1px solid #333;border-radius:8px;padding:8px}
+.big{font-size:16px;font-weight:600}
+table{border-collapse:collapse;font-size:13px}td,th{border:1px solid #333;padding:4px 10px;text-align:left}
+kbd{background:#262630;border-radius:4px;padding:1px 5px;font:12px Consolas,monospace}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Kill-Review.html">&larr; Kill-Review</a> · <a href="Near-Dup-Review.html">Near-Dup-Review &rarr;</a></span></div>
+<h1>⚖️ Судейство A/B — «Прямая (вектор)» vs «Ассоциативная (вектор+граф)» · месяц пилота</h1>
+
+<div class="sum"><b>Что решаем сегодня (последний открытый пункт Decision Memo 2026-06-25):</b> граф-recall и entity-полоса — в дефолт ВЕЗДЕ, остаются gated, или крутим пороги GHOPS/GMAX.<br><br>
+<b>Как судить:</b> ниже 18 карточек — реальные запросы за месяц, где граф поднял в топ ноты, которые чистый вектор упустил. Жми 👍 если поднятое реально в тему запроса, 👎 если мусор. Жёлтый бейдж = промоушен стабильный (повторялся ≥3 ночей — это не случайный выброс). ~15-20 минут.</div>
+
+<div class="warn"><b>⚠️ Честный статус данных (чтобы судить трезво):</b><br>
+• <b>entity-датапоинтов в батчах = 0</b> (gate_pred='entity' в ab_recall отсутствует физически — известная дыра с ретро 30.06, НЕ закрыта). Entity-половина гейта измерена только прототипом 02.07 (10 запросов: 3 WIN / 0 вреда — панель <span style="white-space:nowrap">Entity-Lane-AB.html</span>).<br>
+• Прошлые вердикты Антона (26.06, 31 шт.): 16 сигнал / 15 шум ≈ break-even; по thematic-подмножеству 6/6 = 50/50.<br>
+• Ночной прогон крутит один голд-сет 12 вопросов → карточек с уникальными запросами всего 18, живых work-запросов мало (8 за месяц — standing-правило «--ab при реальном recall» почти не работало).<br>
+• <b>🔴 Entity Graph Nightly на хабе = Disabled с 11.07</b> (обе entity-БД застыли Jul 11; причина выключения не зафиксирована — 🤔). Полоса на хабе сейчас тихо мертва.<br>
+• За месяц движок менялся (entity-полоса 02.07, bi-temporal cutover 04.07) — поэтому у карточек указана дата; bi-temporal выигрыш лонгитюдный, судится отдельно, не здесь.</div>
+
+<div id="tally"><span class="big">Счёт: <span id="cg" style="color:#7ee787">0</span> 👍 сигнал · <span id="cn" style="color:#ff9c9c">0</span> 👎 шум · осталось <span id="cr">18</span></span></div>
+
+<div class="card" id="card-481">
+<div class="qrow"><h3>«маршрутизация моделей Sonnet грунт Opus мышление»</h3>
+<div class="btns"><button class="up" onclick="vote(481,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(481,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 481 · 2026-07-25 21:39 · 🌙 nightly · промоушенов в последнем прогоне: +2 · запрос повторялся 11 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit stable">Инцидент: `.credentials.json` с пустыми OAuth-токенами → headless Sonnet мёртв <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">Insight (DR): Repairability-first multi-agent systems: cheap models as builders and repairers <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-480">
+<div class="qrow"><h3>«альфа-движок как находим инсайты детектор и судья»</h3>
+<div class="btns"><button class="up" onclick="vote(480,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(480,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 480 · 2026-07-25 21:38 · 🌙 nightly · промоушенов в последнем прогоне: +2 · запрос повторялся 24 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit stable">ANSS-lite контракт хэндофа (bus-TASK / seed-промпт) <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">Alpha Protocol — перед стратегическим решением: Recall + Deep Research + Synthesis (не реализуем на <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-479">
+<div class="qrow"><h3>«always-on память Claude Code автосохранение и recall»</h3>
+<div class="btns"><button class="up" onclick="vote(479,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(479,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 479 · 2026-07-25 21:38 · 🌙 nightly · промоушенов в последнем прогоне: +3 · запрос повторялся 28 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit stable">Автосохранение и recall <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">Регламент: само-дебаг и прозрачность сбоев (Claude Code / любой агент / ассистент) <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">Регламент — перед изменением системы сверься с картой (/arch) <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-477">
+<div class="qrow"><h3>«цифровой двойник Антона цель и слои»</h3>
+<div class="btns"><button class="up" onclick="vote(477,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(477,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 477 · 2026-07-25 21:36 · 🌙 nightly · промоушенов в последнем прогоне: +3 · запрос повторялся 24 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit stable">Personality core: build from canonical messages, prevent drift <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">SEED: пересжимка CLAUDE.md (вставить в новое окно Claude Code на хабе) <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">Аудит миграции на хаб: что крутится где (2026-06-22) <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-476">
+<div class="qrow"><h3>«что такое AAA CHARM продукт Palo Alto чем занимается лаборатория»</h3>
+<div class="btns"><button class="up" onclick="vote(476,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(476,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 476 · 2026-07-25 21:29 · 💼 work ×1 · промоушенов в последнем прогоне: +2 · запрос повторялся 1 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit">**lo **to **bs / BSClaunch / GateLabs — Palo Alto Research Labs</div><div class="hit">*****njali ***rma — ABC Conclave / Palo Alto AI Research Lab / Panoray Ventures</div>
+</div>
+<div class="card" id="card-474">
+<div class="qrow"><h3>«лиды CRM воронка кого пинговать»</h3>
+<div class="btns"><button class="up" onclick="vote(474,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(474,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 474 · 2026-07-25 04:14 · 🌙 nightly · промоушенов в последнем прогоне: +6 · запрос повторялся 29 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit stable">Gavon Smith / Joshua Lin — TokenWhistle / AntAlpha <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">Josh Hash | Blocksee Web3 CRM — Blocksee <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">***rea ***giu — NBCbank <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">Личка с Jin | DWF Ventures — 2025 <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">**ic **rst — Blocksee <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">**ic **rst <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-472">
+<div class="qrow"><h3>«здоровье Антона голодание ноотропики добавки»</h3>
+<div class="btns"><button class="up" onclick="vote(472,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(472,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 472 · 2026-07-25 04:13 · 🌙 nightly · промоушенов в последнем прогоне: +5 · запрос повторялся 23 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit stable">SEED: пересжимка CLAUDE.md (вставить в новое окно Claude Code на хабе) <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">Gavon Smith / Joshua Lin — TokenWhistle / AntAlpha <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">Аудит миграции на хаб: что крутится где (2026-06-22) <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">Когнитивные тренировки и медитация <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">concept-fasting-rhythm <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-471">
+<div class="qrow"><h3>«интро продукт как знакомим людей воронка»</h3>
+<div class="btns"><button class="up" onclick="vote(471,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(471,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 471 · 2026-07-25 04:13 · 🌙 nightly · промоушенов в последнем прогоне: +2 · запрос повторялся 23 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit stable">Vitalik — Battlemon <span class="badge">стабильно, ≥3 ночей</span></div><div class="hit stable">LinkedIn-фарминг для квалификации лидов <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-470">
+<div class="qrow"><h3>«библия свод правил для всех акторов»</h3>
+<div class="btns"><button class="up" onclick="vote(470,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(470,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 470 · 2026-07-25 04:12 · 🌙 nightly · промоушенов в последнем прогоне: +4 · запрос повторялся 28 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit">Протокол: эпистемическая нейтральность и исследование неортодоксальных гипотез</div><div class="hit">Регламент — Пиратский голос: нестандартные и серые пути = дефолт</div><div class="hit">серое ≠ чёрное</div><div class="hit">Протокол проведения звонка: роли питчера и фапера</div><div class="hit stable">Библия — Соцсети и маркетинг <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-469">
+<div class="qrow"><h3>«телеграм аккаунты Антона личный рабочий корпоративный»</h3>
+<div class="btns"><button class="up" onclick="vote(469,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(469,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 469 · 2026-07-25 04:12 · 🌙 nightly · промоушенов в последнем прогоне: +1 · запрос повторялся 17 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit stable">Helena Kondricheva <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-415">
+<div class="qrow"><h3>«cowork против Claude Code разделение доступа»</h3>
+<div class="btns"><button class="up" onclick="vote(415,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(415,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 415 · 2026-07-20 04:15 · 🌙 nightly · промоушенов в последнем прогоне: +1 · запрос повторялся 19 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit stable">Insight (DR): Claude Desktop Code tab Recents list storage/architecture on Windows <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-379">
+<div class="qrow"><h3>«условная активация правил CLAUDE.md path-scoped rules разгрузка потолок 89000 hot-dispatcher»</h3>
+<div class="btns"><button class="up" onclick="vote(379,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(379,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 379 · 2026-07-17 21:17 · 💼 work ×1 · промоушенов в последнем прогоне: +2 · запрос повторялся 1 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit">Осознанное согласие — объясни ЗАЧЕМ перед действием (особенно связывание машин)</div><div class="hit">вожак тоже осознанн</div><div class="hit">Регламент — перед изменением системы сверься с картой (/arch)</div>
+</div>
+<div class="card" id="card-378">
+<div class="qrow"><h3>«shadow-first понарошку — какие вещи мы обсуждали включить сначала в тени / dry-run, но ещё не включили»</h3>
+<div class="btns"><button class="up" onclick="vote(378,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(378,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 378 · 2026-07-17 19:40 · 💼 work ×1 · промоушенов в последнем прогоне: +2 · запрос повторялся 1 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit">ГЛАВНАЯ ЦЕЛЬ — AI-клон / цифровой двойник Антона (свет в конце туннеля)</div><div class="hit">Decision Memo — VPS «якорь» флота: узкий control-plane, не второй хаб</div>
+</div>
+<div class="card" id="card-367">
+<div class="qrow"><h3>«как мы храним память агента вектор база и RAG»</h3>
+<div class="btns"><button class="up" onclick="vote(367,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(367,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 367 · 2026-07-17 04:10 · 🌙 nightly · промоушенов в последнем прогоне: +1 · запрос повторялся 21 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit stable">Charm / LifeOS <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-365">
+<div class="qrow"><h3>«DR реестр нумерация коллизия дубль номера MACANTON skill governance fundraising»</h3>
+<div class="btns"><button class="up" onclick="vote(365,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(365,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 365 · 2026-07-16 18:31 · 💼 work ×1 · промоушенов в последнем прогоне: +2 · запрос повторялся 1 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit">Весь сгенерированный контент получает номер NOTEYY-MM-DD-МАШИНА-NN + строку в реестре</div><div class="hit">«Один канон → проекции»: архитектурный почерк Антона в шести постановках недели памяти (06–08.07)</div>
+</div>
+<div class="card" id="card-323">
+<div class="qrow"><h3>«второй мозг архитектура три слоя SQLite RAG markdown»</h3>
+<div class="btns"><button class="up" onclick="vote(323,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(323,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 323 · 2026-07-13 04:15 · 🌙 nightly · промоушенов в последнем прогоне: +1 · запрос повторялся 10 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit stable">ГЛАВНАЯ ЦЕЛЬ — AI-клон / цифровой двойник Антона (свет в конце туннеля) <span class="badge">стабильно, ≥3 ночей</span></div>
+</div>
+<div class="card" id="card-205">
+<div class="qrow"><h3>«стартер-кит для друзей форк claude-obsidian concierge»</h3>
+<div class="btns"><button class="up" onclick="vote(205,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(205,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 205 · 2026-07-04 00:49 · 💼 work ×1 · промоушенов в последнем прогоне: +2 · запрос повторялся 1 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit">Always-on память для Claude Code: строить 3 слоя на своём стеке, не адоптить платформы</div><div class="hit">Регламент: само-дебаг и прозрачность сбоев (Claude Code / любой агент / ассистент)</div>
+</div>
+<div class="card" id="card-204">
+<div class="qrow"><h3>«OpenAI embeddings недорого хочу использовать»</h3>
+<div class="btns"><button class="up" onclick="vote(204,'good',this)">👍 сигнал</button>
+<button class="dn" onclick="vote(204,'noise',this)">👎 шум</button></div></div>
+<p class="note">ab_id 204 · 2026-07-04 00:05 · 💼 work ×1 · промоушенов в последнем прогоне: +1 · запрос повторялся 1 ночей</p>
+<h4>Что Ассоциативная (граф) подняла в топ, а Прямая (вектор) упустила:</h4>
+<div class="hit">Биохакерский отчет о фруктах</div>
+</div>
+
+<div class="reco"><b>🏴‍☠️ Рекомендация кофаундера (черновик — данные, не приговор; решает Антон):</b><br><br>
+<b>1. Вики-граф (темы): оставить GATED-DEFAULT как есть.</b> Месяц данных: на темах break-even (6👍/6👎), вреда нет, но и доказанного выигрыша нет. Снимать гейт «в дефолт везде» на этих данных нельзя; выключать тоже незачем (стоит копейки, изредка попадает).<br>
+<b>2. Entity-полоса: сигнал есть, измерения нет — чинить ИЗМЕРЕНИЕ, не дефолт.</b> Прототип показал сильные WIN на именах («Синклер» карточка #1 из мусора). Но: батчи полосу не меряют (ab_batch не допатчен), на хабе полоса мертва с 11.07. Предложение: включить Entity Graph Nightly обратно (+гейт на 1.3GB .bak), допатчить ab_batch мерить полосу, 2 недели реальных данных → тогда вердикт про дефолт.<br>
+<b>3. GHOPS/GMAX не крутить</b> пока не набрано измерение entity-половины — крутить пороги вслепую = шаманство.<br><br>
+<b>До→после на твоих реальных запросах</b> (почему НЕ «выключить всё» и НЕ «в дефолт всё»):<br>
+<table><tr><th>Запрос</th><th>Прямая (вектор)</th><th>+ граф поднял</th><th>Похоже на</th></tr>
+<tr><td>«лиды CRM воронка кого пинговать»</td><td>общие ноты</td><td>карточки лидов: Gavon Smith, Josh Hash/Blocksee, ***rea ***giu, Jin/DWF</td><td style="color:#7ee787">сигнал</td></tr>
+<tr><td>«здоровье Антона голодание ноотропики»</td><td>здоровье-ноты</td><td>«SEED: пересжимка CLAUDE.md», «Аудит миграции на хаб»</td><td style="color:#ff9c9c">шум (хабы графа)</td></tr></table>
+</div>
+
+<div class="sum"><b>Когда отсудил — забери вердикты:</b> кнопки ниже. Если панель открыта в чате Claude — жми «Отправить в чат», я сам прогоню --mark. Если в браузере — «Скопировать команды» и вставь в чат.<br><br>
+<button onclick="sendChat()">📨 Отправить в чат</button>
+<button onclick="copyCmds()">📋 Скопировать команды</button>
+<span id="copied" style="color:#7ee787;display:none">скопировано ✅</span><br><br>
+<textarea id="cmdbox" readonly placeholder="Тут появятся команды python ab_eval.py --mark ... по мере судейства"></textarea></div>
+
+<div class="sum"><b>📋 Повестка судейской сессии (≤30 мин):</b> 1) отсудить карточки выше (~15-20 мин) → 2) сказать «+»/решение по трём пунктам рекомендации (~5 мин) → 3) resume-drill: убьём рабочую сессию нарочно и поднимемся ТОЛЬКО через <kbd>/1</kbd> — критерии успеха уже зафиксированы в журнале задачи ДО прогона (~5-10 мин).</div>
+
+<p style="color:#777">Данные: turnstate.db → ab_recall (262 несуженных промоушена с 27.06 → 18 уникальных запросов, последний ab_id на запрос) · вердикты пишутся в ab_verdicts через ab_eval.py --mark · собрано сессией heuristic-ellis 2026-07-25 21:4x</p>
+
+<script>
+const votes = JSON.parse(localStorage.getItem('abv2026_0725')||'{}');
+const TOTAL = 18;
+function render(){
+  let g=0,n=0;
+  for(const [id,v] of Object.entries(votes)){
+    const card=document.getElementById('card-'+id); if(!card) continue;
+    card.classList.toggle('voted-good', v==='good');
+    card.classList.toggle('voted-noise', v==='noise');
+    card.querySelectorAll('button').forEach(b=>b.classList.remove('picked'));
+    card.querySelector(v==='good'?'.up':'.dn').classList.add('picked');
+    if(v==='good')g++;else n++;
+  }
+  document.getElementById('cg').textContent=g;
+  document.getElementById('cn').textContent=n;
+  document.getElementById('cr').textContent=TOTAL-g-n;
+  document.getElementById('cmdbox').value=cmds();
+}
+function vote(id,v,btn){ votes[id]=v; localStorage.setItem('abv2026_0725',JSON.stringify(votes)); render(); }
+function cmds(){
+  return Object.entries(votes).map(([id,v])=>
+    'python E:\\Obsidian\\_imports\\turnstate\\ab_eval.py --mark '+id+' '+v).join('\n');
+}
+function copyCmds(){
+  navigator.clipboard.writeText(cmds()).then(()=>{
+    const el=document.getElementById('copied'); el.style.display='inline';
+    setTimeout(()=>el.style.display='none',2000);
+  });
+}
+function sendChat(){
+  const line='вердикты A/B: '+Object.entries(votes).map(([id,v])=>id+'='+v).join(', ');
+  if(typeof sendPrompt==='function'){ sendPrompt(line); }
+  else { copyCmds(); alert('Открыто не в чате — команды скопированы в буфер, вставь их в чат Claude.'); }
+}
+render();
+</script>
+</body></html>

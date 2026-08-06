@@ -1,4 +1,4 @@
-<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="DR-Delivery-Sessions.html">&larr; DR-Delivery-Sessions</a> · <a href="GDrive-Sheets-Catalog.html">GDrive-Sheets-Catalog &rarr;</a></span></div><!doctype html>
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Embed-Bakeoff-Sessions.html">&larr; Embed-Bakeoff-Sessions</a> · <a href="GDrive-Sheets-Catalog.html">GDrive-Sheets-Catalog &rarr;</a></span></div><!doctype html>
 <meta charset="utf-8">
 <title>Лиса: раскатка счётчика + attach — 04.08.2026</title>
 <style>
@@ -33,32 +33,53 @@
 <h1>Лиса: раскатка счётчика и проверка attach</h1>
 <p class="sub">4 августа 2026, ночь · узел HP17-ZBook · замер идёт до 18.08, решает Антон</p>
 
-<h2>1. Раскатка счётчика по флоту</h2>
+<h2>1. Раскатка счётчика по флоту — обновлено 06.08, 16:0x</h2>
 <div class="card grid">
-  <div><div class="big ok">3<span style="color:var(--mut);font-size:18px"> / 6</span></div><div class="lbl">узлов применили</div></div>
-  <div><div class="big warn">2<span style="color:var(--mut);font-size:18px"> / 6</span></div><div class="lbl">реально пишут строки</div></div>
-  <div><div class="big bad">4 / 5</div><div class="lbl">нужно по критерию + хаб обязателен</div></div>
+  <div><div class="big ok">5<span style="color:var(--mut);font-size:18px"> / 6</span></div><div class="lbl">реально пишут строки</div></div>
+  <div><div class="big ok">ДА</div><div class="lbl">хаб пишет (жёсткое условие)</div></div>
+  <div><div class="big ok">состоится</div><div class="lbl">итог по критерию охвата</div></div>
 </div>
 
 <div class="card">
-<b>Критерий уточнён 05.08 (решено в режиме «реши сам»).</b> Было «4 из 6» — но Маяк
-физически не умеет браузер, и мёртвый слот в знаменателе читался бы как провал раскатки.
-Стало: <b>знаменатель — 5 браузерных узлов, порог ≥4 из 5</b> (доля не ослаблена, а ужесточена:
-было 67%, стало 80%), а <b>хаб A-2022BAYAREA — жёсткое условие</b>: нет его строк, значит
-замер не состоялся, независимо от арифметики. Порог под факт недораскатки не понижаем —
-это то же самое, что завысить цифру. Машина уже печатает обе строки в отчёте.
+<b>⛔ Поправка 05.08 ОТМЕНЕНА.</b> Я вывел Маяк из знаменателя с причиной «браузера физически
+нет». Причина оказалась выдуманной: я вывел её из того, что установщик не нашёл там НАШУ
+обёртку, и прочитал это как отсутствие браузера. На узле стоят <b>Firefox 153.0.1,
+geckodriver, Chrome и Xvfb</b>, headless-прогон живой. Маяк вернулся в знаменатель:
+<b>≥5 из 6</b> (доля 80% сохранена), хаб по-прежнему жёсткое условие.
+</div>
+
+<div class="card">
+<b>Найден перекос счётчика в пользу Chrome — починен.</b> Счётчик обнимал только запуск
+драйвера, а поиск самого Firefox стоял снаружи. Значит падение «Лисы на узле нет» не
+считалось ВООБЩЕ: такой узел выглядел как «Лису не звали», а Chrome копил успехи. Поймано на
+хабе: probe упал, в шарде ноль строк. Теперь под счётчиком весь путь.
+</div>
+
+<div class="card">
+<b>⚠️ Отдельный инцидент: на хабе не работает DNS.</b> Роутер 192.168.1.1 не отвечает,
+<code>1.1.1.1</code> резолвит нормально. Firefox на хабе не открывает сайты, Chrome живёт на
+своём DoH — поэтому дыра была невидима. Пока не починено, доля Лисы на хабе занижена по
+причине, к Лисе отношения не имеющей. Правку сетевых настроек делает Антон.
 </div>
 
 <div class="card scroll">
 <table>
 <tr><th>Узел</th><th>Роль</th><th>Применено</th><th>Пишет строки</th><th>Чем доказано</th></tr>
-<tr><td>HP17-ZBook</td><td>ноут</td><td class="ok">да</td><td class="ok">да</td><td><code>--check-hook</code> OK + живой заход в шарде</td></tr>
-<tr><td>Маяк (VPS)</td><td>якорь</td><td class="ok">да</td><td class="warn">нет</td><td>поставил по SSH, 27 тестов прошли. Браузера на узле нет — писать нечего</td></tr>
-<tr><td>MacBook-Anton</td><td>Mac</td><td class="ok">да</td><td class="ok">да</td><td>своя версия движка, 132 строки в шарде</td></tr>
-<tr><td>A-2022BAYAREA</td><td><b>хаб</b></td><td class="bad">нет</td><td class="bad">нет</td><td>SSH-ключа нет, ждёт самоприменения из шины</td></tr>
-<tr><td>MacBook-Ruslana</td><td>пир</td><td class="bad">нет</td><td class="bad">нет</td><td>ждёт самоприменения</td></tr>
-<tr><td>MyOwnPC-Natalia</td><td>пир</td><td class="bad">нет</td><td class="bad">нет</td><td>ждёт самоприменения</td></tr>
+<tr><td>HP17-ZBook</td><td>ноут</td><td class="ok">да</td><td class="ok">да</td><td><code>--check-hook</code> OK + живые заходы в шарде</td></tr>
+<tr><td>A-2022BAYAREA</td><td><b>хаб</b></td><td class="ok">да</td><td class="ok">да</td><td>вошёл по SSH ключом <code>vps_anchor</code>, установил, 28 тестов, живой заход Лисы в шарде</td></tr>
+<tr><td>Маяк (VPS)</td><td>якорь</td><td class="ok">да</td><td class="ok">да</td><td>Firefox 153.0.1 + geckodriver + Xvfb стоят; headless-прогон живой, строка в шарде</td></tr>
+<tr><td>MacBook-Anton</td><td>Mac</td><td class="ok">да</td><td class="ok">да</td><td>своя версия движка, строки идут</td></tr>
+<tr><td>MyOwnPC-Natalia</td><td>пир</td><td class="ok">да</td><td class="ok">да</td><td>382 строки в шарде, свежие сегодня</td></tr>
+<tr><td>MacBook-Ruslana</td><td>пир</td><td class="bad">нет</td><td class="bad">нет</td><td>SSH timeout, узел не отвечает; ждёт самоприменения из шины</td></tr>
 </table>
+</div>
+
+<div class="card">
+<b>⭐ Второй корень, найден 06.08 — и он больше первого.</b> Живая ветка авто-применения
+посылок включается машино-локальным маркером, который <b>не синкается</b>. Он был взведён
+ровно на ОДНОМ узле из шести. На остальных посылки исправно доезжали и просто лежали:
+доставка не равнялась применению, а выглядело это как «пиры не отвечают». Взвёл на хабе и
+Маяке — они тут же сами применили <b>4 и 21</b> лежавшую посылку соответственно.
 </div>
 
 <div class="card">
@@ -111,11 +132,20 @@
 
 <h2>🧒 Простыми словами</h2>
 <div class="card eli">
-Мы поспорили: Лиса лучше Chrome или нет. Чтобы не спорить словами, поставили счётчик —
-он сам записывает, каким браузером мы работали и получилось ли. Оказалось, счётчик стоял
-только на одном компьютере из шести, а команда установки была сломана: она звала файл,
-которого нигде не было. Я собрал посылку, поставил на три компьютера и проверил своими
-глазами. Три оставшихся поставят себя сами, а утром робот проверит и добьёт.
+Мы поспорили: Лиса лучше Chrome или нет, и поставили счётчик, чтобы не спорить словами.
+Сегодня я дошёл до главного компьютера — ключ от него всё это время лежал у меня в кармане,
+вчера я просто взял не тот. Поставил счётчик, он работает.
+<br><br>
+И нашлась вещь поважнее. Посылки с починками до компьютеров доезжали, но никто их не
+распаковывал: разрешение «распаковывать самому» было выдано только на одном компьютере из
+шести. Я выдал его главному компьютеру и Маяку — они тут же сами распаковали 4 и 21 посылку.
+<br><br>
+Ещё вчера я сказал, что на Маяке браузера нет. Это была моя выдумка: я не нашёл там нашу
+надстройку и решил, что нет и браузера. Браузер там есть, я его запустил и проверил.
+<br><br>
+Плохая новость: на главном компьютере сломан справочник имён интернета (DNS). Chrome
+выкручивается своим, а Лиса и всё остальное сайты не открывают. Чинится одной строчкой, но
+сетевые настройки я трогать не могу — нажми сам.
 <br><br>
 Ещё проверил главное: можно ли оставить Лису открытой всё время и подходить к ней, когда надо.
 Можно. Открыл, отошёл, вернулся — она стоит и ждёт. Значит Chrome для этого больше не нужен.
