@@ -1,5 +1,7 @@
 [все дашборды](index.html) · категория: Флот и узлы · [← Mission-Pulse-2026-07-20](Mission-Pulse-2026-07-20.md) · [Mission-Pulse-2026-08-03 →](Mission-Pulse-2026-08-03.md)
 
+[все дашборды](index.html) · категория: Флот и узлы · [← Mission-Pulse-2026-07-20](Mission-Pulse-2026-07-20.md) · [Mission-Pulse-2026-08-03 →](Mission-Pulse-2026-08-03.md)
+
 ---
 title: "Mission-Pulse 2026-07-27 — финал W2 (ЗАЛП #1), вход в W3"
 type: dashboard
