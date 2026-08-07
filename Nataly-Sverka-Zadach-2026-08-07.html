@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сверка задач и входящего — ноутбук Натальи, 07.08.2026</title>
+<style>
+:root{
+  --bg:#f7f7f5; --card:#fff; --ink:#1b1b1a; --dim:#6b6b66; --line:#e2e2dd;
+  --ok:#1f7a3d; --warn:#a9741a; --bad:#a32b26; --acc:#2b5fa8;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#16171a; --card:#1e2024; --ink:#e9e9e6; --dim:#9a9a95; --line:#2e3137;
+         --ok:#5ec27f; --warn:#e0b455; --bad:#e88078; --acc:#7fb0f0; }
+}
+:root[data-theme="dark"]{ --bg:#16171a; --card:#1e2024; --ink:#e9e9e6; --dim:#9a9a95; --line:#2e3137;
+  --ok:#5ec27f; --warn:#e0b455; --bad:#e88078; --acc:#7fb0f0; }
+:root[data-theme="light"]{ --bg:#f7f7f5; --card:#fff; --ink:#1b1b1a; --dim:#6b6b66; --line:#e2e2dd;
+  --ok:#1f7a3d; --warn:#a9741a; --bad:#a32b26; --acc:#2b5fa8; }
+*{box-sizing:border-box}
+body{margin:0;padding:24px 16px 60px;background:var(--bg);color:var(--ink);
+  font:16px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:980px;margin:0 auto}
+h1{font-size:24px;margin:0 0 4px;font-weight:650}
+.sub{color:var(--dim);font-size:14px;margin-bottom:22px}
+h2{font-size:17px;margin:28px 0 10px;font-weight:650}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.row{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:0}
+.tag{flex:0 0 auto;font-size:12px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--dim);white-space:nowrap}
+.t-you{background:rgba(43,95,168,.12);color:var(--acc);border-color:transparent}
+.t-me{background:rgba(31,122,61,.12);color:var(--ok);border-color:transparent}
+.t-anton{background:rgba(169,116,26,.15);color:var(--warn);border-color:transparent}
+.t-blk{background:rgba(163,43,38,.12);color:var(--bad);border-color:transparent}
+.txt{flex:1 1 auto;min-width:0}
+.txt small{display:block;color:var(--dim);font-size:13px;margin-top:2px}
+.k{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 18px}
+.k div{flex:1 1 150px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.k b{display:block;font-size:26px;font-weight:650;line-height:1.1}
+.k span{color:var(--dim);font-size:13px}
+a{color:var(--acc)}
+code{background:rgba(127,127,127,.14);padding:1px 5px;border-radius:4px;font-size:13px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--dim);font-weight:600}
+.foot{color:var(--dim);font-size:13px;margin-top:26px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Задачи и планирование</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Inbound-Triage.html">&larr; Inbound-Triage</a> · <a href="Night-Report-2026-07-29.html">Night-Report-2026-07-29 &rarr;</a></span></div><div class="wrap">
+
+<h1>Сверка задач и входящего — ноутбук Натальи</h1>
+<div class="sub">07.08.2026, 10:20 · узел MyOwnPC-Natalia (NATALY-WIN-NB) · источники: чаты 00, 02, 03, 121 + шина + очередь посылок</div>
+
+<div class="k">
+  <div><b>4</b><span>посылки применены сейчас</span></div>
+  <div><b>2</b><span>посылки заблокированы</span></div>
+  <div><b>2</b><span>слота Medium сегодня</span></div>
+  <div><b>11</b><span>текстов ждут Medium</span></div>
+  <div><b>5</b><span>вопросов ждут Антона</span></div>
+</div>
+
+<h2>🔵 Сейчас на твоей стороне (нужны твои руки)</h2>
+<div class="card">
+  <div class="row"><span class="tag t-you">Medium</span><div class="txt">Два слота на сегодня заняты: <b>the-more-i-learn-the-less-i-sleep</b> и <b>the-face-of-knowing-too-much</b><small>файлы <code>posting-chain\cases\&lt;slug&gt;\40-medium-READY.md</code>. Ещё 9 переносятся на завтра, кейсы от этого не страдают</small></div></div>
+  <div class="row"><span class="tag t-you">X</span><div class="txt">Один твит не отправлен: кейс <b>a-registry-of-every-telegram-group</b><small>готовый текст ≤280 знаков лежит в <code>32-teaser-x-READY.txt</code>, аккаунт @*****Stef_. Робот постить не может: ключ есть, доступ у X закрыт (403 client-not-enrolled)</small></div></div>
+  <div class="row"><span class="tag t-you">Facebook</span><div class="txt">Новая голосовая Антона от сегодня без поста: <b>АК-47 против ТРИЗ</b> (чат 00, 04:36 UTC)<small>смысл: АК-47 — про то, как строим, ТРИЗ — про то, как чиним, это разные сущности. Скажи «делаем» — соберу RU-текст, дальше цепочка сама</small></div></div>
+  <div class="row"><span class="tag t-you">Решение</span><div class="txt">RU-тизеры и весь @ClawRus стоят на паузе с 06.08<small>4 тизера не написаны, потому что пауза. Возобновляем — скажи, в каком виде их делать</small></div></div>
+  <div class="row"><span class="tag t-you">Ждёт Антона, не тебя</span><div class="txt">Домены: твой вопрос в 121 от 06.08 19:49 («могу купить сама или попросить Сергея Походенко») без ответа<small>задача <code>10-Tasks\task-2026-08-06-kupit-domeny-tonydzi.md</code></small></div></div>
+</div>
+
+<h2>🟢 Сейчас на моей стороне</h2>
+<div class="card">
+  <div class="row"><span class="tag t-me">Контент</span><div class="txt">22 тизера из 37 написаны без пользы (59%) — переписать по правилу от 06.08<small>задача <code>task-2026-08-06-teasers-value-rewrite-10-fb-posts.md</code>, дверь <code>posting-chain\teaser_gate.py</code>. Чисто прошли 5 кейсов из 14</small></div></div>
+  <div class="row"><span class="tag t-me">Шина</span><div class="txt">350 непрочитанных сообщений, 20 долгов чтения, самому старому 76 часов<small>три задачи с MacBook-Anton и ZBOOKG8 висят без ответа с 04.08</small></div></div>
+  <div class="row"><span class="tag t-me">Сделано в этот заход</span><div class="txt">Применены 4 посылки: статусы посылок applied/claimed · две двери на публичные TG-отправки · git-идентичность tonydzi · детектор невызываемых движков (рутина заведена)<small>и разослан по флоту приказ Антона про стоп оптимизации</small></div></div>
+</div>
+
+<h2>🟠 Заблокировано, названы причины</h2>
+<div class="card">
+  <div class="row"><span class="tag t-blk">посылка</span><div class="txt"><b>radical-order-gate-20260806</b> — груза нет ни на шине, ни в волте<small>сама проверка зовёт файл <code>~/.claude/hooks/radical_order_gate.py</code>, которого никто не доставил. Классическая болезнь «apply, не доставляющий файл». Запросила груз у хаба</small></div></div>
+  <div class="row"><span class="tag t-blk">посылка</span><div class="txt"><b>win-portability-round2-20260801</b> — проверка краснеет честно: 81 находка вне бэкапов<small>пакет от 01.08 принимал базовую линию в 45 находок, на этом узле скриптов больше. Не форсирую: зелёный форсом был бы враньём</small></div></div>
+  <div class="row"><span class="tag t-blk">движок</span><div class="txt">Думающая полоса шины мертва: на узле нет <code>claude</code> CLI<small>робот квитанцию шлёт, а разобрать сообщение не может. Известно с 06.08, видно каждый день</small></div></div>
+  <div class="row"><span class="tag t-blk">путь</span><div class="txt">Проверка посылки <code>public-tg-post-gate</code> ходит в мёртвого двойника шины внутри волта<small>дверь встала и зелёная (10 + 32 проверки), но статус записан как «заявлено», а не «доказано». Чинить надо в общем движке на хабе</small></div></div>
+</div>
+
+<h2>📜 Новые регламенты из inbox — что применить</h2>
+<div class="card">
+  <div class="row"><span class="tag t-anton">07.08 04:35</span><div class="txt"><b>СТОП оптимизации CLAUDE.md и MEMORY.md.</b> Дословно: «Больше не оптимизировать и не сокращать их в текущем режиме: при этом затирается полезная информация. Пусть распухают до любых размеров»<small>это СВЕЖЕЕ вчерашней поправки про ночной оптимизатор 03:40 и свежее памяти <code>claude-md-is-fixed-by-mayak-nightly</code>. На нашем узле гасить нечего — локального оптимизатора нет. Приказ разослан флоту в 03</small></div></div>
+  <div class="row"><span class="tag t-anton">07.08 04:36</span><div class="txt"><b>АК-47 и ТРИЗ — разные сущности.</b> АК-47 про строительство, ТРИЗ про починку; АК-47 должно стоять одним из первых правил в CLAUDE.md<small>правка канона = дом Антона, у нас шара receive-only. Наш ход — пост и предложение канона хабу</small></div></div>
+  <div class="row"><span class="tag t-anton">06.08 13:50</span><div class="txt"><b>Скилл разбора входящих</b> из TG, WhatsApp и групп: классифицировать отправителя (инвестор / инженер / студент / прочий), считать ценность, дорогой моделью отвечать только важным, остальным давать лёгкий CTA<small>частично закрыто: скиллы <code>/triage</code> и <code>/worth</code> появились 06.08. НЕ закрыто: WhatsApp, ежедневная автообработка, ветка инвестора, шаблоны на типовые вопросы</small></div></div>
+  <div class="row"><span class="tag t-anton">06.08 14:03</span><div class="txt"><b>Ежедневная проверка inbox без отдельной задачи</b> — сделано 06.08<small><code>tools\inbox_daily.py</code> вторым действием задачи <code>inbox-ack-fast</code>, суточную дверь держит сам скрипт</small></div></div>
+</div>
+
+<h2>🟡 Ждёт Антона (чат 02, ни одно не твоё)</h2>
+<div class="card">
+<div class="scroll"><table>
+<tr><th>id</th><th>что</th><th>сколько висит</th></tr>
+<tr><td>#48abe0ac</td><td>GitHub переименован в tonydzi: профиль пустой, старая витрина 404, бейджи битые</td><td>7+ ч, 5 напоминаний</td></tr>
+<tr><td>#b15ce2f6</td><td>Зарегистрировать аккаунт в Mistral Le Chat — шестая ДР-рельса стоит с 05.08</td><td>7+ ч</td></tr>
+<tr><td>#16b1361c</td><td>Разлогинен headless-вход Claude на хабе: 6 ночных рутин падают</td><td>7+ ч</td></tr>
+<tr><td>#13a040b6</td><td>Видео-визитка Anthropic: нужны его 15 минут на съёмку</td><td>8 напоминаний, последнее</td></tr>
+<tr><td>#9036257a</td><td>Карантин на FLEET-ANCHOR: посылка canon-f4ccd18b без подтверждённого источника</td><td>—</td></tr>
+</table></div>
+</div>
+
+<div class="foot">Все цифры замерены в этот заход командами узла, не по памяти. Источник по каждой строке назван. Панели с CRM на витрину не выкладываются.</div>
+
+</div></body></html>
