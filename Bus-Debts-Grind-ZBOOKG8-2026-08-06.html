@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Грайнд долгов шины — ZBOOKG8, 06.08.2026</title>
+<style>
+  :root{
+    --bg:#0f1216; --card:#171c22; --line:#2a323c; --tx:#e6edf3; --dim:#93a1b0;
+    --ok:#3fb950; --warn:#d29922; --bad:#f85149; --acc:#58a6ff;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f8fa; --card:#fff; --line:#d8dee4; --tx:#1f2328; --dim:#5b6672;
+           --ok:#1a7f37; --warn:#9a6700; --bad:#cf222e; --acc:#0969da; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--tx);
+       font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--dim);margin-bottom:22px;font-size:14px}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-bottom:26px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi .n{font-size:28px;font-weight:700;line-height:1.1}
+  .kpi .l{color:var(--dim);font-size:13px;margin-top:4px}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)} .acc{color:var(--acc)}
+  h2{font-size:17px;margin:28px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;min-width:640px;background:var(--card);
+        border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
+  th{background:rgba(127,127,127,.10);font-weight:600;color:var(--dim);white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  code{background:rgba(127,127,127,.14);padding:1px 5px;border-radius:4px;font-size:13px}
+  .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);
+        border-radius:8px;padding:12px 16px;margin:14px 0}
+  .note.bad{border-left-color:var(--bad)}
+  .note.warn{border-left-color:var(--warn)}
+  ul{margin:8px 0 0 18px;padding:0} li{margin:4px 0}
+  footer{color:var(--dim);font-size:12px;margin-top:34px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Bus-Debt-Triage.html">&larr; Bus-Debt-Triage</a> · <a href="Content-Machine-Map.html">Content-Machine-Map &rarr;</a></span></div>
+
+<h1>Грайнд долгов шины — узел ZBOOKG8-2023PAL</h1>
+<div class="sub">06.08.2026, 20:30–23:00 Лиссабон · оператор Антон · сессия <code>auto-zbook-260806-inbox-debts-grind</code></div>
+
+<div class="grid">
+  <div class="kpi"><div class="n ok">11</div><div class="l">долгов закрыто уликой</div></div>
+  <div class="kpi"><div class="n">130 → 141</div><div class="l">paid в леджере</div></div>
+  <div class="kpi"><div class="n">249 → 238</div><div class="l">unpaid осталось</div></div>
+  <div class="kpi"><div class="n bad">1</div><div class="l">свой тихий покойник найден и починен</div></div>
+  <div class="kpi"><div class="n acc">102 180</div><div class="l">медиана токенов на старт сессии</div></div>
+</div>
+
+<h2>Что закрыто</h2>
+<div class="wrap">
+<table>
+<tr><th>id</th><th>что сделал</th><th>улика</th><th>закрыт</th></tr>
+
+<tr><td><code>#df0b44ac</code><br><span class="dim">тихие покойники</span></td>
+<td>Прогнал чек-лист Наташи целиком на этом узле. Нашёл СВОЙ мёртвый механизм: SessionStart-хук <code>task_surface_hook.py</code> в settings.json записан с одним бэкслешем — JSON распаковал <code>\t</code> в ТАБ, путь физически не существовал, харнес печатал «hook success». Починил.</td>
+<td>Журнал <code>hooks/_task_surface_usage.jsonl</code>: 665 строк, из них хаб 596 + TESTNODE 69, ZBOOKG8 — <b>ноль за всю историю</b>. После правки первая строка узла: <code>{"ts":"2026-08-06T22:36:46","node":"ZBOOKG8-2023PAL","undone_live":409}</code></td>
+<td class="warn">не на леджере*</td></tr>
+
+<tr><td><code>#9100ac29</code><br><span class="dim">токены</span></td>
+<td>Влил канон-предложение Наташи: новый §6.4 CLAUDE.md, версия v4.18.0 → v4.19.0, строка в журнал, движок <code>token_cost.py</code> поставлен как дверь правила, 2 памяти + 2 строки в MEMORY.md. Прогнал <code>--calibrate</code> и <code>--session-start</code> на своей выборке.</td>
+<td>Гейт <code>canon_write_gate.py</code> = GO, бэкап <code>CLAUDE.md.canonbak-20260806-223924</code>. Замер: кириллица 2.17 симв/токен по 445 ответам; старт сессии медиана 102 180 ток. по 189 сессиям</td>
+<td class="ok">да</td></tr>
+
+<tr><td><code>#0060153d</code><br><span class="dim">роадмап</span></td>
+<td>Вставил дословный блок «📅 13 АВГУСТА — ДЕНЬ ВЕРДИКТОВ ПО ТЕНЯМ» по её якорю. Попутный вопрос закрыл вариантом «явно в шапке»: пункт (6) — писать в файл может только хаб и машины Антона.</td>
+<td><code>grep -n '13 АВГУСТА' ROADMAP.md</code> → строка 44; <code>grep -n 'ПИСАТЬ В ЭТОТ ФАЙЛ'</code> → строка 21; файл 120 372 б, md5 <code>074579c7</code></td>
+<td class="ok">да</td></tr>
+
+<tr><td><code>#6737fc27</code><br><span class="dim">отзыв</span></td>
+<td>Отзыв принят: шаблон <code>local-*</code> в ignore-правилах claude-skills НЕ применял и не буду.</td>
+<td><code>cat ~/.claude/skills/.stignore</code>: только <code>.git</code>, dot-мусор и <code>*.sync-conflict-*</code>. На узле 19 живых скиллов <code>local-*</code> из 153 — ignore убил бы их молча</td>
+<td class="ok">да</td></tr>
+
+<tr><td><code>#7af8e4b1</code><br><span class="dim">domain-advisor</span></td>
+<td>Пункт 1 отклонён по её же отзыву. Пункт 2 (проверьте у себя) — ответил своими цифрами. Пункт 3 (текст сторожа гонит по кругу) — подтвердил как класс, чинит хаб. Движок — NOTFORME: потребителя тут нет.</td>
+<td>См. строку выше + заморозка стройки 06–20.08 как причина не ставить движок</td>
+<td class="ok">да</td></tr>
+
+<tr><td><code>#d6e6f323</code> <code>#9b08bb79</code><br>+ 4 догона ACK<br><code>#87b16628</code> <code>#885f16c8</code> <code>#7d371e4e</code> <code>#963e6b29</code></td>
+<td>Посылки <code>windowless-20260806</code>, <code>windowless-s4u</code>, <code>run-hidden-guard-20260806</code> уже стоят. Доказал не маркером, а содержимым.</td>
+<td>В <code>run_hidden.vbs</code> физически лежит блок «ГЕЙТ ЦЕЛИ» с <code>Const GUARD_RC = 4</code>; <code>_run_hidden_guard.log</code> несёт 4 строки от 06.08 14:48 по обоим близнецам</td>
+<td class="ok">да (6)</td></tr>
+
+<tr><td><code>#40a35a85</code><br><span class="dim">16 черновиков</span></td>
+<td>Хаб писал «на хабе их НЕТ ни одного». Нашёл: это <code>drafts/git-s24-2026-08-05/_gate/x1..x15</code> + <code>x-posts-en.md</code> = ровно 16. Всего по воронке за 05.08 тут 59 md. И они <b>уже уехали</b> — вопрос в том, куда смотрит хаб.</td>
+<td>Syncthing REST: файл в <b>глобальном</b> индексе кластера (<code>global size=1798, deleted=False, invalid=False</code>), шара <code>claude-imports</code> sendreceive, <code>needFiles=0</code>. Диагноз — класс <code>imports-mirror-vs-workdir</code>: фабрика живёт в <code>E:\Obsidian\_imports</code>, а не внутри волта</td>
+<td class="ok">да</td></tr>
+</table>
+</div>
+<p class="sub">* <code>#df0b44ac</code> в леджере этого узла не зарегистрирован (<code>pay</code> вернул REFUSED), поэтому работа сделана и отчитана, но формально закрыть было нечего.</p>
+
+<h2>Главная находка: свой тихий покойник</h2>
+<div class="note bad">
+<b>Один символ, семь дней немоты.</b> В <code>settings.json</code> строка хука была написана
+<code>...\\.claude\\hooks\task_surface_hook.py</code> — два бэкслеша перед <code>hooks</code> и <b>один</b> перед <code>task</code>.
+JSON честно превратил <code>\t</code> в символ табуляции, путь стал
+<code>C:\Users\_\.claude\hooks&lt;TAB&gt;ask_surface_hook.py</code>, файла такого нет, а харнес на старте
+каждой сессии печатал <code>hook success</code>. Ровно класс Наташи: сломанное и исправное выглядят одинаково.
+</div>
+<div class="note warn">
+<b>Что этим НЕ закрыто.</b> Мой аудит проверяет только «существует ли файл». Хук, который существует и молча
+падает внутри, он не поймает — это отдельный слой (свежесть ВЫХОДА, §5.5).
+</div>
+
+<h2>Замер токенов — цифры этого узла против узла Наташи</h2>
+<div class="wrap">
+<table>
+<tr><th>что</th><th>ZBOOKG8 (тут)</th><th>MyOwnPC-Natalia</th><th>вывод</th></tr>
+<tr><td>кириллица, симв/токен</td><td>2.17 <span class="dim">(445 ответов)</span></td><td>2.17 <span class="dim">(698)</span></td><td class="ok">сошлось независимо</td></tr>
+<tr><td>латиница, симв/токен</td><td>3.6 <span class="dim">(4 ответа)</span></td><td>2.81 <span class="dim">(22)</span></td><td class="bad">выборки негодные у обоих</td></tr>
+<tr><td>медиана старта сессии</td><td>102 180 <span class="dim">(189 сессий)</span></td><td>91 549 <span class="dim">(122)</span></td><td class="warn">этот узел дороже на 11.6%</td></tr>
+<tr><td>тренд старта</td><td>86 748 (31.07) → 106 405 (06.08)</td><td>—</td><td class="bad">+22.7% за 6 дней</td></tr>
+</table>
+</div>
+
+<h2>Что осталось на этом узле (не закрыто, называю вслух)</h2>
+<ul>
+  <li class="bad"><b>6 задач всё ещё зовут <code>cmd</code> напрямую</b>, минуя <code>run_hidden</code> — чёрные окна: aibus-bridge-sync, Claude Session Archive, Claude Vault Backup (laptop), CRM Engine Fields Sync, Fleet Manifest Check, Sync Conflict Janitor.</li>
+  <li class="warn"><b>MEMORY.md узла 28 639 б</b> при обрезке харнеса 25 000 — хвост индекса в контекст не грузится. Разбирает ночной Memory Index Guard 06:40.</li>
+  <li class="warn"><b>CLAUDE.md 121 045 б</b> — выше красной 120 000 §10.2. Руками не трогаю: ужимает <code>claude_md_daily</code> на Маяке в 03:40.</li>
+  <li class="warn"><b><code>build_freeze_gate.py</code> на этом узле отсутствует</b> — дверь заморозки стройки 06–20.08 здесь не установлена, правило держится только на моей дисциплине.</li>
+  <li class="dim"><b>turnstate</b> жив (10 581 turns), но последняя запись 06.08 03:14 — 19 часов тишины при работавших сессиях. 🤔 подозрение, не приговор.</li>
+  <li class="dim"><b>179 посылок в PENDING</b> этого узла — отдельная лейна, не трогал.</li>
+  <li class="dim"><b>239 долгов шины</b> осталось; самым старым 493 часа (с 26.06), большинство перекрыто более поздними приказами и просит триажа, а не исполнения.</li>
+</ul>
+
+<h2>Аски в чат 02 с этого узла ДОЕЗЖАЮТ</h2>
+<div class="note">
+У Наташи 559 недоставленных с 21.07. Здесь — нет. Улика, не догадка:
+<code>bus_ping.py --check</code> = PING READY, спул <code>_outbox_undelivered.jsonl</code> пуст;
+в самом чате 02 лежит наше сообщение <b>TG id 131509 от 2026-08-06 17:58 UTC</b> с меткой
+<code>[laptop-HP17] [ZBOOKG8-2023PAL]</code>. Задача «Claude Approval Reping» отработала в 22:31 с кодом 0.
+Лог пишет «nothing due» не потому, что рельса мертва, а потому что все 77 pending в
+<code>approvals.db</code> уже в статусе <code>stale</code> — исчерпали лимит перепингов.
+</div>
+
+<footer>
+Собрано сессией Claude на ZBOOKG8-2023PAL. Инструмент аудита одноразовый (заморозка стройки):
+<code>scratchpad/dead_targets_audit.py</code>. Все цифры — вывод команд на этом узле, ничего не перенесено с чужих машин без пометки.
+</footer>
+
+</body>
+</html>

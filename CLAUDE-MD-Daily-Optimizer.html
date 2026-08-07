@@ -1,0 +1,76 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Правила и канон</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Canon-Revision-v4.html">Canon-Revision-v4 &rarr;</a></span></div><!doctype html>
+<meta charset="utf-8">
+<title>Суточный оптимизатор CLAUDE.md — кто пишет и чем доказано</title>
+<style>
+ body{font:15px/1.5 -apple-system,Segoe UI,system-ui,sans-serif;margin:0;padding:28px;background:#12141a;color:#e8e9ee}
+ h1{font-size:21px;margin:0 0 4px} h2{font-size:15px;margin:26px 0 8px;color:#9fb4ff;text-transform:uppercase;letter-spacing:.06em}
+ .sub{color:#8b90a0;margin-bottom:18px;font-size:13px}
+ table{border-collapse:collapse;width:100%;margin:6px 0 4px;font-size:14px}
+ th,td{padding:7px 10px;border-bottom:1px solid #262a36;text-align:left;vertical-align:top}
+ th{color:#8b90a0;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+ .ok{color:#4ade80} .no{color:#f87171} .warn{color:#fbbf24} .dim{color:#8b90a0}
+ code{background:#1c1f29;padding:1px 5px;border-radius:3px;font-size:13px}
+ .card{background:#181b23;border:1px solid #262a36;border-radius:8px;padding:14px 16px;margin:10px 0}
+ .big{font-size:26px;font-weight:600}
+ .row{display:flex;gap:12px;flex-wrap:wrap} .row .card{flex:1;min-width:180px}
+ .wrap{overflow-x:auto}
+</style>
+<h1>Суточный оптимизатор CLAUDE.md — хвост закрыт</h1>
+<div class="sub">06.08.2026, 22:30 · узел ZBOOKG8-2023PAL · задача <code>auto-zbook-260806-claude-md-optimizer-close-tail</code></div>
+
+<div class="row">
+  <div class="card"><div class="dim">Писатель</div><div class="big ok">Маяк</div><div class="dim">FLEET-ANCHOR, 03:40</div></div>
+  <div class="card"><div class="dim">CLAUDE.md сейчас</div><div class="big warn">119 459 б</div><div class="dim">жёлтая зона, 541 б до кэпа</div></div>
+  <div class="card"><div class="dim">Живой прогон на писателе</div><div class="big ok">−8 738 б</div><div class="dim">118 058 → 109 320, dry-run</div></div>
+  <div class="card"><div class="dim">Тест краснеет на сломанном</div><div class="big ok">да</div><div class="dim">2 FAILED из 9</div></div>
+</div>
+
+<h2>Кто пишет CLAUDE.md (доказано прогоном на каждом узле)</h2>
+<div class="wrap"><table>
+<tr><th>Узел</th><th>role_class</th><th>Пишет?</th><th>Расписание</th><th>verify читает факт</th></tr>
+<tr><td>FLEET-ANCHOR (Маяк)</td><td>anchor</td><td class="ok">ДА — единственный</td><td class="ok">cron 40 3 * * *, enabled</td><td class="ok">rc=0: 7 файлов + задача включена + регресс-тест зелёный</td></tr>
+<tr><td>A-2022BAYAREA (хаб)</td><td>hub</td><td class="dim">нет, report-only (запасной)</td><td class="ok">задача 03:40, Ready</td><td class="ok">rc=0, DONE-маркер</td></tr>
+<tr><td>ZBOOKG8-2023PAL (ноут)</td><td>peer</td><td class="dim">нет, report-only</td><td class="ok">задача 03:40, Ready</td><td class="ok">rc=0 (канарейка)</td></tr>
+<tr><td>прочие пиры</td><td>peer</td><td class="dim">нет</td><td class="dim">не ставим (движок и так едет синком)</td><td class="dim">—</td></tr>
+</table></div>
+
+<h2>Что было сломано и что починено</h2>
+<div class="wrap"><table>
+<tr><th>#</th><th>Дыра (найдена фактом на узле)</th><th>Чем кончилось бы</th><th>Починка</th></tr>
+<tr><td>1</td><td>На Маяке — единственном писателе — не было <code>scripts/llm_ask.py</code>. Движок едет синком в <code>_shared</code>, соседи из <code>scripts/</code> — нет.</td><td class="no">Прогон 03:40 умирал бы с rc=4 «рельса не ответила», жёлтый доклад в 03, файл не тронут — каждую ночь.</td><td class="ok">Файл доставлен, посылка <code>claude-md-daily-20260806b</code> кладёт его в канонический дом; verify гоняет селфтест, который это ловит.</td></tr>
+<tr><td>2</td><td>Писателей стало ДВА: к записи допускался любой узел <code>role_class hub|anchor</code>, а таких два. В 21:39 хаб принял посылку и получил ту же задачу на 03:40.</td><td class="no">Два робота правят один always-loaded файл → sync-conflict'ы и затёртые правила (замер 03.08).</td><td class="ok"><code>writer_node_key()</code> называет писателя поимённо: anchor вперёд хаба; хаб — только если anchor'а нет в реестре. Перехват руками: <code>CLAUDE_MD_WRITER=1</code>.</td></tr>
+<tr><td>3</td><td>Ворота входа правила: красная пошлина брала только перелив, а пробы двухфазного гейта стояли в зоне, где запись всё равно ломает кэп.</td><td class="no">«Доказал оплату» стоило 359 б, «перепрогнал» — 900 б; файл парковался ровно на кэпе.</td><td class="ok">Красная пошлина = max(цена блока, перелив) → освободив её, попадаешь в жёлтую, где квитанция даёт exit 0. Селфтест сторожа: было <span class="no">1 FAILED</span>, стало <span class="ok">ALL PASS</span>.</td></tr>
+<tr><td>3-бис</td><td><b>Моя же первая редакция п.3</b> подняла проверку оплаты выше красной ветки — нашла панель ломателей (Grok + Gemini).</td><td class="no">Квитанция ПОКУПАЛА бы запись за красную черту: арифметика сходится, файл выше кэпа.</td><td class="ok">Порядок возвращён: в красной зоне ворота держат всегда, кэп не выкупается. Новый тест «квитанция НЕ выкупает запись за красную черту» — в обоих наборах.</td></tr>
+<tr><td>4</td><td>Груз старой посылки нёс ДОфиксовый движок и не доставлял паспорт (apply копировал только <code>*.py</code> в одну папку).</td><td class="no">Авто-применение позже откатило бы починку молча.</td><td class="ok">Груз обновлён до исправленных файлов; новый установщик кладёт 7 файлов в три дома и ставит расписание.</td></tr>
+</table></div>
+
+<h2>Тест краснеет на сломанном коде (проверено ломанием, не словом)</h2>
+<div class="card">
+Нарочно сняли машинную проверку инвариантов в <code>validate()</code> движка → <code>_test_claude_md_daily.py</code>:
+<span class="no">2 FAILED</span> («движок: --selftest ALL PASS» + «задача стоит И ВКЛЮЧЕНА», последняя красная потому,
+что её verify тоже гоняет селфтест). Код возвращён → <span class="ok">ALL PASS, rc=0</span>.
+Членство в ночной сетке доказано списком: <code>regress_run.py --list</code> видит и тест-файл, и встроенные
+селфтесты движка и сторожа. На Маяке сетка идёт в 02:40 — за час до оптимизатора.
+</div>
+
+<h2>Нужна ли полная /canon-revision</h2>
+<div class="card">
+<b class="ok">Нет, не сейчас.</b> Живой прогон на писателе показал, что суточный робот сам снимает
+<b>8 738 б</b> (7,4 % файла) — это ниже его же ночного потолка 15 %, значит ночью он поставит правку сам.
+Полная ревизия — это когда роботу нечего свернуть.
+<br><b>Порог, при котором зову её отдельной сессией:</b> два прогона подряд с исходом
+<code>all-rejected</code> / <code>shrink-cap-hit</code>, либо файл держится выше 118 КБ после двух ночей.
+Смотреть: <code>scripts/_claude_md_daily_usage.jsonl</code>.
+</div>
+
+<h2>Остаточные риски (не чинил, называю честно)</h2>
+<div class="card">
+· Копия CLAUDE.md на Маяке отстаёт до 30 минут (канон-применитель <code>*/30</code>). Оптимизатор
+работает в 03:40 UTC, когда флот тих, поэтому риск свернуть устаревшую копию низкий — но он не нулевой.<br>
+· Если Маяк умрёт, файл не будет ужимать НИКТО: хаб теперь report-only. Сигнал — сторож
+<code>claude_md_guard.py</code> (23:45) и возраст выхода в <code>_claude_md_daily_log.txt</code>; перехват — <code>CLAUDE_MD_WRITER=1</code> на хабе.<br>
+· Панель ломателей: <b>Grok</b> и <b>Gemini</b> ответили и нашли настоящую дыру в моей же правке (учтено выше, п.3-бис) + подсказали сверку md5 при установке (сделано); <b>Codex</b> не уложился в 120 с — его мнения нет, это честный пробел, а не «все согласны».
+</div>
+
+<p class="dim">Паспорта: <code>~/.claude/scripts/docs/claude_md_daily.md</code>, <code>~/.claude/scripts/docs/claude_md_guard.md</code>.
+Канон: CLAUDE.md §10.0, §10.2, §5.5, §7.3-бис.</p>
