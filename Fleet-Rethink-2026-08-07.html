@@ -1,0 +1,99 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Fleet-Nodes.html">&larr; Fleet-Nodes</a> · <a href="Fleet-Routines.html">Fleet-Routines &rarr;</a></span></div><!doctype html><meta charset=utf-8><title>Ремонт vs Движение — Decision 07.08.2026</title>
+<style>
+:root{color-scheme:light dark}
+body{font:14px/1.5 system-ui,Segoe UI,Roboto,sans-serif;margin:0;padding:24px;background:#0d1117;color:#e6edf3}
+@media(prefers-color-scheme:light){body{background:#fff;color:#111}}
+h1{font-size:20px;margin:0 0 4px} h2{font-size:15px;margin:22px 0 8px;opacity:.9} .lead{opacity:.7;margin:0 0 16px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 8px}
+.stat{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:10px 16px;min-width:105px}
+@media(prefers-color-scheme:light){.stat{background:#f6f8fa;border-color:#d0d7de}}
+.stat b{font-size:24px;display:block} .stat span{opacity:.65;font-size:11.5px}
+.stat.bad b{color:#f85149}.stat.good b{color:#3fb950}.stat.warn b{color:#d29922}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:0 0 8px}
+th,td{text-align:left;padding:6px 9px;border-bottom:1px solid #21262d;vertical-align:top}
+@media(prefers-color-scheme:light){th,td{border-color:#eaeef2}}
+th{background:#161b22;font-size:11px;text-transform:uppercase;letter-spacing:.04em;opacity:.85}
+@media(prefers-color-scheme:light){th{background:#f6f8fa}}
+.k{color:#3fb950;font-weight:600}.f{color:#58a6ff;font-weight:600}.x{color:#f85149;font-weight:600}
+.card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:12px 16px;margin:0 0 10px;font-size:13px}
+@media(prefers-color-scheme:light){.card{background:#f6f8fa;border-color:#d0d7de}}
+.verdict{display:inline-block;border-radius:5px;padding:1px 8px;font-size:11px;font-weight:600;margin-right:6px}
+.va{background:#1f6feb33;color:#58a6ff}.vc{background:#d2992233;color:#d29922}.vd{background:#f8514933;color:#f85149}
+.root{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 8px}
+.root div{flex:1;min-width:180px;background:#161b22;border:1px solid #30363d;border-radius:10px;padding:10px 14px;font-size:12.5px}
+@media(prefers-color-scheme:light){.root div{background:#f6f8fa;border-color:#d0d7de}}
+.root b{display:block;margin-bottom:4px}
+.small{font-size:11.5px;opacity:.6}
+</style>
+<h1>🔧→🚀 Ремонт vs Движение — решение 07.08.2026</h1>
+<p class=lead>Fable 5 ultrathink + панель Codex·Gemini·Grok (GLM с Маяка недоступен, кворум 4/6). Полный текст: 02-Decisions/decision-2026-08-07-repair-eats-fleet-rebalance-80-20.md</p>
+
+<h2>Болезнь в цифрах (всё замерено)</h2>
+<div class=stats>
+<div class="stat bad"><b>15+</b><span>ремонтных ретро за 06.08</span></div>
+<div class="stat bad"><b>582</b><span>движков никто не зовёт</span></div>
+<div class="stat bad"><b>76%</b><span>правил без двери (19/25)</span></div>
+<div class="stat bad"><b>82%</b><span>токенов = механика</span></div>
+<div class="stat bad"><b>239+179</b><span>долги шины + посылки</span></div>
+<div class="stat warn"><b>410</b><span>задач несделано · 112 гниют</span></div>
+<div class="stat warn"><b>102k</b><span>токенов старт сессии</span></div>
+</div>
+<div class=stats>
+<div class="stat good"><b>18</b><span>PR ждут только подписи/CLA</span></div>
+<div class="stat good"><b>5</b><span>входящих PR незнакомцев</span></div>
+<div class="stat good"><b>317</b><span>закрытых ДР = сырьё контента</span></div>
+<div class="stat good"><b>1427</b><span>тёплых инженеров (warm-трек)</span></div>
+</div>
+<p class=small>Верхний ряд = где горит время. Нижний = готовое движение, которое СТОИТ, пока чиним себя.</p>
+
+<h2>Корень — три множителя (диагноз × панель)</h2>
+<div class=root>
+<div><b>1 · Рождение ≫ смерть</b>Каждый инцидент рождает forever-fix (правило+гейт+тест+раскатка). Ритуал рождения тяжёлый, ритуала смерти нет. Платим за ВСЕ детали, польза — от ~⅓.</div>
+<div><b>2 · Тихие расхождения</b>Код едет живым синком (шара≠workdir), хуки молчат зелёным (exit 0 при пустоте). Сторожа плодятся ИЗ-ЗА тихих отказов. Громкий отказ дешевле сторожа.</div>
+<div><b>3 · Мультипликатор ×5</b>Каждый фикс обязан жить на 5 узлах с verify; конвейер доставки сам в долгах и сам порождает ремонт.</div>
+</div>
+
+<h2>Панель ломателей — где разошлись</h2>
+<div class=card>
+<span class="verdict va">CODEX · VERIFY</span>счётчик «не зовут» слеп к cron/импортам · ремонт-кап обходится длинной сессией · посылки переисполнят неидемпотентное → <b>принято: сверка+carve-out+дедуп</b><br>
+<span class="verdict vc">GEMINI · COUNTER</span>корень не в количестве, а в тихих отказах; каскад долгов до пятницы; противоречие в моём плане → <b>принято: корень составной, долг-кап ежедневный, «громче вместо сторожей»</b>; git-деплой = после 20.08<br>
+<span class="verdict va">GROK · VERIFY</span>острый расчёт-по-честному ≠ хронический OPEX · ложный труп пир-движков · «ноль в пятницу» недостижим → <b>принято: только дубли до 04.09, ежедневный кап</b><br>
+<span class="verdict vd">GLM · MISSING</span>с Маяка двери нет (ни ключа, ни браузерной сессии) — честно в missing, кворум 4/6
+</div>
+
+<h2>Keep · Freeze · Kill</h2>
+<table>
+<tr><th>Вердикт</th><th>Что</th><th>Условие</th></tr>
+<tr><td class=k>KEEP</td><td>аутрич+warm-1427 · GitHub-лейны · контент-фабрика · волт+RAG+бэкап · llm_ask-маршрутизация · шина core · реестр задач</td><td>это и есть цели №1/№2</td></tr>
+<tr><td class=k>KEEP</td><td>РОВНО 2 слоя сторожей на узел: cron-сторож + output_freshness</td><td>ловили реальные беды</td></tr>
+<tr><td class=f>FREEZE</td><td>новые ворота/сторожа/правила · рост канона · A/B без судьи · раскатки непотребляемого · git-деплой</td><td>до 20.08; правила — кроме РЕЦИДИВА</td></tr>
+<tr><td class=x>KILL*</td><td>явные дубли движков — сейчас; остальные 582 «незваных» — решение 04.09 по зрелым счётчикам</td><td>карантин обратим, сверка cron/импорты/пиры</td></tr>
+<tr><td class=x>KILL*</td><td>сторожа-над-сторожами → до 2 слоёв</td><td>улика: 0 бед за 30д + ложные тревоги</td></tr>
+<tr><td class=x>PARK</td><td>112 гниющих задач → auto-park · 103 без DoD → someday · 19 правил без двери → дверь или «справочник»</td><td>реестр дышит</td></tr>
+</table>
+<p class=small>* KILL = обратимый карантин-архив, не удаление. Ничего не исполнено без решения Антона по Tier-2-пунктам.</p>
+
+<h2>Неделя 07–14.08 · бюджет 80/20</h2>
+<table>
+<tr><th>Когда</th><th>Движение (80%)</th><th>Рельса</th></tr>
+<tr><td>Чт 07</td><td>пакет 18 PR на подпись · ответ Safak (draft)</td><td>Fable + Антон (Tier-2)</td></tr>
+<tr><td>Пт 08</td><td>warm-1427 → топ-50 черновиков · ЕДИНСТВЕННАЯ глубокая ремонт-сессия (Маяк canon, llm_routing, посылки с дедупом)</td><td>Fable-голос · Sonnet-механика</td></tr>
+<tr><td>Сб-Вс</td><td>317 ДР → 8-10 постов (лимитов нет)</td><td>Fable пишет · робот публикует</td></tr>
+<tr><td>Пн-Ср</td><td>consumer-hunt · inbound ≤24ч · ещё 10 постов · аутрич по «+»</td><td>хаб · Codex-механика</td></tr>
+<tr><td>Ежедневно</td><td>долг-кап 30 мин/узел (шина+посылки) · пожары ВНЕ бюджета</td><td>каждый узел, Sonnet</td></tr>
+<tr><td>⛔ НЕ делаем</td><td colspan=2>новые гейты/сторожа/правила · раскатки непотребляемого · дашборды-не-решения · A/B</td></tr>
+</table>
+<p class=small>Замер каждую пятницу: repair-share по ретро (цель ≤30% сейчас → ≤20% к сентябрю) · посты наружу · PR разморожено · inbound ≤24ч.</p>
+
+<h2>Tier-2 — только Антон (не исполнено)</h2>
+<table>
+<tr><th>#</th><th>Решение</th><th>Моя рекомендация</th></tr>
+<tr><td>1</td><td>CLA/подписи на 18 PR (юридическое)</td><td>подписать пакетом — разморозит главный лейн миссии №2</td></tr>
+<tr><td>2</td><td>Аутрич warm-1427 (negotiating-лиды)</td><td>«+» на топ-50 черновиков draft-first; старт — Safak</td></tr>
+<tr><td>3</td><td>Подписки: ChatGPT Pro $200 (4%) · Grok $300 (не мерялся)</td><td>НЕ резать; 2 недели замера с новой маршрутизацией → решение 20.08</td></tr>
+<tr><td>4</td><td>Git-деплой кода вместо живого Syncthing (идея Gemini)</td><td>Decision после 20.08; направление верное</td></tr>
+<tr><td>5</td><td>Kill-лист шире явных дублей</td><td>только после 04.09 со зрелыми счётчиками</td></tr>
+</table>
+
+<div class=card><b>Confidence:</b> диагноз HIGH (3 независимых источника цифр + панель 4/6) · kill-список MED (счётчики молоды) · план недели HIGH (совместим с freeze и приказами 05-06.08).</div>
+</html>

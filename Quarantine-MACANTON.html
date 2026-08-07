@@ -26,7 +26,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Quarantine-HUB.html">&larr; Quarantine-HUB</a> · <a href="Quarantine-MACBOOK-ANTON.html">Quarantine-MACBOOK-ANTON &rarr;</a></span></div><div class="wrap">
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>MacBook-Anton</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
-<h2>✅ Доверенные — применятся сами <span class="cnt">44</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+<h2>✅ Доверенные — применятся сами <span class="cnt">43</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">_portability-selftest-bypass</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">самотест обхода</div>
   <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-05 00:58 · <span class="ok">подпись ✓</span></div>
@@ -169,14 +169,6 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);h=os.path.expanduser(&#x27;~/.claude&#x27;);[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;_test_deploy_autoapply.py&#x27;,&#x27;_test_tier1_needs_cmd_apply.py&#x27;,&#x27;deploy_lib.py&#x27;)];shutil.copy(os.path.join(t,&#x27;DEPLOY-deploy_sweep_guard.py&#x27;),os.path.join(s,&#x27;_shared&#x27;,&#x27;deploy_sweep_guard.py&#x27;));shutil.copy(os.path.join(t,&#x27;DEPLOY-fleet_nodes.json&#x27;),os.path.join(h,&#x27;fleet_nodes.json&#x27;))&quot;</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">bus-both-rails-down-honest-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Шина: когда падают ОБЕ рельсы, сигнал больше не обещает &#x27;still delivered on the surviving rail&#x27; -- пишет прямо, что не доставлено никому. Плюс песочница _test_ack_race создаёт свой busdir (bus_send намеренно не пишет в несуществующий -- из-за этого TEST2b краснел на исправном движке)</div>
-  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:39 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
-  
-  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-bus_send.py&#x27;),os.path.join(s,&#x27;bus_send.py&#x27;));shutil.copy(os.path.join(t,&#x27;DEPLOY-_test_ack_race.py&#x27;),os.path.join(s,&#x27;_test_ack_race.py&#x27;))&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">llm-ask-rails-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
@@ -378,7 +370,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import io,os,sys;p=os.path.expanduser(&#x27;~/.claude/hooks/task_surface_hook.py&#x27;);s=io.open(p,encoding=&#x27;utf-8&#x27;).read();sys.exit(0 if (&#x27;_frontmatter&#x27; in s and &#x27;_age_lbl&#x27; in s and &#x27;unreadable&#x27; in s) else 1)&quot;</code></div>
   
-</div><h2>📦 Уже применённые <span class="cnt">122</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">123</span></h2><div class="card trusted">
   <div class="top"><span class="id">canon-gate-0716</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">canon_write_gate.py roaming-leader canon gate</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-16 18:10 · <span class="ok">подпись ✓</span></div>
@@ -1313,6 +1305,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-selflaunch.py&#x27;),os.path.expanduser(&#x27;~/.claude/scripts/selflaunch.py&#x27;))&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">bus-both-rails-down-honest-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Шина: когда падают ОБЕ рельсы, сигнал больше не обещает &#x27;still delivered on the surviving rail&#x27; -- пишет прямо, что не доставлено никому. Плюс песочница _test_ack_race создаёт свой busdir (bus_send намеренно не пишет в несуществующий -- из-за этого TEST2b краснел на исправном движке)</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:39 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-bus_send.py&#x27;),os.path.join(s,&#x27;bus_send.py&#x27;));shutil.copy(os.path.join(t,&#x27;DEPLOY-_test_ack_race.py&#x27;),os.path.join(s,&#x27;_test_ack_race.py&#x27;))&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">skillrefs-vault-ladder-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
