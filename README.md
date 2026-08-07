@@ -2,7 +2,7 @@
 
 Живые дашборды лаборатории Palo Alto AI Research Lab.
 
-**Витрина: https://palo-alto-ai-research-lab.github.io/dashboards/**
+**Витрина: https://tonydzi.github.io/dashboards/**
 
 Зачем: любой пир и любой сотрудник открывает любую панель по ссылке, и ссылка не битая.
 
