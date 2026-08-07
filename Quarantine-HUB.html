@@ -50,7 +50,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-06 17:00</div>
-</div><h2>📦 Уже применённые <span class="cnt">179</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">180</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1481,6 +1481,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
   
   <div class="apply">примени: <code>python %OBSIDIAN_VAULT%/_machine-bus/_deploy/payloads/claude-md-daily-20260806b/install_claude_md_daily.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">deploy-rebase-unexpanded-vaultvar-20260807</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Переезд корня шины работает и для НЕразвёрнутой переменной: %OBSIDIAN_VAULT% и $OBSIDIAN_VAULT с хвостом _machine-bus. Без фикса verify уходил в мёртвого двойника шины внутри волта и посылка получала claimed вместо applied (замер: public-tg-post-gate-20260806b, exit 2 при зелёной двери 10+32). Тест краснеет на сломанном коде, 11 случаев</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-07 10:29 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py deploy-rebase-unexpanded-vaultvar-20260807</code></div>
   
 </div>
 </div></body></html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сплошная проверка посылок узла — 07.08.2026</title>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--ink:#1b1b1a;--dim:#6b6b66;--line:#e2e2dd;
+ --ok:#1f7a3d;--warn:#a9741a;--bad:#a32b26;--acc:#2b5fa8;}
+@media (prefers-color-scheme: dark){:root{--bg:#16171a;--card:#1e2024;--ink:#e9e9e6;--dim:#9a9a95;
+ --line:#2e3137;--ok:#5ec27f;--warn:#e0b455;--bad:#e88078;--acc:#7fb0f0;}}
+:root[data-theme="dark"]{--bg:#16171a;--card:#1e2024;--ink:#e9e9e6;--dim:#9a9a95;--line:#2e3137;
+ --ok:#5ec27f;--warn:#e0b455;--bad:#e88078;--acc:#7fb0f0;}
+:root[data-theme="light"]{--bg:#f7f7f5;--card:#fff;--ink:#1b1b1a;--dim:#6b6b66;--line:#e2e2dd;
+ --ok:#1f7a3d;--warn:#a9741a;--bad:#a32b26;--acc:#2b5fa8;}
+*{box-sizing:border-box}
+body{margin:0;padding:24px 16px 60px;background:var(--bg);color:var(--ink);
+ font:16px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font-size:24px;margin:0 0 4px;font-weight:650}
+.sub{color:var(--dim);font-size:14px;margin-bottom:22px}
+h2{font-size:17px;margin:30px 0 10px;font-weight:650}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.k{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 8px}
+.k div{flex:1 1 140px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.k b{display:block;font-size:26px;font-weight:650;line-height:1.1}
+.k span{color:var(--dim);font-size:13px}
+.bar{display:flex;height:26px;border-radius:6px;overflow:hidden;border:1px solid var(--line);margin:6px 0 4px}
+.bar i{display:block;font-style:normal}
+.legend{color:var(--dim);font-size:13px;display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+.legend b{font-weight:600;color:var(--ink)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:baseline}
+.row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:0}
+.tag{flex:0 0 auto;font-size:12px;padding:2px 8px;border-radius:20px;white-space:nowrap;border:1px solid var(--line);color:var(--dim)}
+.t-ok{background:rgba(31,122,61,.13);color:var(--ok);border-color:transparent}
+.t-warn{background:rgba(169,116,26,.16);color:var(--warn);border-color:transparent}
+.t-bad{background:rgba(163,43,38,.13);color:var(--bad);border-color:transparent}
+.txt{flex:1 1 auto;min-width:0}
+.txt small{display:block;color:var(--dim);font-size:13px;margin-top:2px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600}
+code{background:rgba(127,127,127,.14);padding:1px 5px;border-radius:4px;font-size:13px}
+a{color:var(--acc)}
+.foot{color:var(--dim);font-size:13px;margin-top:28px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Memory-AB-Verdict-2026-07-25.html">&larr; Memory-AB-Verdict-2026-07-25</a> · <a href="Near-Dup-Review.html">Near-Dup-Review &rarr;</a></span></div><div class="wrap">
+
+<h1>Сплошная проверка посылок узла</h1>
+<div class="sub">07.08.2026 · MyOwnPC-Natalia · проверка = ПЕРЕПРОГОН verify каждой посылки сегодня, а не чтение маркера</div>
+
+<div class="k">
+  <div><b>174</b><span>посылок на узле</span></div>
+  <div><b>6</b><span>починено в этот заход</span></div>
+  <div><b>25</b><span>честно красных</span></div>
+  <div><b>12</b><span>ложная краснота</span></div>
+  <div><b>2</b><span>висят непринятыми</span></div>
+</div>
+
+<div class="bar">
+  <i style="flex:135;background:var(--ok)"></i>
+  <i style="flex:12;background:var(--acc)"></i>
+  <i style="flex:25;background:var(--bad)"></i>
+  <i style="flex:2;background:var(--warn)"></i>
+</div>
+<div class="legend">
+  <span><i class="sw" style="background:var(--ok)"></i><b>135</b> verify зелёный сегодня</span>
+  <span><i class="sw" style="background:var(--acc)"></i><b>12</b> краснели от способа прогона</span>
+  <span><i class="sw" style="background:var(--bad)"></i><b>25</b> красные по делу</span>
+  <span><i class="sw" style="background:var(--warn)"></i><b>2</b> не приняты</span>
+</div>
+
+<h2>Главное: прибор нестабилен</h2>
+<div class="card">
+  <div class="row"><span class="tag t-bad">находка</span><div class="txt">
+    Один и тот же набор проверок дал <b>43 · 37 · 25</b> красных в трёх прогонах подряд. Разница не в узле, а в том, как гонять.
+    <small>Потолок времени на проверку в движке — <code>SWEEP_VERIFY_TIMEOUT = 8</code> секунд. Замерено поштучно: <code>freshness-and-gh-os-neutral</code> зелёный за 11.6 c, <code>quarantine-sig25-gate</code> за 11.6 c, <code>windowless</code> за 6.9 c — на грани. Ещё 9 посылок краснели в пакетном прогоне и зеленеют поодиночке за 0.1 c: мешают друг другу, а не сломаны.</small>
+  </div></div>
+  <div class="row"><span class="tag t-warn">следствие</span><div class="txt">Табло «раскатано» показывает 135 applied и не видит ни одной из 25 честно красных: оно судит по МАРКЕРУ, а не переспрашивает verify.<small>Маркер отвечает на вопрос «применяли ли когда-то», а не «стоит ли оно сейчас».</small></div></div>
+</div>
+
+<h2>Починено в этот заход — два корня, шесть посылок</h2>
+<div class="card">
+  <div class="row"><span class="tag t-ok">корень 1</span><div class="txt"><b>Переезд корня шины не видел неразвёрнутую переменную.</b> Подмена искала путь, а в строке стояло имя переменной: <code>%OBSIDIAN_VAULT%</code> разворачивает cmd.exe уже после нас.
+    <small>Позеленели: <code>public-tg-post-gate-20260806b</code> · <code>ack-blind-tick-no-false-alarm-20260801</code> · <code>ack-ledger-single-source-20260801</code>. Посылка <code>deploy-rebase-unexpanded-vaultvar-20260807</code>, гейт вырос с 8 до 12 случаев.</small></div></div>
+  <div class="row"><span class="tag t-ok">корень 2</span><div class="txt"><b>Регресс-тест канала гонял БОЕВОЙ узел.</b> Изолировался одной переменной <code>HOME</code>, которую питон на Windows не читает: движок брал живой <code>~/.claude</code>, git брал пустую песочницу и терял личность.
+    <small>Улика из прогона: <code>git commit -m Natalia: 679 файлов → rc=128</code>. Коммит упал только потому, что личность не читалась. Сообщение при этом обвиняло гейт: «ГЕЙТ СНЯТ». Позеленели: <code>fleet-abort-must-be-verified</code> · <code>fleet-push-regression-guard</code> · <code>regression-test-portable</code>. Посылка <code>fleet-channel-sandbox-seam-20260807</code>.</small></div></div>
+  <div class="row"><span class="tag t-ok">дисциплина</span><div class="txt">Правку движка <code>claude_fleet.py</code> выбросила: новый тест оказался зелёным и без неё.<small>Правку, которую тест не отличает от её отсутствия, доказать нечем. A/B по первому фиксу: 0 посылок покраснело, 3 позеленело.</small></div></div>
+</div>
+
+<h2>25 честно красных — по причинам, а не по названиям</h2>
+<div class="card">
+<div class="scroll"><table>
+<tr><th>причина</th><th>шт</th><th>что это значит</th></tr>
+<tr><td><b>протухший md5-пин</b></td><td>8</td><td>Проверка пришпилена к снимку файла, а файл законно уехал вперёд под более новой посылкой. Фикс не потерян — устарел сторож.</td></tr>
+<tr><td><b>сравнение строки в уехавшем файле</b></td><td>5</td><td>Тот же класс мягче: проверка ищет конкретную строку кода, которую следующая правка переписала.</td></tr>
+<tr><td><b>разобрать вручную</b></td><td>9</td><td>Сигнатуре не поддались, догадку не пишу. Среди них настоящая работа: <code>rule-door-quota</code> (7 проверок красные), <code>git-channel-*</code> (UnicodeDecodeError), <code>dash-home-clean</code> (канон не доехал).</td></tr>
+<tr><td><b>проверка зовёт чужой шелл</b></td><td>2</td><td>В команде <code>grep</code> и труба, которых в cmd.exe нет. Красное на Windows by design.</td></tr>
+<tr><td><b>протух ВЫХОД, а не код</b></td><td>1</td><td><code>codex-export</code>: последняя выгрузка 97 часов назад. Единственная краснота, где сторож прав.</td></tr>
+</table></div>
+</div>
+
+<h2>Две висящие и один карантин</h2>
+<div class="card">
+  <div class="row"><span class="tag t-warn">5 дней</span><div class="txt"><b>win-portability-round2-20260801</b> — проверка краснеет честно: 81 находка вне бэкапов против базовой линии в 45.<small>Не форсирую: зелёный форсом был бы враньём.</small></div></div>
+  <div class="row"><span class="tag t-warn">0 дней</span><div class="txt"><b>radical-order-gate-20260806</b> — груза нет ни на шине, ни в волте.<small>apply зовёт тест файла, которого никто не доставил. Запрошено у хаба.</small></div></div>
+  <div class="row"><span class="tag t-bad">карантин</span><div class="txt"><b>tasks-registry-readers-20260726</b> — источник не подтверждён, посылка задержана.<small>Выпуск из карантина = Tier-2, решает Антон.</small></div></div>
+</div>
+
+<div class="foot">Каждая цифра получена прогоном на этом узле в этот заход. Где причина не доказана, написано «разобрать вручную», а не правдоподобная версия.</div>
+
+</div></body></html>
