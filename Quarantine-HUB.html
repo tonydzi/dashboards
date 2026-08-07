@@ -50,7 +50,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-06 17:00</div>
-</div><h2>📦 Уже применённые <span class="cnt">174</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">179</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1441,6 +1441,46 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">НЕВЕРНАЯ Ed25519-подпись — подделка пакета или signer != from (signer=MyOwnPC-Natalia, from=MyOwnPC-Natalia)</div>
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-tier_tripwire.txt&#x27;),os.path.join(s,&#x27;tier_tripwire.txt&#x27;));shutil.copy(os.path.join(t,&#x27;DEPLOY-test_bus_send_dual_rail.py&#x27;),os.path.join(s,&#x27;test_bus_send_dual_rail.py&#x27;))&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">vault-hook-liveness-door-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Dver zhivosti storozha volta: .git ne sinkaetsya, poetomu pre-commit stavitsya POUZLOVO -- a install_vault_hooks.py ne vyzyvala NI ODNA rutina i ni odin test ne sprashival &#x27;hook voobshche stoit?&#x27;. Zamer 06.08 na FLEET-ANCHOR: hooka net VOOBSHCHE (tolko .sample), i on vsyo ravno ne zarabotal by -- zval python, kotorogo na Linux net. Dostavlyaet install_vault_hooks.py (interpretator python3/python/py + fail-closed vmesto committing UNGUARDED), _test_vault_hook_live.py (nochnaya dver) i _test_vault_recoverable.py (pryamoy test obshchego klassifikatora -- docstring na nego VRAL). Apply sam stavit hook i krasneet, esli dver ne zelyonaya. Kanareyki ZBOOKG8 (Windows) i FLEET-ANCHOR (Linux) zelyonye, hook realno ispolnyaetsya rc=0.</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-06 18:45 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/vault-hook-liveness-door-20260806/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">claude-md-daily-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Суточный оптимизатор CLAUDE.md (payload claude-md-daily-20260806): скопировать движок в _shared и поставить расписание 03:40. Хаб = единственный писатель.</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-06 19:06 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>cmd /c copy /Y &quot;%OBSIDIAN_VAULT%\_machine-bus\_deploy\payloads\claude-md-daily-20260806\*.py&quot; &quot;%USERPROFILE%\.claude\scripts\_shared\&quot; &amp;&amp; python &quot;%USERPROFILE%\.claude\scripts\_shared\claude_md_daily_install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">pin-watch-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Сторож против МОЛЧАЛИВОЙ потери локального фикса: в ~/.claude/scripts пишут 25 инструментов, а _fleet_tools_pins.txt уважает ОДИН. Замер MacBook-Ruslana 06.08: запинованный фикс os_foreign снесён другим каналом за полчаса, без строки в логе. Слой видимости, НЕ откат (тем же заходом прилетела флотская версия — объективно лучше). Тест 9/9, живёт в ночной регресс-сетке. Плюс os_foreign судит НОРМАЛИЗОВАННУЮ команду: 13 целых посылок читались как not-for-me</div>
+  <div class="meta">источник: <b>MacBook-Ruslana</b> · отправлено: 2026-08-06 20:19 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Ruslana)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/fleet_tools_sync.py --source MacBook-Ruslana --apply</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">git-identity-tonydzi-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Флагман GitHub переименован Palo-Alto-AI-Research-Lab -&gt; tonydzi (06.08). Прежний noreply-адрес содержал ИМЯ и протух: новые коммиты перестанут линковаться к аккаунту. Ставим форму с ID, она переименование переживает.</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 20:28 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>git config --global user.name &quot;**ton ******ovskii&quot; &amp;&amp; git config --global user.email &quot;194927794+tonydzi@users.noreply.github.com&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">claude-md-daily-20260806b-win</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Суточный оптимизатор CLAUDE.md v2 (Windows-форма): llm_ask.py в scripts + писатель поимённо (хаб становится report-only, писатель = Маяк) + паспорта; задача 03:40</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-06 22:15 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python %OBSIDIAN_VAULT%/_machine-bus/_deploy/payloads/claude-md-daily-20260806b/install_claude_md_daily.py</code></div>
   
 </div>
 </div></body></html>
