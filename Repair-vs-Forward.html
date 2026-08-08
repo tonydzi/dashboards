@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ремонт vs Движение — 07.08.2026</title>
+<style>
+:root{--bg:#0f1115;--card:#181b22;--tx:#e8e8e3;--dim:#9aa0a6;--red:#ff6b6b;--grn:#69db7c;--yel:#ffd43b;--acc:#74c0fc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,Segoe UI,sans-serif;padding:24px;max-width:1180px;margin:auto}
+h1{font-size:22px;margin-bottom:4px}
+h2{font-size:16px;margin:22px 0 10px;color:var(--acc)}
+.sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.tile{background:var(--card);border-radius:10px;padding:12px 14px}
+.tile b{font-size:24px;display:block}
+.tile span{font-size:12px;color:var(--dim)}
+.tile.red b{color:var(--red)}.tile.grn b{color:var(--grn)}.tile.yel b{color:var(--yel)}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden;font-size:13.5px}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid #242833;vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase}
+.k{color:var(--grn);font-weight:700}.f{color:var(--yel);font-weight:700}.x{color:var(--red);font-weight:700}
+.warn{background:#2a1c1c;border-left:4px solid var(--red);padding:10px 14px;border-radius:6px;margin:8px 0}
+.ok{background:#1b2a1e;border-left:4px solid var(--grn);padding:10px 14px;border-radius:6px;margin:8px 0}
+.wrap{overflow-x:auto}
+small{color:var(--dim)}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Repair-vs-Forward-2026-08-07.html">&larr; Repair-vs-Forward-2026-08-07</a> · <a href="Rethink-Consolidated-2026-08-07.html">Rethink-Consolidated-2026-08-07 &rarr;</a></span></div>
+
+<h1>🔧 Ремонт съел флот → разворот 80/20 наружу</h1>
+<div class="sub">хаб A-2022BAYAREA · 07.08.2026 · Fable 5 ultrathink · панель Codex+Grok+Gemini 3/3 · Decision Memo: 00-System\decision-2026-08-07-repair-vs-forward-8020.md</div>
+
+<h2>Главная цифра</h2>
+<div class="grid">
+<div class="tile red"><b>0 / 0 / 0</b><span>наружу за 3 дня: FB / X / DR</span></div>
+<div class="tile red"><b>433</b><span>сессий В ДЕНЬ (116 живых + 317 роботов)</span></div>
+<div class="tile red"><b>82%</b><span>механики жжёт бак Claude</span></div>
+<div class="tile yel"><b>240</b><span>включённых роботов на одном хабе</span></div>
+<div class="tile yel"><b>106k</b><span>токенов старт сессии (86k неделю назад)</span></div>
+<div class="tile yel"><b>1678</b><span>py-скриптов · 155 скиллов · 56 хуков</span></div>
+</div>
+
+<h2>Долги (машинные счётчики)</h2>
+<div class="grid">
+<div class="tile"><b>411</b><span>задач открыто (22 P0)</span></div>
+<div class="tile"><b>112</b><span>гниют &gt;2 недель</span></div>
+<div class="tile"><b>582</b><span>движка никто не зовёт</span></div>
+<div class="tile"><b>239</b><span>долгов шины</span></div>
+<div class="tile"><b>179</b><span>посылок не применено</span></div>
+<div class="tile"><b>107</b><span>чипов не нажато</span></div>
+</div>
+
+<h2>Диагноз (5-почему по серии)</h2>
+<div class="warn"><b>Корень:</b> система награждает «никогда не потерять урок» (каждый инцидент → вечная деталь: гейт+тест+счётчик+раскатка+сторож) и внутреннюю полноту. За инфраструктуру стоят ~15 сторожей. За «наружу сегодня 0» — <b>ни одного</b>. Рождение детали дёшево (приказ), смерть дорога (доказательства+30д) → рост монотонный.</div>
+
+<h2>Keep / Freeze / Kill</h2>
+<div class="wrap"><table>
+<tr><th></th><th>Что</th><th>Почему</th></tr>
+<tr><td class="k">KEEP ~30</td><td>Syncthing+бэкапы+oauth-probe+deadman · реиндекс daily/weekly · ночные импорты (ChatGPT/Granola/claude.ai/TG/WA) · контент-фабрика ядро (miner→factory→distributor→drain) · pub_registry+двери · gmail/connector-health · token audit · DR-Queue · CRM-сенсоры · PR Watch · day-ledger · inbox-robot</td><td>двигают цели №1/№2 или защищают данные/деньги</td></tr>
+<tr><td class="f">FREEZE</td><td>consensus-machinery · persona-kits · show-canon сверх ночного · memory AB/dream · новые гейты/сторожа/скиллы · канон-рост (только фолд) · рефакторинг «для красоты»</td><td>build freeze до 31.08 (ждёт «+»)</td></tr>
+<tr><td class="x">KILL мягко</td><td>top-50 zero-call движков (7д счётчик → 30д карантин, канарейка ZB) · ~50 disabled-задач из списков · дубли-сторожа (реиндекс 15м — после недели счётчика!) · 112 гниющих задач close/park · 107 чипов drop · sync-conflict мусор</td><td>карантин-архив, откат=git; allowlist неприкасаемых</td></tr>
+</table></div>
+
+<h2>Неделя 07-13.08 (80% наружу / 20% окно ремонта)</h2>
+<div class="wrap"><table>
+<tr><th>День</th><th>Наружу (80%)</th><th>Ремонт-окно 60-90 мин</th><th>Рельса</th></tr>
+<tr><td>Пт 07</td><td>двери на флот · Safak+реактивация · 1 FB-пост из склада</td><td>триаж top-10 гниющих</td><td>Fable голос · Codex механика</td></tr>
+<tr><td>Сб 08</td><td>consumer-hunt SYSTEM.md · 6 GitHub-тредов · X-тизеры</td><td>ACK-долг шины top-20</td><td>GitHub сам §4.7</td></tr>
+<tr><td>Вс 09</td><td>Show-HN вердикт (робот)</td><td>kill-волна top-50 (канарейка)</td><td>0 LLM</td></tr>
+<tr><td>Пн 10</td><td>3 DR→посты · лид-касания</td><td>посылки PENDING</td><td>Fable+Gemini</td></tr>
+<tr><td>Вт 11</td><td>FB+X из склада · интро-аски</td><td>MEMORY.md RED (ночной оптимизатор)</td><td>Fable</td></tr>
+<tr><td>Ср 12</td><td>GitHub issue-match волна</td><td>fleet parity</td><td>Codex</td></tr>
+<tr><td>Чт 13</td><td colspan="2"><b>Замер</b>: внешние ссылки ≥3 · inbound инженеров · recall-hit (№1) · ремонт-доля ≤30% · старт ≤95k</td><td>день-леджер</td></tr>
+</table></div>
+<div class="ok"><b>Сторож «наружу 0» без новой детали:</b> красная строка «🔴 наружу вчера: FB 0 · X 0» ПЕРВОЙ строкой в существующих hanging-tasks-digest и day-ledger. Ноль новых роботов (синтез спора Grok↔Gemini).</div>
+
+<h2>Панель: где разошлись</h2>
+<div class="wrap"><table>
+<tr><th>Вендор</th><th>Возражение</th><th>Вердикт Fable</th></tr>
+<tr><td>Gemini (COUNTER)</td><td>жёсткое окно парализует P0; Catch-22 «докажи ROI до рождения»; нет механизма роутинга с Claude</td><td>принято: P0-карв-аут · time-box-смерть вместо ROI-до-рождения · роутинг существует (llm_ask), задача = использовать</td></tr>
+<tr><td>Grok (VERIFY)</td><td>система награждает внутреннюю полноту; kill дублей может убить живое; HANDS≠shippable</td><td>принято: в корень диагноза · неделя счётчика до убийства · склад через slop_gate</td></tr>
+<tr><td>Codex (VERIFY)</td><td>SLA должен исключать все P0; deadman убирать только при покрытии классом; мерить outcome, не посты</td><td>принято целиком: метрики недели = outcome</td></tr>
+<tr><td>GLM (веб)</td><td colspan="2">промпт готов (bridge-state\_panel-glm-repair-vs-progress-memo.txt), нужен живой Chrome — вердикт догонит через log-ext</td></tr>
+</table></div>
+
+<h2>Tier-2 — решает Антон</h2>
+<div class="wrap"><table>
+<tr><td>1</td><td>Продлить build freeze до 31.08</td><td>рекомендую ДА</td></tr>
+<tr><td>2</td><td>Массовое удаление ~50 disabled-задач</td><td>откат через git, но масс-действие → «+»</td></tr>
+<tr><td>3</td><td>Tailscale-реавторизация Маяка</td><td>только твои руки, ссылка в 03</td></tr>
+<tr><td>4</td><td>Стоп @ClawRus vs задача Натальи «тизеры в 20 групп»</td><td>противоречат друг другу</td></tr>
+<tr><td>5</td><td>Kill «Brain Reindex Frequent 15m»</td><td>после недели счётчика, канарейкой</td></tr>
+</table></div>
+
+<p style="margin-top:18px"><small>Раскатка дверей: посылки подписаны и лежат в PENDING всех 5 узлов, приказ с ACK в 03. SSH до всех пяти закрыт (замер 12:35), Маяку нужна твоя реавторизация. Build freeze не нарушен постройкой роботов: за сессию — только мемо, дашборд-отчёт (обход зарегистрирован явно), ссылки.</small></p>
+</body></html>

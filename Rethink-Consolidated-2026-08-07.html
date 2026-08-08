@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сводный вердикт: ремонт съедает флот · 07–08.08.2026</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --ink:#1a1d21; --muted:#5c6470; --line:#e3e6ea;
+  --red:#c0392b; --amber:#b9770e; --green:#1e8449; --blue:#1f618d; --accent:#6c3483;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#14161a; --card:#1e2126; --ink:#e8eaed; --muted:#9aa3ad; --line:#2c3138;
+    --red:#e74c3c; --amber:#f0b429; --green:#2ecc71; --blue:#5dade2; --accent:#bb8fce; }
+}
+*{box-sizing:border-box} body{margin:0;padding:24px;background:var(--bg);color:var(--ink);
+  font:15px/1.5 -apple-system,"Segoe UI",Roboto,sans-serif}
+h1{font-size:22px;margin:0 0 4px} h2{font-size:17px;margin:28px 0 10px;border-bottom:2px solid var(--line);padding-bottom:6px}
+.sub{color:var(--muted);margin-bottom:18px}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;margin-right:6px}
+.b-amber{background:var(--amber);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.tile .num{font-size:22px;font-weight:700} .tile .lbl{font-size:12.5px;color:var(--muted)}
+.tile.red .num{color:var(--red)} .tile.amber .num{color:var(--amber)} .tile.green .num{color:var(--green)}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:13.5px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:transparent;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+tr:last-child td{border-bottom:none}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:12px 14px}
+.card b{display:block;margin-bottom:4px}
+.tier2 li{margin-bottom:8px} .tier2{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:14px 14px 14px 34px}
+.verdict{font-weight:600;color:var(--green)}
+.small{font-size:12.5px;color:var(--muted)}
+code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:12.5px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Repair-vs-Forward.html">&larr; Repair-vs-Forward</a> · <a href="Scholar-Visibility.html">Scholar-Visibility &rarr;</a></span></div>
+
+<h1>Сводный вердикт: ремонт съедает флот</h1>
+<div class="sub">Консолидация <b>5 Decision Memo</b> + 3 панелей внешних LLM (Codex·Grok·Gemini, GLM в дозаписи) · Fable 5 ultrathink · 07–08.08.2026 ·
+<span class="badge b-amber">status: proposed — ждёт «+» Антона</span></div>
+
+<h2>🔴 Экспонат А — болезнь, снятая на камеру 07.08</h2>
+<div class="grid">
+  <div class="tile red"><div class="num">≥10</div><div class="lbl">сессий получили ОДИН сид за 8 минут (11:28–11:36)</div></div>
+  <div class="tile red"><div class="num">5</div><div class="lbl">Decision Memo об одном и том же (сходимость ~90%)</div></div>
+  <div class="tile red"><div class="num">≥7</div><div class="lbl">панель-прогонов одного вопроса (дубль-жжение баков)</div></div>
+  <div class="tile red"><div class="num">~1M</div><div class="lbl">токенов только на старты сессий до первой полезной буквы</div></div>
+  <div class="tile red"><div class="num">2 суток</div><div class="lbl">паралич роботов: недельный бак Claude ВЫБИТ 06.08 16:41</div></div>
+</div>
+<p class="small">Система продублировала даже задачу «разберись, почему мы всё дублируем». Веер линз законен — незаконно отсутствие клейма и консолидатора.</p>
+
+<h2>📉 Болезнь в цифрах (замеры 06–08.08, не оценки)</h2>
+<div class="grid">
+  <div class="tile red"><div class="num">82%</div><div class="lbl">выходных токенов Claude = механика (shell 54+код 16+чтение 12)</div></div>
+  <div class="tile red"><div class="num">0</div><div class="lbl">постов наружу 14 дней подряд (FB+X), при снятых гейтах и лимитах</div></div>
+  <div class="tile red"><div class="num">317 → 0</div><div class="lbl">закрытых DR превращено в контент</div></div>
+  <div class="tile amber"><div class="num">582</div><div class="lbl">движка никем не вызываются</div></div>
+  <div class="tile amber"><div class="num">179 + 239</div><div class="lbl">PENDING-посылки + долги шины</div></div>
+  <div class="tile amber"><div class="num">86k → 106k</div><div class="lbl">старт сессии за неделю (+23%)</div></div>
+  <div class="tile amber"><div class="num">411</div><div class="lbl">задач в реестре · 22 P0 · 112 гниют</div></div>
+  <div class="tile red"><div class="num">4%</div><div class="lbl">утилизация Codex при $540/мес подписок</div></div>
+  <div class="tile amber"><div class="num">1,64 млрд</div><div class="lbl">кэш-токенов перечитано за сутки (290 сессий)</div></div>
+  <div class="tile amber"><div class="num">76%</div><div class="lbl">свежих правил канона без «двери»</div></div>
+</div>
+
+<h2>🧠 Диагноз — 4 множителя (все 5 мемо + панели сошлись, confidence HIGH)</h2>
+<div class="cards">
+  <div class="card"><b>1 · Reward-петля выбрана неверно</b>У ремонта есть владелец, сторожа и зелёные галки; у наружного выхлопа — ни владельца, ни SLA, ни счётчика долга. 14 дней нулей никого не разбудили.</div>
+  <div class="card"><b>2 · Рождение &gt;&gt; смерть деталей</b>Канон предписывает forever-fix на каждый инцидент; ритуала смерти нет. Ремонт растёт квадратично, польза линейно.</div>
+  <div class="card"><b>3 · Мультипликатор флота ×5–7</b>Каждая деталь живёт на всех узлах с verify; конвейер доставки сам в долгах и сам порождает ремонт.</div>
+  <div class="card"><b>4 · Амнезия кормит рост</b>MEMORY.md 29,1KB &gt; обреза 25KB — каждая сессия молча теряет хвост индекса и плодит дубли.</div>
+</div>
+
+<h2>⚖️ Развилки пяти мемо — арбитраж</h2>
+<div class="wrap"><table>
+<tr><th>Развилка</th><th>Разброс позиций</th><th>Вердикт консолидатора</th><th>Conf</th></tr>
+<tr><td><b>Очереди</b> (179+239+112)</td><td>амнистия скопом · только internal · кап 30 мин/день + TTL · дренаж в пятницу</td><td class="verdict">Амнистия internal-only ОДИН раз (метка, disable) + TTL 7д навсегда; люди/деньги/обязательства — руками</td><td>med-high</td></tr>
+<tr><td><b>Диета роботов</b> (66→30; ~270→40 сессий/день)</td><td>сейчас · не трогать неделю</td><td class="verdict">Список готов → Антону на «+» (§3.3-бис), исполнение канарейкой ПОСЛЕ; сейчас гасим только дубли и зеркала шума</td><td>med</td></tr>
+<tr><td><b>Планка недели</b></td><td>≥10 постов и 80/20 сразу · ≥5 и 60/40</td><td class="verdict">Пол ≥5 опубликованных, стретч 10; форвард-доля ≥40%; 80/20 — цель месяца</td><td>high</td></tr>
+<tr><td><b>Git-деплой vs посылки</b></td><td>направление верное у всех</td><td class="verdict">Парковка до 20.08; оговорки панели (Win-локи, .pyc, verify=rev-parse)</td><td>high</td></tr>
+<tr><td><b>MEMORY.md диета</b></td><td>—</td><td class="verdict">НЕМЕДЛЕННО: это активная потеря данных каждую сессию, не оптимизация</td><td>high</td></tr>
+</table></div>
+
+<p class="small"><b>Раунд-2 панели по развилкам (08.08, Маяк):</b> консенсус 3/3 по очередям — арбитраж подтверждён + 4 механизма (исполнить уже-одобренное перед амнистией · hard ban долгов без named consumer · circuit breaker: 3 падения робота подряд = стоп цикла · OS/path-предохранитель до вызова LLM). По 582 сиротам двое из трёх внешних — за немедленный архив (reversible); мой вердикт «батч 14.08 по счётчикам» в силе, но внешняя поддержка немедленного архива у Антона есть.</p>
+
+<h2>📅 Неделя 08–14.08 (единая таблица)</h2>
+<div class="wrap"><table>
+<tr><th>Когда</th><th>Вперёд (80%)</th><th>Рельса</th><th>Обслуживание (≤20%)</th></tr>
+<tr><td>Сб–Вс</td><td>Safak + реактивация · 317 DR → 3-4 поста · consumer-hunt · список 18 PR на подпись</td><td>Fable-голос · Codex-механика</td><td>MEMORY.md диета · Маяк: CLAUDE.md (рутина 03:40)</td></tr>
+<tr><td>Пн–Ср</td><td>по 1 посту/день · issue-match · warm-1427 топ-50 черновиков · аутрич по одобренным</td><td>хаб + Codex</td><td>долг-кап ≤30 мин/узел</td></tr>
+<tr><td>Чт 13</td><td>недельный замер: посты / PR / лиды / форвард-доля</td><td>day-ledger</td><td>подготовка пятничного окна</td></tr>
+<tr><td>Пт 14</td><td>—</td><td>Sonnet</td><td>Ремонт-окно 4ч: P&amp;L #1 · дренаж посылок с дедупом · первый архив-батч ПО СЧЁТЧИКАМ · вердикт по диете</td></tr>
+<tr><td>⛔ НЕ делаем</td><td colspan="3">новые гейты/сторожа/правила · раскатки непотребляемого · дубль-панели · дашборды-не-решения</td></tr>
+</table></div>
+
+<h2>🔐 Tier-2 — решает ТОЛЬКО Антон (ничего не исполнено)</h2>
+<ol class="tier2">
+<li><b>«+» на диету роботов</b> по поимённому списку fleet-diet (66→30 хаба; ≤40 сессий/день) — массовое гашение класса.</li>
+<li><b>«+» на амнистию internal-only</b>: 179 PENDING + 239 долгов + infra-задачи P2+ старше 30д; метка <code>amnesty-2026-08-07</code>, обратимо.</li>
+<li><b>Вооружить автоприменение посылок</b>: канарейка Маяк+hp17 → флот после 3 зелёных дней.</li>
+<li><b>Канон</b>: forever-fix только при рецидиве ≥2 · «нетто-ноль» после 20.08 · STOP-DUP строки в сид-шаблон (клейм зоны + назначенный консолидатор + одна панель на веер).</li>
+<li><b>Деньги</b>: SuperGrok $300/мес при 17 вызовах/7д — решение при следующем биллинге по замеру.</li>
+<li><b>WhatsApp-мост</b> мёртв 38 дней — QR с телефона или закрыть рельсу.</li>
+<li><b>SSH Русланы</b> — отдельный не-админский аккаунт (вариант «б»).</li>
+</ol>
+
+<h2>📎 Провенанс</h2>
+<p class="small">Входы: decision-2026-08-07-repair-eats-fleet-80-20-reset · -rebalance-80-20 · -repair-tax-fleet-diet · -repair-vs-forward · -fleet-rethink-repair-vs-mission (все — 02-Decisions, в каждом стоит обратная ссылка).
+Панели: bridge-state леджер secondop (repair-vs-forward-0807*, repair-vs-progress-*, arch-rethink-0807); 8-й дубль-прогон сознательно НЕ запускался.
+Первая строка приказа 07.08 закрыта соседями: РОЛЬ И РЕЖИМ вшит в secondop.py (строка 206, panel role/mode) · витрина tonydzi.github.io/dashboards отвечает 200.
+Сводный текст: <code>02-Decisions\decision-2026-08-07-repair-rethink-consolidated-verdict.md</code></p>
+
+</body>
+</html>
