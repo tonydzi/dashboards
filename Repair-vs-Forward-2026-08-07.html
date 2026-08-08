@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Ремонт vs Движение — диагноз 07.08.2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg:#0f1115; --card:#181b22; --card2:#1e222b; --txt:#e8eaf0; --dim:#9aa3b2; --red:#ff5c5c; --amber:#ffb84d; --green:#4dd48a; --blue:#5aa2ff; --line:#2a2f3a; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--txt); font:15px/1.5 "Segoe UI",system-ui,sans-serif; padding:24px; max-width:1280px; margin:0 auto; }
+  h1 { font-size:26px; margin-bottom:4px; }
+  h2 { font-size:19px; margin:28px 0 12px; border-bottom:1px solid var(--line); padding-bottom:6px; }
+  .sub { color:var(--dim); margin-bottom:20px; }
+  .verdict { background:linear-gradient(90deg,#3a1220,#181b22); border:1px solid var(--red); border-radius:10px; padding:14px 18px; font-size:17px; margin:16px 0; }
+  .grid { display:grid; gap:12px; }
+  .g6 { grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+  .g3 { grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+  .num { font-size:30px; font-weight:700; }
+  .num.red { color:var(--red); } .num.amber { color:var(--amber); } .num.green { color:var(--green); } .num.blue { color:var(--blue); }
+  .lbl { color:var(--dim); font-size:13px; margin-top:2px; }
+  table { width:100%; border-collapse:collapse; margin:8px 0; }
+  th, td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--dim); font-weight:600; font-size:13px; }
+  .keep { border-top:3px solid var(--green); }
+  .freeze { border-top:3px solid var(--blue); }
+  .kill { border-top:3px solid var(--red); }
+  .tag { display:inline-block; padding:1px 8px; border-radius:20px; font-size:12px; font-weight:700; margin-right:6px; }
+  .tag.k { background:#123524; color:var(--green); } .tag.f { background:#122438; color:var(--blue); } .tag.x { background:#381216; color:var(--red); } .tag.t2 { background:#382c12; color:var(--amber); }
+  ul { margin-left:18px; }
+  li { margin:5px 0; }
+  .chain { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:10px 0; }
+  .chain .step { background:var(--card2); border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-size:13px; }
+  .chain .arr { color:var(--red); font-weight:700; }
+  .panelbox { border-left:3px solid var(--blue); }
+  .footer { color:var(--dim); font-size:12px; margin-top:28px; }
+  .ok { color:var(--green); } .warn { color:var(--amber); } .bad { color:var(--red); }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="NotPeople-Pitch-Drafts.md">&larr; NotPeople-Pitch-Drafts</a> · <a href="Repair-vs-Forward.html">Repair-vs-Forward &rarr;</a></span></div>
+
+<h1>🔧 Ремонт vs 🚀 Движение</h1>
+<div class="sub">Диагноз флота · 07.08.2026 · Fable 5 max + панель Codex/Grok/Gemini/GLM · полный мемо: <b>02-Decisions\decision-2026-08-07-repair-eats-fleet-80-20-reset.md</b></div>
+
+<div class="verdict">⚖️ <b>Вердикт:</b> система стала самоподдерживающейся бюрократией — каждый инцидент рождает 3–7 новых деталей, петли смерти деталей нет. Флот 14 дней подряд производит ремонт вместо результата: <b>0 постов наружу при ~270 робот-сессиях в день</b> — и это при полностью снятых гейтах.</div>
+
+<h2>Цифры за 14 дней (25.07–06.08)</h2>
+<div class="grid g6">
+  <div class="card"><div class="num red">0</div><div class="lbl">постов наружу (FB+X), каждый из 14 дней</div></div>
+  <div class="card"><div class="num red">~3 700</div><div class="lbl">робот-сессий (пик 591/день)</div></div>
+  <div class="card"><div class="num amber">259</div><div class="lbl">ретроспектив</div></div>
+  <div class="card"><div class="num amber">82%</div><div class="lbl">токенов Claude = механика (при 4 чужих оплаченных рельсах)</div></div>
+  <div class="card"><div class="num red">4%</div><div class="lbl">утилизация Codex ($540/мес суммарно на подписки)</div></div>
+  <div class="card"><div class="num amber">106k</div><div class="lbl">токенов — старт КАЖДОЙ сессии (было 86k неделю назад)</div></div>
+  <div class="card"><div class="num red">582</div><div class="lbl">движка, которые никто не вызывает</div></div>
+  <div class="card"><div class="num red">179 + 239</div><div class="lbl">PENDING-посылок + долгов шины</div></div>
+  <div class="card"><div class="num amber">38 дн</div><div class="lbl">мёртв WhatsApp-мост — при живых сторожах</div></div>
+  <div class="card"><div class="num green">5 PR</div><div class="lbl">от 3 незнакомых инженеров — вся внешняя тяга месяца (+ arXiv + 1 модуль)</div></div>
+  <div class="card"><div class="num red">317 → 0</div><div class="lbl">закрытых DR-отчётов → конвертировано в контент</div></div>
+  <div class="card"><div class="num amber">411</div><div class="lbl">задач в реестре, 112 гниют</div></div>
+</div>
+
+<h2>Корень (5 почему по серии)</h2>
+<div class="chain">
+  <div class="step">инцидент</div><div class="arr">→</div>
+  <div class="step">канон велит forever-fix:<br>гейт + хук + сторож + тест + счётчик + раскатка ×6 машин</div><div class="arr">→</div>
+  <div class="step">+3–7 новых деталей</div><div class="arr">→</div>
+  <div class="step">больше точек отказа</div><div class="arr">→</div>
+  <div class="step">больше инцидентов</div><div class="arr">↩ петля</div>
+</div>
+<div class="card">Петля рождения деталей есть — петли <b>смерти</b> нет: «0 вызовов за 30д = утиль» существует на бумаге без исполнителя. KPI незаметно стали внутренними (applied-посылки, аптайм сторожей) вместо внешних (посты, лиды, оффер) — поэтому 14 дней нулей никого не разбудили. Вторично: координационный налог 6 автономных узлов больше их выхода (82% работы всё равно на хабе); контент-труба из 7 стадий, по которой ничего не доехало.</div>
+
+<h2>Решение: три списка</h2>
+<div class="grid g3">
+  <div class="card keep"><b><span class="tag k">KEEP</span>рельсы с внешним потребителем</b>
+    <ul>
+      <li>Волт + Syncthing + бэкап 1×/ночь</li>
+      <li>RAG-мозг + импорты данных Антона (цель №1)</li>
+      <li>GitHub: PR ≤24ч, ответы, публикация (цель №2)</li>
+      <li>Контент: <b>короткая труба</b> черновик → slop_gate → пост</li>
+      <li>CRM инженеров + аутрич</li>
+      <li>DR-конвейер</li>
+      <li>Безопасность: leak_scan, Tier-2 (пол, не трогается)</li>
+      <li>Панель внешних ревьюеров</li>
+      <li>1 health-снимок/узел/сутки</li>
+      <li>Реестр задач</li>
+    </ul>
+  </div>
+  <div class="card freeze"><b><span class="tag f">FREEZE</span>работает — не улучшаем</b>
+    <ul>
+      <li>consensus-движок</li>
+      <li>персона-киты</li>
+      <li>канон-цепочка (подпись/md5)</li>
+      <li>книга / шоу автоген</li>
+      <li>ab_recall — доездить до 13.08 → вердикт</li>
+      <li>деплой: новые посылки ТОЛЬКО батчем 1×/нед (пятница)</li>
+    </ul>
+  </div>
+  <div class="card kill"><b><span class="tag x">KILL</span>disable + метка, не delete</b>
+    <ul>
+      <li>Амнистия скопом: 179 посылок + 239 долгов &gt;7 дн</li>
+      <li>582 движка-сироты → _archive</li>
+      <li>Сторожа → health-снимок + syncthing + oauth + leak_scan, остальные выкл</li>
+      <li>Ретро у роботов — стоп</li>
+      <li>Робот-сессии ~270/день → ≤40</li>
+      <li>Шина 03: роботам 1 строка/узел/сутки</li>
+      <li>Канон: новое правило = −1 старое (нетто-ноль)</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Неделя 80/20 (08–14.08)</h2>
+<table>
+  <tr><th>Что</th><th>Кто/рельса</th><th>Почему</th></tr>
+  <tr><td><b>Утро: ship before sweep</b> — 1 внешний артефакт ДО любого ремонта</td><td>Fable (голос)</td><td>ломает привычку «сначала починю»</td></tr>
+  <tr><td>Конвертация 317 закрытых DR → черновики постов</td><td><b>Codex</b> (бак 4%!) + Gemini</td><td>механика; жжём оплаченное (приказ 06.08)</td></tr>
+  <tr><td>Mission-2 W3: внешние ссылки, Show HN, Safak + реактивация (P0)</td><td>Fable + Chrome</td><td>прямое движение к цели №2</td></tr>
+  <tr><td>Разбор PR-очереди, дедупы, чтение</td><td>Codex / Gemini</td><td>механика</td></tr>
+  <tr><td>Ремонт днём — <b>запрещён</b> (искл.: RED на KEEP-рельсе)</td><td>—</td><td>ремонт перестаёт вытеснять работу</td></tr>
+  <tr><td>Пятница 14.08, 2 часа: ремонтный батч всего накопившегося</td><td>Sonnet</td><td>одна сессия, одна раскатка, один verify</td></tr>
+</table>
+
+<h2>Метрики успеха к 14.08 (мерит существующий day_ledger)</h2>
+<table>
+  <tr><th>Метрика</th><th>Сейчас</th><th>Цель</th></tr>
+  <tr><td>Посты наружу за неделю</td><td class="bad">0</td><td class="ok">≥10</td></tr>
+  <tr><td>PR / issue / комменты наружу</td><td class="bad">~1</td><td class="ok">≥5</td></tr>
+  <tr><td>Робот-сессий в день</td><td class="bad">~270</td><td class="ok">≤40</td></tr>
+  <tr><td>Старт сессии, токены</td><td class="warn">106k</td><td class="ok">≤90k</td></tr>
+  <tr><td>Доля ремонта в живых сессиях</td><td class="bad">~80% (оценка)</td><td class="ok">≤20%</td></tr>
+  <tr><td>Утилизация Codex</td><td class="bad">4%</td><td class="ok">≥30%</td></tr>
+</table>
+<div class="card">Контрольная точка: среда 12.08 — если постов &lt;3, блокер глубже, чем диагноз, и разбираем именно его.</div>
+
+<h2>Панель внешних LLM</h2>
+<!-- PANEL_VERDICTS -->
+<div class="card panelbox" id="panel-pending">⏳ Заполняется: Codex · Grok · Gemini · GLM (Deep Think Max)</div>
+
+<h2>Tier-2 — решает только Антон</h2>
+<table>
+  <tr><th></th><th>Решение</th><th>Моя рекомендация</th></tr>
+  <tr><td><span class="tag t2">1</span></td><td>Амнистия 179 посылок + 239 долгов скопом</td><td>ДА (disable+метка, откат дешёвый)</td></tr>
+  <tr><td><span class="tag t2">2</span></td><td>Массовый disable робот-задач → ≤40/день (список покажу до исполнения)</td><td>ДА</td></tr>
+  <tr><td><span class="tag t2">3</span></td><td>Канон: мораторий до 20.08 + «новое правило = −1 старое»; §5.8 и §7.3-бис только для KEEP-рельс</td><td>ДА</td></tr>
+  <tr><td><span class="tag t2">4</span></td><td>Grok $300/мес при 17 вызовах/7д</td><td>решить 21.08 по замеру, не сейчас</td></tr>
+  <tr><td><span class="tag t2">5</span></td><td>WhatsApp-мост: пере-спарить (QR, руки Антона) или закрыть рельсу</td><td>пере-спарить ИЛИ закрыть — но не «висит 39-й день»</td></tr>
+  <tr><td><span class="tag t2">6</span></td><td>Автономные роботы на узлах Наташи/Русланы</td><td>оставить синк+бэкап+их живую работу; роботов — вниз</td></tr>
+</table>
+
+<div class="footer">Собрано Fable 5 (max reasoning) · данные: day_ledger 14 дн · token_audit · subscription_utilization · шина 03 · аудиты 05-06.08 · build freeze соблюдён (обход на этот файл записан явно: отчёт для решения, не запчасть) · рельса: Claude Max (оркестрация+синтез), панель: Codex/Grok/Gemini/GLM подписки</div>
+
+</body>
+</html>

@@ -34,7 +34,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>STEP 1 (gate): python3 ~/.claude/scripts/_shared/canon_verify.py E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub ; exit!=0 -&gt; НЕ применять, посылку в HELD, алерт в 03. STEP 2: read E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub/CLAUDE.md -&gt; merge -&gt; write ACK-&lt;node&gt;.json {applied_md5:&#x27;f4ccd18b2535cc32729a5938c47537e1&#x27;} рядом</code></div>
   
-</div><h2>✅ Доверенные — применятся сами <span class="cnt">29</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+</div><h2>✅ Доверенные — применятся сами <span class="cnt">25</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">crm-proof-of-delivery-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">CRM: касание засчитывается только с message_id (budget.py proof-of-delivery + safe_send ловит Message.id + touch_audit карточная половина)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-29 16:11 · <span class="ok">подпись ✓</span></div>
@@ -187,28 +187,12 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-bus_send.py&#x27;),os.path.join(s,&#x27;bus_send.py&#x27;));shutil.copy(os.path.join(t,&#x27;DEPLOY-_test_ack_race.py&#x27;),os.path.join(s,&#x27;_test_ack_race.py&#x27;))&quot;</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">llm-ask-rails-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">llm_ask.py: работа уезжает на codex/grok/gemini, когда бак Claude пуст (раньше вставало всё)</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:51 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_llm_ask.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
-  
-</div><div class="card trusted">
   <div class="top"><span class="id">opencode-backup-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">Backup coding door: install OpenCode (subscription oauth login, not an API key). Canary A-2022BAYAREA GREEN 2026-08-06: live run gpt-5.6-sol passed. Per-node login = device-flow, recipe in 02-Decisions/decision-2026-08-05-coding-rails-codex-utilization.md section 7</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:52 · <span class="ok">подпись ✓</span></div>
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>sh -c &quot;npm install -g opencode-ai&quot;</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">machine-key-ladder-7-scripts-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Семь скриптов читали MACHINE_KEY только из ЖИВОГО env: под cron/launchd/ssh env голый, и узел молча становился &#x27;unknown&#x27;/&#x27;?&#x27; -- ACK-файлы, которые никто не читает, безымянные хартбиты, сторожа без владельца. Переведены на лестницу menv (env -&gt; machine.env -&gt; COMPUTERNAME/hostname). Гейт _test_machine_key_bare_env_gate: 11/11</div>
-  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:53 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
-  
-  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;ack_coverage_watch.py&#x27;,&#x27;dashboard_log.py&#x27;,&#x27;dr_headless_dispatch.py&#x27;,&#x27;session_unsticker_pregate.py&#x27;,&#x27;dr_rails_board.py&#x27;,&#x27;power_thermal_logger.py&#x27;,&#x27;session_reaper.py&#x27;)]&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">rail-sweep-windows-and-slot-canon-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
@@ -227,28 +211,12 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_test_repair_fallback.py&quot;</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">extfallback-routines-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Ночные рутины не встают при пустом баке Claude: --extfallback codex-agent + гонка рельс в llm_ask</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:17 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_llm_ask.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
-  
-</div><div class="card trusted">
   <div class="top"><span class="id">radical-order-gate-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">Дверь правила §3.3-бис: массовое выключение задач/служб циклом блокируется до переспроса (маркер RADICAL-OK снимает)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:22 · <span class="ok">подпись ✓</span></div>
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_test_radical_order_gate.py&quot;</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">mayak-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">llm_ask: рельса mayak (Claude на баке VPS) первой аварийной + промпт стдином</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:34 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 -c &quot;import io,os,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/llm_ask.py&#x27;);s=io.open(p,encoding=&#x27;utf-8&#x27;).read();sys.exit(0 if &#x27;def rail_mayak&#x27; in s else 1)&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">agent-rail-safety-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
@@ -266,7 +234,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import io,os,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/repair_session.py&#x27;);s=io.open(p,encoding=&#x27;utf-8&#x27;).read();sys.exit(0 if &#x27;any(k in flat for k in keys)&#x27; in s else 1)&quot;</code></div>
   
-</div><h2>📦 Уже применённые <span class="cnt">119</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">123</span></h2><div class="card trusted">
   <div class="top"><span class="id">engine-visibility-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">consensus.py ENGINE-VISIBILITY (консенсус #94389335, tier-1, accepts FLEET-ANCHOR+MacBook-Anton, committed хабом 20.07). (1) провал подписи -&gt; строка в stderr + счётчик sigfail-&lt;MACHINE&gt;.json (dark mode СОХРАНЁН, леджер не падает); (2) CLI-гигиена: -h/--help голым и после любого verb, propose отказывает subject на &#x27;-&#x27; (инцидент #4b814fec). Сторож _shared/consensus_config_guard.py CLASS C читает счётчик и алармит на РОСТ -- едет сам синком _shared.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-20 20:53 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1043,6 +1011,22 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-selflaunch.py&#x27;),os.path.expanduser(&#x27;~/.claude/scripts/selflaunch.py&#x27;))&quot;</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">llm-ask-rails-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">llm_ask.py: работа уезжает на codex/grok/gemini, когда бак Claude пуст (раньше вставало всё)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:51 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_llm_ask.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">machine-key-ladder-7-scripts-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Семь скриптов читали MACHINE_KEY только из ЖИВОГО env: под cron/launchd/ssh env голый, и узел молча становился &#x27;unknown&#x27;/&#x27;?&#x27; -- ACK-файлы, которые никто не читает, безымянные хартбиты, сторожа без владельца. Переведены на лестницу menv (env -&gt; machine.env -&gt; COMPUTERNAME/hostname). Гейт _test_machine_key_bare_env_gate: 11/11</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:53 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;ack_coverage_watch.py&#x27;,&#x27;dashboard_log.py&#x27;,&#x27;dr_headless_dispatch.py&#x27;,&#x27;session_unsticker_pregate.py&#x27;,&#x27;dr_rails_board.py&#x27;,&#x27;power_thermal_logger.py&#x27;,&#x27;session_reaper.py&#x27;)]&quot;</code></div>
+  
+</div><div class="card trusted">
   <div class="top"><span class="id">persona-leak-both-spellings-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Гейт утечек в комплекте новичка знал только ОДНУ форму каждого идентификатора Антона: Dziatkovskii и bbplatinum. Почтовая транслитерация Dzyatkovskiy и корпоративный аккаунт platinumvc1 проходили мимо гейта и уезжали в комплект для чужой машины. Обе формы добавлены</div>
   <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:56 · <span class="ok">подпись ✓</span></div>
@@ -1083,6 +1067,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-_test_output_freshness.py&#x27;),os.path.join(s,&#x27;_shared&#x27;,&#x27;_test_output_freshness.py&#x27;));[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;public_surface_audit.py&#x27;,&#x27;_test_public_surface_audit.py&#x27;)]&quot;</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">extfallback-routines-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Ночные рутины не встают при пустом баке Claude: --extfallback codex-agent + гонка рельс в llm_ask</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:17 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_llm_ask.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
+  
+</div><div class="card trusted">
   <div class="top"><span class="id">spool-drain-user-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">спул сливается пользовательской рельсой, потом ботом: на узле без бот-токена очередь не могла опустеть НИКОГДА (замер: 563 письма за 16 суток, 552 в 02 POLICE)</div>
   <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 20:29 · <span class="ok">подпись ✓</span></div>
@@ -1097,6 +1089,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;regress_run.py&#x27;,&#x27;coverage_map.py&#x27;,&#x27;tg_coord.py&#x27;,&#x27;_test_tg_channel_post.py&#x27;)]&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">mayak-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">llm_ask: рельса mayak (Claude на баке VPS) первой аварийной + промпт стдином</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:34 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import io,os,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/llm_ask.py&#x27;);s=io.open(p,encoding=&#x27;utf-8&#x27;).read();sys.exit(0 if &#x27;def rail_mayak&#x27; in s else 1)&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">dash-skill-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
