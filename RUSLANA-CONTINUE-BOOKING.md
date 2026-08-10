@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Задачи и планирование · [← Planning-System-Before-After](Planning-System-Before-After.html) · [Roots-2026-08-05 →](Roots-2026-08-05.html)
+[все дашборды](index.html) · категория: Задачи и планирование · [← Planning-System-Before-After](Planning-System-Before-After.html) · [Razbor-Vhodyashchego-Uzla-2026-08-10 →](Razbor-Vhodyashchego-Uzla-2026-08-10.html)
 
 # Руслана — как продолжить беседу про БРОНИРОВАНИЕ ЗВОНКОВ
 

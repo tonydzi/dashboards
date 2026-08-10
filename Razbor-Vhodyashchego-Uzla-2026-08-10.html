@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Разбор входящего на ноутбуке Наташи — 10.08.2026</title>
+<style>
+  :root{--bg:#f6f7f9;--card:#fff;--ink:#16181d;--dim:#5b6270;--line:#e2e5ea;
+    --red:#c0392b;--amber:#b8860b;--green:#1e7d4f;--blue:#2a5db0;
+    --redbg:#fdecea;--ambbg:#fdf6e3;--greenbg:#e9f6ef;--bluebg:#eaf1fb;}
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#14161a;--card:#1c1f25;--ink:#e8eaee;--dim:#9aa3b2;--line:#2c313a;
+      --red:#ff8a7a;--amber:#e8be5a;--green:#68d19b;--blue:#7fa9f0;
+      --redbg:#2a1c1a;--ambbg:#2a2416;--greenbg:#15281f;--bluebg:#182233;}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.55 -apple-system,Segoe UI,Roboto,Arial,sans-serif;padding:22px 16px 60px}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:23px;margin:0 0 4px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:20px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:24px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .kpi b{display:block;font-size:24px;line-height:1.15}
+  .kpi i{font-style:normal;color:var(--dim);font-size:12px;display:block;margin-top:2px}
+  .was{color:var(--dim);font-size:12px}
+  .k-grn b{color:var(--green)} .k-amb b{color:var(--amber)} .k-red b{color:var(--red)} .k-blu b{color:var(--blue)}
+  h2{font-size:17px;margin:26px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:14px}
+  .row{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:11px 14px;border-top:1px solid var(--line)}
+  .row:first-child{border-top:none}
+  .tag{font-size:11px;font-weight:700;text-align:center;padding:3px 6px;border-radius:5px;height:fit-content}
+  .t-grn{background:var(--greenbg);color:var(--green)}
+  .t-amb{background:var(--ambbg);color:var(--amber)}
+  .t-red{background:var(--redbg);color:var(--red)}
+  .t-blu{background:var(--bluebg);color:var(--blue)}
+  .ttl{font-weight:600}
+  .dsc{color:var(--dim);font-size:13px;margin-top:3px}
+  .note{background:var(--ambbg);border-left:3px solid var(--amber);padding:11px 14px;border-radius:6px;margin:12px 0;font-size:14px}
+  code{background:var(--bluebg);padding:1px 5px;border-radius:4px;font-size:12px}
+  footer{color:var(--dim);font-size:12px;margin-top:32px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Задачи и планирование</span><span style="margin-left:auto;display:flex;gap:12px"><a href="RUSLANA-CONTINUE-BOOKING.md">&larr; RUSLANA-CONTINUE-BOOKING</a> · <a href="Roots-2026-08-05.html">Roots-2026-08-05 &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>Разбор входящего на ноутбуке Наташи</h1>
+<div class="sub">Что было во входящем, что закрыто, что осталось · 10.08.2026, 10:25 · узел MyOwnPC-Natalia</div>
+
+<div class="kpis">
+  <div class="kpi k-grn"><b>0</b><i>долгов чтения <span class="was">(было 16)</span></i></div>
+  <div class="kpi k-grn"><b>7</b><i>непрочитанных <span class="was">(было 577)</span></i></div>
+  <div class="kpi k-amb"><b>1</b><i>посылка не встала <span class="was">(было 3 + карантин)</span></i></div>
+  <div class="kpi k-red"><b>27</b><i>рутин стояли выключенными</i></div>
+  <div class="kpi k-grn"><b>41</b><i>рутина работает <span class="was">(было 16)</span></i></div>
+</div>
+
+<h2>🔴 Главное: узел четверо суток жил без сторожей</h2>
+<div class="note">
+06.08 массовый стоп по ошибочно пересказанному приказу выключил 30 задач. В проектном
+<code>CLAUDE.md</code> записано «восстановлено 30 из 30» — <b>по факту вернулись три</b>.
+Остальные 27 стояли выключенными, включая бэкап конфига, монитор синка, сторож ACK,
+пульс узла и сторож зависших сессий. Запись была сделана по намерению, а не по чтению
+состояния. Вернул 25 (постинговые не трогал), запись в CLAUDE.md исправлена.
+</div>
+
+<h2>✅ Закрыто в этот заход</h2>
+<div class="card">
+  <div class="row"><div class="tag t-grn">посылка</div><div>
+    <div class="ttl">radical-order-gate — дверь правила «радикальный приказ → переспроси»</div>
+    <div class="dsc">Стояла четверо суток. Корень: хук лежит в <code>/hooks</code>, а игнор Syncthing отсекал весь каталог — файл физически не мог приехать. Прорезал исключение. Второй слой: файл приехал, но вызова в настройках не было — дверь лежала невызванной. Подключил, селф-тест зелёный.</div></div></div>
+  <div class="row"><div class="tag t-grn">посылка</div><div>
+    <div class="ttl">tasks-registry-readers — читатель реестра задач</div>
+    <div class="dsc">Лежала в карантине с 26.07. Тот же класс: файл на диске, в настройках не зарегистрирован, боевых прогонов ноль. Забрал, подключил, тест 9 из 9, показывает живые 23 P0 на старте сессии.</div></div></div>
+  <div class="row"><div class="tag t-grn">посылка</div><div>
+    <div class="ttl">codex-cap-handoff</div>
+    <div class="dsc">Применена, проверка зелёная.</div></div></div>
+  <div class="row"><div class="tag t-grn">рельса</div><div>
+    <div class="ttl">Думающая полоса робота ожила</div>
+    <div class="dsc">На узле не было CLI <code>claude</code> — робот слал квитанции, но разобрать сообщение не мог. Поставил, вход взял токеном из хранилища, положил токен в среду пользователя, чтобы задачи планировщика его видели. Проверено живым ответом.</div></div></div>
+  <div class="row"><div class="tag t-grn">долг</div><div>
+    <div class="ttl">Приказ, висевший 91 час, оказался давно выполненным</div>
+    <div class="dsc">Авто-применение посылок взведено ещё 06.08 — не хватало только ответа. Ответил с доказательством.</div></div></div>
+  <div class="row"><div class="tag t-grn">ДР</div><div>
+    <div class="ttl">Два исследования закрыты как parked</div>
+    <div class="dsc">Хаб трое суток слал догоны «висит в collecting», а синтез по обоим был сделан ещё 06.08. Догоны гнались за мёртвым. Третье (про тизеры) действительно живое.</div></div></div>
+  <div class="row"><div class="tag t-grn">синк</div><div>
+    <div class="ttl">Расхождение общей папки: тихой потери нет</div>
+    <div class="dsc">Отсутствует 91 файл, все объяснены правилами игнора, необъяснённых ноль. Цифра «307» — арифметика прибора, а не пропажа.</div></div></div>
+  <div class="row"><div class="tag t-blu">разметка</div><div>
+    <div class="ttl">Шесть чужих посылок помечены с причинами</div>
+    <div class="dsc">Три про суточный оптимизатор канона (писатель один, и это не наш узел), Unix-форма детектора сирот, перепись живости правил (движок уже живёт в другой папке), пакет git-канала (узел канал не раздаёт).</div></div></div>
+</div>
+
+<h2>🟠 Осталось — и почему я это не проталкивал</h2>
+<div class="card">
+  <div class="row"><div class="tag t-amb">у хаба</div><div>
+    <div class="ttl">win-portability-round2: 42 живых нарушения в 32 общих скриптах</div>
+    <div class="dsc">Проверка честно красная. Из 90 находок 7 в бэкап-каталогах, 5 в чужом снапшоте, 34 в тестах, где виндовый литерал стоит намеренно, и 42 — настоящий долг. В базовую линию скопом не принял: это спрятало бы настоящие. Список отправлен хабу с двумя просьбами — не сканировать бэкапы и решить по 42 строкам явно.</div></div></div>
+  <div class="row"><div class="tag t-amb">открыто</div><div>
+    <div class="ttl">Задача inbox-ack-fast отбивается кодом «оператор отклонил запрос»</div>
+    <div class="dsc">Включена, но планировщик её не запускает. Исключены питание, простой, сеть, зависший экземпляр и сам скрипт. Журнал планировщика отключён, поэтому настоящая причина не видна — гипотезу за факт не выдаю. Ущерб меньше ожидаемого: очередь квитирования пуста, суточная сводка держит свою дверь и прогнана вручную.</div></div></div>
+  <div class="row"><div class="tag t-amb">у хаба</div><div>
+    <div class="ttl">Движок шины теряет флаги в тело сообщения</div>
+    <div class="dsc">Два моих сообщения ушли с литералом <code>--kind ACK --text</code> в начале тела: версия на узле принимает только позиционные аргументы. Движок при этом сам печатает «робот получателя это не возьмёт» — и всё равно отправляет, рапортуя успех по обеим рельсам. Переотправил корректно, класс описан хабу.</div></div></div>
+</div>
+
+<footer>
+Проверено живыми приборами: журнал одобрений, файловая шина и её очередь посылок, REST Syncthing (статус, обзор индекса, скан), Планировщик задач, реестр ДР, реестр 10-Tasks.
+Собрано 10.08.2026 на MyOwnPC-Natalia.
+</footer>
+
+</div>
+</body>
+</html>
