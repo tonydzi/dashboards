@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Альфа из комментов FB-поста про recall — состояние</title>
+<style>
+  :root{ --bg:#0f1115; --card:#171a21; --line:#262b36; --tx:#e6e9ef; --dim:#9aa3b2;
+         --ok:#3fb950; --warn:#d29922; --bad:#f85149; --acc:#58a6ff; }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f7f9; --card:#fff; --line:#e2e5ea; --tx:#1c2128; --dim:#5b6472; }
+  }
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--tx);
+    font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;padding:24px}
+  h1{font-size:22px;margin:0 0 4px} h2{font-size:16px;margin:28px 0 10px;color:var(--acc)}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+  .grid{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;min-width:150px}
+  .kpi b{display:block;font-size:24px} .kpi span{color:var(--dim);font-size:12px}
+  .wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+  table{border-collapse:collapse;width:100%;min-width:640px} th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase}
+  tr:last-child td{border-bottom:none}
+  .t{padding:2px 8px;border-radius:20px;font-size:12px;white-space:nowrap}
+  .take{background:rgba(63,185,80,.15);color:var(--ok)} .watch{background:rgba(210,153,34,.15);color:var(--warn)}
+  .pass{background:rgba(248,81,73,.15);color:var(--bad)}
+  .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:8px;padding:12px 14px;margin:12px 0}
+  code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-size:13px}
+  .dim{color:var(--dim)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="FB-Comments-LLM-Tools-2026-08-04.html">&larr; FB-Comments-LLM-Tools-2026-08-04</a> · <a href="Nataly-Posting-Tails-2026-07-31.html">Nataly-Posting-Tails-2026-07-31 &rarr;</a></span></div>
+<h1>Альфа из комментов FB-поста «Вы делаете recall перед КАЖДОЙ сессией?»</h1>
+<div class="sub">Пост Антона 03.08.2026 · <code>story_fbid=28466047683002788</code> · собрано 05–06.08, состояние на 10.08.2026 12:xx Лиссабон · источник: <code>credit_ledger.jsonl</code> (11 записей), задачи 10-Tasks</div>
+
+<div class="note"><b>Главное:</b> ссылка <code>share/p/1D5Pz56bxz</code> и ссылка <code>share/p/1KSoFV1px8</code> из реестра — <b>один и тот же пост</b> (проверено редиректом на <code>story_fbid=28466047683002788</code>). Пост уже промайнен: 10 советов, у всех вердикт, 9 благодарностей опубликованы. Открыты <b>хвосты</b>, а не майнинг.</div>
+
+<div class="grid">
+  <div class="kpi"><b>10</b><span>советов в реестре</span></div>
+  <div class="kpi"><b>0</b><span>без вердикта</span></div>
+  <div class="kpi"><b>1 / 1 / 8</b><span>взяли / не взяли / думаем</span></div>
+  <div class="kpi"><b>9</b><span>публично поблагодарены</span></div>
+  <div class="kpi"><b>3</b><span>тред без ответа</span></div>
+  <div class="kpi"><b>5 из 13</b><span>карточек person есть</span></div>
+</div>
+
+<h2>Советы и вердикты</h2>
+<div class="wrap"><table>
+<tr><th>Автор</th><th>Совет</th><th>Вердикт</th><th>Причина / состояние</th></tr>
+<tr><td>**son **omt</td><td>Прогрев контекста конкретным вопросом по делу, а не «посмотри файлы»</td><td><span class="t take">взяли</span></td><td>память <code>question-not-tour-warms-context.md</code>; ⚠️ испытание не открыто, имени в CREDITS ещё нет</td></tr>
+<tr><td>**sha ***geev</td><td>XERJ — ES-совместимый движок с per-agent памятью</td><td><span class="t pass">не взяли</span></td><td>их же замер: XERJ 9/10, голый grep+python 10/10 — менять нашу рельсу не за что</td></tr>
+<tr><td>*kk *ng</td><td>Скилл = накопитель доменных знаний, топиком в телеге = тематический advisor</td><td><span class="t watch">думаем</span></td><td>сильнейший ход треда, аналога нет; сперва ответ автору + замер на одном домене</td></tr>
+<tr><td>Alexander Fedorenko</td><td>Многоуровневое извлечение: briefing на старте → точечный recall; top-20 → reranking 5-10</td><td><span class="t watch">думаем</span></td><td>Антон в треде публично: «надо пересмотреть регламент». Живой потомок — <code>session_brief</code> (shadow до 13.08)</td></tr>
+<tr><td>**mur ***dik</td><td>Большую базу знаний graphify, чтобы агент не сканировал лишнее</td><td><span class="t watch">думаем</span></td><td>идёт замер A/B вектор vs вектор+граф; судья построен (<code>tools/ab_recall.py</code>), ⚠️ данных мало</td></tr>
+<tr><td>Николай Махов</td><td>Три слоя памяти: короткая / контекстная / проектная, глубина по импульсу</td><td><span class="t watch">думаем</span></td><td>слои фактически есть (MEMORY.md → волт → RAG), лестница глубины не описана</td></tr>
+<tr><td>****imir ***tsov</td><td>mem0: агент сам пишет важное и сам достаёт на старте</td><td><span class="t watch">думаем</span></td><td>ход верный, auto-capture не построен; mem0 как OSS-дверь мерили 28.07 — красный</td></tr>
+<tr><td>***riy *****kevych</td><td>Память проекта обновляется на КАЖДОМ коммите + скилл обновления перед reset</td><td><span class="t watch">думаем</span></td><td>у нас обновление в <code>/retro</code>, а конец сессии часто не наступает; хук не написан</td></tr>
+<tr><td>***ill ***akov</td><td>Инвариант структуры RAG: f(A+B)=f(A)+f(B) и обратно</td><td><span class="t watch">думаем</span></td><td>единственное утверждение про ПРИЧИНУ деградации; кода нет, проверить нечем. ⚠️ публичного спасибо нет</td></tr>
+<tr><td>Ihar Paliashchuk</td><td>CodeIndexer: память проекта + решения + история тасков + графовый поиск</td><td><span class="t watch">думаем</span></td><td>продуктов с этим именем минимум три, какой — автор не сказал</td></tr>
+</table></div>
+
+<h2>Открытые хвосты — что реально не сделано</h2>
+<div class="wrap"><table>
+<tr><th>Хвост</th><th>Кто</th><th>Дверь</th></tr>
+<tr><td>Ответ по существу на самый содержательный коммент треда (он ответил, мы нет)</td><td>*kk *ng</td><td><code>/fb-reply</code>, кнопка у Наташи</td></tr>
+<tr><td>«Проверь личку, плиз» — личку никто не проверил</td><td>Johnny GiliPsy</td><td><code>/local-fb-messenger</code></td></tr>
+<tr><td>Переспросил «В смысле?» и остался без ответа; ход у него забрали</td><td>**son **omt</td><td><code>/fb-reply</code> + <code>alpha_credit stamp</code></td></tr>
+<tr><td>Публичного спасибо нет, имя в CREDITS есть</td><td>***ill ***akov</td><td><code>/fb-reply</code></td></tr>
+<tr><td>Предложили личный разговор — ответа нет</td><td>Aleksey Zharkov, Kirill Rozhkovskiy</td><td><code>/fb-reply</code> + Calendly</td></tr>
+<tr><td>Возражение к нашему §8.4 «RECALL всегда»: «засирать контекст на каждом ходе?»</td><td>Семён Поклад, Alexander Fedorenko</td><td>замер токенов recall → <code>token_cost.py</code></td></tr>
+<tr><td>Карточек person нет: Ihar Paliashchuk, Alex Savenok, Aleksey Zharkov, Kirill Rozhkovskiy, Семён Поклад, Кот Локо, Johnny GiliPsy, *kk *ng (есть, сверить)</td><td>8 человек</td><td><code>07-People</code></td></tr>
+<tr><td>Комменты после 06.08 не собирались — свежая дельта неизвестна</td><td>—</td><td><code>/local-fb-alpha</code> заново</td></tr>
+</table></div>
+
+<h2>Грабли сбора — не наступать снова</h2>
+<div class="wrap"><table>
+<tr><th>Грабля</th><th>Как обходим</th></tr>
+<tr><td>Один пост живёт под разными <code>share/p/…</code> и <code>pfbid…</code> — токены ротируются</td><td>identity = <code>story_fbid</code> или хэш текста, не ссылка (иначе «новый пост» на пустом месте)</td></tr>
+<tr><td>Репост чужого поста редиректит на оригинал: 6 из 26 permalink'ов, один с 75 комментами</td><td>сравнивать <code>final_url</code> после загрузки, а не ссылку из ленты</td></tr>
+<tr><td>Пост открывается оверлеем <code>div[role=dialog]</code>, скоуп по <code>main</code> даёт 1-3 статьи вместо 16</td><td>брать контейнер с максимумом <code>div[role=article]</code>, автора и возраст из <code>aria-label</code></td></tr>
+<tr><td>Фильтр по ключевым словам теряет «советую обеими руками» — продукт назван в заголовке поста</td><td>разбирать по постам с контекстом, не грепом по комментам</td></tr>
+<tr><td>Ретро-свип принимал наши же посты за чужой совет (2 из 3 «долгов»)</td><td>две двери в движке: <code>self_authored()</code> и <code>self_venue()</code></td></tr>
+</table></div>
+
+<p class="dim">Реестр: <code>D:\OBSIDIAN\_imports\alpha\credit_ledger.jsonl</code> · движок <code>~/.claude/scripts/alpha_credit.py</code> · задачи <code>task-2026-08-03-fb-recall-thread-alpha</code>, <code>task-2026-08-05-hvosty-fb-post-recall</code> (обе open), <code>task-2026-08-06-alpha-credit-close-delta</code> (done)</p>
+</body>
+</html>
