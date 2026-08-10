@@ -40,7 +40,7 @@
   footer{color:var(--dim);font-size:12px;margin-top:32px;border-top:1px solid var(--line);padding-top:12px}
 </style>
 </head>
-<body>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Задачи и планирование</span><span style="margin-left:auto;display:flex;gap:12px"><a href="RUSLANA-CONTINUE-BOOKING.md">&larr; RUSLANA-CONTINUE-BOOKING</a> · <a href="Roots-2026-08-05.html">Roots-2026-08-05 &rarr;</a></span></div>
 <div class="wrap">
 
 <h1>Разбор входящего на ноутбуке Наташи</h1>
@@ -54,7 +54,34 @@
   <div class="kpi k-grn"><b>41</b><i>рутина работает <span class="was">(было 16)</span></i></div>
 </div>
 
-<h2>🔴 Главное: узел четверо суток жил без сторожей</h2>
+<h2>📍 Срез статусов на 17:15 — после того, как рутины отработали полдня</h2>
+<div class="note">
+Рутины включились утром и <b>показали вторую поломку под первой</b>: семь задач были живы,
+но звали файлы, которых нет на диске — их вынесли 31.07 вместе с 31 другим. Среди них бэкап
+конфига, монитор синка, сторож Syncthing и сторож зависших сессий. Все семь нашлись целыми в
+git-бэкапе и восстановлены; под бэкапом конфига не хватало ещё и движка — он тоже вернулся.
+<b>Бэкап конфига не делался с 31 июля, десять дней. Сейчас работает</b> (свежие снимки hooks,
+scheduled-tasks, scripts, skills в 17:09).
+</div>
+<div class="card">
+  <div class="row"><div class="tag t-grn">рутины</div><div>
+    <div class="ttl">38 работают · 4 выключены осознанно · настоящих падений нет</div>
+    <div class="dsc">Выключены намеренно: postbox-tick (стоп постинга), две постинговые панели, детектор сирот. Из тех, что возвращают ненулевой код, ни один не упал: у sync-divergence 1 означает «есть молчаливые шары», у liveness-map 3 — «нашёл сломанные правила», это их контракт, а не авария. Прочитано в исходниках, а не угадано по коду.</div></div></div>
+  <div class="row"><div class="tag t-grn">долги</div><div>
+    <div class="ttl">Долгов чтения ноль, посылка не встала одна</div>
+    <div class="dsc">win-portability — у хаба, список 42 строк ему отправлен.</div></div></div>
+  <div class="row"><div class="tag t-amb">02</div><div>
+    <div class="ttl">Четыре аска ждут Антона сутки</div>
+    <div class="dsc">Два из них уже не имеют смысла: вопрос про стоп постинга перекрыт его же более поздним приказом, а вопрос про машинные сообщения в 121 он подтвердил голосом. Живых по сути два: канон узла отстаёт на три дня и вариант А или Б по 272 темам из голосовых.</div></div></div>
+  <div class="row"><div class="tag t-blu">цепочка</div><div>
+    <div class="ttl">Единственная незакрытая ступень — русский тизер, и она закрыта решением</div>
+    <div class="dsc">Тизеров в @ClawRus не будет вовсе: вместо них одна сводка в сутки по всем постам Антона. Состояние честное — «решено, не построено»: до 20.08 заморозка стройки, сводка пока руками.</div></div></div>
+  <div class="row"><div class="tag t-amb">синк</div><div>
+    <div class="ttl">По claude-home проверено, по волту — нет</div>
+    <div class="dsc">Расхождение общей папки разобрано полностью: тихой потери нет. По шаре волта прибор показывает 1514 файлов «нет у нас» — я это не проверял и утверждать по ним нечего.</div></div></div>
+</div>
+
+<h2>🔴 Утренняя находка: узел четверо суток жил без сторожей</h2>
 <div class="note">
 06.08 массовый стоп по ошибочно пересказанному приказу выключил 30 задач. В проектном
 <code>CLAUDE.md</code> записано «восстановлено 30 из 30» — <b>по факту вернулись три</b>.

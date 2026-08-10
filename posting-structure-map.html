@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Карта постинга — куда что идёт</title>
+<style>
+  :root{
+    --bg:#0d1117; --canvas:#010409; --panel:#161b22; --border:#30363d; --border2:#21262d;
+    --ink:#e6edf3; --dim:#8b949e; --link:#2f81f7; --green:#3fb950; --amber:#d29922; --gray:#6e7681;
+    --ru:#3b82f6; --en:#a855f7; --teaser:#f59e0b; --hub:#22c55e; --canon:#38bdf8; --dev:#eab308;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--canvas);color:var(--ink);font:14px/1.55 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:24px;max-width:1180px;margin:0 auto}
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 22px;font-size:14px}
+  .ts{color:var(--gray);font-size:12px;margin-bottom:16px}
+  h2{font-size:17px;margin:30px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--border)}
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 8px}
+  .chip{font-size:12px;padding:3px 10px;border-radius:20px;font-weight:600;border:1px solid var(--border)}
+  .c-teaser{background:#3a2a08;color:var(--teaser);border-color:#5c410c}
+  .c-hub{background:#0d2e18;color:var(--hub);border-color:#14532d}
+  .c-canon{background:#082a3a;color:var(--canon);border-color:#0b3d54}
+  .c-dev{background:#33290a;color:var(--dev);border-color:#524212}
+  .note{color:var(--dim);font-size:13px;margin:4px 0 0}
+  /* flow */
+  .flow{display:grid;grid-template-columns:1fr;gap:14px;margin:14px 0}
+  .track{border:1px solid var(--border);border-radius:10px;background:var(--bg);overflow:hidden}
+  .track-hd{padding:9px 16px;font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px}
+  .track-ru .track-hd{background:#0e1e38;color:#93c5fd;border-bottom:1px solid #1e3a5f}
+  .track-en .track-hd{background:#241436;color:#d8b4fe;border-bottom:1px solid #3b1d5c}
+  .steps{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;padding:14px 16px}
+  .step{flex:1;min-width:190px;border:1px solid var(--border2);border-radius:8px;padding:10px 12px;background:var(--panel);position:relative}
+  .step .role{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+  .role.teaser{color:var(--teaser)} .role.hub{color:var(--hub)} .role.canon{color:var(--canon)} .role.dev{color:var(--dev)}
+  .step .place{font-weight:600;font-size:13.5px;margin-bottom:2px}
+  .step .desc{color:var(--dim);font-size:12px}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:20px;padding:0 4px;min-width:26px}
+  @media(max-width:760px){.arrow{transform:rotate(90deg);width:100%;padding:2px 0}.step{min-width:100%}}
+  /* real placements table */
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border2);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.3px;border-bottom:1px solid var(--border)}
+  td.role-cell{white-space:nowrap;font-weight:600}
+  .badge{font-size:11px;padding:1px 8px;border-radius:12px;font-weight:600;display:inline-block}
+  .b-teaser{background:#3a2a08;color:var(--teaser)} .b-hub{background:#0d2e18;color:var(--hub)}
+  .b-canon{background:#082a3a;color:var(--canon)} .b-dev{background:#33290a;color:var(--dev)} .b-mirror{background:#21262d;color:var(--dim)}
+  .st-ok{color:var(--green)} .st-wait{color:var(--amber)} .st-plan{color:var(--gray)}
+  .post-card{border:1px solid var(--border);border-radius:10px;margin:16px 0;overflow:hidden}
+  .post-hd{padding:11px 16px;background:var(--panel);border-bottom:1px solid var(--border);font-weight:700;font-size:15px}
+  .post-hd small{color:var(--dim);font-weight:400;font-size:12.5px}
+  .pad{padding:4px 12px 10px}
+  .gh{background:#082a3a22;border:1px solid #0b3d54;border-radius:10px;padding:14px 16px;margin:12px 0}
+  .gh h3{margin:0 0 8px;font-size:14px}
+  .gh .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:640px){.gh .two{grid-template-columns:1fr}}
+  .gh .fbox{border:1px solid var(--border);border-radius:8px;padding:10px 12px;background:var(--bg)}
+  .gh .fbox .ttl{font-weight:600;font-size:13px}
+  .gh .fbox .who{font-size:12px;color:var(--dim);margin-top:2px}
+  .eli5{background:#0d2e18;border:1px solid #14532d;border-radius:10px;padding:14px 16px;margin:26px 0 6px}
+  .eli5 b{color:var(--green)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="posting-snapshot.html">&larr; posting-snapshot</a> · <a href="stories-2026-07-07.html">stories-2026-07-07 &rarr;</a></span></div>
+  <div style="background:#3a2a08;border:1px solid #5c410c;color:#f0c674;border-radius:10px;padding:14px 16px;margin:0 0 20px;font-size:14px">
+    ⚠️ <b>ПОГАШЕНО 2026-07-16.</b> Эта карта больше не ведётся. Единый источник истины по ВСЕМ каналам →
+    <a href="posting-master-dashboard.html" style="color:#79c0ff"><b>posting-master-dashboard.html</b></a>. Обновляй только его.
+  </div>
+  <h1>🗺️ Карта постинга — куда что идёт <span style="font-size:14px;color:#8b949e">(архив)</span></h1>
+  <p class="sub">Один эпизод расходится по площадкам, но у каждой площадки СВОЯ роль. Тизер = афиша · хаб = дом полного текста · GitHub = вечный первоисточник.</p>
+  <p class="ts">Наталья · машина MyOwnPC · 2026-07-03 11:00 · данные из живого трекера</p>
+
+  <div class="legend">
+    <span class="chip c-teaser">🎣 Тизер — короткий крючок, ведёт дальше</span>
+    <span class="chip c-hub">🏠 Хаб — дом полного текста</span>
+    <span class="chip c-canon">📌 Canonical — первоисточник (GitHub longreads/)</span>
+    <span class="chip c-dev">🤖 Дев-лог — сухой лог для машин (GitHub devlog/)</span>
+  </div>
+  <p class="note">Правило: тизер живёт в ГРУППЕ (@ClawRus / @ClawEng), полный текст живёт в КАНАЛЕ (@PaloAltoAiRu / @PaloAltoAi) и на GitHub. Группа ≠ дом поста, группа = афиша.</p>
+
+  <h2>Общая схема — два языковых рукава</h2>
+
+  <div class="flow">
+    <div class="track track-ru">
+      <div class="track-hd">🇷🇺 Русский рукав</div>
+      <div class="steps">
+        <div class="step"><div class="role teaser">🎣 Тизер</div><div class="place">@ClawRus</div><div class="desc">мегагруппа · короткий крючок</div></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="role hub">🏠 Полный пост</div><div class="place">@PaloAltoAiRu</div><div class="desc">личный канал Антона · весь текст тут</div></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="role canon">🪞 Зеркала</div><div class="place">VC.ru · Хабр · FB</div><div class="desc">та же статья для охвата/GEO</div></div>
+      </div>
+    </div>
+
+    <div class="track track-en">
+      <div class="track-hd">🇬🇧 Английский рукав</div>
+      <div class="steps">
+        <div class="step"><div class="role teaser">🎣 Тизер</div><div class="place">@ClawEng + X</div><div class="desc">группа + твиттер · крючок</div></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="role hub">🏠 Средний / канал</div><div class="place">@PaloAltoAi</div><div class="desc">EN-канал · пост среднего размера</div></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="role canon">📌 Canonical</div><div class="place">GitHub longreads/</div><div class="desc">первоисточник + зеркало на Medium</div></div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="role dev">🤖 Дев-лог</div><div class="place">GitHub devlog/</div><div class="desc">сухой лог для ИИ</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Почему на GitHub ДВЕ папки (вот тут терялась структура)</h2>
+  <div class="gh">
+    <h3>Один эпизод = два разных документа, поэтому две папки:</h3>
+    <div class="two">
+      <div class="fbox"><div class="ttl">📁 longreads/ — история для ЛЮДЕЙ</div><div class="who">рассказ от первого лица: «я неделю копировал-вставлял...». Живой, эмоциональный.</div></div>
+      <div class="fbox"><div class="ttl">📁 devlog/ — сухой лог для МАШИН</div><div class="who">«проблема → как чинили → поправка». Сухо, H2-вопросы. Это GEO: ИИ цитируют его.</div></div>
+    </div>
+    <p class="note" style="margin-top:10px">Файлы ссылаются друг на друга (лонгрид зовёт в дев-лог и наоборот). Это НЕ «лента постов» - это два ТИПА документа. У обоих постов есть и то, и другое.</p>
+  </div>
+
+  <h2>📍 Пост 1 — «Контент-фабрика как сериал»</h2>
+  <div class="post-card">
+    <div class="post-hd">Пост 1 <small>· «The week I built a machine» / RU-версия</small></div>
+    <div class="pad">
+    <table>
+      <tr><th>Роль</th><th>Язык</th><th>Площадка</th><th>Статус</th><th>Ссылка</th></tr>
+      <tr><td class="role-cell"><span class="badge b-teaser">🎣 Тизер</span></td><td>RU</td><td>@ClawRus (группа)</td><td class="st-ok">✅</td><td><a href="https://t.me/ClawRus/16261" target="_blank">t.me/ClawRus/16261</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-hub">🏠 Полный пост</span></td><td>RU</td><td>@PaloAltoAiRu (канал)</td><td class="st-ok">✅</td><td><a href="https://t.me/PaloAltoAiRu/726" target="_blank">t.me/PaloAltoAiRu/726</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-mirror">🪞 Зеркала</span></td><td>RU</td><td>VC.ru · Хабр</td><td class="st-wait">⏳ модерация</td><td>Хабр на модерации · VC.ru лимит 1/мес</td></tr>
+      <tr><td class="role-cell"><span class="badge b-mirror">🪞 Средний</span></td><td>RU</td><td>Facebook</td><td class="st-plan">⬜ план</td><td>ссылка в 1-м комменте</td></tr>
+      <tr><td class="role-cell"><span class="badge b-teaser">🎣 Тизер</span></td><td>EN</td><td>@ClawEng (группа)</td><td class="st-ok">✅</td><td><a href="https://t.me/ClawEng/120528" target="_blank">t.me/ClawEng/120528</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-teaser">🎣 Тизер</span></td><td>EN</td><td>X / Twitter</td><td class="st-ok">✅</td><td><a href="https://x.com/Tony_Stef_/status/2072603327670419896" target="_blank">x.com/Tony_Stef_/…419896</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-hub">🏠 Средний</span></td><td>EN</td><td>@PaloAltoAi (канал)</td><td class="st-ok">✅</td><td><a href="https://t.me/PaloAltoAi/1816" target="_blank">t.me/PaloAltoAi/1816</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-canon">📌 Canonical</span></td><td>EN</td><td>GitHub longreads/</td><td class="st-ok">✅</td><td><a href="https://github.com/Palo-Alto-AI-Research-Lab/clawrush/blob/main/longreads/the-week-i-built-a-machine.md" target="_blank">longreads/the-week-i-built-a-machine.md</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-mirror">🪞 Зеркало</span></td><td>EN</td><td>Medium</td><td class="st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/the-week-i-built-a-machine-that-turns-my-coding-into-a-show-e130cac7a1dc" target="_blank">medium.com/…the-week-i-built-a-machine</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-dev">🤖 Дев-лог</span></td><td>EN</td><td>GitHub devlog/</td><td class="st-ok">✅</td><td><a href="https://github.com/Palo-Alto-AI-Research-Lab/clawrush/blob/main/devlog/content-factory-v2-build.md" target="_blank">devlog/content-factory-v2-build.md</a></td></tr>
+    </table>
+    </div>
+  </div>
+
+  <h2>📍 Пост 2 — «Роботы договариваются в своём чате»</h2>
+  <div class="post-card">
+    <div class="post-hd">Пост 2 <small>· «How I stopped being a courier between two AIs» / RU-версия</small></div>
+    <div class="pad">
+    <table>
+      <tr><th>Роль</th><th>Язык</th><th>Площадка</th><th>Статус</th><th>Ссылка</th></tr>
+      <tr><td class="role-cell"><span class="badge b-teaser">🎣 Тизер</span></td><td>RU</td><td>@ClawRus (группа)</td><td class="st-plan">⬜ план</td><td>ещё не запощен</td></tr>
+      <tr><td class="role-cell"><span class="badge b-hub">🏠 Полный пост</span></td><td>RU</td><td>@PaloAltoAiRu (канал)</td><td class="st-ok">✅</td><td><a href="https://t.me/PaloAltoAiRu/727" target="_blank">t.me/PaloAltoAiRu/727</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-mirror">🪞 Зеркала</span></td><td>RU</td><td>VC.ru · Хабр</td><td class="st-wait">⏳ модерация</td><td>Хабр на модерации · VC.ru лимит 1/мес</td></tr>
+      <tr><td class="role-cell"><span class="badge b-mirror">🪞 Средний</span></td><td>RU</td><td>Facebook</td><td class="st-plan">⬜ план</td><td>ссылка в 1-м комменте</td></tr>
+      <tr><td class="role-cell"><span class="badge b-teaser">🎣 Тизер</span></td><td>EN</td><td>@ClawEng (группа)</td><td class="st-plan">⬜ план</td><td>ещё не запощен</td></tr>
+      <tr><td class="role-cell"><span class="badge b-teaser">🎣 Тизер</span></td><td>EN</td><td>X / Twitter</td><td class="st-ok">✅</td><td><a href="https://x.com/Tony_Stef_/status/2072603935152415087" target="_blank">x.com/Tony_Stef_/…415087</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-hub">🏠 Средний</span></td><td>EN</td><td>@PaloAltoAi (канал)</td><td class="st-ok">✅</td><td><a href="https://t.me/PaloAltoAi/1817" target="_blank">t.me/PaloAltoAi/1817</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-canon">📌 Canonical</span></td><td>EN</td><td>GitHub longreads/</td><td class="st-ok">✅</td><td><a href="https://github.com/Palo-Alto-AI-Research-Lab/clawrush/blob/main/longreads/how-i-stopped-being-a-courier-between-two-ais.md" target="_blank">longreads/how-i-stopped-being-a-courier-between-two-ais.md</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-mirror">🪞 Зеркало</span></td><td>EN</td><td>Medium</td><td class="st-ok">✅</td><td><a href="https://medium.com/@dzyatkovskiy.a2/how-i-stopped-being-a-courier-between-two-ais-and-built-them-their-own-chat-1ccb40f26161" target="_blank">medium.com/…how-i-stopped-being-a-courier</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-dev">🤖 Дев-лог</span></td><td>EN</td><td>GitHub devlog/</td><td class="st-ok">✅</td><td><a href="https://github.com/Palo-Alto-AI-Research-Lab/clawrush/blob/main/devlog/machine-to-machine-consensus-bus.md" target="_blank">devlog/machine-to-machine-consensus-bus.md</a></td></tr>
+    </table>
+    </div>
+  </div>
+
+  <h2>📍 Пост 3 — «Я снова стал курьером, между Claude и ChatGPT»</h2>
+  <div class="post-card">
+    <div class="post-hd">Пост 3 <small>· «I became a live USB cable between two AIs, and it saved me $50 a run» / эпизод 3</small></div>
+    <div class="pad">
+    <table>
+      <tr><th>Роль</th><th>Язык</th><th>Площадка</th><th>Статус</th><th>Ссылка</th></tr>
+      <tr><td class="role-cell"><span class="badge b-mirror">🪞 Зеркало</span></td><td>EN</td><td>Medium</td><td class="st-ok">✅ 2026-07-09</td><td><a href="https://medium.com/@dzyatkovskiy.a2/i-became-a-live-usb-cable-between-two-ais-and-it-saved-me-50-a-run-d1478bff2d05" target="_blank">medium.com/…i-became-a-live-usb-cable</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-canon">📌 Canonical</span></td><td>EN</td><td>GitHub longreads/</td><td class="st-plan">⬜ сверить</td><td><a href="https://github.com/Palo-Alto-AI-Research-Lab/clawrush/blob/main/longreads/the-fifty-dollar-courier.md" target="_blank">longreads/the-fifty-dollar-courier.md</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-dev">🤖 Дев-лог</span></td><td>EN</td><td>GitHub devlog/</td><td class="st-plan">⬜ сверить</td><td><a href="https://github.com/Palo-Alto-AI-Research-Lab/clawrush/blob/main/devlog/the-fifty-dollar-courier.md" target="_blank">devlog/the-fifty-dollar-courier.md</a></td></tr>
+      <tr><td class="role-cell"><span class="badge b-hub">🏠 Канал</span></td><td>EN</td><td>@PaloAltoAi</td><td class="st-plan">⬜ план</td><td>ещё не запощен</td></tr>
+      <tr><td class="role-cell"><span class="badge b-teaser">🎣 Тизер</span></td><td>EN</td><td>@ClawEng + X</td><td class="st-plan">⬜ план</td><td>ещё не запощен</td></tr>
+    </table>
+    <p class="note">Источник текста: <code>drafts\p3-medium-source.md</code>. LinkedIn (EN): опубликован Натальей 2026-07-09 (тем же заголовком).</p>
+    </div>
+  </div>
+
+  <h2>🔧 Что осталось достроить в структуре</h2>
+  <table>
+    <tr><th>Что</th><th>Пост</th><th>Статус</th></tr>
+    <tr><td>Тизер RU → @ClawRus</td><td>Пост 2</td><td class="st-plan">⬜ план</td></tr>
+    <tr><td>Тизер EN → @ClawEng</td><td>Пост 2</td><td class="st-plan">⬜ план</td></tr>
+    <tr><td>FB (средний, RU)</td><td>Пост 1 и 2</td><td class="st-plan">⬜ план</td></tr>
+    <tr><td>Хабр (RU лонгрид)</td><td>Пост 1 и 2</td><td class="st-wait">⏳ на модерации</td></tr>
+    <tr><td>VC.ru (RU лонгрид)</td><td>Пост 1 и 2</td><td class="st-wait">🔒 лимит 1/мес — платный доступ решает Антон</td></tr>
+  </table>
+
+  <div class="eli5">
+    <b>🧒 Простыми словами:</b> Представь кино. <b>Тизер</b> (в группах @ClawRus / @ClawEng) - это трейлер: короткий, цепляет, показывает «смотри целиком там-то». Само «кино» (полный текст) лежит в <b>канале</b> @PaloAltoAiRu (по-русски) или @PaloAltoAi + GitHub (по-английски). А на GitHub две папки потому, что мы пишем эпизод дважды: <b>longreads/</b> - красивый рассказ для людей, <b>devlog/</b> - сухая инструкция для роботов-ИИ. Ничего не потерялось - просто у каждого места своя работа.
+  </div>
+</body>
+</html>
