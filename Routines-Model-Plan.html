@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Рутины: план перевода на Соннет · 10.08.2026</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;background:#1e1f22;color:#e8e6e3;margin:24px;line-height:1.45}
+h1{font-size:22px} h2{font-size:17px;margin-top:28px;border-bottom:1px solid #444;padding-bottom:4px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:5px 9px;border-bottom:1px solid #3a3b3e;text-align:left;vertical-align:top}
+th{background:#2b2d31;position:sticky;top:0}
+.son{color:#7ec8a3;font-weight:600}.opus{color:#e8a15c;font-weight:600}.split{color:#8ab4f8;font-weight:600}.gate{color:#d48fd4;font-weight:600}
+.muted{color:#9a9a9a;font-size:12.5px}
+.warn{background:#3a2f22;border-left:4px solid #e8a15c;padding:8px 12px;margin:10px 0}
+.ok{background:#22332a;border-left:4px solid #7ec8a3;padding:8px 12px;margin:10px 0}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:1px 8px;border-radius:9px;font-size:12px;background:#2b2d31}
+code{background:#2b2d31;padding:1px 5px;border-radius:4px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Routines-Audit-Nataly-2026-08-10.html">&larr; Routines-Audit-Nataly-2026-08-10</a> · <a href="Routines-Registry.html">Routines-Registry &rarr;</a></span></div>
+<h1>33 живые рутины хаба: кто на что садится</h1>
+<p class="muted">Снимок 10.08.2026 15:05, реестр приложения (аккаунт 7908a5a8). Поле model у всех пустое = наследуют дефолт аккаунта. Расход из token_audit за сегодня, где замерен. Второй реестр (15 рутин) мёртв с 03.07 - отдельная строка внизу.</p>
+
+<div class="ok"><b>Итог предложения:</b> <span class="son">Соннет 22</span> · <span class="opus">Opus 8</span> (голос/суждение) · <span class="split">расщепить 3</span> (Соннет собирает, Opus пишет). Плюс <span class="gate">предгейт 0 токенов</span> у 8 рутин - там экономия больше, чем от смены модели.</div>
+
+<h2>Классификация</h2>
+<table>
+<tr><th>Рутина</th><th>Каденция</th><th class="num">Замер сегодня</th><th>Предлагаемая рельса</th><th>Почему</th></tr>
+<tr><td>content-drain-live</td><td>1×/день</td><td class="num">15.8M</td><td class="split">РАСЩЕПИТЬ + <span class="gate">предгейт</span></td><td>разнос готовых текстов = механика (Соннет), адаптация под площадку = форма голоса (Opus-кусок); пустая очередь не должна будить LLM</td></tr>
+<tr><td>mission-pulse-weekly</td><td>1×/нед</td><td class="num">11.8M</td><td class="opus">Opus</td><td>стратегический пульс миссии = суждение</td></tr>
+<tr><td>skill-gap-daily</td><td>1×/нед</td><td class="num">10.6M</td><td class="son">Соннет</td><td>скан паттернов = анализ по формуле, вердикт показывается Антону</td></tr>
+<tr><td>alpha-to-tg</td><td>1×/нед</td><td class="num">8.5M</td><td class="opus">Opus</td><td>альфа-выжимка = суждение + текст наружу в TG</td></tr>
+<tr><td>voice-dispatcher</td><td><b>8×/день</b></td><td class="num">-</td><td class="gate">ПРЕДГЕЙТ</span> + <span class="son">Соннет</span></td><td>самый частый будильник; voice_sessions.py уже 0-токенный - сессию поднимать только на непустой очереди</td></tr>
+<tr><td>facebook-diary-daily</td><td>1×/день</td><td class="num">-</td><td class="opus">Opus</td><td>дневник голосом Антона, наружу</td></tr>
+<tr><td>fb-reply-daily</td><td>1×/день</td><td class="num">-</td><td class="opus">Opus</td><td>ответы голосом, публичные; канон скилла требует Opus</td></tr>
+<tr><td>coach-morning</td><td>1×/нед</td><td class="num">-</td><td class="opus">Opus</td><td>коуч-мышление для Антона</td></tr>
+<tr><td>doc-alpha-weekly</td><td>1×/нед</td><td class="num">-</td><td class="opus">Opus</td><td>добыча альфы из доков = суждение</td></tr>
+<tr><td>canon-writer-nightly</td><td>1×/ночь</td><td class="num">-</td><td class="opus">Opus</td><td>правит канон - цена ошибки высокая, дешёвую модель не пускаем</td></tr>
+<tr><td>journey-day-close-morning</td><td>1×/день</td><td class="num">-</td><td class="son">Соннет ⚠️</td><td>сводка дня; пограничная - перевести и НАБЛЮДАТЬ качество неделю</td></tr>
+<tr><td>content-factory-daily</td><td>1×/ночь</td><td class="num">-</td><td class="split">РАСЩЕПИТЬ</td><td>сбор фактов Соннет, авторский текст Fable/Opus (частично уже так)</td></tr>
+<tr><td>content-miner-nightly</td><td>1×/ночь</td><td class="num">-</td><td class="son">Соннет</td><td>капчер черновиков в triage; финальный голос всё равно делает /episode</td></tr>
+<tr><td>auto-hub-…-inbound-triage-daily</td><td>1×/день</td><td class="num">-</td><td class="son">Соннет</td><td>тиры считает people_value.py (0 токенов), LLM только оформляет</td></tr>
+<tr><td>gmail-digest-morning</td><td>1×/день</td><td class="num">-</td><td class="son">Соннет + <span class="gate">предгейт</span></td><td>внутренний дайджест; пустой инбокс не будит</td></tr>
+<tr><td>tg-weekly-digest</td><td>1×/нед</td><td class="num">-</td><td class="son">Соннет</td><td>внутренняя сводка</td></tr>
+<tr><td>tg-relationships-weekly</td><td>1×/нед</td><td class="num">-</td><td class="son">Соннет ⚠️</td><td>CRM-анализ; пограничная - наблюдать</td></tr>
+<tr><td>preference-sweep-daily</td><td>1×/день</td><td class="num">-</td><td class="son">Соннет</td><td>майнинг сигналов; спорные вердикты и так уходят вверх по гейту §6.2</td></tr>
+<tr><td>voice-triage</td><td>1×/день</td><td class="num">-</td><td class="son">Соннет</td><td>сортировка, движок 0-токенный</td></tr>
+<tr><td>connector-health-daily</td><td>1×/день</td><td class="num">-</td><td class="gate">ПРЕДГЕЙТ</span> + <span class="son">Соннет</span></td><td>health-чек детерминирован; LLM только на красном</td></tr>
+<tr><td>token-spend-watchdog</td><td>1×/ночь</td><td class="num">-</td><td class="gate">ПРЕДГЕЙТ</span> + <span class="son">Соннет</span></td><td>счёт токенов = скрипт; LLM только на превышении</td></tr>
+<tr><td>obsidian-backup-healthcheck</td><td>1×/нед</td><td class="num">-</td><td class="gate">ПРЕДГЕЙТ</span> + <span class="son">Соннет</span></td><td>проверка бэкапа = скрипт</td></tr>
+<tr><td>chatgpt-token-guard-nightly</td><td>1×/ночь</td><td class="num">-</td><td class="son">Соннет</td><td>механика токен-хила</td></tr>
+<tr><td>claudeai-sync-daily</td><td>1×/ночь</td><td class="num">-</td><td class="son">Соннет</td><td>инкрементальный импорт</td></tr>
+<tr><td>day-ledger-nightly</td><td>1×/ночь</td><td class="num">-</td><td class="son">Соннет</td><td>счётчики дня</td></tr>
+<tr><td>faaa-weekly-sync</td><td>1×/нед</td><td class="num">-</td><td class="son">Соннет</td><td>синк</td></tr>
+<tr><td>health-weekly-sync</td><td>1×/нед</td><td class="num">-</td><td class="son">Соннет</td><td>синк</td></tr>
+<tr><td>reality-show-health-weekly</td><td>1×/нед</td><td class="num">-</td><td class="son">Соннет + <span class="gate">предгейт</span></td><td>health-чек</td></tr>
+<tr><td>robot-audit-weekly</td><td>1×/нед</td><td class="num">-</td><td class="son">Соннет</td><td>аудит роботов по логам</td></tr>
+<tr><td>registry-dispatcher-daily</td><td>1×/день</td><td class="num">-</td><td class="gate">ПРЕДГЕЙТ</span> + <span class="son">Соннет</span></td><td>диспетчер очереди; пустая очередь не будит</td></tr>
+<tr><td>task-hygiene-shadow</td><td>1×/день</td><td class="num">-</td><td class="son">Соннет</td><td>shadow-гигиена реестра задач</td></tr>
+<tr><td>hanging-tasks-digest</td><td>1×/день</td><td class="num">-</td><td class="son">Соннет</td><td>дайджест висяков</td></tr>
+<tr><td>auto-hub-260810-dr-nonprofit-fanout</td><td>разовая</td><td class="num">-</td><td class="son">Соннет</td><td>браузерная механика разноса ДР</td></tr>
+</table>
+
+<h2>Вне реестра приложения (Windows-слой)</h2>
+<table>
+<tr><th>Едок</th><th class="num">Сегодня</th><th>Предложение</th></tr>
+<tr><td>robot-inbox (10 прогонов)</td><td class="num">28.5M</td><td><span class="gate">ПРЕДГЕЙТ</span>: machine_bus уже умеет 0-токенную проверку «есть ли непрочитанное»; будить сессию только на непустом. Крупнейший фоновый едок дня.</td></tr>
+</table>
+
+<h2>Три рычага по убыванию выигрыша</h2>
+<table>
+<tr><th>Рычаг</th><th>Что даёт</th><th>Ограничение</th></tr>
+<tr><td>1. <span class="gate">Предгейт 0 токенов</span></td><td>пустые пробуждения исчезают совсем; цена сидит в старте сессии (~100K контекста), а не в работе</td><td>⛔ заморозка стройки до 20.08: новый скрипт = новая деталь; либо ждать, либо «взамен убитой» по капу</td></tr>
+<tr><td>2. <span class="son">Бак Соннета</span></td><td>рутины перестают есть общий weekly-бак умных моделей - он остаётся живой работе Антона</td><td>токенов не меньше, они просто из другого кармана</td></tr>
+<tr><td>3. Модель как таковая</td><td>качество механики не страдает</td><td>у планировщика приложения НЕТ поля model на задачу (проверено по схеме API) - см. механику ниже</td></tr>
+</table>
+
+<h2>Механика перевода (главная развилка)</h2>
+<div class="warn"><b>Факт:</b> create/update_scheduled_task не принимают model. Рутина просыпается на дефолтной модели аккаунта. Варианты:<br>
+<b>А. Дефолт аккаунта = Соннет</b> - одна ручка, все 33 разом; но тогда Opus-рутины (голос) надо переводить наоборот, headless-вызовом вверх. Грубо, зато AK-47.<br>
+<b>Б. Сид-паттерн «тонкий будильник»:</b> рутина остаётся на любой модели, но первой строкой сида зовёт <code>claude -p --model sonnet</code> (подписочный бак, ключ снят) и передаёт ему работу; сама сессия только транспорт. Гибко, но каждый сид править + грабли: июльский инцидент «headless Sonnet auth пустой» (все ночные Sonnet-рутины лежали) - перед раскатом проверить логин.<br>
+<b>В. Ждать поля model в приложении</b> - не наш путь, висим.</div>
+
+<h2>Мёртвый реестр</h2>
+<p class="muted">Аккаунт 2fa7e738: 15 включённых рутин, у всех lastRun = 03.07.2026 (coach-morning, gmail-digest, tg-*, vault-janitor-nightly и др.). Больше месяца не стартуют - дубли живых либо зомби. Кандидат: выключить весь реестр (парковка 30 дней по правилу третьей поломки).</p>
+
+<p class="pill">Подготовил: Claude (хаб A-2022BAYAREA) · сессия 10.08.2026 · решение за Антоном</p>
+</body></html>
