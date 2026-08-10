@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Близнецы в регресс-сетке — разбор 15 пар · 09.08.2026</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;background:#101418;color:#dde3ea;margin:24px;line-height:1.45}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:26px 0 8px;color:#9fc3ff}
+.sub{color:#8a94a3;font-size:13px;margin-bottom:18px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid #2a3441;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#1a2230;color:#aebdd2}
+tr:nth-child(even){background:#151b23}
+.ok{color:#5fd08a;font-weight:600}.dead{color:#e07474;font-weight:600}.keep{color:#e5c56b;font-weight:600}
+.badge{display:inline-block;padding:1px 7px;border-radius:9px;font-size:11px;font-weight:700}
+.b-red{background:#4a2020;color:#ff9a9a}.b-green{background:#1e3c2a;color:#7ee0a3}.b-yel{background:#463c17;color:#ffd97a}
+code{background:#1c242f;padding:1px 5px;border-radius:4px;font-size:12px;color:#a8d5ff}
+.box{background:#151b23;border:1px solid #2a3441;border-radius:8px;padding:12px 16px;margin:10px 0}
+.num{font-size:26px;font-weight:700}
+.grid{display:flex;gap:14px;flex-wrap:wrap}
+.grid .box{flex:1;min-width:170px;text-align:center}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Token-Spend-Audit.html">&larr; Token-Spend-Audit</a> · <a href="Vault-Audit-2026-07-07.html">Vault-Audit-2026-07-07 &rarr;</a></span></div>
+<h1>Близнецы в регресс-сетке: разбор всех 15 пар</h1>
+<div class="sub">Приказ Антона 07.08 «разбирай близнецов по одной, с доказательством» · выполнено 09.08 · хаб A-2022BAYAREA</div>
+
+<div class="grid">
+<div class="box"><div class="num ok">15/15</div>пар разобрано<br>с доказательством</div>
+<div class="box"><div class="num dead">12</div>мёртвых копий<br>списано в _scratch</div>
+<div class="box"><div class="num keep">3</div>намеренных шима/зеркала<br>оставлены, задокументированы</div>
+<div class="box"><div class="num ok">2</div>класс-фикса в сетке<br>(_scratch, review-inbox)</div>
+</div>
+
+<h2>Самые дорогие находки</h2>
+<div class="box">
+🔥 <b>firefox_selenium</b>: хабовый форк был БЕЗ счётчиков замера §4.8 — прогоны хаба <b>не попадали в замер Firefox 04→18.08</b>, перекос ровно в пользу Chrome. Живой движок = <code>_shared/firefox_selenium.py</code> (канон /firefox), обновлён пиром сегодня 13:03.<br><br>
+🧟 <b>Воскрешение approval_clock</b>: списанный 06.08 форк вернулся — его затолкал обратно <b>laptop-HP17</b> (Syncthing API: modifiedBy JR2M6T4). Правило класса: списание на синкаемой шаре = удаление при живых пирах + проверка <code>global.deleted=True</code> и <code>needDeletes=0</code> у каждого. Удалён повторно; ⚠️ синк ноута стоит на 97.84% — задача ушла ему по шине.<br><br>
+📸 <b>5 «красных тестов» были фотографиями</b>: сетка гоняла замороженные ревью-снапшоты из <code>review-inbox/**/files/</code> как живые тесты (4 из 5 уже разошлись с живьём).
+</div>
+
+<h2>Все 15 пар</h2>
+<table>
+<tr><th>#</th><th>Пара</th><th>Живой экземпляр (доказательство)</th><th>Мёртвый/второй</th><th>Вердикт</th></tr>
+<tr><td>1</td><td>approval_clock (+тест)</td><td><code>_imports\content-factory\</code> — зовёт approval_clock_tick.cmd, есть place, 13/13</td><td>форк 29.07 в scripts, воскрешён ноутом</td><td><span class="badge b-red">СПИСАН ×2</span> + правило delete-на-шаре</td></tr>
+<tr><td>2</td><td>_test_tasks_readers + tasks_index</td><td>cron Маяка 03:30 крутит <code>/home/anton/tasks-index/</code>, md5 = копии хаба <code>scripts\tasks\</code>; тест 23/23; в живом audit есть «owner_note»</td><td><code>_imports\tasks\</code> июльский, FAIL 8/9 — красная декорация</td><td><span class="badge b-red">СПИСАН</span> ⚠️ деплой на Маяк был РУЧНЫМ — дыра автоканала (P0 в реестре)</td></tr>
+<tr><td>3–7</td><td>dr_start · outsource_digest · retro_inventory · session_alpha_mine · zalp_delta_filters</td><td>живые в scripts/_imports</td><td>ревью-снапшоты <code>review-inbox/**/files/</code></td><td><span class="badge b-green">КЛАСС-ФИКС</span> review-inbox → SKIP_PARTS</td></tr>
+<tr><td>8</td><td>_test_claude_fleet</td><td><code>scripts\</code> — со сценарием 10 (.gitignore-фикс 01.08); движок только в scripts</td><td>форк в _shared без сценария 10</td><td><span class="badge b-red">СПИСАН</span></td></tr>
+<tr><td>9</td><td>codex_lib (движок!)</td><td><code>_imports\codex\</code> — зовёт codex_export.cmd, все forever-фиксы 29–31.07</td><td>копия в scripts БЕЗ фикса коллизий UUIDv7</td><td><span class="badge b-red">СПИСАН</span></td></tr>
+<tr><td>10</td><td>firefox_selenium (движок+тест)</td><td><code>_shared\</code> — канон /firefox, счётчики §4.8, обновлён сегодня</td><td>scripts-форк 03.08 без счётчиков замера</td><td><span class="badge b-red">СПИСАН</span></td></tr>
+<tr><td>11</td><td>dr_start_guard (хук+тест)</td><td><code>hooks\</code> — его зовёт settings.json</td><td>md5-идентичное зеркало в scripts</td><td><span class="badge b-red">СПИСАН</span></td></tr>
+<tr><td>12</td><td>_test_blackbox_guard</td><td><code>hooks\</code> — с heredoc/Codex-раундами, exit 0</td><td>сабсет в _shared</td><td><span class="badge b-red">СПИСАН</span></td></tr>
+<tr><td>13</td><td>_test_consensus_s10</td><td><code>scripts\</code> (движок consensus.py рядом; красный давний, до чистки)</td><td>копия в _shared, где движка НЕТ — декорация</td><td><span class="badge b-red">СПИСАН</span></td></tr>
+<tr><td>14</td><td>_test_machine_bus_seek</td><td><code>_shared\</code> — пир-резолвер, задокументированный дом</td><td>сабсет в scripts без резолвера</td><td><span class="badge b-red">СПИСАН</span></td></tr>
+<tr><td>15</td><td>_test_consensus (шим) · spawn-семейство</td><td>шим _shared намеренно зовёт канон уровнем выше; spawn-движки md5-равны</td><td>—</td><td><span class="badge b-yel">ОСТАВЛЕНЫ</span> by design</td></tr>
+</table>
+
+<h2>Проверки после чистки</h2>
+<table>
+<tr><th>Проверка</th><th>Результат</th></tr>
+<tr><td>Дубликаты имён в сетке</td><td class="ok">2 (оба намеренные: consensus-шим, spawn-зеркало); было 15</td></tr>
+<tr><td>Утечки _scratch / review-inbox в сетку</td><td class="ok">0 / 0</td></tr>
+<tr><td>Живые тесты затронутых семейств</td><td class="ok">firefox, blackbox, mbseek, dr_start_guard, tasks_readers (23/23), approval_clock (13/13) — все exit 0</td></tr>
+<tr><td>Давние красные (не мои)</td><td class="dead">claude_fleet exit 4 (крэш в своей temp-фикстуре, сценарий 2) и consensus_s10 exit 1 — были красными ДО чистки, из списка 33</td></tr>
+<tr><td>Синк ноута claude-home</td><td class="dead">СТОИТ на 97.84% (needItems 78) — задача ноуту по шине, delete approval_clock в его очереди</td></tr>
+</table>
+</body></html>
