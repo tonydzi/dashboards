@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сверка рутин ноутбука Наташи — 10.08.2026</title>
+<style>
+  :root { --bg:#0f1115; --card:#171a21; --line:#262b36; --txt:#e6e8ee; --dim:#9aa3b2; --red:#ff6b6b; --amber:#ffb454; --green:#5ecc7b; --blue:#6aa9ff; }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--txt);font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--dim);margin-bottom:20px;font-size:13px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:22px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi b{display:block;font-size:26px;font-weight:700;margin-bottom:2px}
+  .kpi span{color:var(--dim);font-size:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:16px}
+  .card h2{font-size:15px;margin:0 0 10px}
+  .wrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:720px}
+  th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.03em}
+  code{background:#0b0d11;padding:1px 5px;border-radius:4px;font-size:12px;color:#cfd6e4}
+  .red{color:var(--red)}.amber{color:var(--amber)}.green{color:var(--green)}.blue{color:var(--blue)}.dim{color:var(--dim)}
+  .tag{display:inline-block;padding:1px 7px;border-radius:20px;font-size:11px;font-weight:600}
+  .t-keep{background:#123a1f;color:#7ee29a}.t-cut{background:#3d1418;color:#ff8f8f}.t-dead{background:#3a2d10;color:#ffc978}
+  ul,ol{margin:6px 0 0 18px;padding:0}li{margin-bottom:6px}
+  .eli5{border-left:3px solid var(--blue);padding-left:12px;color:#c9d3e4}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Routine-Rights.html">&larr; Routine-Rights</a> · <a href="Routines-Registry.html">Routines-Registry &rarr;</a></span></div>
+<h1>Что крутится на ноутбуке само — полная сверка</h1>
+<div class="sub">NATALY-WIN-NB · 10.08.2026 · снято с Планировщика заданий, все цифры настоящие · ничего не выключено без твоего слова</div>
+
+<div class="grid">
+  <div class="kpi"><b>34</b><span>наших задачи включено</span></div>
+  <div class="kpi"><b class="amber">2 088</b><span>запусков в сутки суммарно</span></div>
+  <div class="kpi"><b class="red">14</b><span>задач падают или не запускаются</span></div>
+  <div class="kpi"><b class="green">0</b><span>крутится прямо сейчас</span></div>
+</div>
+
+<div class="card">
+  <h2 class="red">Главное открытие сверки: треть задач уже не работает</h2>
+  <p>14 из 34 возвращают код ошибки, но продолжают числиться живыми и исправно шуметь. Два семейства:</p>
+  <ul>
+    <li><b>Код 4</b> — наш собственный сторож обёртки: «файла, который надо запустить, нет на диске». Это хвост известной поломки 31.07, когда из папки <code>scripts</code> пропал 31 файл. Задача просыпается, не находит работу и уходит. <span class="dim">5 задач.</span></li>
+    <li><b>Код 0x800710E0</b> — «оператор или администратор отклонил запрос»: задача вообще не стартует, обычно из-за условий питания. <span class="dim">9 задач, включая самую частую inbox-ack-fast.</span></li>
+  </ul>
+  <p class="amber">То есть шум они дают, а работу нет. Это первые кандидаты на отключение — тут терять нечего.</p>
+</div>
+
+<div class="card">
+  <h2>Все 34 задачи</h2>
+  <div class="wrap">
+  <table>
+    <tr><th>Задача</th><th>Ритм</th><th>В сутки</th><th>Код</th><th>Что делает</th><th>Мнение</th></tr>
+    <tr><td>inbox-ack-fast</td><td>2 мин</td><td class="amber">720</td><td class="red">0x800710E0</td><td>быстрые квитанции на сообщения других машин</td><td><span class="tag t-dead">не стартует</span></td></tr>
+    <tr><td>Power-Thermal Logger</td><td>5 мин</td><td class="amber">288</td><td class="green">0</td><td>журнал питания и температуры ноутбука</td><td><span class="tag t-cut">под нож</span></td></tr>
+    <tr><td>syncthing-guard</td><td>5 мин</td><td class="amber">288</td><td class="red">нестандартный</td><td>держит Syncthing живым</td><td><span class="tag t-keep">ядро</span></td></tr>
+    <tr><td>Claude Config Backup 15min</td><td>15 мин</td><td>96</td><td class="red">4</td><td>бэкап настроек Claude</td><td><span class="tag t-dead">файла нет</span></td></tr>
+    <tr><td>session-wait-watchdog</td><td>15 мин</td><td>96</td><td class="red">4</td><td>сторож зависших сессий</td><td><span class="tag t-dead">файла нет</span></td></tr>
+    <tr><td>Claude Session Reaper</td><td>15 мин</td><td>96</td><td class="green">0</td><td>убивает зависшие сессии Claude</td><td><span class="tag t-cut">реже + без окна</span></td></tr>
+    <tr><td>inbox-robot</td><td>20 мин</td><td>72</td><td class="green">0</td><td>приём сообщений от машин Антона и Русланы</td><td><span class="tag t-keep">ядро</span></td></tr>
+    <tr><td>Claude Sync Monitor</td><td>20 мин</td><td>72</td><td class="red">4</td><td>сигнал о разрыве синка с хабом</td><td><span class="tag t-dead">файла нет</span></td></tr>
+    <tr><td>MCP Daemons Watchdog</td><td>30 мин</td><td>48</td><td class="green">0</td><td>держит телеграм-демон живым</td><td><span class="tag t-keep">ядро</span></td></tr>
+    <tr><td>Proc Patrol</td><td>30 мин</td><td>48</td><td class="green">0</td><td>патруль процессов</td><td><span class="tag t-cut">под нож</span></td></tr>
+    <tr><td>node-health-beat</td><td>30 мин</td><td>48</td><td class="green">0</td><td>сердцебиение узла во флот</td><td><span class="tag t-cut">можно реже</span></td></tr>
+    <tr><td>peer-watch</td><td>30 мин</td><td>48</td><td class="green">0</td><td>взаимный сторож машин флота</td><td><span class="tag t-cut">можно реже</span></td></tr>
+    <tr><td>ack-watchdog</td><td>30 мин</td><td>48</td><td class="green">0</td><td>ловит молчание в ответ на адресованное</td><td><span class="tag t-cut">можно реже</span></td></tr>
+    <tr><td>natalia-session-push</td><td>1 ч</td><td>24</td><td class="red">1</td><td>отдаёт хабу каталог сессий</td><td><span class="tag t-cut">падает</span></td></tr>
+    <tr><td>liveness-map</td><td>1 ч</td><td>24</td><td class="red">3</td><td>сторож: у работы должна быть цель</td><td><span class="tag t-cut">падает</span></td></tr>
+    <tr><td>session-archive-hourly</td><td>1 ч</td><td>24</td><td class="red">1</td><td>обновляет каталог сессий</td><td><span class="tag t-cut">падает</span></td></tr>
+    <tr><td>output-freshness</td><td>6 ч</td><td>4</td><td class="red">1</td><td>сторож возраста результатов рутин</td><td><span class="tag t-keep">ядро</span></td></tr>
+    <tr><td>ack-coverage-watch</td><td>6 ч</td><td>4</td><td class="red">0x800710E0</td><td>сторож тишины</td><td><span class="tag t-dead">не стартует</span></td></tr>
+    <tr><td class="red">Regress Grid Nightly</td><td>сутки</td><td>1</td><td class="amber">остановлена мной</td><td><b>виновник чёрных окон</b> — ночной прогон тестов</td><td><span class="tag t-cut">на хаб</span></td></tr>
+    <tr><td>Token Audit + Token-Audit-Ping</td><td>сутки</td><td>2</td><td class="red">0x800710E0</td><td>замер расхода токенов (две штуки, дублируют друг друга)</td><td><span class="tag t-dead">дубль</span></td></tr>
+    <tr><td>Claude Housekeeping Daily</td><td>сутки</td><td>1</td><td class="red">0x800710E0</td><td>суточное обслуживание</td><td><span class="tag t-dead">не стартует</span></td></tr>
+    <tr><td>Canon-Apply-Catchup</td><td>сутки</td><td>1</td><td class="red">0x800710E0</td><td>применяет правки общего канона</td><td><span class="tag t-dead">не стартует</span></td></tr>
+    <tr><td>Posting Dashboard Rebuild</td><td>сутки</td><td>1</td><td class="red">0x800710E0</td><td>пересборка дашборда постинга</td><td><span class="tag t-dead">не стартует</span></td></tr>
+    <tr><td>Orphan Engines Daily</td><td>сутки</td><td>1</td><td class="red">0x800710E0</td><td>ищет движки без хозяина</td><td><span class="tag t-dead">не стартует</span></td></tr>
+    <tr><td>Consensus Config Guard</td><td>сутки</td><td>1</td><td class="red">0x800710E0</td><td>сторож конфига консенсуса</td><td><span class="tag t-dead">не стартует</span></td></tr>
+    <tr><td>AB Recall Graph Measure</td><td>сутки</td><td>1</td><td class="red">5</td><td>замер «вектор против графа»</td><td><span class="tag t-cut">на хаб</span></td></tr>
+    <tr><td>AB Recall Import Watch</td><td>сутки</td><td>1</td><td class="green">0</td><td>забирает выгрузки замера из шины</td><td><span class="tag t-cut">на хаб</span></td></tr>
+    <tr><td>sync-divergence</td><td>сутки</td><td>1</td><td class="red">1</td><td>ловит скрытую дыру в синке</td><td><span class="tag t-keep">ядро</span></td></tr>
+    <tr><td>Fleet Manifest Check</td><td>сутки</td><td>1</td><td class="red">1</td><td>сверка состава флота</td><td><span class="tag t-cut">падает</span></td></tr>
+    <tr><td>Fleet Tools Sync + Scripts Publish</td><td>сутки</td><td>2</td><td class="red">4</td><td>паритет инструментов флота</td><td><span class="tag t-dead">файла нет</span></td></tr>
+    <tr><td>Claude Missed Jobs Catchup</td><td>сутки</td><td>1</td><td class="green">0</td><td>догоняет пропущенные ночные задачи</td><td><span class="tag t-cut"><b>это он будит Regress утром</b></span></td></tr>
+    <tr><td>Medium-repost-reminder-post3</td><td>сутки</td><td>1</td><td class="green">0</td><td>напоминалка про Medium, последний раз 04.07</td><td><span class="tag t-cut">протухла</span></td></tr>
+  </table>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="green">Минимальное ядро — что я бы оставил</h2>
+  <p>Четыре задачи, на которых реально держится связь машины с флотом. Их отключение ты заметишь: перестанет синкаться волт, перестанут приходить сообщения от машин Антона и Русланы, никто не заметит протухших результатов.</p>
+  <ul>
+    <li><code>syncthing-guard</code> — держит синхронизацию волта</li>
+    <li><code>inbox-robot</code> — приём сообщений от других машин</li>
+    <li><code>MCP Daemons Watchdog</code> — держит телеграм живым</li>
+    <li><code>sync-divergence</code> + <code>output-freshness</code> — два сторожа, которые ловят тихие поломки</li>
+  </ul>
+  <p class="dim">Всё остальное — 29 задач, ~1 900 запусков в сутки — либо мертво, либо дублирует хаб, либо может ходить в разы реже.</p>
+</div>
+
+<div class="card eli5">
+  <b>🧒 Простыми словами:</b> на ноутбуке живёт 34 будильника, они звонят две тысячи раз в сутки. Треть из них звонит впустую — работы, ради которой их заводили, на диске уже нет. Я предлагаю оставить пять самых нужных, а остальные выключить. Выключить — не сломать: любой можно включить обратно одной командой.
+</div>
+
+</body>
+</html>

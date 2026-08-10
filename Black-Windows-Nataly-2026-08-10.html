@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Чёрные окна на ноутбуке Наташи — разбор 10.08.2026</title>
+<style>
+  :root { --bg:#0f1115; --card:#171a21; --line:#262b36; --txt:#e6e8ee; --dim:#9aa3b2; --red:#ff6b6b; --amber:#ffb454; --green:#5ecc7b; --blue:#6aa9ff; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:24px; background:var(--bg); color:var(--txt); font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .sub { color:var(--dim); margin-bottom:20px; font-size:13px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin-bottom:22px; }
+  .kpi { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+  .kpi b { display:block; font-size:26px; font-weight:700; margin-bottom:2px; }
+  .kpi span { color:var(--dim); font-size:12px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:16px; }
+  .card h2 { font-size:15px; margin:0 0 10px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th,td { text-align:left; padding:7px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--dim); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.03em; }
+  code { background:#0b0d11; padding:1px 5px; border-radius:4px; font-size:12px; color:#cfd6e4; }
+  .red { color:var(--red); } .amber { color:var(--amber); } .green { color:var(--green); } .blue { color:var(--blue); }
+  .dim { color:var(--dim); }
+  .wrap { overflow-x:auto; }
+  ol,ul { margin:6px 0 0 18px; padding:0; } li { margin-bottom:7px; }
+  .eli5 { border-left:3px solid var(--blue); padding-left:12px; color:#c9d3e4; }
+  .chain { font-family:ui-monospace,Consolas,monospace; font-size:12.5px; background:#0b0d11; border-radius:8px; padding:12px 14px; line-height:1.9; overflow-x:auto; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Arhitektura-Vedomyh-Memo-2026-08-06.html">&larr; Arhitektura-Vedomyh-Memo-2026-08-06</a> · <a href="Codex-Collaboration.html">Codex-Collaboration &rarr;</a></span></div>
+<h1>Чёрные окна на ноутбуке — найден настоящий источник</h1>
+<div class="sub">Узел NATALY-WIN-NB · 10.08.2026 09:34–09:38 · всё по прямому замеру, версии 1 и 2 этого разбора были неверны</div>
+
+<div class="grid">
+  <div class="kpi"><b class="red">120</b><span>окон за 60 секунд (замер 09:34)</span></div>
+  <div class="kpi"><b class="green">3</b><span>после остановки (замер 09:37)</span></div>
+  <div class="kpi"><b>~2/сек</b><span>частота шторма</span></div>
+  <div class="kpi"><b class="amber">23 мин</b><span>шёл до остановки</span></div>
+</div>
+
+<div class="card">
+  <h2 class="red">Что это за окна</h2>
+  <p>Все окна одинаковые, с заголовком <code>C:\Program Files\Git\usr\bin\ssh-keygen.exe</code>. Это <b>проверка криптоподписи посылок флота</b>: наши машины подписывают сообщения друг другу, а получатель проверяет подпись программой <code>ssh-keygen</code> из состава Git for Windows. Она консольная, поэтому каждый вызов открывает окно Windows Terminal и тут же закрывает.</p>
+  <p>Кто её звал в цикле — цепочка родителей, снятая живьём:</p>
+  <div class="chain">
+    Задача Планировщика <b>«Regress Grid Nightly»</b> (ночной прогон тестов)<br>
+    └─ <code>pythonw.exe regress_run.py</code> &nbsp;<span class="dim">PID 30860, стартовал 09:13</span><br>
+    &nbsp;&nbsp;&nbsp;└─ <code>pythonw.exe _test_quarantine_sig25.py</code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <code class="red">ssh-keygen.exe -Y verify …</code> &nbsp;← <b>окно, ~2 раза в секунду</b>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="amber">Почему именно по утрам и почему «всё чаще»</h2>
+  <ol>
+    <li>Задача «Regress Grid Nightly» заведена <b>06.08 в 18:52</b> и должна идти <b>ночью в 02:40</b>. Ноутбук ночью выключен, у задачи стоит «<b>запустить при первой возможности</b>» — поэтому пропущенный ночной прогон догоняется утром, ровно когда ты садишься работать. Сегодня он стартовал в <b>09:13</b> и к моменту замера шёл 23 минуты.</li>
+    <li><b>Гаситель окон умер 07.08 в 16:23</b> — процесса нет, журнал обрывается на этой секунде. Раньше он давил такие окна за 30–50 мс. Первый утренний шторм после его смерти пришёлся на 08.08 — отсюда ощущение «стало резко хуже».</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h2>Корень в одной строке кода</h2>
+  <p>Файл <code>~/.claude/scripts/fleet_sign.py</code> зовёт <code>ssh-keygen</code> через <code>subprocess.run(...)</code> <b>без флага</b> <code>CREATE_NO_WINDOW</code> — строки 85, 140, 199. Родитель (<code>pythonw.exe</code>) своей консоли не имеет, поэтому Windows выдаёт каждому потомку <b>новую консоль с окном</b>.</p>
+  <p class="dim">Это касается не только ночного прогона: подпись и проверка подписи идут при каждом обмене по шине. Тест просто делает это сотнями раз подряд и превращает редкое мигание в шторм.</p>
+</div>
+
+<div class="card">
+  <h2 class="green">Что сделано прямо сейчас</h2>
+  <ul>
+    <li>Прогон остановлен: <code>schtasks /end</code> + снятие зависшего дочернего процесса.</li>
+    <li>Проверено замером: <b>120 окон/мин → 3/мин</b>.</li>
+    <li>Задача <b>не удалена и не отключена</b> — она снова пойдёт завтра в 02:40, а если ноутбук будет выключен, снова догонит утром.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Чтобы не вернулось — три варианта, ни один не сделан</h2>
+  <table>
+    <tr><th>Что</th><th>Эффект</th><th>Цена</th></tr>
+    <tr><td><b>Корневой:</b> добавить <code>CREATE_NO_WINDOW</code> в <code>fleet_sign.py</code></td><td>окон не будет вовсе — ни в прогоне, ни при обычной работе шины</td><td>правка общая для флота; папка <code>~/.claude</code> здесь receive-only, значит правка идёт посылкой через хаб, а не файлом на диске</td></tr>
+    <tr><td>Снять «запускать при первой возможности» у Regress Grid Nightly</td><td>утренних штормов не будет, ночные прогоны просто пропускаются</td><td>на ноутбуке, который ночью выключен, тесты не пойдут почти никогда</td></tr>
+    <tr><td>Перенести задачу на хаб (он всегда включён)</td><td>прогон идёт ночью там, где никто не смотрит в экран</td><td>надо согласовать с хабом</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2 class="dim">Что я в этом разборе намерил неверно (две правки)</h2>
+  <ol>
+    <li><b>Версия 1:</b> обвинил обёртку <code>run_hidden.vbs</code>. Опровергнуто опытом — она даёт 0 окон.</li>
+    <li><b>Версия 2:</b> назвал «~104 окна в сутки» и главным виновником Session Reaper. Цифра верна только для тихого промежутка: мой замер попал между прогонами. Реальный пик — 120 окон в минуту, и это другой источник.</li>
+  </ol>
+  <p class="dim">Общий корень обеих ошибок один: я мерил там, где было удобно, и не проверил свой вывод против того, что ты видишь глазами. Твоё «десятки в минуту» было точнее моего прибора.</p>
+</div>
+
+<div class="card eli5">
+  <b>🧒 Простыми словами:</b> ночью наши роботы должны прогонять проверку домашнего задания, но ноутбук ночью спит — и проверка запускается утром, когда ты садишься работать. Внутри неё есть шаг «проверить печать на письме», и на каждую печать выскакивает чёрное окошко. Печатей сотни, вот и мельтешение. Я проверку остановил, стало тихо. Чтобы не повторялось, надо научить программу проверять печати молча — это одна строчка, но её надо провести через главный компьютер.
+</div>
+
+</body>
+</html>

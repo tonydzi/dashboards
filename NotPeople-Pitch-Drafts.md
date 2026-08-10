@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Прочее · [← Five-Whys-x-TRIZ](Five-Whys-x-TRIZ.html) · [Repair-vs-Forward-2026-08-07 →](Repair-vs-Forward-2026-08-07.html)
+[все дашборды](index.html) · категория: Прочее · [← Five-Whys-x-TRIZ](Five-Whys-x-TRIZ.html) · [Repair-Rethink-2026-08 →](Repair-Rethink-2026-08.html)
 
 # NotPeople - драфты питчей (50) - НА АППРУВ
 
