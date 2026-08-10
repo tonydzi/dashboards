@@ -26,7 +26,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Quarantine-MAYAK.html">&larr; Quarantine-MAYAK</a> · <a href="Quarantine.html">Quarantine &rarr;</a></span></div><div class="wrap">
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>ZBOOKG8-2023PAL</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
-<h2>✅ Доверенные — применятся сами <span class="cnt">2</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+<h2>✅ Доверенные — применятся сами <span class="cnt">3</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">hooks-payload-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">SELF-CARRYING груз для 5 посылок-призраков: block_dangerous_bash + canon_growth_guard + skill_usage_hook + task_surface_hook (файлы лежат в _transit/DEPLOY-*)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:17 · <span class="ok">подпись ✓</span></div>
@@ -41,6 +41,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>sh -c &quot;npm install -g opencode-ai&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">console-hider-v4</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Console hider v4: stop hiding the terminal the human opened (parent-aware + default terminal = conhost)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-10 16:29 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python -c &quot;import os,subprocess,sys; v=os.environ[&#x27;OBSIDIAN_VAULT&#x27;]; p=os.path.join(v,&#x27;_machine-bus&#x27;,&#x27;_transit&#x27;,&#x27;console-hider-v4&#x27;,&#x27;install.ps1&#x27;); sys.exit(subprocess.call([&#x27;powershell&#x27;,&#x27;-NoProfile&#x27;,&#x27;-ExecutionPolicy&#x27;,&#x27;Bypass&#x27;,&#x27;-File&#x27;,p]))&quot;</code></div>
   
 </div><h2>📦 Уже применённые <span class="cnt">181</span></h2><div class="card trusted">
   <div class="top"><span class="id">windowless-s4u</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
