@@ -18,33 +18,43 @@
   .DONE { color:#7ee787; font-weight:bold; }
   .tag { display:inline-block; background:#2a2e35; border-radius:4px; padding:2px 6px; font-size:11px; margin-right:4px; }
   .note { background:#1a1d24; border-left:3px solid #4a90d9; padding:12px 16px; margin-bottom:20px; font-size:14px; }
+  .freeze { background:#1a1d24; border-left:3px solid #ff6b6b; padding:12px 16px; margin-bottom:20px; font-size:14px; }
   .before { color:#ff6b6b; }
   .after { color:#7ee787; }
 </style>
 </head>
 <body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Selfheal-Phase1.html">&larr; Selfheal-Phase1</a> · <a href="Sync-Propagation-Audit.html">Sync-Propagation-Audit &rarr;</a></span></div>
 <h1>🔍 Skill-Gap Audit — МАЯК (fleet-anchor VPS)</h1>
-<div class="meta">Прогон: 2026-08-02 (пред. прогон: 2026-07-26) · только сессии на этой машине (Маяк) · READ-ONLY аудит</div>
+<div class="meta">Прогон: 2026-08-09 (пред. прогоны: 2026-08-02, 2026-07-26) · только сессии на этой машине (Маяк) · READ-ONLY аудит</div>
 
 <div class="note">
-⚠️ Структурное наблюдение этого прогона: за неделю на Маяке — 1687 файлов сессий всего, из них
-<b>~1570 (93%) — inbox-робот</b> (cron */10мин), 29 vault-janitor, 9 advisor-чат-робот (Kirill-Simakov-A2A мост),
-9 local-command-caveat, 5 skill-gap. <b>Ручных/содержательных сессий Антона на этой машине не было ни одной
-с 30.07</b> (до этого — тестовые пробы 04-05.07). Маяк = чистый автоматизационный якорь, не рабочее место;
-методика «ручной паттерн → скилл» тут структурно почти ничего нового не найдёт — это ожидаемо, не сбой
-(как и в прошлом прогоне).
+⚠️ Структурное наблюдение этого прогона: из 150 последних файлов сессий на Маяке — подавляющее большинство
+это либо <b>inbox-робот</b> (cron */10мин, десятки тиков за сутки), либо ночные/дневные рутины, стартующие
+через свой же SKILL.md как промпт (token-spend-watchdog, intention-daily, content-drain-daily,
+facebook-diary-daily, voice-triage, preference-sweep-daily, gmail-digest-morning, connector-health-daily,
+hanging-tasks-digest и т.д.) — всё это уже полностью автоматизировано, разрыва нет по определению.
+Ручных содержательных сессий Антона на самом Маяке за это окно — <b>одна</b> (08.08, ревизия ROADMAP/BACKLOG,
+живой чат 1182 строки). Плюс отдельный кластер из 6 диагностических сессий «робот сломан, не чини» —
+это уже готовая cross-machine инфра (Windows-таск wake_listener шлёт улики на Маяк для Sonnet-разбора),
+не ручной паттерн Антона → не скилл-гэп. Маяк по-прежнему чистый автоматизационный якорь, не рабочее место;
+это ожидаемо, третий прогон подряд с тем же выводом.
+</div>
+
+<div class="freeze">
+⛔ Действует заморозка стройки 06.08–20.08 (<span class="tag">build-freeze-2026-08</span>): новых
+скиллов/движков не создаём даже под HIGH-разрыв. Топ-кандидат ниже остаётся ГОТОВЫМ ТЗ на полку,
+не задачей на выполнение сейчас.
 </div>
 
 <div class="note">
-✅ Проверка прошлого прогона (26.07): WATCH-пункт «root-cause разбор инцидентов общей инфры» — 3-го цикла
-НЕ было (0 новых incident/canon-applier/apply-gap коммитов с 26.07) → остаётся WATCH, скилл не строим.
-LOW-пункт «своя машина как равный пир» — повторов не было (единственный случай остался 25.07) → снимаю
-с активного отслеживания, не актуально сейчас.<br><br>
-⚠️ HIGH-пункт «декластер реестра задач» — <b>НЕ построен, разрыв вырос в 2.5-4 раза за неделю</b>:
-122→<b>308</b> открытых задач, 3→<b>12</b> P0, 41→<b>155</b> P1 (баннер SessionStart, сравнение 26.07 vs 02.08).
-Ни одного коммита в <span class="tag">10-Tasks/</span> с формулировкой decluttering/backlog за неделю — тема
-не трогалась. Тот же готовый источник (<span class="tag">audit-latest.json</span> + <span class="tag">tasks_audit_ping.py</span>)
-всё ещё только READ-ONLY.
+⚠️ Проверка прошлого прогона (02.08) — <b>ЭСКАЛАЦИЯ, 3-й цикл подряд без движения, рост ускорился</b>:
+открытых задач 308→<b>412</b> (+34%), P0 12→<b>22</b> (+83%), P1 155→<b>217</b> (+40%),
+без критерия «сделано» 94→<b>104</b>, «гниёт» (без хода) 41→<b>146</b> (+256%, самый резкий скачок).
+Ни одного коммита в <span class="tag">10-Tasks/</span> с формулировкой decluttering/backlog за неделю.
+Источник данных тот же — <span class="tag">audit-latest.json</span> + <span class="tag">tasks_audit_ping.py</span> —
+всё ещё только READ-ONLY, решения не принимает.<br><br>
+✅ WATCH-пункт «root-cause разбор инцидентов общей инфры» (26.07/02.08) — новых incident/canon-applier/apply-gap
+коммитов по-прежнему нет → снимаю с активного отслеживания, цикл окончательно не повторился.
 </div>
 
 <h2 style="font-size:16px;">Найденные разрывы</h2>
@@ -54,41 +64,45 @@ LOW-пункт «своя машина как равный пир» — повт
 </thead>
 <tbody>
 <tr>
-<td><b>Декластер реестра задач (P0/P1-свалка)</b> — 2-й прогон подряд без движения, цифры хуже: 308 задач,
-12 P0, 155 P1, «41 без ход» (гниёт), 94 без критерия «сделано» (баннер SessionStart этой самой сессии,
-02.08). Разбора руками так и не было ни разу за неделю.</td>
-<td>Баннер SessionStart КАЖДОЙ сессии на Маяке (сравнение: 26.07 «122/3 P0/41 P1» → 02.08 «308/12 P0/155 P1»);
+<td><b>Декластер реестра задач (P0/P1-свалка)</b> — 3-й прогон подряд без движения, цифры хуже КАЖДЫЙ раз:
+122→308→<b>412</b> задач, 3→12→<b>22</b> P0, 41→155→<b>217</b> P1, «гниёт» 41→<b>146</b> (баннер SessionStart
+этой самой сессии, 09.08). Разбора руками так и не было ни разу за 6 недель.</td>
+<td>Баннер SessionStart КАЖДОЙ сессии на Маяке (26.07 «122/3/41» → 02.08 «308/12/155» → 09.08 «412/22/217»);
 0 коммитов в <span class="tag">10-Tasks/</span> и 0 упоминаний declutter/backlog в истории с 26.07.</td>
-<td class="HIGH">HIGH (эскалация)</td>
-<td>Та же, что 26.07: <span class="tag">tasks_audit_ping.py</span> (cron, вс 04:00) считает P0/P1/протухшие/без-DoD,
-но только пингует цифры в 03 — решения не принимает. Дашборд <span class="tag">Task-Backlog.html</span> тоже
-только показывает. Разрыв РОС всю неделю без вмешательства — не самоисправляется.</td>
+<td class="HIGH">HIGH (эскалация 3×, заморожено стройкой)</td>
+<td><span class="tag">tasks_audit_ping.py</span> (cron, вс 04:00) считает P0/P1/протухшие/без-DoD, но только
+пингует цифры в 03 — решения не принимает. Дашборд <span class="tag">Task-Backlog.html</span> тоже только
+показывает. Разрыв растёт без вмешательства и без самоисправления; заморозка стройки не даёт закрыть его
+скиллом прямо сейчас — кандидат №1 на 20.08.</td>
 </tr>
 <tr>
-<td><b>Root-cause разбор инцидентов вокруг общей инфры</b> (canon-applier NOOP, deploy apply-gap, worktree
-внутри синкаемого волта) — прошлый прогон отметил 2 цикла подряд с угрозой эскалации на 3-м.</td>
-<td>С 26.07 новых incident-коммитов такого класса не найдено (0 совпадений canon-applier/apply-gap/incident
-в git log).</td>
-<td class="WATCH">WATCH (без изменений)</td>
-<td>Дисциплина в CLAUDE.md §5.2 + сторожа (onair_gc/revert-guard/bus-guard) ловят класс проблемы. Цикл прервался
-— скилл по-прежнему не строим.</td>
+<td><b>wake_listener (HP17) периодически «умирает» и перезапускается</b> — 6 диагностических сессий
+«робот сломан, не чини» за последние 48ч, все по одной и той же цели wake-listener /
+dead-scheduled-task.</td>
+<td>Кластер сессий 06-07.08 в проекте <span class="tag">-home-anton</span> с идентичным шаблоном улик
+(LastTaskResult 267009, лог рестартов listener на 127.0.0.1:8788).</td>
+<td class="WATCH">WATCH (не скилл-гэп)</td>
+<td>Диагностика уже полностью автоматизирована (evidence-only промпт, cross-machine). Это сигнал НАДЁЖНОСТИ
+самого wake_listener на HP17, а не отсутствующий скилл — не в периметре этого аудита, но стоит подсветить
+флоту отдельно: тот же симптом 6 раз за 2 суток похож на не долеченный корень.</td>
 </tr>
 </tbody>
 </table>
 
-<h2 style="font-size:16px;">Топ-кандидат: ДО → ПОСЛЕ (без изменений с 26.07, приоритет вырос)</h2>
+<h2 style="font-size:16px;">Топ-кандидат: ДО → ПОСЛЕ (без изменений с 26.07, приоритет продолжает расти)</h2>
 <div class="note">
 <b>Что:</b> skill <span class="tag">/task-declutter</span> — тонкая обёртка над уже готовым
-<span class="tag">audit-latest.json</span> (0 токенов на подсчёте).<br><br>
-<span class="before">ДО (сейчас, 02.08):</span> баннер SessionStart на Маяке — «308 несделанных, 12 P0, 155 P1
-… дольше всех без хода 29д … гниёт 41 … 94 без критерия «сделано»». За неделю с прошлого замера цифры выросли
-в 2.5-4 раза, реестра никто не касался.<br><br>
+<span class="tag">audit-latest.json</span> (0 токенов на подсчёте). Строить только после 20.08 (заморозка).<br><br>
+<span class="before">ДО (сейчас, 09.08):</span> баннер SessionStart на Маяке — «412 несделанных, 22 P0, 217 P1
+… дольше всех без хода 36д … гниёт 146 … 104 без критерия «сделано»». За 6 недель без вмешательства реестр
+вырос в 3.4× по общему счёту и в 7.3× по P0.<br><br>
 <span class="after">ПОСЛЕ:</span> одна команда → (1) читает <span class="tag">audit-latest.json</span>, группирует
 задачи по владельцу/возрасту/наличию критерия «сделано»; (2) для каждого кластера предлагает пакетное решение
 (kill / слить в родителя / понизить P0→P1 / дописать критерий) с 3-5 реальными заголовками как пример;
 (3) Антон жмёт «+» ПАКЕТОМ; (4) правит <span class="tag">10-Tasks/task-*.md</span>, перезапускает аудит,
 подтверждает новые счётчики.<br><br>
-<b>Делаем?</b> — решает Антон. Цена бездействия видна цифрами: без скилла реестр не разбирается сам, растёт.
+<b>Делаем?</b> — решает Антон, но не раньше снятия заморозки стройки (20.08). Цена бездействия видна цифрами:
+без скилла реестр не разбирается сам, растёт быстрее с каждым циклом.
 </div>
 
 <h2 style="font-size:16px;">Что уже здорово покрыто (без разрыва)</h2>
@@ -96,13 +110,14 @@ LOW-пункт «своя машина как равный пир» — повт
 <tr><th>Паттерн</th><th>Чем покрыт</th></tr>
 <tr><td>Структурный фолд CLAUDE.md при RED</td><td>skill <span class="tag">/canon-revision</span></td></tr>
 <tr><td>Раздача Deep Research по нескольким LLM</td><td>skill <span class="tag">/dr-fanout</span></td></tr>
-<tr><td>Чтение шины и обработка входящих (93% всех сессий Маяка)</td><td>cron <span class="tag">*/10 mayak_inbox_robot.sh</span> — авто</td></tr>
+<tr><td>Чтение шины и обработка входящих</td><td>cron <span class="tag">*/10 mayak_inbox_robot.sh</span> — авто</td></tr>
 <tr><td>Ночная уборка волта</td><td>cron <span class="tag">0 3 vault-janitor</span> — авто</td></tr>
 <tr><td>Еженедельный аудит разрывов скиллов (эта задача)</td><td>skill <span class="tag">/skill-gap</span></td></tr>
-<tr><td>Мост к внешнему advisor (Kirill-Simakov-A2A)</td><td>cron advisor-чат-робот — уже автоматизирован end-to-end</td></tr>
+<tr><td>Диагностика сломанной запланированной задачи (evidence-only, cross-machine)</td><td>готовый промпт-харнесс, уже работает — см. WATCH выше</td></tr>
 <tr><td>Флот-сторожа (peer-watch/heartbeat/ack/bus-guard/manifest/onair-gc)</td><td>W1a-слой, ARMED</td></tr>
 <tr><td>DR-отчёты → дистилляция в заметку, регистрация чата</td><td><span class="tag">mayak_dr_collect.sh</span> + <span class="tag">dr_registry.py</span></td></tr>
 <tr><td>Задачи-делегация Наталье/Руслане</td><td>skill <span class="tag">/task</span></td></tr>
+<tr><td>Ревизия ROADMAP/BACKLOG/repair-tax (08.08 живая сессия)</td><td>уже трекается memory <span class="tag">repair-tax-memo-pointer</span>, не новый разрыв</td></tr>
 </table>
 
 <div class="meta">Дашборд хаба (не трогать): Skill-Gap-Audit.html · этот файл — суффикс MAYAK, отдельная копия.</div>

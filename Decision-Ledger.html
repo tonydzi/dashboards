@@ -30,7 +30,7 @@ input.fix{font-size:18px;font-family:inherit;padding:6px;width:100%;margin-top:8
 .foot{margin-top:14px;border-top:3px solid #000;padding-top:8px;font-size:15px;color:#555}
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Задачи и планирование</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Day-Ledger.html">&larr; Day-Ledger</a> · <a href="Hanging-By-Owner-2026-08-04.html">Hanging-By-Owner-2026-08-04 &rarr;</a></span></div>
 <h1>🧠 Что я понял про твои решения</h1>
-<div class="stamp">собрано 03.08.2026 05:40 · ждут кивка: 83 (показываю 5) · подтверждено всего: 19 · отвергнуто: 0</div>
+<div class="stamp">собрано 10.08.2026 05:40 · ждут кивка: 90 (показываю 5) · подтверждено всего: 19 · отвергнуто: 0</div>
 <div class="legend">Это <b>догадки машины</b>, а не факты. Пока ты не кивнул — в двойника
 как факт они НЕ идут. Три кнопки, полминуты, и архив становится правдой.</div>
 
@@ -47,6 +47,20 @@ input.fix{font-size:18px;font-family:inherit;padding:6px;width:100%;margin-top:8
   </div>
   <input class="fix hidden" placeholder="как на самом деле?"
          oninput="note('5678',this.value)">
+</div>
+<div class="card major" data-id="10331">
+  <div><span class='badge'>🔴 крупное — предложу карточку решения</span> <span class='badge'>процесс</span> <span class='badge'>2026-08-04</span> <span class='badge'>уверен на 93%</span></div>
+  <div class="said">Я так понял: ты решил <b>строить дашборды по максимуму по умолчанию, отказ от дашборда объявляет Антон после наблюдения</b></div>
+  <div class='why'>…потому что <b>дашборды очень удобны и наглядны для принятия решений</b></div>
+  <div class="small">контекст: какой должен быть дефолт по дашбордам — строить всегда по максимуму или спрашивать/не строить без запроса</div>
+  <div class='small'>вместо: спрашивать или не строить без явного запроса</div>
+  <div class="btns">
+    <button class="b-yes" onclick="mark('10331','+')">✅ так и было</button>
+    <button class="b-no"  onclick="mark('10331','-')">❌ нет, не так</button>
+    <button class="b-fix" onclick="mark('10331','?')">✏️ поправить</button>
+  </div>
+  <input class="fix hidden" placeholder="как на самом деле?"
+         oninput="note('10331',this.value)">
 </div>
 <div class="card major" data-id="9842">
   <div><span class='badge'>🔴 крупное — предложу карточку решения</span> <span class='badge'>процесс</span> <span class='badge'>2026-07-29</span> <span class='badge'>уверен на 92%</span></div>
@@ -89,20 +103,6 @@ input.fix{font-size:18px;font-family:inherit;padding:6px;width:100%;margin-top:8
   </div>
   <input class="fix hidden" placeholder="как на самом деле?"
          oninput="note('5550',this.value)">
-</div>
-<div class="card major" data-id="1592">
-  <div><span class='badge'>🔴 крупное — предложу карточку решения</span> <span class='badge'>продукт</span> <span class='badge'>2026-06-08</span> <span class='badge'>уверен на 82%</span></div>
-  <div class="said">Я так понял: ты решил <b>выбрать Платформу + код вокруг</b></div>
-  <div class='why'>…но <b>почему</b> — в переписке не сказано, я не выдумываю.</div>
-  <div class="small">контекст: Выбор архитектуры CRM: строить с нуля или взять платформу + кастомный код вокруг</div>
-  <div class='small'>вместо: строить свою CRM с нуля</div>
-  <div class="btns">
-    <button class="b-yes" onclick="mark('1592','+')">✅ так и было</button>
-    <button class="b-no"  onclick="mark('1592','-')">❌ нет, не так</button>
-    <button class="b-fix" onclick="mark('1592','?')">✏️ поправить</button>
-  </div>
-  <input class="fix hidden" placeholder="как на самом деле?"
-         oninput="note('1592',this.value)">
 </div>
 
 <div id="bar">
