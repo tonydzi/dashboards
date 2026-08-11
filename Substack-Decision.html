@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Substack — решение за один экран · 10.08.2026</title>
+<style>
+  :root{
+    --bg:#0f1216; --card:#171b21; --line:#262c35; --tx:#e6e9ee; --dim:#98a2b3;
+    --ok:#3ecf8e; --warn:#e8b339; --bad:#e5484d; --acc:#6aa6ff;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f7f9; --card:#fff; --line:#e3e6ea; --tx:#14181d; --dim:#5b6572; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:28px 18px 60px;background:var(--bg);color:var(--tx);
+       font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1060px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px}
+  h2{font-size:16px;margin:0 0 12px;letter-spacing:.2px}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--dim);margin-left:8px;vertical-align:middle}
+  .t-stop{color:var(--bad);border-color:var(--bad)}
+  .t-wait{color:var(--warn);border-color:var(--warn)}
+  .t-ok{color:var(--ok);border-color:var(--ok)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+  tr:last-child td{border-bottom:0}
+  .scroll{overflow-x:auto}
+  ul{margin:6px 0 0;padding-left:20px} li{margin:5px 0}
+  .no li::marker{content:"⛔ "}
+  .big{font-size:22px;font-weight:700}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi .l{color:var(--dim);font-size:12px;margin-bottom:6px}
+  .q{background:linear-gradient(0deg,transparent,transparent);border-left:3px solid var(--acc);padding-left:14px;margin:10px 0;color:var(--tx)}
+  code{background:rgba(127,127,127,.15);padding:1px 6px;border-radius:5px;font-size:13px}
+  .foot{color:var(--dim);font-size:12px;margin-top:26px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Люди, привычки, быт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Pokupki-Dashboard.html">&larr; Pokupki-Dashboard</a> · <a href="System-Architecture-Map.html">System-Architecture-Map &rarr;</a></span></div><div class="wrap">
+
+<h1>Substack — решение за один экран</h1>
+<div class="sub">Сессия-исследование <code>auto-mac16-260810-substack-research</code> · 10.08.2026 · MacBook-Anton ·
+наружу не ушло ничего · <code>platform_rules.json</code> не тронут</div>
+
+<div class="grid" style="margin-bottom:16px">
+  <div class="kpi"><div class="l">Статус площадки</div><div class="big" style="color:var(--warn)">research</div><div class="l">снимается только твоим «+»</div></div>
+  <div class="kpi"><div class="l">Человек с FB</div><div class="big" style="color:var(--bad)">не опознан</div><div class="l">3 кандидата, имя не выдумываю</div></div>
+  <div class="kpi"><div class="l">Твоя гипотеза «дайджест тизеров»</div><div class="big" style="color:var(--bad)">не подтверждается</div><div class="l">1 рельса · 2-я в очереди</div></div>
+  <div class="kpi"><div class="l">Цена входа</div><div class="big">5,5–9 ч/нед</div><div class="l">нет часов → не начинаем</div></div>
+</div>
+
+<div class="card">
+  <h2>1. Человек с Facebook <span class="tag t-stop">блокер доказан</span></h2>
+  <p style="margin:0 0 10px">Архива Facebook Messenger в волте <b>нет вообще</b>: 6237 файлов в <code>01-Conversations/Facebook</code> — это только твои посты;
+  у импортёра <code>parse_facebook.py</code> ноль обработки <code>messages/inbox</code>; сырого экспорта с перепиской на диске нет.
+  Буквальное «посмотреть все диалоги» на этой машине невыполнимо.</p>
+  <div class="scroll"><table>
+    <tr><th>Кандидат</th><th>Улика ЗА</th><th>Чего не хватает</th></tr>
+    <tr><td><b>***hael **bus</b><br><span style="color:var(--dim)">Leeloo.ai · 545 DM</span></td>
+        <td>Единственный, кто <b>делал Messenger-воронки вместе с тобой</b>: «2018 MicroMoney messenger funnel», «2026-05 — в AI community broadcast list»</td>
+        <td>Ни следа Substack</td></tr>
+    <tr><td><b>*****sandr ****ilin</b><br><span style="color:var(--dim)">sasha.page</span></td>
+        <td>Лучший фит «сильно прокачал Substack»: годовые обзоры, пост «2024 in review: from 393 conversations»</td>
+        <td>Ни следа Messenger-рассылок</td></tr>
+    <tr><td><b>***ray ****ands</b><br><span style="color:var(--dim)">2479 DM</span></td>
+        <td>Свой Substack + мыслит списками: 2024 «Gathered their emails… subscribe them to your newsletter?»</td>
+        <td>Связь с Messenger не доказана</td></tr>
+  </table></div>
+  <p style="margin:12px 0 0;color:var(--dim)">Бонусом: <b>Roman Rusavsky</b> в комментах на твоей стене (04.08) дал живые Substack-адреса ниши —
+  <code>natesnewsletter</code>, <code>mvaleadvocate</code>, <code>theemergenceforum</code>. Готовая дверь, но это не он.</p>
+</div>
+
+<div class="card">
+  <h2>2. Гипотеза «раз в неделю — подборка тизеров» <span class="tag t-stop">возражаю</span></h2>
+  <ul>
+    <li>Разведка 01.08 прямо: подборка уже опубликованных ссылок «почти наверняка добавит редактору канал и не создаст актив». ⚠️ одна рельса — не консенсус, вторая (6 рельс) в очереди.</li>
+    <li>Читатель уже видел эти ссылки в FB/TG/X. Платим ему письмом за ноль новой пользы → отписка.</li>
+    <li>Растёт то, что можно процитировать целиком. Дайджест цитировать нечем.</li>
+    <li>Замер топлива (Mac16, <code>_drafts</code>, 05–10.08): 16 файлов = <b>5 сюжетов за 6 дней</b>, из них <b>1 тира longread</b> (остальное — те же сюжеты в вариантах под площадки/языки). Сюжетов хватает, материала уровня эссе — ~1 в неделю: ровно под гибрид и ровно против дайджеста, который пересобирал бы то, что подписчик уже видел у нас на этой неделе.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>3. Что предлагаю вместо <span class="tag t-wait">нужен твой «+»</span></h2>
+  <div class="scroll"><table>
+    <tr><th></th><th>Предложение</th></tr>
+    <tr><td><b>Формат</b></td><td>Гибрид: 1 оригинальная вещь 600–1000 слов (эксперимент / <b>отрицательный результат</b> / trade-off) + 2–3 аннотированных тизера по 100–200 слов + 1 измеримый CTA</td></tr>
+    <tr><td><b>Язык</b></td><td>EN, один выпуск — один язык. RU остаётся в TG/Habr</td></tr>
+    <tr><td><b>Частота</b></td><td>1×/нед, фиксированный день. Нет оригинального куска → выпуск <b>не выходит</b> (пропуск честнее пустого письма)</td></tr>
+    <tr><td><b>Чем кормим</b></td><td>Уже работающий конвейер: <code>_drafts</code> + факап/инсайт дня + dev-log'и GitHub. Оригинальный кусок = разбор одного факапа недели</td></tr>
+    <tr><td><b>Воронка</b></td><td>1) гостевые публикации в чужих AI-изданиях · 2) Notes 5–7/нед · 3) ссылка в 1-м комменте под постом → на <b>конкретный выпуск</b> · 4) Recommendations · 5) Messenger только адресно 1:1</td></tr>
+    <tr><td><b>Суд</b></td><td>8 выпусков: ≥100 подписчиков · ≥50% целевых · ≥3% human CTR · ≥8 ответов/интро · ≥25% из внутренних поверхностей · ≤6–8 ч на выпуск. Мерим клики/ответы, <b>не open rate</b></td></tr>
+  </table></div>
+</div>
+
+<div class="card">
+  <h2>4. Чего НЕ делаем</h2>
+  <ul class="no">
+    <li>Не публикуем лонгрид целиком: <code>rel=canonical</code> для Google — подсказка, а не директива; Substack-копия может увести GEO у нашего же GitHub</li>
+    <li>Не делаем дайджест ссылок основным форматом</li>
+    <li>Не шлём массовые рассылки из твоего личного Messenger — твой FB-аккаунт несёт всю контент-полосу, размен плохой</li>
+    <li>Не мешаем RU и EN в одном списке</li>
+    <li>Не считаем FB/TG-аудиторию базой: followers ≠ email</li>
+    <li>Не вешаем Substack ещё одним зеркалом каскада</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>5. Три строки от тебя — и поехали</h2>
+  <div class="q"><b>1.</b> Имя того чувака с FB — или «забей, ищи без него».</div>
+  <div class="q"><b>2.</b> «+» на формат из §3 — или «нет, хочу именно дайджест, возражения услышал».</div>
+  <div class="q"><b>3.</b> Кто пишет оригинальный кусок и откуда 5,5–9 ч/нед.</div>
+  <p style="margin:12px 0 0;color:var(--dim)">Только после (2) <code>substack</code> в матрице становится <code>active</code> с <code>allowed_tiers: ["medium","longread"]</code>.</p>
+</div>
+
+<div class="foot">
+Источники: голосовая 31.07 (whisper-сырьё) · DR26-08-01-MACANTON-02-727 <span style="color:var(--warn)">[single-vendor]</span> ·
+DR26-08-10-MACANTON-04-2247 (в очереди, 6 рельс) · карточки людей 07-People · замер <code>content-factory/_drafts</code> 11.07–10.08.
+Полный текст: <code>02-Decisions/decision-2026-08-10-substack-format-i-voronka.md</code>
+</div>
+
+</div></body></html>
