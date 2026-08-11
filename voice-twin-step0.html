@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VOICE-TWIN шаг 0 — есть ли у Антона почерк</title>
+<style>
+  :root{--bg:#0f1115;--card:#171a21;--line:#262b36;--tx:#e7e9ee;--dim:#98a0b0;--ok:#57c98a;--warn:#e5b45b;--bad:#e5705b;--acc:#6fa8ff}
+  @media (prefers-color-scheme: light){:root{--bg:#f6f7f9;--card:#fff;--line:#e2e5ea;--tx:#161a20;--dim:#5c6472}}
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--tx);font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  h1{font-size:23px;margin:0 0 4px} h2{font-size:17px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .card b{display:block;font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+  .big{font-size:20px;font-weight:600}
+  .wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+  .bar{height:8px;border-radius:4px;background:rgba(127,127,127,.2);position:relative;min-width:110px}
+  .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+  .eli{background:var(--card);border-left:3px solid var(--acc);border-radius:8px;padding:14px 16px;margin-top:28px}
+  code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-size:12.5px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Люди, привычки, быт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="_Life-OS.html">&larr; _Life-OS</a></span></div>
+
+<h1>Шаг 0: у Антона есть почерк — но их два</h1>
+<div class="sub">06.08.2026 · корпус 6.6 МБ / 994 169 слов / ~2.0–2.8 млн токенов · классификатор на 2259 его текстах против 1305 чужих (21 автор) · денег потрачено 0</div>
+
+<div class="grid">
+  <div class="card"><b>Гейт почерка</b><span class="big ok">пройден</span><br>узнаётся даже без тем: AUC 0.917</div>
+  <div class="card"><b>Корпус на самом деле</b><span class="big">994 тыс. слов</span><br>6.6 МБ, не 100–200 МБ</div>
+  <div class="card"><b>Токенов</b><span class="big">2.0–2.8 млн</span><br>против 25–50 млн в расчёте ДР</div>
+  <div class="card"><b>Новое</b><span class="big warn">дрейф голоса</span><br>тексты 2026 узнаются в 45% против 94% в 2023</div>
+</div>
+
+<h2>Главный вопрос: он узнаётся по манере или по темам?</h2>
+<p style="font-size:13.5px;color:var(--dim);margin:0 0 12px">Это была ловушка №1 всего проекта. Если классификатор ловит Антона только по словам «блокчейн» и «фандрейз» — мы обучим модель его темам, а не голосу. Поэтому каждый прогон сделан трижды: на обычном тексте, с замаскированными содержательными словами, и вообще на одних служебных словах.</p>
+<div class="wrap"><table>
+<tr><th>Проверка</th><th>Обычный текст</th><th>Темы замаскированы</th><th>Только служебные слова</th><th>Что доказывает</th></tr>
+<tr><td>5-fold кросс-валидация</td><td>0.952</td><td><b class="ok">0.917</b></td><td>0.828</td><td>маскировка почти не роняет — почерк не в темах</td></tr>
+<tr><td>Чужие авторы, невиданные при обучении</td><td>0.917</td><td><b class="ok">0.884</b></td><td>0.764</td><td>не выучили конкретных людей</td></tr>
+<tr><td>Длина текстов выровнена</td><td>—</td><td><b class="ok">0.917</b></td><td>0.825</td><td>дело не в том, что он пишет длиннее</td></tr>
+<tr><td>Только эпоха 2025–2026, обе стороны</td><td>0.870</td><td><b class="ok">0.870</b></td><td>0.781</td><td>и сегодняшний Антон отличим от чужих</td></tr>
+<tr><td><b>Контроль: метки перемешаны</b></td><td>—</td><td><b>0.480</b></td><td>—</td><td class="ok">прибор честный, монетка = монетка</td></tr>
+</table></div>
+<p style="font-size:13.5px;color:var(--dim);margin-top:8px">Цифры — AUC. Даже по одним служебным словам (предлоги, союзы, пунктуация, ритм) Антон узнаётся в 0.83 — это и есть идиолект в чистом виде, без единого содержательного слова.</p>
+
+<h2>Неожиданное: голос дрейфует, и сильно</h2>
+<div class="wrap"><table>
+<tr><th>Год</th><th>Документов</th><th>Узнаётся (маскированный)</th><th></th></tr>
+<tr><td>2017</td><td>223</td><td class="ok">0.951</td><td><div class="bar"><i style="width:95%"></i></div></td></tr>
+<tr><td>2018</td><td>322</td><td class="ok">0.922</td><td><div class="bar"><i style="width:92%"></i></div></td></tr>
+<tr><td>2020</td><td>243</td><td class="ok">0.885</td><td><div class="bar"><i style="width:89%"></i></div></td></tr>
+<tr><td><b>2023</b> — целевой голос</td><td>209</td><td class="ok"><b>0.943</b></td><td><div class="bar"><i style="width:94%"></i></div></td></tr>
+<tr><td>2024</td><td>239</td><td class="ok">0.929</td><td><div class="bar"><i style="width:93%"></i></div></td></tr>
+<tr><td>2025</td><td>369</td><td class="warn">0.650</td><td><div class="bar"><i style="width:65%;background:#e5b45b"></i></div></td></tr>
+<tr><td><b>2026</b></td><td>104</td><td class="bad">0.452</td><td><div class="bar"><i style="width:45%;background:#e5705b"></i></div></td></tr>
+</table></div>
+
+<div class="card" style="margin-top:14px">
+<b>Почему это не «модель просто не видела свежего»</b>
+Специально прогнали контроль, где свежие тексты <b>тоже были в обучении</b> — узнаваемость всё равно 0.496. То есть свежие тексты объективно меньше похожи на прежнего Антона.<br><br>
+При этом отдельный прогон «только 2025–2026, обе стороны» даёт 0.870. Значит сегодняшний голос <b>узнаваем сам по себе</b> — он просто <b>другой</b>. Стилистически 2023 и 2026 — два разных автора.
+</div>
+
+<h2>Две версии, что это значит — и они требуют разных действий</h2>
+<div class="grid">
+  <div class="card"><b>Версия 1 · корпус загрязнён</b>Часть текстов 2025–2026, помеченных как «его», на самом деле написана ассистентами или мной и попала в корпус как его. Тогда мы чуть не обучили модель на роботе — и это же объясняет исходную боль «посты звучат не нативно».<br><br><span class="warn">Проверка: взять 30 «его» документов 2026 и посмотреть провенанс глазами.</span></div>
+  <div class="card"><b>Версия 2 · стиль реально изменился</b>За три года он стал писать иначе: другой формат, другие площадки, больше делового и меньше личного.<br><br><span class="warn">Тогда решение за Антоном: воспроизводим голос 2023 (как он просил) или сегодняшний.</span></div>
+</div>
+
+<h2>Что есть в корпусе</h2>
+<div class="wrap"><table>
+<tr><th>Слой</th><th>Источник</th><th>Документов</th><th>Слов</th></tr>
+<tr><td rowspan="4"><b>A</b> написанное<br>766 773 слова</td><td>Facebook</td><td>5533</td><td>484 026</td></tr>
+<tr><td>Apple Notes</td><td>550</td><td>225 097</td></tr>
+<tr><td>Telegram</td><td>307</td><td>25 982</td></tr>
+<tr><td>заметки волта + прочее</td><td>542</td><td>31 668</td></tr>
+<tr><td><b>B</b> устное<br>227 396 слов</td><td>Telegram (наговоренное)</td><td>3157</td><td>227 396</td></tr>
+<tr><td colspan="2"><b>ВСЕГО A+B</b></td><td><b>10 089</b></td><td><b>994 169</b></td></tr>
+</table></div>
+<p style="font-size:13.5px;color:var(--dim);margin-top:8px">В токенах: 2.02 млн по многоязычному токенизатору, 2.76 млн по токенизатору GPT-класса. Расчёт ДР строился на 25–50 млн — мы на порядок ниже, и это меняет и метод, и вопрос об аренде GPU.</p>
+
+<h2>Что дальше</h2>
+<div class="wrap"><table>
+<tr><th>#</th><th>Действие</th><th>Зачем</th><th>Цена</th></tr>
+<tr><td>1</td><td><b>Разобрать дрейф 2025–2026</b>: провенанс 30 свежих «его» документов вручную</td><td>решает, какой корпус берём и не учим ли мы модель на роботе</td><td>$0, вечер</td></tr>
+<tr><td>2</td><td><b>Догнать RAG-пол</b> — скрипт написан, но не прогнан</td><td>второй гейт: если RAG уже проходит, обучение не нужно</td><td>$0</td></tr>
+<tr><td>3</td><td><b>Добить ответ хаба</b> про GPU (заказ ушёл, ответа нет)</td><td>без него не знаем, нужна ли аренда за $200–400</td><td>$0</td></tr>
+<tr><td>4</td><td>Пилот: Qwen3-base 8B, QLoRA r64 на подкорпусе целевой эпохи</td><td>первый настоящий замер сдвига</td><td>$0, карта хаба</td></tr>
+<tr><td>5</td><td>Полный проход — только если пилот сказал «нужно»</td><td>—</td><td>$20–400</td></tr>
+</table></div>
+
+<div class="eli">
+<b>🧒 Простыми словами</b><br>
+Мы проверяли главное: узнаёшь ли ты себя по манере писать, а не по любимым темам. Взяли твои 2259 текстов и 1305 чужих от 21 человека, и специально <b>вычеркнули все содержательные слова</b> — оставили только предлоги, союзы, запятые и ритм. Машина всё равно узнаёт тебя в девяти случаях из десяти. Значит почерк у тебя настоящий, и учить модель есть чему.<br><br>
+Но всплыло странное. Твои тексты 2017–2024 годов машина узнаёт почти всегда, а тексты 2026 года — меньше чем в половине случаев. Мы отдельно проверили, что дело не в незнакомстве: даже когда свежие тексты показывали машине заранее, она их всё равно плохо признавала твоими. Получается, сегодняшний ты пишешь <b>не как ты трёхлетней давности</b>.<br><br>
+Тут два объяснения, и надо выбрать. Либо часть свежих «твоих» текстов в архиве на самом деле написали роботы и подписали тобой — и тогда хорошо, что мы это поймали до обучения, иначе выучили бы робота. Либо ты правда стал писать иначе — и тогда решай ты: делаем голос 2023 года, как ты просил, или сегодняшний.<br><br>
+Денег пока потрачено ноль. Твои $200–400 по-прежнему лежат нетронутыми.
+</div>
+
+</body>
+</html>
