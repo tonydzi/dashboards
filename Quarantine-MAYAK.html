@@ -179,14 +179,6 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/deploy-bus-rebase-20260806/install.py&quot;</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">bus-both-rails-down-honest-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Шина: когда падают ОБЕ рельсы, сигнал больше не обещает &#x27;still delivered on the surviving rail&#x27; -- пишет прямо, что не доставлено никому. Плюс песочница _test_ack_race создаёт свой busdir (bus_send намеренно не пишет в несуществующий -- из-за этого TEST2b краснел на исправном движке)</div>
-  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:39 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
-  
-  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-bus_send.py&#x27;),os.path.join(s,&#x27;bus_send.py&#x27;));shutil.copy(os.path.join(t,&#x27;DEPLOY-_test_ack_race.py&#x27;),os.path.join(s,&#x27;_test_ack_race.py&#x27;))&quot;</code></div>
-  
-</div><div class="card trusted">
   <div class="top"><span class="id">opencode-backup-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">Backup coding door: install OpenCode (subscription oauth login, not an API key). Canary A-2022BAYAREA GREEN 2026-08-06: live run gpt-5.6-sol passed. Per-node login = device-flow, recipe in 02-Decisions/decision-2026-08-05-coding-rails-codex-utilization.md section 7</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:52 · <span class="ok">подпись ✓</span></div>
@@ -234,7 +226,15 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import io,os,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/repair_session.py&#x27;);s=io.open(p,encoding=&#x27;utf-8&#x27;).read();sys.exit(0 if &#x27;any(k in flat for k in keys)&#x27; in s else 1)&quot;</code></div>
   
-</div><h2>📦 Уже применённые <span class="cnt">125</span></h2><div class="card trusted">
+</div><div class="card trusted">
+  <div class="top"><span class="id">deploy-open-count-260810</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Прибор: реально открытые посылки = PENDING минус DONE минус NOTFORME</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-10 11:19 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_deploy_open_count.py</code></div>
+  
+</div><h2>📦 Уже применённые <span class="cnt">126</span></h2><div class="card trusted">
   <div class="top"><span class="id">engine-visibility-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">consensus.py ENGINE-VISIBILITY (консенсус #94389335, tier-1, accepts FLEET-ANCHOR+MacBook-Anton, committed хабом 20.07). (1) провал подписи -&gt; строка в stderr + счётчик sigfail-&lt;MACHINE&gt;.json (dark mode СОХРАНЁН, леджер не падает); (2) CLI-гигиена: -h/--help голым и после любого verb, propose отказывает subject на &#x27;-&#x27; (инцидент #4b814fec). Сторож _shared/consensus_config_guard.py CLASS C читает счётчик и алармит на РОСТ -- едет сам синком _shared.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-20 20:53 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1009,6 +1009,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-selflaunch.py&#x27;),os.path.expanduser(&#x27;~/.claude/scripts/selflaunch.py&#x27;))&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">bus-both-rails-down-honest-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Шина: когда падают ОБЕ рельсы, сигнал больше не обещает &#x27;still delivered on the surviving rail&#x27; -- пишет прямо, что не доставлено никому. Плюс песочница _test_ack_race создаёт свой busdir (bus_send намеренно не пишет в несуществующий -- из-за этого TEST2b краснел на исправном движке)</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:39 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-bus_send.py&#x27;),os.path.join(s,&#x27;bus_send.py&#x27;));shutil.copy(os.path.join(t,&#x27;DEPLOY-_test_ack_race.py&#x27;),os.path.join(s,&#x27;_test_ack_race.py&#x27;))&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">llm-ask-rails-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
