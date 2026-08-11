@@ -1,0 +1,101 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="DR-Delivery-Sessions.html">&larr; DR-Delivery-Sessions</a> · <a href="Embed-Bakeoff-Sessions.html">Embed-Bakeoff-Sessions &rarr;</a></span></div><!doctype html><html lang="ru"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Deploy-бэклог MacBook-Anton — разбор 11.08.2026</title><style>
+:root{--bg:#0f1115;--card:#171a21;--fg:#e8eaed;--dim:#9aa0a6;--line:#2a2f3a;--acc:#5b9dd9;
+--ok:#3fa45b;--warn:#d99a2b;--bad:#d95b5b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;padding:20px}
+.w{max-width:1180px;margin:0 auto}h1{font-size:24px;margin:0 0 4px}
+h2{font-size:18px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.sub{color:var(--dim);margin-bottom:18px;font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#1e2330;color:var(--dim);font-weight:600}
+.scroll{overflow-x:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:18px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:center}
+.kpi .n{font-size:34px;font-weight:700;line-height:1.1}
+.kpi .l{color:var(--dim);font-size:13px;margin-top:4px}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+code{background:#12151b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:12.5px}
+.tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:12px;white-space:nowrap}
+.t-ok{background:#123020;color:#6fd58e}.t-no{background:#2a2f3a;color:#9aa0a6}
+.t-bad{background:#3a1a1a;color:#f08a8a}
+small{color:var(--dim)}
+</style><div class="w">
+
+<h1>Deploy-бэклог узла MacBook-Anton (Mac16)</h1>
+<div class="sub">Разбор 11.08.2026, автопрогон <code>auto-mac16-260811-deploy-backlog-sweep</code>. Посылки лежали с 01–09.08. Каждое «применено» доказано машинным verify с кодом 0 — не словами.</div>
+
+<div class="grid">
+  <div class="kpi"><div class="n ok">10</div><div class="l">применено<br><small>verify exit 0 + DONE-маркер</small></div></div>
+  <div class="kpi"><div class="n">10</div><div class="l">не для этого узла<br><small>2 свои + 8 из sweep</small></div></div>
+  <div class="kpi"><div class="n bad">4</div><div class="l">сломано<br><small>в Breakage-Journal, apply не регистрирую</small></div></div>
+  <div class="kpi"><div class="n ok">0</div><div class="l">в карантине<br><small>Tier-2 не трогал</small></div></div>
+</div>
+
+<h2>Применено — 10 посылок</h2>
+<div class="card scroll"><table>
+<tr><th>посылка</th><th>что теперь работает на узле</th><th>доказательство</th></tr>
+<tr><td><code>session-reaper-260805</code></td><td>жнец зависших сессий, расписание стоит</td><td>verify: «расписание стоит, свежая запись в логе»</td></tr>
+<tr><td><code>no-silent-wait-gate-20260805</code></td><td>Stop-гейт: сессия не заканчивает ход вопросом в пустоту</td><td>verify: <code>no_silent_wait</code> в <code>hooks.Stop</code></td></tr>
+<tr><td><code>ask-once-wiring-2producers-20260806</code></td><td>дедуп асков у <code>canon_apply</code> и <code>publish_canon</code></td><td>ALL PASS, fail-open проверен</td></tr>
+<tr><td><code>deploy-gate-selftests-20260806</code></td><td>ворота авто-применения чинят fail-closed; реестр узлов обновлён</td><td>28 PASS / 0 FAIL + ALL PASS</td></tr>
+<tr><td><code>apply-verify-status-split-20260806b</code></td><td>статусы посылок applied (доказано) vs claimed (заявлено)</td><td>9 файлов, md5 совпали</td></tr>
+<tr><td><code>public-tg-post-gate-20260806u</code></td><td>две двери на публичные TG-отправки (MCP + shell)</td><td>10 + 32 проверки зелёные</td></tr>
+<tr><td><code>git-identity-tonydzi-20260806</code></td><td>коммиты линкуются к аккаунту после переименования в tonydzi</td><td><code>194927794+tonydzi@users.noreply.github.com</code></td></tr>
+<tr><td><code>orphan-engines-unix-20260806</code></td><td>детектор невызываемых движков + хозяин, cron 04:10</td><td>«cron-строка на месте»</td></tr>
+<tr><td><code>codex-cap-handoff-20260809</code></td><td>кап зеркала 48КиБ, AGENTS.md v4.19.0, рельса хэндоффа</td><td>VERIFY OK</td></tr>
+<tr><td><code>task-surface-freshness-260805</code></td><td>дайджест задач на старте: живой счёт, возраст кэша вслух</td><td>маркеры <code>_frontmatter/_age_lbl/unreadable</code> на месте</td></tr>
+</table>
+<p><small>Плюс <code>opencode-backup-rail-20260806</code>: резервная кодовая дверь поставлена, <code>opencode 1.18.16</code> отвечает (вошла в те же 10).</small></p>
+</div>
+
+<h2>Сломано — 4 посылки, apply НЕ зарегистрирован</h2>
+<div class="card scroll"><table>
+<tr><th>посылка</th><th>что не так</th><th>чей ход</th></tr>
+<tr><td><code>hooks-payload-20260806</code></td>
+<td>apply/verify в манифесте — обфусцированные <code>chr()</code>-пустышки: apply печатает «1», verify ищет файл с именем <code>b</code>. Настоящий груз я поставил руками: 7/7 файлов, <code>--check</code> exit 0.</td>
+<td>хаб: перевыпустить посылку с настоящими командами</td></tr>
+<tr><td><code>radical-order-gate-20260806</code></td>
+<td>apply не везёт файл — хука <code>radical_order_gate.py</code> нет ни на узле, ни на всей шине. <b>Дверь правила §3.3-бис на Mac16 отсутствует.</b></td>
+<td>хаб: посылка с самим хуком</td></tr>
+<tr><td><code>deploy-bus-rebase-20260806</code></td>
+<td>суть уже в локальном <code>deploy_lib</code>; красный только гейт-тест: ждёт <code>python</code>, а движок на macOS нормализует в <code>python3</code>; плюс двойной слэш <code>//var/…</code>, когда шина вне волта. Тест писали на Windows.</td>
+<td>хаб: тест под обе ОС</td></tr>
+<tr><td><code>dash-home-clean-20260806</code></td>
+<td>предмет ВЫПОЛНЕН (<code>stray_dirs: []</code>). Красный только из-за маркера «ДАШБОРДЫ ЖИВУТ НА GITHUB PAGES», которого в CLAUDE.md v4.23 нет — §2.4 говорит <code>_Dashboards</code>. Вечно красный сторож (§5.5).</td>
+<td>Антон/хаб: строка в канон ИЛИ маркер привести к §2.4</td></tr>
+</table></div>
+
+<h2>Две находки сверх задачи</h2>
+<div class="card">
+<p><b class="bad">A. Установщик молча откатил файл на 5 дней назад.</b> <code>deploy-bus-rebase/install.py</code> перезаписал локальный <code>deploy_lib.py</code> своей старой копией от 06.08 — вместе со статус-сплитом applied/claimed — и отчитался «установлен». Поймал по diff бэкапа, откатил в том же заходе; сверху встала канон-версия из посылки статус-сплита. Класс: <i>package-install-reverts-newer-local-file</i>.<br>
+<small>Проверьте у себя: <code>md5 deploy_lib.py</code> должен быть <code>06c5e2b9947bfb8dfd4d7bc8095649f3</code>.</small></p>
+<p><b class="warn">B. Аски всё ещё едут в приватный 121, а не в 03.</b> Починка <code>fix-121-to-03-20260805</code> применена только на хабе. У Mac16, Маяка и мака Русланы <code>approval_clock.py</code> одинаков (md5 <code>ffa0a11c</code>) и держит <code>CHAT_121 = -1003795877912</code> живым в 4 местах. Сам не правлю: общая исходящая инфра на 3 узла разом = §7.7 координация и канарейка. Заказ хабу: посылка-груз вместо прозаического apply.</p>
+</div>
+
+<h2>Не для этого узла — 10, с причиной</h2>
+<div class="card scroll"><table>
+<tr><th>посылка</th><th>причина</th></tr>
+<tr><td><code>_portability-selftest-bypass</code></td><td>тест-фикстура: payload <code>%USERPROFILE%\x.py</code> не существует, путь виндовый</td></tr>
+<tr><td><code>run-hidden-guard-20260806</code></td><td>verify сам отвечает «не Windows — обёртки тут не живут, пропуск» (exit 2)</td></tr>
+<tr><td><code>claude-desktop-watchdog-260811</code> + <code>v2</code></td><td>powershell + schtasks; Mac-двойника (launchd) в посылке нет</td></tr>
+<tr><td><code>signalmap-drift-gate-260811</code></td><td>apply = <code>install.ps1</code>; предмет кроссплатформенный, установщика для Unix нет</td></tr>
+<tr><td><code>orphan-engines-win-20260806</code></td><td>на узле применена unix-версия</td></tr>
+<tr><td><code>windowless-20260806</code></td><td>на macOS чёрных cmd-окон не существует</td></tr>
+<tr><td><code>claude-md-daily-20260806b</code> + <code>-win</code></td><td>§10.0: писатель CLAUDE.md — только ночной оптимизатор Маяка</td></tr>
+<tr><td><code>apply-verify-status-split-20260806</code></td><td>дубль: применён вариант <code>-20260806b</code></td></tr>
+</table></div>
+
+<h2>Хозяйство</h2>
+<div class="card">
+<p>Расколотую копию манифеста (sync-conflict от 05.08) слил: в ней была ровно одна лишняя запись, уже применённая. Файл ушёл в <code>_archive-conflicts</code>, предупреждение из <code>deploy_check</code> исчезло.</p>
+<p>Карантин: 0 удержанных. В файле 5 записей, все с решением — 3 released ранее, 2 discarded сегодня (обе выше в таблице «не для этого узла»).</p>
+<p class="warn">Красный гейт мимо задачи: <code>CLAUDE.md</code> = 124 442 б при красной черте 120 000. Это работа ночного оптимизатора Маяка (§10.0), рядовой сессией не трогаю — но черта перейдена, и сама собой она не вернётся.</p>
+</div>
+
+<p><small>Отчёт ушёл в 03 обоими рельсами (syncthing OK + tg-03 OK). Строки по 4 сломанным и по находкам A/B — в <code>00-System/Breakage-Journal.md</code> за 11.08.</small></p>
+</div>
+</html>
