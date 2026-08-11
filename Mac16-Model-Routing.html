@@ -1,0 +1,74 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Five-Whys-x-TRIZ.html">&larr; Five-Whys-x-TRIZ</a> · <a href="NotPeople-Pitch-Drafts.md">NotPeople-Pitch-Drafts &rarr;</a></span></div><!doctype html>
+<meta charset="utf-8">
+<title>Mac16 — какая рутина на какой модели</title>
+<style>
+ body{font:15px/1.5 -apple-system,Segoe UI,sans-serif;margin:24px;max-width:1180px;color:#1a1a1a;background:#fbfbfa}
+ h1{font-size:22px;margin:0 0 4px} h2{font-size:17px;margin:26px 0 8px}
+ .sub{color:#666;font-size:13px;margin-bottom:18px}
+ table{border-collapse:collapse;width:100%;font-size:14px;background:#fff}
+ th,td{border:1px solid #e2e2df;padding:7px 9px;text-align:left;vertical-align:top}
+ th{background:#f2f2ef;font-weight:600}
+ .s{background:#e8f5e9;font-weight:600} .o{background:#fff3e0;font-weight:600}
+ .f{background:#ede7f6;font-weight:600} .z{background:#eceff1;font-weight:600}
+ .ok{color:#2e7d32} .warn{color:#c62828;font-weight:600}
+ .box{background:#fff;border:1px solid #e2e2df;padding:12px 14px;margin:10px 0}
+ code{background:#f4f4f2;padding:1px 4px;font-size:13px}
+ .legend span{display:inline-block;padding:3px 8px;margin-right:6px;font-size:13px}
+</style>
+<h1>Mac16 — какая рутина на какой модели</h1>
+<div class="sub">MacBook-Anton · 10.08.2026 · канон: reglament-rutiny-sotrudnikov-tolko-sonnet-i-otsenka-tokenov (приказ 07.08) + CLAUDE.md §6.2</div>
+
+<div class="legend">
+<span class="z">0 токенов</span><span class="s">Sonnet — грунт</span><span class="o">Opus — суждение/люди</span><span class="f">Fable — только живые сессии</span>
+</div>
+
+<div class="box">
+<b>Главный факт замера:</b> из 48 launchd-агентов и 9 cron-строк LLM жгут <b>всего 3</b>.
+Основной расход — не они, а <b>12 включённых scheduled-задач приложения</b>: они идут на модели сессии (Opus 5),
+и у <code>create_scheduled_task</code> <b>нет параметра model</b> — понизить задачу до Sonnet «на месте» нельзя,
+только перенести её в launchd-обёртку с <code>--model sonnet</code>.
+</div>
+
+<h2>1. Launchd / cron — 3 LLM-рутины из 57</h2>
+<table>
+<tr><th>Рутина</th><th>Что делает</th><th>Было</th><th>Стало / предложение</th><th>Почему</th></tr>
+<tr><td>inbox-robot</td><td>шина: 95% тиков 0-LLM precheck</td><td class="s">sonnet</td><td class="s">sonnet</td><td class="ok">уже по канону, эталон</td></tr>
+<tr><td>alpha-drain-weekly</td><td>выбрать 1 пункт бэклога по гейту, пометить, строка в 03</td><td class="o">без флага → Opus</td><td class="s">sonnet ✅ применено</td><td>отбор по правилу, авторского текста нет</td></tr>
+<tr><td>engineer-outreach (daily)</td><td>пишет живым инженерам голосом Антона</td><td class="o">opus</td><td class="o">оставить Opus</td><td class="warn">Sonnet для авторского текста запрещён §6.2/§9.4 — понижать НЕЛЬЗЯ</td></tr>
+<tr><td>прочие 45 launchd + 9 cron</td><td>python/скрипты: sync, сторожа, дашборды, регресс</td><td class="z">0 токенов</td><td class="z">0 токенов</td><td class="ok">идеал по части 1 правила</td></tr>
+</table>
+
+<h2>2. Scheduled-задачи приложения — 12 включённых, все на Opus</h2>
+<table>
+<tr><th>Задача</th><th>Темп</th><th>Тип работы</th><th>Куда</th><th>Как</th></tr>
+<tr><td>dr-runner-daily</td><td><b>каждый час (24/сут)</b></td><td>механика (dispatch/collect) + суждение (закрыть долг ДР)</td><td class="s">разделить: механика → Sonnet</td><td>механический тик в launchd <code>--model sonnet</code>; суждение о applied/parked — 1 видимая Opus-сессия в сутки</td></tr>
+<tr><td>workflow-harvest-sweep</td><td>ночь</td><td>сгрести находки субагентов в волт</td><td class="s">Sonnet</td><td>перенести в launchd-обёртку</td></tr>
+<tr><td>git-s2 release-radar</td><td>день</td><td>скан релизов, ранжирование</td><td class="s">Sonnet</td><td>перенести в launchd-обёртку</td></tr>
+<tr><td>git-s4 pretakeoff-radar</td><td>вт/чт</td><td>скан репо 10-300★</td><td class="s">Sonnet</td><td>перенести в launchd-обёртку</td></tr>
+<tr><td>git-s3 docs-fix-lane</td><td>пн/ср/пт</td><td>текст PR наружу</td><td class="o">Opus</td><td>оставить</td></tr>
+<tr><td>git-s5 that-guy</td><td>день</td><td>ответы живым людям в issues</td><td class="o">Opus</td><td>оставить</td></tr>
+<tr><td>git-s7 deep-lane</td><td>день</td><td>код в целевом репо</td><td class="o">Opus</td><td>оставить</td></tr>
+<tr><td>git-s8 issues-research</td><td>вт/пт</td><td>репро + root-cause</td><td class="o">Opus</td><td>оставить</td></tr>
+<tr><td>git-s9 review-lane</td><td>день</td><td>ревью чужих PR</td><td class="o">Opus</td><td>оставить</td></tr>
+<tr><td>git-s23 cold-pr-wave</td><td>пн</td><td>PR в вендорские репо</td><td class="o">Opus</td><td>оставить</td></tr>
+<tr><td>git-s24 content-bridge</td><td>день</td><td>посты dev.to/X — авторский голос</td><td class="o">Opus (не Sonnet)</td><td class="warn">голос; Fable в рутины канон не ставит</td></tr>
+<tr><td>advisor-outreach-daily</td><td>день</td><td>5 персональных инвайтов живым людям</td><td class="o">Opus</td><td>оставить</td></tr>
+</table>
+
+<h2>3. Fable</h2>
+<div class="box">
+В рутинах Mac16 — <b>ноль</b>. §6.2 прямо: «Fable в рутины НЕ ставим». Fable остаётся там, где он и был:
+живые сессии — мышление, стратегия, Decision Memo, авторский голос Антона (ФА, посты, лонгриды).
+Вилка на решение Антона: тексты, которые рутина пишет его голосом (engineer-outreach, git-s24) —
+оставить как есть на Opus, или рутина готовит только черновик, а голосовой проход делает живая Fable-сессия.
+</div>
+
+<h2>4. Что мешает выполнить часть 1 правила (оценка токенов)</h2>
+<div class="box">
+<code>token_audit.py</code> сегодня печатает «спенда по сервисам нет (0 сессий за день)» при 12 включённых задачах
+и часовом dr-runner. Это 🤔 не доказательство нулевого расхода, а вероятная слепота прибора: посчитать цену
+рутины ДО запуска нечем. Пока прибор не чинится, оценка токенов на этом узле — заявление, а не замер.
+<br><br>
+Побочная находка: 9 из 12 git-задач последний раз отработали 04-05.08 — <b>5 дней назад</b> при дневном cron.
+Либо приложение было закрыто, либо они падают. Это отдельная поломка, не про модели.
+</div>

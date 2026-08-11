@@ -1,0 +1,99 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Задачи и планирование</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Away-Mode-Checklist.html">&larr; Away-Mode-Checklist</a> · <a href="Chat03-Razbor-2026-07-08.html">Chat03-Razbor-2026-07-08 &rarr;</a></span></div><meta charset=utf-8><title>Букинг-контроль звонков</title>
+<style>
+body{font:14px -apple-system,Segoe UI,sans-serif;margin:24px;background:#fafafa;color:#222}
+h1{font-size:21px;margin-bottom:2px}h2{font-size:15px;margin:26px 0 8px}
+.s{font-size:11px;color:#777}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.c{border-left:4px solid;background:#fff;padding:10px 14px;border-radius:6px;min-width:150px}
+.c b{display:block;font-size:12px}.c span{font-size:26px;font-weight:700}
+.c em{display:block;font-size:11px;color:#666;font-style:normal}
+table{border-collapse:collapse;width:100%;background:#fff}
+td,th{border-bottom:1px solid #eee;padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#f4f4f4;font-size:12px}
+.t{font-size:12px;color:#555}.mono{font:11px ui-monospace,Consolas,monospace;color:#666}
+.ok{color:#1e8449;font-weight:600}.warn{color:#d68910;font-weight:600}.bad{color:#c0392b;font-weight:600}
+.n{font-size:12px;color:#777;margin-top:18px;line-height:1.55}
+.draft{background:#f4f8ff;border-left:3px solid #4a7ec7;padding:6px 9px;border-radius:4px;
+ font-size:12px;color:#234;margin-top:4px;white-space:pre-wrap}
+</style>
+
+<h1>Букинг-контроль: кто забукал, кто нет, кого предупредили</h1>
+<div class=s>источник истины: Calendly API (meetings-list_events + invitees) · снимок 2026-08-10 18:45 UTC ·
+хаб A-2022BAYAREA · приказ Антона голосом hub:5225</div>
+
+<div class=row>
+<div class=c style="border-color:#1e8449"><b style="color:#1e8449">Забукано вперёд</b><span>3</span><em>11.08 ×2, 12.08 ×1</em></div>
+<div class=c style="border-color:#4a7ec7"><b style="color:#4a7ec7">Напоминания взведены</b><span>2</span><em>отложенными в Telegram</em></div>
+<div class=c style="border-color:#d68910"><b style="color:#d68910">Нужны руки Антона</b><span>3</span><em>платная личка · прошедший звонок · неясный no-show</em></div>
+<div class=c style="border-color:#c0392b"><b style="color:#c0392b">Броней не было в CRM</b><span>4</span><em>нашлись только сейчас</em></div>
+<div class=c style="border-color:#7f8c8d"><b style="color:#7f8c8d">Ссылка протухла</b><span>2</span><em>69 дней — НЕ пингуем</em></div>
+</div>
+
+<h2>1. Ближайшие звонки — предупреждён ли лид</h2>
+<table>
+<tr><th>когда (Лиссабон)</th><th>его время</th><th>кто</th><th>напоминание</th><th>чем доказано</th></tr>
+
+<tr><td><b>вт 11.08 11:00</b><div class=s>10:00 UTC</div></td>
+<td>13:00 Стамбул</td>
+<td><b>**fak ***ran</b> @*****kayran<div class=s>тему задал сам: демо CRM, потом его идеи</div></td>
+<td><span class=ok>✅ взведено</span><div class=s>TG отложенное #2 → 11.08 09:00 UTC (за час)</div>
+<div class=draft>mycroft here, as promised. one hour out: 13:00 istanbul, google meet link is in your calendly mail. anton's on it — see you there.</div></td>
+<td class=mono>calendly 6769be28<br>забукал сам 09.08 11:55 UTC</td></tr>
+
+<tr><td><b>вт 11.08 19:30</b><div class=s>18:30 UTC</div></td>
+<td>14:30 Нью-Йорк</td>
+<td><b>Stas</b> @*****hegaev<div class=s>аккаунт t0x0aa, не tonyssd</div></td>
+<td><span class=ok>✅ взведено</span><div class=s>TG отложенное #1 → 11.08 17:30 UTC (за час)</div>
+<div class=draft>привет, это майкрофт, синтетический кофаундер антона — тот, кто у него за календарь отвечает. через час созвон: 14:30 по твоему времени, ссылка на meet в письме от calendly. антон на месте.</div></td>
+<td class=mono>calendly 05458f83<br>забукал сам 07.08 15:48 UTC</td></tr>
+
+<tr><td><b>ср 12.08 20:00</b><div class=s>19:00 UTC</div></td>
+<td>15:00 Нью-Йорк</td>
+<td><b>Micah Wallace</b> @*****tly007<div class=s>ATeamDAO / LPanda</div></td>
+<td><span class=bad>⛔ не взведено — нужно твоё слово</span>
+<div class=s>его личка берёт 10 звёзд за сообщение: автонапоминание = трата денег, сам не шлю (Tier-2)</div></td>
+<td class=mono>calendly 6f04ff04<br>забукал сам сегодня 15:10 UTC</td></tr>
+</table>
+
+<h2>2. Что труба вскрыла в первый прогон</h2>
+<table>
+<tr><th>находка</th><th>что это значит</th></tr>
+<tr><td class=bad>4 брони, которых не было в CRM</td>
+<td>Safak, Stas (×2), Kirill забукали сами — карточек не существовало. Карточка Micah стояла на
+ИЮНЬСКОЙ дате, хотя он перебукался сегодня. То есть «забукал ли он» действительно решалось
+на глаз, и глаз промахнулся 4 раза из 5.</td></tr>
+<tr><td class=warn>Kirill @**snp (monosnap.ai) — звонок был сегодня 19:30</td>
+<td>Нашёлся уже ПОСЛЕ времени звонка. Напоминать нечего; если звонок состоялся — сегодня же
+follow-up (<code>/fa</code>), это правило §9.5, а не опция.</td></tr>
+<tr><td class=warn>Stas: вторая бронь на сегодня 11:30, переподтверждение не нажато</td>
+<td>Calendly просил его переподтвердить, он не переподтвердил. Состоялся тот звонок или это был
+no-show — по данным не видно. Вопрос к тебе.</td></tr>
+<tr><td class=warn>Micah 28.07 дважды спросил «когда встретимся?»</td>
+<td>Мяч был у нас <b>13 дней</b>, он в итоге забукался сам. Это не про напоминания, это про долг ответа.</td></tr>
+<tr><td>Jul1us и Deepak: ссылка выдана 69 дней назад, брони нет</td>
+<td>По твоему же двухшаговому правилу пинг «ты забукал?» тут <b>запрещён</b> — нужен новый повод,
+а не напоминание. Труба их показывает, но черновик не даёт.</td></tr>
+</table>
+
+<h2>3. Как это устроено (чтобы чинить самому)</h2>
+<table>
+<tr><th>шаг</th><th>чем делается</th></tr>
+<tr><td>увидеть брони</td><td>Calendly MCP → снимок <span class=mono>_imports\crm-engine\reports\calendly-bookings.json</span>.
+Телеграм-хендл лид пишет САМ в форме брони → связка с CRM точная, не по имени встречи.</td></tr>
+<tr><td>кто в окне 24ч/1ч</td><td><span class=mono>call_reminders.py --calendly &lt;снимок&gt;</span> — печатает текст ЛИДУ
+в его поясе и на его языке. Ничего не отправляет.</td></tr>
+<tr><td>забукал или нет</td><td><span class=mono>call_reminders.py unbooked --calendly &lt;снимок&gt;</span> — четыре корзины:
+забукал ✅ / ссылка свежая, брони нет ❓ / ссылка старше 7 дней 🚫 / забукал, а карточки нет 🆕.</td></tr>
+<tr><td>кто это дёргает</td><td>Ежедневная рутина <span class=mono>inbound-triage-daily</span>, шаг 6. Раньше там висел
+костыль под одного Safak — заменён общей трубой.</td></tr>
+<tr><td>чем звонит будильник</td><td>Отложенным сообщением самого Telegram. Отдельного робота нет: таймер — телеграм,
+очередь видна и правится руками в приложении. <b>Встреча отменилась → отложенное надо снять.</b></td></tr>
+</table>
+
+<p class=n>
+Пинг тому, кто сам забукал у нас, — тёплое касание, шлём сами. Деньги (платная личка), массовая
+рассылка, обязательства — к тебе. Скрипт не ходит в сеть: старый снимок — это НЕ доказательство,
+что звонков нет, поэтому его дата печатается в шапке каждого отчёта.<br>
+Паспорт движка: <span class=mono>~\.claude\scripts\docs\call-reminders.md</span> ·
+задача: <span class=mono>10-Tasks\task-2026-08-10-booking-control-pipeline.md</span>
+</p>
