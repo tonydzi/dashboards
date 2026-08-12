@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Акселераторы и упаковка — решение 11.08.2026</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#171a21; --line:#262b36; --tx:#e6e9ef; --dim:#98a2b3;
+    --ok:#3fb950; --warn:#d29922; --bad:#f85149; --acc:#58a6ff;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f7f9; --card:#fff; --line:#e3e6ea; --tx:#1a1d23; --dim:#5b6473;
+           --ok:#1a7f37; --warn:#9a6700; --bad:#cf222e; --acc:#0969da; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--tx);
+       font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:22px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .card h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin:0 0 10px;font-weight:600}
+  .big{font-size:19px;font-weight:650;line-height:1.3}
+  .big small{display:block;font-size:13px;font-weight:400;color:var(--dim);margin-top:6px}
+  .no{color:var(--bad)} .yes{color:var(--ok)} .mid{color:var(--warn)}
+  .countdown{font-size:38px;font-weight:700;color:var(--warn);line-height:1}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  td.date{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+  a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+  .pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+  .p-go{background:rgba(63,185,80,.15);color:var(--ok)}
+  .p-wait{background:rgba(210,153,34,.15);color:var(--warn)}
+  .p-stop{background:rgba(248,81,73,.15);color:var(--bad)}
+  h3{font-size:15px;margin:26px 0 10px}
+  ul{margin:0;padding-left:20px} li{margin-bottom:7px}
+  .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--warn);
+        border-radius:8px;padding:14px 16px;font-size:13.5px;color:var(--dim);margin-top:22px}
+  .note b{color:var(--tx)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Люди, привычки, быт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Agent-Teams-When.html">Agent-Teams-When &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>Акселераторы и упаковка под фандрейзинг</h1>
+<div class="sub">Решение от 11.08.2026 · источник: DR26-08-10-HUB-02-1538 + DR26-08-10-HUB-03-1538 · кворум 3 из 6 рельс</div>
+
+<div class="grid">
+  <div class="card">
+    <h2>Продукт для заявок</h2>
+    <div class="big yes">Безопасность агентов<small><code>agent-leash</code> = компания. Оркестрация = доказательство. Второй мозг = внутренний dogfood</small></div>
+  </div>
+  <div class="card">
+    <h2>Упаковка</h2>
+    <div class="big no">Не крипто<small>Чистая AI-инфра / safety лаба. Platinum называем вслух как operator track record. Токена нет и не планируется</small></div>
+  </div>
+  <div class="card">
+    <h2>Продаём ли долю сейчас</h2>
+    <div class="big no">Нет<small>Сначала 0-equity стек. Акселератор за 5-10% — только после развилки «компания или acqui-hire»</small></div>
+  </div>
+  <div class="card">
+    <h2>До ближайшего дедлайна</h2>
+    <div class="countdown">17 дней</div>
+    <small style="color:var(--dim)">Google Gemini Startup Forum — 28 августа 2026</small>
+  </div>
+</div>
+
+<h3>Порядок подачи</h3>
+<div class="scroll">
+<table>
+<thead><tr>
+  <th>#</th><th>Программа</th><th>Дедлайн</th><th>Цена</th><th>Что даёт</th><th>Почему эта</th><th>Статус</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><a href="https://startup.google.com/programs/gemini-startup-forum/global/">Google Gemini Startup Forum</a></td>
+  <td class="date">28.08.2026</td><td>0%</td>
+  <td>2 дня с DeepMind и Cloud, прямой product feedback</td>
+  <td>В прошлый набор взяли AG2ai (OSS-оркестрация агентов), Veris AI (безопасность агентов), AFFiNE — это почти мы</td>
+  <td><span class="pill p-go">подаём</span></td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><a href="https://www.zfellows.com/">Z Fellows</a></td>
+  <td class="date">rolling</td><td>$10K можно не брать</td>
+  <td>Неделя + пожизненная сеть Кремниевой долины</td>
+  <td>Компания не обязательна, работу бросать не надо. Стоит одного вечера, downside почти нет</td>
+  <td><span class="pill p-go">подаём</span></td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><a href="https://nlnet.nl/funding.html">NLnet</a></td>
+  <td class="date">03.09 → 03.11</td><td>0%</td>
+  <td>€5–50K грант, без размытия</td>
+  <td>Берут <b>проект</b>, а не компанию — юрлицо не нужно. Подаём agent-leash как vendor-neutral permission layer</td>
+  <td><span class="pill p-go">готовим</span></td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><a href="https://mach37.com/pages/apply">MACH37</a></td>
+  <td class="date">rolling</td><td>5%</td>
+  <td>90 дней, отраслевые клиенты и security-сеть</td>
+  <td>Точнейший отраслевой fit. Но сумму инвестиции публично не раскрывают — подписывать только после письменного ответа</td>
+  <td><span class="pill p-wait">подаём, не подписываем</span></td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><a href="https://learn.microsoft.com/en-us/azure/signups/startup-help">Microsoft for Startups</a> + <a href="https://www.nvidia.com/en-us/startups/">NVIDIA Inception</a></td>
+  <td class="date">rolling</td><td>0%</td>
+  <td>До $150K Azure + GPU-доступ, badge, VC-интро</td>
+  <td>Практически нулевая цена. Оба требуют юрлицо — блокер ниже</td>
+  <td><span class="pill p-wait">после юрлица</span></td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><a href="https://unicornfactorylisboa.com/for-founders/early-stage/">Unicorn Factory Lisboa</a></td>
+  <td class="date">конец августа</td><td>€120 + €90/мес</td>
+  <td>190 менторов, 150 VC, португальская сеть</td>
+  <td>Дёшево, локальный логотип и статус incubated startup по месту жительства</td>
+  <td><span class="pill p-go">подаём</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>Куда не идём и почему</h3>
+<div class="scroll">
+<table>
+<thead><tr><th>Программа</th><th>Цена</th><th>Причина отказа</th></tr></thead>
+<tbody>
+<tr><td>Alchemist</td><td>~5%</td><td>Чистыми выходит около $30K после вычета tuition. Цена не окупается</td></tr>
+<tr><td>500 Global</td><td>6% за $150K</td><td>Экономика хуже YC при более слабом AI-бренде</td></tr>
+<tr><td>Antler</td><td>9–12% после резиденции</td><td>Их модель — собрать команду с нуля. У нас команда есть, флот работает</td></tr>
+<tr><td>HF0</td><td>~5%</td><td>Берут repeat technical founders. Для нетехнического фаундера — жёсткое нет</td></tr>
+<tr><td>Entrepreneur First</td><td>~8%</td><td>Программа про «найди сооснователя». Нам это не нужно</td></tr>
+<tr><td>Y Combinator</td><td>7% + full-time SF</td><td>Не «нет», а «не сейчас»: имеет смысл только если решаем строить независимую компанию на годы, а не целиться в acqui-hire</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Что мешает прямо сейчас</h3>
+<div class="grid">
+  <div class="card">
+    <h2>Блокер 1 — нет юрлица</h2>
+    <div>Закрывает NVIDIA Inception, Microsoft for Startups, EIC. NVIDIA вдобавок <b>явно исключает</b> компании, связанные с криптовалютой — это прямо стыкуется с решением про упаковку.</div>
+    <div style="margin-top:8px"><span class="pill p-stop">решает Антон (Tier-2)</span></div>
+  </div>
+  <div class="card">
+    <h2>Блокер 2 — нет видимого технического лида</h2>
+    <div>Обе рельсы независимо: главный дисконт — <b>не крипто-прошлое</b>, а отсутствие человека, который лицом отвечает за архитектуру и проходит техническое интервью. Текстом не лечится.</div>
+    <div style="margin-top:8px"><span class="pill p-wait">открыто</span></div>
+  </div>
+  <div class="card">
+    <h2>Блокер 3 — репо читаются как эксперименты</h2>
+    <div>Семь репозиториев без метрик использования выглядят набором проб. Нужны три core-репо, adoption-цифры и воспроизводимые бенчмарки.</div>
+    <div style="margin-top:8px"><span class="pill p-wait">открыто</span></div>
+  </div>
+</div>
+
+<h3>Новая первая строка дека и сайта</h3>
+<div class="card">
+  <div style="font-size:17px;font-weight:600;margin-bottom:10px">Open-source control, permissions and memory for autonomous AI agents — proven in a live six-machine fleet.</div>
+  <div style="color:var(--dim);font-size:13.5px">Под ней: три core-репозитория (не семь) · четыре проверяемых proof point с прямыми ссылками · точная строка про Platinum · <code>Equity-funded. No token planned.</code> · кто отвечает за техническую архитектуру · что покупает раунд на 18 месяцев.</div>
+</div>
+
+<div class="note">
+<b>Насколько этому верить.</b> Кворум не набран: ответили <b>3 рельсы из 6</b> при пороге 4.
+Пришли ChatGPT/Codex (80 источников), Grok (63) и GLM. Gemini упал по таймауту 480 секунд, его
+веб-поиск возвращал сырой HTML. claude.ai и Mistral не отработали, причина не установлена.
+Три пришедшие рельсы сошлись по всем ключевым выводам независимо друг от друга — это усиливает
+доверие, но совпадение не доказывает независимость, поэтому вердикт ⚠️, а не ✅.
+Ни одна рельса не проверяла наши собственные цифры (7 репозиториев, 169K аудитории, arXiv, выручка) —
+для инвестора каждая обязана идти с прямым доказательством.
+</div>
+
+<div class="sub" style="margin-top:20px">
+Разбор целиком: <code>02-Decisions\decision-2026-08-11-accelerators-and-fundraise-packaging.md</code> ·
+задача: <code>10-Tasks\task-2026-08-10-accelerator-applications-watch.md</code>
+</div>
+
+</div>
+</body>
+</html>
