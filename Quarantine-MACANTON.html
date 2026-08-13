@@ -82,7 +82,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python &quot;$MACHINE_BUS_DIR/_transit/run-hidden-guard-20260806/install_run_hidden_guard.py&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-11 11:57</div>
-</div><h2>📦 Уже применённые <span class="cnt">163</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">165</span></h2><div class="card trusted">
   <div class="top"><span class="id">canon-gate-0716</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">canon_write_gate.py roaming-leader canon gate</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-16 18:10 · <span class="ok">подпись ✓</span></div>
@@ -1385,6 +1385,22 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 -c &quot;import os,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/repair_session.py&#x27;);s=open(p,encoding=&#x27;utf-8&#x27;).read();sys.exit(0 if &#x27;ROOT-FIX 11.08&#x27; in s else 1)&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">repair-info-fix-260812</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">repair_session.py: info без инициализации валил collect_evidence на не-Windows узлах (UnboundLocalError, замер Маяк 12.08) — хирургический idempotent-патч</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-12 20:41 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py repair-info-fix-260812 &amp;&amp; python3 ~/.claude/scripts/patch_repair_info.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">approval-cap5-backpressure-20260812</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">approval.py: кап 5 открытых асков + класс E мимо капа + авто-экспайр 14д (Антон: «+ кап 5»)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-12 21:54 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py approval-cap5-backpressure-20260812</code></div>
   
 </div>
 </div></body></html>
