@@ -1,5 +1,3 @@
-[все дашборды](index.html) · категория: Флот и узлы · [← Mission-Pulse-2026-08-10](Mission-Pulse-2026-08-10.md) · [OpenClaw-Parity-Roadmap →](OpenClaw-Parity-Roadmap.html)
-
 ---
 title: "Досье Mission-Pulse: три последних отчёта, что из них реально сработало, и три опции по судьбе рутины"
 date: 2026-08-12
