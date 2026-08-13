@@ -1,104 +1,81 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Что на стороне Наташи — 13.08.2026</title>
+<title>Задачи Наташи по статусам — 13.08.2026</title>
 <style>
-:root{--bg:#0f1216;--card:#171c22;--line:#232a33;--tx:#e7ecf2;--dim:#95a2b3;--red:#ff6b6b;--amb:#ffc857;--grn:#5ad19a;--blu:#6fb3ff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 "Segoe UI",system-ui,sans-serif;padding:24px}
-h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:28px 0 10px;color:var(--blu)}
+:root{--bg:#0f1216;--card:#171c22;--line:#232a33;--tx:#e7ecf2;--dim:#95a2b3;--red:#ff6b6b;--amb:#ffc857;--grn:#5ad19a;--blu:#6fb3ff;--vio:#b18cff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 "Segoe UI",system-ui,sans-serif;padding:24px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:30px 0 10px;color:var(--blu)}
 .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-bottom:8px}
-.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
-.kpi .n{font-size:26px;font-weight:600}.kpi .l{color:var(--dim);font-size:12px;margin-top:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:6px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px}
+.kpi .n{font-size:25px;font-weight:600}.kpi .l{color:var(--dim);font-size:12px;margin-top:2px}
 table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
 th{color:var(--dim);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
 tr:last-child td{border-bottom:none}
-.t{display:inline-block;padding:1px 7px;border-radius:20px;font-size:11px;white-space:nowrap}
-.t.red{background:rgba(255,107,107,.15);color:var(--red)}.t.amb{background:rgba(255,200,87,.15);color:var(--amb)}
-.t.grn{background:rgba(90,209,154,.15);color:var(--grn)}.t.blu{background:rgba(111,179,255,.15);color:var(--blu)}
+.s{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11px;white-space:nowrap;font-weight:600}
+.s.wait{background:rgba(255,107,107,.15);color:var(--red)}
+.s.work{background:rgba(255,200,87,.15);color:var(--amb)}
+.s.done{background:rgba(90,209,154,.15);color:var(--grn)}
+.s.block{background:rgba(177,140,255,.15);color:var(--vio)}
+.s.none{background:rgba(149,162,179,.15);color:var(--dim)}
 .wrap{overflow-x:auto}small{color:var(--dim)}
-.note{background:var(--card);border-left:3px solid var(--amb);padding:10px 13px;border-radius:6px;margin:10px 0;font-size:13px}
+.note{background:var(--card);border-left:3px solid var(--amb);padding:10px 13px;border-radius:6px;margin:12px 0;font-size:13px}
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Natasha-Open-Tasks-2026-08-12.html">&larr; Natasha-Open-Tasks-2026-08-12</a> · <a href="Natasha-Tasks-2026-07-30.html">Natasha-Tasks-2026-07-30 &rarr;</a></span></div>
 
-<h1>Что сейчас на твоей стороне — четверг 13.08.2026, 09:30</h1>
-<div class="sub">Сверка чатов 02 · 03 · 121 · 00 с тем, что уже сделано. Читано живьём: 121 и 00 до сообщения 12.08 18:08, 02 до 13.08 04:25, шина 03 до 09:17.
-⚠️ MCP телеграма на этом ноуте не отвечает (3 вызова по 300 с без ответа) — читала телетон-рельсой @***ySsd напрямую.</div>
+<h1>Задачи Наташи по статусам — четверг 13.08.2026, 17:40</h1>
+<div class="sub">Чаты 121 · 03 · 02 прочитаны живьём через MCP. Статусы проставлены по фактам переписки и состоянию файлов, а не по памяти.
+Легенда: <span class="s wait">ЖДЁТ ТЕБЯ</span> <span class="s work">В РАБОТЕ</span> <span class="s done">ЗАКРЫТО</span> <span class="s block">ЗАБЛОКИРОВАНО</span> <span class="s none">НЕ НАЧАТО</span></div>
 
 <div class="grid">
-  <div class="kpi"><div class="n" style="color:var(--red)">5</div><div class="l">решений ждут ТЕБЯ (не робота)<br><small>+ 7 комментов на Хабре без ответа</small></div></div>
-  <div class="kpi"><div class="n" style="color:var(--amb)">3</div><div class="l">приказа Антона без следа выполнения<br><small>хабр закрыт: статья и логины были в 121</small></div></div>
-  <div class="kpi"><div class="n">41</div><div class="l">публикаций руками в очереди<br><small>Medium 30 · X 8 · Threads 3</small></div></div>
-  <div class="kpi"><div class="n" style="color:var(--red)">24</div><div class="l">долга чтения в шине<br><small>старейшему 65 ч — это моя сторона</small></div></div>
+  <div class="kpi"><div class="n" style="color:var(--red)">6</div><div class="l">ждут именно тебя</div></div>
+  <div class="kpi"><div class="n" style="color:var(--amb)">3</div><div class="l">в работе</div></div>
+  <div class="kpi"><div class="n" style="color:var(--grn)">4</div><div class="l">закрыто за сутки</div></div>
+  <div class="kpi"><div class="n" style="color:var(--dim)">3</div><div class="l">не начато</div></div>
+  <div class="kpi"><div class="n" style="color:var(--vio)">2</div><div class="l">заблокировано не тобой</div></div>
 </div>
 
-<h2>🔴 Сегодня, с датой</h2>
+<h2>🔥 Сегодняшнее, прилетело в 121 пока ты работала</h2>
 <div class="wrap"><table>
-<tr><th>что</th><th>откуда</th><th>статус</th></tr>
-<tr><td><b>Звонок с Ярославом</b></td><td>121, твоё сообщение Антону 12.08 04:43</td><td><span class="t red">сегодня</span></td></tr>
-<tr><td><b>GitHub-2FA на аккаунте Palo-Alto-AI-Research-Lab</b> — дедлайн самого GitHub</td><td>задача task-2026-08-03, владелец Антон</td><td><span class="t red">дедлайн сегодня</span> кнопка физическая</td></tr>
-<tr><td><b>7 комментариев под статьёй на Хабре</b> — статья набрала 7.4K просмотров за двое суток. Правило Антона «ни один комментарий без ответа» писалось про фейсбук; твоё решение 11.08 закрывало телеграм. Хабр не назван ни там, ни там</td><td>habr.com/p/1069456, проверено живьём 13.08</td><td><span class="t amb">твоё слово: отвечаем?</span></td></tr>
-<tr><td><b>Окно сессии на этом ноуте висит 5 часов</b> — ждёт твоего разрешения на инструмент (create_scheduled_task), тема «дип ресёрчи по статье на Хабре»</td><td>02, 8 напоминаний подряд</td><td><span class="t red">один клик</span></td></tr>
+<tr><th>задача</th><th>время</th><th>статус</th><th>что известно</th></tr>
+<tr><td><b>Retro-сессии на Fable, режим high</b> — 20-30 сессий сегодня и столько же завтра, свежие первыми, старые в отдельную очередь. Цель прямая: <b>выжечь Fable-лимиты на обеих подписках</b>. Текст для вставки в сессии Антон дал дословно</td><td>16:50</td><td><span class="s wait">ЖДЁТ ТЕБЯ</span></td><td>помечено «срочная задача для Русланы и Наташи», делать сегодня. Не начато</td></tr>
+<tr><td><b>Найти ещё 2-3 сейлзов/стендисток</b>, прямо сейчас нужен ещё один человек. Славу уже наняли</td><td>15:46</td><td><span class="s work">В РАБОТЕ</span></td><td>ты ответила «да - продолжаем искать ассистентов» в 15:47</td></tr>
+</table></div>
+<div class="note">⚠️ <b>Имена аккаунтов в расшифровке искажены</b>, как обычно: whisper выдал «zitkovsky.k», «zetkovsky.com», «detkovskaya.a». По нашему словарю это <code>*******vskiy.a@gmail.com</code> и <code>*******vskiy.a2@gmail.com</code>; обе расшифровки сходятся, что деление между тобой и Русланой идёт по <b>.a / .a2</b>. Кто в каком — подтверди сама, робота тут слушать нельзя.</div>
+
+<h2>📋 121 — задачи Антона тебе, вчера и раньше</h2>
+<div class="wrap"><table>
+<tr><th>задача</th><th>когда</th><th>статус</th><th>чем доказано</th></tr>
+<tr><td>Опубликовать Хабр + отдать логины аккаунта</td><td>12.08</td><td><span class="s done">ЗАКРЫТО</span></td><td>статья вышла 11.08 20:32 (7.4K просмотров), логины отданы 12.08 14:32</td></tr>
+<tr><td>«Шикарный пост. <b>Это робот сделал или ты?</b>»</td><td>12.08 13:12</td><td><span class="s wait">ЖДЁТ ТЕБЯ</span></td><td>его прямой вопрос, ответа в чате нет вторые сутки</td></tr>
+<tr><td>Постинг в FB только через AnyDesk с его компа. <b>Threads и X — так же</b></td><td>12.08</td><td><span class="s done">ЗАКРЫТО</span></td><td>твой вопрос про Threads/X он закрыл реплаем «Да. Ближайшие месяц два»</td></tr>
+<tr><td>Прикрепить чаты ClawRus и ClawEng к каналам как обсуждения + прислать скриншоты</td><td>12.08 10:48</td><td><span class="s none">НЕ НАЧАТО</span></td><td>спорит с твоим решением 11.08 «RU-обсуждения не включаем». Решение за тобой, я не трогала</td></tr>
+<tr><td>Перепроверить, что лички в телеге отправлены всем лидам</td><td>11.08</td><td><span class="s work">В РАБОТЕ</span></td><td>ты писала «написала пятерым» и «в лички всем сейчас пишу»; сводки «кому да, кому нет» нет</td></tr>
+<tr><td>Возобновить рассылку + реестр наших групп</td><td>11.08</td><td><span class="s none">НЕ НАЧАТО</span></td><td>ты спросила «рассылку на какую тему?» — он не ответил</td></tr>
+<tr><td>Купить реддит-аккаунты + ДР в GLM «где купить реддиты»</td><td>11.08</td><td><span class="s block">ЗАБЛОКИРОВАНО</span></td><td>Reddit стоит ⛔ в матрице (аккаунт забанен), а ДР по рынку аккаунтов уже есть — DR26-07-21, статус parked</td></tr>
+<tr><td>Правило «советчика публично благодарим с разбором пользы» — в Библию</td><td>12.08 13:12</td><td><span class="s done">ЗАКРЫТО</span></td><td>скилл <code>/alpha-credit</code> собран 07.08 и делает ровно это. Можно просто сказать ему, что готово</td></tr>
+<tr><td>Всегда давать ссылку на GitHub, где лежит польза</td><td>11.08 «ВСЕГДА!!!»</td><td><span class="s work">В РАБОТЕ</span></td><td>у Threads хвост уже фиксирован (FB + GitHub), машинная истина в <code>targets.json</code>; на остальные площадки не раскатано</td></tr>
 </table></div>
 
-<h2>🟡 Приказы Антона, следа выполнения не нашла</h2>
+<h2>🤖 03 — что требует твоего решения</h2>
 <div class="wrap"><table>
-<tr><th>приказ</th><th>когда</th><th>что вижу</th></tr>
-<tr><td><b>«Опубликуй хабр»</b> + прислал доступы, потом «Жду хабр»</td><td>121, 12.08 13:16 → 14:06</td><td><span class="t grn">ЗАКРЫТО</span> статья вышла ещё 11.08 20:32 (msg 1059), а в 14:32 ты отдала ему кабинет и логин аккаунта (msg 1077). Проверено живьём: «Как я проверил, что мой флот ИИ-агентов правда автономный», автор Antondz, <b>7.4K просмотров, 7 комментариев</b></td></tr>
-<tr><td><b>Прикрепить чаты ClawRus и ClawEng к каналам как обсуждения + прислать скриншоты</b></td><td>121, 12.08 10:48</td><td>⚠️ спорит с твоим же решением 11.08 «не включать RU-обсуждения в телеграме». Решать тебе, я не трогала</td></tr>
-<tr><td><b>Постинг в FB — только с домашнего компа Антона через AnyDesk</b></td><td>121, 12.08 10:50</td><td>принято к сведению. ⚠️ две расшифровки одного голосового спорят про IP (португальский vs китайский) — суть одна: постить с его машины</td></tr>
-<tr><td><b>Перепроверить, что лички в телеге отправлены всем лидам</b></td><td>121, 11.08 14:58</td><td>ты писала 11.08 «в лички всем сейчас пишу» и «написала пятерым». Полной сверки «кому отправлено / кому нет» нигде нет</td></tr>
-<tr><td><b>Возобновить рассылку + реестр наших групп</b></td><td>121, 11.08 15:09</td><td>ты ответила «сейчас рассылаются тизеры» — вопрос темы рассылки Антон не закрыл</td></tr>
-<tr><td><b>Купить реддит-аккаунты + ДР в GLM «где купить реддиты»</b></td><td>121, 11.08 15:09</td><td>ДР по рынку покупных аккаунтов уже есть — DR26-07-21-ZB-01, статус <i>parked</i>. Reddit при этом стоит ⛔ в матрице площадок (аккаунт Антона забанен). Прежде чем покупать — стоит спросить его, зачем именно</td></tr>
+<tr><th>что</th><th>статус</th><th>детали</th></tr>
+<tr><td><b>Пять черновиков удержаны</b>, отпущено ноль</td><td><span class="s wait">ЖДЁТ ТЕБЯ</span></td><td>все завернул slop_gate: <code>post-260805-first-pull-requests</code> (длина), <code>teaser-voice-budapest-architecture</code> (недобор), три файла <code>git-s24/x-posts-en</code>. Дословно: «таймер НЕ отпустит сам: нужен человек либо гейт»</td></tr>
+<tr><td><b>Три твои сессии ждут ответа</b>, старейшей 9 дней</td><td><span class="s wait">ЖДЁТ ТЕБЯ</span></td><td>«давай организуем постинг substack» (9 дн) · «посмотри задачу из чата 00» (1 дн) · сессия про каналы и чаты ждёт разрешения на инструмент. Табло: <code>_Dashboards\Waiting-Sessions-NAT.html</code></td></tr>
+<tr><td><b>Orphan Engines Daily</b> — выключена 06.08, в возврат 10.08 не попала</td><td><span class="s wait">ЖДЁТ ТЕБЯ</span></td><td>вернуть с починкой запуска или списать окончательно. Вписана в реестр как ⚠️ ЖДЁТ ВЕРДИКТА</td></tr>
+<tr><td>voice-dispatcher встал на сутки</td><td><span class="s done">ЗАКРЫТО</span></td><td>ожил сам: в 14:05 разобрал 7 заметок (🔧5/📝5)</td></tr>
+<tr><td>Хаб: Claude Desktop в петле перезапусков, краны 81/91 красные</td><td><span class="s block">ЗАБЛОКИРОВАНО</span></td><td>«needs a human» — руки Антона на его машине. Отсюда же 4 крана молчат 69-101 ч</td></tr>
 </table></div>
 
-<h2>❓ Твои вопросы Антону, оставшиеся без ответа</h2>
+<h2>🔧 Мой узел — что я закрыла сегодня</h2>
 <div class="wrap"><table>
-<tr><th>вопрос</th><th>когда</th></tr>
-<tr><td><s>«Тредс постить тоже через энидеск? А твиттер?»</s> — <b>ОТВЕЧЕНО, я вчера проглядела</b>: msg 1070 «Да. Ближайшие месяц два» стоит реплаем именно на этот вопрос. Значит и Threads, и X идут через AnyDesk с его домашнего компа, срок он назвал сам</td><td>121, 12.08 13:10</td></tr>
-<tr><td>«Шикарный пост. <b>Это робот сделал или ты?</b>» — его вопрос про твой FB-пост от 12.08, ответа в чате нет</td><td>121, 12.08 13:12</td></tr>
-<tr><td>«Павел Онлимонстрс — это для тебя вип-лид?» (ты написала ему в @****ansky, ждёшь его ответ)</td><td>121, 12.08 18:08</td></tr>
+<tr><th>что было сломано</th><th>чем доказано, что починено</th></tr>
+<tr><td>ACK-полоса стояла 12 часов, узел не мог сказать «принял» — отсюда тревоги «машина Natalia МОЛЧИТ» в личку Антона</td><td>лог тикнул сам по расписанию в 10:22:41, rc=0; непрочитанных в шине 216 → 44, новых долгов ноль</td></tr>
+<tr><td>MCP телеграма висел по 300 с: связь с телеграмом мертва, HTTP жив</td><td>после рестарта ноль падений реконнекта в логе, вызовы отвечают мгновенно; чаты читаются штатно</td></tr>
+<tr><td>Посылка со сторожем Claude Desktop не ставилась: битый путь и невалидный PowerShell в проверке</td><td>поставила руками, сторож тикает каждые 5 мин. Та же посылка упала на HP17 — подтверждение, что дефект в ней, а не у нас</td></tr>
+<tr><td>Табло «кто ждёт ответа» писалось в несуществующую папку и падало каждые 15 минут</td><td>задала <code>CLAUDE_VAULT_ROOT</code>, табло построилось в 14:18 — впервые видно все три ждущие сессии</td></tr>
+<tr><td>Три выключенные задачи узла не были записаны в реестр списаний</td><td>вписаны с датами и вердиктами в <code>00-System\Decommissioned-Tasks.md</code></td></tr>
 </table></div>
 
-<h2>✉️ Личка: что Антон писал ТЕБЕ и не получил ответа</h2>
-<div class="sub">Читано твоей собственной сессией @*****ya_Le по всем его аккаунтам: @***ySsd · @***ydzi · @*0*0AA · @*****numvc1 · @***onDz · @****stef.</div>
-<div class="wrap"><table>
-<tr><th>что просит</th><th>когда</th><th>висит</th><th>проверка фактом</th></tr>
-<tr><td><b>Две CNAME-записи в Cloudflare</b> (зона palo-alto.ai, аккаунт b@micromoney.io): <code>www</code> и <code>new</code> → palo-alto.ai, Proxied. Плюс просит API-токен «Edit zone DNS», чтобы больше тебя не дёргать</td><td>@***ySsd, 10.08 13:50</td><td><span class="t red">3 дня</span></td><td>записей до сих пор НЕТ: сам palo-alto.ai открывается, <code>www.palo-alto.ai</code> отдаёт ENOTFOUND</td></tr>
-<tr><td><b>Строка о тебе в разделе People на сайте</b>: «Natalia — distribution and editorial» + ссылка на твой публичный профиль. Правило жёсткое: без твоего «да» строка не идёт вообще</td><td>@***ySsd, 25.07 23:17</td><td><span class="t red">19 дней</span></td><td>на palo-alto.ai в People сейчас двое: **ton ******ovskii и Mike. Тебя нет</td></tr>
-<tr><td><b>ТЗ на регламент конвейера контента</b> — три голосовых подряд: длины по площадкам, три обязательных ежедневных формата, запрет лонгридов в чаты, дашборд конвейера</td><td>@***ySsd, 31.07 10:05</td><td><span class="t amb">13 дней</span></td><td>исполнено в основном: <code>platform_rules.json</code> + <code>platform_gate.py</code> + гейт пользы стоят. НЕ сделано: Substack-исследование и дашборд конвейера</td></tr>
-<tr><td>«<b>Звони</b>»</td><td>@***ySsd, 31.07 10:33</td><td>—</td><td>сразу после тех голосовых, скорее всего уже закрыто разговором</td></tr>
-</table></div>
-<div class="note"><b>Личка забита роботами.</b> Из 40 последних сообщений в диалоге с @***ySsd <b>27 — машинные тревоги</b> «машина Natalia МОЛЧИТ 60 минут». Живых сообщений от Антона всего 5, и три из них — те, что висят выше. Починка (тревоги операторов → чат 03 вместо лички) отправлена хабу 11.08 и <b>до сих пор не раскатана</b>. Остальные его аккаунты по личке чистые: @***ydzi молчит с 17.05, @*0*0AA — с 27.07, @*****numvc1 — с 03.07, @***onDz и @****stef переписки нет вовсе.</div>
-
-<h2>📤 Публикации руками — очередь</h2>
-<div class="wrap"><table>
-<tr><th>площадка</th><th>ждёт</th><th>лимит</th><th>комментарий</th></tr>
-<tr><td><b>Medium</b></td><td><b>30</b> готовых текстов</td><td>2 в сутки</td><td>очередь хронологическая, не протухает: GitHub и каналы эти посты уже опубликовали</td></tr>
-<tr><td><b>X / Twitter</b></td><td><b>8</b> кейсов без твита</td><td>—</td><td>a-minus-in-karma-on-habr · audit-for-work-nobody-consumes · decide-as-a-cofounder · link-sessions-not-notes · lost-sessions-get-a-lightweight-retro · one-vault-many-people · still-setting-up-the-posting · superpowers-measured-their-rules</td></tr>
-<tr><td><b>Threads</b></td><td><b>3</b> готовых</td><td>—</td><td>content-backlog-as-folders · credit-the-idea-author · one-vault-many-people. Всего: 19 опубликовано, 28 старых ты осознанно закрыла как skipped 12.08</td></tr>
-<tr><td><b>Facebook</b></td><td><b>5</b> кейсов без поста</td><td>несколько часов между постами</td><td>a-minus-in-karma-on-habr · link-sessions-not-notes · lost-sessions-get-a-lightweight-retro · still-setting-up-the-posting · superpowers-measured-their-rules</td></tr>
-</table></div>
-
-<div class="note"><b>Про стоп постинга.</b> Рубильник <b>снят 11.08</b> твоим же уточнением: стоят только черновики, которые робот несёт тебе на апрув (задача <code>postbox-tick</code> выключена), а дистрибуция твоих собственных FB-постов идёт. Проверено чтением файла флага, не по памяти.</div>
-
-<h2>🆕 Прилетело в 03 за последний час (11:10)</h2>
-<div class="wrap"><table>
-<tr><th>что</th><th>чьё</th><th>суть</th></tr>
-<tr><td><b>voice-dispatcher встал</b>: голосовые не превращаются в сессии больше суток</td><td><span class="t red">бьёт по тебе</span></td><td>твой конвейер начинается с голосовой Антона. Робот сам назвал причину: приложение Claude на хабе закрыто → рутина не бежит</td></tr>
-<tr><td><b>approval_clock: 5 черновиков удержано</b>, отпущено 0</td><td><span class="t amb">решение твоё</span></td><td>все пять завернул slop_gate: <code>post-260805-first-pull-requests</code> (перебор длины) · <code>teaser-voice-budapest-architecture</code> (недобор длины) · три файла <code>git-s24/x-posts-en</code> (E1-no-file). Дословно: «удержанное таймер НЕ отпустит сам: нужен человек либо гейт»</td></tr>
-<tr><td>Хаб: <b>Claude Desktop в петле перезапусков</b>, лимит оживления 3/6ч исчерпан</td><td>не твоё</td><td>«needs a human» — пока не поднимут, MCP-краны хаба лежат (отсюда 4 крана молчат 66-98 ч)</td></tr>
-<tr><td>Хаб должен НАМ <b>148 квитанций</b>, старейшей 669 ч</td><td>не твоё</td><td>зеркало нашей утренней проблемы: теперь молчит он</td></tr>
-<tr><td>MacBook Русланы офлайн ~6 ч, канон до маков <b>физически не доехал</b></td><td>не твоё</td><td>Syncthing числит CLAUDE.md в remote-need — это не «не подтвердил», а «байты не пришли»</td></tr>
-</table></div>
-
-<h2>🤖 Моя сторона, не твоя</h2>
-<div class="wrap"><table>
-<tr><th>что</th><th>цифра</th></tr>
-<tr><td>Долги чтения в шине — не разобранные задачи от хаба и Маяка</td><td><b>24</b> из 34, старейшему <b>65 ч</b>; непрочитанных всего 216</td></tr>
-<tr><td>DR26-08-12-NAT-01-2247 «как писать на Хабр голосом живого инженера» — закрыт кворумом 4/6, синтез лежит и ждёт применения. Хаб уже пингует, что я молчу 69 минут</td><td><span class="t amb">беру в работу</span></td></tr>
-<tr><td>Висят вопросы Антону в 02 без его ответа (стоп постинга, разбор чата 00, канон, чат 121)</td><td><b>4</b>, по 4-5 напоминаний каждому</td></tr>
-<tr><td>На хабе отключены рутины: FB Watch Daily, Dashboard Refresh, Config Integrity Gate, Conflict Sweeper, Session Archive; четыре MCP-крана молчат 64-97 ч</td><td><span class="t red">чужой узел</span> заказ хабу</td></tr>
-</table></div>
-
-<p><small>Собрано 13.08.2026 09:30 на MyOwnPC-Natalia. Источники: телетон-чтение чатов 02/121/00, шина 03, <code>tools/inbox_daily.py</code>, <code>posting-chain/chain.py status</code> и журналы 55 кейсов, <code>approval.py due</code>, реестр задач волта.</small></p>
+<p><small>Собрано 13.08.2026 17:40 на MyOwnPC-Natalia. Источники: MCP-чтение чатов 121/03/02, <code>tools/inbox_daily.py</code>, <code>posting-chain/chain.py</code>, реестр задач волта, живой Планировщик задач.</small></p>
 </body></html>
