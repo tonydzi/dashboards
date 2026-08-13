@@ -34,7 +34,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>STEP 1 (gate): python3 ~/.claude/scripts/_shared/canon_verify.py E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub ; exit!=0 -&gt; НЕ применять, посылку в HELD, алерт в 03. STEP 2: read E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub/CLAUDE.md -&gt; merge -&gt; write ACK-&lt;node&gt;.json {applied_md5:&#x27;bcd614d4ea9b5961c02f8e470c4f4ba3&#x27;} рядом</code></div>
   
-</div><h2>✅ Доверенные — применятся сами <span class="cnt">23</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+</div><h2>✅ Доверенные — применятся сами <span class="cnt">20</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">crm-proof-of-delivery-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">CRM: касание засчитывается только с message_id (budget.py proof-of-delivery + safe_send ловит Message.id + touch_audit карточная половина)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-29 16:11 · <span class="ok">подпись ✓</span></div>
@@ -147,14 +147,6 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python &quot;%USERPROFILE%/.claude/scripts/cc-review/install_sandbox_python.py&quot;</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">claude-run-limit-detect-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">claude_run: исчерпанный бак подписки больше не выглядит успехом (был exit 0 + heartbeat при нулевой работе)</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:16 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_claude_run_limit.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
-  
-</div><div class="card trusted">
   <div class="top"><span class="id">hooks-payload-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">SELF-CARRYING груз для 5 посылок-призраков: block_dangerous_bash + canon_growth_guard + skill_usage_hook + task_surface_hook (файлы лежат в _transit/DEPLOY-*)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:17 · <span class="ok">подпись ✓</span></div>
@@ -195,14 +187,6 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);s=os.path.expanduser(&#x27;~/.claude/scripts&#x27;);[shutil.copy(os.path.join(t,&#x27;DEPLOY-&#x27;+f),os.path.join(s,f)) for f in (&#x27;rail_sweep.py&#x27;,&#x27;_test_rail_sweep.py&#x27;,&#x27;_test_session_slot.py&#x27;)]&quot;</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">repair-fallback-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Ремонтник (ярус 1) больше не умирает вместе с баком Claude: диагноз ставит gemini/codex/grok по уликам, собранным кодом; пустышка не закрывает корень</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:02 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_test_repair_fallback.py&quot;</code></div>
-  
-</div><div class="card trusted">
   <div class="top"><span class="id">radical-order-gate-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">Дверь правила §3.3-бис: массовое выключение задач/служб циклом блокируется до переспроса (маркер RADICAL-OK снимает)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:22 · <span class="ok">подпись ✓</span></div>
@@ -210,15 +194,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_test_radical_order_gate.py&quot;</code></div>
   
-</div><div class="card trusted">
-  <div class="top"><span class="id">agent-rail-safety-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Предохранители агентской рельсы: ярус mayak→codex-agent, рамка замещения, потолок 6/сутки, снимок волта до/после</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:56 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_claude_run_limit.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
-  
-</div><h2>📦 Уже применённые <span class="cnt">130</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">135</span></h2><div class="card trusted">
   <div class="top"><span class="id">engine-visibility-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">consensus.py ENGINE-VISIBILITY (консенсус #94389335, tier-1, accepts FLEET-ANCHOR+MacBook-Anton, committed хабом 20.07). (1) провал подписи -&gt; строка в stderr + счётчик sigfail-&lt;MACHINE&gt;.json (dark mode СОХРАНЁН, леджер не падает); (2) CLI-гигиена: -h/--help голым и после любого verb, propose отказывает subject на &#x27;-&#x27; (инцидент #4b814fec). Сторож _shared/consensus_config_guard.py CLASS C читает счётчик и алармит на РОСТ -- едет сам синком _shared.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-20 20:53 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -947,6 +923,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 ~/.claude/scripts/fleet_tools_sync.py --source MacBook-Ruslana --apply</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">claude-run-limit-detect-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">claude_run: исчерпанный бак подписки больше не выглядит успехом (был exit 0 + heartbeat при нулевой работе)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:16 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_claude_run_limit.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
+  
+</div><div class="card trusted">
   <div class="top"><span class="id">hooks-payload-20260806b</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">SELF-CARRYING груз для 5 посылок-призраков (замер NAT 06.08): block_dangerous_bash, canon_growth_guard, skill_usage_hook, task_surface_hook -- везёт файлы с собой</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:18 · <span class="ok">подпись ✓</span></div>
@@ -1025,6 +1009,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil;t=os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;);shutil.copy(os.path.join(t,&#x27;DEPLOY-persona_build.py&#x27;),os.path.expanduser(&#x27;~/.claude/scripts/persona_build.py&#x27;))&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">repair-fallback-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Ремонтник (ярус 1) больше не умирает вместе с баком Claude: диагноз ставит gemini/codex/grok по уликам, собранным кодом; пустышка не закрывает корень</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:02 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_test_repair_fallback.py&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">rule-door-quota-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
@@ -1113,6 +1105,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
   
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/vault-guard-reconcile-aware-20260806/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">agent-rail-safety-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Предохранители агентской рельсы: ярус mayak→codex-agent, рамка замещения, потолок 6/сутки, снимок волта до/после</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 16:56 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_claude_run_limit.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">notforme-honest-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
@@ -1257,6 +1257,22 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 -c &quot;import os,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/repair_session.py&#x27;);s=open(p,encoding=&#x27;utf-8&#x27;).read();sys.exit(0 if &#x27;ROOT-FIX 11.08&#x27; in s else 1)&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">repair-info-fix-260812</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">repair_session.py: info без инициализации валил collect_evidence на не-Windows узлах (UnboundLocalError, замер Маяк 12.08) — хирургический idempotent-патч</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-12 20:41 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py repair-info-fix-260812 &amp;&amp; python3 ~/.claude/scripts/patch_repair_info.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">approval-cap5-backpressure-20260812</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">approval.py: кап 5 открытых асков + класс E мимо капа + авто-экспайр 14д (Антон: «+ кап 5»)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-12 21:54 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py approval-cap5-backpressure-20260812</code></div>
   
 </div>
 </div></body></html>

@@ -28,9 +28,9 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
 .agree{font-size:12px;color:var(--mut)}
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Code-Census.html">&larr; Code-Census</a> · <a href="Fix-Audit-NewHub-2026-06-28.html">Fix-Audit-NewHub-2026-06-28 &rarr;</a></span></div><div class="wrap">
 <h1>📺 Creator Watcher — Gate Eval</h1>
-<p class="lead">321 засуженных айтемов. Тумблер по умолчанию = решение гейта. <b>Флипни только те, где гейт ошибся.</b> Метрики обновляются вживую; «Copy labels» → выгрузи JSON → <code>python cw_eval.py --apply labels.json</code>.</p>
+<p class="lead">347 засуженных айтемов. Тумблер по умолчанию = решение гейта. <b>Флипни только те, где гейт ошибся.</b> Метрики обновляются вживую; «Copy labels» → выгрузи JSON → <code>python cw_eval.py --apply labels.json</code>.</p>
 <div class="metrics">
-  <div class="m">labeled <b id="mLab">0</b>/321</div>
+  <div class="m">labeled <b id="mLab">0</b>/347</div>
   <div class="m">gate precision <b id="mPrec">—</b></div>
   <div class="m">FP (свалка) <b id="mFP">0</b></div>
   <div class="m">FN (упущено) <b id="mFN">0</b></div>
@@ -433,6 +433,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="7AmhgMAJIT4" data-gate="drop">
+  <div class="top">
+    <div class="score hi">0.66</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=7AmhgMAJIT4" target="_blank">What is the perfect memory architecture? | Sam Whitmore</a></div>
+      <div class="sub">Greg Kamradt · @*******ependent · 2025-06-30 · <span class="topic">memory-architecture</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Основатель Dot делится реальной эволюцией памяти продукта за 3 года (2023-2026): что не сработало (голое извлечение фактов, тяжёлые JSON-схемы сущностей) и куда пришли (4 параллельные системы памяти + отказ от сжатия контекста по мере удешевления длинных окон).</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:75%"></u></i><b>0.75</b></div><div class="b"><span>nov</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>act</span><i><u style="width:65%"></u></i><b>0.65</b></div><div class="b"><span>evi</span><i><u style="width:75%"></u></i><b>0.75</b></div><div class="b"><span>dur</span><i><u style="width:50%"></u></i><b>0.50</b></div></div>
+  <div class="ku">5 knowledge units · medium · half-life 365d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="S2WTTMXYcYY" data-gate="drop">
   <div class="top">
     <div class="score hi">0.65</div>
@@ -631,6 +649,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="jHMiYtjoJfA" data-gate="drop">
+  <div class="top">
+    <div class="score hi">0.64</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=jHMiYtjoJfA" target="_blank">Designing Agents (The Floor Is the Frontier) — Ben Hylak, Raindrop</a></div>
+      <div class="sub">AI Engineer · @******ngineer · 2026-08-12 · <span class="topic">agentic-coding-evals</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Практик из Raindrop делится конкретными наблюдениями о том, что реально работает при отладке и оценке агентов в проде, а не абстрактной евал-теорией.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:75%"></u></i><b>0.75</b></div><div class="b"><span>nov</span><i><u style="width:60%"></u></i><b>0.60</b></div><div class="b"><span>act</span><i><u style="width:65%"></u></i><b>0.65</b></div><div class="b"><span>evi</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>dur</span><i><u style="width:55%"></u></i><b>0.55</b></div></div>
+  <div class="ku">4 knowledge units · medium · half-life 365d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="xIt_mTQp6mY" data-gate="drop">
   <div class="top">
     <div class="score hi">0.64</div>
@@ -667,6 +703,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="5ZGyKWjQDr0" data-gate="drop">
+  <div class="top">
+    <div class="score hi">0.64</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=5ZGyKWjQDr0" target="_blank">Lessons from Studying Every Memory System — Shlok Khemani, Independent</a></div>
+      <div class="sub">AI Engineer · @******ngineer · 2026-08-12 · <span class="topic">memory-systems</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Спикер год реверс-инжинирил память ChatGPT/Claude/Gemini/Poke и вытащил конкретные архитектурные паттерны и провалы (staleness, плотные профили-«улики» для LLM, отсутствие reasoning поверх коннекторов) — полезно тем, кто проектирует память для агентов.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:75%"></u></i><b>0.75</b></div><div class="b"><span>nov</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>act</span><i><u style="width:60%"></u></i><b>0.60</b></div><div class="b"><span>evi</span><i><u style="width:70%"></u></i><b>0.70</b></div><div class="b"><span>dur</span><i><u style="width:55%"></u></i><b>0.55</b></div></div>
+  <div class="ku">5 knowledge units · medium · half-life 365d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="shRR1e2HXMk" data-gate="drop">
   <div class="top">
     <div class="score hi">0.64</div>
@@ -679,6 +733,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
   <div class="why">Технический доклад инженера OpenAI про внутренности харнеса Codex (open source, Rust) с конкретными архитектурными решениями — deferred tools, tool search, серверная компакция, открытый responses API — полезно тем, кто строит своих агентов, хотя часть деталей может устареть по мере эволюции API.</div>
   <div class="bars"><div class="b"><span>sig</span><i><u style="width:78%"></u></i><b>0.78</b></div><div class="b"><span>nov</span><i><u style="width:60%"></u></i><b>0.60</b></div><div class="b"><span>act</span><i><u style="width:62%"></u></i><b>0.62</b></div><div class="b"><span>evi</span><i><u style="width:60%"></u></i><b>0.60</b></div><div class="b"><span>dur</span><i><u style="width:45%"></u></i><b>0.45</b></div></div>
   <div class="ku">5 knowledge units · medium · half-life 365d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="MtwWHXYFqbQ" data-gate="drop">
+  <div class="top">
+    <div class="score hi">0.64</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=MtwWHXYFqbQ" target="_blank">The man behind Cursor&#x27;s &quot;memory&quot; feature</a></div>
+      <div class="sub">Greg Kamradt · @*******ependent · 2025-07-24 · <span class="topic">agent-memory-systems</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Инженер Cursor, который в одиночку строит фичу memory, делится конкретной архитектурой (три типа контекста, sidecar vs tool-call подходы) и реальными граблями (модель &#x27;зацикливается&#x27; на неверной памяти), а не хайпом про запуск фичи.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:75%"></u></i><b>0.75</b></div><div class="b"><span>nov</span><i><u style="width:65%"></u></i><b>0.65</b></div><div class="b"><span>act</span><i><u style="width:60%"></u></i><b>0.60</b></div><div class="b"><span>evi</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>dur</span><i><u style="width:55%"></u></i><b>0.55</b></div></div>
+  <div class="ku">5 knowledge units · medium · half-life 400d</div>
   <div class="toggle">
     <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
     <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
@@ -991,6 +1063,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="CvRngaQZQ3Y" data-gate="drop">
+  <div class="top">
+    <div class="score hi">0.60</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=CvRngaQZQ3Y" target="_blank">Improving Agents is a Data Mining Problem — Vivek Trivedy, LangChain</a></div>
+      <div class="sub">AI Engineer · @******ngineer · 2026-08-12 · <span class="topic">agent-trace-mining</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Доклад даёт конкретный, воспроизводимый рецепт непрерывного улучшения агентов через централизованный сбор трасс и их &#x27;майнинг&#x27; спец-агентами, но без цифр/бенчмарков — в основном концептуально-практический фреймворк, а не строгий кейс-стади.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:72%"></u></i><b>0.72</b></div><div class="b"><span>nov</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>act</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>evi</span><i><u style="width:50%"></u></i><b>0.50</b></div><div class="b"><span>dur</span><i><u style="width:70%"></u></i><b>0.70</b></div></div>
+  <div class="ku">4 knowledge units · medium · half-life 365d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="Ib5GBkD555M" data-gate="drop">
   <div class="top">
     <div class="score hi">0.60</div>
@@ -1063,6 +1153,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="5KTHvKCrQ00" data-gate="drop">
+  <div class="top">
+    <div class="score hi">0.58</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=5KTHvKCrQ00" target="_blank">Claude ran a business in our office</a></div>
+      <div class="sub">Anthropic · @****ropic-ai · 2025-12-18 · <span class="topic">agentic-multi-agent-failure-modes</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Это кейс-стади Anthropic про то, как их же агент управлял реальным бизнесом (vending machine) — есть конкретные провалы (социнженерия, потеря связи с реальностью, самозванство) и архитектурное решение (разделение на CEO-субагента и операционного субагента), которое реально снизило убытки — это не просто хайп-анонс, но и не независимая исследовательская работа, а промо-кейс от самого вендора.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:65%"></u></i><b>0.65</b></div><div class="b"><span>nov</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>act</span><i><u style="width:50%"></u></i><b>0.50</b></div><div class="b"><span>evi</span><i><u style="width:70%"></u></i><b>0.70</b></div><div class="b"><span>dur</span><i><u style="width:55%"></u></i><b>0.55</b></div></div>
+  <div class="ku">4 knowledge units · medium · half-life 450d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="jt1Pbr_n6oU" data-gate="drop">
   <div class="top">
     <div class="score hi">0.58</div>
@@ -1075,6 +1183,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
   <div class="why">Практический кейс построения data lakehouse + семантического графа поверх корпоративных данных для agentic-доступа, с evals (pass@1, stability, LLM-judge) — полезно, но без глубоких технических деталей реализации.</div>
   <div class="bars"><div class="b"><span>sig</span><i><u style="width:65%"></u></i><b>0.65</b></div><div class="b"><span>nov</span><i><u style="width:50%"></u></i><b>0.50</b></div><div class="b"><span>act</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>evi</span><i><u style="width:60%"></u></i><b>0.60</b></div><div class="b"><span>dur</span><i><u style="width:65%"></u></i><b>0.65</b></div></div>
   <div class="ku">4 knowledge units · medium · half-life 500d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="R3-anFK1YM8" data-gate="drop">
+  <div class="top">
+    <div class="score hi">0.58</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=R3-anFK1YM8" target="_blank">Memory Harnesses for Long-Running Research Agents — Stefania Druga, Sakana.ai</a></div>
+      <div class="sub">AI Engineer · @******ngineer · 2026-08-12 · <span class="topic">memory-harness-agents</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Исследователь Sakana AI делится конкретной методикой оценки памяти агентов (лестница режимов recall + бенчмарк X-Bench) и практичным выводом, когда харнес памяти вообще нужен, но всё это на уровне раннего эксперимента без готового open-source кода.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:70%"></u></i><b>0.70</b></div><div class="b"><span>nov</span><i><u style="width:50%"></u></i><b>0.50</b></div><div class="b"><span>act</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>evi</span><i><u style="width:60%"></u></i><b>0.60</b></div><div class="b"><span>dur</span><i><u style="width:50%"></u></i><b>0.50</b></div></div>
+  <div class="ku">5 knowledge units · medium · half-life 365d</div>
   <div class="toggle">
     <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
     <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
@@ -1327,6 +1453,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
   <div class="why">Реальный кейс 6-месячного рефакторинга legacy AI-пайплайна с конкретными деталями процесса (оценка оркестраторов, PR-ревью, plan mode), но без цифр итогового ROI и без глубокого технического разбора — больше нарратив, чем воспроизводимая методика.</div>
   <div class="bars"><div class="b"><span>sig</span><i><u style="width:65%"></u></i><b>0.65</b></div><div class="b"><span>nov</span><i><u style="width:45%"></u></i><b>0.45</b></div><div class="b"><span>act</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>evi</span><i><u style="width:60%"></u></i><b>0.60</b></div><div class="b"><span>dur</span><i><u style="width:45%"></u></i><b>0.45</b></div></div>
   <div class="ku">5 knowledge units · medium · half-life 270d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="zL1kLftVTlo" data-gate="drop">
+  <div class="top">
+    <div class="score hi">0.55</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=zL1kLftVTlo" target="_blank">Scaling up Continual Learning — Ronak Malde, Trajectory</a></div>
+      <div class="sub">AI Engineer · @******ngineer · 2026-08-12 · <span class="topic">continual-learning-rl-post-training</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Инсайдерский разбор эволюции алгоритмов пост-трейнинга (SFT→RLHF/DPO→GRPO→continual) с чёткой рамкой из 4 критериев компромиссов, но без конкретных рецептов внедрения — скорее концептуальная карта для исследователя, чем готовый workflow инженеру.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:72%"></u></i><b>0.72</b></div><div class="b"><span>nov</span><i><u style="width:68%"></u></i><b>0.68</b></div><div class="b"><span>act</span><i><u style="width:40%"></u></i><b>0.40</b></div><div class="b"><span>evi</span><i><u style="width:40%"></u></i><b>0.40</b></div><div class="b"><span>dur</span><i><u style="width:55%"></u></i><b>0.55</b></div></div>
+  <div class="ku">4 knowledge units · medium · half-life 365d</div>
   <div class="toggle">
     <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
     <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
@@ -1723,6 +1867,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
   <div class="why">Директор инженерии Ramp делится двумя рабочими принципами FDE-организации (жёсткий scoping запросов + масштабирование через AI-агентов) с конкретными примерами провалов, но без технических деталей реализации.</div>
   <div class="bars"><div class="b"><span>sig</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>nov</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>act</span><i><u style="width:50%"></u></i><b>0.50</b></div><div class="b"><span>evi</span><i><u style="width:60%"></u></i><b>0.60</b></div><div class="b"><span>dur</span><i><u style="width:55%"></u></i><b>0.55</b></div></div>
   <div class="ku">4 knowledge units · medium · half-life 400d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="ZTA0GwpAUak" data-gate="drop">
+  <div class="top">
+    <div class="score hi">0.50</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=ZTA0GwpAUak" target="_blank">Bringing Continual Learning into Enterprises — Samuel Denton, Applied Compute</a></div>
+      <div class="sub">AI Engineer · @******ngineer · 2026-08-12 · <span class="topic">continual-learning-distillation</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Практик из Applied Compute даёт конкретную концептуальную рамку (offline/online × hint/rollout) для дистилляции агентов из продакшн-трейсов и один применимый трюк (relevance mask self-distillation), но без цифр бенчмарков и без деталей реализации.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:62%"></u></i><b>0.62</b></div><div class="b"><span>nov</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>act</span><i><u style="width:40%"></u></i><b>0.40</b></div><div class="b"><span>evi</span><i><u style="width:45%"></u></i><b>0.45</b></div><div class="b"><span>dur</span><i><u style="width:45%"></u></i><b>0.45</b></div></div>
+  <div class="ku">4 knowledge units · medium · half-life 365d</div>
   <div class="toggle">
     <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
     <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
@@ -2701,6 +2863,42 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="I6aiEf3aEFQ" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.41</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=I6aiEf3aEFQ" target="_blank">Intelligence + Continual Learning = Expertise — Yu Su, NeoCognition</a></div>
+      <div class="sub">AI Engineer · @******ngineer · 2026-08-12 · <span class="topic">agent-continual-learning</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Концептуальный доклад (не how-to) о различии &#x27;интеллект vs экспертиза&#x27; и почему агентам нужно continual learning для доменной специализации — полезная рамка для мышления, но без конкретных техник или бенчмарков для внедрения.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>nov</span><i><u style="width:45%"></u></i><b>0.45</b></div><div class="b"><span>act</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>evi</span><i><u style="width:25%"></u></i><b>0.25</b></div><div class="b"><span>dur</span><i><u style="width:60%"></u></i><b>0.60</b></div></div>
+  <div class="ku">3 knowledge units · medium · half-life 400d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="OTyhD7oKPn0" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.41</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=OTyhD7oKPn0" target="_blank">The Man Behind LangChain Memory | Will Fu-Hinthorn</a></div>
+      <div class="sub">Greg Kamradt · @*******ependent · 2025-07-22 · <span class="topic">agent-memory</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Инженер LangChain делится практическими выводами о построении memory-систем для агентов на основе годового опыта с энтерпрайз-клиентами, но конкретики по реализации мало — в основном общие принципы и упоминание тулов LangMem/trust-call без деталей.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:55%"></u></i><b>0.55</b></div><div class="b"><span>nov</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>act</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>evi</span><i><u style="width:40%"></u></i><b>0.40</b></div><div class="b"><span>dur</span><i><u style="width:50%"></u></i><b>0.50</b></div></div>
+  <div class="ku">4 knowledge units · medium · half-life 300d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="muwRbfuKbR4" data-gate="drop">
   <div class="top">
     <div class="score lo">0.41</div>
@@ -3313,6 +3511,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="I3bpdgFJCUY" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.33</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=I3bpdgFJCUY" target="_blank">LLM Knowledge Bases: a practical guide — Ben Holmes, Warp</a></div>
+      <div class="sub">AI Engineer · @******ngineer · 2026-08-12 · <span class="topic">llm-knowledge-base-pkm</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Конференц-доклад про личную LLM-базу знаний (заметки → wiki → визуализации) содержит пару рабочих тактик (голосовой ввод, локальные модели), но в основном общие идеи без глубины и без метрик, плюс самопиар инструмента докладчика.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>nov</span><i><u style="width:20%"></u></i><b>0.20</b></div><div class="b"><span>act</span><i><u style="width:40%"></u></i><b>0.40</b></div><div class="b"><span>evi</span><i><u style="width:25%"></u></i><b>0.25</b></div><div class="b"><span>dur</span><i><u style="width:40%"></u></i><b>0.40</b></div></div>
+  <div class="ku">4 knowledge units · medium · half-life 365d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="2wIxPWK6nCs" data-gate="drop">
   <div class="top">
     <div class="score lo">0.32</div>
@@ -3403,6 +3619,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="oO0kdAWHoYI" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.31</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=oO0kdAWHoYI" target="_blank">Как крутят нейронки на периферийных устройствах / База по Edge Computing от инженера из Qualcomm</a></div>
+      <div class="sub">ITBeard · @***eard · 2025-12-29 · <span class="topic">edge-ai-inference</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Видимый сэмпл — это интро, реклама спонсоров и биография гостя (инженер Qualcomm), техническая часть про TPU/NPU и запуск моделей на edge-устройствах анонсирована в заголовке, но в сэмпле не раскрыта ни одним конкретным утверждением.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>nov</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>act</span><i><u style="width:25%"></u></i><b>0.25</b></div><div class="b"><span>evi</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>dur</span><i><u style="width:65%"></u></i><b>0.65</b></div></div>
+  <div class="ku">0 knowledge units · medium · half-life 600d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="yv6xovSsB1U" data-gate="drop">
   <div class="top">
     <div class="score lo">0.31</div>
@@ -3457,6 +3691,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="WiqDvX6isc4" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.30</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=WiqDvX6isc4" target="_blank">Scaling Compute on Context — Jack Morris, Engram</a></div>
+      <div class="sub">AI Engineer · @******ngineer · 2026-08-12 · <span class="topic">continual-learning-personalization</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Это высокоуровневый концептуальный доклад основателя стартапа про постановку проблемы &#x27;continual learning / персонализация моделей&#x27;, без конкретной архитектуры, метода обучения, кода или бенчмарков — практику применить нечего.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>nov</span><i><u style="width:40%"></u></i><b>0.40</b></div><div class="b"><span>act</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>evi</span><i><u style="width:20%"></u></i><b>0.20</b></div><div class="b"><span>dur</span><i><u style="width:60%"></u></i><b>0.60</b></div></div>
+  <div class="ku">3 knowledge units · medium · half-life 365d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="O-CBZ3JtRvo" data-gate="drop">
   <div class="top">
     <div class="score lo">0.30</div>
@@ -3487,6 +3739,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
   <div class="why">Доклад в основном пересказывает существующие способы измерения &#x27;long horizon&#x27; (METR-часы vs токены/шаги) и жалуется на узость финансовых бенчмарков (GDPval, Apex) без новых техник или воспроизводимых приёмов для практика.</div>
   <div class="bars"><div class="b"><span>sig</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>nov</span><i><u style="width:25%"></u></i><b>0.25</b></div><div class="b"><span>act</span><i><u style="width:20%"></u></i><b>0.20</b></div><div class="b"><span>evi</span><i><u style="width:40%"></u></i><b>0.40</b></div><div class="b"><span>dur</span><i><u style="width:40%"></u></i><b>0.40</b></div></div>
   <div class="ku">3 knowledge units · volatile · half-life 180d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="nvbq39yVYRk" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.29</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=nvbq39yVYRk" target="_blank">What is sycophancy in AI models?</a></div>
+      <div class="sub">Anthropic · @****ropic-ai · 2025-12-18 · <span class="topic">sycophancy</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Общеобразовательное видео от Anthropic про то, что такое сикофансия у моделей — даёт распознавание паттерна и пару тактик проверки, но без технических деталей о том, как это устранять в промптах/системах.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>nov</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>act</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>evi</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>dur</span><i><u style="width:55%"></u></i><b>0.55</b></div></div>
+  <div class="ku">3 knowledge units · medium · half-life 365d</div>
   <div class="toggle">
     <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
     <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
@@ -3559,6 +3829,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
   <div class="why">Это неформальная беседа-рефлексия сотрудников Anthropic о том, как изменилась их работа с Claude Code, без демо и конкретных техник — полезных, но не глубоких инсайтов немного и тонут в общих разговорах и хайпе про Fable.</div>
   <div class="bars"><div class="b"><span>sig</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>nov</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>act</span><i><u style="width:25%"></u></i><b>0.25</b></div><div class="b"><span>evi</span><i><u style="width:25%"></u></i><b>0.25</b></div><div class="b"><span>dur</span><i><u style="width:30%"></u></i><b>0.30</b></div></div>
   <div class="ku">4 knowledge units · volatile · half-life 90d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="MbiMwgbGdxw" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.29</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=MbiMwgbGdxw" target="_blank">Every Claude Code Skill I Use to Drive My Entire Development Process</a></div>
+      <div class="sub">Cole Medin · @****Medin · 2026-08-13 · <span class="topic">agentic-coding-skills</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">В основном промо-обзор своей библиотеки скиллов без разбора конкретных техник — верхнеуровневый питч &#x27;вот у меня есть коллекция&#x27;, а не воркшоп с показом кода/промптов.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>nov</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>act</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>evi</span><i><u style="width:20%"></u></i><b>0.20</b></div><div class="b"><span>dur</span><i><u style="width:35%"></u></i><b>0.35</b></div></div>
+  <div class="ku">3 knowledge units · medium · half-life 240d</div>
   <div class="toggle">
     <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
     <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
@@ -3685,6 +3973,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
   <div class="why">Доклад со стартап-питчем в конце: половина — общие рассуждения про &#x27;эпоху агентов&#x27;, вторая половина описывает известный паттерн иерархии доменных саб-агентов с узким контекстом, но без бенчмарков и деталей реализации.</div>
   <div class="bars"><div class="b"><span>sig</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>nov</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>act</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>evi</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>dur</span><i><u style="width:50%"></u></i><b>0.50</b></div></div>
   <div class="ku">4 knowledge units · medium · half-life 365d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="iqloyWCGYQQ" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.27</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=iqloyWCGYQQ" target="_blank">Beyond Static Intelligence: Evaluating Continual Learning — Parth Asawa, UC Berkeley</a></div>
+      <div class="sub">AI Engineer · @******ngineer · 2026-08-12 · <span class="topic">continual-learning-evals</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Академический доклад про то, что бенчмарки не измеряют continual learning у LLM, но это диагноз проблемы и обзор подходов (in-context, внешняя память, параметрические апдейты), а не готовый рецепт с цифрами для инженера-практика.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:25%"></u></i><b>0.25</b></div><div class="b"><span>nov</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>act</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>evi</span><i><u style="width:25%"></u></i><b>0.25</b></div><div class="b"><span>dur</span><i><u style="width:50%"></u></i><b>0.50</b></div></div>
+  <div class="ku">3 knowledge units · medium · half-life 365d</div>
   <div class="toggle">
     <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
     <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
@@ -4177,6 +4483,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="XEd_SRVHBgU" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.14</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=XEd_SRVHBgU" target="_blank">Adaption Labs: Gradient-Free Continual Learning — Sara Hooker, Adaption</a></div>
+      <div class="sub">AI Engineer · @******ngineer · 2026-08-12 · <span class="topic">continual-learning</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Это вводный keynote про демократизацию AI-исследований и философию &#x27;кто имеет доступ к фронтиру&#x27;, с упоминанием продукта Auto Scientist, но без раскрытия техники gradient-free continual learning — практику взять почти нечего.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>nov</span><i><u style="width:20%"></u></i><b>0.20</b></div><div class="b"><span>act</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>evi</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>dur</span><i><u style="width:30%"></u></i><b>0.30</b></div></div>
+  <div class="ku">0 knowledge units · volatile · half-life 90d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="7JgIS42mz7U" data-gate="drop">
   <div class="top">
     <div class="score lo">0.14</div>
@@ -4429,6 +4753,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="DwN0N9AgGSs" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.10</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=DwN0N9AgGSs" target="_blank">Kotlin 2, KMP, JetBrains и ИИ-экосистема вокруг IDE / Developer Advocate из JetBrains Антон Архипов</a></div>
+      <div class="sub">ITBeard · @***eard · 2025-12-16 · <span class="topic">kotlin-jetbrains-ecosystem</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Это интервью-разговор про карьеру девелопер-адвоката, историю Kotlin и JetBrains AI-экосистему на уровне общих слов — конкретных технических приёмов, воркфлоу или бенчмарков в сэмпле нет.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:10%"></u></i><b>0.10</b></div><div class="b"><span>nov</span><i><u style="width:10%"></u></i><b>0.10</b></div><div class="b"><span>act</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>evi</span><i><u style="width:10%"></u></i><b>0.10</b></div><div class="b"><span>dur</span><i><u style="width:30%"></u></i><b>0.30</b></div></div>
+  <div class="ku">0 knowledge units · volatile · half-life 60d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="2xJoimgoqBg" data-gate="drop">
   <div class="top">
     <div class="score lo">0.10</div>
@@ -4459,6 +4801,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
   <div class="why">Это в основном мотивационный доклад о том, что TypeScript обгоняет Python на GitHub из-за кодинг-агентов, без конкретных техник, кода или воспроизводимых практик — просто интерпретация статистики Octoverse и личное мнение спикера.</div>
   <div class="bars"><div class="b"><span>sig</span><i><u style="width:20%"></u></i><b>0.20</b></div><div class="b"><span>nov</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>act</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>evi</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>dur</span><i><u style="width:30%"></u></i><b>0.30</b></div></div>
   <div class="ku">2 knowledge units · volatile · half-life 180d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="Jm97Jg71D40" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.10</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=Jm97Jg71D40" target="_blank">Куда катится IT на фоне AI-хайпа / Новые профессии, судьба джунов и что со всем этим делать.</a></div>
+      <div class="sub">ITBeard · @***eard · 2025-07-12 · <span class="topic">ai-career-outlook</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Разговорное видео-размышление о профессиях в эпоху AI (промт-инженер, контекст-инженер, судьба джунов) без конкретных инструментов, приёмов или проверяемых утверждений — чистая мотивационная риторика.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>nov</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>act</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>evi</span><i><u style="width:10%"></u></i><b>0.10</b></div><div class="b"><span>dur</span><i><u style="width:20%"></u></i><b>0.20</b></div></div>
+  <div class="ku">0 knowledge units · volatile · half-life 60d</div>
   <div class="toggle">
     <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
     <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
@@ -4627,6 +4987,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="Uh98_aGhAuY" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.07</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=Uh98_aGhAuY" target="_blank">What does AI mean for education?</a></div>
+      <div class="sub">Anthropic · @****ropic-ai · 2025-12-16 · <span class="topic">ai-education-discussion</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Это философская панельная беседа сотрудников Anthropic о влиянии AI на образование — общие рассуждения о ценностях и рисках, без единого технического приёма или конкретного инструмента для практикующего инженера.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>nov</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>act</span><i><u style="width:2%"></u></i><b>0.02</b></div><div class="b"><span>evi</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>dur</span><i><u style="width:30%"></u></i><b>0.30</b></div></div>
+  <div class="ku">0 knowledge units · stable · half-life 1000d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="Zswp0f1d2jQ" data-gate="drop">
   <div class="top">
     <div class="score lo">0.06</div>
@@ -4717,6 +5095,42 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="BJ4RestpvB0" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.06</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=BJ4RestpvB0" target="_blank">Cекстех, суры, анклавы, отношения с роботами, трансформация профессий и будущее AI / Юра Окуловский</a></div>
+      <div class="sub">ITBeard · @***eard · 2025-08-25 · <span class="topic">ai-futurism-chat</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Это философско-развлекательное интервью про секс-тех, роботов, будущее профессий и сингулярность — набор мнений и хайп-рассуждений без единого воспроизводимого приёма, метода или архитектурного решения для инженера.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>nov</span><i><u style="width:10%"></u></i><b>0.10</b></div><div class="b"><span>act</span><i><u style="width:2%"></u></i><b>0.02</b></div><div class="b"><span>evi</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>dur</span><i><u style="width:10%"></u></i><b>0.10</b></div></div>
+  <div class="ku">0 knowledge units · volatile · half-life 60d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="5mTGIze33RU" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.06</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=5mTGIze33RU" target="_blank">20 000 сообщений в секунду - хайлоад в iGaming изнутри / AI против легаси-монолита</a></div>
+      <div class="sub">ITBeard · @***eard · 2026-08-12 · <span class="topic">highload-iGaming-interview</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Сэмпл целиком состоит из рекламы конференции и биографической разминки с гостем (детство, вуз, книги, философский вопрос под конец) — заявленная тема хайлоада и AI-трансформации в этом отрывке вообще не раскрыта, инженерных фактов нет.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>nov</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>act</span><i><u style="width:2%"></u></i><b>0.02</b></div><div class="b"><span>evi</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>dur</span><i><u style="width:20%"></u></i><b>0.20</b></div></div>
+  <div class="ku">0 knowledge units · stable · half-life 1825d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="AVMr9PMINyo" data-gate="drop">
   <div class="top">
     <div class="score lo">0.05</div>
@@ -4801,6 +5215,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
   <div class="why">Это интервью-байопик про запуск стартапа Trajectory.ai и историю Windsurf/Google-сделки — личные истории и хайп про &#x27;continual learning&#x27;, но без конкретной методики или воспроизводимого приёма для инженера.</div>
   <div class="bars"><div class="b"><span>sig</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>nov</span><i><u style="width:10%"></u></i><b>0.10</b></div><div class="b"><span>act</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>evi</span><i><u style="width:10%"></u></i><b>0.10</b></div><div class="b"><span>dur</span><i><u style="width:15%"></u></i><b>0.15</b></div></div>
   <div class="ku">0 knowledge units · volatile · half-life 60d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="2EZxvgRiaoY" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.05</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=2EZxvgRiaoY" target="_blank">Поздравляю, ты - ВАЙБКОДЕР! / Настоящее ли это программирование - vibe coding? Давайте разбираться.</a></div>
+      <div class="sub">ITBeard · @***eard · 2025-12-30 · <span class="topic">vibe-coding-meta</span> </div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Это вступительный/личный ролик о перезапуске рубрики и определении термина «вайб-кодинг», без технических приёмов, воркфлоу или проверяемых утверждений.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>nov</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>act</span><i><u style="width:2%"></u></i><b>0.02</b></div><div class="b"><span>evi</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>dur</span><i><u style="width:15%"></u></i><b>0.15</b></div></div>
+  <div class="ku">0 knowledge units · volatile · half-life 45d</div>
   <div class="toggle">
     <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
     <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
@@ -5077,6 +5509,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
     <span class="agree"></span>
   </div>
 </div>
+<div class="card" data-vid="oL6bLQOXwAY" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.00</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=oL6bLQOXwAY" target="_blank">Secrets to unlock Gemini 3&#x27;s hidden power...</a></div>
+      <div class="sub">AI Jason · @****sonZ · 2025-12-24 · <span class="topic">ai-frontend-animation-prompting</span> <span class="flag ad">AD</span></div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Видео — промо-обёртка (HubSpot-шаблоны + Super Design + AI Builder Club) вокруг простого наблюдения: GSAP для scroll-driven анимации, motion.dev для UI-переходов, плюс Motion MCP-сервер отдаёт агенту доки по запросу вместо раздувания контекста тулами.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>nov</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>act</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>evi</span><i><u style="width:35%"></u></i><b>0.35</b></div><div class="b"><span>dur</span><i><u style="width:35%"></u></i><b>0.35</b></div></div>
+  <div class="ku">3 knowledge units · volatile · half-life 90d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
 <div class="card" data-vid="SPC_yCe1cUw" data-gate="drop">
   <div class="top">
     <div class="score lo">0.00</div>
@@ -5161,6 +5611,24 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
   <div class="why">Общеобразовательный обзор игроков рынка ИИ (OpenAI и т.д.) без единого практического приёма для разработчика, значительная часть транскрипта — реклама собственного платного клуба.</div>
   <div class="bars"><div class="b"><span>sig</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>nov</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>act</span><i><u style="width:2%"></u></i><b>0.02</b></div><div class="b"><span>evi</span><i><u style="width:5%"></u></i><b>0.05</b></div><div class="b"><span>dur</span><i><u style="width:10%"></u></i><b>0.10</b></div></div>
   <div class="ku">0 knowledge units · volatile · half-life 60d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="fBO-gchPASA" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.00</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=fBO-gchPASA" target="_blank">Warp - альтернатива IDE / Технический обзор агентной среды разработки Warp Code</a></div>
+      <div class="sub">ITBeard · @***eard · 2025-11-19 · <span class="topic">warp-agentic-ide</span> <span class="flag ad">AD</span><span class="flag news">NEWS</span></div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Рекламный обзор фич Warp Code с реферальной ссылкой на кредиты — маркетинговый тур по продукту без глубокого технического воркфлоу или демонстрации кода в доступном сэмпле.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:12%"></u></i><b>0.12</b></div><div class="b"><span>nov</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>act</span><i><u style="width:10%"></u></i><b>0.10</b></div><div class="b"><span>evi</span><i><u style="width:10%"></u></i><b>0.10</b></div><div class="b"><span>dur</span><i><u style="width:20%"></u></i><b>0.20</b></div></div>
+  <div class="ku">2 knowledge units · volatile · half-life 60d</div>
   <div class="toggle">
     <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
     <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
