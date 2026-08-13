@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Holo Engine (hiholo.ai) — разбор продукта лида Кирилла Казакова</title>
+<style>
+  :root{--bg:#fff;--panel:#f7f6f3;--line:#e3e2e0;--txt:#37352f;--mut:#6b6b6b;--acc:#2563eb;--ok:#3f8f63;--warn:#b8860b;--bad:#c14343}
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif;color:var(--txt);background:var(--bg);line-height:1.55}
+  .wrap{max-width:1120px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:20px}
+  h2{font-size:17px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .card h3{margin:0 0 6px;font-size:13px;letter-spacing:.3px;text-transform:uppercase;color:var(--mut)}
+  .big{font-size:20px;font-weight:600}
+  table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:var(--panel);font-weight:600}
+  .ok{color:var(--ok);font-weight:600}
+  .warn{color:var(--warn);font-weight:600}
+  .bad{color:var(--bad);font-weight:600}
+  code{background:var(--panel);border:1px solid var(--line);padding:1px 5px;border-radius:4px;font-family:ui-monospace,monospace;font-size:12px}
+  ul{margin:6px 0 6px 18px;padding:0}
+  li{margin:4px 0}
+  .scroll{overflow-x:auto}
+  .foot{margin-top:28px;color:var(--mut);font-size:12px;border-top:1px solid var(--line);padding-top:10px}
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#191919;--panel:#232323;--line:#3a3a3a;--txt:#e8e6e3;--mut:#9b9b9b}
+  }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Five-Whys-x-TRIZ.html">&larr; Five-Whys-x-TRIZ</a> · <a href="Hotels-Brno-Route-15-16-Aug.html">Hotels-Brno-Route-15-16-Aug &rarr;</a></span></div>
+<div class="wrap">
+<h1>Holo Engine (hiholo.ai) — разбор продукта</h1>
+<div class="sub">Лид: Кирилл Казаков · дал ссылку <code>https://engine.hiholo.ai/mcp</code> · замер 13.08.2026, 07:25 UTC · всё проверено живыми запросами, не по памяти</div>
+
+<h2>Первый факт: ссылка — не MCP-сервер, а форма заявки</h2>
+<div class="grid">
+  <div class="card"><h3>POST /mcp (JSON-RPC initialize)</h3><div class="big bad">404 not_found</div>подключить как удалённый MCP нельзя</div>
+  <div class="card"><h3>GET /mcp</h3><div class="big">HTML-страница</div>«Holo Engine — MCP Trial», форма на 14-дневный триал</div>
+  <div class="card"><h3>Что реально дают</h3><div class="big">бинарь + license.holo</div>ссылка приходит на почту, кладётся в <code>~/.holo/</code>, подключается к Claude Desktop</div>
+  <div class="card"><h3>/health движка</h3><div class="big ok">healthy, v2.0.0</div>uptime 121 380 c (≈1,4 сут), RSS 146 МБ, nginx/Ubuntu</div>
+</div>
+<p>То есть MCP у них — <b>локальный лицензируемый бинарь с привязкой к машине</b>, а не публичный эндпоинт. Публичный REST живёт на <code>api.hiholo.ai</code> и без ключа отдаёт <span class="bad">401</span>. Полная документация открыта на <code>https://engine.hiholo.ai/</code> (SPA, 311 КБ, ~34 эндпоинта).</p>
+
+<h2>Что это за продукт</h2>
+<p><b>Детерминированный «движок-мозг» на одной структуре данных</b> — Adelic Tree (гиперболическое дерево, модель Пуанкаре). Одна структура работает сразу как база, индекс, вектор-поиск, ML-рантайм и решатель. Позиционирование: «Physical AI infrastructure based on geometry of computation», бинарь <b>&lt;10 МБ</b>, CPU-only, без GPU и без зависимостей, всё считается локально.</p>
+<div class="grid">
+  <div class="card"><h3>4 заявленных отличия</h3><ul>
+    <li>ноль галлюцинаций (детерминизм: тот же вход → тот же выход)</li>
+    <li>заменяет вектор-БД + эмбеддинг-модель + граф-БД</li>
+    <li>~10 МБ, любой CPU / микроконтроллер</li>
+    <li>white-box: формула и R² на каждый прогноз</li>
+  </ul></div>
+  <div class="card"><h3>6 слоёв цикла (~34 эндпоинта)</h3><ul>
+    <li><b>Sense</b> seed, insert, feed_text, cognitive/observe</li>
+    <li><b>Understand</b> query_text, search, nearest, discover, reason</li>
+    <li><b>Decide</b> predict, solveCSP, geometry/graph/quantum_solve</li>
+    <li><b>Act</b> holo_exec (Holo Language)</li>
+    <li><b>Verify</b> evaluate, anomaly, missing, tree, get</li>
+    <li><b>Adapt</b> feedback, learn</li>
+  </ul></div>
+  <div class="card"><h3>Holo Language</h3>Тьюринг-полный язык с «человеческим» синтаксисом, исполняется на сервере одним вызовом <code>/api/holo_exec</code>, состояние живёт в дереве, есть сессии, HTTP-вызовы, функции, try/catch. Сделан явно <b>под AI-агентов</b>: агент описывает логику — сервер исполняет за один round-trip.</div>
+  <div class="card"><h3>Модели поставки</h3>MCP (лицензия на машину, device binding) · On-Prem сервер (enterprise) · IoT/Edge. Бесплатно для науки и образования. <b>Цен нет</b> — «by request», обещают опубликовать позже.</div>
+</div>
+
+<h2>Заявленные бенчмарки (их цифры, наша оценка проверяемости)</h2>
+<div class="scroll">
+<table>
+<tr><th>Домен</th><th>Их цифра</th><th>С чем сравнивают</th><th>Насколько проверяемо</th></tr>
+<tr><td>БД, 100K строк</td><td>point query 0,2 µs (40× SQLite); память 9,8 КБ против 6,9 МБ (700×); сжатие 2041:1</td><td>SQLite, ClickHouse</td><td class="warn">сравнение неравное: у них 49 узлов квантильных бакетов, а не 100K строк — это агрегат, а не хранение сырья. Сами признают, что ClickHouse выигрывает на PB-масштабе</td></tr>
+<tr><td>Квантовая химия</td><td>медиана 33× быстрее PySCF, отклонение 0–0,02%</td><td>PySCF RHF, STO-3G</td><td class="ok">самая сильная позиция: результат сверяется с эталоном, воспроизводится независимо</td></tr>
+<tr><td>ML-классификация</td><td>+2,7% F1 на prompt injection, +1,2% на PII; ничья на галлюцинациях; <b>проигрыш</b> LogReg на intent (−1,9%)</td><td>scikit-learn 1.8, 5-fold CV</td><td class="ok">честно показан и проигрыш — хороший знак, но N=400–500, это мало</td></tr>
+<tr><td>Онлайн-обучение</td><td>0,96 точность при дрейфе; DT/RF падают в 0,00</td><td>переобучение DT/RF, NB</td><td class="warn">падение в ноль у RandomForest выглядит как кривая постановка baseline, а не как их победа</td></tr>
+<tr><td>RAG без эмбеддингов</td><td>Recall@3 90% против 80% TF-IDF и 70% BM25</td><td>TF-IDF, BM25</td><td class="bad">200 чанков, 10 запросов — на такой выборке разница в 1–2 документа. Плюс latency 259 мс против &lt;1 мс у baseline. Ни одного плотного ретривера (E5/bge) в сравнении нет</td></tr>
+<tr><td>Символьная регрессия</td><td>R²=0,999999999995 на чистых данных, s-выражение вместо numpy-массива</td><td>LinearRegression, Lasso</td><td class="warn">на шуме математически равно sklearn; ценность = читаемая формула, не точность</td></tr>
+<tr><td>FPGA phase core</td><td>~1600× при K=4096, 0 умножителей, ~130× энергия</td><td>1 ядро i9-9880H</td><td class="warn">сами помечают DERIVED/MODELED: синтез Yosys есть, платы и замера нет. Их же «honest read»: при малом K паритет с многоядерным CPU</td></tr>
+<tr><td>Банковский кэшбэк (uplift)</td><td>Qini 563,9 · профит $13,8K · «верных» клиентов 2,48%</td><td>sklearn S-learner / T-learner</td><td class="bad">их же таблица: <b>T-learner sklearn выигрывает</b> (Qini 613,4, профит $14,7K). Кейс поставлен против себя</td></tr>
+</table>
+</div>
+
+<h2>Юридический слой (из EULA от 07.07.2026) — важнее бенчмарков</h2>
+<div class="grid">
+  <div class="card"><h3>Кто лицензиар</h3><b>Кирилл Казаков, физлицо</b>, торговое имя «Hi Holo». Юрлица <b>нет</b>: адрес, юрисдикция и арбитраж стоят заглушками «to be specified upon incorporation». Права «автоматически перейдут» будущей компании.</div>
+  <div class="card"><h3>Ограничения</h3>Нельзя реверсить, менять, перепродавать, обходить лицензию, <b>использовать для создания конкурирующего продукта</b>, применять в mission-critical / медицине / life-safety.</div>
+  <div class="card"><h3>Обратная связь</h3>Любой наш фидбек и идеи он вправе использовать <b>без ограничений и обязательств</b>. Своё ноу-хау в переписке не выкладываем.</div>
+  <div class="card"><h3>Приватность</h3>Заявлено: движок локальный, наружу ничего не шлёт. <span class="warn">Не проверено</span> — проверяется только на живом бинаре сниффером.</div>
+</div>
+
+<h2>Вердикт и что делать</h2>
+<table>
+<tr><th>Сторона</th><th>Что видим</th></tr>
+<tr><td class="ok">Сильное</td><td>Инженерия настоящая: 34 задокументированных эндпоинта, свой язык, RTL на Verilog с синтезом, статья по EBM/JEPA-математике, живой сервис. Квантовая химия и символьная регрессия — проверяемые, воспроизводимые вещи. Локальность и 10 МБ — реальный аргумент для тех, кому нельзя в облако.</td></tr>
+<tr><td class="bad">Слабое</td><td>Один человек без юрлица и без цен. Витрина смешивает измеренное с выведенным. Два ключевых для нас кейса (RAG и uplift) их же цифрами <b>проигрывают</b> baseline. «Заменяет вектор-БД» на 200 чанках не доказано. Соло-разработчик = риск поддержки.</td></tr>
+<tr><td class="warn">Практически для нас</td><td>Как «детерминированный мозг рядом с LLM» — не заменяет наш RAG, а закрывает узкую нишу: точный CSP-решатель, детект аномалий и предсказание пропусков на табличных данных, читаемые формулы для аудита. Это ровно наш паттерн «детерминизм важнее LLM» (§6.1). Триал бесплатный, риск = 20 минут и почта.</td></tr>
+</table>
+
+<h3>Вопросы Кириллу (по одному факту в каждом)</h3>
+<ul>
+  <li>MCP-бинарь: какой набор tools он отдаёт агенту — все 34 эндпоинта или урезанный tier 4?</li>
+  <li>RAG: сравнивались с TF-IDF и BM25; есть ли замер против плотного ретривера (e5/bge) и на корпусе от 10 тысяч документов?</li>
+  <li>Кэшбэк-кейс: в вашей же таблице sklearn T-learner выигрывает. Почему кейс оставлен на витрине?</li>
+  <li>Юрлицо и цены: на какой срок и в какой юрисдикции планируется инкорпорация — от этого зависит, можем ли мы ставить это в продакшн-контур.</li>
+  <li>Что происходит с лицензией и данными, если проект остановится: есть ли escrow исходников или бессрочный офлайн-ключ?</li>
+</ul>
+
+<div class="foot">Собрано из живых ответов сервиса: <code>engine.hiholo.ai/</code> (API Reference), <code>/mcp</code>, <code>/health</code>, <code>/eula</code>, <code>/privacy</code>, <code>hiholo.ai</code>, <code>hiholo.ai/ebm</code>, <code>api.hiholo.ai</code> (401). Ничего не отправлено, форма триала не заполнялась. Цифры бенчмарков — заявления вендора, нами не воспроизводились.</div>
+</div>
+</body>
+</html>
