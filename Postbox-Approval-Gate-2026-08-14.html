@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Гейт апрува и очередь постинга — 14.08.2026</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#fff; --ink:#16181d; --dim:#5d6470; --line:#e2e5ea;
+  --red:#c0392b; --redbg:#fdecea; --green:#1e7a44; --greenbg:#e8f5ee;
+  --amber:#8a6100; --amberbg:#fdf3e0; --blue:#1f5fa8; --bluebg:#e9f1fb;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#14161a; --card:#1c1f25; --ink:#e8eaee; --dim:#98a0ad; --line:#2c313a;
+  --red:#ff7b6b; --redbg:#33201d; --green:#6ede9f; --greenbg:#172b21;
+  --amber:#ffc861; --amberbg:#2e2515; --blue:#7fb4ef; --bluebg:#182534;}
+}
+:root[data-theme="dark"]{--bg:#14161a; --card:#1c1f25; --ink:#e8eaee; --dim:#98a0ad; --line:#2c313a;
+  --red:#ff7b6b; --redbg:#33201d; --green:#6ede9f; --greenbg:#172b21;
+  --amber:#ffc861; --amberbg:#2e2515; --blue:#7fb4ef; --bluebg:#182534;}
+:root[data-theme="light"]{--bg:#f6f7f9; --card:#fff; --ink:#16181d; --dim:#5d6470; --line:#e2e5ea;
+  --red:#c0392b; --redbg:#fdecea; --green:#1e7a44; --greenbg:#e8f5ee;
+  --amber:#8a6100; --amberbg:#fdf3e0; --blue:#1f5fa8; --bluebg:#e9f1fb;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:24px 18px 60px}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:-.3px}
+.sub{color:var(--dim);font-size:14px;margin-bottom:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px}
+h2{font-size:17px;margin:0 0 12px;letter-spacing:-.2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.tile{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--card)}
+.tile .n{font-size:32px;font-weight:650;line-height:1.1}
+.tile .l{font-size:13px;color:var(--dim);margin-top:4px}
+.t-red .n{color:var(--red)} .t-red{background:var(--redbg)}
+.t-green .n{color:var(--green)} .t-green{background:var(--greenbg)}
+.t-amber .n{color:var(--amber)} .t-amber{background:var(--amberbg)}
+.t-blue .n{color:var(--blue)} .t-blue{background:var(--bluebg)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+tr:last-child td{border-bottom:none}
+.pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}
+.p-red{background:var(--redbg);color:var(--red)}
+.p-green{background:var(--greenbg);color:var(--green)}
+.p-amber{background:var(--amberbg);color:var(--amber)}
+.p-blue{background:var(--bluebg);color:var(--blue)}
+.note{border-left:3px solid var(--amber);background:var(--amberbg);padding:12px 14px;border-radius:0 8px 8px 0;margin-top:14px;font-size:14.5px}
+.note.red{border-color:var(--red);background:var(--redbg)}
+.note.ok{border-color:var(--green);background:var(--greenbg)}
+code{font:13px/1.4 ui-monospace,Consolas,monospace;background:var(--bg);padding:1px 5px;border-radius:4px;border:1px solid var(--line)}
+.q{color:var(--dim);font-style:italic}
+.eli{margin-top:22px;border:1px dashed var(--line);border-radius:12px;padding:16px 18px;background:var(--card)}
+.bar{height:10px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%}
+.f{color:var(--dim);font-size:12.5px;margin-top:26px;text-align:center}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Задачи и планирование</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Planning-System-Before-After.html">&larr; Planning-System-Before-After</a> · <a href="Posting-Day-2026-08-06.html">Posting-Day-2026-08-06 &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>Гейт апрува и очередь постинга</h1>
+<div class="sub">Узел MyOwnPC-Natalia · замер 14.08.2026, 11:40 · всё прочитано живьём, не по памяти</div>
+
+<div class="card">
+<h2>Главный вопрос: уедет ли что-то без твоего «да»?</h2>
+<div class="grid">
+  <div class="tile t-green"><div class="n">0</div><div class="l">тикает в 24ч-окне прямо сейчас</div></div>
+  <div class="tile t-amber"><div class="n">3</div><div class="l">удержано гейтами — таймер не отпустит</div></div>
+  <div class="tile t-red"><div class="n">6</div><div class="l">уехало по таймауту 12.08 без ответа</div></div>
+  <div class="tile t-green"><div class="n">2</div><div class="l">крана стоят: узловой + флотовый</div></div>
+</div>
+<div class="note ok"><b>Сейчас само ничего не уедет.</b> Последний тик <code>approval_clock</code> 14.08 05:56: отпущено&nbsp;0 · удержано&nbsp;3 · тикает&nbsp;0.</div>
+<div class="note red"><b>Но механизм живой.</b> Тик 12.08 12:56 отпустил <b>6 черновиков</b> с пометкой «пинг был, ответа не было» — в Facebook и в телеграм-канал. Следующий новый черновик уехал бы так же: 24ч-гейт считает <b>молчание согласием</b>, а это не апрув.</div>
+</div>
+
+<div class="card">
+<h2>Что удержано (эти три таймер не отпустит сам)</h2>
+<div class="scroll"><table>
+<tr><th>id</th><th>файл</th><th>кто держит</th></tr>
+<tr><td><code>0c4ab8</code></td><td>_scratch/canary-spool-260813.md</td><td><span class="pill p-red">Tier-2</span> таймауту не поддаётся</td></tr>
+<tr><td><code>9e5ef4</code></td><td>_drafts/post-260805-first-pull-requests.md</td><td><span class="pill p-red">slop_gate FAIL</span> F6-length-max</td></tr>
+<tr><td><code>9ea162</code></td><td>drafts/teaser-voice-budapest-architecture-2026-08-05.md</td><td><span class="pill p-red">slop_gate FAIL</span> F6-length-min</td></tr>
+</table></div>
+</div>
+
+<div class="card">
+<h2>Краны постинга — состояние на сейчас</h2>
+<div class="scroll"><table>
+<tr><th>кран</th><th>где</th><th>состояние</th><th>кем</th></tr>
+<tr><td>узловой</td><td><code>postbox\STOP-POSTING.flag</code></td><td><span class="pill p-green">СТОИТ</span></td><td>возвращён 14.08 09:48</td></tr>
+<tr><td>флотовый</td><td><code>_machine-bus\STOP-POSTING.flag</code></td><td><span class="pill p-green">СТОИТ</span> — вернул сегодня 11:35</td><td>по твоему слову в живой сессии</td></tr>
+<tr><td>postbox-tick</td><td>Планировщик</td><td><span class="pill p-blue">Disabled</span></td><td>с 03.08</td></tr>
+<tr><td>Medium-repost-reminder</td><td>Планировщик</td><td><span class="pill p-blue">Disabled</span></td><td>—</td></tr>
+</table></div>
+<div class="note"><b>⚠️ Конфликт приказов, который решаете вы двое, не машина.</b><br>
+Антон 13.08 снял флотовый кран словом <span class="q">«снимаем стоп-кран, выпускай очередь по темпу»</span> и назвал границей 24ч-гейт.<br>
+Ты 14.08: <span class="q">«убедись, что ничего без моего аппрува не будет запощено»</span> — а 24ч-гейт именно молчание и засчитывает.<br>
+Я поднял кран <b>fail-closed</b>: лишний стоп снимается одним переименованием, лишняя публикация не отменяется никак. Конфликт записан дословно внутрь самого файла, флот уведомлён в 03 с пингом на тебя.</div>
+</div>
+
+<div class="card">
+<h2>Цепочка постинга: 68 кейсов</h2>
+<div class="scroll"><table>
+<tr><th>ступень</th><th>закрыто</th><th>хвост</th><th>полоса</th></tr>
+<tr><td>Facebook (твои руки)</td><td>68</td><td>0</td><td><div class="bar"><i style="width:100%;background:var(--green)"></i></div></td></tr>
+<tr><td>GitHub лонгрид</td><td>62</td><td>4</td><td><div class="bar"><i style="width:91%;background:var(--green)"></i></div></td></tr>
+<tr><td>GitHub дев-лог</td><td>61</td><td>4</td><td><div class="bar"><i style="width:90%;background:var(--green)"></i></div></td></tr>
+<tr><td>Каналы EN + RU</td><td>62</td><td>5</td><td><div class="bar"><i style="width:91%;background:var(--green)"></i></div></td></tr>
+<tr><td>Тизер EN (@ClawEng)</td><td>62</td><td>5</td><td><div class="bar"><i style="width:91%;background:var(--green)"></i></div></td></tr>
+<tr><td>Тизер RU</td><td>6</td><td><b>61</b></td><td><div class="bar"><i style="width:9%;background:var(--amber)"></i></div></td></tr>
+<tr><td>Medium (твои руки, 2/сутки)</td><td>12</td><td>42 <span class="q">ready</span> + 12 todo</td><td><div class="bar"><i style="width:18%;background:var(--amber)"></i></div></td></tr>
+</table></div>
+<div class="note">Тизер RU стоит не по поломке: <b>@ClawRus закрыт твоим решением</b> — вместо тизеров там будет одна сводка в сутки. Хвост Medium — очередь, а не долг: посты уже вышли на остальных площадках.</div>
+</div>
+
+<div class="card">
+<h2>Чат 02 — вопросы, ждущие человека</h2>
+<div class="grid">
+  <div class="tile t-amber"><div class="n">5</div><div class="l">открыто из капа 5 — кап упёрт</div></div>
+  <div class="tile t-green"><div class="n">0</div><div class="l">адресовано тебе</div></div>
+  <div class="tile t-red"><div class="n">5</div><div class="l">просрочены (stale)</div></div>
+</div>
+<div class="scroll"><table>
+<tr><th>#</th><th>про что</th><th>сколько ждёт</th></tr>
+<tr><td><code>4a599640</code></td><td>Патенты: адрес в Синтре + написание фамилии латиницей. Блокирует подачу USPTO</td><td>~16 суток</td></tr>
+<tr><td><code>acc80eac</code></td><td>Инцидент: посты с @***yssd без апрува — чужие сессии в Телеграме?</td><td>~24 суток</td></tr>
+<tr><td><code>d80e0991</code></td><td>То же, третий случай — руками или рутина</td><td>~24 суток</td></tr>
+<tr><td><code>e8b39e4d</code></td><td>Перекинуть 8 бустов Premium на @PaloAltoAiRu ради сторис</td><td>~35 суток</td></tr>
+<tr><td>—</td><td>hackernoon: живой email + пароль + bio (иначе клеймо скрытой рекламы)</td><td>—</td></tr>
+</table></div>
+<div class="note"><b>Все пять — к Антону, к тебе ни одного.</b> Кап упёрт: новые не-критичные вопросы туда сейчас не проходят вовсе.</div>
+</div>
+
+<div class="card">
+<h2>Чат 03 — задачи этому ноутбуку</h2>
+<div class="grid">
+  <div class="tile t-red"><div class="n">27</div><div class="l">долгов чтения в шине</div></div>
+  <div class="tile t-red"><div class="n">91 ч</div><div class="l">возраст самого старого</div></div>
+  <div class="tile t-blue"><div class="n">7</div><div class="l">адресных задач с 11.08</div></div>
+</div>
+<div class="scroll"><table>
+<tr><th>задача</th><th>от кого</th><th>состояние</th></tr>
+<tr><td><b>root9-sync</b> — убрать катч-олл <code>*</code> из <code>.stignore</code>, проверить узел в стороже <code>sync_divergence</code>, замерить, какие включённые задачи зовут 31 пропавший <code>.cmd</code></td><td>ZBOOKG8, 14.08 ночь<br><span class="q">Антон делегировал «чини корень»</span></td><td><span class="pill p-red">не начата</span></td></tr>
+<tr><td><b>firefox-rail-urgent</b> — поднять Firefox-рельсу, smoke, AutoFF-профиль, отчёт в 03</td><td>хаб, приказ Антона 11.08</td><td><span class="pill p-red">Firefox не установлен вовсе</span></td></tr>
+<tr><td>Синтез <b>DR26-08-06-NAT-01</b> и <b>-02</b> — результаты лежат, ждут сведения</td><td>хаб, 11.08</td><td><span class="pill p-amber">ждёт</span></td></tr>
+<tr><td>Применить SYNTHESIS <b>DR26-08-06-NAT-03</b> к формату тизеров</td><td>MacBook-Anton, 11.08</td><td><span class="pill p-amber">ждёт</span></td></tr>
+<tr><td>Замер: включённые задачи, зовущие несуществующие файлы</td><td>хаб, 11.08</td><td><span class="pill p-amber">хвост root9-sync</span></td></tr>
+</table></div>
+<div class="note red"><b>Цена мёртвой Firefox-рельсы уже видна.</b> Сегодня оба DR с этого ноутбука закрылись <b>3 плечами из 6</b> вместо кворума 4: gemini упёрся в квоту ключа, а glm и mistral ходят только браузером, которого здесь нет.</div>
+</div>
+
+<div class="card">
+<h2>Прибор, которому нельзя верить сегодня</h2>
+<div class="note red"><b>Телеграм-MCP на этом узле мёртв.</b> Два вызова подряд — <code>get_history</code> и даже <code>list_accounts</code> — висели по 300 секунд и были убиты харнесом. Чаты 02 и 03 читал скриптами шины и журналом одобрений, не через MCP. Пустой ответ MCP сегодня означал бы «прибор сломан», а не «сообщений нет».</div>
+</div>
+
+<div class="eli">
+<b>🧒 Простыми словами.</b> Прямо сейчас ни один пост сам не уедет: таймер пустой, а три штуки стоят красными и он их не отпустит. Но у нас был будильник, который через сутки твоего молчания публиковал сам — 12 августа он так выпустил шесть штук. Я перекрыл его общим рубильником на всю дорогу, а не только на твоём ноутбуке. Антон вчера этот рубильник снимал, поэтому вам двоим надо между собой решить. В чате 02 к тебе вопросов нет, все пять к Антону. В чате 03 тебе две работы: починить синхронизацию и поставить Firefox — без него наши исследования недобирают голоса.
+</div>
+
+<div class="f">Собрано сессией на MyOwnPC-Natalia · оператор Наташа · 14.08.2026</div>
+</div>
+</body>
+</html>
