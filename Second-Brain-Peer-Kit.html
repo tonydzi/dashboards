@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>second-brain-kit - onboarding внешнего пира</title>
+<style>
+  :root { --bg:#0f1420; --card:#1a2130; --card2:#151b28; --text:#e8ecf4; --dim:#8b94a8; --green:#4ade80; --amber:#fbbf24; --blue:#60a5fa; --red:#f87171; --line:#2a3348; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,sans-serif; padding:24px; max-width:1200px; margin:0 auto; }
+  h1 { font-size:1.5em; margin-bottom:4px; }
+  .sub { color:var(--dim); margin-bottom:20px; font-size:0.92em; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:16px; margin-bottom:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .card h2 { font-size:1.02em; margin-bottom:10px; color:var(--blue); }
+  table { width:100%; border-collapse:collapse; font-size:0.88em; }
+  td,th { padding:5px 8px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--dim); font-weight:600; font-size:0.85em; }
+  .ok { color:var(--green); } .mid { color:var(--amber); } .v2 { color:var(--dim); } .no { color:var(--red); }
+  .big { font-size:1.6em; font-weight:700; }
+  .stat { display:inline-block; background:var(--card2); border:1px solid var(--line); border-radius:10px; padding:10px 16px; margin:0 8px 8px 0; text-align:center; }
+  .stat .lbl { color:var(--dim); font-size:0.75em; }
+  ol,ul { margin-left:18px; } li { margin-bottom:6px; font-size:0.9em; }
+  code { background:var(--card2); padding:1px 5px; border-radius:4px; font-size:0.85em; color:var(--amber); }
+  .full { grid-column:1/-1; }
+  .q { background:var(--card2); border-left:3px solid var(--amber); padding:8px 12px; margin-bottom:8px; border-radius:0 8px 8px 0; font-size:0.9em; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Scripts-Parity-Mac16-vs-Hub.html">&larr; Scripts-Parity-Mac16-vs-Hub</a> · <a href="Selfheal-Phase1.html">Selfheal-Phase1 &rarr;</a></span></div>
+<h1>🧠 second-brain-kit - onboarding-набор внешнего пира</h1>
+<div class="sub">Приказ Антона 13.08 (голос) · собрано 14.08 сессией HP17 · Ultracode: 6 читателей + синтез + 3 черновика + адверсариальное ревью + 4 финишера · дом: <code>04-Projects\second-brain-peer-kit\</code></div>
+
+<div>
+  <span class="stat"><div class="big ok">7</div><div class="lbl">наружных файлов кита</div></span>
+  <span class="stat"><div class="big ok">1261</div><div class="lbl">строк (кит + internal)</div></span>
+  <span class="stat"><div class="big mid">11</div><div class="lbl">находок ревью, все закрыты</div></span>
+  <span class="stat"><div class="big ok">0</div><div class="lbl">утечек по leak-скану</div></span>
+  <span class="stat"><div class="big mid">7</div><div class="lbl">вопросов Антону</div></span>
+</div>
+
+<div class="grid">
+<div class="card">
+  <h2>📦 Наружный кит (kit\ - можно отдавать)</h2>
+  <table>
+    <tr><th>Файл</th><th>Что это</th></tr>
+    <tr><td><code>README.md</code></td><td>лицо кита: что получаешь / чего НЕ получаешь / как отключиться</td></tr>
+    <tr><td><code>PROMPT.md</code></td><td>промпт-инсталлятор, 8 правил, data-не-command зашит</td></tr>
+    <tr><td><code>INSTALL-WINDOWS.md</code></td><td>265 строк: winget + SyncTrayzor, без скрытых автостартов</td></tr>
+    <tr><td><code>INSTALL-MAC.md</code></td><td>251 строка: brew + launchd, native CLI, FDA сразу</td></tr>
+    <tr><td><code>SECURITY-INJECTION-GUARD.md</code></td><td>модель угроз + слои + чек-лист + hard-hold</td></tr>
+    <tr><td><code>UPDATES-CONSENSUS.md</code></td><td>посылки: принять/отклонить, applied vs claimed, причина отказа обязательна</td></tr>
+    <tr><td><code>GOTCHAS.md</code></td><td>19 датированных граблей, обезличено</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>🔒 Ключевые решения v1</h2>
+  <ul>
+    <li><b>Гостю только чтение</b> (правило 09.08): 2 новые шары <code>guest-knowledge</code> + <code>guest-updates</code>, у нас sendonly, у него receiveonly. Во флоте не было ни одной sendonly-шары - контур строится с нуля на хабе.</li>
+    <li><b>v1 без записи от гостя</b>: вердикты сообщением в чат; шара guest-replies = v2 только решением Антона.</li>
+    <li><b>Код по синку не ездит никогда</b> (урок отказа стокового Claude 24.06 сохранён как фича). tool-src посылка = только анонс релиза, инлайн-код = HOLD.</li>
+    <li><b>Никакого личного канона</b>: CORE-EXT + FLOOR-EXT из persona-kit (persona_build.py жив - память 29.07 протухла, поправлена).</li>
+    <li><b>Подпись посылок</b> = Ed25519 verify-only (v2); fleet_hmac с общим секретом наружу нельзя.</li>
+    <li><b>Тишина ≠ согласие</b>, авто-применения не существует; каждая посылка = явное человеческое да/нет.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>🧩 Статусы деталей</h2>
+  <table>
+    <tr><th>Деталь</th><th>Статус</th></tr>
+    <tr><td>Волт со слоями + brain_kit.py</td><td class="ok">✅ reuse</td></tr>
+    <tr><td>Движок посылок = OSS fleet-deploy</td><td class="ok">✅ reuse напрямую</td></tr>
+    <tr><td>untrusted.py (data-не-command)</td><td class="ok">✅ reuse, 1 правка</td></tr>
+    <tr><td>Kit-детектор инъекций (без внутренних ID)</td><td class="mid">🛠 собирается в v1</td></tr>
+    <tr><td>CORE-EXT + FLOOR-EXT (FLOOR §5 переписать)</td><td class="mid">🛠 собирается в v1</td></tr>
+    <tr><td>Экспортёр curated-знаний (scrub_scan=0)</td><td class="mid">🛠 whitelist решает Антон</td></tr>
+    <tr><td>package_verify + ключи Ed25519</td><td class="v2">🔜 v2</td></tr>
+    <tr><td>quarantine_lite + content-type gate</td><td class="v2">🔜 v2</td></tr>
+    <tr><td>Тест-посылки самопроверки (1+3)</td><td class="v2">🔜 v2</td></tr>
+    <tr><td>Watchdog Win/Mac, дашборд-инбокс</td><td class="v2">🔜 v2</td></tr>
+    <tr><td>Hub-контур (шары, первый гость)</td><td class="no">⛔ не исполнен, runbook готов</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>🛡 Адверсариальное ревью: fix-needed → закрыто</h2>
+  <ul>
+    <li><b>4 критикала:</b> chat ID канала эскалаций в исходнике детектора (kit-версия обязательна) · guest-replies нарушал «только чтение» (v1 переведён на чат) · Windows-док подавал несуществующие инструменты как готовые (переписан в честный ручной режим) · BUILD-NOTES с внутренними путями в наружном файле (вынесены в internal\).</li>
+    <li><b>4 мажора + 3 минора:</b> EXT-канон помечен 🛠 · «автоскраб» → честный ручной чек-лист · tool-src = только анонс · watchdog v1 = SyncTrayzor · SECURITY §5 обезличен · журнал решений → 01-Private · guest-replies тип унифицирован.</li>
+    <li><b>Мой пост-скан:</b> + PROMPT.md существовал только по ссылкам - написан · Tailscale-фингерпринт убран из Mac-дока · em/en-тире 0 · Device ID 0 · внутренние ID/имена 0.</li>
+  </ul>
+</div>
+
+<div class="card full">
+  <h2>❓ Открытые вопросы Антону (полный список: internal\DECOMPOSITION.md)</h2>
+  <div class="q">1. <b>guest-replies (v2):</b> включать ли вообще write-ящик от гостя, или навсегда «вердикты в чат»? Буква правила 09.08 против, удобство за.</div>
+  <div class="q">2. <b>Whitelist guest-knowledge:</b> что именно из волта идёт в курируемый экспорт гостям?</div>
+  <div class="q">3. <b>Заморозка стройки до 20.08 + кап деталей:</b> missing-код кита (детектор-kit, package_verify, quarantine_lite) - карв-аут под прецедент гостя или ждём 20.08? И кто пишет код (конвейер внешних исполнителей встал).</div>
+  <div class="q">4. <b>Публикация на GitHub</b> (в серию китов): предлагаю сначала hub-контур + dogfood на первом живом госте (Chris/Pixoft?), потом репо. README раскрывает архитектуру доступа.</div>
+  <div class="q">5. <b>Подпись v2:</b> Ed25519 verify-only (рекомендация) vs pairwise-HMAC - зафиксировать решением.</div>
+  <div class="q">6. <b>Механика Chris/Pixoft:</b> на HP17 транскриптов подключения нет - поднять на хабе, что ему реально выдали.</div>
+  <div class="q">7. <b>Профиль guest в people.json/node_caps.json:</b> канон правит только Антон - нужна твоя правка или canon-proposal.</div>
+</div>
+</div>
+
+<div class="sub" style="margin-top:8px">Файлы: <code>E:\Obsidian\Anton-Knowledge\04-Projects\second-brain-peer-kit\</code> · волт-заметка <code>project-second-brain-peer-kit.md</code> · ROADMAP SHIP LOG 14.08 · сгенерировано 2026-08-14 ~03:00 Лиссабон, сессия HP17·Anton</div>
+</body>
+</html>

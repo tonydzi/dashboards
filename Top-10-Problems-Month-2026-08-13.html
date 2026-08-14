@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Топ-10 проблем месяца · 13.07–13.08.2026</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --card:#ffffff; --ink:#1a1a1a; --muted:#6b6b6b;
+    --red:#c0392b; --orange:#d68910; --green:#1e8449; --blue:#2471a3;
+    --line:#e3e1dc;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--ink);
+    font:15px/1.45 -apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);margin-bottom:18px}
+  .kpis{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:10px 16px;min-width:150px}
+  .kpi b{display:block;font-size:22px}
+  .kpi span{color:var(--muted);font-size:12.5px}
+  .kpi.red b{color:var(--red)} .kpi.or b{color:var(--orange)} .kpi.gr b{color:var(--green)}
+  table{width:100%;border-collapse:collapse;background:var(--card);
+    border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{padding:10px 12px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+  th{background:#efede8;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+  tr:first-child td{border-top:none}
+  .rank{font-size:20px;font-weight:700;width:34px}
+  .r1 .rank{color:var(--red)}
+  .status{font-size:12.5px;white-space:nowrap;border-radius:6px;padding:2px 8px;display:inline-block}
+  .open{background:#fdecea;color:var(--red)}
+  .part{background:#fdf3e3;color:var(--orange)}
+  .wait{background:#eaf2fb;color:var(--blue)}
+  .done{background:#e9f7ef;color:var(--green)}
+  .num{font-weight:700}
+  .why{color:var(--muted);font-size:13px}
+  .fix{font-size:13px}
+  h2{font-size:16px;margin:26px 0 8px}
+  .meta{color:var(--muted);font-size:12.5px;margin-top:20px}
+  .bar{height:8px;background:#eee;border-radius:4px;margin-top:4px;max-width:220px}
+  .bar i{display:block;height:8px;border-radius:4px;background:var(--red)}
+  @media(max-width:760px){ td,th{padding:8px 8px} body{padding:12px} }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Tablitsa-Kontenta-00.html">&larr; Tablitsa-Kontenta-00</a> · <a href="Watch-Digest.html">Watch-Digest &rarr;</a></span></div>
+<h1>Топ-10 проблем месяца</h1>
+<div class="sub">Окно 13.07–13.08.2026 · источники: журнал поломок (весь флот) + ~500 ретро и 6 Decision Memo волта + греп 2861 транскрипта сессий этого ноута · собрано 13.08 21:20</div>
+
+<div class="kpis">
+  <div class="kpi red"><b>2 956</b><span>сессий за 31 день (только этот ноут)</span></div>
+  <div class="kpi red"><b>997</b><span>сессий упёрлись в протухший ключ (401)</span></div>
+  <div class="kpi red"><b>82%</b><span>выхода токенов = механика, не миссия</span></div>
+  <div class="kpi or"><b>93%</b><span>вопросов Антону протухло без ответа</span></div>
+  <div class="kpi or"><b>1 022</b><span>висящих посылок деплоя по флоту (пик)</span></div>
+  <div class="kpi gr"><b>140→27</b><span>посылки добиты 13.08 после взвода авто-apply</span></div>
+</div>
+
+<table>
+<tr><th></th><th>Проблема</th><th>Масштаб (доказано)</th><th>Статус</th><th>Что чинить</th></tr>
+
+<tr class="r1"><td class="rank">1</td>
+<td><b>Протухшие ключи убивают ночные конвейеры молча</b>
+<div class="why">headless-очередь дистилляций месяц била в отозванный OAuth-токен; никто не заметил, потому что exit был «зелёный»</div></td>
+<td><span class="num">997 сессий</span> с ошибкой 401, из них 856 = 95% пула импортов
+<div class="bar"><i style="width:100%"></i></div></td>
+<td><span class="status open">открыто</span></td>
+<td class="fix">общефлотский ensure_oauth_token() ставится ВО ВСЕ headless-вызовы + сторож на возраст ВЫХОДА очереди (не exit-код)</td></tr>
+
+<tr><td class="rank">2</td>
+<td><b>Ремонтный налог: система чинит себя вместо работы наружу</b>
+<div class="why">каждый инцидент рождает 3–7 вечных деталей; петли смерти деталей нет; 6 мемо об одном и том же</div></td>
+<td><span class="num">82%</span> выхода = механика · 0 постов 14 дней подряд · 433 сессии/день при 0 наружу · Маяк: 97% сессий = ремонт
+<div class="bar"><i style="width:82%"></i></div></td>
+<td><span class="status wait">ждёт «+» Антона</span></td>
+<td class="fix">9 пунктов Tier-2 из сводного вердикта 07.08: диета роботов 66→30, амнистия долгов, «+1 деталь = −1 деталь»</td></tr>
+
+<tr><td class="rank">3</td>
+<td><b>Деплой-конвейер: посылки «применяются», но груз не доезжает</b>
+<div class="why">5 классов: apply без файла-груза, verify-пустышки, установка старого поверх нового, посылки-обещания, слепые пятна пиров</div></td>
+<td><span class="num">370 сессий</span> с PENDING · пик 1 022 посылки по 6 узлам · «корень 128 висящих»
+<div class="bar"><i style="width:37%"></i></div></td>
+<td><span class="status part">частично: 140→27</span></td>
+<td class="fix">гейт «посылка обязана везти файл» + verify читает ФАКТ; добить 22 посылки с прозой и 13 с win-синтаксисом на маках</td></tr>
+
+<tr><td class="rank">4</td>
+<td><b>Мёртвые задачи планировщика + сторож их не лечит</b>
+<div class="why">самый частый класс журнала; из 7 «мёртвых» роботов настоящий сбой был 1 — остальные красились из-за карты сигналов</div></td>
+<td>счёт <span class="num">9</span> в журнале · 152 сессии с exit 1 роботов · у Наташи 31 файл пропал, задачи зовут пустоту
+<div class="bar"><i style="width:30%"></i></div></td>
+<td><span class="status part">хаб починен 11.08</span></td>
+<td class="fix">открыты: LOGON-TYPE backlog (runbook нет) и узел Наташи (.stignore съел скрипты); карту сигналов раскатать на пиров</td></tr>
+
+<tr><td class="rank">5</td>
+<td><b>Ложная зелень: приборы меряют не то, чем пользуется потребитель</b>
+<div class="why">сквозной мета-класс: доктор пингует REST, а рельса ходит через CLI; heartbeat зелёный при мёртвом мосте</div></td>
+<td>≥10 строк журнала + 8 ретро · WhatsApp-мост мёртв <span class="num">38 дней</span> при зелёных heartbeat · Syncthing «0 needFiles» при 1 515 недоехавших
+<div class="bar"><i style="width:45%"></i></div></td>
+<td><span class="status open">forever-fix нет</span></td>
+<td class="fix">правило-класс: сторож пингует ТУ ЖЕ дверь, что потребитель, и сторожит возраст ВЫХОДА; пройтись по всем сторожам разом</td></tr>
+
+<tr><td class="rank">6</td>
+<td><b>Браузерная рельса лежит (browser-rail-down)</b>
+<div class="why">глушит сразу три трубы: claude.ai-sync (6 ночей подряд без PULL), DR-веер, FB-ответы; Playwright упирается в Cloudflare</div></td>
+<td>счёт <span class="num">6+</span>, системный с 10.08 · 228 сессий видели Cloudflare-стены
+<div class="bar"><i style="width:23%"></i></div></td>
+<td><span class="status wait">нужны руки Антона</span></td>
+<td class="fix">довершить вход расширения Chrome (2 аска уже висят) + безлюдный дефолт браузера; forever-fix task от 10.08</td></tr>
+
+<tr><td class="rank">7</td>
+<td><b>Вопросы Антону тонут: дедуп асков не закрыт</b>
+<div class="why">один робот создал 69 копий одного вопроса за день; поздний «+» раньше вообще выбрасывался (починено в ките, у себя нет)</div></td>
+<td><span class="num">93.2%</span> асков протухло (386/414) · Маяк 86/86 stale · апрув выдан и 92 ч не исполнен
+<div class="bar"><i style="width:93%"></i></div></td>
+<td><span class="status part">прибор есть, корень нет</span></td>
+<td class="fix">canon_apply.py повести через дедуп ask_once.py; свой approval.py проверить на шов «expired без читателя»; кап 5 вопросов уже введён 12.08</td></tr>
+
+<tr><td class="rank">8</td>
+<td><b>Дубли работы: один сид = 10 сессий, консолидатора нет</b>
+<div class="why">каждая сессия честно проходит весь путь: 5 мемо, 4 дашборда, 2 ретро одного и того же; DR-раннер наплодил 34 клона</div></td>
+<td>~<span class="num">1M токенов</span> только на старты дублей · веер выбил недельный бак → 2 суток паралича роботов
+<div class="bar"><i style="width:40%"></i></div></td>
+<td><span class="status wait">STOP-DUP ждёт «+»</span></td>
+<td class="fix">в сид-шаблон: обязательный onair.py declare + назначенный консолидатор + «переиспользуй чужую панель»; RECALL учить видеть ЛЕТЯЩУЮ работу пиров</td></tr>
+
+<tr><td class="rank">9</td>
+<td><b>Синк расходится молча: receive-only, два писателя, конфликты</b>
+<div class="why">узел Наташи недосчитался 1 515 файлов при «зелёном» Syncthing; хабовский двойник затирал живой шард Маяка</div></td>
+<td><span class="num">238 сессий</span> видели лежащий синк · 160 сессий с sync-conflict файлами · 5 молчаливых шар из 6
+<div class="bar"><i style="width:24%"></i></div></td>
+<td><span class="status part">сторож построен</span></td>
+<td class="fix">развилка receive-only vs sendreceive = решение Антона; правило «один файл = один писатель» дожать на все синкаемые json</td></tr>
+
+<tr><td class="rank">10</td>
+<td><b>Вендорские рельсы гаснут молча, оплаченные лимиты не выгребаются</b>
+<div class="why">Google закрыл Gemini CLI-тир (58 сессий с ошибкой); панель ломателей МЕСЯЦАМИ ревьюировала путь к файлу вместо файла</div></td>
+<td>Codex-бак <span class="num">4%</span> · Grok $300/мес = 17 вызовов · ChatGPT 0% · 230 сессий упирались в 429
+<div class="bar"><i style="width:20%"></i></div></td>
+<td><span class="status open">открыто</span></td>
+<td class="fix">gemini → Antigravity или браузерная дверь; исторические панель-вердикты с контекстом-путём пересмотреть; рельса задаётся при рождении детали (§6.3)</td></tr>
+</table>
+
+<h2>Что уже починено за месяц (не трогать, работает)</h2>
+<table>
+<tr><td><span class="status done">✅</span> Взвод авто-apply на все 6 узлов: куча посылок 140→27 без рук (13.08)</td></tr>
+<tr><td><span class="status done">✅</span> Карта сигналов роботов: 6 «мёртвых» оказались находками, не сбоями; crash-guard + regress-тест (11.08)</td></tr>
+<tr><td><span class="status done">✅</span> /retro-lost: 4 051 брошенная сессия получила ночного упаковщика (11.08)</td></tr>
+<tr><td><span class="status done">✅</span> Сторож sync_divergence на расхождение шар (06.08) · стоп-кран Наташи стал fail-closed (12.08)</td></tr>
+<tr><td><span class="status done">✅</span> Ревизия CLAUDE.md v2 закрыта (13.08) · кап 5 вопросов/день Антону (12.08)</td></tr>
+</table>
+
+<h2>Хвосты (заметно, но ниже топ-10)</h2>
+<table>
+<tr><td>Кириллица в cp1252-консоль: 68 сессий с UnicodeEncodeError (только этот ноут) · зеркало канона для Codex протухает за 2 суток (запас капа 5 байт) · витрины без хозяина показывают старые цифры · alpha-backlog: 3 недели подряд 0 внедрений · MEMORY.md режется на 25KB и молча теряет хвост</td></tr>
+</table>
+
+<div class="meta">
+Метод: (1) журнал поломок 00-System\Breakage-Journal.md — флотовый, записи с хаба, Mac16, MacBook-Anton, узла Наташи; (2) ~500 ретро-заметок + 6 Decision Memo волта за окно; (3) ripgrep по 2 861 jsonl-транскрипту 5 пулов этого ноута (сырые счётчики: scratchpad res_*.tsv). Сессии других машин покрыты через флотовый журнал и синкаемые ретро; их локальные транскрипты не сканировались.
+Цифры = число затронутых СЕССИЙ, не вхождений. Загрязнённые бойлерплейтом паттерны (quota, orphan, selfheal) очищены уточнёнными регексами.
+</div>
+</body>
+</html>

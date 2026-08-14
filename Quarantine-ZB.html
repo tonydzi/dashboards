@@ -26,7 +26,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Quarantine-MAYAK.html">&larr; Quarantine-MAYAK</a> · <a href="Quarantine.html">Quarantine &rarr;</a></span></div><div class="wrap">
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>ZBOOKG8-2023PAL</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
-<h2>✅ Доверенные — применятся сами <span class="cnt">3</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+<h2>✅ Доверенные — применятся сами <span class="cnt">1</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">hooks-payload-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">SELF-CARRYING груз для 5 посылок-призраков: block_dangerous_bash + canon_growth_guard + skill_usage_hook + task_surface_hook (файлы лежат в _transit/DEPLOY-*)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:17 · <span class="ok">подпись ✓</span></div>
@@ -34,23 +34,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   
-</div><div class="card trusted">
-  <div class="top"><span class="id">opencode-backup-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Backup coding door: install OpenCode (subscription oauth login, not an API key). Canary A-2022BAYAREA GREEN 2026-08-06: live run gpt-5.6-sol passed. Per-node login = device-flow, recipe in 02-Decisions/decision-2026-08-05-coding-rails-codex-utilization.md section 7</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:52 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>sh -c &quot;npm install -g opencode-ai&quot;</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">claude-desktop-watchdog-260811</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Сторож Claude Desktop: самолечение класса &#x27;после апдейта не стартует до ребута&#x27; (Breakage-Journal 2026-08-11)</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-11 06:19 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;&amp; (Join-Path $env:OBSIDIAN_VAULT &#x27;_machine-bus\_transit\claude-desktop-watchdog\install_watchdog.ps1&#x27;)&quot;</code></div>
-  
-</div><h2>📦 Уже применённые <span class="cnt">189</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">193</span></h2><div class="card trusted">
   <div class="top"><span class="id">windowless-s4u</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Ð§Ñ‘Ñ€Ð½Ñ‹Ðµ Ð¾ÐºÐ½Ð°: flip Ð·Ð°Ð´Ð°Ñ‡ Ð² S4U</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:50 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1275,6 +1259,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_llm_ask.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">opencode-backup-rail-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Backup coding door: install OpenCode (subscription oauth login, not an API key). Canary A-2022BAYAREA GREEN 2026-08-06: live run gpt-5.6-sol passed. Per-node login = device-flow, recipe in 02-Decisions/decision-2026-08-05-coding-rails-codex-utilization.md section 7</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:52 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>sh -c &quot;npm install -g opencode-ai&quot;</code></div>
+  
+</div><div class="card trusted">
   <div class="top"><span class="id">machine-key-ladder-7-scripts-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Семь скриптов читали MACHINE_KEY только из ЖИВОГО env: под cron/launchd/ssh env голый, и узел молча становился &#x27;unknown&#x27;/&#x27;?&#x27; -- ACK-файлы, которые никто не читает, безымянные хартбиты, сторожа без владельца. Переведены на лестницу menv (env -&gt; machine.env -&gt; COMPUTERNAME/hostname). Гейт _test_machine_key_bare_env_gate: 11/11</div>
   <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:53 · <span class="ok">подпись ✓</span></div>
@@ -1515,6 +1507,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_deploy_open_count.py</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">claude-desktop-watchdog-260811</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Сторож Claude Desktop: самолечение класса &#x27;после апдейта не стартует до ребута&#x27; (Breakage-Journal 2026-08-11)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-11 06:19 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;&amp; (Join-Path $env:OBSIDIAN_VAULT &#x27;_machine-bus\_transit\claude-desktop-watchdog\install_watchdog.ps1&#x27;)&quot;</code></div>
+  
+</div><div class="card trusted">
   <div class="top"><span class="id">signalmap-drift-gate-260811</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Task-name drift gate in the signal map: watchdog stops painting a live robot dead (Breakage-Journal 2026-08-11, class dead-scheduled-task)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-11 06:53 · <span class="ok">подпись ✓</span></div>
@@ -1561,6 +1561,22 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py approval-cap5-backpressure-20260812</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">firefox-counter-units-20260813</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Починка ПРИБОРА замера Лисы: доля считается по ЗАХОДАМ (30-мин окно), не по сырым строкам. ff пишет 1 строку на подъём драйвера, chrome-хук на КАЖДЫЙ MCP-вызов -- сырая доля сравнивала метры с килограммами и топила Лису (1.6% сырая vs 7.6% честная). Сырые строки сохранены и печатаются рядом. Судья verify_units.py лежит В пакете: пакет отстал от синка -&gt; verify падает, ложный DONE невозможен</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-13 20:46 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/firefox-max-order-20260804/apply.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">headless-token-callers-260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Ключ у КАЖДОГО headless-вызова claude -p: 856 из 898 транскриптов пула _imports умерли на отозванном OAuth (852 за один день 27.07), а долгоживущий токен лежал в store неиспользованным. apply патчит голые вызовы узла обращением к claude_run.ensure_oauth_token(); движок и судья лежат В посылке</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-14 03:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/headless-token-callers-260814/apply.py&quot;</code></div>
   
 </div>
 </div></body></html>

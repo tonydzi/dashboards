@@ -42,7 +42,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-06 17:00</div>
-</div><h2>📦 Уже применённые <span class="cnt">190</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">192</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1561,6 +1561,22 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Ruslana)</div>
   
   <div class="apply">примени: <code>powershell -Command &quot;$k=&#x27;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICapFstlzzHFq6rl9kMaSFWAUrdHTXx8IOlGxD6NPsCs marcos&#x27;; $f=Join-Path $env:ProgramData &#x27;ssh\administrators_authorized_keys&#x27;; if (-not (Select-String -Path $f -Pattern &#x27;NPsCs&#x27; -Quiet)) { Add-Content -Path $f -Value $k }&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">firefox-counter-units-20260813</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Починка ПРИБОРА замера Лисы: доля считается по ЗАХОДАМ (30-мин окно), не по сырым строкам. ff пишет 1 строку на подъём драйвера, chrome-хук на КАЖДЫЙ MCP-вызов -- сырая доля сравнивала метры с килограммами и топила Лису (1.6% сырая vs 7.6% честная). Сырые строки сохранены и печатаются рядом. Судья verify_units.py лежит В пакете: пакет отстал от синка -&gt; verify падает, ложный DONE невозможен</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-13 20:46 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/firefox-max-order-20260804/apply.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">headless-token-callers-260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Ключ у КАЖДОГО headless-вызова claude -p: 856 из 898 транскриптов пула _imports умерли на отозванном OAuth (852 за один день 27.07), а долгоживущий токен лежал в store неиспользованным. apply патчит голые вызовы узла обращением к claude_run.ensure_oauth_token(); движок и судья лежат В посылке</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-14 03:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/headless-token-callers-260814/apply.py&quot;</code></div>
   
 </div>
 </div></body></html>
