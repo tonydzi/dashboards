@@ -27,14 +27,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>FLEET-ANCHOR</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
 <h2>⛔ В карантине — ждут твоего решения <span class="cnt">1</span></h2><div class="hint">Пришли из непроверенного источника или с плохой подписью. НЕ применены. Скажи Claude «/quarantine release &lt;id&gt;» чтобы применить (после проверки), или «discard &lt;id&gt;» чтобы выбросить.</div><div class="card held">
-  <div class="top"><span class="id">canon-bcd614d4</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span></div>
-  <div class="ttl">Canon CLAUDE.md bcd614d4 (hub) — СНАЧАЛА verify-гейт, потом влей СОДЕРЖАНИЕ в свой локальный канон; свою шапку/пути-адаптацию сохраняй; md5-равенство НЕ требуется</div>
+  <div class="top"><span class="id">canon-0fe7126b</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span></div>
+  <div class="ttl">Canon CLAUDE.md 0fe7126b (hub) — СНАЧАЛА verify-гейт, потом влей СОДЕРЖАНИЕ в свой локальный канон; свою шапку/пути-адаптацию сохраняй; md5-равенство НЕ требуется</div>
   <div class="meta">источник: <b>(нет поля from)</b> · отправлено:  · <span class="mut">без подписи (HMAC не подключён)</span></div>
   <div class="rsn">непроверенный/неизвестный источник: поле from отсутствует</div>
   
-  <div class="apply">примени: <code>STEP 1 (gate): python3 ~/.claude/scripts/_shared/canon_verify.py E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub ; exit!=0 -&gt; НЕ применять, посылку в HELD, алерт в 03. STEP 2: read E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub/CLAUDE.md -&gt; merge -&gt; write ACK-&lt;node&gt;.json {applied_md5:&#x27;bcd614d4ea9b5961c02f8e470c4f4ba3&#x27;} рядом</code></div>
+  <div class="apply">примени: <code>STEP 1 (gate): python3 ~/.claude/scripts/_shared/canon_verify.py E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub ; exit!=0 -&gt; НЕ применять, посылку в HELD, алерт в 03. STEP 2: read E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub/CLAUDE.md -&gt; merge -&gt; write ACK-&lt;node&gt;.json {applied_md5:&#x27;0fe7126ba59e984260c3fec64c7b224b&#x27;} рядом</code></div>
   
-</div><h2>✅ Доверенные — применятся сами <span class="cnt">20</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+</div><h2>✅ Доверенные — применятся сами <span class="cnt">21</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">crm-proof-of-delivery-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">CRM: касание засчитывается только с message_id (budget.py proof-of-delivery + safe_send ловит Message.id + touch_audit карточная половина)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-29 16:11 · <span class="ok">подпись ✓</span></div>
@@ -194,7 +194,15 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_test_radical_order_gate.py&quot;</code></div>
   
-</div><h2>📦 Уже применённые <span class="cnt">135</span></h2><div class="card trusted">
+</div><div class="card trusted">
+  <div class="top"><span class="id">headless-token-callers-260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Ключ у КАЖДОГО headless-вызова claude -p: 856 из 898 транскриптов пула _imports умерли на отозванном OAuth (852 за один день 27.07), а долгоживущий токен лежал в store неиспользованным. apply патчит голые вызовы узла обращением к claude_run.ensure_oauth_token(); движок и судья лежат В посылке</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-14 03:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/headless-token-callers-260814/apply.py&quot;</code></div>
+  
+</div><h2>📦 Уже применённые <span class="cnt">136</span></h2><div class="card trusted">
   <div class="top"><span class="id">engine-visibility-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">consensus.py ENGINE-VISIBILITY (консенсус #94389335, tier-1, accepts FLEET-ANCHOR+MacBook-Anton, committed хабом 20.07). (1) провал подписи -&gt; строка в stderr + счётчик sigfail-&lt;MACHINE&gt;.json (dark mode СОХРАНЁН, леджер не падает); (2) CLI-гигиена: -h/--help голым и после любого verb, propose отказывает subject на &#x27;-&#x27; (инцидент #4b814fec). Сторож _shared/consensus_config_guard.py CLASS C читает счётчик и алармит на РОСТ -- едет сам синком _shared.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-20 20:53 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1273,6 +1281,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py approval-cap5-backpressure-20260812</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">firefox-counter-units-20260813</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Починка ПРИБОРА замера Лисы: доля считается по ЗАХОДАМ (30-мин окно), не по сырым строкам. ff пишет 1 строку на подъём драйвера, chrome-хук на КАЖДЫЙ MCP-вызов -- сырая доля сравнивала метры с килограммами и топила Лису (1.6% сырая vs 7.6% честная). Сырые строки сохранены и печатаются рядом. Судья verify_units.py лежит В пакете: пакет отстал от синка -&gt; verify падает, ложный DONE невозможен</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-13 20:46 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/firefox-max-order-20260804/apply.py&quot;</code></div>
   
 </div>
 </div></body></html>

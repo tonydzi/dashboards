@@ -26,7 +26,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Quarantine-HUB.html">&larr; Quarantine-HUB</a> · <a href="Quarantine-MACBOOK-ANTON.html">Quarantine-MACBOOK-ANTON &rarr;</a></span></div><div class="wrap">
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>MacBook-Anton</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
-<h2>✅ Доверенные — применятся сами <span class="cnt">5</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+<h2>✅ Доверенные — применятся сами <span class="cnt">6</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">dash-home-clean-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">Узел чист: ни одного дашборда мимо &lt;волт&gt;/_Dashboards</div>
   <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 12:56 · <span class="ok">подпись ✓</span></div>
@@ -59,12 +59,20 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_test_radical_order_gate.py&quot;</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">codex-cap96-20260811</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Codex: кап зеркала 48-&gt;96 КиБ + project_doc_max_bytes 131072-&gt;262144 (лимит кумулятивный) + AGENTS.md v4.23.0 с 5 недостающими правилами (§4.7 три дня, §5.2-бис три двери, §5.10 третья поломка, §7.4 суточный ритм, §10.0 каденс). Приказ Антона 11.08. Узел без ~/.codex получает только движок.</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-11 21:12 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  <div class="top"><span class="id">rule-door-fleet-rollout-20260813</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Дверь правила «пользу нашли — дали флоту»: шаг в /retro Step 3-Connect + скилл /gemini про ДВА платных бака</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-13 20:39 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
   
-  <div class="apply">примени: <code>python3 -c &quot;import os,runpy;runpy.run_path(os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;,&#x27;DEPLOY-codex-cap96-apply.py&#x27;))&quot;</code></div>
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/claude_fleet.py pull</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">firefox-counter-units-20260813</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Починка ПРИБОРА замера Лисы: доля считается по ЗАХОДАМ (30-мин окно), не по сырым строкам. ff пишет 1 строку на подъём драйвера, chrome-хук на КАЖДЫЙ MCP-вызов -- сырая доля сравнивала метры с килограммами и топила Лису (1.6% сырая vs 7.6% честная). Сырые строки сохранены и печатаются рядом. Судья verify_units.py лежит В пакете: пакет отстал от синка -&gt; verify падает, ложный DONE невозможен</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-13 20:46 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/firefox-max-order-20260804/apply.py&quot;</code></div>
   
 </div><h2>🗑 Выброшенные <span class="cnt">2</span></h2><div class="card trusted">
   <div class="top"><span class="id">_portability-selftest-bypass</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
@@ -82,7 +90,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python &quot;$MACHINE_BUS_DIR/_transit/run-hidden-guard-20260806/install_run_hidden_guard.py&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-11 11:57</div>
-</div><h2>📦 Уже применённые <span class="cnt">165</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">166</span></h2><div class="card trusted">
   <div class="top"><span class="id">canon-gate-0716</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">canon_write_gate.py roaming-leader canon gate</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-16 18:10 · <span class="ok">подпись ✓</span></div>
@@ -1377,6 +1385,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_deploy_open_count.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">codex-cap96-20260811</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Codex: кап зеркала 48-&gt;96 КиБ + project_doc_max_bytes 131072-&gt;262144 (лимит кумулятивный) + AGENTS.md v4.23.0 с 5 недостающими правилами (§4.7 три дня, §5.2-бис три двери, §5.10 третья поломка, §7.4 суточный ритм, §10.0 каденс). Приказ Антона 11.08. Узел без ~/.codex получает только движок.</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-11 21:12 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,runpy;runpy.run_path(os.path.join(os.environ[&#x27;MACHINE_BUS_DIR&#x27;],&#x27;_transit&#x27;,&#x27;DEPLOY-codex-cap96-apply.py&#x27;))&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">repair-evidence-fix2-260811</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>

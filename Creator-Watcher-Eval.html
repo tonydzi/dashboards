@@ -28,9 +28,9 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
 .agree{font-size:12px;color:var(--mut)}
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Code-Census.html">&larr; Code-Census</a> · <a href="Fix-Audit-NewHub-2026-06-28.html">Fix-Audit-NewHub-2026-06-28 &rarr;</a></span></div><div class="wrap">
 <h1>📺 Creator Watcher — Gate Eval</h1>
-<p class="lead">347 засуженных айтемов. Тумблер по умолчанию = решение гейта. <b>Флипни только те, где гейт ошибся.</b> Метрики обновляются вживую; «Copy labels» → выгрузи JSON → <code>python cw_eval.py --apply labels.json</code>.</p>
+<p class="lead">350 засуженных айтемов. Тумблер по умолчанию = решение гейта. <b>Флипни только те, где гейт ошибся.</b> Метрики обновляются вживую; «Copy labels» → выгрузи JSON → <code>python cw_eval.py --apply labels.json</code>.</p>
 <div class="metrics">
-  <div class="m">labeled <b id="mLab">0</b>/347</div>
+  <div class="m">labeled <b id="mLab">0</b>/350</div>
   <div class="m">gate precision <b id="mPrec">—</b></div>
   <div class="m">FP (свалка) <b id="mFP">0</b></div>
   <div class="m">FN (упущено) <b id="mFN">0</b></div>
@@ -6277,6 +6277,60 @@ h1{font-size:22px;margin:0 0 4px}.lead{color:var(--mut);margin:0 0 16px}
   <div class="why">По сути реклама сервиса exe.dev с мотивационной риторикой про &#x27;фабрику в коробке&#x27;, конкретики по настройке или архитектуре почти нет — только общие тезисы про изоляцию/масштаб/автономность агентов.</div>
   <div class="bars"><div class="b"><span>sig</span><i><u style="width:30%"></u></i><b>0.30</b></div><div class="b"><span>nov</span><i><u style="width:25%"></u></i><b>0.25</b></div><div class="b"><span>act</span><i><u style="width:20%"></u></i><b>0.20</b></div><div class="b"><span>evi</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>dur</span><i><u style="width:30%"></u></i><b>0.30</b></div></div>
   <div class="ku">3 knowledge units · volatile · half-life 90d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="W-HhMUe9hOg" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.00</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=W-HhMUe9hOg" target="_blank">Computer History in ChatGPT</a></div>
+      <div class="sub">OpenAI · @***nAI · 2026-08-13 · <span class="topic">agent-computer-memory</span> <span class="flag ad">AD</span><span class="flag news">NEWS</span></div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Это промо-ролик OpenAI про новую фичу Computer History в ChatGPT/Codex — рекламная демонстрация продукта без переносимой инженерной методологии.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:25%"></u></i><b>0.25</b></div><div class="b"><span>nov</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>act</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>evi</span><i><u style="width:20%"></u></i><b>0.20</b></div><div class="b"><span>dur</span><i><u style="width:25%"></u></i><b>0.25</b></div></div>
+  <div class="ku">2 knowledge units · volatile · half-life 60d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="_HCks5jkPLw" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.00</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=_HCks5jkPLw" target="_blank">Use ChatGPT Work to deliver board-ready reporting</a></div>
+      <div class="sub">OpenAI · @***nAI · 2026-08-13 · <span class="topic">chatgpt-work-reporting</span> <span class="flag ad">AD</span></div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Это промо-демо от OpenAI фичи &#x27;ChatGPT Work&#x27; для финансовой отчётности — нет ни архитектуры, ни промптов, ни воспроизводимого приёма, только маркетинговый сценарий с плагинами и Google Drive/NetSuite.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>nov</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>act</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>evi</span><i><u style="width:20%"></u></i><b>0.20</b></div><div class="b"><span>dur</span><i><u style="width:25%"></u></i><b>0.25</b></div></div>
+  <div class="ku">0 knowledge units · volatile · half-life 60d</div>
+  <div class="toggle">
+    <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
+    <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
+    <span class="agree"></span>
+  </div>
+</div>
+<div class="card" data-vid="mOAHWk24D28" data-gate="drop">
+  <div class="top">
+    <div class="score lo">0.00</div>
+    <div class="meta">
+      <div class="ttl"><a href="https://www.youtube.com/watch?v=mOAHWk24D28" target="_blank">Use ChatGPT Work to build custom forecasting apps</a></div>
+      <div class="sub">OpenAI · @***nAI · 2026-08-13 · <span class="topic">chatgpt-forecasting-app</span> <span class="flag ad">AD</span></div>
+    </div>
+    <div class="verdict drop">DROP</div>
+  </div>
+  <div class="why">Это промо-кейс OpenAI про внутренний финансовый инструмент на базе ChatGPT &#x27;sites&#x27; — нет технических деталей о промптах, архитектуре или интеграциях, только маркетинговая демонстрация фичи.</div>
+  <div class="bars"><div class="b"><span>sig</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>nov</span><i><u style="width:10%"></u></i><b>0.10</b></div><div class="b"><span>act</span><i><u style="width:15%"></u></i><b>0.15</b></div><div class="b"><span>evi</span><i><u style="width:20%"></u></i><b>0.20</b></div><div class="b"><span>dur</span><i><u style="width:20%"></u></i><b>0.20</b></div></div>
+  <div class="ku">0 knowledge units · volatile · half-life 60d</div>
   <div class="toggle">
     <button class="keep" onclick="setLabel(this,'keep')">✓ keep</button>
     <button class="drop" onclick="setLabel(this,'drop')">✗ drop</button>
