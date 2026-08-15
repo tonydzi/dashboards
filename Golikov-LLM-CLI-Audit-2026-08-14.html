@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Док Голикова: аудит + внедрение · 14.08.2026</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1c1b19;--mut:#6b6862;--line:#e0ddd6;--card:#fff;--ok:#2f7a4d;--okbg:#e8f3ec;--warn:#9a6b12;--warnbg:#faf3e2;--wait:#4a6fa5;--waitbg:#e9eff7;--bad:#a83232}
+@media (prefers-color-scheme:dark){:root{--bg:#17161a;--fg:#e8e6e1;--mut:#9b968d;--line:#33312f;--card:#1e1d21;--ok:#6fbf8f;--okbg:#1e2b23;--warn:#d9ab52;--warnbg:#2c2617;--wait:#8aa9d6;--waitbg:#1d232e;--bad:#e0736b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:880px;margin:0 auto;padding:28px 18px 60px}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:var(--mut);font-size:13px;margin:0 0 20px}
+h2{font-size:16px;margin:28px 0 10px}
+.banner{border-radius:10px;padding:14px 18px;font-size:16px;font-weight:600;border:1px solid var(--line)}
+.banner.ok{background:var(--okbg);color:var(--ok)}
+.banner small{display:block;font-weight:400;font-size:13px;color:var(--fg);margin-top:6px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+.tag{display:inline-block;border-radius:5px;padding:1px 8px;font-size:12px;font-weight:600;white-space:nowrap}
+.t-ok{background:var(--okbg);color:var(--ok)}.t-warn{background:var(--warnbg);color:var(--warn)}.t-wait{background:var(--waitbg);color:var(--wait)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0;font-size:14px}
+.card b.who{color:var(--wait)}
+ul{margin:8px 0;padding-left:20px}li{margin:4px 0}
+.mut{color:var(--mut)}
+.tbl{overflow-x:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Док Голикова «LLM через подписочный CLI»: аудит + внедрение</h1>
+<p class="sub">14.08.2026 · HP17-ZBook · сессия аудита и ремонта рельс llm_ask</p>
+
+<div class="banner ok">✅ ЗАКЛАДОК НЕТ - документ чистый, скармливать агентам можно
+<small>Байт-скан: 0 невидимых Unicode · 0 HTML-комментариев · 0 внешних ссылок и сетевых примитивов · единственный display:none прячет кнопку «копировать» при печати. Панель 6 независимых ревьюеров (3 линзы + adversarial verify): обращения к агенту (раздел 09, GEMINI-блок) открытые, в рамках заявленной цели. md5 224793b8…</small></div>
+
+<h2>Дословная копия продукта (приказ «ДОСЛОВНО ПОВТОРИТЬ», 2-й заход 14.08)</h2>
+<div class="tbl"><table>
+<tr><th>Деталь</th><th>Статус</th></tr>
+<tr><td>llm_cli.py (ask(provider, prompt) → str)</td><td><span class="tag t-ok">✅ собран</span> байт-в-байт из его HTML; эталон llm_cli.py.orig (md5 ea026775…); дом: ~\.claude\scripts\llm-cli-golikov\</td></tr>
+<tr><td>Провайдер claude</td><td><span class="tag t-ok">✅ живой</span> «работает» из изолированной CLAUDE_CONFIG_DIR (засеяна auth-копией)</td></tr>
+<tr><td>Провайдер codex</td><td><span class="tag t-ok">✅ живой</span> «работает» через файл -o; 1 помеченная правка: дефолт gpt-5.6 → пусто (наш аккаунт даёт 400; сам док велит сверять модели)</td></tr>
+<tr><td>Провайдер gemini (agy 1.1.10)</td><td><span class="tag t-warn">⚠️ ждёт 1 логина</span> agy просит Google-OAuth (окно 60с); харнес заблокировал доведение роботом. Руками одна команда: cd C:\Users\_\.llm-cli\agy-workspace и запустить agy, войти под a2</td></tr>
+<tr><td>serve.py (HTTP-сайдкар для n8n)</td><td><span class="tag t-ok">✅ живой</span> 200+текст (UTF-8), 401 на чужой токен, 502 на кривой провайдер; 1 помеченная правка: порт 8770 → 8772 (8770 занят нашим pythonw-демоном)</td></tr>
+</table></div>
+
+<h2>3 подтверждённых warn - качество кода примеров, не злонамеренность</h2>
+<div class="tbl"><table>
+<tr><th>Находка</th><th>Суть</th></tr>
+<tr><td><span class="tag t-warn">warn</span> env целиком</td><td>Обёртка не вычищает ANTHROPIC_API_KEY / OPENAI_API_KEY - залётный ключ молча включает поштучный биллинг вместо подписки (противоречит собственному обещанию дока). Наш канон §6.3 это уже знал.</td></tr>
+<tr><td><span class="tag t-warn">warn</span> agy без песочницы</td><td>--dangerously-skip-permissions сдержан только промптом GEMINI.md, не enforced-песочницей; злой промпт может писать куда угодно.</td></tr>
+<tr><td><span class="tag t-warn">warn</span> codex в чужом cwd</td><td>codex-адаптер бежит в каталоге вызывающего: read-only песочница не мешает ЧИТАТЬ его файлы и утаскивать в диалог вендора.</td></tr>
+</table></div>
+
+<h2>6 грабель дока → наши рельсы (что было / что стало)</h2>
+<div class="tbl"><table>
+<tr><th>Грабля</th><th>Было у нас</th><th>Стало 14.08</th></tr>
+<tr><td>①  Промпт только в stdin</td><td>уже так везде</td><td><span class="tag t-ok">✅ было</span></td></tr>
+<tr><td>② Ответ codex не в stdout</td><td>файл только в 2 из 5 мест</td><td><span class="tag t-ok">✅ починено</span> llm_ask: обе codex-рельсы через --output-last-message</td></tr>
+<tr><td>③ Изоляция конфигов (CLAUDE_CONFIG_DIR/CODEX_HOME)</td><td>нет нигде, 3 поломки класса</td><td><span class="tag t-wait">⏳ канарейка</span> сессия AUTO-hp17-260814-llm-state-isolation (сама, 16:20)</td></tr>
+<tr><td>④ rc=0 ≠ успех, ретраи 2/4/8</td><td>пусто=ошибка было; ретраев нет</td><td><span class="tag t-ok">✅ починено</span> --retries/LLM_ASK_RETRIES, дефолт 0, транзиентное-только; dead_output для secondop → бэклог</td></tr>
+<tr><td>⑤ Чанкование длинного входа</td><td>нет</td><td><span class="tag t-wait">📥 бэклог</span> строим при первом длинном потребителе (§3.5)</td></tr>
+<tr><td>⑥ Таймаут гасит дерево процессов</td><td>только claude_run и cc_review</td><td><span class="tag t-ok">✅ починено</span> _run_tree (taskkill /T /F | killpg) на всех рельсах llm_ask</td></tr>
+</table></div>
+
+<div class="card">Бонус, найден при внедрении: <b>llm_routing.json ОТСУТСТВОВАЛ</b> - слой --class был мёртв (exit 2), тест красный, docs обещали живую фичу. Восстановлен: 6 классов, тест 25/25 зелёный. Строка в Breakage-Journal есть.</div>
+
+<h2>Доказательства (/tt)</h2>
+<div class="tbl"><table>
+<tr><th>Проверка</th><th>Результат</th></tr>
+<tr><td>_test_llm_routing.py</td><td><span class="tag t-ok">ЗЕЛЕНО 25/25</span> (до правки: exit 2, файла нет)</td></tr>
+<tr><td>_test_llm_ask_tree_kill.py (новый)</td><td><span class="tag t-ok">ЗЕЛЕНО</span> TimeoutExpired за 3.4с, ping-дерево погашено</td></tr>
+<tr><td>Живой смоук codex (новая файловая дверь)</td><td><span class="tag t-ok">✅ 47с «работает»</span></td></tr>
+<tr><td>Живой смоук claude (через _run_tree)</td><td><span class="tag t-ok">✅ 9с «Работает»</span></td></tr>
+<tr><td>Сломанный класс --class</td><td><span class="tag t-ok">✅ честный exit 2</span></td></tr>
+<tr><td>Панель ломателей (OpenRouter, 4 модели / 4 семьи)</td><td><span class="tag t-ok">✅ пройдена</span> 2 существенные находки = толерантные trade-off (tmp-остатки при падении remove; POSIX-ветка теста - честный пропуск), остальное false alarm, проверено по коду</td></tr>
+</table></div>
+
+<h2>Раскатка на флот (§7.3-бис)</h2>
+<div class="tbl"><table>
+<tr><th>Узел</th><th>Статус</th></tr>
+<tr><td>HP17-ZBook (источник)</td><td><span class="tag t-ok">✅ применено + все тесты</span></td></tr>
+<tr><td>Маяк (Linux VPS)</td><td><span class="tag t-ok">✅ scp + тест 25/25</span> его --class тоже ожил (файла не было и там); канарейка другого типа ОС</td></tr>
+<tr><td>Хаб + Mac'и + MYOWNPC</td><td><span class="tag t-wait">📦 посылка</span> _transit/llm-ask-fix-2026-08-14 + броадкаст TASK в шину; ждём ACK с exit-кодами (суточный ритм §7.4)</td></tr>
+</table></div>
+
+<h2>Люди и хвосты</h2>
+<div class="card"><b class="who">CRM:</b> карточка <b>person-vasiliy-golikov</b> создана (дубля нет, проверено find_name), документ в волте + оригинал в _originals, индекс people пересобран. FB-профиль дочитает хаб: логин в FB с ноута упёрся в 2FA-чекпоинт (задача хабу в шине).</div>
+<div class="card"><b class="who">Объяви (§1.5):</b> хабу отправлен текст благодарности Василию голосом Майкрофта (класс C, с раскрытием) + два наших наблюдения по его же коду - отдаём ценность взамен.</div>
+<div class="card"><b class="who">Руки Антона (опционально):</b> если хочешь FB живьём с этого ноута - нужен один тап 2FA при следующем логине; без этого всё едет через хаб.</div>
+</div>
+</body>
+</html>
