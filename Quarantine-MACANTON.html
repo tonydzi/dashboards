@@ -26,23 +26,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 </style></head><body><div class="wrap">
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>MacBook-Anton</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
-<h2>✅ Доверенные — применятся сами <span class="cnt">9</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
-  <div class="top"><span class="id">dash-home-clean-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Узел чист: ни одного дашборда мимо &lt;волт&gt;/_Dashboards</div>
-  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 12:56 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
-  
-  <div class="apply">примени: <code>Прогнать &#x27;python ~/.claude/scripts/dashboard_home_guard.py&#x27;, перенести все найденные .html/.md в &lt;волт&gt;/_Dashboards, папку-самозванку удалить, у генераторов выставить путь вывода в волт. Не можешь (чужая машина / невозвратное удаление) — впиши строку с ПРИЧИНОЙ в ~/.claude/dashboard_home_allow.txt и скажи вслух.</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">hooks-payload-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">SELF-CARRYING груз для 5 посылок-призраков: block_dangerous_bash + canon_growth_guard + skill_usage_hook + task_surface_hook (файлы лежат в _transit/DEPLOY-*)</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:17 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
-  
-</div><div class="card trusted">
+<h2>✅ Доверенные — применятся сами <span class="cnt">5</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">deploy-bus-rebase-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">verify перестаёт краснеть там, где шина НЕ внутри волта: корень команды переезжает на настоящую MACHINE_BUS_DIR (no-op, если шина в волте)</div>
   <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 19:29 · <span class="ok">подпись ✓</span></div>
@@ -67,36 +51,20 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 ~/.claude/scripts/claude_fleet.py pull</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">firefox-counter-units-20260813</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Починка ПРИБОРА замера Лисы: доля считается по ЗАХОДАМ (30-мин окно), не по сырым строкам. ff пишет 1 строку на подъём драйвера, chrome-хук на КАЖДЫЙ MCP-вызов -- сырая доля сравнивала метры с килограммами и топила Лису (1.6% сырая vs 7.6% честная). Сырые строки сохранены и печатаются рядом. Судья verify_units.py лежит В пакете: пакет отстал от синка -&gt; verify падает, ложный DONE невозможен</div>
-  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-13 20:46 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
-  
-  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/firefox-max-order-20260804/apply.py&quot;</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">headless-token-callers-260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Ключ у КАЖДОГО headless-вызова claude -p: 856 из 898 транскриптов пула _imports умерли на отозванном OAuth (852 за один день 27.07), а долгоживущий токен лежал в store неиспользованным. apply патчит голые вызовы узла обращением к claude_run.ensure_oauth_token(); движок и судья лежат В посылке</div>
-  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-14 03:40 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
-  
-  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/headless-token-callers-260814/apply.py&quot;</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">node-resolve-fix-20260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Резолв имени узла: _find читает aliases+hostname, is_writer_node сравнивает УЗЛЫ, шина берёт MACHINE_BUS_DIR из machine.env (корень: робот в кроне зовётся алиасом)</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-14 14:48 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py node-resolve-fix-20260814</code></div>
-  
-</div><div class="card trusted">
   <div class="top"><span class="id">corpus-bench-weekly-20260818</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">corpus_bench: станок + скилл + недельный watch. Payload в _deploy/payloads/corpus-bench-weekly-20260818. Ставить ПОСЛЕ 18.08 (первый зелёный тик канарейки на хабе)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-14 16:35 · <span class="ok">подпись ✓</span></div>
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>mkdir -p &quot;$HOME/.claude/scripts/git25-tools&quot; &quot;$HOME/.claude/skills/corpus-bench&quot; &amp;&amp; cp -r &quot;$OBSIDIAN_VAULT/_machine-bus/_deploy/payloads/corpus-bench-weekly-20260818/git25-tools/.&quot; &quot;$HOME/.claude/scripts/git25-tools/&quot; &amp;&amp; cp &quot;$OBSIDIAN_VAULT/_machine-bus/_deploy/payloads/corpus-bench-weekly-20260818/skills/corpus-bench/SKILL.md&quot; &quot;$HOME/.claude/skills/corpus-bench/&quot; &amp;&amp; python3 &quot;$HOME/.claude/scripts/git25-tools/corpus_bench.py&quot; selftest</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">red-canon-publish-gate-20260815</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Publish-гейт: канон толще красной черты §10.2 (120000 б) НЕ публикуется — сначала сжатие писателем; аварийный --force-red. Приказ Антона 15.08. Закрывает источник дедлока 07-14.08.</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-15 05:01 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py red-canon-publish-gate-20260815</code></div>
   
 </div><h2>🗑 Выброшенные <span class="cnt">2</span></h2><div class="card trusted">
   <div class="top"><span class="id">_portability-selftest-bypass</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
@@ -114,7 +82,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python &quot;$MACHINE_BUS_DIR/_transit/run-hidden-guard-20260806/install_run_hidden_guard.py&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-11 11:57</div>
-</div><h2>📦 Уже применённые <span class="cnt">166</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">175</span></h2><div class="card trusted">
   <div class="top"><span class="id">canon-gate-0716</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">canon_write_gate.py roaming-leader canon gate</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-16 18:10 · <span class="ok">подпись ✓</span></div>
@@ -1035,6 +1003,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python &quot;$MACHINE_BUS_DIR/_deploy/payloads/install_dashboard_home_guard.py&quot;</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">dash-home-clean-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Узел чист: ни одного дашборда мимо &lt;волт&gt;/_Dashboards</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 12:56 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>Прогнать &#x27;python ~/.claude/scripts/dashboard_home_guard.py&#x27;, перенести все найденные .html/.md в &lt;волт&gt;/_Dashboards, папку-самозванку удалить, у генераторов выставить путь вывода в волт. Не можешь (чужая машина / невозвратное удаление) — впиши строку с ПРИЧИНОЙ в ~/.claude/dashboard_home_allow.txt и скажи вслух.</code></div>
+  
+</div><div class="card trusted">
   <div class="top"><span class="id">rulehome-permem-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Фикс rule_home_guard: дом memory/ пер-машинный, а не прибит к проекту HP17</div>
   <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 12:59 · <span class="ok">подпись ✓</span></div>
@@ -1097,6 +1073,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;p=os.path.expanduser(&#x27;~/.claude/scripts/_test_claude_run_limit.py&#x27;);sys.exit(subprocess.run([sys.executable,p]).returncode)&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">hooks-payload-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">SELF-CARRYING груз для 5 посылок-призраков: block_dangerous_bash + canon_growth_guard + skill_usage_hook + task_surface_hook (файлы лежат в _transit/DEPLOY-*)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:17 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">hooks-payload-20260806b</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
@@ -1441,6 +1425,62 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py approval-cap5-backpressure-20260812</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">firefox-counter-units-20260813</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Починка ПРИБОРА замера Лисы: доля считается по ЗАХОДАМ (30-мин окно), не по сырым строкам. ff пишет 1 строку на подъём драйвера, chrome-хук на КАЖДЫЙ MCP-вызов -- сырая доля сравнивала метры с килограммами и топила Лису (1.6% сырая vs 7.6% честная). Сырые строки сохранены и печатаются рядом. Судья verify_units.py лежит В пакете: пакет отстал от синка -&gt; verify падает, ложный DONE невозможен</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-13 20:46 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/firefox-max-order-20260804/apply.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">headless-token-callers-260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Ключ у КАЖДОГО headless-вызова claude -p: 856 из 898 транскриптов пула _imports умерли на отозванном OAuth (852 за один день 27.07), а долгоживущий токен лежал в store неиспользованным. apply патчит голые вызовы узла обращением к claude_run.ensure_oauth_token(); движок и судья лежат В посылке</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-14 03:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/headless-token-callers-260814/apply.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">node-resolve-fix-20260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Резолв имени узла: _find читает aliases+hostname, is_writer_node сравнивает УЗЛЫ, шина берёт MACHINE_BUS_DIR из machine.env (корень: робот в кроне зовётся алиасом)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-14 14:48 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py node-resolve-fix-20260814</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">canon-courier-e2big-fix-20260815</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">canon_courier.py root-fix E2BIG: live md5 из MANIFEST/CHAIN = clean (призрачный дифф не едет) + кап тела 100KB (.patch-файл + указатель); selftest 18 проверок GREEN</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-15 04:46 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py canon-courier-e2big-fix-20260815</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dr-board-honest-counter-20260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Табло ДР: счётчик назван честно (файлов сессий, вкл. упавшие) -- мёртвый тиром gemini показывал &#x27;сегодня 2&#x27; двумя КРАХАМИ</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-14 21:53 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 -m py_compile dr_rails_board.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">gemini-rail-scope-20260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Прибор перестаёт обещать ДР: doctor называет область годности gemini-рельсы (REST-дверь ревью жива, ДР-дверь мертва тиром)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-14 21:58 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 patch_gemini_rail_scope.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">codex-node-identity-20260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">codex_lib: идентичность узла из machine.env (хостнейм macOS плавает: MacBookPro-22/-34/-68 -&gt; архив расползся на 5 ярлыков), прибор ВХОД-vs-ВЫХОД по несимпортированным сессиям (резюмы и второй дом больше не дают ложный красный). md5=bdc0f19e13f3800f4755431f1f4ea068</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-14 22:07 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$IMPORTS_ROOT/codex/codex_lib.py&quot; import</code></div>
   
 </div>
 </div></body></html>

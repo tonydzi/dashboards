@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub: рутины и масштабирование · 2026-08-14</title>
+<style>
+  :root { --bg:#faf8f4; --card:#fff; --ink:#1a1a1a; --mut:#6b6b6b; --line:#e2ded3;
+          --green:#2e7d32; --amber:#b26a00; --red:#c62828; --blue:#1f6feb; }
+  body { margin:0; padding:24px; background:var(--bg); color:var(--ink);
+         font:15px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  h1 { font-size:1.5em; margin:0 0 4px; } .sub { color:var(--mut); margin-bottom:20px; }
+  h2 { font-size:1.1em; margin:26px 0 10px; border-bottom:2px solid var(--line); padding-bottom:4px; }
+  table { border-collapse:collapse; width:100%; background:var(--card); font-size:.94em; }
+  th, td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { background:#f0ece3; font-weight:600; white-space:nowrap; }
+  .ok { color:var(--green); font-weight:600; } .warn { color:var(--amber); font-weight:600; }
+  .bad { color:var(--red); font-weight:600; } .mut { color:var(--mut); }
+  .tag { display:inline-block; padding:1px 7px; border-radius:9px; font-size:.82em; font-weight:600; white-space:nowrap; }
+  .t-mac { background:#e3f2fd; color:#0d47a1; } .t-hub { background:#fff3e0; color:#b26a00; }
+  .t-cloud { background:#e8f5e9; color:#2e7d32; } .t-none { background:#fbe9e7; color:#c62828; }
+  .kpi { display:flex; gap:14px; flex-wrap:wrap; margin:14px 0; }
+  .kpi div { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 16px; }
+  .kpi b { display:block; font-size:1.5em; }
+  .plan td:first-child { font-weight:600; white-space:nowrap; }
+  .wrap { overflow-x:auto; }
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="GDrive-Sheets-Triage.html">&larr; GDrive-Sheets-Triage</a> · <a href="HANDOFF-alpha-recall-comments.md">HANDOFF-alpha-recall-comments &rarr;</a></span></div>
+<h1>GitHub: outbound-активности → рутины → масштабирование</h1>
+<div class="sub">Инвентарь на 14.08.2026, узел Mac16 · факты из list_scheduled_tasks + launchd + scripts + GitHub API</div>
+
+<div class="kpi">
+  <div><b>67</b>PR всего (48 репо)</div>
+  <div><b>12</b>смержено</div>
+  <div><b>5</b>мерджей за 2 недели</div>
+  <div><b>3</b>мерджа в modelcontextprotocol</div>
+  <div><b>9</b>живых GIT-25 лейнов</div>
+  <div><b>3</b>облачных Actions-рельсы</div>
+</div>
+
+<h2>1. Что уже на рельсах (живое)</h2>
+<div class="wrap"><table>
+<tr><th>Лейн</th><th>Что делает</th><th>Каденс</th><th>Рельса</th><th>Статус</th></tr>
+<tr><td>git-s5 that-guy</td><td>ответы в issues/discussions ниши agent-memory / verified-ops</td><td>ежедневно 12:02</td><td><span class="tag t-mac">Mac16 · сессия</span></td><td class="ok">жив, бегал 14.08</td></tr>
+<tr><td>git-s7 deep-lane</td><td>глубокий лейн в целевом репо (цель 4+ мержа)</td><td>ежедневно 10:01</td><td><span class="tag t-mac">Mac16 · сессия</span></td><td class="ok">жив</td></tr>
+<tr><td>git-s9 review-lane</td><td>ревью чужих PR в репо ниши</td><td>ежедневно 16:06</td><td><span class="tag t-mac">Mac16 · сессия</span></td><td class="ok">жив</td></tr>
+<tr><td>git-s3 docs-fix</td><td>мелкие docs-PR в живые репо</td><td>пн/ср/пт 10:30</td><td><span class="tag t-mac">Mac16 · сессия</span></td><td class="ok">жив (мерджи 13-14.08 = его работа)</td></tr>
+<tr><td>git-s2 release-radar</td><td>радар новых релизов/репо в нише, реакция ≤24ч</td><td>ежедневно 09:32</td><td><span class="tag t-mac">Mac16 · сессия</span></td><td class="ok">жив</td></tr>
+<tr><td>git-s4 pretakeoff-radar</td><td>репо 10–300 звёзд на взлёте</td><td>вт/чт 11:00</td><td><span class="tag t-mac">Mac16 · сессия</span></td><td class="ok">жив</td></tr>
+<tr><td>git-s8 issues-research</td><td>issues с репро и root-cause</td><td>вт/пт 15:00</td><td><span class="tag t-mac">Mac16 · сессия</span></td><td class="ok">жив</td></tr>
+<tr><td>git-s23 cold-pr-wave</td><td>холодные PR малой дозой в вендорские LLM-репо</td><td>пн 17:07 (1×/нед)</td><td><span class="tag t-mac">Mac16 · сессия</span></td><td class="ok">жив</td></tr>
+<tr><td>git-s24 content-bridge</td><td>1 вклад → 2 следа (dev.to / X / milestone-пост)</td><td>ежедневно 18:09</td><td><span class="tag t-mac">Mac16 · сессия</span></td><td class="ok">жив</td></tr>
+<tr><td>pr_watch</td><td>сторож НАШИХ PR-тредов: чей ход, могилы >3д, digest</td><td>ночной</td><td><span class="tag t-hub">хаб · 0 LLM</span></td><td class="ok">жив на хабе</td></tr>
+<tr><td>github_traffic_snapshot</td><td>клоны/просмотры/звёзды 8 репо миссии (GitHub хранит 14 дн!)</td><td>ежедневно</td><td><span class="tag t-hub">хаб · 0 LLM</span></td><td class="ok">жив на хабе</td></tr>
+<tr><td>profile metrics + blog</td><td>SVG-метрики и «Latest writing» в профильном README</td><td>ночной</td><td><span class="tag t-cloud">GitHub Actions</span></td><td class="ok">жив</td></tr>
+<tr><td>rebuild-site ⭐ НОВЫЙ</td><td>пересборка contributions-страницы + счётчиков визитки</td><td>ночной 04:10 UTC</td><td><span class="tag t-cloud">GitHub Actions</span></td><td class="ok">поставлен сегодня, 1-й прогон зелёный</td></tr>
+</table></div>
+
+<h2>2. Движки-скрипты (есть, но дёргаются сессиями, не кроном)</h2>
+<div class="wrap"><table>
+<tr><th>Скрипт</th><th>Что умеет</th><th>Кто зовёт сейчас</th></tr>
+<tr><td>contrib_watch.py</td><td>входящие касания наших репо (PR/issue посторонних) — SLA ответа ≤24ч</td><td>сессии /contrib-watch <span class="bad">— своей рутины нет</span></td></tr>
+<tr><td>issue_match.py</td><td>замер очереди чужого репо + живая дверь ДО пуша PR</td><td>лейны s3/s7/s23</td></tr>
+<tr><td>consumer_hunt.py</td><td>кому наш готовый функционал нужен (по образцу TIGER Lab: 35 подач за 90 дн)</td><td>вручную после релиза <span class="bad">— рутины нет</span></td></tr>
+<tr><td>repo_radar.py</td><td>свежие чужие репо, куда наш патч реально зайдёт</td><td>лейны s2/s4</td></tr>
+</table></div>
+
+<h2>3. План масштабирования (по ценность×скорость)</h2>
+<div class="wrap"><table class="plan">
+<tr><th>#</th><th>Ход</th><th>Что даёт</th><th>Цена</th><th>Рельса</th></tr>
+<tr><td>1 ✅</td><td>Витрины → облако: rebuild-site на Actions</td><td>витрина всегда свежая, 0 зависимости от наших машин</td><td class="mut">сделано сегодня</td><td><span class="tag t-cloud">Actions</span></td></tr>
+<tr><td>2</td><td>contrib_watch → суточная рутина (SLA ≤24ч машинный)</td><td>ни одно входящее касание инженера не висит 4 дня (боль 01-05.08)</td><td>1 задача-сессия</td><td><span class="tag t-hub">хаб</span></td></tr>
+<tr><td>3</td><td>Вендорский веер: s2/s4/s23 расширить с ниши на все топ-10 экосистем (OpenAI, Mistral, HF, DeepSeek, Qwen, Cohere — где нас ещё 0)</td><td>заметность по §1.1 = ВСЕ экосистемы; сейчас мерджи только в 4</td><td>правка сидов лейнов, +1 день/вендор в ротации</td><td><span class="tag t-mac">Mac16→хаб</span></td></tr>
+<tr><td>4</td><td>consumer_hunt как пострелизная рутина: релиз → ≥5 подач за неделю (каталоги, чужие issue, PR)</td><td>«выпустил и не разнёс = не выпустил» становится машинным</td><td>1 задача + счётчик подач</td><td><span class="tag t-hub">хаб</span></td></tr>
+<tr><td>5</td><td>Сторож ВЫХОДА на каждый лейн: возраст последнего артефакта (коммент/PR/коммит) в JSONL, красный >48ч</td><td>класс dead-scheduled-task (9 поломок!) ловится по продукту, не по расписанию</td><td>1 скрипт 0 LLM + строка в heartbeat</td><td><span class="tag t-hub">хаб</span></td></tr>
+<tr><td>6</td><td>Миграция git-s* лейнов на хаб (всегда включен)</td><td>лейны не зависят от крышки ноута; Антон сам назвал</td><td>перенос сидов, канарейка: 1 лейн → неделя → остальные</td><td><span class="tag t-hub">хаб</span></td></tr>
+</table></div>
+
+<h2>4. Риски</h2>
+<table>
+<tr><td class="warn">⚠ dead-scheduled-task</td><td>класс системный (9-я поломка в журнале) — масштабировать без сторожей выхода (ход №5) = плодить тихие трупы</td></tr>
+<tr><td class="warn">⚠ headless claude -p на Mac16 разлогинен</td><td>новые рутины на Mac16 вешать только через приложение (scheduled tasks), не через claude -p</td></tr>
+<tr><td class="warn">⚠ качество &gt; объём</td><td>холодные PR веером = антипаттерн [[cold-pr-into-silent-queue]]; масштабируем через issue-matching, дозу s23 не поднимать без замера отклика</td></tr>
+</table>
+
+<div class="sub" style="margin-top:20px">Сгенерировано Claude (Mac16) · сессия 14.08.2026 · источники: mcp scheduled-tasks, ~/Library/LaunchAgents, ~/.claude/scripts, GitHub API</div>
+</body>
+</html>

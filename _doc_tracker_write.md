@@ -1,5 +1,3 @@
-[все дашборды](index.html) · категория: Прочее · [← Windowless-MyOwnPC-Natalia](Windowless-MyOwnPC-Natalia.html)
-
 # Паспорт: tracker_write.py — запись размещений в трекер в момент публикации
 
 **Дом:** `<волт>\_Dashboards\tracker_write.py` (рядом с трекером и `posting_day.py`)
