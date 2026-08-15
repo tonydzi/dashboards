@@ -34,7 +34,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>STEP 1 (gate): python3 ~/.claude/scripts/_shared/canon_verify.py E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub ; exit!=0 -&gt; НЕ применять, посылку в HELD, алерт в 03. STEP 2: read E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub/CLAUDE.md -&gt; merge -&gt; write ACK-&lt;node&gt;.json {applied_md5:&#x27;0fe7126ba59e984260c3fec64c7b224b&#x27;} рядом</code></div>
   
-</div><h2>✅ Доверенные — применятся сами <span class="cnt">21</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+</div><h2>✅ Доверенные — применятся сами <span class="cnt">22</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">crm-proof-of-delivery-20260729</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">CRM: касание засчитывается только с message_id (budget.py proof-of-delivery + safe_send ловит Message.id + touch_audit карточная половина)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-29 16:11 · <span class="ok">подпись ✓</span></div>
@@ -202,7 +202,15 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/headless-token-callers-260814/apply.py&quot;</code></div>
   
-</div><h2>📦 Уже применённые <span class="cnt">136</span></h2><div class="card trusted">
+</div><div class="card trusted">
+  <div class="top"><span class="id">corpus-bench-weekly-20260818</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">corpus_bench: станок + скилл + недельный watch. Payload в _deploy/payloads/corpus-bench-weekly-20260818. Ставить ПОСЛЕ 18.08 (первый зелёный тик канарейки на хабе)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-14 16:35 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>mkdir -p &quot;$HOME/.claude/scripts/git25-tools&quot; &quot;$HOME/.claude/skills/corpus-bench&quot; &amp;&amp; cp -r &quot;$OBSIDIAN_VAULT/_machine-bus/_deploy/payloads/corpus-bench-weekly-20260818/git25-tools/.&quot; &quot;$HOME/.claude/scripts/git25-tools/&quot; &amp;&amp; cp &quot;$OBSIDIAN_VAULT/_machine-bus/_deploy/payloads/corpus-bench-weekly-20260818/skills/corpus-bench/SKILL.md&quot; &quot;$HOME/.claude/skills/corpus-bench/&quot; &amp;&amp; python3 &quot;$HOME/.claude/scripts/git25-tools/corpus_bench.py&quot; selftest</code></div>
+  
+</div><h2>📦 Уже применённые <span class="cnt">137</span></h2><div class="card trusted">
   <div class="top"><span class="id">engine-visibility-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">consensus.py ENGINE-VISIBILITY (консенсус #94389335, tier-1, accepts FLEET-ANCHOR+MacBook-Anton, committed хабом 20.07). (1) провал подписи -&gt; строка в stderr + счётчик sigfail-&lt;MACHINE&gt;.json (dark mode СОХРАНЁН, леджер не падает); (2) CLI-гигиена: -h/--help голым и после любого verb, propose отказывает subject на &#x27;-&#x27; (инцидент #4b814fec). Сторож _shared/consensus_config_guard.py CLASS C читает счётчик и алармит на РОСТ -- едет сам синком _shared.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-20 20:53 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1289,6 +1297,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
   
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_transit/firefox-max-order-20260804/apply.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">node-resolve-fix-20260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Резолв имени узла: _find читает aliases+hostname, is_writer_node сравнивает УЗЛЫ, шина берёт MACHINE_BUS_DIR из machine.env (корень: робот в кроне зовётся алиасом)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-14 14:48 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py node-resolve-fix-20260814</code></div>
   
 </div>
 </div></body></html>
