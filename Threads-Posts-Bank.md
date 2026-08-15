@@ -1,3 +1,5 @@
+[все дашборды](index.html) · категория: Контент и публикации · [← Threads-Posting-Status](Threads-Posting-Status.md) · [Voice-To-Content →](Voice-To-Content.html)
+
 # Threads Posts Bank (@****ndzi) — стиль @****ilovv
 
 Аккаунт: **@****ndzi (Tony Dzi)**. Стиль: короткие standalone-посты ~150 знаков, живо, само-ирония, вопрос/CTA в конце.
