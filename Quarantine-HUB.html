@@ -42,7 +42,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-06 17:00</div>
-</div><h2>📦 Уже применённые <span class="cnt">193</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">198</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1585,6 +1585,46 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py node-resolve-fix-20260814</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">canon-courier-e2big-fix-20260815</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">canon_courier.py root-fix E2BIG: live md5 из MANIFEST/CHAIN = clean (призрачный дифф не едет) + кап тела 100KB (.patch-файл + указатель); selftest 18 проверок GREEN</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-15 04:46 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py canon-courier-e2big-fix-20260815</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dr-board-honest-counter-20260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Табло ДР: счётчик назван честно (файлов сессий, вкл. упавшие) -- мёртвый тиром gemini показывал &#x27;сегодня 2&#x27; двумя КРАХАМИ</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-14 21:53 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 -m py_compile dr_rails_board.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">gemini-rail-scope-20260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Прибор перестаёт обещать ДР: doctor называет область годности gemini-рельсы (REST-дверь ревью жива, ДР-дверь мертва тиром)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-14 21:58 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 patch_gemini_rail_scope.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">red-canon-publish-gate-20260815</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Publish-гейт: канон толще красной черты §10.2 (120000 б) НЕ публикуется — сначала сжатие писателем; аварийный --force-red. Приказ Антона 15.08. Закрывает источник дедлока 07-14.08.</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-15 05:01 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py red-canon-publish-gate-20260815</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">codex-node-identity-20260814</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">codex_lib: идентичность узла из machine.env (хостнейм macOS плавает: MacBookPro-22/-34/-68 -&gt; архив расползся на 5 ярлыков), прибор ВХОД-vs-ВЫХОД по несимпортированным сессиям (резюмы и второй дом больше не дают ложный красный). md5=bdc0f19e13f3800f4755431f1f4ea068</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-14 22:07 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$IMPORTS_ROOT/codex/codex_lib.py&quot; import</code></div>
   
 </div>
 </div></body></html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Ежедневные полосы — shadow-замер и вердикт GO</title>
+<style>
+body{font:14px/1.55 system-ui,Segoe UI,sans-serif;margin:22px;background:#faf9f7;color:#222;max-width:1040px}
+h1{font-size:21px;margin:0 0 3px}h2{font-size:16px;margin:26px 0 8px;border-bottom:1px solid #e4e2de;padding-bottom:4px}
+.sub{color:#888;font-size:12px;margin-bottom:14px}
+.kpi{display:inline-block;background:#fff;border:1px solid #e4e2de;border-radius:8px;padding:8px 14px;margin:4px 8px 4px 0}
+.kpi b{font-size:19px;display:block}
+.kpi.good b{color:#2e7d32}.kpi.bad b{color:#d32f2f}.kpi.warn b{color:#b26a00}
+.banner{background:#fdecea;border:1px solid #d9534f;border-radius:8px;padding:11px 14px;margin:12px 0;color:#8a1f1a}
+.banner.ok{background:#edf7ee;border-color:#4c9a51;color:#1e5c23}
+.banner b{display:block;margin-bottom:3px;font-size:15px}
+table{border-collapse:collapse;width:100%;background:#fff;border:1px solid #e4e2de;border-radius:9px;overflow:hidden;margin:8px 0}
+th,td{padding:7px 11px;text-align:left;border-bottom:1px solid #f0eeea;vertical-align:top}
+th{background:#f4f2ef;font-size:12px;color:#555;font-weight:600}
+tr:last-child td{border-bottom:none}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ok{color:#2e7d32;font-weight:600}.no{color:#d32f2f;font-weight:600}.mid{color:#b26a00;font-weight:600}
+.pill{display:inline-block;font-size:11px;border-radius:5px;padding:1px 7px;margin-right:4px;background:#eef0f2}
+.pill.live{background:#e3f2e4;color:#256b2a}.pill.dead{background:#fdecea;color:#a02a25}.pill.none{background:#eee;color:#777}
+code{background:#f2f0ec;padding:1px 5px;border-radius:4px;font-size:12.5px}
+.note{color:#666;font-size:12.5px;margin:5px 0}
+.bar{display:inline-block;height:9px;border-radius:3px;background:#4c9a51;vertical-align:middle}
+.bar.r{background:#d9534f}.bar.g{background:#ccc}
+footer{margin-top:32px;color:#aaa;font-size:12px}
+</style></head><body>
+
+<h1>Ежедневные полосы — shadow-замер и вердикт GO</h1>
+<div class="sub">Замер 15.08.2026 · источник цифр: живой лог хаба <code>daily/shadow-log.jsonl</code> (30 записей) + прогоны, не чтение заметок</div>
+
+<div class="banner"><b>Посылка задачи была ложной</b>
+Задача стояла как «сборщик не работал НИ РАЗУ». На самом деле полоса работает <b>18 суток подряд</b>.
+Прибор врал не цифрой, а абсолютным отрицанием: на Mac16 <code>status</code> читал лог, которого тут физически нет.</div>
+
+<div class="kpi good"><b>18</b>дней с прогоном<br><span class="sub">28.07 – 14.08</span></div>
+<div class="kpi good"><b>30</b>записей в логе хаба</div>
+<div class="kpi good"><b>0</b>утечек на 16 пробах приватности</div>
+<div class="kpi good"><b>85/0</b>PASS/FAIL регресса</div>
+<div class="kpi bad"><b>0</b>постов из карточек наружу</div>
+
+<h2>Корень ложного показания — шестой случай класса <code>.stignore</code></h2>
+<table>
+<tr><th>Файл</th><th>Правило в <code>.stignore.shared</code></th><th>Синкается?</th><th>Следствие</th></tr>
+<tr><td><code>daily/card-*.md</code></td><td>whitelist <code>content-factory/**/*.md</code></td><td class="ok">да</td><td>карточки лежат на КАЖДОМ узле</td></tr>
+<tr><td><code>daily/shadow-log.jsonl</code></td><td>блэклист <code>*.jsonl</code></td><td class="no">нет</td><td><code>status</code> на пире печатал «ни одного прогона»</td></tr>
+<tr><td><code>_privacy-blocklist.txt</code><br><code>_privacy-topics.txt</code></td><td>блэклист <code>*.txt</code></td><td class="no">нет</td><td>на Mac16 <code>build</code> невозможен: fail-closed exit 2</td></tr>
+</table>
+<div class="note">Пять предыдущих случаев этого же класса описаны прямо в <code>.stignore.shared</code>
+(accounts.json, limits.json, platform_rules.json, approval_ledger, voice-sessions). Этот — шестой.</div>
+
+<h2>Починка и чем доказана</h2>
+<table>
+<tr><th>Что сделано</th><th>Доказательство</th></tr>
+<tr><td><code>_scan_cards()</code>: нет лога → замер реконструируется по карточкам, источник цифр назван честно</td>
+    <td class="ok">сверка с настоящим логом хаба: <b>18/18 дней, 0 расхождений</b> — совпали не только флаги, но и все счётчики</td></tr>
+<tr><td>Регресс-блоки 12–14 с мутантами (битая карточка обязана перестать считаться прогоном)</td>
+    <td class="ok">на хабе <b>100 PASS / 0 FAIL</b></td></tr>
+<tr><td><b>Панель, раунд 1</b> (§4.3): gemini → COUNTER, 4 находки</td>
+    <td class="ok">① окно «последние 14 <i>записей</i>» → <b>календарное</b>: мёртвый месяц назад конвейер показывал бы 100% ✅, теперь кричит «ПОЛОСА НЕ ЖИВАЯ» <br>
+    ② <code>card-2026-08-15-backup.md</code> заезжал ключом-датой и портил min/max/счёт <br>
+    ③ факт с переводом строки разрывался на пункты и завышал счёт <br>
+    ④ утечка флага <code>skip_block</code> между полосами</td></tr>
+<tr><td><b>Панель, раунд 2</b>: grok Heavy живой вкладкой Chrome → COUNTER, <b>ещё 8 находок</b>.
+    Первый заход CLI-рельсы отвалился по таймауту 90с — <code>rail_sweep.py</code> показал, что вендор при этом ЖИВ в Chrome (Tony0x.eth)</td>
+    <td class="ok">все 8 воспроизведены и закрыты, ground-truth не сдвинулся (18/18): <br>
+    ⑤ лог ЕСТЬ, но пустой/битый → «НЕТ ДАННЫХ» вместо отката на карточки (тот же класс!) <br>
+    ⑥ <code>.get("sources_ok", True)</code> — отсутствующее поле читалось как «здорово» <br>
+    ⑦ <code>sources_ok: True</code> с заглавной → день МОЛЧА исчезал из замера <br>
+    ⑧ <code>card-2026-02-30.md</code> проходил regex и ронял всё табло ValueError <br>
+    ⑨ карточка «из будущего» (часы узлов разъехались) глушила «ПОЛОСА НЕ ЖИВАЯ» <br>
+    ⑩ GO формально выдавался трупу → теперь «⛔ GO НЕВОЗМОЖЕН» <br>
+    ⑪ <code>skip_block</code> не действовал в полосе факапа · ⑫ буллеты инструкции «Как выбрать» считались фактами</td></tr>
+<tr><td>Приватность прогнана 16 пробами через боевой <code>privacy()</code></td>
+    <td class="ok">PAT/JWT/sk-/AKIA/пароль → строка выброшена целиком; email/хендл/t.me/id чата/телефон/SID/путь/имена → маска. CTA Антона выжил, чужой номер рядом замаскирован</td></tr>
+<tr><td>Раскатка на флот</td>
+    <td class="mid">хаб подтверждён по md5 <code>9a22a0ad…</code>; Маяк на момент замера ещё на старой версии — едет синком</td></tr>
+</table>
+
+<h2>Вердикт GO на реальных цифрах</h2>
+<table>
+<tr><th>Критерий</th><th class="n">всё время</th><th class="n">последние 14 дн.</th><th>что это значит</th></tr>
+<tr><td>К1 полнота ≥70%</td><td class="n ok">16/18 = 89%</td><td class="n ok">13/14 = 93%</td><td>полоса реально наполняется</td></tr>
+<tr><td>К2 правдивость (слепые кормушки)</td><td class="n no">7 дней</td><td class="n no">4 дня</td>
+    <td>все 7 идут <b>подряд 29.07–04.08</b>, корень починен 05.08 — с тех пор 10 дней чисто. Красное здесь = история, а не сегодня</td></tr>
+<tr><td>К3 приватность</td><td class="n mid">61 строка отброшена</td><td class="n">авто не мерится</td><td>глазами и прогоном: 0 утечек</td></tr>
+<tr><td>К4 потребление</td><td class="n no">0/5</td><td class="n no">0/5</td><td>🔺 критерий мёртв по построению</td></tr>
+</table>
+
+<div class="banner"><b>К4 протух: гейт Наташи снят 06.08.2026</b>
+Критерий звучит «≥5 карточек взяты Наташей», но она больше не обязательный потребитель (§3.2).
+Ноль здесь не отличает «полосу не читают» от «читает не она» — считать по нему нельзя.<br><br>
+<b style="display:inline">Предлагаемая замена:</b> считать посты, доехавшие из карточки дня до
+<code>registry/pub_ledger.jsonl</code>, ≥5 за 14 дней. Меряет то, ради чего полоса строилась. Решает Антон.</div>
+
+<h2>Настоящий блокер — обрыв конвейера, а не замер</h2>
+<div class="note">Карточка производится 18 суток. Публикация тоже живёт: <code>pub_ledger.jsonl</code> = 54 поста,
+три ушли в @PaloAltoAiRu 14.08. <b>Между ними моста нет: из карточек дня наружу не уехало ни одного поста.</b></div>
+<table>
+<tr><th>Полоса</th><th>Движок</th><th>Рутина</th><th>Состояние проверено прогоном</th></tr>
+<tr><td>вопрос дня</td><td><span class="pill live">есть</span></td><td><span class="pill live">Daily Community Card, хаб, 23:50, rc=0</span></td><td class="ok">живая, 18 дней карточек</td></tr>
+<tr><td>факап дня</td><td><span class="pill live">есть</span></td><td><span class="pill live">та же рутина</span></td><td class="ok">живая, 18 дней карточек</td></tr>
+<tr><td>вопрос к аудитории ≤500</td><td><span class="pill live">есть</span></td><td><span class="pill none">нет нигде</span></td>
+    <td class="mid">прогон 14.08 → честное «полоса молчит: за сутки болей в пуле нет». Лечить надо выше — наполнение пула за СЕГОДНЯ</td></tr>
+<tr><td>пост про жизнь</td><td><span class="pill live">есть</span></td><td><span class="pill none">нет нигде</span></td>
+    <td class="no">«банк недоступен», выпущено 0 — структурно мертва без банка</td></tr>
+<tr><td>инсайт дня</td><td><span class="pill dead">движка НЕТ</span></td><td><span class="pill none">нет</span></td>
+    <td class="no">канон §3.2 требует ежедневно; в коде нет ни строки, только упоминания в планах</td></tr>
+</table>
+
+<div class="banner"><b>Вывод: GO не давать</b>
+Не из-за замера — по К1 он как раз зелёный. Полоса 18 суток производит сырьё в пустоту.
+Сперва мост «карточка → пост», потом GO. Рутину-дубль на Mac16 заводить нельзя:
+здесь <code>build</code> физически невозможен (fail-closed), а дубль перезаписал бы карточки хаба через синк.</div>
+
+<footer>Собрано сессией auto-mac16-260814-daily-lanes-shadow · все цифры получены прогоном на узле-производителе, ни одна не взята из заметок</footer>
+</body></html>

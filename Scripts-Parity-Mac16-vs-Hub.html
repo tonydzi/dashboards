@@ -1,35 +1,27 @@
 <!doctype html><meta charset="utf-8"><title>Паритет скриптов Mac16 ↔ хаб</title>
-<style>
-body{font:15px/1.5 -apple-system,Segoe UI,sans-serif;margin:24px;background:#fbfbfa;color:#222}
-h1{font-size:22px;margin:0 0 4px} .sub{color:#777;font-size:13px;margin-bottom:18px}
+<style>body{font:15px/1.5 -apple-system,Segoe UI,sans-serif;margin:24px;background:#fbfbfa;color:#222}
+h1{font-size:22px;margin:0 0 4px}.sub{color:#777;font-size:13px;margin-bottom:18px}
 .cards{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
 .c{background:#fff;border:1px solid #e3e3e0;border-radius:10px;padding:12px 16px;min-width:110px}
-.c b{display:block;font-size:26px;line-height:1.1} .c span{font-size:12px;color:#777}
-.ok b{color:#2e7d32} .warn b{color:#c62828} .neu b{color:#e08800}
+.c b{display:block;font-size:26px;line-height:1.1}.c span{font-size:12px;color:#777}
+.ok b{color:#2e7d32}.warn b{color:#c62828}.neu b{color:#e08800}
 table{border-collapse:collapse;width:100%;background:#fff;border:1px solid #e3e3e0;border-radius:10px;overflow:hidden}
-th,td{padding:7px 10px;text-align:right;border-bottom:1px solid #f0f0ee;font-variant-numeric:tabular-nums}
-th{background:#f6f6f4;font-size:12px;color:#666;text-align:right}
-td.n,th.n{text-align:left;font-family:ui-monospace,Menlo,monospace;font-size:13px}
-tr.hub td.d{color:#c62828} tr.mac{background:#fff8e6} tr.mac td.d{color:#e08800}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid #f0f0ee}
+th{background:#f6f6f4;font-size:12px;color:#666}td.n,th.n{text-align:left;font-family:ui-monospace,Menlo,monospace;font-size:13px}
 .lists{display:flex;gap:22px;margin-top:22px;flex-wrap:wrap}
-.lists div{background:#fff;border:1px solid #e3e3e0;border-radius:10px;padding:12px 16px;min-width:260px}
-.lists h3{font-size:13px;margin:0 0 8px;color:#666} .lists li{font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
-.note{margin-top:20px;font-size:13px;color:#555;background:#fff;border-left:3px solid #e08800;padding:10px 14px}
-</style>
+.lists div{background:#fff;border:1px solid #e3e3e0;border-radius:10px;padding:12px 16px;min-width:280px;max-width:48%}
+.lists h3{font-size:13px;margin:0 0 8px;color:#666}.lists li{font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
+.note{margin-top:20px;font-size:13px;color:#555;background:#fff;border-left:3px solid #c62828;padding:10px 14px}</style>
 <h1>Паритет <code>~/.claude/scripts</code>: Mac16 ↔ хаб</h1>
-<div class="sub">замер 2026-08-10 · md5 нормализован по переводам строк (CRLF-шум исключён) · время в UTC</div>
+<div class="sub">ПОСЛЕ переноса 13 файлов · 2026-08-15 04:41 UTC · md5 нормализован по переводам строк</div>
 <div class="cards">
-<div class="c ok"><b>488</b><span>файл в файл</span></div>
-<div class="c warn"><b>15</b><span>расходятся по содержимому</span></div>
-<div class="c neu"><b>10</b><span>есть только на Mac16</span></div>
-<div class="c neu"><b>4</b><span>есть только на хабе</span></div>
-<div class="c"><b>513/507</b><span>всего Mac16 / хаб</span></div>
-</div>
-<table><tr><th class="n">файл</th><th>Mac16, б</th><th>хаб, б</th><th>Δ</th><th>Mac16 UTC</th><th>хаб UTC</th><th>новее</th></tr>
-<tr class='hub'><td class='n'>selfheal.py</td><td>27683</td><td>45479</td><td class='d'>+17796</td><td>2026-08-05 19:26</td><td>2026-08-10 16:48</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>publish_canon.py</td><td>37560</td><td>45426</td><td class='d'>+7866</td><td>2026-08-04 14:19</td><td>2026-08-06 19:08</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>rule_home_guard.py</td><td>13683</td><td>8636</td><td class='d'>-5047</td><td>2026-08-06 14:55</td><td>2026-08-07 07:24</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>claude_fleet.py</td><td>29148</td><td>24685</td><td class='d'>-4463</td><td>2026-08-10 18:21</td><td>2026-08-10 18:22</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>contrib_watch.py</td><td>13128</td><td>16448</td><td class='d'>+3320</td><td>2026-08-06 19:23</td><td>2026-08-10 13:58</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>subscription_utilization.py</td><td>23899</td><td>27046</td><td class='d'>+3147</td><td>2026-08-05 21:22</td><td>2026-08-07 11:46</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>_test_deploy_bus_rebase.py</td><td>4295</td><td>6877</td><td class='d'>+2582</td><td>2026-08-06 14:32</td><td>2026-08-07 05:33</td><td><b>хаб</b></td></tr><tr class='mac'><td class='n'>deploy_check.py</td><td>11510</td><td>13623</td><td class='d'>+2113</td><td>2026-08-06 21:05</td><td>2026-08-06 17:00</td><td><b>Mac16</b></td></tr><tr class='hub'><td class='n'>pr_watch.py</td><td>22363</td><td>23714</td><td class='d'>+1351</td><td>2026-08-07 02:02</td><td>2026-08-10 18:22</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>dashboards_build_public.py</td><td>26881</td><td>28075</td><td class='d'>+1194</td><td>2026-08-06 21:22</td><td>2026-08-10 12:00</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>_test_claude_fleet_regression_guard.py</td><td>3663</td><td>4776</td><td class='d'>+1113</td><td>2026-08-03 07:24</td><td>2026-08-07 06:59</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>llm_ask.py</td><td>26151</td><td>26817</td><td class='d'>+666</td><td>2026-08-06 20:14</td><td>2026-08-07 11:39</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>inbound_collect.py</td><td>17735</td><td>18173</td><td class='d'>+438</td><td>2026-08-06 14:15</td><td>2026-08-10 14:25</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>regress_run.py</td><td>21551</td><td>21799</td><td class='d'>+248</td><td>2026-08-07 02:02</td><td>2026-08-10 18:22</td><td><b>хаб</b></td></tr><tr class='hub'><td class='n'>ecosystem_footer.py</td><td>11722</td><td>11864</td><td class='d'>+142</td><td>2026-08-06 19:27</td><td>2026-08-10 17:20</td><td><b>хаб</b></td></tr></table>
+<div class="c ok"><b>524</b><span>файл в файл</span></div>
+<div class="c warn"><b>3</b><span>расходятся</span></div>
+<div class="c neu"><b>19</b><span>только Mac16</span></div>
+<div class="c neu"><b>0</b><span>только хаб</span></div>
+<div class="c"><b>546/527</b><span>всего</span></div></div>
+<table><tr><th class="n">файл</th><th>Mac16 UTC</th><th>хаб UTC</th><th>новее</th></tr><tr><td class='n'>claude_fleet.py</td><td>2026-08-10 18:21</td><td>2026-08-15 04:22</td><td><b>хаб</b></td></tr><tr><td class='n'>memory_focus.py</td><td>2026-08-10 19:05</td><td>2026-07-06 13:18</td><td><b>Mac16</b></td></tr><tr><td class='n'>memory_guard.py</td><td>2026-08-10 18:59</td><td>2026-07-25 20:32</td><td><b>Mac16</b></td></tr></table>
 <div class="lists">
-<div><h3>только на Mac16 (10) — не отданы флоту</h3><ul><li>_test_approval_clock.py</li><li>_test_deploy_open_count.py</li><li>_test_dr_start_guard.py</li><li>_test_firefox_selenium.py</li><li>_test_machine_bus_seek.py</li><li>approval_clock.py</li><li>codex_lib.py</li><li>deploy_open_count.py</li><li>dr_start_guard.py</li><li>firefox_selenium.py</li></ul></div>
-<div><h3>только на хабе (4) — не доехали к нам</h3><ul><li>_test_breakage_journal.py</li><li>_test_contrib_watch.py</li><li>_test_pr_watch_grave.py</li><li>config_backup_commit.py</li></ul></div>
-</div>
-<div class="note"><b>Жёлтым</b> — единственный файл, где Mac16 новее хаба (<code>deploy_check.py</code>): слепой pull с хаба затрёт нашу правку.
-<b>Отдельно смотреть</b> <code>claude_fleet.py</code> и <code>rule_home_guard.py</code>: хаб новее по времени, но НАША копия крупнее — значит это не «мы отстали», а две ветки правок.</div>
+<div><h3>только на Mac16 (19) — флоту не отданы</h3><ul><li>_scratch_unread.py</li><li>_stage_prompt.py</li><li>_test_approval_clock.py</li><li>_test_dr_local_bridge.py</li><li>_test_dr_start_guard.py</li><li>_test_firefox_selenium.py</li><li>_test_machine_bus_seek.py</li><li>_test_memory_tidy.py</li><li>approval_clock.py</li><li>codex_lib.py</li><li>dr_glm_relay.py</li><li>dr_local_bridge.py</li><li>dr_start_guard.py</li><li>firefox_selenium.py</li><li>git25_traffic_snapshot.py</li><li>memory_fold.py</li><li>memory_orphan_cover.py</li><li>memory_tidy.sh</li><li>memory_tidy_scope.py</li></ul></div>
+<div><h3>только на хабе (0)</h3><ul></ul></div></div>
+<div class="note"><b>Замер живёт минуты.</b> За время одной сессии в этой папке сменилось 47 файлов и появилось 30 — канал доставки работает прямо во время работы. Любая сверка старше часа уже неправда.</div>
