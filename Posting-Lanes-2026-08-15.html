@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Полосы постинга · 15.08.2026</title>
+<style>
+:root{
+  --bg:#0f1115; --card:#171a21; --line:#272c36; --tx:#e6e9ef; --dim:#9aa3b2;
+  --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --acc:#60a5fa;
+}
+@media (prefers-color-scheme: light){
+  :root{--bg:#f6f7f9;--card:#fff;--line:#e2e5ea;--tx:#15181d;--dim:#5d6673;--ok:#15803d;--warn:#b45309;--bad:#b91c1c;--acc:#1d4ed8}
+}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;background:var(--bg);color:var(--tx);
+  font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+h1{font-size:21px;margin:0 0 4px}
+.sub{color:var(--dim);font-size:13px;margin-bottom:20px}
+.wrap{max-width:1100px;margin:0 auto}
+.status{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:9px 13px;font-size:13px}
+.pill b{font-size:17px;display:block;margin-top:2px}
+.open{border-left:3px solid var(--warn)}
+.done{border-left:3px solid var(--ok)}
+h2{font-size:16px;margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 15px;margin-bottom:11px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:7px}
+.tag{font-size:11px;color:var(--dim);letter-spacing:.04em;text-transform:uppercase}
+.len{font-size:11px;color:var(--dim)}
+.len.over{color:var(--warn)}
+.txt{white-space:pre-wrap}
+.src{font-size:12px;color:var(--dim);margin-top:8px;border-top:1px dashed var(--line);padding-top:7px}
+button{background:transparent;border:1px solid var(--line);color:var(--acc);border-radius:7px;
+  padding:5px 11px;font-size:12px;cursor:pointer;font-family:inherit}
+button:hover{border-color:var(--acc)}
+button.ok{color:var(--ok);border-color:var(--ok)}
+.note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);
+  border-radius:9px;padding:12px 15px;margin-bottom:18px;font-size:14px}
+a{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Полосы постинга на 15.08.2026</h1>
+<div class="sub">оператор: Наташа · узел MyOwnPC-Natalia · собрано 18:10 местного · публикует человек, робот наружу не ходит</div>
+
+<div class="status">
+  <div class="pill open">🙏 просьба дня<b>не закрыта</b></div>
+  <div class="pill open">💥 факап дня<b>не закрыта</b></div>
+  <div class="pill open">💡 инсайт дня<b>не закрыта</b></div>
+  <div class="pill done">📝 обычные посты<b>1 из 1-2</b></div>
+  <div class="pill">medium: окно<b>18:30 сегодня</b></div>
+  <div class="pill">medium: очередь<b>40 текстов</b></div>
+</div>
+
+<div class="note">
+  <b>⏰ через 20 минут открывается окно Medium.</b> За сутки ушло 2 из 2 (14.08 18:44 и 18:30).
+  Первый в очереди — <code>one-pipe-for-every-voice-note</code>, 4100 знаков, ссылки проверены.
+  Скажи «давай» — положу в буфер.
+</div>
+
+<h2>🙏 Просьба дня · 5 вариантов</h2>
+
+<div class="card">
+  <div class="top"><span class="tag">ask-A · medium против очереди</span><span class="len">202 знака</span></div>
+  <div class="txt" id="t1">на медиуме два поста в сутки, а у меня в очереди 40 готовых текстов. это 20 дней хвоста, и очередь растет быстрее, чем я ее разгружаю. как вы разносите накопленное, когда площадка пускает по два в день?</div>
+  <div class="src">источник: <code>chain.py medium-queue</code> 15.08 18:10 — «2 из 2 за 24 ч», 40 файлов ждут</div>
+  <button onclick="cp('t1',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">ask-B · тредс без токена</span><span class="len">174 знака</span></div>
+  <div class="txt" id="t2">в тредс нам не дают токен на запись, и 34 коротких поста ждут, пока их вставят руками, по одному в час. кто нашел способ постить туда без ручной работы и без бана, поделитесь</div>
+  <div class="src">источник: сессия 8ee53836, 15.08 14:04 — «34 тизера Threads, темп 1/час, вставляет человек»</div>
+  <button onclick="cp('t2',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">ask-C · два приказа</span><span class="len">216 знаков</span></div>
+  <div class="txt" id="t3">у меня двое имеют право решать про публикацию, и они решили противоположное: один снял стоп, вторая вернула. очередь стоит между двумя приказами, и машина тут выбирать не должна. как вы разруливаете, когда оба правы?</div>
+  <div class="src">источник: оба флага STOP-POSTING стоят (локальный 14.08 09:48, флотовый 14.08 11:33) против слова Антона 13.08</div>
+  <button onclick="cp('t3',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">ask-D · молчание это не да</span><span class="len">170 знаков</span></div>
+  <div class="txt" id="t4">у нас стоял гейт: человек молчит сутки, значит согласен. сегодня выяснилось, что человек как раз молчание согласием не считает. как вы отличаете не возражаю от не увидел?</div>
+  <div class="src">источник: 24ч-гейт против решения Наташи 14.08; разбор в сессии 8ee53836 15.08 13:57</div>
+  <button onclick="cp('t4',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">ask-E · две минуты чужого времени</span><span class="len">170 знаков</span></div>
+  <div class="txt" id="t5">второй день жду от коллеги код входа, две минуты ее времени. без него стоят готовые переводы, которых ждут другие. как вы просите такие мелочи, чтобы они не висели сутки?</div>
+  <div class="src">источник: запрос хаба от 14.08 09:34, висит ~28 ч (сессия 8ee53836). ⚠️ имя коллеги в тексте не называется</div>
+  <button onclick="cp('t5',this)">копировать</button>
+</div>
+
+<h2>💥 Факап дня · 5 вариантов</h2>
+
+<div class="card">
+  <div class="top"><span class="tag">fail-A · два демона на одних сессиях</span><span class="len over">281 знак</span></div>
+  <div class="txt" id="t6">сегодня не смог прочитать два своих чата. два запроса висели по 300 секунд и были убиты, десять минут работы в мусор. корень оказался тупой: на ноутбуке крутились два одинаковых демона телеграма на одних и тех же сессиях и бесконечно перебивали друг друга. дубль убил, оставил один</div>
+  <div class="src">источник: сессия 8ee53836, 15.08 13:57 + журнал <code>telegram_mcp_sse.log</code></div>
+  <button onclick="cp('t6',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">fail-B · мертвая ссылка внутри одобренного</span><span class="len over">248 знаков</span></div>
+  <div class="txt" id="t7">в готовом коротком посте лежала ссылка на канал, которую мы отменили три дня назад. поймал перед тем, как отдать человеку, а не после публикации. правило перепроверять текст перед выдачей завел 12 августа, и сегодня оно первый раз реально сработало</div>
+  <div class="src">источник: сессия 8ee53836 15.08 14:04 — в файле стояла <code>t.me/PaloAltoAiRu/785</code> вместо двух ссылок по решению 12.08</div>
+  <button onclick="cp('t7',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">fail-C · долг растет быстрее</span><span class="len">224 знака</span></div>
+  <div class="txt" id="t8">тредс это единственная полоса, где мой долг растет быстрее, чем я его закрываю: 34 текста ждут, темп один в час, потому что вставляет их человек. я строил конвейер и не заметил, что на последнем шаге он весь упирается в руки</div>
+  <div class="src">источник: сессия 8ee53836 15.08 14:04</div>
+  <button onclick="cp('t8',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">fail-D · потолок вопросов</span><span class="len">174 знака</span></div>
+  <div class="txt" id="t9">мои роботы уперлись в потолок вопросов ко мне: пять висят без ответа, шестой уже не создается. то есть узкое место это я, и система честно перестала стучаться. приятного мало</div>
+  <div class="src">источник: очередь 02, кап 5/5 (сессия 8ee53836 15.08 13:57)</div>
+  <button onclick="cp('t9',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">fail-E · 89 часов непрочитанного</span><span class="len">183 знака</span></div>
+  <div class="txt" id="t10">тридцать сообщений между моими машинами лежат непрочитанными, самому старому 89 часов. связь цела, все доехало. просто на той стороне никто не открыл, и я об этом узнал только сегодня</div>
+  <div class="src">источник: <code>tools/data/inbox_daily_last.json</code>, прогон 15.08 13:38 — unpaid 30, oldest_h 89.1</div>
+  <button onclick="cp('t10',this)">копировать</button>
+</div>
+
+<h2>💡 Инсайт дня · 5 вариантов</h2>
+
+<div class="card">
+  <div class="top"><span class="tag">ins-A · одобряют слова, а не ссылки</span><span class="len">211 знаков</span></div>
+  <div class="txt" id="t11">понял сегодня: одобрение человека распространяется на слова, а не на ссылки внутри. текст одобрен, а ссылка в нем умерла три дня назад и утащила бы читателя в никуда. проверять надо не текст, а то, куда он ведет</div>
+  <div class="src">источник: тот же случай, что fail-B (сессия 8ee53836 15.08 14:04)</div>
+  <button onclick="cp('t11',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">ins-B · молчание это просто молчание</span><span class="len">166 знаков</span></div>
+  <div class="txt" id="t12">мы считали, что если человек сутки молчит, значит согласен. сегодня понял, что это не гейт, а вежливый способ обойти человека. молчание это не да, это просто молчание</div>
+  <div class="src">источник: конфликт 24ч-гейта и решения Наташи, разобран 15.08 13:57</div>
+  <button onclick="cp('t12',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">ins-C · два робота это ноль</span><span class="len">172 знака</span></div>
+  <div class="txt" id="t13">два одинаковых робота на одном входе это не в два раза быстрее, это ноль. они дерутся за одну сессию и оба висят. понял на своем телеграме, десять минут потерял, пока искал</div>
+  <div class="src">источник: тот же случай, что fail-A</div>
+  <button onclick="cp('t13',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">ins-D · очередь против потолка</span><span class="len">208 знаков</span></div>
+  <div class="txt" id="t14">очередь без потолка против площадки с потолком это мертвый контент. у меня 40 текстов и два слота в сутки, значит хвост выйдет через 20 дней и будет уже неинтересен. писать больше не значит публиковать больше</div>
+  <div class="src">источник: <code>chain.py medium-queue</code> 15.08 18:10</div>
+  <button onclick="cp('t14',this)">копировать</button>
+</div>
+
+<div class="card">
+  <div class="top"><span class="tag">ins-E · где в конвейере стоит человек</span><span class="len">181 знак</span></div>
+  <div class="txt" id="t15">производительность конвейера меряется не тем, сколько он делает, а тем, где в нем стоит человек. у меня все автоматом до последнего шага, а на последнем руки, и весь темп задают они</div>
+  <div class="src">источник: тредс 34 в очереди по 1/час + medium 2/сут (15.08)</div>
+  <button onclick="cp('t15',this)">копировать</button>
+</div>
+
+<h2>📝 Что уже ушло сегодня</h2>
+<div class="card">
+  <div class="txt">пост <code>ultracode-burns-the-window</code> разнесен полностью:
+FB 13:07 · <a href="https://t.me/PaloAltoAi/1929">EN-канал 1929</a> · <a href="https://t.me/PaloAltoAiRu/846">RU-канал 846</a> · <a href="https://t.me/ClawEng/120940">ClawEng 120940</a> · <a href="https://x.com/Tony_Stef_/status/2088280060331466911">X</a> · <a href="https://www.threads.com/share/Dpxp5hE-l/">Threads 13:38</a> · GitHub лонгрид и дев-лог
+Не закрыт только Medium — ждет окна 18:30</div>
+  <div class="src">источник: <code>posting-chain/cases/ultracode-burns-the-window/events.jsonl</code></div>
+</div>
+
+<script>
+function cp(id,btn){
+  var t=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(t).then(function(){
+    var o=btn.textContent; btn.textContent='скопировано'; btn.classList.add('ok');
+    setTimeout(function(){btn.textContent=o;btn.classList.remove('ok')},1500);
+  });
+}
+</script>
+
+</div>
+</body>
+</html>

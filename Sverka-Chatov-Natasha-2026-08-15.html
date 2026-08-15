@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Сверка 02/03/121/00 — что на стороне Наташи · 15.08.2026</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1b1b19;--mut:#6b6b66;--card:#fff;--line:#e2e2dd;--red:#c0392b;--amb:#b8860b;--grn:#2e7d32;--blu:#2c5aa0}
+@media(prefers-color-scheme:dark){:root{--bg:#16161a;--fg:#ececeb;--mut:#9a9a95;--card:#1f1f24;--line:#33333a}}
+*{box-sizing:border-box}body{margin:0;padding:20px;background:var(--bg);color:var(--fg);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:26px 0 10px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+.sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.num{font-size:26px;font-weight:700;line-height:1.1}.lbl{color:var(--mut);font-size:12px;margin-top:4px}
+.red{color:var(--red)}.amb{color:var(--amb)}.grn{color:var(--grn)}.blu{color:var(--blu)}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.wrap{overflow-x:auto}.tag{display:inline-block;font-size:11px;padding:2px 7px;border-radius:20px;border:1px solid var(--line);color:var(--mut)}
+.hands{background:#c0392b18;border-color:#c0392b55;color:var(--red)}
+.mine{background:#2e7d3218;border-color:#2e7d3255;color:var(--grn)}
+.anton{background:#2c5aa018;border-color:#2c5aa055;color:var(--blu)}
+.note{background:var(--card);border-left:3px solid var(--amb);padding:12px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:14px}
+.eli{background:var(--card);border-left:3px solid var(--blu);padding:12px 14px;border-radius:0 8px 8px 0;margin:18px 0}
+code{font-size:13px;background:#8881;padding:1px 5px;border-radius:4px}
+</style></head><body>
+
+<h1>Сверка чатов 02 · 03 · 121 · 00 — что сейчас на твоей стороне</h1>
+<div class="sub">MyOwnPC-Natalia · 15.08.2026 13:55 · источники: журнал апрувов 02, шина 03 (файлы + peek), inbox-робот, очереди postinga. Чаты 121 и 00 прочитать НЕ удалось — см. красную плашку.</div>
+
+<div class="grid">
+  <div class="card"><div class="num red">2</div><div class="lbl">срочных дела на ТВОИ руки</div></div>
+  <div class="card"><div class="num amb">40</div><div class="lbl">готовых текстов Medium ждут (окно сегодня 18:30)</div></div>
+  <div class="card"><div class="num amb">34</div><div class="lbl">Threads в очереди (тексты у меня не готовы)</div></div>
+  <div class="card"><div class="num red">5/5</div><div class="lbl">кап 02 упёрт: новые вопросы Антону режутся</div></div>
+  <div class="card"><div class="num red">30</div><div class="lbl">долгов чтения в шине, старшему 89 ч</div></div>
+  <div class="card"><div class="num amb">2</div><div class="lbl">посылки не применились</div></div>
+</div>
+
+<div class="note"><b>⛔ Чаты 121 и 00 я не прочитала.</b> Телеграм-MCP на узле лежал: два запроса подряд повисли по 300 с и были убиты харнесом (10 минут сессии). Причину нашла — на машине крутились <b>ДВА</b> демона telegram-mcp на одних и тех же сессиях (venv-питон и системный), отсюда бесконечный цикл «Closing current connection… reconnect». Дубль убила, вместе с ним упал и рабочий, подняла заново — сейчас порт 8765 отвечает одним экземпляром, но на <code>GetDialogsRequest</code> висит флуд-вейт Телеграма, и живая сессия после рестарта чтение чатов, скорее всего, уже не восстановит. Вывод по 121/00 честный: <b>не проверено</b>, а не «там пусто».</div>
+
+<h2>1. Твои руки — прямо сейчас</h2>
+<div class="wrap"><table>
+<tr><th>что</th><th>откуда</th><th>состояние</th></tr>
+<tr><td><b>Решить конфликт стоп-крана постинга</b><br><span class="tag hands">руки Наташи</span> Антон 13.08 снял кран словами «снимаем стоп-кран, выпускай очередь по темпу» и назвал границей 24ч-гейт. Ты 14.08 вернула: «убедись, что ничего без моего апрува не будет запощено». 24ч-гейт считает согласием МОЛЧАНИЕ — то есть ровно то, что ты исключаешь. Машина не выбирает между вами двоими.</td><td>шина 03 + локальный флаг</td><td class="red">оба крана СТОЯТ: локальный 14.08 09:48, флотовый 14.08 11:33. Вся очередь заморожена</td></tr>
+<tr><td><b>Код входа Telegram для @****va97</b> — хаб просил «СРОЧНО, 2 минуты», чтобы подключить ТГ Русланы и постить финальные переводы её голосовых<br><span class="tag hands">руки Наташи</span></td><td>шина 03, хаб, 14.08 09:34</td><td class="red">висит ~28 ч, ответа не было</td></tr>
+<tr><td><b>Финальные переводы голосовых @****va97</b> — приказ Антона 14.08 09:20 живой сессией хаба: слушать аудио, смотреть два перевода, постить финал</td><td>шина 03, хаб, 14.08 09:24</td><td class="amb">заблокировано пунктом выше</td></tr>
+<tr><td>Medium: окно откроется сегодня <b>18:30</b> (за сутки уже 2: <i>a-trigger-on-volume</i>, <i>watched-not-subscribed</i>)</td><td>chain.py medium-queue</td><td class="amb">40 готовых текстов в очереди</td></tr>
+</table></div>
+
+<h2>2. Ждёт Антона (не тебя) — 02 POLICE, кап упёрт 5/5</h2>
+<div class="wrap"><table>
+<tr><th>#</th><th>вопрос</th><th>висит</th></tr>
+<tr><td>9b3c2dc0</td><td>Твой стоп постинга vs его правило «24ч молчания = авто-апрув». Это тот самый конфликт из пункта 1, только заданный ему ещё 03.08 <span class="tag anton">Антон</span></td><td class="red">52 ч</td></tr>
+<tr><td>a5700e38</td><td>Убрать машинные сообщения из 121 (твоя просьба 05.08) — правка его же правила от 05.07 <span class="tag anton">Антон</span></td><td class="red">52 ч</td></tr>
+<tr><td>bf3bc9b9</td><td>Чат 00 разобран: 272 темы его альфы без постов. (А) гоню верхние в конвейер сам или (Б) он сам отмечает достойное <span class="tag anton">Антон</span></td><td class="red">52 ч</td></tr>
+<tr><td>6bfca54e</td><td>Лид Igor: ставить ли его закрытый бинарник-индексатор кода и идти ли в реселл с процентом <span class="tag anton">Антон</span></td><td class="amb">49 ч</td></tr>
+<tr><td>94e41e30</td><td>Канон прилетел на хаб, но не применился (base mismatch) — применять? <span class="tag anton">Антон</span></td><td class="amb">52 ч</td></tr>
+</table></div>
+<div class="note">Кап <b>5 из 5</b> — пока эти пять висят, новые не-критичные вопросы Антону физически не создаются (exit 4). Разгрузить может только он. Отдельно в мусорке лежит старьё: патенты (#4a599640, адрес и написание имени — стоит с 17.07), HackerNoon (#00e3eb71), бусты Premium.</div>
+
+<h2>3. Моя сторона (делаю я, тебе только знать)</h2>
+<div class="wrap"><table>
+<tr><th>что</th><th>состояние</th></tr>
+<tr><td>Threads: 34 кейса в очереди, у ВСЕХ «текст не готов» <span class="tag mine">моё</span></td><td class="amb">писать заново под твои правила от 11-12.08 (одна мысль, от первого лица, две ссылки первым комментарием)</td></tr>
+<tr><td>2 посылки не применились: <code>corpus-bench-weekly-20260818</code> (verify FAILED, exit 2), <code>dr-board-honest-counter-20260814</code> (нужна ручная проверка) <span class="tag mine">моё</span></td><td class="red">через <code>--force</code> не применяю: зелёный отчёт в обход проверки хуже красного</td></tr>
+<tr><td>30 долгов чтения в шине, старшему 89 ч; непрочитанных 363 <span class="tag mine">моё</span></td><td class="amb">свежие — догоны ACK от хаба про Firefox-рельсу и закрытый DR26-08-06-NAT-03-1526</td></tr>
+<tr><td>Реестр задач узла: 491 несделанная, 32 P0, гниёт 205 <span class="tag mine">моё</span></td><td class="amb">почти всё — фронт Антона и машин, не твой</td></tr>
+<tr><td>Интро Павлу (OnlyMonsters) <span class="tag grn">закрыто 14.08</span></td><td class="grn">Антон смотрел версию от 30.07, твоя от 12.08 в порядке — не поднимаем</td></tr>
+</table></div>
+
+<div class="eli">🧒 <b>Простыми словами.</b> На тебе сейчас три вещи: договориться с Антоном, стоит стоп-кран или нет (он снял, ты вернула, и машина между вами не выбирает), дать код входа в телеграм Русланы, и после 18:30 можно поставить два поста на Medium. Всё остальное — мои дела или его. А в два чата, 121 и 00, я сегодня заглянуть не смогла: телеграм на ноутбуке был сломан, я нашла поломку и починила, но читать чаты в этой сессии он уже не даст.</div>
+
+</body></html>
