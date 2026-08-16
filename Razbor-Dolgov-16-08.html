@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Разбор: долги, посылки, gemini — 16.08.2026</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--tx:#e8eaf0;--dim:#98a0b3;--red:#ff5f56;--amb:#ffbd2e;--grn:#27c93f;--bd:#252a35}
+@media(prefers-color-scheme:light){:root{--bg:#f6f7f9;--card:#fff;--tx:#14161a;--dim:#5b6472;--bd:#e2e5ea}}
+*{box-sizing:border-box}body{margin:0;padding:18px;background:var(--bg);color:var(--tx);font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:20px;margin:0 0 4px}.sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.card h2{font-size:15px;margin:0 0 10px}
+ul{margin:0;padding-left:18px}li{margin-bottom:8px}
+.r{color:var(--red);font-weight:600}.a{color:var(--amb);font-weight:600}.g{color:var(--grn);font-weight:600}
+.n{color:var(--dim);font-size:13px}
+.kpi{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.k{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:8px 12px;min-width:120px}
+.k b{display:block;font-size:20px}.k span{color:var(--dim);font-size:12px}
+.done{border-left:3px solid var(--grn)}.open{border-left:3px solid var(--amb)}.bad{border-left:3px solid var(--red)}
+table{border-collapse:collapse;width:100%;font-size:13px}td,th{border-bottom:1px solid var(--bd);padding:5px 6px;text-align:left}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Задачи и планирование</span><span style="margin-left:auto;display:flex;gap:12px"><a href="RUSLANA-CONTINUE-BOOKING.md">&larr; RUSLANA-CONTINUE-BOOKING</a> · <a href="Razbor-Vhodyashchego-Uzla-2026-08-10.html">Razbor-Vhodyashchego-Uzla-2026-08-10 &rarr;</a></span></div>
+<h1>Разбор: долги чтения · посылки · плечо gemini</h1>
+<div class="sub">MyOwnPC-Natalia · 16.08.2026, 19:50 местного · всё проверено прогонами, не по памяти</div>
+
+<div class="kpi">
+<div class="k"><b class="g">3</b><span>посылки применены</span></div>
+<div class="k"><b class="g">13</b><span>долгов закрыто</span></div>
+<div class="k"><b class="g">1</b><span>корень флота починен</span></div>
+<div class="k"><b class="r">270</b><span>долгов осталось всего</span></div>
+<div class="k"><b class="a">20</b><span>из них свежих и содержательных</span></div>
+</div>
+
+<div class="grid">
+
+<div class="card done"><h2>🟢 Посылки — обе закрыты, плюс ещё две</h2>
+<ul>
+<li><b>dr-board-honest-counter-20260814</b> → confirm. Проверка описательная, строка «вкл. упавшие» найдена в <span class="n">dr_rails_board.py:261</span> и видна в живом табло.</li>
+<li><b>corpus-bench-weekly-20260818</b> → груз целый, selftest <b>8/8 passed</b> руками. Статус честный <b>claimed</b>, не «доказано».</li>
+<li>Заодно применены доказанно: <b>node-resolve-fix-20260814</b>, <b>gemini-rail-scope-20260814</b>, <b>canon-courier-e2big-fix-20260815</b>.</li>
+</ul></div>
+
+<div class="card done"><h2>🟢 Корень, из-за которого посылки краснели на всём флоте</h2>
+<p><b><code>$HOME</code> в apply/verify не разворачивается на Windows.</b> cmd.exe передаёт его буквально, python ищет <span class="n">...\scripts\$HOME\.claude\...</span> и отдаёт <b>exit 2</b> — ровно тот код, что мы видели. Груз при этом целый.</p>
+<table>
+<tr><th>узел</th><th>посылок с $HOME</th></tr>
+<tr><td>MacBook-Ruslana</td><td>16</td></tr>
+<tr><td>MacBook-Anton</td><td>14</td></tr>
+<tr><td>A-2022BAYAREA</td><td>13</td></tr>
+<tr><td>ZBOOKG8-2023PAL</td><td>13</td></tr>
+<tr><td>MyOwnPC-Natalia</td><td>13</td></tr>
+</table>
+<p class="n">На POSIX бьёт ноль — там разворачивает шелл. Поэтому автор с Mac видит зелёное, а три Windows-узла красное и лечат вслепую через --force.</p>
+<p>Патч + тест в <span class="n">_transit/canon-proposals/deploy-expand-home-var-20260816/</span>. Мутация доказана: старый движок <b>3 провала</b>, новый <b>6/6</b>. Хабу отправлено.</p>
+</div>
+
+<div class="card bad"><h2>🔴 Плечо gemini — закрыть нечем, и это правильный ответ</h2>
+<ul>
+<li>Приказ хаба <b>#8475121a от 14.08</b> уже вывел gemini из дефолта ДР: прогон 1429 с дал 15 369 б и <b>ноль URL</b> — CLI синтезирует из памяти, без веб-поиска.</li>
+<li>Свой замер: без OAuth CLI просит ключ, с ключом на 7 КБ теле результата не даёт.</li>
+<li><span class="a">Продавить можно — но это был бы отчёт без веб-поиска, то есть фальшивое плечо. Пустая клетка честнее зелёной галочки на выдумке.</span></li>
+<li>Живая дверь gemini для ДР = <b>браузерный Deep Research</b> на подписке a@.</li>
+<li>Руслане отправлен выбор: добрать grok · браузерный DR · отдать узлу с живой сессией.</li>
+</ul>
+<p class="n">⚠️ Попутно: табло врало. По заказу 03 писало «есть: —», а на диске лежат chatgpt 50 КБ и grok 43 КБ. По факту у 01, 03, 04 собрано по два плеча, у 05 одно (grok отбит).</p>
+</div>
+
+<div class="card done"><h2>🟢 Долг, за которым была настоящая работа</h2>
+<p>Три ДР от 06.08 висели «продолжай синтез». Собрала синтез по <b>DR26-08-06-NAT-03-1526</b> — тому самому, который про <b>формат твоих тизеров</b>. Рельса codex, 67 секунд, оплаченный бак, 5 отчётов → 16 КБ.</p>
+<p><b>Что из него применимо прямо сейчас:</b></p>
+<ul>
+<li><b>240 знаков — цель, 360 — редакторское исключение.</b> Порог 400 не принимать: единственная опора под ним это CTR рекламных постов, а не польза.</li>
+<li><b>Частота 1 в день</b>, ступень на 2 только после замера.</li>
+<li><b>Вопрос в конце только ПОСЛЕ сформулированного тезиса</b> — иначе engagement bait.</li>
+<li>Mute в Telegram админу не виден: <b>отсутствие жалоб ≠ отсутствие раздражения</b>.</li>
+<li>Один шаблон подряд нельзя: даже полезная рубрика становится баннерным шумом.</li>
+</ul>
+<p class="n">Файл: 03-Insights\DR26-08-06-NAT-03-1526-SYNTHESIS.md</p>
+</div>
+
+<div class="card open"><h2>⚠️ Мои два промаха в этой работе, оба записаны</h2>
+<ul>
+<li><b>Час гоняла gemini, не сделав RECALL.</b> Приказ флота от 14.08 лежал у меня же в непрочитанных. Прогон остановлен.</li>
+<li><b>Написала в квитанцию «реестр обновлён» до того, как проверила.</b> Он не обновился и не должен был: ДР уже стоял applied. Поправка отправлена отдельной строкой в тот же журнал.</li>
+</ul></div>
+
+<div class="card open"><h2>⚠️ Что осталось и почему я это не тронула</h2>
+<p>Долгов не 15, как считает inbox_daily своим окном, а <b>270</b>. Из них 82 старше месяца — по правилу трёх дней не воскрешаем.</p>
+<p><b>20 свежих и содержательных</b>, каждый на часы работы:</p>
+<ul>
+<li>2 DNS-записи в Cloudflare (приказ Антона 07.08)</li>
+<li>Аудит рутин узла по новому канону</li>
+<li>GIT-S24: очередь X-24..X-38 в постинг</li>
+<li>codex-node-identity: имена заметок и плавающий хостнейм</li>
+<li>root9-sync: причина потерь синка</li>
+<li>Два ДР от 06.08 без синтеза (NAT-01 и NAT-02)</li>
+</ul>
+<p class="n">Скажи, что из этого брать первым — или возьму сама в порядке возраста.</p>
+</div>
+
+</div>
+</body></html>

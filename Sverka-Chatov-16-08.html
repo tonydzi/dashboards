@@ -17,20 +17,42 @@ ul{margin:0;padding-left:18px}li{margin-bottom:8px}
 .k{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:8px 12px;min-width:110px}
 .k b{display:block;font-size:20px}.k span{color:var(--dim);font-size:12px}
 .mine{border-left:3px solid var(--amb)}.hers{border-left:3px solid var(--red)}.done{border-left:3px solid var(--grn)}
-</style></head><body>
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Задачи и планирование</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Roots-Fixed-MyOwnPC-20260806.html">&larr; Roots-Fixed-MyOwnPC-20260806</a> · <a href="Sverka-Chatov-Natasha-2026-08-15.html">Sverka-Chatov-Natasha-2026-08-15 &rarr;</a></span></div>
 <h1>Сверка задач по чатам 00 · 02 · 03 · 121</h1>
-<div class="sub">MyOwnPC-Natalia · оператор Наташа · 16.08.2026 13:40 · источники: Telegram (account tonyssd), inbox_daily, approval.py, posting-chain</div>
+<div class="sub">MyOwnPC-Natalia · оператор Наташа · обновлено 16.08.2026 <b>19:05 местного</b> (UTC 14:05) · источники: Telegram (account tonyssd), inbox_daily, approval.py, posting-chain events.jsonl</div>
 
 <div class="kpi">
+<div class="k"><b class="g">10</b><span>размещений сегодня</span></div>
 <div class="k"><b class="r">6</b><span>голосовых 15.08 без поста</span></div>
 <div class="k"><b class="r">5</b><span>висят в 02 (кап упёрт)</span></div>
 <div class="k"><b class="a">15</b><span>долгов чтения в шине</span></div>
 <div class="k"><b class="a">38</b><span>ждут Medium</span></div>
-<div class="k"><b class="a">25</b><span>ждут Threads</span></div>
-<div class="k"><b class="r">2</b><span>посылки не применились</span></div>
+<div class="k"><b class="a">22</b><span>ждут Threads</span></div>
 </div>
 
 <div class="grid">
+
+<div class="card done"><h2>🟢 Что ты уже сделала сегодня <span class="tag">по журналам кейсов</span></h2>
+<p class="n">Краны стоят до сих пор — всё прошло твоим именным ключом <b>--natasha</b>, причина в журнале: «старый кейс, разнос по её команде 16.08 «разносим как есть»». 8 записей обхода. Механика отработала штатно.</p>
+<ul>
+<li><b>Полный каскад по кейсу lost-sessions-get-a-lightweight-retro</b> (13:28): GitHub лонгрид + девлог → <span class="n">t.me/PaloAltoAi/1930</span> (EN) + <span class="n">t.me/PaloAltoAiRu/847</span> (RU) → тизер <span class="n">ClawEng/120942</span> → X 16:11 → Threads 17:04.</li>
+<li><b>Threads, ещё 4:</b> a-registry-of-every-telegram-group (12:09) · agent-interface-not-user-interface (13:28) · finding-what-happens-around-you (17:04) · humans-versus-tokens (19:00).</li>
+<li>Счётчик сошёлся: было 45 опубликовано на 13:38, стало 48 — ровно три после моего замера.</li>
+</ul></div>
+
+<div class="card hers"><h2>🔴 Medium — окно открывается в 19:25</h2>
+<ul>
+<li>Сегодня Medium <b>не трогали ни разу</b>. Последние две — вчера 19:25 и 19:28.</li>
+<li>В <b>19:25 местного</b> открываются сразу <b>2 слота</b>. Первые в очереди: <span class="n">a-registry-of-every-telegram-group</span>, <span class="n">wake-on-event-not-on-schedule</span>.</li>
+<li>Очередь 38 и растёт быстрее, чем 2 в сутки её разбирают.</li>
+</ul></div>
+
+<div class="card a"><h2>⚠️ Соотнесение: чем сегодня НЕ занимались</h2>
+<ul>
+<li>Весь сегодняшний постинг — <b>разбор старой очереди</b>, а не работа с новым материалом. Ни один из 6 голосовых от 15.08 в кейс не превратился.</li>
+<li>Голосовое #1110 от сегодня 05:43 UTC так и лежит без расшифровки.</li>
+<li><span class="n">Мелкая поломка: причина обхода в stop_bypass.jsonl пишется в битой кодировке («СЃС‚Р°СЂС‹Р№ РєРµР№СЃ»). Журнал обходов — это доказательство, а доказательство нечитаемо. Чиню по слову.</span></li>
+</ul></div>
 
 <div class="card hers"><h2>🔴 Твои руки — главное <span class="tag">чат 00</span></h2>
 <ul>
@@ -60,12 +82,11 @@ ul{margin:0;padding-left:18px}li{margin-bottom:8px}
 <li><b>Fable-лимиты, 20-30 retro-сессий</b> (13.08 #1101-1103) — окно 13-14.08 прошло, задача протухла сама.</li>
 </ul></div>
 
-<div class="card"><h2>⛔ Стоп-кран постинга <span class="tag">в силе</span></h2>
+<div class="card"><h2>⛔ Стоп-кран постинга <span class="tag">стоит</span></h2>
 <ul>
-<li>Стоят <b>оба крана</b>: узловой + флотовый (<span class="n">C:\Obsidian\_machine-bus\STOP-POSTING.flag</span>). Снимаешь только ты.</li>
-<li><b>Medium:</b> лимит суток выбран 2/2 (15.08 19:25 и 19:28), окно откроется <b>сегодня 19:25</b>. В очереди 38.</li>
-<li><b>Threads:</b> 45 опубликовано, 25 ждут. Готов текстом ровно 1 — <span class="n">finding-what-happens-around-you, 265 знаков</span>.</li>
-<li>Твой личный ключ обхода жив: <span class="n">chain.py --natasha "причина"</span>.</li>
+<li>Стоят <b>оба крана</b>, узловой (14.08 09:48) и флотовый (14.08 11:33). Снимаешь только ты.</li>
+<li>Сегодня они <b>не мешали</b>: работала через именной ключ, каждый проход записан.</li>
+<li><b>Threads:</b> 48 опубликовано, 22 ждут. Готов текстом один — <span class="n">letting-someone-elses-agent-in, 400 знаков</span>, остальные 21 без текста (моя работа).</li>
 </ul></div>
 
 <div class="card"><h2>🟡 Чат 02 — 5 висят, кап упёрт</h2>
