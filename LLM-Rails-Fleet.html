@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🛤️ Карта LLM-рельс флота</title>
+<style>
+:root{
+  --canvas:#010409; --panel:#161b22; --border:#30363d; --ink:#e6edf3; --dim:#8b949e;
+  --link:#2f81f7; --green:#3fb950; --amber:#d29922; --red:#f85149;
+  --bar:#2f81f7; --bar-dim:#1f4b8f;
+  --grid:#21262d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--canvas);color:var(--ink);
+     padding:20px;max-width:1240px;margin:0 auto;line-height:1.45;font-size:14px}
+h1{font-size:24px;letter-spacing:-.2px}
+h2{font-size:16px;margin:26px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--border);font-weight:600}
+h3{font-size:13px;margin:14px 0 6px;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+a{color:var(--link)}
+.stamp{background:var(--panel);border:1px solid var(--amber);border-left:3px solid var(--amber);
+       border-radius:6px;padding:9px 13px;margin:10px 0 16px;font-size:12.5px;color:var(--ink)}
+.stamp b{color:var(--amber)}
+.sub{color:var(--dim);font-size:12.5px;margin:5px 0 0}
+
+.tiles{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 4px}
+.t{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:11px 15px;min-width:132px;flex:0 0 auto}
+.t b{display:block;font-size:25px;line-height:1.15;font-variant-numeric:tabular-nums}
+.t span{display:block;color:var(--dim);font-size:11px;margin-top:3px}
+.t.ok b{color:var(--green)} .t.warn b{color:var(--amber)} .t.bad b{color:var(--red)} .t.neu b{color:var(--ink)}
+
+.box{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:11px 14px;margin:8px 0;font-size:13px}
+.box.good{border-left:3px solid var(--green)}
+.box.warn{border-left:3px solid var(--amber)}
+.box.bad{border-left:3px solid var(--red)}
+.box.info{border-left:3px solid var(--link)}
+.box b{color:var(--ink)}
+
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12.5px;min-width:660px}
+th{text-align:left;color:var(--dim);font-weight:600;font-size:11px;text-transform:uppercase;
+   letter-spacing:.4px;padding:7px 9px;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 9px;border-bottom:1px solid var(--grid);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.node{white-space:nowrap}
+td.node b{display:block}
+td.node span{color:var(--dim);font-size:11px}
+.cell{white-space:nowrap;font-size:12px}
+.cell .st{font-weight:600;display:block}
+.cell .meta{color:var(--dim);font-size:11px;display:block;font-variant-numeric:tabular-nums}
+.ok{color:var(--green)} .warn{color:var(--amber)} .bad{color:var(--red)} .na{color:var(--dim)} .web{color:var(--link)}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+
+.chart{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;margin-top:8px}
+.row{display:grid;grid-template-columns:minmax(110px,160px) 1fr 46px;align-items:center;gap:10px;margin:7px 0}
+.row .lbl{color:var(--ink);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .lbl i{color:var(--dim);font-style:normal;font-size:11px}
+.track{background:#0d1117;border-radius:4px;height:16px;position:relative;overflow:hidden}
+.fill{height:100%;background:var(--bar);border-radius:0 4px 4px 0;transition:filter .12s}
+.fill.zero{background:var(--bar-dim);min-width:2px}
+.row:hover .fill{filter:brightness(1.3)}
+.row .val{text-align:right;font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--ink)}
+.legend{color:var(--dim);font-size:11.5px;margin-top:10px;line-height:1.5}
+
+.foot{color:var(--dim);font-size:11.5px;margin-top:26px;padding-top:12px;border-top:1px solid var(--border);line-height:1.6}
+ul{margin:6px 0 0 18px} li{margin:4px 0}
+code{background:#0d1117;border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:11.5px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Important-MD-Sync-Audit.html">&larr; Important-MD-Sync-Audit</a> · <a href="Lebedev-Style-DR-ZB-07.html">Lebedev-Style-DR-ZB-07 &rarr;</a></span></div>
+
+<h1>🛤️ Карта LLM-рельс флота</h1>
+<p class="sub">Кто из наших машин каким вендором реально умеет пользоваться — и чем это доказано.</p>
+
+<div class="stamp">
+<b>⚠️ Снимок обновлён РУКАМИ 17.08.2026 15:25</b> (часы хаба A-2022BAYAREA, Europe/Lisbon = 14:25 UTC).
+Автоматического генератора у этой панели пока НЕТ — заморозка стройки до 20.08
+(память <code>build-freeze-2026-08</code>). Генератор строим после разморозки, <b>21.08</b>.
+До тех пор цифры сами не обновляются: смотри на дату в этой рамке, а не на то, что «дашборд открылся».
+</div>
+
+<div class="tiles">
+  <div class="t warn"><b>9 / 30</b><span>пар узел×вендор<br>доказаны за 7 дней</span></div>
+  <div class="t neu"><b>6</b><span>узлов во флоте</span></div>
+  <div class="t neu"><b>145</b><span>ok-вызовов llm_ask<br>всего (с 05.08)</span></div>
+  <div class="t bad"><b>93%</b><span>из них с ОДНОГО узла<br>(хаб)</span></div>
+  <div class="t bad"><b>0 / 5</b><span>ACK переписи<br>от пиров</span></div>
+  <div class="t bad"><b>12 дн</b><span>GLM Coding Pro<br>куплен и не жжётся</span></div>
+</div>
+
+<h2>1. Матрица: узел × вендор × дверь</h2>
+
+<div class="box info">
+<b>Как читать.</b> ✅ = есть <i>замер</i> (живой прогон или ok-вызов в счётчике, дата рядом).
+🟡 = бинарь/дверь на месте, но вызовов не было. ⬜ = <i>не замерено</i> — узел не ответил на перепись;
+это НЕ «мёртво». ⛔ = двери нет. 🌐 = только браузерная дверь.
+<br><b>Правило дверей (Антон 30.07):</b> вендор отменяется, только когда закрыты ВСЕ его двери.
+Бинарь есть ≠ рельса жива: логин считается отдельно.
+</div>
+
+<div class="scroll">
+<table>
+<tr>
+  <th>узел</th><th>claude</th><th>codex</th><th>grok</th><th>gemini</th><th>glm</th><th class="num">ok-вызовов</th>
+</tr>
+
+<tr>
+  <td class="node"><b>Хаб · A-2022BAYAREA</b><span>Антон · Windows · hub</span></td>
+  <td class="cell"><span class="st ok">✅ жива</span><span class="meta">2.1.226 · 17.08 10:25</span></td>
+  <td class="cell"><span class="st ok">✅ жива</span><span class="meta">0.144.4 · 17.08 11:52</span></td>
+  <td class="cell"><span class="st ok">✅ жива</span><span class="meta">0.2.118 · 17.08 11:52</span></td>
+  <td class="cell"><span class="st warn">⚠️ жива, но</span><span class="meta">0.55.1 · 17.08 11:52<br>веб-поиск мёртв</span></td>
+  <td class="cell"><span class="st web">🌐 только веб</span><span class="meta">CLI нет · ключа нет</span></td>
+  <td class="num">135</td>
+</tr>
+
+<tr>
+  <td class="node"><b>Маяк · FLEET-ANCHOR</b><span>Антон · Linux · anchor</span></td>
+  <td class="cell"><span class="st warn">🟡 бинарь есть</span><span class="meta">2.1.226 · вызовов 0</span></td>
+  <td class="cell"><span class="st ok">✅ была жива</span><span class="meta">0.144.4 · 08.08</span></td>
+  <td class="cell"><span class="st warn">🟡 бинарь есть</span><span class="meta">0.2.106 · вызовов 0</span></td>
+  <td class="cell"><span class="st ok">✅ была жива</span><span class="meta">0.52.0 · 08.08</span></td>
+  <td class="cell"><span class="st bad">⛔ двери нет</span><span class="meta">тощий VPS, браузера нет</span></td>
+  <td class="num">2</td>
+</tr>
+
+<tr>
+  <td class="node"><b>Наташа · MyOwnPC-Natalia</b><span>Наталья · Windows · peer</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">ACK не пришёл</span></td>
+  <td class="cell"><span class="st ok">✅ жива</span><span class="meta">16.08 14:27</span></td>
+  <td class="cell"><span class="st ok">✅ жива</span><span class="meta">14.08 07:54</span></td>
+  <td class="cell"><span class="st warn">⚠️ жива, но</span><span class="meta">14.08 07:49<br>429 квота free-tier</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">веб-дверь вероятна</span></td>
+  <td class="num">5</td>
+</tr>
+
+<tr>
+  <td class="node"><b>Руслана · MacBook-Ruslana</b><span>Руслана · macOS · peer</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">ACK не пришёл</span></td>
+  <td class="cell"><span class="st ok">✅ жива</span><span class="meta">14.08 17:00</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">—</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">—</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">—</span></td>
+  <td class="num">2</td>
+</tr>
+
+<tr>
+  <td class="node"><b>Mac16 · MacBook-Anton</b><span>Антон · macOS · peer</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">ACK не пришёл</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">—</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">—</span></td>
+  <td class="cell"><span class="st ok">✅ была жива</span><span class="meta">10.08 18:15</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">кандидат на добычу ключа</span></td>
+  <td class="num">1</td>
+</tr>
+
+<tr>
+  <td class="node"><b>HP17 · ZBOOKG8-2023PAL</b><span>Антон · Windows · peer</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">счётчик пуст</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">счётчик пуст</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">счётчик пуст</span></td>
+  <td class="cell"><span class="st na">⬜ не замерено</span><span class="meta">счётчик пуст</span></td>
+  <td class="cell"><span class="st ok">✅ веб-дверь</span><span class="meta">chat.z.ai жива 04.08<br>bb-аккаунт · GLM-5.2</span></td>
+  <td class="num">0</td>
+</tr>
+</table>
+</div>
+
+<div class="box bad">
+<b>⛔ Главная дыра карты:</b> у 4 узлов из 6 счётчик почти пуст, а перепись <code>RAILS-CENSUS-20260817</code>
+ушла в чат 03 в 13:38 и за ~1ч 45м не собрала <b>ни одного ACK</b>. То, что стоит ⬜, не проверено ничем —
+ни живым прогоном, ни версией бинаря. Это не «сломано», это «мы не знаем».
+</div>
+
+<h2>2. Кто реально жжёт чужие подписки</h2>
+
+<h3>ok-вызовы llm_ask по вендорам (весь флот, с 05.08.2026)</h3>
+<div class="chart">
+  <div class="row" title="mayak (релей): 78 успешных вызовов, все с хаба"><div class="lbl">mayak <i>(релей)</i></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">78</div></div>
+  <div class="row" title="codex: 20 успешных вызовов"><div class="lbl">codex</div><div class="track"><div class="fill" style="width:25.6%"></div></div><div class="val">20</div></div>
+  <div class="row" title="gemini: 17 успешных вызовов"><div class="lbl">gemini</div><div class="track"><div class="fill" style="width:21.8%"></div></div><div class="val">17</div></div>
+  <div class="row" title="codex-agent: 17 успешных вызовов"><div class="lbl">codex-agent</div><div class="track"><div class="fill" style="width:21.8%"></div></div><div class="val">17</div></div>
+  <div class="row" title="grok: 12 успешных вызовов"><div class="lbl">grok</div><div class="track"><div class="fill" style="width:15.4%"></div></div><div class="val">12</div></div>
+  <div class="row" title="claude через llm_ask: 1 успешный вызов"><div class="lbl">claude <i>(через llm_ask)</i></div><div class="track"><div class="fill" style="width:1.3%"></div></div><div class="val">1</div></div>
+  <div class="row" title="glm: ноль вызовов, рельсы в llm_ask нет"><div class="lbl">glm</div><div class="track"><div class="fill zero" style="width:1px"></div></div><div class="val">0</div></div>
+  <div class="legend">Одна серия — длина полосы = число успешных вызовов, цифра справа дублирует длину.
+  Источник: <code>_machine-bus/_metrics/part-usage/*.jsonl</code>, счётчик пишет сам <code>llm_ask.py</code>.
+  Провалов за тот же период: 6 (5 на хабе 14.08, 1 у Русланы) — все без указанной рельсы.</div>
+</div>
+
+<h3>ok-вызовы по узлам — где именно нажимают кнопку</h3>
+<div class="chart">
+  <div class="row" title="Хаб A-2022BAYAREA: 135 успешных вызовов"><div class="lbl">Хаб <i>A-2022BAYAREA</i></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">135</div></div>
+  <div class="row" title="Наташа MyOwnPC-Natalia: 5 успешных вызовов"><div class="lbl">Наташа <i>NAT</i></div><div class="track"><div class="fill" style="width:3.7%"></div></div><div class="val">5</div></div>
+  <div class="row" title="Маяк FLEET-ANCHOR: 2 успешных вызова"><div class="lbl">Маяк <i>FLEET-ANCHOR</i></div><div class="track"><div class="fill" style="width:1.5%"></div></div><div class="val">2</div></div>
+  <div class="row" title="Руслана MacBook-Ruslana: 2 успешных вызова"><div class="lbl">Руслана <i>MACRUS</i></div><div class="track"><div class="fill" style="width:1.5%"></div></div><div class="val">2</div></div>
+  <div class="row" title="Mac16 MacBook-Anton: 1 успешный вызов"><div class="lbl">Mac16 <i>MACANTON</i></div><div class="track"><div class="fill" style="width:0.7%"></div></div><div class="val">1</div></div>
+  <div class="row" title="HP17 ZBOOKG8: ноль вызовов, файла счётчика нет вообще"><div class="lbl">HP17 <i>ZBOOKG8</i></div><div class="track"><div class="fill zero" style="width:1px"></div></div><div class="val">0</div></div>
+  <div class="legend">93% всей нагрузки на чужие рельсы идёт с одного узла. Приказ 06.08 «жечь оплаченное»
+  на пирах фактически не исполняется — не потому что рельсы мертвы, а потому что их никто не зовёт.</div>
+</div>
+
+<h2>3. Баки подписок — что оплачено и что выбрано</h2>
+
+<div class="scroll">
+<table>
+<tr><th>вендор</th><th>тариф</th><th class="num">$/мес</th><th>выбрано бака</th><th>вердикт</th></tr>
+<tr><td>claude</td><td>Anthropic Max</td><td class="num">200</td><td class="na">не измерено — % машинно не снимается</td><td class="na">🤔 прибора нет</td></tr>
+<tr><td>codex / chatgpt</td><td>ChatGPT (Codex)</td><td class="num">20 <span class="warn">?</span></td><td><b>5,0%</b> <span class="na">(замер 17.08; было 4% 06.08)</span></td><td class="bad">🔴 недобор</td></tr>
+<tr><td>grok</td><td>SuperGrok</td><td class="num">300</td><td class="na">не измерено — панель никто не читал</td><td class="warn">🟠 самая дорогая, замера нет</td></tr>
+<tr><td>gemini</td><td>Google Gemini Pro</td><td class="num">20</td><td class="na">не измерено</td><td class="na">🤔 прибора нет</td></tr>
+<tr><td>glm</td><td>GLM Coding Pro <span class="na">— куплен 05.08 за $192</span></td><td class="num">—</td><td class="bad"><b>0%</b> · 12 дней подряд</td><td class="bad">🔴 не жжётся вообще</td></tr>
+</table>
+</div>
+
+<div class="box warn">
+<b>⚠️ Две машинные истины расходятся — цифру $/мес по codex считать неподтверждённой.</b>
+<code>llm_routing.json</code> пишет «ChatGPT Pro, $200», <code>subscription_utilization.py</code> пишет
+«OpenAI (Codex), $20». Итог «$540/мес» на прогоне утилизации собран по второму реестру;
+по первому вышло бы $720. <b>GLM ($192, куплен 05.08) не заведён НИ В ОДИН из двух реестров</b> —
+то есть в наш собственный отчёт «сколько мы платим» он вообще не попадает.
+Пока это не сведено, любая итоговая сумма в панели была бы выдумкой, поэтому её тут нет.
+</div>
+
+<div class="box info">
+<b>Латентность веера, замер 17.08</b> (один прогон, не среднее):
+gemini <b>35 с</b> · grok <b>109 с</b> · codex <b>230 с</b> (на xhigh).
+Практический вывод: быстрое суждение — gemini; тяжёлый разбор — codex, но тогда таймаут ≥300 с,
+иначе получим «рельса мертва» на живой рельсе.
+</div>
+
+<h2>4. Что сломано и что чиним</h2>
+
+<div class="box bad">
+<b>⛔ GLM: ключа нет, рельсы в <code>llm_ask</code> нет.</b>
+Заказ <code>GLM-TOKEN-FETCH</code> ушёл в 03 в 13:38 (исполнитель — узел с живым Claude-in-Chrome:
+HP17 или Mac16), ACK <code>GLM-TOKEN-OK</code> не пришёл. Файла <code>~/.claude/secrets/glm_coding.env</code>
+на хабе нет. Пока ключа нет, CLI-нога GLM не вшивается — вшивать нечего.
+<br><b>Кто чинит:</b> HP17 / Mac16 → консоль z.ai под bb-аккаунтом → API Keys → ключ <code>llm-ask-rail</code>
+→ значение ТОЛЬКО в <code>glm_coding.env</code>. Дальше хаб вшивает <code>rail_glm</code> и раскатывает флоту.
+</div>
+
+<div class="box warn">
+<b>⚠️ gemini: рельса жива, но веб-поиска у неё нет.</b> Замер хаба 14.08 на живой OAuth-подписке:
+прогон 1429 с дал 15 369 знаков текста и НОЛЬ ссылок. Плюс CLI на OAuth-тире молча отдаёт роль main
+модели <code>gemini-2.5-flash</code> поверх оплаченной подписки. Поэтому gemini выведена из дефолта
+headless-ДР (<code>DEFAULT_RAILS = grok,codex</code>), но НЕ мертва: явный вызов <code>--rails gemini</code>
+работает, а живая ДР-дверь — браузерный Deep Research.
+</div>
+
+<div class="box warn">
+<b>⚠️ Посылка <code>llm-ask-recall-frame-20260817-payload</code> доехала не всем.</b>
+Применена: хаб ✅, Наташа ✅. Висит: Маяк, HP17, Mac16, Руслана. Пока она не применена,
+у этих узлов <code>llm_ask</code> старой сборки — и перепись они выполнят не тем инструментом,
+которым мы её задумали.
+</div>
+
+<div class="box good">
+<b>✅ Что точно работает.</b> На хабе все четыре headless-рельсы отвечают сегодня (claude 2.1.226,
+codex 0.144.4, grok 0.2.118, gemini 0.55.1). У Наташи независимо подтверждены три из четырёх.
+Значит архитектура «жги чужой оплаченный бак» технически рабочая — упирается не в рельсы,
+а в то, что их не зовут с пиров.
+</div>
+
+<h2>5. Что мешает этой панели быть честной</h2>
+<ul>
+  <li><b>Снимок ручной.</b> Обновляется, только когда сессия сядет и пересоберёт руками. Автогенератор — после 20.08.</li>
+  <li><b>⬜ ≠ мёртво.</b> 16 клеток из 30 — просто отсутствие данных. Приговор «рельса мертва» без даты и живого прогона мы не ставим (правило «запрет тоже claim и протухает»).</li>
+  <li><b>Счётчик считает вызов, а не пользу.</b> 145 ok-вызовов не означают, что 145 раз результат кому-то пригодился.</li>
+  <li><b>Окно счётчика — с 05.08.</b> Узел, подключившийся позже, будет выглядеть пустым не потому что мёртв.</li>
+  <li><b>Версии бинарей есть только по двум узлам</b> (хаб — живой прогон 17.08, Маяк — ssh-пробник 17.08). Остальные четыре ждут ACK переписи.</li>
+</ul>
+
+<p class="foot">
+Источники (все читаются детерминированно, 0 LLM): живой прогон <code>--version</code> на хабе 17.08 ·
+ssh-пробник Маяка 17.08 · счётчик <code>_machine-bus/_metrics/part-usage/*.jsonl</code> ·
+<code>fleet_nodes.json</code> · <code>llm_routing.json</code> · <code>subscription_utilization.py report</code> ·
+<code>fleet_fix_audit.py</code> · история чата 03 и файловой шины.<br>
+Задачи: <code>10-Tasks/task-2026-08-17-rails-census.md</code>, <code>10-Tasks/task-2026-08-17-veer-sudya-hub-canary.md</code>.
+Регламент: <code>03-Insights/Operations/reglament-chuzhie-llm-veer-i-rabota-s-voltom.md</code>.<br>
+Каждый статус несёт значок + подпись — цвет сам по себе ничего не значит.
+</p>
+
+</body></html>
