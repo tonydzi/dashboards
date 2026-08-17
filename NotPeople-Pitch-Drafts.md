@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Прочее · [← Mac16-Model-Routing](Mac16-Model-Routing.html) · [Pub-Registry-Metrics →](Pub-Registry-Metrics.html)
+[все дашборды](index.html) · категория: Прочее · [← Nightly-Bugs-MyOwnPC-Natalia](Nightly-Bugs-MyOwnPC-Natalia.html) · [Ochered-Vychitki-20260817 →](Ochered-Vychitki-20260817.html)
 
 # NotPeople - драфты питчей (50) - НА АППРУВ
 

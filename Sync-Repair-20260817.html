@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Починка синка · MyOwnPC-Natalia · 17.08.2026</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1c1c1a;--mut:#6b6b66;--card:#fff;--line:#e3e3de;--red:#b3261e;--amb:#9a6700;--grn:#1a7f37;--blu:#0b5cad}
+@media (prefers-color-scheme:dark){:root{--bg:#16161a;--fg:#e8e8e4;--mut:#9a9a95;--card:#1f1f24;--line:#32323a;--red:#ff7b72;--amb:#e3b341;--grn:#56d364;--blu:#79b8ff}}
+:root[data-theme=dark]{--bg:#16161a;--fg:#e8e8e4;--mut:#9a9a95;--card:#1f1f24;--line:#32323a;--red:#ff7b72;--amb:#e3b341;--grn:#56d364;--blu:#79b8ff}
+:root[data-theme=light]{--bg:#f7f7f5;--fg:#1c1c1a;--mut:#6b6b66;--card:#fff;--line:#e3e3de;--red:#b3261e;--amb:#9a6700;--grn:#1a7f37;--blu:#0b5cad}
+*{box-sizing:border-box}body{margin:0;padding:20px;background:var(--bg);color:var(--fg);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:21px;margin:0 0 4px}h2{font-size:16px;margin:24px 0 8px}
+.sub{color:var(--mut);font-size:13px;margin-bottom:16px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+.n{font-size:26px;font-weight:600;line-height:1}.lbl{color:var(--mut);font-size:12px;margin-top:4px}
+.red{color:var(--red)}.amb{color:var(--amb)}.grn{color:var(--grn)}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.eli{background:var(--card);border-left:3px solid var(--blu);border-radius:0 8px 8px 0;padding:10px 12px;margin-top:24px;font-size:14px}
+code{font-size:12.5px;background:rgba(128,128,128,.14);padding:1px 5px;border-radius:4px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Sync-Propagation-Audit.html">&larr; Sync-Propagation-Audit</a> · <a href="Syncthing-alternatives-2026-07-07.html">Syncthing-alternatives-2026-07-07 &rarr;</a></span></div>
+
+<h1>Починка синка на ноутбуке — что было сломано на самом деле</h1>
+<div class="sub">17.08.2026, 15:52 · узел MyOwnPC-Natalia · всё по живому API Syncthing, ничего не удалено</div>
+
+<div class="grid">
+  <div class="card"><div class="n grn">0</div><div class="lbl">ошибок на всех 7 шарах<br>было 3 на двух</div></div>
+  <div class="card"><div class="n grn">3</div><div class="lbl">файла спасены до касания<br>md5 сверены до и после</div></div>
+  <div class="card"><div class="n grn">1360</div><div class="lbl">из 1612 «пропавших» —<br>это наш же ignore</div></div>
+  <div class="card"><div class="n grn">68/72</div><div class="lbl">верхний уровень волта<br>сошёлся, кроме .DS_Store</div></div>
+</div>
+
+<h2>🔴 Что было сломано по-настоящему</h2>
+<div class="wrap"><table>
+<tr><th>шара</th><th>ошибка</th><th>что её держало</th></tr>
+<tr><td>anton-knowledge</td><td>«каталог удалён на remote, но содержит игнорируемые файлы»</td><td><code>_originals/deep-research</code> — хаб каталог удалил, а у нас в нём остался ОДИН файл: конфликтная копия ChatGPT-плеча <code>DR26-07-30-MACANTON-01-1456</code></td></tr>
+<tr><td>machine-bus</td><td>то же, дважды</td><td>два каталога <code>_sync-conflict-archive</code> — в <code>_deploy</code> и в <code>_transit/scripts-from-MyOwnPC-Natalia</code></td></tr>
+</table></div>
+
+<h2>⚠️ Находка внутри находки: этот ДР-отчёт мог пропасть совсем</h2>
+<div class="wrap"><table>
+<tr><td>Файл был <code>*.sync-conflict-*</code> — а это ignore-правило волта. Значит Syncthing его <b>никогда не синкал</b>: на хаб он не уезжал ни разу. Поиском по всему <code>D:/OBSIDIAN</code> версии без суффикса конфликта <b>не существует</b>. Есть только синтез-заметка в <code>03-Insights</code> и grok-плечо в архиве версий.<br><br>Это ровно та «тихая потеря ДР-оригиналов», что висит у нас P0 в реестре. Файл спасён в шину для хаба (md5 <code>87fc5803…</code>) и продублирован в <code>_scratch</code>. ⛔ Пока хаб не подтвердит приём — локальную копию не трогаю.</td></tr>
+</table></div>
+
+<h2>✅ Состояние после починки</h2>
+<div class="wrap"><table>
+<tr><th>шара</th><th>need</th><th>errors</th><th>pullErrors</th></tr>
+<tr><td>anton-knowledge</td><td class="amb">3 — живая докачка правок хаба (<code>Pulse.html</code>, 15:49)</td><td class="grn">0</td><td class="grn">0</td></tr>
+<tr><td>claude-home · claude-imports · claude-memory<br>claude-secrets · claude-skills · machine-bus</td><td class="grn">0</td><td class="grn">0</td><td class="grn">0</td></tr>
+</table></div>
+
+<h2>🟡 «1931 файл не приехал» — это была ложная тревога, моя</h2>
+<div class="wrap"><table>
+<tr><td>Утром я предъявила эту цифру как потерю. Проверила — <b>потери нет</b>:
+<ul style="margin:6px 0 0 18px;padding:0">
+<li>верхний уровень волта сошёлся с флотом полностью: 68 записей глобально, 72 локально, единственное отсутствующее — <code>.DS_Store</code>;</li>
+<li>из 1612 «недостающих» <b>1360 — каталог <code>_machine-bus</code></b>, тот самый двойник шины внутри волта, который мы игнорируем намеренно с 06.08;</li>
+<li>остальное — <code>.DS_Store</code>, <code>.trash</code>, кэш Obsidian, <code>Thumbs.db</code> по подкаталогам;</li>
+<li>механическое доказательство: <code>needFiles=0</code> при <code>ignorePatterns=true</code>. Syncthing считает need <b>после</b> вычета ignore, то есть должным себя не считает.</li>
+</ul></td></tr>
+</table></div>
+
+<h2>🔧 Починен прибор — он и был причиной, что ошибку не видели</h2>
+<div class="wrap"><table>
+<tr><td><b>Сторож синка не спрашивал ошибки синка.</b> <code>sync_divergence</code> смотрел только на разрыв global-local и не запрашивал <code>errors</code>/<code>pullErrors</code> самой папки. Поэтому живая ошибка висела незамеченной, а экран занимал вечно-красный разрыв, который бедой не был. Вечно красного сторожа перестают читать — и рядом с ним теряется настоящее.</td></tr>
+<tr><td>Теперь: ошибка папки = красное <b>всегда</b>; разрыв при <code>need=0</code> и включённых ignore = справка «разрыв под ignore», а не долг.</td></tr>
+<tr><td><b>Предел назван честно:</b> пока идёт докачка (<code>need&gt;0</code>) прибор не умеет отличить остаток под ignore от настоящей дыры и краснеет — fail-closed. Это записано отдельным тестом, чтобы никто не «улучшил» молча.</td></tr>
+<tr><td>Тест <code>tools/_test_sync_divergence.py</code>, 5 случаев. Обе мутации проверены: убрала вопрос про ошибки — красный; убрала скидку на ignore — красный.</td></tr>
+</table></div>
+
+<div class="eli">🧒 <b>Простыми словами:</b> утром я испугалась большого числа и сказала, что с ноутбука пропали почти две тысячи файлов. Проверила — ничего не пропало: почти всё это папка, которую мы сами велели не возить. Зато нашлась настоящая поломка, маленькая и злая: подкачка не могла доделать уборку и стояла с ошибкой на двух папках. Держал её один файлик — черновик исследования, который вообще никогда никуда не уезжал и мог пропасть совсем. Я его сначала спрятала в два места и только потом убрала, ошибки исчезли. И починила самого сторожа: он смотрел не туда и поэтому эту поломку не замечал.</div>
+
+</body></html>

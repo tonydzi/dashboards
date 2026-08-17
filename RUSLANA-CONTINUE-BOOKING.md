@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Задачи и планирование · [← Posting-Day-2026-08-06](Posting-Day-2026-08-06.html) · [Razbor-Dolgov-16-08 →](Razbor-Dolgov-16-08.html)
+[все дашборды](index.html) · категория: Задачи и планирование · [← Posting-Day-2026-08-06](Posting-Day-2026-08-06.html) · [Razbor-Chatov-20260817-1610 →](Razbor-Chatov-20260817-1610.html)
 
 # Руслана — как продолжить беседу про БРОНИРОВАНИЕ ЗВОНКОВ
 
