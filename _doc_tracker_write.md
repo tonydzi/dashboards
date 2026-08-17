@@ -1,5 +1,3 @@
-[все дашборды](index.html) · категория: Прочее · [← Windowless-MyOwnPC-Natalia](Windowless-MyOwnPC-Natalia.html) · [grusha-torso-artur-2026-08-14 →](grusha-torso-artur-2026-08-14.html)
-
 # Паспорт: tracker_write.py — запись размещений в трекер в момент публикации
 
 **Дом:** `<волт>\_Dashboards\tracker_write.py` (рядом с трекером и `posting_day.py`)
