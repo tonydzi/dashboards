@@ -1,3 +1,5 @@
+[все дашборды](index.html) · категория: Инфраструктура и рутины · [← GitHub-Outbound-Routines](GitHub-Outbound-Routines.html) · [HANDOFF-booking-session →](HANDOFF-booking-session.md)
+
 ---
 type: handoff
 from_machine: Nataly-Win-NB (MyOwnPC-Natalia)

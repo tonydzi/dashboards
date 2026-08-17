@@ -1,3 +1,5 @@
+[все дашборды](index.html) · категория: Прочее · [← Mac16-Model-Routing](Mac16-Model-Routing.html) · [Pub-Registry-Metrics →](Pub-Registry-Metrics.html)
+
 # NotPeople - драфты питчей (50) - НА АППРУВ
 
 Голос @***ySsd. Тело письма одинаковое, меняется только первая строка.
