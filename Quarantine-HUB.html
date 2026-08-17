@@ -26,7 +26,15 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Quarantine-FLEET-ANCHOR.html">&larr; Quarantine-FLEET-ANCHOR</a> · <a href="Quarantine-MACANTON.html">Quarantine-MACANTON &rarr;</a></span></div><div class="wrap">
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>A-2022BAYAREA</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
-<h2>🗑 Выброшенные <span class="cnt">2</span></h2><div class="card trusted">
+<h2>✅ Доверенные — применятся сами <span class="cnt">1</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+  <div class="top"><span class="id">nsr-canary-timing-20260817</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">nsr: fireAt startuet sekunda-v-sekundu (zamer 17.08), zhivaya kanareyka = dvustoronnyaya proverka</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-17 14:10 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>Zabrat svezhiy ~/.claude/skills/nsr/SKILL.md iz shary claude-skills (Syncthing dostavlyaet sam); ubedis chto v razdele &#x27;Grabli&#x27; est stroka pro zamer 17.08</code></div>
+  
+</div><h2>🗑 Выброшенные <span class="cnt">2</span></h2><div class="card trusted">
   <div class="top"><span class="id">_portability-selftest-bypass</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">самотест обхода</div>
   <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-04 05:41 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -42,7 +50,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-06 17:00</div>
-</div><h2>📦 Уже применённые <span class="cnt">198</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">202</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1625,6 +1633,38 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
   
   <div class="apply">примени: <code>python3 &quot;$IMPORTS_ROOT/codex/codex_lib.py&quot; import</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">rc-default-on-20260817</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Remote Control po defoltu vo vseh novyh sessiyah (remoteControlAtStartup=true, prikaz Antona 17.08)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-17 13:00 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import json,os,shutil; p=os.path.expanduser(&#x27;~/.claude/settings.json&#x27;); shutil.copy2(p,p+&#x27;.bak-rc20260817&#x27;); d=json.load(open(p,encoding=&#x27;utf-8-sig&#x27;)); d[&#x27;remoteControlAtStartup&#x27;]=True; open(p,&#x27;w&#x27;,encoding=&#x27;utf-8&#x27;).write(json.dumps(d,indent=2,ensure_ascii=False)); json.load(open(p,encoding=&#x27;utf-8&#x27;)); print(&#x27;RC default ON&#x27;)&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">llm-ask-recall-frame-20260817</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">llm_ask: рамка RECALL + свод чужих LLM (веер+судья)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-17 13:01 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>Скопируй из _machine-bus/_transit/llm-ask-recall-frame-20260817/ в ~/.claude/scripts/: llm_ask.py и все четыре _test_llm_*.py. llm_routing.json положи в ~/.claude/ ТОЛЬКО если файла нет или его _version старше 1.0.0. Ничего не удаляй.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">llm-ask-recall-frame-20260817-payload</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">llm_ask RECALL-рамка: payload-рельса (машинный apply)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-17 13:03 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py llm-ask-recall-frame-20260817-payload</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">nsr-canary-timing-20260817b</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">nsr: fireAt startuet sekunda-v-sekundu + zhivaya kanareyka = dvustoronnyaya proverka (zamer 17.08)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-17 14:11 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>Zabrat svezhiy ~/.claude/skills/nsr/SKILL.md iz shary claude-skills (Syncthing dostavlyaet sam)</code></div>
   
 </div>
 </div></body></html>

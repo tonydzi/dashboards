@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Статус задач ноутбука MyOwnPC-Natalia · 17.08.2026 13:45</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1c1c1a;--mut:#6b6b66;--card:#fff;--line:#e3e3de;--red:#b3261e;--amb:#9a6700;--grn:#1a7f37;--blu:#0b5cad}
+@media (prefers-color-scheme:dark){:root{--bg:#16161a;--fg:#e8e8e4;--mut:#9a9a95;--card:#1f1f24;--line:#32323a;--red:#ff7b72;--amb:#e3b341;--grn:#56d364;--blu:#79b8ff}}
+:root:not([data-theme=light]) {}
+:root[data-theme=dark]{--bg:#16161a;--fg:#e8e8e4;--mut:#9a9a95;--card:#1f1f24;--line:#32323a;--red:#ff7b72;--amb:#e3b341;--grn:#56d364;--blu:#79b8ff}
+:root[data-theme=light]{--bg:#f7f7f5;--fg:#1c1c1a;--mut:#6b6b66;--card:#fff;--line:#e3e3de;--red:#b3261e;--amb:#9a6700;--grn:#1a7f37;--blu:#0b5cad}
+*{box-sizing:border-box}body{margin:0;padding:20px;background:var(--bg);color:var(--fg);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:21px;margin:0 0 4px}h2{font-size:16px;margin:24px 0 8px}
+.sub{color:var(--mut);font-size:13px;margin-bottom:16px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(155px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+.n{font-size:26px;font-weight:600;line-height:1}.lbl{color:var(--mut);font-size:12px;margin-top:4px}
+.red{color:var(--red)}.amb{color:var(--amb)}.grn{color:var(--grn)}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.eli{background:var(--card);border-left:3px solid var(--blu);border-radius:0 8px 8px 0;padding:10px 12px;margin-top:24px;font-size:14px}
+code{font-size:12.5px;background:rgba(128,128,128,.14);padding:1px 5px;border-radius:4px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Mission-Pulse-Dossier-2026-08-12.md">&larr; Mission-Pulse-Dossier-2026-08-12</a> · <a href="OpenClaw-Parity-Roadmap.html">OpenClaw-Parity-Roadmap &rarr;</a></span></div>
+
+<h1>Статус задач ноутбука <code>MyOwnPC-Natalia</code></h1>
+<div class="sub">17.08.2026, 13:45 · всё прочитано живьём с диска и Планировщика · чаты не читались (телеграм-коннектор отвалился в этой сессии)</div>
+
+<div class="grid">
+  <div class="card"><div class="n grn">6</div><div class="lbl">долгов закрыто за сегодня<br>3 утром + 3 замером сейчас</div></div>
+  <div class="card"><div class="n red">260</div><div class="lbl">долгов шины остаётся<br>из них 193 старше 7 суток</div></div>
+  <div class="card"><div class="n amb">16</div><div class="lbl">приказов свежее недели<br>вот это и есть реальная работа</div></div>
+  <div class="card"><div class="n grn">0</div><div class="lbl">открытых посылок _deploy<br>196 всего, все применены</div></div>
+  <div class="card"><div class="n red">1931</div><div class="lbl">файл не доехал на узел<br>волт неполный на 1612</div></div>
+  <div class="card"><div class="n grn">45 / 0</div><div class="lbl">включённых задач / зовут<br>несуществующий файл</div></div>
+</div>
+
+<h2>✅ Закрыто сегодня (с доказательством, не «отправила команду»)</h2>
+<div class="wrap"><table>
+<tr><th>что</th><th>чем доказано</th></tr>
+<tr><td><code>#af32eb23</code> GATE-S245: снять краны теней S4/S5</td><td>прогон Планировщика с фильтром <code>heartbeat|anti-entropy|entropy|snapshot</code> → 0 задач. Снимать было нечего</td></tr>
+<tr><td><code>#f063ec44</code> замер: какие включённые задачи зовут пропавший файл</td><td>45 включённых задач, проверены <code>Execute</code> и все пути <code>.cmd/.bat/.ps1/.py/.vbs</code> из аргументов через <code>Test-Path</code> → <b>0</b> битых</td></tr>
+<tr><td><code>#a1efccb6</code> + <code>#7889b6ce</code> root9-sync, три пункта</td><td>(1) катч-олла <code>*</code> нет ни в одном из 4 <code>.stignore</code> узла; (2) сторож <code>sync-divergence</code> стоит и работает — прогон 09:40, exit=1; (3) битых задач 0</td></tr>
+<tr><td>Прибор очереди Threads считал долгом закрытые шаги</td><td>фикс + тест <code>TestThreadsQueueDebt</code>, доказан мутацией; сетка 79 тестов зелёная</td></tr>
+</table></div>
+
+<h2>🔴 Главная находка: волт на этом ноутбуке НЕПОЛНЫЙ</h2>
+<div class="wrap"><table>
+<tr><th>шара</th><th>у флота</th><th>у нас</th><th>нет у нас</th><th>только у нас</th></tr>
+<tr><td>anton-knowledge</td><td>228 111</td><td>226 499</td><td class="red">1 612</td><td>0</td></tr>
+<tr><td>claude-home</td><td>2 238</td><td>1 919</td><td class="red">319</td><td>0</td></tr>
+<tr><td>claude-imports</td><td>3 974</td><td>4 125</td><td>0</td><td class="amb">151</td></tr>
+<tr><td>claude-memory</td><td>677</td><td>743</td><td>0</td><td class="amb">66</td></tr>
+<tr><td>claude-skills</td><td>220</td><td>249</td><td>0</td><td class="amb">29</td></tr>
+<tr><td>claude-secrets · machine-bus</td><td colspan="4" class="grn">сошлись полностью</td></tr>
+</table></div>
+<p style="font-size:14px;color:var(--mut);margin:8px 2px 0">Важное: <code>need=0</code> — Syncthing НЕ считает себя должным. То есть это не «ещё едет», а расхождение индекса или ignore-правил. Само не догонит. Сторож про это кричал красным всё время, крик никто не разбирал.</p>
+
+<h2>⏳ Настоящая очередь ноутбука — 16 приказов свежее недели</h2>
+<div class="wrap"><table>
+<tr><th>возраст</th><th>что</th><th>от кого</th></tr>
+<tr><td class="red">6.7 сут</td><td>Завести 2 DNS-записи в Cloudflare-зоне <code>palo-alto.ai</code> (redirect-нить, приказ Антона 07.08)</td><td>хаб</td></tr>
+<tr><td class="red">6.7 сут</td><td>Аудит рутин узла по новому канону (приказ Антона 07.08)</td><td>хаб</td></tr>
+<tr><td class="red">6.7 сут</td><td>Суточный ритм синхронизации, 2 прогона в сутки (приказ Антона 10.08)</td><td>хаб</td></tr>
+<tr><td class="red">6.7 сут</td><td>DR-раннер: два заказа хаба на узлы с живыми сессиями вендоров</td><td>хаб</td></tr>
+<tr><td class="red">6.1 сут</td><td>Проверить, что оптимизация MEMORY.md реально работает (голос Антона 10.08)</td><td>Mac16</td></tr>
+<tr><td class="red">6.1 сут</td><td>GIT-S24 контент-мост: очередь X-24..X-38 в постинг</td><td>Mac16</td></tr>
+<tr><td class="red">4.9 сут</td><td>Разбудить синтез двух ДР: <code>DR26-08-06-NAT-01</code> и <code>-02</code></td><td>хаб</td></tr>
+<tr><td class="red">4.9 сут</td><td>ANTI-SLOP-CONNECT: <code>/ai-slop</code> подключить к любому исходящему тексту</td><td>Mac16</td></tr>
+<tr><td class="amb">3.1 сут</td><td>Дверь правила «пользу нашли — дали флоту»</td><td>HP17</td></tr>
+<tr><td class="amb">18 ч</td><td><code>codex-node-identity</code>: заметки Codex с 8-символьным суффиксом молча затирались</td><td>Mac16</td></tr>
+<tr><td class="amb">18 ч</td><td>FYI: возвращён promise_gaps-гейт движка канала</td><td>Mac16</td></tr>
+</table></div>
+
+<h2>📮 Прибор долга сам сломан</h2>
+<div class="wrap"><table>
+<tr><td><b>260 неоплаченных на 306 записей</b> — за всё время оплачено 46, и 6 из них я сегодня. То есть тетрадь никто не вёл, она просто росла.</td></tr>
+<tr><td><b>56 из них — ДОГОН-дубли</b>: одно и то же напоминание про один приказ считается отдельным долгом.</td></tr>
+<tr><td><b>ACK не платит долг.</b> Утром я отправила три ACK в 03 — рельсы подтвердили доставку, а тетрадь всё равно числила их неоплаченными. Это разные двери: <code>bus_ack.py</code> шлёт, <code>machine_bus.py pay</code> закрывает. Сегодня закрыла руками.</td></tr>
+</table></div>
+
+<h2>📤 Постинг (изменилось с утра сам собой)</h2>
+<div class="wrap"><table>
+<tr><td>Threads</td><td>опубликовано <b>52</b> (утром было 50) · ждут 6 · закрыто решением 17. Текст готов у трёх: <code>make-your-ai-admit-it-failed</code> 399, <code>knock-only-on-doors-that-open</code> 377, <code>top-problems-across-sessions</code> 367</td></tr>
+<tr><td>Medium</td><td>лимит выбран 2 из 2, следующее окно сегодня 21:13</td></tr>
+</table></div>
+
+<div class="eli">🧒 <b>Простыми словами:</b> сегодня я закрыла шесть дел и каждое подтвердила замером, а не словами. Нашла кое-что похуже мелких задач: на твоём ноутбуке не хватает 1931 файла из общей папки, и подкачка их не догонит — она уверена, что всё привезла. Ещё выяснилось, что наша тетрадь долгов сломана: в ней 260 непогашенных записей, но половина — это одно и то же напоминание, а закрывать их никто вообще не умел, потому что ответ роботу и запись в тетрадь — две разные кнопки. Настоящей работы, что не старше недели, шестнадцать штук.</div>
+
+</body></html>

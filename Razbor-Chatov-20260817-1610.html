@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Разбор чатов и задач · 17.08.2026 16:10</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1c1c1a;--mut:#6b6b66;--card:#fff;--line:#e3e3de;--red:#b3261e;--amb:#9a6700;--grn:#1a7f37;--blu:#0b5cad}
+@media (prefers-color-scheme:dark){:root{--bg:#16161a;--fg:#e8e8e4;--mut:#9a9a95;--card:#1f1f24;--line:#32323a;--red:#ff7b72;--amb:#e3b341;--grn:#56d364;--blu:#79b8ff}}
+:root[data-theme=dark]{--bg:#16161a;--fg:#e8e8e4;--mut:#9a9a95;--card:#1f1f24;--line:#32323a;--red:#ff7b72;--amb:#e3b341;--grn:#56d364;--blu:#79b8ff}
+:root[data-theme=light]{--bg:#f7f7f5;--fg:#1c1c1a;--mut:#6b6b66;--card:#fff;--line:#e3e3de;--red:#b3261e;--amb:#9a6700;--grn:#1a7f37;--blu:#0b5cad}
+*{box-sizing:border-box}body{margin:0;padding:20px;background:var(--bg);color:var(--fg);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:21px;margin:0 0 4px}h2{font-size:16px;margin:24px 0 8px}
+.sub{color:var(--mut);font-size:13px;margin-bottom:16px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+.n{font-size:25px;font-weight:600;line-height:1}.lbl{color:var(--mut);font-size:12px;margin-top:4px}
+.red{color:var(--red)}.amb{color:var(--amb)}.grn{color:var(--grn)}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.eli{background:var(--card);border-left:3px solid var(--blu);border-radius:0 8px 8px 0;padding:10px 12px;margin-top:24px;font-size:14px}
+code{font-size:12.5px;background:rgba(128,128,128,.14);padding:1px 5px;border-radius:4px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Задачи и планирование</span><span style="margin-left:auto;display:flex;gap:12px"><a href="RUSLANA-CONTINUE-BOOKING.md">&larr; RUSLANA-CONTINUE-BOOKING</a> · <a href="Razbor-Dolgov-16-08.html">Razbor-Dolgov-16-08 &rarr;</a></span></div>
+
+<h1>Разбор: чаты 121 · 02 · 03, личка от хаба, свежие задачи</h1>
+<div class="sub">17.08.2026, 16:10 · прочитано вживую: 121 (12 сообщ.), 02 (14), личка @*****ya_Le (20), шина узла (42 сообщения с 09:00)</div>
+
+<div class="grid">
+  <div class="card"><div class="n red">4</div><div class="lbl">задачи на Наташе<br>две поставлены сегодня</div></div>
+  <div class="card"><div class="n grn">2</div><div class="lbl">задачи хаба закрыты ACK<br>серия «азы агентов»</div></div>
+  <div class="card"><div class="n grn">2</div><div class="lbl">сессии получили приказ<br>про remote control</div></div>
+  <div class="card"><div class="n red">7 сут</div><div class="lbl">висит просьба про Cloudflare<br>в личке, доступ только у тебя</div></div>
+  <div class="card"><div class="n amb">4</div><div class="lbl">диалога с лидами ждут<br>старшему 421 час</div></div>
+</div>
+
+<h2>🖐 На тебе — четыре штуки</h2>
+<div class="wrap"><table>
+<tr><th>что</th><th>откуда</th><th>состояние</th></tr>
+<tr><td><b>Серия «азы агентов», пост №0 — сегодня, №1 — завтра</b></td><td>хаб <code>#29ec2366</code>, приказ Антона 11:26</td><td class="red">пакеты у тебя на диске, прочитаны. Переписываешь своим голосом и публикуешь ты, робот не публикует. Цифры и чужие факты не трогать</td></tr>
+<tr><td><b>Cloudflare: две CNAME-записи + API-токен</b></td><td>личка от хаба, 10.08 13:50</td><td class="red">висит 7 суток. Зона <code>palo-alto.ai</code>, аккаунт b@micromoney.io. Нужны <code>www</code> и <code>new</code> → <code>palo-alto.ai</code>, Proxied. Сервер уже отвечает редиректом — сайт заработает в ту же секунду. Доступ есть только у тебя</td></tr>
+<tr><td><b>Продукт Кирилла Казакова / Игоря Палящука — построить и начать использовать</b></td><td>121, приказ Антона 09:46 + «дай ссылки» 09:39</td><td class="amb">плюс «сделать админом в чате». Есть отдельная сессия «Изучение продукта Hiholo MCP», последняя активность 10:29</td></tr>
+<tr><td><b>Голосовая Антона от 16.08 05:43</b></td><td>121, id 1110</td><td class="amb">так и не разобрана со вчера</td></tr>
+</table></div>
+
+<h2>✅ Что я сделала прямо сейчас</h2>
+<div class="wrap"><table>
+<tr><td><b>Две задачи хаба про серию закрыты ACK.</b> Пакеты нашла и прочитала: <code>FOR-NATALIA-series-post-TODAY-2026-08-17.md</code> и <code>-TOMORROW-2026-08-18.md</code>. Догоны ACK по обеим больше не будут капать.</td></tr>
+<tr><td><b>Поймала грабли в задаче хаба:</b> пути в ней даны литералом <code>E:\Obsidian\...</code> — это диск ХАБА, у нас волт на <code>D:\OBSIDIAN</code>. Файлы нашла по своему корню, хабу отправила поправку: узлу давать путь переменной, а не буквой чужого диска.</td></tr>
+<tr><td><b>Приказ Антона про remote control выполнен.</b> Обе названные сессии нашлись — «Транскрипт видео и обучающие посты» и «Извлечение альфы из видео», обе живут на ноутбуке Антона HP17. В каждую отправлен его текст. ⚠️ Предупредила их честно: по замеру 14.08 Remote Control настройкой не включается, policy бьёт settings, рычаг на стороне аккаунта — чтобы не крутили настройки по кругу, а сказали Антону прямо.</td></tr>
+<tr><td><b>Твоё решение 10:24 записано в локальные правила</b> — стоп на автопостинг серии, рерайт человеческим языком, 1 пост в день. Рядом легло решение Антона от 11:26: вы сошлись независимо.</td></tr>
+</table></div>
+
+<h2>👀 Что в 02 и 03 — и почему это не твоё</h2>
+<div class="wrap"><table>
+<tr><td><b>02</b></td><td>всё адресовано Антону: канон CLAUDE.md отстаёт на четырёх узлах (ZBOOKG8 — 12 дней, MacBook-Anton — 15, Ruslana и FLEET-ANCHOR — по 3), по двум вопросам уже «последнее напоминание, дальше замолчу». Нашего узла среди молчащих нет.</td></tr>
+<tr><td><b>03</b></td><td>машинная лента. Из значимого: на хабе <b>Claude Desktop в петле падений</b>, MCP-краны лежат, нужен человек; у хаба 10 задач-кранов красные, <code>content-factory-daily</code> молчит 123 часа.</td></tr>
+</table></div>
+
+<h2>🔴 Про наш узел — три живых сигнала</h2>
+<div class="wrap"><table>
+<tr><td><b>Сессий одновременно 22-23</b> при пороге 20. Каждая держит свои MCP — отсюда и тормоза, и вылеты. Стоит закрыть лишние.</td></tr>
+<tr><td><b>CRM-база узла не пересобиралась 31.9 дня.</b> <code>leads-db-nightly</code> — кран зелёный, а работа не легла: задачи «Unified SQL Refresh» (04:35) и «VC Nightly Warm Refresh» (04:15). Люди, компании и warm-матчи в дашбордах месячной давности.</td></tr>
+<tr><td><b>Ноутбук сегодня перезагружался трижды</b> (11:46, ~15:20, 15:31), причина по журналу «clean» — то есть не аварийно. Один раз при этом уходил на батарею.</td></tr>
+</table></div>
+
+<h2>💬 Диалоги с лидами — ждут нас</h2>
+<div class="wrap"><table>
+<tr><td>Дима <code>@*****tcoin</code></td><td class="red">421 час</td></tr>
+<tr><td>Петя <code>@*******l_trusy</code></td><td class="red">406 часов</td></tr>
+<tr><td>песочница Claude↔Claude («can you please check my dm»)</td><td class="amb">230 часов</td></tr>
+<tr><td>Chris <code>@***s_0</code> / Pixoft</td><td class="amb">молчит</td></tr>
+</table></div>
+
+<div class="eli">🧒 <b>Простыми словами:</b> сегодня Антон дал две новые задачи. Первая — начать серию обучающих постов, и он сам сказал, что переписывать их будешь ты, а робот публиковать не станет: ровно то, что ты решила часом раньше. Вторая — включить в двух его сессиях управление с телефона; я в обе написала, но предупредила, что это, скорее всего, упрётся в настройки аккаунта, а не в нас. В личке у тебя седьмые сутки лежит просьба про две записи в Cloudflare — их можешь сделать только ты, и сайт заработает сразу. В милицейском чате всё к Антону. А у ноутбука открыто больше двадцати сессий сразу и месяц не обновлялась база по людям.</div>
+
+</body></html>
