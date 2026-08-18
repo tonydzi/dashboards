@@ -1,5 +1,3 @@
-[все дашборды](index.html) · категория: Инфраструктура и рутины · [← Tasks-Audit-2026-07-04-to-07](Tasks-Audit-2026-07-04-to-07.html) · [Voice-24h-To-Sessions-2026-08-05 →](Voice-24h-To-Sessions-2026-08-05.html)
-
 ---
 title: "Telegram MCP — подключение к Claude (Windows)"
 type: setup-guide
