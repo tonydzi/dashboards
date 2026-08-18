@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Codex + Claude: один волт, один код — карта 16.08.2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{--bg:#101418;--card:#1a2027;--ink:#e8edf2;--dim:#93a1af;--ok:#4cc38a;--warn:#f0b429;--bad:#ef6b6b;--acc:#5aa9e6;--line:#2a323c}
+  body{margin:0;padding:24px;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,"Segoe UI",Roboto,sans-serif}
+  h1{font-size:22px;margin:0 0 4px}
+  h2{font-size:16px;margin:26px 0 10px;color:var(--acc)}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+  table{border-collapse:collapse;width:100%;background:var(--card);border-radius:10px;overflow:hidden}
+  th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+  tr:last-child td{border-bottom:none}
+  .ok{color:var(--ok);font-weight:600}.warn{color:var(--warn);font-weight:600}.bad{color:var(--bad);font-weight:600}
+  code{background:#0c1013;padding:1px 6px;border-radius:5px;font-size:13px;color:#cfe3f5}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+  .tile{background:var(--card);border-radius:10px;padding:12px 14px}
+  .tile b{font-size:20px;display:block}
+  .tile span{color:var(--dim);font-size:12px}
+  .note{background:var(--card);border-left:4px solid var(--warn);padding:10px 14px;border-radius:0 10px 10px 0;margin:10px 0}
+  ul{margin:6px 0 6px 20px;padding:0}
+  li{margin:3px 0}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Правила и канон</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Claude-AI-Dashboard.html">&larr; Claude-AI-Dashboard</a> · <a href="Coverage-Map.html">Coverage-Map &rarr;</a></span></div>
+<h1>🤝 Codex + Claude: один волт, один код</h1>
+<div class="sub">RECALL-карта · узел MacBook-Anton (Mac16) · 2026-08-16 · дельта-ДР <b>DR26-08-16-MACANTON-01-0731</b> заведён и одобрен (6 рельс, кворум 4). Дашборд локальный, не на Pages: внутренняя инфраструктура, приватность.</div>
+
+<div class="grid">
+  <div class="tile"><b class="ok">6 ДР</b><span>уже applied по этой теме — полный новый ДР был бы дублем</span></div>
+  <div class="tile"><b class="warn">1.1%</b><span>выход Codex против Claude (замер 05.08) — бак Pro почти не жжём</span></div>
+  <div class="tile"><b>69.8%</b><span>дефектов ловит гетеро-пара против 53.1% само-ревью</span></div>
+  <div class="tile"><b class="ok">2 AGENTS.md</b><span>созданы сегодня для кодовых корней Mac16</span></div>
+</div>
+
+<h2>1. Слои инструкций Codex (глубже вложенный — побеждает)</h2>
+<table>
+<tr><th>Слой</th><th>Файл</th><th>Статус</th><th>Действие</th></tr>
+<tr><td>Глобальный канон</td><td><code>~/.codex/AGENTS.md</code> (54KB зеркало CLAUDE.md)</td><td class="warn">ОТСТАЛ: v4.23.0 vs 4.25.3 + Windows-пути</td><td>пинг хабу отправлен (пересборка /codex-mirror) — зеркало receive-only</td></tr>
+<tr><td>Волт (заметки)</td><td><code>&lt;волт&gt;/AGENTS.md</code> — канон CORE, 6 инвариантов</td><td class="ok">ЖИВ</td><td>Codex прошёл живой тест адгезии 07.07 — не трогаем</td></tr>
+<tr><td>Код: скрипты флота</td><td><code>~/.claude/scripts/AGENTS.md</code></td><td class="ok">СОЗДАН сегодня</td><td>механика корня · git-рельса · Mac-пути · грабли codex exec</td></tr>
+<tr><td>Код: движки волта</td><td><code>/Users/anton/Obsidian/_imports/AGENTS.md</code></td><td class="ok">СОЗДАН сегодня</td><td>НЕ-git! last-writer-wins · одна дверь наружу · журнал записей</td></tr>
+<tr><td>Контракт ролей</td><td><code>scripts/aibus/agent-protocol.md</code></td><td class="ok">ЖИВ</td><td>но CLAUDE.md §4.4 ссылался на мёртвый путь → canon-proposal положен</td></tr>
+<tr><td>Контракт коллаборации</td><td><code>~/.codex/CODEX-COLLABORATION.md</code></td><td class="bad">НЕТ на Mac16</td><td>заказан у хаба по шине</td></tr>
+<tr><td>Конфиг + хэндофф</td><td><code>~/.codex/config.toml</code> · <code>~/.codex/_handoff/</code></td><td class="ok">ОБНОВЛЁН</td><td>+2 trusted кодовых корня (бэкап есть) · папка C7 создана</td></tr>
+</table>
+
+<h2>2. Дельта-ДР: 5 открытых вопросов (всё остальное уже исследовано)</h2>
+<ul>
+<li>Точная механика слоёв AGENTS.md в Codex 0.144→0.147 (precedence, <code>AGENTS.override.md</code>, обрез бюджета)</li>
+<li>Нативные фичи Codex: skills / hooks / <code>/import</code>-мигратор из Claude Code / memories / goals / mcp-server — что включать, что конфликтует при двух харнесах</li>
+<li>Конкурентная запись двух агентов в один рабочий корень и Syncthing-волт — свежие паттерны и провалы</li>
+<li>Bootstrap недокументированного кода 400k+ LOC (репо-карты, docstring-кампании, приоритетные тесты)</li>
+<li>Кросс-вендорные задачи/сессии: одна доска задач на оба CLI, хэндоффы, resume</li>
+</ul>
+<div class="note">Исполнение: раннер уже подобрал заказ — статус <b>collecting, 2/6 плеч доехало</b> (кворум = 4); остальные плечи (gemini/glm/claudeai/mistral) заказаны пирам по шине, доставка подтверждена по обоим рельсам (Syncthing + TG-03).</div>
+
+<h2>3. Координация двух агентов — что уже есть</h2>
+<table>
+<tr><th>Примитив</th><th>Что делает</th><th>Готовность для Codex</th></tr>
+<tr><td><code>onair.py</code></td><td>доска «кто держит зону» (13 зон, TTL)</td><td class="ok">да — сегодня починен E:-фолбэк (+тест)</td></tr>
+<tr><td><code>machine_bus.py lease</code></td><td>advisory-замки файлов</td><td class="ok">да, чистый CLI</td></tr>
+<tr><td><code>preflight_shared_edit.py</code></td><td>скан «кто уже трогает файл»</td><td class="ok">да, read-only</td></tr>
+<tr><td><code>secondop.py</code> + 04 AI-DUO</td><td>Codex как ревьюер/ломатель (t1/t2/t3)</td><td class="ok">живая штатная работа</td></tr>
+<tr><td><code>aibus_lite.py</code> (SQLite-доска задач)</td><td>задачи+lease+события, роли из agent-protocol</td><td class="warn">построена, БД НИ РАЗУ не создана; bridge/nightly — orphan</td></tr>
+<tr><td><code>_agent-bus/inbox</code> (md-почта)</td><td>почта вендоров на волте</td><td class="warn">живой ACK-тест 07.07, дальше не эксплуатировалась</td></tr>
+</table>
+<div class="note">⚠️ Противоречие: ДВЕ рельсы мульти-агента без выбранного победителя. Решение «какая живёт» — после синтеза дельта-ДР (потребитель заведён при рождении ДР).</div>
+
+<h2>4. Карта кода Mac16 (что должен понимать Codex)</h2>
+<table>
+<tr><th>Корень</th><th>Объём</th><th>Тесты</th><th>Docstrings</th><th>git</th></tr>
+<tr><td><code>~/.claude/scripts</code> + <code>hooks</code></td><td>968 py · 248k строк</td><td>283 <code>_test_*</code></td><td>91–100%</td><td class="ok">да (fleet-рельса)</td></tr>
+<tr><td><code>/Users/anton/Obsidian/_imports</code></td><td>1477 py · 421k строк</td><td class="bad">72 (5%)</td><td class="warn">69%</td><td class="bad">нет — Syncthing, last-writer-wins</td></tr>
+<tr><td><code>~/repos-git25</code> + contrib-клоны</td><td>9+30 репо</td><td>—</td><td>—</td><td class="ok">свои git у каждого</td></tr>
+</table>
+
+<h2>5. Починки сессии + хвосты</h2>
+<ul>
+<li class="ok">✅ deploy_lib.py восстановлен после дауногрейда посылкой 06.08 (ImportError provable); red-canon посылка применена, verify ДОКАЗАН</li>
+<li class="ok">✅ onair.py: menv-ступень вместо E:-литерала, тест зелёный — канарейка Mac16, хабу предложена раскатка</li>
+<li class="warn">⚠️ посылка radical-order-gate-20260806 пришла БЕЗ тела; rule-door-20260813 — md5-пин протух → пересборка на хабе (шина)</li>
+<li class="warn">⚠️ create_scheduled_task: часы «now» уехали (+8ч) — любой fireAt отбивается; строка в Breakage-Journal</li>
+<li class="warn">⚠️ brain_ask.py на Mac16 нерабочий (нет sentence_transformers) — RAG-recall узла хромает</li>
+</ul>
+
+<div class="sub" style="margin-top:20px">Следующая веха: синтез DR26-08-16-MACANTON-01-0731 → AGENTS.md v2 → решение «одна рельса» → Codex-паритет (skills/hooks/import) на флот → закрыть ДР applied. Заметка: <code>03-Insights/insight-2026-08-16-codex-claude-one-vault-delta.md</code></div>
+</body>
+</html>

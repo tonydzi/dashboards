@@ -654,3 +654,13 @@
 - [[2026-05-28 095750--практикую-медитацию-около-5-лет-сначала-ожидал-большого-эффе]] ← добавлено в [[concept-cognitive-training]]
 - [[2026-05-28 095807--медитации]] ← добавлено в [[concept-cognitive-training]]
 
+## 2026-08-18 03:12 — авто-связано 8
+- [[2026-08-12-alpha-superpowers-obra]] ← добавлено в [[insight-2026-08-01-gates-judge-action-not-substring]]
+- [[DR26-08-14-NAT-01-0941-SYNTHESIS-habr-what-works]] ← добавлено в [[decision-2026-07-21-habr-vcru-publicist-DR26-07-11-HUB-01]]
+- [[insight-2026-08-16-codex-claude-one-vault-delta]] ← добавлено в [[insight-DR-DR26-06-29-LEG-01-cross-vendor-llm-agent-collaboration-on-a-shared-m]]
+- [[insight-DR-DR26-08-04-ZB-14-2214-graph-expansion-fan-penalty]] ← добавлено в [[insight-DR-DR26-07-04-ZB-02-graph-rag-on-sqlite-for-agents-validating-the-nich]]
+- [[insight-DR-DR26-08-04-ZB-14-2214-graph-expansion-fan-penalty]] ← добавлено в [[insight-DR-DR26-07-26-ZB-04-brain-memory-mapping]]
+- [[insight-DR-DR26-08-06-HUB-03-1725-cli-reuse-grey-zone-and-quota-visibility]] ← добавлено в [[reglament-arhitekturu-stroim-chtoby-zhech-oplachennye-limity]]
+- [[insight-DR-DR26-08-06-HUB-03-1725-cli-reuse-grey-zone-and-quota-visibility]] ← добавлено в [[note-DR26-08-06-HUB-03-1725-agent-orkestratory-na-podpiskah-veer]]
+- [[insight-DR-DR26-08-11-HUB-02-2212-асимметрия-слияния-pr-почему-mid-size-инфра-oss-ме]] ← добавлено в [[insight-DR-DR26-07-20-MACANTON-02-2127-мульти-вендорная-карта-живости-oss-cookbook-exampl]]
+
