@@ -28,7 +28,7 @@
 </head>
 <body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="GDrive-Sheets-Triage.html">&larr; GDrive-Sheets-Triage</a> · <a href="HANDOFF-alpha-recall-comments.md">HANDOFF-alpha-recall-comments &rarr;</a></span></div>
 <h1>GitHub: outbound-активности → рутины → масштабирование</h1>
-<div class="sub">Инвентарь на 14.08.2026, узел Mac16 · факты из list_scheduled_tasks + launchd + scripts + GitHub API</div>
+<div class="sub">Инвентарь на 14.08.2026, ходы 3+5 закрыты 16.08.2026, узел Mac16 · факты из list_scheduled_tasks + launchd + scripts + GitHub API</div>
 
 <div class="kpi">
   <div><b>67</b>PR всего (48 репо)</div>
@@ -71,19 +71,19 @@
 <tr><th>#</th><th>Ход</th><th>Что даёт</th><th>Цена</th><th>Рельса</th></tr>
 <tr><td>1 ✅</td><td>Витрины → облако: rebuild-site на Actions</td><td>витрина всегда свежая, 0 зависимости от наших машин</td><td class="mut">сделано сегодня</td><td><span class="tag t-cloud">Actions</span></td></tr>
 <tr><td>2</td><td>contrib_watch → суточная рутина (SLA ≤24ч машинный)</td><td>ни одно входящее касание инженера не висит 4 дня (боль 01-05.08)</td><td>1 задача-сессия</td><td><span class="tag t-hub">хаб</span></td></tr>
-<tr><td>3</td><td>Вендорский веер: s2/s4/s23 расширить с ниши на все топ-10 экосистем (OpenAI, Mistral, HF, DeepSeek, Qwen, Cohere — где нас ещё 0)</td><td>заметность по §1.1 = ВСЕ экосистемы; сейчас мерджи только в 4</td><td>правка сидов лейнов, +1 день/вендор в ротации</td><td><span class="tag t-mac">Mac16→хаб</span></td></tr>
+<tr><td>3 ✅</td><td>Вендорский веер: s2/s4/s23 расширены с ниши на 7 экосистем, где нас 0 (OpenAI, Mistral, HF, DeepSeek, Qwen, Cohere, xAI). Ротация вендоров — ЕДИНЫЙ источник <code>~/.claude/github_vendor_rotation.json</code>: s2 по дню недели, s4 по topics экосистемы, s23 по номеру ISO-недели. Двери замерены живьём 16.08 (merged 90д): HF 5446 · OpenAI 5046 · Qwen 2903 · Mistral 258 · Cohere 172 · xAI 109 · DeepSeek 41. <b>meta-llama припаркован: 0 мерджей за 90д</b>, перезамер 15.09</td><td>покрытие §1.1 выросло с 4 экосистем до 11</td><td class="mut">сделано 16.08 · <b>объём касаний НЕ поднят</b>: капы лейнов те же, у каждой цели обязателен issue_match (холодный PR без живой двери ⛔)</td><td><span class="tag t-mac">Mac16</span></td></tr>
 <tr><td>4</td><td>consumer_hunt как пострелизная рутина: релиз → ≥5 подач за неделю (каталоги, чужие issue, PR)</td><td>«выпустил и не разнёс = не выпустил» становится машинным</td><td>1 задача + счётчик подач</td><td><span class="tag t-hub">хаб</span></td></tr>
-<tr><td>5</td><td>Сторож ВЫХОДА на каждый лейн: возраст последнего артефакта (коммент/PR/коммит) в JSONL, красный >48ч</td><td>класс dead-scheduled-task (9 поломок!) ловится по продукту, не по расписанию</td><td>1 скрипт 0 LLM + строка в heartbeat</td><td><span class="tag t-hub">хаб</span></td></tr>
+<tr><td>5 ✅</td><td>Сторож ВЫХОДА: <code>~/.claude/scripts/github_lane_freshness.py</code> (0 LLM) — судит лейн по ТРЁМ осям: запуск (lastRunAt планировщика) · заявка (строка GIT-S&lt;N&gt; в журнале) · <b>доказательство</b> (артефакт tonydzi из <code>/users/tonydzi/events/public</code> в день заявки). Порог = интервал cron + 24ч ⇒ ровно 48ч для ежедневного лейна. Красное → TG-03 именем лейна и с лечением; зелёное молчит; молодой лейн не судим; слепота прибора = exit 2, не зелёный</td><td>первый прогон дал 🔴1 — и это оказался <b>ложный красный</b> (git-s23 отработал 11.08, реальный PR #4360). Разбор ложного красного вскрыл ДВЕ дыры прибора и обе закрыты: заявка живёт в ДВУХ файлах (журнал + мастер-файл), а окно событий GitHub при нашей активности достаёт лишь на ~4 суток — глубже «артефакта нет» теперь = ⚪ слепота, а не 🔴 смерть. Честный итог: 🔴0 🟡3 🟢6 ⚪1</td><td class="mut">сделано 16.08 · тикер launchd <code>ai.paloalto.github-lane-freshness</code> 23:40 · тест 52 проверки · доставка в 03 проверена по факту (msg 144261)</td><td><span class="tag t-mac">Mac16</span></td></tr>
 <tr><td>6</td><td>Миграция git-s* лейнов на хаб (всегда включен)</td><td>лейны не зависят от крышки ноута; Антон сам назвал</td><td>перенос сидов, канарейка: 1 лейн → неделя → остальные</td><td><span class="tag t-hub">хаб</span></td></tr>
 </table></div>
 
 <h2>4. Риски</h2>
 <table>
-<tr><td class="warn">⚠ dead-scheduled-task</td><td>класс системный (9-я поломка в журнале) — масштабировать без сторожей выхода (ход №5) = плодить тихие трупы</td></tr>
+<tr><td class="ok">✅ dead-scheduled-task</td><td>риск закрыт ходом №5: прибор есть, тикер стоит (23:40), прогон на живых данных 🔴0 🟡3 🟢6 ⚪1. Жёлтое = связка заявка→артефакт не сошлась (s24 пишет не на GitHub, s4 ведёт watchlist без ссылок), ⚪ = git-s22 моложе своего цикла. Масштабировать теперь можно: тихий труп виден за сутки, а не за месяц</td></tr>
 <tr><td class="warn">⚠ headless claude -p на Mac16 разлогинен</td><td>новые рутины на Mac16 вешать только через приложение (scheduled tasks), не через claude -p</td></tr>
 <tr><td class="warn">⚠ качество &gt; объём</td><td>холодные PR веером = антипаттерн [[cold-pr-into-silent-queue]]; масштабируем через issue-matching, дозу s23 не поднимать без замера отклика</td></tr>
 </table>
 
-<div class="sub" style="margin-top:20px">Сгенерировано Claude (Mac16) · сессия 14.08.2026 · источники: mcp scheduled-tasks, ~/Library/LaunchAgents, ~/.claude/scripts, GitHub API</div>
+<div class="sub" style="margin-top:20px">Сгенерировано Claude (Mac16) · сессия 14.08.2026, обновлено 16.08.2026 (ходы 3 и 5 закрыты) · источники: mcp scheduled-tasks, ~/Library/LaunchAgents, ~/.claude/scripts, GitHub API</div>
 </body>
 </html>
