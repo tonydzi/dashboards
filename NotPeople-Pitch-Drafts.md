@@ -1,3 +1,5 @@
+[все дашборды](index.html) · категория: Прочее · [← Nightly-Bugs-MyOwnPC-Natalia](Nightly-Bugs-MyOwnPC-Natalia.html) · [Ochered-Vychitki-20260817 →](Ochered-Vychitki-20260817.html)
+
 # NotPeople - драфты питчей (50) - НА АППРУВ
 
 Голос @***ySsd. Тело письма одинаковое, меняется только первая строка.
