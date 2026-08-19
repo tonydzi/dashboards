@@ -27,7 +27,7 @@
 </head>
 <body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Правила и канон</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Claude-AI-Dashboard.html">&larr; Claude-AI-Dashboard</a> · <a href="Coverage-Map.html">Coverage-Map &rarr;</a></span></div>
 <h1>🤝 Codex + Claude: один волт, один код</h1>
-<div class="sub">RECALL-карта · узел MacBook-Anton (Mac16) · 2026-08-16 · дельта-ДР <b>DR26-08-16-MACANTON-01-0731</b> заведён и одобрен (6 рельс, кворум 4). Дашборд локальный, не на Pages: внутренняя инфраструктура, приватность.</div>
+<div class="sub">RECALL-карта · узел MacBook-Anton (Mac16) · 2026-08-16 · обновлено 19.08 · дельта-ДР <b>DR26-08-16-MACANTON-01-0731</b> = <b class="ok">applied</b> (кворум 4/6), Фаза 0 прогнана и ЗАМЕРЕНА. Дашборд локальный, не на Pages: внутренняя инфраструктура, приватность.</div>
 
 <div class="grid">
   <div class="tile"><b class="ok">6 ДР</b><span>уже applied по этой теме — полный новый ДР был бы дублем</span></div>
@@ -56,7 +56,20 @@
 <li>Bootstrap недокументированного кода 400k+ LOC (репо-карты, docstring-кампании, приоритетные тесты)</li>
 <li>Кросс-вендорные задачи/сессии: одна доска задач на оба CLI, хэндоффы, resume</li>
 </ul>
-<div class="note">Исполнение: раннер уже подобрал заказ — статус <b>collecting, 2/6 плеч доехало</b> (кворум = 4); остальные плечи (gemini/glm/claudeai/mistral) заказаны пирам по шине, доставка подтверждена по обоим рельсам (Syncthing + TG-03).</div>
+<div class="note"><b>ЗАКРЫТО 19.08:</b> кворум 4/6 (chatgpt, claudeai, grok, glm; gemini = IneligibleTier, mistral = аккаунта нет). Вердикт <b>Option A</b>: волт сериализуем лизами, код параллелим git-worktree, один источник инструкций, идемпотентные хуки. Синтез: <code>03-Insights/insight-DR-DR26-08-16-…-dual-agent-delta.md</code>.</div>
+
+<h2>2-бис. ⭐ Фаза 0 — ЗАМЕР, а не документация (19.08, codex-cli 0.144.6, sentinel 7Q4Z-IMPORTS)</h2>
+<table>
+<tr><th>Проверка</th><th>Результат</th><th>Что это значит</th></tr>
+<tr><td>codex из <code>_imports</code> (корень)</td><td class="ok">AGENTS.md ГРУЗИТСЯ</td><td>кодовое слово названо</td></tr>
+<tr><td>codex из <code>_imports/turnstate</code></td><td class="bad">НЕ грузится</td><td>UNKNOWN — правила движков не доехали</td></tr>
+<tr><td><code>project_root_markers</code> + маркер</td><td class="bad">НЕ чинит на 0.144.6</td><td>рецепт Фазы 0 из ДР не сработал</td></tr>
+<tr><td><code>trust_level="trusted"</code> на не-git</td><td class="bad">не работает вовсе</td><td>нужен <code>--skip-git-repo-check</code>; правка 16.08 была no-op</td></tr>
+<tr><td>симлинк <code>AGENTS.md -&gt; ../AGENTS.md</code></td><td class="ok">ГРУЗИТСЯ</td><td>частично снимает спор рельс о симлинках</td></tr>
+<tr><td>«волт не под git» (тезис ДР)</td><td class="warn">НЕВЕРНО у нас</td><td><code>Anton-Knowledge/.git</code> есть — мина только в <code>_imports</code></td></tr>
+<tr><td>self-report Codex «что загрузил»</td><td class="bad">выдумка</td><td>назвал несуществующий путь → мерить только sentinel-ом</td></tr>
+</table>
+<div class="note">Принято ПРАВИЛО, не механизм (§5.10, 1-й случай): <code>codex --cd /Users/anton/Obsidian/_imports --skip-git-repo-check</code>. Дом правила — сам <code>_imports/AGENTS.md</code>, который Codex читает.</div>
 
 <h2>3. Координация двух агентов — что уже есть</h2>
 <table>

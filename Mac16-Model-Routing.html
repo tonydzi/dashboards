@@ -16,7 +16,7 @@
  .legend span{display:inline-block;padding:3px 8px;margin-right:6px;font-size:13px}
 </style>
 <h1>Mac16 — какая рутина на какой модели</h1>
-<div class="sub">MacBook-Anton · 10.08.2026 · канон: reglament-rutiny-sotrudnikov-tolko-sonnet-i-otsenka-tokenov (приказ 07.08) + CLAUDE.md §6.2</div>
+<div class="sub">MacBook-Anton · обновлено 19.08.2026 после /tt · 10.08.2026 · канон: reglament-rutiny-sotrudnikov-tolko-sonnet-i-otsenka-tokenov (приказ 07.08) + CLAUDE.md §6.2</div>
 
 <div class="legend">
 <span class="z">0 токенов</span><span class="s">Sonnet — грунт</span><span class="o">Opus — суждение/люди</span><span class="f">Fable — только живые сессии</span>
@@ -29,7 +29,22 @@
 только перенести её в launchd-обёртку с <code>--model sonnet</code>.
 </div>
 
-<h2>1. Launchd / cron — 3 LLM-рутины из 57</h2>
+<div class="box" style="border-left:4px solid #c62828">
+<b>Итог приёмки 19.08 (/tt):</b> разрез построен и работает, но ворота качества нашли
+<b>три настоящих бага в моей же постройке</b>, все починены и закрыты тестами:
+<br>① 0-token precheck был <code>grep</code> по словам <code>dispatch|collect|deliver</code>, а движок отдаёт
+<b>JSON</b>, где это ключи — присутствуют всегда. Precheck давал 100% ложных срабатываний:
+7 часовых тиков подряд будили LLM. Экономия была нулевой. Заменён на детерминированный
+<code>dr_tick_precheck.py</code> (разбор JSON, 0 токенов).
+<br>② Упавший движок выглядел как «работы нет»: <code>exit 0</code> и честная строка в логе.
+Крах и тишина теперь различимы (<code>exit 4</code> + алярм в шину).
+<br>③ Узел будился каждый час ради <code>collect</code> тех ДР, чьих недостающих вендоров он
+не обслуживает. Теперь такие пропускаются с указанием счётчика.
+<br><br>Плюс из панели ревьюеров: замок получил срок годности (после <code>kill -9</code> номер PID
+со временем переиспользуется чужим процессом и запер бы тик навсегда).
+</div>
+
+<h2>1. Launchd / cron — LLM-рутины</h2>
 <table>
 <tr><th>Рутина</th><th>Что делает</th><th>Было</th><th>Стало / предложение</th><th>Почему</th></tr>
 <tr><td>inbox-robot</td><td>шина: 95% тиков 0-LLM precheck</td><td class="s">sonnet</td><td class="s">sonnet</td><td class="ok">уже по канону, эталон</td></tr>
