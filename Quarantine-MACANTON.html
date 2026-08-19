@@ -26,7 +26,15 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Quarantine-HUB.html">&larr; Quarantine-HUB</a> · <a href="Quarantine-MACBOOK-ANTON.html">Quarantine-MACBOOK-ANTON &rarr;</a></span></div><div class="wrap">
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>MacBook-Anton</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
-<h2>🗑 Выброшенные <span class="cnt">3</span></h2><div class="card trusted">
+<h2>✅ Доверенные — применятся сами <span class="cnt">1</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+  <div class="top"><span class="id">portability-gates-unstick-20260819</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Три вечно-красных гейта портируемости + живой ghost-writer (замер Маяк 19.08). (1) _test_smoke_core проверял синтаксис через py_compile, а тот пишет .pyc рядом с исходником -&gt; на read-only дереве 4 исправные детали красились Permission denied; теперь compile() в памяти. (2) _test_session_slot требовал реестр приложения Claude, которого на headless-узле нет по устройству -&gt; SKIP ровно при отсутствии каталога приложения. (3) ОДИН файл бейслайна win_portability_scan на ДВА корня скана (scripts и content-factory): ключи относительны корню, --accept переписывает файл целиком -&gt; второй гейт красный НАВСЕГДА; добавлен --baseline, гейт content-factory носит свой файл, красная проба уехала во временный каталог. (4) orphan-scan несла жёсткие E:-пути без лесенки -&gt; на POSIX робот, armed с 11.07, каждую ночь создавал каталог-призрак, сканировал 0 файлов и выходил кодом 0; после лесенки 0 -&gt; 185673 файла, 40341 сирота, дашборд 4КБ-призрак -&gt; 30КБ у настоящего потребителя.</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-19 08:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/portability-gates-unstick-20260819/install_portability_gates.py&quot;</code></div>
+  
+</div><h2>🗑 Выброшенные <span class="cnt">3</span></h2><div class="card trusted">
   <div class="top"><span class="id">_portability-selftest-bypass</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">самотест обхода</div>
   <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-05 00:58 · <span class="ok">подпись ✓</span></div>
@@ -35,7 +43,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python &quot;%USERPROFILE%\x.py&quot; --apply</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-11 11:56</div>
 </div><div class="card trusted">
-  <div class="top"><span class="id">run-hidden-guard-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="top"><span class="id">run-hidden-guard-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Гейт цели в обёртках run_hidden: нет файла -&gt; код 4 и след в логе, а не тихий ноль</div>
   <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 15:24 · <span class="ok">подпись ✓</span></div>
   <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
@@ -50,7 +58,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/deploy-bus-rebase-20260806/install.py&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-18 14:32</div>
-</div><h2>📦 Уже применённые <span class="cnt">189</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">191</span></h2><div class="card trusted">
   <div class="top"><span class="id">canon-gate-0716</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">canon_write_gate.py roaming-leader canon gate</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-16 18:10 · <span class="ok">подпись ✓</span></div>
@@ -987,6 +995,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python &quot;$MACHINE_BUS_DIR/_deploy/payloads/install_rule_home_guard_permem.py&quot;</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">run-hidden-guard-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Гейт цели в обёртках run_hidden: нет файла -&gt; код 4 и след в логе, а не тихий ноль</div>
+  <div class="meta">источник: <b>MyOwnPC-Natalia</b> · отправлено: 2026-08-06 15:24 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MyOwnPC-Natalia)</div>
+  
+  <div class="apply">примени: <code>python &quot;$MACHINE_BUS_DIR/_transit/run-hidden-guard-20260806/install_run_hidden_guard.py&quot;</code></div>
+  <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-11 11:57</div>
+</div><div class="card trusted">
   <div class="top"><span class="id">routine-rights-census-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Прибор «права рутинной сессии» + корни чтения для роботов (замер хаба: 73 отказа чтения, 41 из них -- сам корень волта)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 11:55 · <span class="ok">подпись ✓</span></div>
@@ -1561,6 +1577,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/claude_fleet.py pull</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">fleet-pull-lock-20260819</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Замок курьера канала: живая сессия берёт .fleet_pull.lock, крон-пул её не перебивает (+flock от нахлёста). Корень: 19.08 крон закоммитил в HEAD 44 файла с маркерами конфликта поверх ручного разбора мержа.</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-19 08:14 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py fleet-pull-lock-20260819</code></div>
   
 </div>
 </div></body></html>
