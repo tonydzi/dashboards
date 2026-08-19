@@ -42,7 +42,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-06 17:00</div>
-</div><h2>📦 Уже применённые <span class="cnt">208</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">209</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1705,6 +1705,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py fleet-pull-lock-20260819</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">portability-gates-unstick-20260819</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Три вечно-красных гейта портируемости + живой ghost-writer (замер Маяк 19.08). (1) _test_smoke_core проверял синтаксис через py_compile, а тот пишет .pyc рядом с исходником -&gt; на read-only дереве 4 исправные детали красились Permission denied; теперь compile() в памяти. (2) _test_session_slot требовал реестр приложения Claude, которого на headless-узле нет по устройству -&gt; SKIP ровно при отсутствии каталога приложения. (3) ОДИН файл бейслайна win_portability_scan на ДВА корня скана (scripts и content-factory): ключи относительны корню, --accept переписывает файл целиком -&gt; второй гейт красный НАВСЕГДА; добавлен --baseline, гейт content-factory носит свой файл, красная проба уехала во временный каталог. (4) orphan-scan несла жёсткие E:-пути без лесенки -&gt; на POSIX робот, armed с 11.07, каждую ночь создавал каталог-призрак, сканировал 0 файлов и выходил кодом 0; после лесенки 0 -&gt; 185673 файла, 40341 сирота, дашборд 4КБ-призрак -&gt; 30КБ у настоящего потребителя.</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-19 08:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/portability-gates-unstick-20260819/install_portability_gates.py&quot;</code></div>
   
 </div>
 </div></body></html>
