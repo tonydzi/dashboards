@@ -42,7 +42,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-06 17:00</div>
-</div><h2>📦 Уже применённые <span class="cnt">209</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">210</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1713,6 +1713,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
   
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/portability-gates-unstick-20260819/install_portability_gates.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">selfheal-phantom-target-gate-20260819b</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Gate for phantom targets in selfheal + door for the repair queue (root of class dead-scheduled-task)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-19 15:17 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>powershell -NoProfile -Command &quot;$p=\&quot;$env:OBSIDIAN_VAULT\_machine-bus\_deploy\payloads\selfheal-phantom-target-gate-20260819\&quot;; foreach($f in @(\&quot;selfheal.py\&quot;,\&quot;registry_dispatch.py\&quot;,\&quot;_test_breakage_journal.py\&quot;)){ Copy-Item -Force (Join-Path $p $f) (Join-Path \&quot;$env:USERPROFILE\.claude\scripts\&quot; $f) }&quot;</code></div>
   
 </div>
 </div></body></html>
