@@ -664,3 +664,19 @@
 - [[insight-DR-DR26-08-06-HUB-03-1725-cli-reuse-grey-zone-and-quota-visibility]] ← добавлено в [[note-DR26-08-06-HUB-03-1725-agent-orkestratory-na-podpiskah-veer]]
 - [[insight-DR-DR26-08-11-HUB-02-2212-асимметрия-слияния-pr-почему-mid-size-инфра-oss-ме]] ← добавлено в [[insight-DR-DR26-07-20-MACANTON-02-2127-мульти-вендорная-карта-живости-oss-cookbook-exampl]]
 
+## 2026-08-19 03:08 — авто-связано 14
+- [[insight-DR-DR26-08-13-ZB-01-2110-us-smb-ai-consulting]] ← добавлено в [[insight-DR-DR26-08-13-ZB-01-2110-smb-ai-consulting-arthur]]
+- [[insight-DR-DR26-08-14-ZB-01-0159-hnw-diaspora-premium-services]] ← добавлено в [[decision-ai-native-services-hnw-ru-diaspora-2026-07-05]]
+- [[insight-DR-DR26-08-14-NAT-01-0941-habr-what-works]] ← добавлено в [[DR26-08-14-NAT-01-0941-SYNTHESIS-habr-what-works]]
+- [[insight-DR-DR26-08-14-NAT-02-0945-reddit-accounts-market]] ← добавлено в [[insight-DR-DR26-07-21-ZB-01-2219-reddit-account-warm-up-path-a-vs-buying-aged-high-]]
+- [[insight-DR-DR26-08-14-NAT-02-0945-reddit-accounts-market]] ← добавлено в [[insight-DR-DR26-07-21-ZB-01-reddit-account-warmup-safety]]
+- [[insight-DR-DR26-08-14-NAT-02-0945-reddit-accounts-market]] ← добавлено в [[insight-DR-DR26-07-21-ZB-01-reddit-account]]
+- [[insight-DR-DR26-08-15-HUB-01-browser-rail-cdp-chrome-и-screen-automation-rail-п]] ← добавлено в [[insight-DR-DR26-08-14-MACANTON-01-2117-browser-and-screen-rails]]
+- [[insight-DR-DR26-08-15-HUB-01-browser-rail-cdp-chrome-и-screen-automation-rail-п]] ← добавлено в [[decision-2026-08-01-agent-browser-control-rail-DR26-08-01-MACANTON-12]]
+- [[insight-DR-DR26-08-15-HUB-02-грабли-cdp-браузер-рельс-и-экранного-контроля-для-]] ← добавлено в [[insight-DR-DR26-08-15-HUB-01-browser-rail-cdp-chrome-и-screen-automation-rail-п]]
+- [[insight-DR-DR26-08-15-HUB-02-грабли-cdp-браузер-рельс-и-экранного-контроля-для-]] ← добавлено в [[decision-2026-08-14-browser-and-screen-rail-mac16-fleet]]
+- [[insight-DR-DR26-08-15-HUB-03-real-world-failure-modes-of-agent-driven-browsers-]] ← добавлено в [[insight-DR-DR26-08-15-HUB-01-browser-rail-cdp-chrome-и-screen-automation-rail-п]]
+- [[insight-DR-DR26-08-15-HUB-03-real-world-failure-modes-of-agent-driven-browsers-]] ← добавлено в [[insight-DR-DR26-08-14-MACANTON-01-2117-browser-and-screen-rails]]
+- [[insight-DR-DR26-08-15-HUB-03-real-world-failure-modes-of-agent-driven-browsers-]] ← добавлено в [[decision-2026-08-01-agent-browser-control-rail-DR26-08-01-MACANTON-12]]
+- [[insight-DR-DR26-08-15-MACRUS-01-1217-prevelo-bravo-zulu-heir-инхаус-проверка-наличия-и-]] ← добавлено в [[insight-DR-DR26-08-15-MACRUS-02-1302-prevelo-bravo-zulu-где-физически-есть-сток-и-как-п]]
+

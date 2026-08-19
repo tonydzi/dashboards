@@ -1,0 +1,82 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Какая от меня польза — замер 28.07–18.08.2026</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1c1c1a;--mut:#6b6b66;--card:#fff;--line:#e2e2dd;--ok:#1f7a4d;--warn:#a86b00;--bad:#a33;--acc:#2b5fa8}
+@media(prefers-color-scheme:dark){:root{--bg:#16171a;--fg:#e8e8e4;--mut:#9a9a94;--card:#1e2024;--line:#31343a;--ok:#4ec98a;--warn:#e0a53a;--bad:#e57373;--acc:#7aa6e8}}
+*{box-sizing:border-box}body{margin:0;padding:24px;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:24px;margin:0 0 4px}.sub{color:var(--mut);font-size:14px;margin-bottom:24px}
+h2{font-size:17px;margin:32px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.c{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.n{font-size:30px;font-weight:700;line-height:1.1}.l{font-size:13px;color:var(--mut);margin-top:4px}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line)}th{background:rgba(128,128,128,.08);font-size:12px;text-transform:uppercase;color:var(--mut)}
+tr:last-child td{border-bottom:0}
+.wrap{overflow-x:auto}.tag{font-size:11px;padding:2px 7px;border-radius:20px;background:rgba(128,128,128,.15);color:var(--mut)}
+.note{background:var(--card);border-left:4px solid var(--acc);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0;font-size:14px}
+.bar{height:22px;display:flex;border-radius:6px;overflow:hidden;margin:8px 0 4px;font-size:11px;color:#fff;font-weight:600}
+.bar div{display:flex;align-items:center;justify-content:center}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Ochered-Vychitki-20260817.html">&larr; Ochered-Vychitki-20260817</a> · <a href="Pub-Registry-Metrics.html">Pub-Registry-Metrics &rarr;</a></span></div>
+
+<h1>Какая от меня польза</h1>
+<div class="sub">Замер 28.07 → 18.08.2026 (3 недели) · весь флот машин · источники: GitHub API, реестр задач волта, реестр ДР, журнал аутрича</div>
+
+<h2>1. Наружу — вклады в чужой открытый код (миссия №2)</h2>
+<div class="grid">
+<div class="c"><div class="n">48</div><div class="l">пулл-реквестов подано</div></div>
+<div class="c"><div class="n ok">17</div><div class="l">ВЛИТО в чужие проекты</div></div>
+<div class="c"><div class="n">39</div><div class="l">разных чужих репозиториев</div></div>
+<div class="c"><div class="n warn">20</div><div class="l">ещё висят без ответа</div></div>
+<div class="c"><div class="n bad">11</div><div class="l">отклонено / закрыто</div></div>
+</div>
+<div class="bar"><div style="width:35.4%;background:#1f7a4d">влито 35%</div><div style="width:41.7%;background:#a86b00">ждут 42%</div><div style="width:22.9%;background:#a33">нет 23%</div></div>
+
+<div class="note"><b>Что из этого настоящий код, а не «строчка в списке»:</b> 10 из 17 — это реальные починки и правки документации в живых проектах. Остальные 7 — добавление наших наработок в каталоги («awesome-списки»): дешевле, но это витрина, а не инженерия.</div>
+
+<div class="wrap"><table>
+<tr><th>Проект</th><th>Что сделали</th><th>Тип</th></tr>
+<tr><td><b>modelcontextprotocol/go-sdk</b> ×3</td><td>чинили битые ссылки и нерабочие примеры быстрого старта</td><td><span class="tag">код/доки</span></td></tr>
+<tr><td><b>punkpeye/fastmcp</b> ×2</td><td>починили зависание JSON-запросов без ответа; починили пример OAuth</td><td><span class="tag">код</span></td></tr>
+<tr><td><b>pydantic/logfire</b></td><td>убрали из инструкции установки то, чего в пакете нет</td><td><span class="tag">доки</span></td></tr>
+<tr><td><b>basicmachines-co/basic-memory</b></td><td>подпроцессы перестали наследовать чужое Python-окружение</td><td><span class="tag">код</span></td></tr>
+<tr><td><b>mixelpixx/Konnect</b></td><td>запись PID сервера больше не врёт между сессиями</td><td><span class="tag">код</span></td></tr>
+<tr><td><b>cristicretu/diri</b> ×2</td><td>справка по горячим клавишам + диагностика зависших тестов в CI</td><td><span class="tag">код/доки</span></td></tr>
+<tr><td>7 каталогов (Awesome-MCP, AI-Memory, LLMSecOps, RAG…)</td><td>внесли наши штуки: sqlite-graph-memory, verbatim-citation-gate, LEASH-8, claude-consensus, mcp-daemon-diet</td><td><span class="tag">витрина</span></td></tr>
+</table></div>
+
+<h2>2. Внутрь — что реально сдвинулось в системе Антона</h2>
+<div class="grid">
+<div class="c"><div class="n ok">84</div><div class="l">задач закрыто (81 done, 3 сняты)</div></div>
+<div class="c"><div class="n">142</div><div class="l">исследований (ДР) заказано</div></div>
+<div class="c"><div class="n ok">93</div><div class="l">из них применено в решение</div></div>
+<div class="c"><div class="n">32</div><div class="l">записанных решений</div></div>
+<div class="c"><div class="n">34</div><div class="l">разборов-инсайтов</div></div>
+<div class="c"><div class="n">146</div><div class="l">касаний людей (107 человек)</div></div>
+</div>
+<div class="note">Из 146 касаний <b>65 — ответы</b> живым людям, которые написали первыми (то есть долг по перепискам разгребался), 40 тёплых, 8 холодных.</div>
+
+<h2>3. Честная вторая половина — что НЕ получилось</h2>
+<div class="grid">
+<div class="c"><div class="n bad">303</div><div class="l">новых задач заведено</div></div>
+<div class="c"><div class="n bad">84</div><div class="l">закрыто за тот же срок</div></div>
+<div class="c"><div class="n bad">509</div><div class="l">несделанных в реестре сейчас</div></div>
+<div class="c"><div class="n bad">217</div><div class="l">гниют без хода</div></div>
+<div class="c"><div class="n warn">43</div><div class="l">исследований припарковано</div></div>
+<div class="c"><div class="n warn">112</div><div class="l">задач без критерия «сделано»</div></div>
+</div>
+<div class="bar"><div style="width:78%;background:#a33">заводим 303</div><div style="width:22%;background:#1f7a4d">закрываем 84</div></div>
+<div class="note"><b>Главная проблема одной строкой:</b> завожу задач в 3,6 раза больше, чем закрываю. Свалка растёт быстрее, чем разбирается. Это не «много работы» — это дефект: часть задач заводить не надо было вовсе.</div>
+
+<h2>4. Объём машинной работы</h2>
+<div class="grid">
+<div class="c"><div class="n">1070</div><div class="l">запусков сессий на этом маке</div></div>
+<div class="c"><div class="n">300</div><div class="l">ретро-разборов по флоту</div></div>
+<div class="c"><div class="n">1766</div><div class="l">заметок с датой окна в волте</div></div>
+<div class="c"><div class="n">48</div><div class="l">разобранных звонков</div></div>
+</div>
+<div class="note" style="border-left-color:var(--warn)"><b>Осторожно с этими цифрами:</b> 1070 запусков — это в основном короткие автоматические прогоны рутин, а не 1070 рабочих сессий. Объём ≠ польза. Единственные цифры выше, которые доказаны внешним миром, а не мной самим — это 17 влитых PR: их приняли чужие люди.</div>
+
+<div class="sub" style="margin-top:32px">Собрано 18.08.2026 · GitHub API (аккаунт tonydzi) · 10-Tasks/*.md · dr_registry.py · _outreach/ledger/*.jsonl</div>
+</body></html>
