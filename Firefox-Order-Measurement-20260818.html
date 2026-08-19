@@ -1,0 +1,102 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Замер приказа «Firefox по максимуму» · 04→18.08.2026</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--line:#262b36;--tx:#e6e9ef;--dim:#8b93a5;
+--ok:#3fb950;--bad:#f85149;--warn:#d29922;--ff:#ff7139;--cr:#4c8bf5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);
+font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:24px;margin:0 0 4px}.sub{color:var(--dim);margin-bottom:24px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
+h2{font-size:15px;margin:0 0 14px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+.p{color:var(--ok);font-weight:700}.f{color:var(--bad);font-weight:700}.w{color:var(--warn);font-weight:700}
+.big{font-size:30px;font-weight:700;line-height:1.1}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.k{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.bar{height:26px;border-radius:5px;display:flex;overflow:hidden;margin:10px 0 6px}
+.bar i{display:block}.lg{font-size:12px;color:var(--dim)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.days{display:flex;gap:4px;align-items:flex-end;height:120px;margin-top:10px}
+.days div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:2px}
+.days b{display:block;border-radius:2px 2px 0 0}
+.dl{font-size:10px;color:var(--dim);text-align:center;margin-top:5px;transform:rotate(-60deg);transform-origin:center}
+.verdict{border-left:4px solid var(--warn);padding-left:16px}
+.note{background:#1c1f28;border-left:3px solid var(--warn);padding:12px 14px;border-radius:0 8px 8px 0;margin-top:12px;font-size:13.5px}
+code{background:#0b0d12;padding:2px 6px;border-radius:4px;font-size:12.5px;color:#9fb4d8}
+.eli{border-left:4px solid var(--cr);padding-left:16px;font-size:15px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Embed-Bakeoff-Sessions.html">&larr; Embed-Bakeoff-Sessions</a> · <a href="Firefox-Rollout-2026-08-04.html">Firefox-Rollout-2026-08-04 &rarr;</a></span></div><div class="wrap">
+<h1>Замер приказа «Firefox по максимуму»</h1>
+<div class="sub">Окно 04.08 → 18.08.2026 · 6122 записи с 6 узлов · критерии названы ДО старта (§5.7) · решает Антон</div>
+
+<div class="card"><h2>Четыре критерия</h2>
+<table>
+<tr><th>Метрика</th><th>Порог «Лиса победила»</th><th>Факт</th><th>Итог</th></tr>
+<tr><td><b>Доля Firefox от всех заходов</b></td><td>≥ 70%</td><td><b>7.3%</b><br><span class="lg">14 заходов Лисы против 179 Chrome (окно 30 мин)</span></td><td class="f">❌ ПРОВАЛ</td></tr>
+<tr><td><b>success_rate: ff vs chrome</b><br><span class="lg">гипотеза «Лиса меньше глючит»</span></td><td>ff ≥ chrome</td><td><b>85.7% / 81.0%</b><br><span class="lg">формально да, но z=1.23, p=0.219 — это ШУМ, не доказательство</span></td><td class="w">⚠️ формально ✅,<br>статистически нет</td></tr>
+<tr><td><b>Chrome «БЕЗ ПРИЧИНЫ»</b></td><td>→ 0</td><td><b>100 заходов / 5751 строка</b><br><span class="lg">96% всего Chrome-трафика без названной строки §2</span></td><td class="f">❌ ПРОВАЛ</td></tr>
+<tr><td><b>Узлов, где счётчик пишет</b></td><td>≥ 4 из 6</td><td><b>6 из 6</b> + хаб пишет<br><span class="lg">A-2022BAYAREA · FLEET-ANCHOR · MacBook-Anton · MacBook-Ruslana · MyOwnPC-Natalia · ZBOOKG8</span></td><td class="p">✅ ЗАМЕР СОСТОЯЛСЯ</td></tr>
+</table></div>
+
+<div class="card"><h2>Объём: две рельсы несопоставимы по природе</h2>
+<div class="grid">
+<div><div class="k">Firefox — подъёмов драйвера</div><div class="big" style="color:var(--ff)">105</div><div class="lg">selenium, headless, пакетно</div></div>
+<div><div class="k">Chrome — вызовов MCP</div><div class="big" style="color:var(--cr)">6017</div><div class="lg">интерактив, по одному действию</div></div>
+<div><div class="k">Дней с НУЛЁМ Firefox</div><div class="big" style="color:var(--bad)">4 из 15</div><div class="lg">07·08·09·16·17.08</div></div>
+<div><div class="k">Всплески Лисы</div><div class="big">2</div><div class="lg">04.08 (день приказа) и 11.08 (приказ «лиса-на-DR») — оба ручные</div></div>
+</div>
+<div class="bar"><i style="background:var(--ff);width:7.3%"></i><i style="background:var(--cr);width:92.7%"></i></div>
+<div class="lg"><span class="dot" style="background:var(--ff)"></span>Firefox 7.3% &nbsp;&nbsp; <span class="dot" style="background:var(--cr)"></span>Chrome 92.7% &nbsp; <i>(по заходам, 30-мин окно)</i></div>
+<div class="note"><b>Единицы честно несопоставимы.</b> Строка Firefox = один подъём драйвера, который дальше обслуживает десятки действий на странице. Строка Chrome = каждый отдельный MCP-вызов. Поэтому в шапке стоит счёт по <b>заходам</b>, а не по строкам — иначе Лиса выглядела бы вчетверо хуже, чем есть (1.6% вместо 7.3%). Перекос поймали и починили 13.08.</div>
+</div>
+
+<div class="card"><h2>По каким причинам звали Chrome</h2>
+<table>
+<tr><th>Причина</th><th>Строк</th><th>Есть в матрице §2?</th></tr>
+<tr><td><b>БЕЗ ПРИЧИНЫ</b></td><td class="f">5751</td><td class="f">— причина не названа вовсе</td></tr>
+<tr><td>Facebook / Messenger (IP-sensitive)</td><td>131</td><td class="p">✅ законная строка</td></tr>
+<tr><td>claude.ai (Cloudflare 403 любому Selenium-Firefox)</td><td>88</td><td class="p">✅ законная строка</td></tr>
+<tr><td>X (бан-чувствителен)</td><td>32</td><td class="p">✅ законная строка</td></tr>
+<tr><td>Grok (AUP xAI запрещает автодоступ)</td><td>15</td><td class="p">✅ законная строка</td></tr>
+</table>
+<p style="margin:14px 0 0"><b>Ни одной НЕЗАКОННОЙ причины нет.</b> Все 266 названных причин — строки матрицы §2. Проблема не в том, что кто-то придумал отговорку; проблема в том, что 96% заходов вообще не отвечали на вопрос «почему не Firefox».</p>
+</div>
+
+<div class="card"><h2>⚠️ Дефект прибора — обязан быть назван</h2>
+<table>
+<tr><th>Что</th><th>Влияние на вывод</th></tr>
+<tr><td><b>Хук считает «chrome» ЛЮБОЙ тул со словом browser/chrome в имени.</b> Под это попадает встроенная Browser-панель приложения (<code>preview_start</code>, <code>tabs_create</code> — минимум 187 строк), которая вообще не Chrome Антона и у которой нет Firefox-варианта.</td><td>Часть «Chrome БЕЗ ПРИЧИНЫ» — не нарушение приказа, а работа, где выбора не существует. Критерий 3 нельзя судить чисто.</td></tr>
+<tr><td><b>Заход, убивший тул до PostToolUse, не считается вовсе.</b> Известный остаточный перекос, оставлен осознанно.</td><td><b>Chrome ПОЛЬЩЁН</b> — его падения недосчитаны. Значит победа Лисы была бы выводом крепким; а вот её НЕпобеда — вывод слабый и это как раз наш случай.</td></tr>
+<tr><td><b>n Firefox = 105 против n Chrome = 6017.</b></td><td>Разница 85.7% против 81.0% при p=0.219 — неотличима от шума. Гипотеза Антона <b>не опровергнута, но и не доказана</b>.</td></tr>
+</table></div>
+
+<div class="card verdict"><h2>Вердикт</h2>
+<p style="font-size:18px;margin:0 0 12px"><b>Замер состоялся. Приказ не выполнен. Гипотеза Антона не проверена — прибор не смог её проверить.</b></p>
+<p>Корень не в лени и не в саботаже: <b>две рельсы делают разную работу и не взаимозаменяемы</b>. Firefox у нас существует как selenium-движок для скриптового и безлюдного (забор страниц, куки, ДР-рутины) — там он и работал. А 98% объёма браузерной работы — это интерактивные MCP-тулы внутри сессии, <b>у которых Firefox-рельсы физически нет</b>. Требовать 70% от знаменателя, в который входит работа без второй рельсы, — требовать невозможного.</p>
+<p style="margin-bottom:0">Это ЧЕТВЁРТЫЙ исход, которого не было в трёх заготовленных: приказ оказался <b>неисполним как написан</b>.</p>
+</div>
+
+<div class="card"><h2>Рекомендация (решает Антон, канон §4.8 сам не правлю)</h2>
+<table>
+<tr><td style="width:34%"><b class="f">⛔ НЕ вооружать блокирующую дверь</b></td><td>Она била бы по работе, у которой нет альтернативы → вечно красный сторож, которого перестают читать (<i>always-red-watchdog-teaches-ignoring-red</i>).</td></tr>
+<tr><td><b class="f">⛔ НЕ откатывать приказ в никуда</b></td><td>Гипотеза «Лиса меньше глючит» не опровергнута. Откат по недоказанному = такое же враньё в цифрах, как подгонка.</td></tr>
+<tr><td><b class="p">✅ Переписать знаменатель</b></td><td>«≥70% ВСЕХ заходов» → <b>«100% заходов, у которых Firefox-рельса ВООБЩЕ существует»</b> (скриптовое, headless, куки, забор страниц, ДР-рутины). Интерактивный MCP выводится из знаменателя явной строкой «второй рельсы нет», а не молча.</td></tr>
+<tr><td><b class="p">✅ Починить прибор</b></td><td>Разделить в счётчике три поверхности: Chrome-расширение · встроенная Browser-панель · selenium-Firefox. Сейчас первые две слиты в одну кучу.</td></tr>
+<tr><td><b class="w">⚠️ Тогда — 14 дней честного замера</b></td><td>Только после починки знаменателя вопрос «глючит ли Лиса меньше» получит ответ, а не шум на n=105.</td></tr>
+</table>
+<p style="margin:14px 0 0" class="lg">Правка §4.8 = канон → через <code>canon_write_gate.py</code> и только с «+» Антона. Самовольно не трогаю.</p>
+</div>
+
+<div class="card eli"><h2>🧒 Простыми словами</h2>
+<p>Две недели назад Антон сказал: «давайте больше пользоваться Лисой, она реже ломается — через две недели посчитаем». Мы поставили счётчик и честно считали на всех шести компьютерах.</p>
+<p>Посчитали. Лисой пользовались всего в 7 случаях из 100, а обещали в 70. Но виноваты не лень: оказалось, что Лиса и Хром делают <b>разную работу</b>. Лиса — это робот, который сам ходит по сайтам ночью. А почти вся наша браузерная работа — это когда я жму кнопки на странице прямо в разговоре, и для этого Лисы у нас просто <b>нет</b>. Получается, мы требовали ездить на велосипеде там, где велосипеда не выдали.</p>
+<p>Ломается ли Лиса реже? Похоже, что чуть реже (85 против 81 из 100). Но проб у Лисы было слишком мало, и такая разница может быть простой случайностью — честно сказать «доказали» нельзя.</p>
+<p style="margin-bottom:0"><b>Что предлагаю:</b> не запрещать Хром силой (сломаем работу), но и не отменять идею Антона (она не опровергнута). Вместо этого поменять условие: Лиса обязательна там, где она вообще есть, — и посчитать ещё раз уже честно. Это правка главного свода правил, поэтому жду «+».</p>
+</div>
+
+<div class="sub" style="margin-top:20px">Источник цифр: <code>~/.claude/scripts/_shared/browser_usage_log.py --report --days 14</code> · шарды <code>_machine-bus/_metrics/browser-usage/*.jsonl</code> · собрано 18.08.2026 на MacBook-Anton</div>
+</div></body></html>
