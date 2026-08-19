@@ -27,12 +27,12 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>FLEET-ANCHOR</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
 <h2>⛔ В карантине — ждут твоего решения <span class="cnt">1</span></h2><div class="hint">Пришли из непроверенного источника или с плохой подписью. НЕ применены. Скажи Claude «/quarantine release &lt;id&gt;» чтобы применить (после проверки), или «discard &lt;id&gt;» чтобы выбросить.</div><div class="card held">
-  <div class="top"><span class="id">canon-ee46a0a4</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span></div>
-  <div class="ttl">Canon CLAUDE.md ee46a0a4 (hub) — СНАЧАЛА verify-гейт, потом влей СОДЕРЖАНИЕ в свой локальный канон; свою шапку/пути-адаптацию сохраняй; md5-равенство НЕ требуется</div>
+  <div class="top"><span class="id">canon-faeb329c</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span></div>
+  <div class="ttl">Canon CLAUDE.md faeb329c (hub) — СНАЧАЛА verify-гейт, потом влей СОДЕРЖАНИЕ в свой локальный канон; свою шапку/пути-адаптацию сохраняй; md5-равенство НЕ требуется</div>
   <div class="meta">источник: <b>(нет поля from)</b> · отправлено:  · <span class="mut">без подписи (HMAC не подключён)</span></div>
   <div class="rsn">непроверенный/неизвестный источник: поле from отсутствует</div>
   
-  <div class="apply">примени: <code>STEP 1 (gate): python3 ~/.claude/scripts/_shared/canon_verify.py /root/machine-bus/_transit/canon-from-hub ; exit!=0 -&gt; НЕ применять, посылку в HELD, алерт в 03. STEP 2: read /root/machine-bus/_transit/canon-from-hub/CLAUDE.md -&gt; merge -&gt; write ACK-&lt;node&gt;.json {applied_md5:&#x27;ee46a0a44ab53d4eee324464dc36dd06&#x27;} рядом</code></div>
+  <div class="apply">примени: <code>STEP 1 (gate): python3 ~/.claude/scripts/_shared/canon_verify.py E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub ; exit!=0 -&gt; НЕ применять, посылку в HELD, алерт в 03. STEP 2: read E:/Obsidian/Anton-Knowledge/_machine-bus/_transit/canon-from-hub/CLAUDE.md -&gt; merge -&gt; write ACK-&lt;node&gt;.json {applied_md5:&#x27;faeb329c368b007056678a3d60bac0b5&#x27;} рядом</code></div>
   
 </div><h2>✅ Доверенные — применятся сами <span class="cnt">3</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">gh-fleet-full-pat-20260802</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
