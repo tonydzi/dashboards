@@ -1,0 +1,174 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Рутины: где живут, чей бак жгут, видно ли мысль</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--line:#262b36;--tx:#e6e9ef;--dim:#98a2b3;--red:#ff5c5c;--yel:#ffc857;--grn:#3ddc97;--blu:#6aa9ff;--pur:#b388ff}
+*{box-sizing:border-box}body{margin:0;padding:22px;background:var(--bg);color:var(--tx);font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:23px;margin:0 0 4px}.sub{color:var(--dim);font-size:13px;margin-bottom:22px}
+h2{font-size:17px;margin:30px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:14px;margin:18px 0 8px;color:var(--blu)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin-bottom:20px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px}
+.kpi .n{font-size:26px;font-weight:700;line-height:1.1}.kpi .l{color:var(--dim);font-size:12px;margin-top:4px}
+.red{color:var(--red)}.yel{color:var(--yel)}.grn{color:var(--grn)}.blu{color:var(--blu)}.pur{color:var(--pur)}.dim{color:var(--dim)}
+.wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+th{text-align:left;color:var(--dim);font-weight:600;padding:8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px;margin-bottom:12px}
+.bad{border-left:3px solid var(--red)}.ok{border-left:3px solid var(--grn)}.warn{border-left:3px solid var(--yel)}.idea{border-left:3px solid var(--pur)}
+code{background:#0b0d11;padding:2px 5px;border-radius:4px;font-size:12px;color:#ffd479;word-break:break-all}
+.mono{font-family:ui-monospace,Consolas,monospace;font-size:12px}
+.eli{background:#1a2230;border:1px solid #2b3a52;border-radius:10px;padding:16px;margin-top:28px}
+ol,ul{margin:8px 0;padding-left:22px}li{margin:5px 0}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:20px;border:1px solid var(--line);color:var(--dim);margin-right:4px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Routine-Census-2026-08-21.html">&larr; Routine-Census-2026-08-21</a> · <a href="Routine-Refactor-2026-08-22.html">Routine-Refactor-2026-08-22 &rarr;</a></span></div>
+
+<h1>Рутины: где они живут, чей бак жгут, видно ли, как они думают</h1>
+<div class="sub">Хаб A-2022BAYAREA · 21.08.2026, 17:00 Лиссабон · всё замерено приборами (schtasks, list_scheduled_tasks, n8n API, grep по обёрткам), ни одна цифра не по памяти</div>
+
+<div class="grid">
+  <div class="kpi"><div class="n">4</div><div class="l">разных дома у рутин</div></div>
+  <div class="kpi"><div class="n">188</div><div class="l">задач в приложении<br><span class="dim">52 вкл / 136 выкл</span></div></div>
+  <div class="kpi"><div class="n">75</div><div class="l">задач Windows-планировщика</div></div>
+  <div class="kpi"><div class="n grn">67</div><div class="l">активных n8n workflow</div></div>
+  <div class="kpi"><div class="n red">35</div><div class="l">обёрток, что жгут бак Клода вслепую</div></div>
+  <div class="kpi"><div class="n yel">9 066</div><div class="l">тиков в сутки (хаб+Маяк)</div></div>
+</div>
+
+<h2>Карта: четыре дома, а не три</h2>
+<div class="wrap"><table>
+<tr><th>дом</th><th>сколько</th><th>чей бак жжёт</th><th>переживёт пустой бак Клода?</th><th>видно ли, КАК думает</th></tr>
+<tr>
+  <td><b>1. Сессия Claude Code</b><br><span class="dim">приложение, scheduled tasks</span></td>
+  <td>188 / 52 вкл</td>
+  <td class="red">подписка Claude Max, $200</td>
+  <td class="red">❌ нет — умирает вместе с баком</td>
+  <td class="grn"><b>✅ полностью.</b> Открыл сессию, прочитал каждую мысль, вмешался, поправил. Ровно то, что ты хочешь.</td>
+</tr>
+<tr>
+  <td><b>2. Windows-планировщик → python</b></td>
+  <td>75 обёрток<br>(из 139 .cmd — 75 чистый python)</td>
+  <td class="grn">ничей, 0 LLM</td>
+  <td class="grn">✅ да, полностью</td>
+  <td class="yel">⚠️ ей нечем думать. Она считает и сравнивает. Дебажить нечего — либо посчитала, либо упала.</td>
+</tr>
+<tr>
+  <td><b>3. Windows-планировщик → CLI Клода</b><br><span class="dim">⬅ вот эти «невидимые в ОС»</span></td>
+  <td class="red">35 обёрток</td>
+  <td class="red">подписка Claude Max</td>
+  <td class="red">❌ нет</td>
+  <td class="red"><b>❌ ноль.</b> Думает — и мысль уходит в никуда. Ты видишь только «отработала/упала».</td>
+</tr>
+<tr>
+  <td><b>4. n8n</b><br><span class="dim">n8n.palo-alto.ai</span></td>
+  <td>67 активных</td>
+  <td class="grn">свои креды (OpenAI и др.) — <b>не наш бак Клода</b></td>
+  <td class="grn">✅ да — другой поставщик, другой счёт</td>
+  <td class="yel"><b>⚠️ наполовину.</b> Видно вход и выход КАЖДОЙ ноды, промпт агента и его ответ, какие инструменты дёрнул. НЕ видно рассуждение модели — только результат.</td>
+</tr>
+</table></div>
+
+<h2>🔴 Главное открытие: обе твои беды сидят в ОДНОЙ клетке</h2>
+<div class="box bad">
+Ты назвал две разные проблемы — «кончился бак и рутина умерла» и «не вижу, как рутина думает».
+Замер показывает, что это <b>не две проблемы, а одна и та же группа из 35 файлов</b>: дом №3.
+<br><br>
+Это <code>.cmd</code>-обёртки в Windows-планировщике, которые дёргают CLI Клода напрямую.
+Они <b>и жгут бак</b> (значит умрут при исчерпании), <b>и невидимы</b> (значит ты не можешь их поправить).
+Именно про них ты сказал «висят где-то в операционной системе, я не понимаю, как это работает».
+<br><br>
+Поимённо, самые дорогие: <span class="mono">content_factory_daily · dr_robot · voice_triage · facebook_diary_daily · gmail_digest_morning · coach_morning · inbox_robot · fb_watch_daily · claudeai_sync_nightly · wisdom_distill_weekly · hanging_tasks_digest · preference_sweep_daily · skill_gap_daily · memory_tidy · intention_daily</span> и ещё 20.
+<br><br>
+Дома №1, №2 и №4 в этом смысле здоровы: №1 видно и он платит баком, №2 бак не трогает, №4 платит чужим счётом и наполовину видно. Больной ровно один.
+</div>
+
+<h2>🟡 Механизм подмены баков УЖЕ построен — и почти никем не используется</h2>
+<div class="box warn">
+06.08 мы построили ровно то, что ты сейчас просишь: <code>~/.claude/llm_routing.json</code> (v1.2.0, 13 КБ) + <code>scripts/llm_ask.py</code> (65 КБ).
+Внутри — таблица классов работы, у каждого <span class="mono">primary</span>, <span class="mono">fallback</span> и флаг <span class="mono">movable</span>:
+<br><br>
+<span class="mono">judge → primary claude, fallback [маяк, grok, gemini, codex], movable: true</span><br>
+<span class="mono">voice → primary claude, fallback [], movable: false</span> <span class="dim">(твой авторский голос не двигаем)</span><br>
+<span class="mono">mcp → primary claude, movable: false</span> <span class="dim">(коннекторы физически привязаны к машине)</span>
+<br><br>
+Рельсы с деньгами и запасом: Claude Max $200 (бак не читается машинно) · ChatGPT Pro $200 (бак читается, на 06.08 выбрано 4%) · SuperGrok $300 (самая дорогая при самой низкой загрузке) · Gemini Pro $20.
+<br><br>
+<b>Дыра:</b> 35 обёрток дома №3 зовут CLI Клода <b>напрямую, мимо этого маршрутизатора</b>. Мост построен, берега не подключены (§4.2).
+Подключить их — это и есть твой «переключил бак» и стоит дешевле, чем переезд на n8n.
+</div>
+
+<h2>Что уже решено и ждёт тебя</h2>
+<div class="box">
+<span class="tag">16.06</span><b>Где проходит граница cloud/local.</b> Правило принято: трогает волт, GPU, локальные файлы или секреты → только локально. Всегда-онлайн + входящее + мессенджинг и мозг не нужен → n8n. Нужно и то и то → split: n8n ловит событие и возит конверты, локальная сессия думает.
+<br><span class="dim">→ decision-cc-automation-routing-cloud-vs-local</span>
+<br><br>
+<span class="tag">19.08</span><b>Аудит «крон → событийка», статус <span class="yel">ждёт Антона со вторника</span>.</b> Замер: 9 066 тиков в сутки; фоновые роботы = 60% всего расхода токенов; самая дорогая пустая полоса — голосовые, 17.7M токенов в сутки на 0.57 голосовой. Предложено три перевода на n8n-триггер, экономия ≈15.6M токенов/сут только на голосовых. Ничего не выключено, всё ждёт твоего слова.
+<br><span class="dim">→ decision-2026-08-19-cron-to-event-audit + _Dashboards/Cron-to-Event-Audit.html</span>
+</div>
+
+<h2>💡 Что предлагаю как кофаундер</h2>
+<div class="box idea">
+<b>Не «переехать на n8n». Правило прописки: у каждой рутины ОДИН дом, и выбирает его не привычка, а два вопроса.</b>
+<br><br>
+<b>Вопрос 1: нужен ли ей наш контекст?</b> (волт · шина · твои Telegram-сессии · браузер · GPU · секреты)<br>
+<b>Вопрос 2: обязана ли она отработать, даже когда бак Клода пуст?</b>
+<br><br>
+<table style="min-width:auto">
+<tr><th></th><th>бак может кончиться — и ладно</th><th>обязана отработать всегда</th></tr>
+<tr><td><b>нужен наш контекст</b></td><td class="grn">Дом 1: видимая сессия Клода</td><td class="blu">Дом 1 + маршрутизатор <code>llm_ask</code><br><span class="dim">думает Клод, кончился бак — думает Codex/Grok/Gemini</span></td></tr>
+<tr><td><b>контекст не нужен</b></td><td class="grn">Дом 2: python, 0 LLM</td><td class="pur">Дом 4: n8n<br><span class="dim">свой крон, свои креды, переживает всё</span></td></tr>
+</table>
+<br>
+<b>Дом 3 расформировывается.</b> Каждая из 35 обёрток уезжает в один из четырёх квадратов. Ни одна рутина не остаётся невидимой и вслепую жгущей бак.
+</div>
+
+<h3>Пять шагов, от дешёвого к дорогому</h3>
+<div class="box">
+<ol>
+<li><b>Перепись по домам.</b> У каждой рутины в паспорте строка <span class="mono">рельса:</span> — чей оплаченный бак она жжёт. Правило §6.3 это требует с 06.08, но пустых строк много. Прибор, не мнение. <span class="dim">Цена: полдня, 0 токенов.</span></li>
+<li><b>Журнал мысли — лечим видимость сразу для ВСЕХ домов.</b> Каждая рутина, где есть LLM, пишет в один файл: что подумала, почему так решила, что сделала. Ты читаешь его как переписку с сотрудником и правишь. Это дешевле, чем переносить рутины ради UI, и работает и для дома 3, и для n8n. <span class="dim">Цена: день. Именно этого сейчас нет НИГДЕ.</span></li>
+<li><b>35 обёрток → на маршрутизатор</b> <code>llm_ask --class</code>. Канарейка на одной, потом остальные. <span class="dim">Цена: день.</span></li>
+<li><b>Тест на настоящем пустом баке.</b> Пока не проверено на живом исчерпании — «фолбэк работает» это 🤔 гипотеза, а не ✅ факт. <span class="dim">Обязательно: у нас уже был класс, где детектор ловил не то и застабил 207 звонков.</span></li>
+<li><b>n8n — точечно, под своё.</b> Менторинг-сообщения в Telegram, входящие боты, событийные триггеры вместо поллеров. Три полосы из аудита 19.08 уже посчитаны и ждут «+».</li>
+</ol>
+</div>
+
+<h3>Мои возражения к собственному предложению</h3>
+<div class="box">
+<b>1. «Перевести всё на n8n» — не выйдет физически.</b> n8n не достаёт волт, GPU, секреты, твои живые Telegram-сессии и браузер. Половина рутин там нереализуема в принципе. Плюс чинится мышкой на холсте, а не молотком — против АК-47.
+<br><br>
+<b>2. n8n даёт видимость хуже, чем ты думаешь.</b> Там видно вход и выход ноды, промпт и ответ агента — но не ход рассуждения. Сессию Клода ты читаешь как мысли; исполнение n8n читаешь как накладную. Если тебе нужна именно мысль — переезд в n8n её отнимет, а не даст.
+<br><br>
+<b>3. n8n — единая точка отказа.</b> Упал n8n — встали ВСЕ переведённые полосы разом. Поэтому у каждого перевода крон остаётся живым бэкстопом, просто реже.
+<br><br>
+<b>4. Сторожа в n8n переселять нельзя.</b> Сторож ловит ОТСУТСТВИЕ события, а тишина вебхуком не приходит. Плюс §5.5: сторож не живёт в том, что сторожит, а n8n у нас сам под присмотром.
+</div>
+
+<h3>Честно про уверенность</h3>
+<div class="box">
+<b>high</b> — инвентарь: 4 дома, 35 больных обёрток, 67 workflow, маршрутизатор построен и не подключён. Всё снято приборами сегодня.<br>
+<b>medium</b> — что четырёхквадратное правило прописки покроет все случаи. Проверяется только переписью (шаг 1).<br>
+<b>low</b> — что фолбэк рельс реально сработает на пустом баке. Не проверено ни разу. До шага 4 это гипотеза.
+</div>
+
+<h2>Побочно: что сейчас горит (пока смотрел рутины)</h2>
+<div class="box bad">
+<b>7 задач сегодня не стартовали ни разу</b> — упёрлись в потолок одновременных сессий приложения, отказов 16–37 на задачу за 90 минут. Перезапускать бесполезно, место занято. Все 14 сегодняшних <code>auto-hub-260821-*</code> поставлены в окно 16:18–17:41 с шагом 1–3 минуты — это и есть давка. Лечит: закрыть лишние живые сессии и растащить очередь по времени.
+<br><br>
+<b><code>vibe-teach-daily</code> включена, но не бежала ни разу</b> — поле последнего запуска пустое.
+<br><br>
+<b>n8n: 15 ошибок за неделю, все в одном workflow</b> — <code>Personal Audio Summary</code>. Корень найден: нода отправки шлёт в Telegram с разметкой HTML, а LLM иногда возвращает незакрытый тег → Telegram отбивает 400. Сырая расшифровка твоей голосовой доходит, нормализованная теряется молча. Фикс на одну строку, но прогнать его можно только на живой голосовой — жду твоего слова.
+</div>
+
+<div class="eli">
+<b>🧒 Простыми словами.</b><br>
+У твоих роботов не три дома, а четыре, и один из них плохой.<br><br>
+Первый дом — роботы прямо в приложении Клода. Их видно насквозь: открыл, прочитал мысли, поправил. Но они живут на твоей подписке: кончились деньги на счету — робот замолчал.<br><br>
+Второй дом — простые счётные скрипты на компьютере. Они вообще не думают, а считают. Денег не тратят, работают всегда. Чинить в них нечего.<br><br>
+Третий дом — <b>вот он плохой</b>. Это 35 файликов, которые тихо будят Клода по расписанию. Они и деньги со счёта тратят, и мысли свои никому не показывают. Ты сказал «висит что-то в операционной системе, не понимаю» — это ровно они. Обе твои жалобы про них одних.<br><br>
+Четвёртый дом — n8n на сервере. Он платит с другого счёта, поэтому переживёт, даже когда у Клода кончится. И там немножко видно, как робот думал: что ему прислали, что он ответил. Но не «почему он так решил» — этого там нет.<br><br>
+Что я предлагаю: не переезжать всем стадом на n8n (половина туда просто не влезет — там нет твоих заметок, паролей и телеграма). А сделать проще: каждому роботу задать два вопроса — «тебе нужны Антоновы записи?» и «ты должен работать, даже если деньги кончились?». По ответам он едет в свой дом. И главное — завести <b>одну общую тетрадку</b>, куда все роботы пишут «я подумал вот так, потому что вот это». Тогда ты читаешь тетрадку как переписку с сотрудником и правишь любого — хоть из первого дома, хоть из четвёртого. Такой тетрадки сейчас нет нигде, и это дешевле, чем любой переезд.
+</div>
+
+</body></html>

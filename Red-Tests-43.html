@@ -1,0 +1,97 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Parasite-Activity-Audit.html">&larr; Parasite-Activity-Audit</a> · <a href="Review-After-Rail.html">Review-After-Rail &rarr;</a></span></div><!doctype html><html lang="ru"><meta charset="utf-8">
+<title>Разбор 43 красных тестов — 23.08.2026</title>
+<style>
+:root{--bg:#0f1116;--fg:#e6e8ee;--dim:#8b93a7;--card:#171a22;--line:#242938;
+--green:#3fb950;--red:#f85149;--amber:#d29922;--blue:#58a6ff}
+*{box-sizing:border-box}body{margin:0;padding:28px;background:var(--bg);color:var(--fg);
+font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:23px;margin:0 0 4px}h2{font-size:17px;margin:30px 0 10px;color:var(--blue)}
+.sub{color:var(--dim);margin-bottom:22px;font-size:13px}
+.tiles{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.t{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;min-width:132px}
+.t b{display:block;font-size:27px;line-height:1.1}.t span{color:var(--dim);font-size:12px}
+.g b{color:var(--green)}.r b{color:var(--red)}.a b{color:var(--amber)}
+.bar{height:15px;border-radius:8px;overflow:hidden;display:flex;margin:14px 0 4px;border:1px solid var(--line)}
+.bar i{display:block;height:100%}
+table{border-collapse:collapse;width:100%;margin-top:6px;font-size:13.5px}
+th,td{border-bottom:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+td.w{width:31%}code{background:#0b0d12;padding:1px 5px;border-radius:4px;font-size:12.5px}
+.tag{font-size:11px;padding:2px 7px;border-radius:20px;border:1px solid var(--line);color:var(--dim);white-space:nowrap}
+.hit{border-left:3px solid var(--red);padding-left:12px;margin:14px 0}
+.hit b{color:var(--fg)}.hit p{margin:4px 0 0;color:var(--dim);font-size:13.5px}
+footer{margin-top:34px;color:var(--dim);font-size:12px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+<h1>Разбор 43 красных тестов регресс-сетки</h1>
+<div class="sub">Хаб A-2022BAYAREA · ночь 22→23 августа 2026 · сессия <code>red-tests-43</code> · 29 коммитов</div>
+
+<div class="tiles">
+  <div class="t"><b>43</b><span>красных было</span></div>
+  <div class="t g"><b>11</b><span>красных стало</span></div>
+  <div class="t g"><b>32</b><span>закрыто</span></div>
+  <div class="t a"><b>8</b><span>настоящих дыр расписано ниже<br>(всего их больше — см. коммиты)</span></div>
+  <div class="t"><b>445</b><span>тестов прогнано</span></div>
+</div>
+<div class="bar"><i style="background:var(--green);width:97.5%"></i><i style="background:var(--red);width:2.5%"></i></div>
+<div class="sub">зелёных 434 из 445 · цель мандата была «красных ≤15»</div>
+
+<h2>Настоящие поломки, которые прятались за красными лампочками</h2>
+
+<div class="hit"><b>Конфликт-копии движков разъезжались по флоту</b>
+<p>У <code>X.sync-conflict-….py</code> то же расширение, что у движка, поэтому whitelist <code>.stignore</code> ловил её первой. Замер: <code>local.ignored=false</code>. Замок поставлен, посылка на 6 узлов, хаб применил.</p></div>
+
+<div class="hit"><b>Диспетчер выдавал 20 сессий при капе 6</b>
+<p>Починки классов шли «вне капа» с обоснованием «они редкие» — а в очереди стояло 14. Плюс один <code>taskId</code> дублировался между двумя лейнами: две сессии на один id.</p></div>
+
+<div class="hit"><b>Сторож зависших LLM-вызовов не совпадал НИ РАЗУ</b>
+<p>Искал <code>gemini -p</code>, а парсер отдаёт имя бинарника отдельно от аргументов. Находил ноль и штатно молчал — то есть выглядел здоровым. Заведён он был после случая, когда вызов прожил 5ч48м и блокировал живую сессию.</p></div>
+
+<div class="hit"><b>Аудит рутин неделю объявлял мёртвыми ЖИВЫЕ</b>
+<p>Импортировал функции, удалённые при переписывании дашборда 21.08 → карта кодов пустая → <code>267009</code> «выполняется прямо сейчас» читался как смерть. После фикса: 734 рутины, с транзиентными кодами 16, красных среди них 0.</p></div>
+
+<div class="hit"><b>Счётчик Firefox-vs-Chrome льстил Лисе</b>
+<p>Исход <code>blocked</code> (отбой Cloudflare) молча шёл в успех: 2 удачи + 1 отбой давали 100%, а не 66.7%. Сам тест при этом писал в БОЕВОЙ счётчик — в отчёте флота завёлся фантомный узел <code>TEST-NODE</code> и уехал по синку. Это цифры, по которым решается вопрос про Firefox.</p></div>
+
+<div class="hit"><b>Секреты ChatGPT-рельсы на Windows не были защищены ничем</b>
+<p><code>chmod 0600</code> на Windows декоративен: проходит без ошибки, режим остаётся <code>0o666</code>. Теперь ACL. Замер: было SYSTEM + Администраторы + владелец, стало ровно одна строка — владелец.</p></div>
+
+<div class="hit"><b>Одно разрешение <code>SKILL.md</code> открывало дверь всем скиллам</b>
+<p>Заморозка стройки узнавала запчасть по имени файла, а у каждого скилла оно одно и то же. Исключение, выданное когда-то под один скилл, пропускало ЛЮБОЙ новый — молча.</p></div>
+
+<div class="hit"><b>«Не для меня» врало и было необратимо</b>
+<p>Инструмент печатал «список НЕ глушу» и тут же гасил свою же посылку; лекарством называл механизм, которого в коде нет. Отката не существовало: один неверный вызов навсегда прятал настоящий долг узла.</p></div>
+
+<h2>Класс, который просит механизм (§5.10: порог пройден)</h2>
+<p style="color:var(--dim);margin-top:2px">Четыре датированных случая за одни сутки: <b>удалили публичную функцию — молча осиротел тот, кто её импортировал</b>. Импорт падал в <code>except</code>, и вместо ошибки получалась тихая деградация: пустая карта, ложный вердикт, мёртвый сторож.</p>
+<table><tr><th>Где</th><th>Что осиротело</th></tr>
+<tr><td class="w"><code>expected_exit_codes.json</code></td><td>вторая копия карты потеряла читателя и разошлась с каноном</td></tr>
+<tr><td class="w"><code>rule_liveness.py</code></td><td>устаревшая копия писала фикстуры в общую боевую базу ночного алярма</td></tr>
+<tr><td class="w"><code>_test_fleet_run_status.py</code></td><td>два дня падал <code>AttributeError</code>, не проверив ни байта</td></tr>
+<tr><td class="w"><code>fleet_routines_audit.py</code></td><td>неделю красил живые рутины в 🔴</td></tr></table>
+
+<h2>Панель ломателей нашла то, чего не нашли ни я, ни 43 теста</h2>
+<div class="hit"><b>3 из 3 рельс ответили, все три вердикта COUNTER</b>
+<p>Подтвердилась одна находка: моё правило стояло без префикса <code>(?d)</code>, и я защитил это рассуждением вместо проверки. Без него игнорируемый файл не даёт удалить каталог — шара встала бы с вечной ошибкой «directory not empty». Исправлено тем же заходом. Три другие находки отведены замером: ACL не отнимает чтение у владельца; пустая <code>MACHINE_BUS_DIR</code> не трогает dual-send; <code>build_freeze</code> не ломается на слэшах и регистре.</p></div>
+
+<h2>Что осталось красным — 11, каждая с причиной</h2>
+<table>
+<tr><th>Тест</th><th class="w">Почему не закрыт</th><th>Чей ход</th></tr>
+<tr><td><code>_test_ask_once_wiring</code><br><code>_test_journal_scan</code><br><code>_test_skill_refs</code></td><td>правились ПАРАЛЛЕЛЬНОЙ сессией этой же ночью; не лезу, чтобы не драться за один файл</td><td><span class="tag">соседняя сессия</span></td></tr>
+<tr><td><code>_test_consensus_s10</code> ×2</td><td>кандидат-движок S10 стоит в стейджинге 25 дней и уже регрессирует: живой даёт 48/48, staged 44/48 — потерян proof-gate. Зелёным делать НЕЛЬЗЯ</td><td><span class="tag">решение Антона</span></td></tr>
+<tr><td><code>_test_scripts_share</code></td><td><code>scripts/.git</code> анонсирует узел HP17, офлайн с 14.08. Наш фильтр исправен; закроется посылкой, когда он подключится</td><td><span class="tag">офлайн-узел</span></td></tr>
+<tr><td><code>_test_rule_home_guard_door</code></td><td>вердикт дверей описан в §8.6, но в коде его нет; регресс старше 16 дней — уже заведён соседней сессией</td><td><span class="tag">заведено</span></td></tr>
+<tr><td><code>_test_claude_fleet_stage</code></td><td>в git-канал флота едут только <code>.gitignore</code> и <code>CLAUDE.md</code>. Упирается в ПЕР-МАШИННЫЙ <code>.gitignore</code>, чья путаница 19.08 уже стоила трёх суток мёртвых снапшотов — вслепую не трогаю</td><td><span class="tag">отдельная сессия</span></td></tr>
+<tr><td><code>_test_dr_start</code></td><td>6 параллельных заказов на Windows: часть падает <code>PermissionError</code> на общем реестре. POSIX разрешает конкурентное открытие, Windows блокирует — гонка за реестр на Windows НЕ закрыта</td><td><span class="tag">отдельная сессия</span></td></tr>
+<tr><td><code>_test_content_publish_contract</code></td><td>1 из 14: «живая копилка: контрактного разрыва нет», rc=3</td><td><span class="tag">отдельная сессия</span></td></tr>
+<tr><td><code>_test_pipeline_stage_owners</code></td><td>в <code>approved/</code> 4 поста без маршрута — контентный долг, не код</td><td><span class="tag">контент</span></td></tr>
+</table>
+
+<h2>Нужны руки Антона — одна команда, не срочно</h2>
+<p style="color:var(--dim);margin-top:2px">Битый симлинк в общей временной папке красил СЕМЬ pytest-тестов: они проходили все свои проверки и всё равно отдавали не-ноль. Обошёл через <code>conftest.py</code>, никого больше не блокирует, но сам симлинк снимается только из терминала с правами администратора:</p>
+<p><code>rmdir "%LOCALAPPDATA%\Temp\pytest-of-Anton\pytest-current"</code></p>
+
+<footer>Источники: <code>00-System\Regression-Status-A-2022BAYAREA.md</code> (прогон 00:25 + поправка сессии) ·
+<code>00-System\Breakage-Journal.md</code> (9 датированных строк-долгов) · 29 коммитов с трейлерами §4.9 в репозиториях
+<code>scripts</code>, <code>hooks</code>, <code>scheduled-tasks</code>, <code>_imports</code>, <code>.claude</code>, <code>memory</code>.
+Вердикт /tt: ⚠️ WARN — 11 строк осталось, браузерная нога панели (GLM) не пройдена.</footer>
+</html>

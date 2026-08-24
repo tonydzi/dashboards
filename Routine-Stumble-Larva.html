@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Личинка спотыканий — замер и решение</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#14181f; --muted:#5b6472; --line:#e2e6ec;
+    --ok:#1a7f4b; --warn:#a86500; --bad:#b32020; --accent:#2b5fd9;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0f1216; --card:#171b21; --ink:#e8ecf2; --muted:#98a2b3; --line:#262c35;
+      --ok:#4ec98a; --warn:#e0a33a; --bad:#f0736b; --accent:#7aa2ff;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 16px 60px;background:var(--bg);color:var(--ink);
+       font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1060px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 24px;font-size:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+        padding:18px 20px;margin:0 0 18px}
+  h2{font-size:17px;margin:0 0 12px}
+  .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin:0 0 18px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .num{font-size:28px;font-weight:600;line-height:1.1}
+  .lab{color:var(--muted);font-size:13px;margin-top:4px}
+  .scroll{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:13px}
+  .bar{height:8px;border-radius:4px;background:var(--accent);display:block}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+  .pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;
+        border:1px solid var(--line);color:var(--muted)}
+  ol,ul{margin:8px 0 0;padding-left:20px} li{margin:4px 0}
+  code{background:rgba(127,127,127,.14);padding:1px 5px;border-radius:4px;font-size:13px}
+  .chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 11px}
+  .arw{color:var(--muted)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Routine-Rights.html">&larr; Routine-Rights</a> · <a href="Routines-Audit-Nataly-2026-08-10.html">Routines-Audit-Nataly-2026-08-10 &rarr;</a></span></div>
+<div class="wrap">
+
+<h1>Личинка спотыканий</h1>
+<p class="sub">Голосовая hub:5694 · хаб A-2022BAYAREA · 22.08.2026 21:5x Лиссабон · вердикт ✅ PASS</p>
+
+<div class="grid">
+  <div class="tile"><div class="num">4,7 %</div><div class="lab">вызовов инструментов спотыкается<br>(745 из 15 969 за 19–22.08)</div></div>
+  <div class="tile"><div class="num">17,3 %</div><div class="lab">ошибок — среда и оболочка<br>(наблюдение Антона про Windows ✅)</div></div>
+  <div class="tile"><div class="num">1 из 45</div><div class="lab">рутин звали дверь журнала<br>до сегодня</div></div>
+  <div class="tile"><div class="num">~1,5</div><div class="lab">строки в сутки добавит личинка<br>(тень на 1271 транскрипте)</div></div>
+</div>
+
+<div class="card">
+<h2>На чём рутины спотыкаются (745 ошибок, 19–22.08)</h2>
+<div class="scroll">
+<table>
+<tr><th>семья</th><th>штук</th><th>доля</th><th></th><th>это поломка?</th></tr>
+<tr><td>штатный отбой гейта</td><td>153</td><td>20,5 %</td><td><span class="bar" style="width:100%"></span></td><td class="ok">нет — защита сработала</td></tr>
+<tr><td>наши скрипты вернули не-ноль осмысленно</td><td>~130</td><td>17,4 %</td><td><span class="bar" style="width:85%"></span></td><td class="ok">нет — «нашёл и доложил»</td></tr>
+<tr><td>среда: пути, кавычки, кодировки, синтаксис</td><td>129</td><td>17,3 %</td><td><span class="bar" style="width:84%"></span></td><td class="bad">да — предотвратимо</td></tr>
+<tr><td>таймаут / зависание</td><td>65</td><td>8,7 %</td><td><span class="bar" style="width:42%"></span></td><td class="bad">да</td></tr>
+<tr><td>исключение в НАШЕМ коде</td><td>64</td><td>8,6 %</td><td><span class="bar" style="width:42%"></span></td><td class="bad">да</td></tr>
+<tr><td>права / занятый файл, аргументы, прочее</td><td>204</td><td>27,5 %</td><td><span class="bar" style="width:60%"></span></td><td class="warn">смешанное</td></tr>
+</table>
+</div>
+<p class="sub" style="margin:12px 0 0">Независимая рельса, журнал событий планировщика Windows за 7 суток: 10 338 завершений наших OS-задач, 707 ненулевых. Из них 624 — одна задача Canon Publish, и это <b>здоровый</b> не-ноль («нашёл дрейф»), а не поломка.</p>
+</div>
+
+<div class="card">
+<h2>Развилка: рефакторщик, личинка в каждой рутине или личинка в харнесе</h2>
+<div class="scroll">
+<table>
+<tr><th>вариант</th><th>цена</th><th>слабое место</th><th>итог</th></tr>
+<tr><td><b>А.</b> строка в каждый SKILL.md</td><td>45 правок + раскатка на флот</td><td>инструкция доброй воли LLM: 22 % записей журнала до сих пор без имени класса именно поэтому</td><td class="bad">отклонён</td></tr>
+<tr><td><b>Б.</b> рутина-рефакторщик, внешний надзиратель</td><td>новый робот + вечная аренда</td><td>второй менеджер поверх robot-audit-weekly (прямая не-цель); видит труп прогона, а не его ход</td><td class="bad">отклонён</td></tr>
+<tr><td><b>В.</b> один Stop-хук на харнес</td><td>1 файл + 1 строка в манифест</td><td>жёстко убитый прогон до хука не доживает (закрывает другой сторож)</td><td class="ok">принят, панель 3/3 за</td></tr>
+</table>
+</div>
+<p class="sub" style="margin:12px 0 0">Личинка Антона — но вклеенная один раз в общее тело, а не в текст каждой рутины. Побочно лечит болезнь имён: робот берёт класс из словаря 12 семей, а не выдумывает.</p>
+</div>
+
+<div class="card">
+<h2>Цепочка целиком — доказана живым прогоном</h2>
+<div class="chain">
+  <span class="step">прогон рутины кончился</span><span class="arw">→</span>
+  <span class="step">Stop-хук читает свой транскрипт</span><span class="arw">→</span>
+  <span class="step">≥3 ошибки одной семьи</span><span class="arw">→</span>
+  <span class="step"><code>selfheal.py journal</code></span><span class="arw">→</span>
+  <span class="step">3-я строка класса</span><span class="arw">→</span>
+  <span class="step">заявка в очередь</span><span class="arw">→</span>
+  <span class="step">видимая сессия починки</span>
+</div>
+<ul>
+  <li>3 строки класса <code>run-timeout-or-hang</code> по трём разным рутинам → заявка <code>auto-hub-260822-repair-run-timeout-or-hang</code></li>
+  <li>Диспетчер прямо сейчас отдаёт эту заявку как <b>P0</b> — потребитель доказан потреблением, а не описанием</li>
+  <li>Личинка уже отработала на трёх ЧУЖИХ рутинах и корректно промолчала на чистых прогонах</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Что закрыто по находкам внешней панели (Codex · Grok · Gemini, 3/3)</h2>
+<ul>
+  <li><b>Цикл починка→починка:</b> сессии починки не журналируются вовсе</li>
+  <li><b>Повторные Stop одного прогона:</b> штамп «сессия+класс», дверь дёргается один раз</li>
+  <li><b>Гейт со словами семьи в тексте:</b> отдельный тест + мутация, которая краснеет при выключенном фильтре</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Честные границы</h2>
+<ol>
+  <li><b>Жёстко убитый прогон невидим:</b> нет конца сессии — нет личинки. Этот слой держат <code>stale_task_watch.py</code> и <code>os_task_watchdog.ps1</code>.</li>
+  <li><b>Самоперезаписи кода нет.</b> Личинка только называет класс; правку предлагает сессия починки — человек в петле сохранён намеренно.</li>
+  <li><b>Полную расшифровку голосовой прочитать не удалось:</b> MCP телеграма молчал по 300 с дважды. Работал по дословной цитате из сида; строка в журнале заведена.</li>
+</ol>
+</div>
+
+<p class="sub"><span class="pill">карточка</span> 10-Tasks/task-2026-08-22-routine-stumble-larva.md &nbsp;·&nbsp;
+<span class="pill">код</span> ~/.claude/hooks/stumble_larva.py &nbsp;·&nbsp;
+<span class="pill">тест</span> _test_stumble_larva.py — 16 проверок</p>
+
+</div>
+</body>
+</html>

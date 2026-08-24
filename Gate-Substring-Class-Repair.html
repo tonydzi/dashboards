@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Починка класса: гейт судил слово, а не дело</title>
+<style>
+ body{background:#faf9f7;color:#22252a;font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;padding:28px}
+ .wrap{max-width:1020px;margin:0 auto}
+ h1{font-size:22px;margin:0 0 4px} h2{font-size:16px;margin:26px 0 8px;color:#3a4048}
+ .sub{color:#6b7280;font-size:13px;margin-bottom:18px}
+ .card{background:#fff;border:1px solid #e6e3de;border-radius:8px;padding:14px 16px;margin-bottom:12px}
+ table{border-collapse:collapse;width:100%;background:#fff;font-size:14px}
+ th,td{border:1px solid #e6e3de;padding:7px 9px;text-align:left;vertical-align:top}
+ th{background:#eef0f2;font-weight:600}
+ .ok{color:#1a7f37;font-weight:600} .bad{color:#b42318;font-weight:600} .warn{color:#9a6700;font-weight:600}
+ code{background:#f2f1ee;padding:1px 4px;border-radius:3px;font-size:13px}
+ .kpi{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 4px}
+ .kpi div{background:#fff;border:1px solid #e6e3de;border-radius:8px;padding:10px 14px;min-width:120px}
+ .kpi b{display:block;font-size:20px} .kpi span{color:#6b7280;font-size:12px}
+ .note{color:#6b7280;font-size:13px;margin-top:6px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Правила и канон</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Coverage-Map.html">&larr; Coverage-Map</a> · <a href="Hook-Canon-Lag.html">Hook-Canon-Lag &rarr;</a></span></div><div class="wrap">
+
+<h1>Гейт судил слово, а не дело — класс закрыт</h1>
+<div class="sub">хаб A-2022BAYAREA · сессия <code>auto-hub-260822-repair-gate-substring-not-action</code> · 22 августа 2026, вечер</div>
+
+<div class="kpi">
+  <div><b>9</b><span>строк класса в журнале<br>05.08 – 21.08</span></div>
+  <div><b>3/3</b><span>ложных блока из журнала<br>теперь проходят</span></div>
+  <div><b>5</b><span>тихих пропусков закрыто<br>(нашла панель, 2 раунда)</span></div>
+  <div><b>31+6</b><span>кейсов в двух тестах<br>4 мутанта убиты</span></div>
+  <div><b>6</b><span>машин получили посылку</span></div>
+</div>
+
+<h2>Что болело (простыми словами)</h2>
+<div class="card">
+Сторож у двери должен спрашивать «ты <b>запускаешь</b> эту программу?». А он спрашивал «в твоей фразе
+<b>встречается</b> это слово?». Поэтому он отбивал запись заметки, где программа просто <i>упомянута</i>,
+и пропускал настоящий запуск, если тот записан непривычно.
+</div>
+
+<h2>Корень серии (5 почему по 9 строкам, не по последнему случаю)</h2>
+<div class="card">
+Каждый гейт нёс <b>свою копию</b> вопроса «запускает или упоминает». Каждую копию латали отдельно —
+и класс просто перебегал на тот гейт, который ещё не залатали.
+Корень: <b>не было единого ответа</b> «что команда реально исполняет».
+<div class="note">Единый ответ — <code>~/.claude/scripts/_shared/cmd_action.py</code> — построен 20.08 и ужесточён панелью 21.08.
+Эта сессия доказала, что он закрывает серию, и зашила последнюю незашитую деталь.</div>
+</div>
+
+<h2>Замер: три названных в журнале ложных блока — живой прогон на хабе</h2>
+<table>
+<tr><th>Случай из журнала</th><th>Что это на самом деле</th><th>Было</th><th>Стало</th></tr>
+<tr><td>20.08 · python-heredoc с мемо</td><td>запись файла</td><td class="bad">БЛОК</td><td class="ok">проходит</td></tr>
+<tr><td>21.08 · семь карточек CRM</td><td>запись файла</td><td class="bad">БЛОК</td><td class="ok">проходит</td></tr>
+<tr><td>14.08 · дозапись строки в журнал</td><td>запись файла</td><td class="bad">БЛОК</td><td class="ok">проходит</td></tr>
+<tr><td>настоящий запуск сессии</td><td>запуск</td><td class="ok">БЛОК</td><td class="ok">БЛОК</td></tr>
+<tr><td>19.08 · правка файла с именем рутины</td><td>правка</td><td class="bad">БЛОК</td><td class="ok">проходит</td></tr>
+<tr><td>20.08 · греп по файлу рутины</td><td>чтение</td><td class="bad">БЛОК</td><td class="ok">проходит</td></tr>
+<tr><td>настоящий запуск рутины</td><td>запуск</td><td class="ok">БЛОК</td><td class="ok">БЛОК</td></tr>
+</table>
+
+<h2>Что починено сегодня</h2>
+<table>
+<tr><th>Деталь</th><th>Что было</th><th>Что стало</th><th>Улика</th></tr>
+<tr>
+ <td><code>hooks/av_spawn_guard.py</code></td>
+ <td>судил подстроку: запись заметки и настоящий вызов давали <b>один</b> вердикт. Дыра дремала — на хабе нет Касперского, гейт уходит в stand&nbsp;down</td>
+ <td>спрашивает у общего разбора <code>cmd_action</code>; разбор не удался → блок (fail-closed)</td>
+ <td class="ok">мутант старой логики = красный тест</td>
+</tr>
+<tr>
+ <td>он же, ветка тихих пропусков</td>
+ <td>мимо гейта шли <b>настоящие</b> запуски: <code>powershell -c "schtasks /create"</code>, абсолютный путь, путь в кавычках</td>
+ <td>закрыты разбором действия; <code>/query</code> и <code>/run</code> по-прежнему свободны</td>
+ <td class="ok">нашла панель ломателей 3/3 за 38с, все три воспроизведены живьём</td>
+</tr>
+<tr>
+ <td><code>scripts/registry_dispatch.py</code></td>
+ <td>лепил taskId с кириллицей, а приёмник <code>spawn_slot_guard</code> берёт только латиницу → <b>сессия не поднималась никогда</b>, очередь считалась поставленной</td>
+ <td>транслит из единого источника имён <code>auto_session_name.slugify</code></td>
+ <td class="ok">тест импортирует регекс у самого потребителя; мутант = 4 красных</td>
+</tr>
+</table>
+<div class="note">Сегодня это ударило по самой сессии починки: диспетчер поднимал её руками под ASCII-именем.</div>
+
+<h2>Честные границы (названы вслух, не заметены)</h2>
+<table>
+<tr><th>Что не закрыто</th><th>Почему так решено</th></tr>
+<tr><td><code>start /b schtasks /create</code> — общий разбор видит только <code>start</code></td>
+    <td>чинить надо в <code>cmd_action</code>, а не копией в гейте. Строка 1/3 в журнале поломок; по правилу третьей поломки механизм пока не строю</td></tr>
+<tr><td>PowerShell-командлеты (<code>New-ScheduledTaskAction</code>) остались на текстовом якоре</td>
+    <td><code>cmd_action</code> разбирает шелл, а не PowerShell: снятие блока по нему дало бы пропуск настоящего вызова. Тест поймал это сразу</td></tr>
+<tr><td>Два разных имени задачи могут дать один taskId после транслита</td>
+    <td>поведение не новое, ни одного датированного случая нет; выдумывать поломку заранее не буду</td></tr>
+</table>
+
+<h2>Раскатка на флот</h2>
+<div class="card">
+Посылка <code>substr-gate-action-20260822</code> зарегистрирована на <b>6 машин</b>
+(хаб, Маяк, MacBook-Anton, MacBook-Ruslana, MyOwnPC-Natalia, ZBOOKG8).
+Файлы едут синком (<code>hooks/**</code> и <code>scripts/**/*.py</code> в шаре), шаг посылки — <b>прогнать два теста</b>:
+красный тест на узле = там ещё старая версия файла.
+<div class="note">Важно: все девять поломок класса случились на <b>Mac16</b>, а чинилось на хабе — поэтому проверка идёт по узлам, а не по хабу.</div>
+</div>
+
+<h2>Ворота качества</h2>
+<table>
+<tr><th>Проверка</th><th>Результат</th></tr>
+<tr><td><code>_test_av_spawn_guard.py</code></td><td class="ok">31/31 · три мутанта убиты</td></tr>
+<tr><td><code>_test_dispatch_taskid_ascii.py</code></td><td class="ok">6/6 · мутант убит (4 красных)</td></tr>
+<tr><td><code>_test_blackbox_guard.py</code></td><td class="ok">41/41</td></tr>
+<tr><td><code>_test_gates_substring_regression.py</code></td><td class="ok">19/19</td></tr>
+<tr><td><code>_test_maintenance_gate_action.py</code> / <code>_body.py</code></td><td class="ok">40/40 · 33/33</td></tr>
+<tr><td><code>substr_lint.py</code> по изменённым файлам</td><td class="ok">чисто</td></tr>
+<tr><td>панель ломателей <code>/secondop t3</code></td><td class="ok">раунд 1 BLOCK → 3 находки закрыты · раунд 2 COUNTER → из 4 находок 2 реальны (дефисный ключ <code>-create</code>, имя задачи со словом create) и закрыты, 2 опровергнуты зелёными тестами</td></tr>
+</table>
+
+</div></body></html>

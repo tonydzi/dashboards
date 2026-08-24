@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>АК-47: аудит 55 сессий</title>
+<style>
+  :root{--bg:#f6f7f9;--ink:#1c2128;--muted:#667085;--card:#fff;--line:#e4e7ec;
+        --ok:#12805c;--okbg:#e6f4ee;--warn:#b54708;--warnbg:#fdf1e3;--bad:#b42318;--badbg:#fbe9e7;
+        --info:#175cd3;--infobg:#e8f0fd}
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#12151a;--ink:#e6e9ee;--muted:#98a2b3;--card:#1a1f27;--line:#2c333d;
+          --ok:#4cc38a;--okbg:#12291f;--warn:#f0a75a;--warnbg:#2e2013;--bad:#f08579;--badbg:#301713;
+          --info:#7ab1ff;--infobg:#14203a}}
+  body{margin:0;padding:24px 16px 60px;background:var(--bg);color:var(--ink);
+       font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:980px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px;letter-spacing:-.4px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:26px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:18px}
+  h2{font-size:17px;margin:0 0 12px;letter-spacing:-.2px}
+  .verdict{font-size:19px;line-height:1.45;font-weight:600}
+  .tiles{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .tile{flex:1 1 130px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-align:center}
+  .tile b{display:block;font-size:30px;letter-spacing:-1px}
+  .tile span{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)} .info{color:var(--info)}
+  .pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12.5px;font-weight:600;white-space:nowrap}
+  .p-ok{background:var(--okbg);color:var(--ok)} .p-warn{background:var(--warnbg);color:var(--warn)}
+  .p-bad{background:var(--badbg);color:var(--bad)} .p-info{background:var(--infobg);color:var(--info)}
+  .tablewrap{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;min-width:600px;font-size:14px}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  .bar{height:14px;border-radius:99px;overflow:hidden;display:flex;margin:10px 0 6px}
+  .bar div{height:100%}
+  .legend{font-size:13px;color:var(--muted)}
+  code{background:var(--infobg);color:var(--info);padding:1px 5px;border-radius:5px;font-size:13px}
+  .quote{border-left:3px solid var(--line);padding:2px 0 2px 12px;color:var(--muted);font-size:14px;margin:8px 0}
+  ul{margin:8px 0;padding-left:22px} li{margin-bottom:6px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="AI-Slop-Connect-Map.html">&larr; AI-Slop-Connect-Map</a> · <a href="Access-Offboarding-Audit-2026-07-05.html">Access-Offboarding-Audit-2026-07-05 &rarr;</a></span></div><div class="wrap">
+<h1>Принцип АК-47 — аудит соблюдения</h1>
+<div class="sub">55 сессий (ретро 18–22 августа 2026) + 10 свежепостроенных скриптов · аудит 13 агентами (8 читателей + 2 кодовых аудитора + 3 скептика-опровергателя) · 22.08.2026, хаб A-2022BAYAREA</div>
+
+<div class="card">
+  <div class="verdict">Принцип <span class="ok">в целом соблюдается: 90% строивших сессий чистые</span>. Из 49 сессий, где что-то строилось, — 44 без нарушений, 5 с замечаниями, ни одного полного провала. Подтверждённый major — один: перезапись чужих живых артефактов под занятыми именами (класс уже 14+ раз в журнале поломок). Главный должник в коде — <code>voice_pull_tg.py</code>: 330 из 567 строк съела машинерия замка.</div>
+</div>
+
+<div class="tiles">
+  <div class="tile"><b class="ok">44</b><span>сессий чисто</span></div>
+  <div class="tile"><b class="warn">5</b><span>с замечаниями</span></div>
+  <div class="tile"><b class="bad">0</b><span>провалов</span></div>
+  <div class="tile"><b class="info">6</b><span>ничего не строили</span></div>
+  <div class="tile"><b class="warn">7</b><span>нарушений (6 minor + 1 major)</span></div>
+</div>
+
+<div class="card">
+  <h2>Счёт по сессиям (49 строивших)</h2>
+  <div class="bar">
+    <div style="width:89.8%;background:var(--ok)"></div>
+    <div style="width:10.2%;background:var(--warn)"></div>
+  </div>
+  <div class="legend">🟢 pass 44 (89.8%) · 🟠 warn 5 (10.2%) · 🔴 fail 0. Каждое обвинение прогнано через 3 скептиков-опровергателей (линзы = трое ворот АК-47); подтверждено голосованием ≥2/3 только одно.</div>
+</div>
+
+<div class="card">
+  <h2>🔴 Подтверждённый major (2/3 голосов скептиков)</h2>
+  <table>
+    <tr><th>Где</th><th>Что</th><th>Ворота</th></tr>
+    <tr>
+      <td>retro-2026-08-20-fleet-routines-registry</td>
+      <td>Свой сборщик и своя панель писались под <b>занятыми именами</b> без проверки существующего — затёрты два чужих живых артефакта (ежечасный дашборд + рабочий агрегатор на 237 строк от 11.07). Вторая панель рутин флота = вторая копия вместо одного источника.</td>
+      <td><span class="pill p-bad">simpler-fork + copies</span></td>
+    </tr>
+  </table>
+  <div class="quote">Класс «перезапись чужого живого артефакта» — ≥14 датированных строк в Breakage-Journal. По правилу третьей поломки это давно системный класс → нужна отдельная сессия починки (гейт на коллизию имён в общих папках).</div>
+</div>
+
+<div class="card">
+  <h2>🟠 Minor-нарушения (6)</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Сессия</th><th>Деталь</th><th>Ворота</th></tr>
+    <tr><td>21.08 git-s7-fast</td><td><code>ballcheck.py</code> — одноразовый скан там, где 7 рутин зовут готовый <code>pr_watch --digest</code> (сам же выброшен той же сессией)</td><td><span class="pill p-warn">copies</span></td></tr>
+    <tr><td>21.08 owner-lock</td><td>Карточка «для живой сессии на хабе» как обход пяти отказов классификатора вместо починки классификатора</td><td><span class="pill p-warn">G3</span></td></tr>
+    <tr><td>20.08 apple-contacts</td><td>Корневой Contacts/ — вторая копия канона контактов в волте</td><td><span class="pill p-warn">copies</span></td></tr>
+    <tr><td>20.08 fleet-routines</td><td>Две параллельные панели рутин флота вместо одного источника</td><td><span class="pill p-warn">copies</span></td></tr>
+    <tr><td>19.08 mac16-routines</td><td><code>dr_tick_precheck.py</code> — деталь ради экономии, врала молча</td><td><span class="pill p-warn">G2</span></td></tr>
+    <tr><td>19.08 mac16-routines</td><td><code>workflow_harvest_sweep</code> — краш выглядел как успех</td><td><span class="pill p-warn">G2</span></td></tr>
+  </table></div>
+  <div class="legend">Паттерн виден: 3 из 6 minor — «copies» (вторая копия вместо одного источника), 2 — «молчаливая ложь» (G2). Оба типа канон прямо запрещает.</div>
+</div>
+
+<div class="card">
+  <h2>Аудит кода: 10 свежепостроенных скриптов (последние 2 недели)</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Скрипт</th><th>LOC</th><th>Паспорт</th><th>Тест</th><th>Громкий отказ</th><th>Починит Антон</th><th>Вердикт</th></tr>
+    <tr><td><code>pub_ledger_write.py</code></td><td>276</td><td>✅</td><td>✅</td><td>✅</td><td>да</td><td><span class="pill p-ok">pass — эталон</span></td></tr>
+    <tr><td><code>daily_backup_E_to_F.ps1</code></td><td>351</td><td>✅</td><td>✅</td><td>✅</td><td>отчасти</td><td><span class="pill p-ok">pass — эталон оправданного усложнения</span></td></tr>
+    <tr><td><code>day_ledger.py</code></td><td>473</td><td>✅</td><td>✅✅</td><td>✅</td><td>отчасти</td><td><span class="pill p-ok">pass</span></td></tr>
+    <tr><td><code>backup_healthcheck.py</code></td><td>329</td><td>✅</td><td>✅</td><td>✅</td><td>отчасти</td><td><span class="pill p-ok">pass</span></td></tr>
+    <tr><td><code>daily_longread.py</code></td><td>421</td><td>✅</td><td>✅</td><td>✅</td><td>отчасти</td><td><span class="pill p-ok">pass</span></td></tr>
+    <tr><td><code>dr_teaser_gate.py</code></td><td>192</td><td>✅</td><td>✅</td><td>✅</td><td>да</td><td><span class="pill p-warn">warn — паспорт обещает больше, чем код</span></td></tr>
+    <tr><td><code>task_rank.py</code></td><td>706</td><td>✅</td><td>✅</td><td>✅</td><td>отчасти</td><td><span class="pill p-warn">warn — 4 волны фич в одном файле</span></td></tr>
+    <tr><td><code>merge_cards.py</code></td><td>137</td><td>✅</td><td>❌</td><td>❌</td><td>отчасти</td><td><span class="pill p-warn">warn — нет теста, может молча соврать</span></td></tr>
+    <tr><td><code>dr_lane.py</code></td><td>510</td><td>✅</td><td>❌</td><td>✅</td><td>отчасти</td><td><span class="pill p-warn">warn — ТЕСТА НЕТ у живой ежедневной детали (§5.8)</span></td></tr>
+    <tr><td><code>voice_pull_tg.py</code></td><td>567</td><td>❌</td><td>✅</td><td>✅</td><td><b>нет</b></td><td><span class="pill p-bad">fail — 330/567 строк = машинерия замка</span></td></tr>
+  </table></div>
+</div>
+
+<div class="card">
+  <h2>Образцы соблюдения (чему подражать)</h2>
+  <ul>
+    <li><b>21.08 openrouter-wallet</b> — «тупее нельзя» буквально: вместо автоматизации браузерного логина — два curl-запроса к /key и /credits. Цель переосмыслена, ничего не построено.</li>
+    <li><b>21.08 reply-meter</b> — корень вместо трёх заплаток: три сторожа умирали по одному корню → одна дверь <code>gh_env.py</code>; найден и убит живой дубль pr-watch.</li>
+    <li><b>22.08 dr1327</b> — кандидат-механизм передан владельцу вместо своей копии; «фальшивая независимость хуже недобора».</li>
+    <li><b>21.08 mac16-inbox</b> — дыра закрыта СТРОКОЙ в существующем роботе, а не новым кроном; механизмы после 1-2 случаев сознательно НЕ строятся.</li>
+    <li><b>22.08 rep-reply</b> — детектор сознательно оставлен в скретчпаде без постоянного дома, дом «при 3-м спросе».</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Что чинить (предложения, не стройка)</h2>
+  <ul>
+    <li>🔴 <b>Класс «перезапись чужого живого артефакта»</b> (14+ строк в журнале) — созрел для отдельной сессии починки: fail-closed гейт на занятые имена в общих папках (_Dashboards, _imports).</li>
+    <li>🟠 <b><code>voice_pull_tg.py</code></b> — кандидат на упрощение: вынести замок в общий модуль или заменить на простой lock-файл с TTL.</li>
+    <li>🟠 <b><code>dr_lane.py</code> и <code>merge_cards.py</code></b> — дописать тесты (§5.8: живая деталь без теста = /tt максимум ⚠️).</li>
+    <li>🟡 Паттерн «copies» (3 из 6 minor) — при следующем ретро сверять новые файлы с существующими по имени и роли ДО стройки.</li>
+  </ul>
+</div>
+
+<div class="sub">Метод: 8 агентов прочли 55 ретро целиком и судили по канону (память ak47-simplicity: 3 ворот G1/G2/G3, ⚠️-пометки, один источник, простая развилка); 2 агента прочли код 10 скриптов; каждое major-обвинение атаковали 3 скептика (по одному на ворота), подтверждение = ≥2/3. Презумпция невиновности: сомнение → pass.</div>
+</div></body>
+</html>

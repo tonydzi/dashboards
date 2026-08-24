@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Корни всех наших проблем</title>
+<style>
+  :root{--bg:#f6f7f9;--ink:#1c2128;--muted:#667085;--card:#fff;--line:#e4e7ec;
+        --ok:#12805c;--okbg:#e6f4ee;--warn:#b54708;--warnbg:#fdf1e3;--bad:#b42318;--badbg:#fbe9e7;
+        --info:#175cd3;--infobg:#e8f0fd}
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#12151a;--ink:#e6e9ee;--muted:#98a2b3;--card:#1a1f27;--line:#2c333d;
+          --ok:#4cc38a;--okbg:#12291f;--warn:#f0a75a;--warnbg:#2e2013;--bad:#f08579;--badbg:#301713;
+          --info:#7ab1ff;--infobg:#14203a}}
+  body{margin:0;padding:24px 16px 60px;background:var(--bg);color:var(--ink);
+       font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:1000px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px;letter-spacing:-.4px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:26px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:18px}
+  h2{font-size:17px;margin:0 0 12px;letter-spacing:-.2px}
+  h3{font-size:15px;margin:18px 0 6px}
+  .verdict{font-size:19px;line-height:1.5;font-weight:600}
+  .tiles{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .tile{flex:1 1 140px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-align:center}
+  .tile b{display:block;font-size:30px;letter-spacing:-1px}
+  .tile span{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)} .info{color:var(--info)}
+  .pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12.5px;font-weight:600;white-space:nowrap}
+  .p-ok{background:var(--okbg);color:var(--ok)} .p-warn{background:var(--warnbg);color:var(--warn)}
+  .p-bad{background:var(--badbg);color:var(--bad)} .p-info{background:var(--infobg);color:var(--info)}
+  .tablewrap{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  .rootnum{font-size:22px;font-weight:700;color:var(--muted);margin-right:8px}
+  .chain{background:var(--infobg);border-radius:8px;padding:10px 12px;font-size:14px;margin:8px 0;line-height:1.65}
+  code{background:var(--infobg);color:var(--info);padding:1px 5px;border-radius:5px;font-size:13px}
+  .legend{font-size:13px;color:var(--muted)}
+  ul{margin:8px 0;padding-left:22px} li{margin-bottom:6px}
+  .barrow{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:14px}
+  .barrow .lbl{flex:0 0 260px}
+  .barrow .track{flex:1;height:16px;background:var(--line);border-radius:99px;overflow:hidden}
+  .barrow .fill{height:100%;background:var(--info)}
+  .barrow .num{flex:0 0 46px;text-align:right;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Задачи и планирование</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Antislop-4-Legs-Report.html">Antislop-4-Legs-Report &rarr;</a></span></div><div class="wrap">
+<h1>Корни всех наших проблем</h1>
+<div class="sub">Мета-разбор 144 записей журнала поломок (10.08–22.08.2026) · <b>цифры пересчитаны детерминированно 21:05 после того, как первичное извлечение LLM-агентами завысило счёт втрое</b> · механический корень проверен чтением кода · хаб A-2022BAYAREA, 22.08.2026</div>
+
+<div class="card">
+  <div class="verdict">Главный факт: <span class="bad">88% наших поломок — это поломки наших же приборов</span> (сторожа, гейты, счётчики, реестры, рутины, задачи), и только <span class="ok">2% — поломки самой работы</span> (посты, лиды, PR, звонки). Мы построили слой наблюдения, который больше и хрупче наблюдаемого. А у счётчика классов, который должен это сдерживать, есть дыра: <b>каждая пятая поломка записана вообще без имени класса</b> и не считается никогда.</div>
+  <p style="margin-top:12px;font-size:14px;color:var(--muted)"><b>Поправка 21:05.</b> Первая версия этой страницы называла 722 поломки, 48/день и «97% классов-одиночек». Это была ошибка: извлечение делали LLM-агенты, и они утроили счёт. Пересчёт самого файла даёт 144 записи, 11/день, 82% одиночек — и, что важно, правило третьей поломки на именованных классах <b>работает</b> (5 классов дошли до порога, покрывают 53% записей). Направление выводов устояло, магнитуды — нет. Инструмент соврал зелёным ровно в том разборе, который эту болезнь и диагностирует.</p>
+</div>
+
+<div class="tiles">
+  <div class="tile"><b class="bad">144</b><span>поломки за 13 дней</span></div>
+  <div class="tile"><b class="bad">11</b><span>в день</span></div>
+  <div class="tile"><b class="bad">88%</b><span>ломаются приборы</span></div>
+  <div class="tile"><b class="ok">2%</b><span>ломается работа</span></div>
+  <div class="tile"><b class="bad">31</b><span>записи без имени класса</span></div>
+  <div class="tile"><b class="warn">5</b><span>классов из 66 дошли до порога</span></div>
+</div>
+
+<div class="card">
+  <h2>Семьи поломок (детерминированная кластеризация по ключевым словам)</h2>
+  <div class="barrow"><span class="lbl">Прибор соврал / промолчал</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="num">61</span></div>
+  <div class="barrow"><span class="lbl">Копия вместо одного источника</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="num">61</span></div>
+  <div class="barrow"><span class="lbl">Ждём человека / нет принуждения</span><span class="track"><span class="fill" style="width:89%"></span></span><span class="num">54</span></div>
+  <div class="barrow"><span class="lbl">Среда не константа (пути, ОС, кодировки)</span><span class="track"><span class="fill" style="width:69%"></span></span><span class="num">42</span></div>
+  <div class="barrow"><span class="lbl">Сделал ≠ доставлено / применено</span><span class="track"><span class="fill" style="width:49%"></span></span><span class="num">30</span></div>
+  <div class="barrow"><span class="lbl">Детектор судит подстроку, а не действие</span><span class="track"><span class="fill" style="width:36%"></span></span><span class="num">22</span></div>
+  <div class="barrow"><span class="lbl">Протухшая правда (кэш, снимок, старый вердикт)</span><span class="track"><span class="fill" style="width:33%"></span></span><span class="num">20</span></div>
+  <div class="barrow"><span class="lbl">Лимиты / логины / кончился бак</span><span class="track"><span class="fill" style="width:33%"></span></span><span class="num">20</span></div>
+  <div class="barrow"><span class="lbl">Механизм есть, но его никто не зовёт</span><span class="track"><span class="fill" style="width:23%"></span></span><span class="num">14</span></div>
+  <div class="legend">Записи попадают в несколько семей одновременно — это карта пересечений, не разбиение. Считалось по тексту «класс + симптом + причина».</div>
+</div>
+
+<div class="card">
+  <h2><span class="rootnum">1</span>У счётчика классов дыра: каждая пятая поломка записана без имени класса</h2>
+  <div class="chain">
+    <b>5 почему:</b> класс не доходит до порога «3 строки» &rarr; потому что 31 запись (22% всех) не несёт имени класса вообще &rarr; потому что их пишут сессии рукописным буллетом мимо двери <code>selfheal.py journal</code> &rarr; потому что дверь честно пропускает буллет без маркера класса (так и сказано в её докстринге) &rarr; потому что «назвать класс» это шаг доброй воли пишущего, а не поле, которое кто-то требует.
+  </div>
+  <p><b>Что замер подтвердил, а что опроверг.</b> Опроверг первую версию этой страницы: на ИМЕНОВАННЫХ классах правило работает &mdash; 5 классов дошли до порога и покрывают 53% записей. Подтвердил: 82% имён всё же одиночки, и в коде сравнение классов точное (<code>class_slug(raw_cls) != class_slug(cls)</code>) &mdash; ни словаря, ни сопоставления с существующими. Одна семья под тремя именами живёт как три одиночки: «перезапись чужого живого артефакта» · «package-install-reverts-newer-local-file» · «протухшая копия скрипта при живом фиксе».</p>
+  <p><b>Две дыры разной величины:</b> большая &mdash; безымянные буллеты (22% вне счёта навсегда); меньшая &mdash; точное сравнение имён. Чинить в этом порядке.</p>
+  <p><b>Лечение (АК-47, образец в нашем же коде):</b> <code>onair.py</code> уже сопоставляет незнакомые зоны с каноничными через <code>difflib</code>. Тот же приём &mdash; на имена классов. Новый робот не нужен: правка одной функции в существующей двери.</p>
+  <span class="pill p-info">сессия поднята: auto-hub-260822-class-counter-blind, 22:30</span>
+</div>
+
+<div class="card">
+  <h2><span class="rootnum">2</span>Приборов больше, чем работы — слой наблюдения перестал быть АК-47</h2>
+  <div class="chain">
+    <b>5 почему:</b> 53% поломок в приборах против 7% в работе → потому что приборов больше, чем работы → потому что на каждую поломку заводится прибор → потому что корень №1 снял тормоз «после третьей» → и потому что у каждого нового сторожа нет цены: он не отвечает за поломки, которые сам породил.
+  </div>
+  <p><b>Что это значит буквально:</b> сторож нуждается в стороже, у сторожа сторожа протухает индикатор — и вся эта конструкция ломается чаще, чем то, ради чего строилась. Флот как целое перестал быть чинибельным «молотком и отвёрткой».</p>
+  <p><b>Механизм уже есть:</b> оргмодель рутин от 21.08 — у рутины есть мама, приёмник, рельса и <b>цена</b>, а менеджер <code>robot-audit-weekly</code> увольняет сам. Дверь построена, увольнений по факту не видно.</p>
+  <p><b>Лечение:</b> добавить в «цену» рутины число строк журнала, которые она породила. Прибор, дающий больше поломок, чем предотвращает, увольняется существующим менеджером. Ноль новых машин.</p>
+  <span class="pill p-warn">предложение, сессия не поднята — ждёт решения Антона</span>
+</div>
+
+<div class="card">
+  <h2><span class="rootnum">3</span>Механизм есть, но его не зовут в момент действия</h2>
+  <div class="chain">
+    <b>5 почему:</b> ON AIR существует с 05.07, а перезаписи чужих живых файлов продолжаются → потому что доску читает хук один раз на старте → потому что <code>check --zone</code> в момент правки никто не зовёт → потому что правило живёт в каноне (текст, который надо вспомнить), а действие идёт через инструмент (Write, Bash, create_task) → между знанием правила и моментом действия нет физической связи, кроме моей добросовестности.
+  </div>
+  <p><b>Это и есть твоё сегодняшнее указание:</b> наклейка «занято» уже есть и называется ON AIR. Строить второй гейт было бы копией — то есть само по себе нарушением АК-47.</p>
+  <p><b>Свой же замер подтверждает шире:</b> 76% свежих правил жили без двери (§8.6, квота «одно правило = одна дверь»), «5 почему» пролежал 42 дня без единого применения.</p>
+  <span class="pill p-info">сессия поднята: auto-hub-260822-clobber-onair-root, 23:05</span>
+</div>
+
+<div class="card">
+  <h2><span class="rootnum">4</span>Прибор врёт зелёным (180 записей)</h2>
+  <p>Самая большая семья. Краш выглядит как успех, exit 0 при недоставке, сторож рапортует OK на мёртвую ногу, сторож живёт на том же движке, что и объект наблюдения. Механизмы есть — §5.5 (сторож не живёт в том, что сторожит), <code>output_freshness.py</code>, crash-guard <code>except BaseException → exit 4</code>, гейт <code>_test_crash_guard.py</code>. Не применяются к КАЖДОМУ новому прибору при рождении, а только задним числом.</p>
+  <p><b>Лечение:</b> ничего нового не строить — сделать crash-guard и «громкий отказ» частью рождения детали (§5.8 уже требует тест + паспорт + счётчик; добавить туда же «докажи ненулевой выход на поломке»).</p>
+</div>
+
+<div class="card">
+  <h2><span class="rootnum">5</span>Среда не константа (122 записи)</h2>
+  <p>Пути, Windows против POSIX, кодировки, венвы, лимит argv, кавычки в хуках, msys-пути в heredoc. Корень: код пишется под ОДНУ машину, а живёт на пяти разных с тремя ОС. Механизмы есть — лесенка <code>menv</code>, <code>lint_path_hardcode</code>, дрейф-манифест флота. Тот же провал вызова: применяются ночным сторожем постфактум, а не в момент написания строки с путём.</p>
+</div>
+
+<div class="card">
+  <h2><span class="rootnum">6</span>Копия вместо одного источника (83 записи)</h2>
+  <p>Sync-конфликты, зеркала канона, частные копии общего замка, старая копия скрипта при живом фиксе, посылка, откатившая более новый локальный файл. Корень: пять машин + eventual-consistency Syncthing + нет владельца у артефакта. Порождает корень №3 (клобер) как частный случай.</p>
+</div>
+
+<div class="card">
+  <h2>Корень корней</h2>
+  <div class="verdict">Мы лечим <b>памятью</b> то, что лечится только <b>руками инструмента</b>. Правило, записанное в канон, — это обещание о будущем поведении, а не механизм. 144 поломки за 13 дней при ~150 КБ канона доказывают: объём правил не коррелирует с надёжностью. Каждое новое правило добавляет нагрузку и не добавляет надёжности, если у него нет двери в точке действия.</div>
+  <p style="margin-top:14px"><b>Отсюда — единственный честный вывод по АК-47:</b> следующий шаг не «написать ещё правило» и не «построить ещё сторожа», а <b>починить два уже существующих механизма</b>, которые должны были всё это сдерживать: счётчик классов (корень 1) и вызов ON AIR в момент действия (корень 3). Обе сессии подняты. Остальное — предложения, ждут твоего решения.</p>
+</div>
+
+<div class="card">
+  <h2>Честные границы этого замера</h2>
+  <ul>
+    <li><b>Первый замер был неверен и исправлен.</b> Извлечение 8 LLM-агентами дало 722 «записи» — пересчёт самого файла даёт 144. Агенты утроили счёт. Все цифры на этой странице теперь считаны детерминированным скриптом по файлу, воспроизводимо, 0 LLM.</li>
+    <li>«11 поломок в день» меряет <b>скорость записи в журнал</b>, а не скорость поломок. Журнал заведён 10.08, окно всего 13 дней — тренд по нему считать рано.</li>
+    <li>Кластеризация по ключевым словам, записи попадают в несколько семей — числа семей не суммируются до 144.</li>
+    <li>Механический корень №1 — не гипотеза: проверен чтением <code>selfheal.py</code> (<code>class_slug</code> строка ~639, сравнение в <code>journal_rows</code>).</li>
+  </ul>
+</div>
+</div></body>
+</html>

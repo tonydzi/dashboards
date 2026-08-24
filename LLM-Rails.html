@@ -1,0 +1,59 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Люди, привычки, быт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="LLM-Desktop-Apps.html">&larr; LLM-Desktop-Apps</a> · <a href="LLM-Subscription-Utilization.html">LLM-Subscription-Utilization &rarr;</a></span></div><!doctype html><html lang="ru"><meta charset="utf-8"><title>Рельсы LLM — подписки и OpenRouter</title>
+<style>
+:root{--bg:#0f1115;--fg:#e7e9ee;--mut:#8b93a7;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--line:#232833;--card:#161a22}
+body{margin:0;padding:28px;background:var(--bg);color:var(--fg);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:15px;margin:26px 0 10px;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
+.sub{color:var(--mut);margin-bottom:22px;font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.n{font-size:26px;font-weight:600}.l{color:var(--mut);font-size:12px;margin-top:3px}
+table{border-collapse:collapse;width:100%;margin-top:8px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
+th{color:var(--mut);font-weight:500;font-size:12px;text-transform:uppercase}tr:last-child td{border-bottom:0}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}.mut{color:var(--mut)}
+code{background:#1d2230;padding:1px 6px;border-radius:4px;font-size:13px}
+</style>
+<h1>Рельсы вторых мнений: подписки и OpenRouter</h1>
+<div class="sub">Замер на 20.08.2026 · правило: сперва подписки узла, OpenRouter — фолбэк (приказ Антона 20.08)</div>
+
+<div class="cards">
+<div class="c"><div class="n ok">$49.99</div><div class="l">остаток OpenRouter (a2@gmail)</div></div>
+<div class="c"><div class="n">$0.0087</div><div class="l">потрачено за всё время</div></div>
+<div class="c"><div class="n">5</div><div class="l">семей в веере (2 CN · 1 EU · 2 US)</div></div>
+<div class="c"><div class="n">medium</div><div class="l">effort у чужих вендоров</div></div>
+<div class="c"><div class="n">300 с</div><div class="l">бюджет теста (было 90)</div></div>
+</div>
+
+<h2>Кто на чём отработал (30 дней)</h2>
+<table>
+<tr><th>узел</th><th>прогонов панели</th><th>хватило подписок</th><th>авто-фолбэк в OpenRouter</th><th>только OpenRouter*</th></tr>
+<tr><td>Mac16</td><td>24</td><td class="ok">23</td><td class="ok">0</td><td class="mut">1</td></tr>
+<tr><td>Хаб A-2022BAYAREA</td><td>129</td><td class="ok">37</td><td class="ok">0</td><td class="mut">92</td></tr>
+</table>
+<div class="sub">* старый порядок 06.08 — OpenRouter звался первым; с 20.08 столбец должен схлопнуться к нулю.
+⚠️ Первая версия этой страницы показывала «grok 61%» и «15% фолбэков» — обе цифры были мусором от юнит-тестов
+в боевом ledger (вылечено фильтром TEST_FIXTURE_TASKS). Грок не сломан: все его реальные молчания = ровно 90с
+старого таймаута (снят, теперь 300с); живая проба — ответ за 148с. Он медленный, не мёртвый.</div>
+
+<h2>Ответы подписочных рельс</h2>
+<table>
+<tr><th>вендор</th><th>Mac16</th><th>Хаб</th></tr>
+<tr><td>codex</td><td class="ok">20/21 · 95%</td><td class="ok">35/35 · 100%</td></tr>
+<tr><td>gemini</td><td class="ok">18/20 · 90%</td><td class="ok">28/33 · 85%</td></tr>
+<tr><td>grok</td><td class="ok">18/21 · 86%</td><td class="ok">30/30 · 100%</td></tr>
+</table>
+
+<h2>Ключ OpenRouter по узлам</h2>
+<table>
+<tr><th>узел</th><th>ключ</th><th>новый код</th><th>чем доказано</th></tr>
+<tr><td>Mac16</td><td class="ok">✅ есть</td><td class="ok">✅ + тесты PASS</td><td>doctor exit 0, боевой прогон 4/4</td></tr>
+<tr><td>Хаб A-2022BAYAREA</td><td class="ok">✅ есть</td><td class="ok">✅ + тесты PASS</td><td>md5 совпал с флотским, 3 теста зелёные</td></tr>
+<tr><td>Маяк</td><td class="mut">❓</td><td class="mut">ждёт pull</td><td>ssh требует доп. авторизации Tailscale</td></tr>
+<tr><td>Наташа · Руслана</td><td class="mut">❓</td><td class="mut">ждёт pull</td><td>ssh не отвечает, задача ушла в шину</td></tr>
+<tr><td>ZBook</td><td class="mut">❓</td><td class="mut">ждёт pull</td><td>офлайн 5 дней</td></tr>
+</table>
+
+<h2>Прибор</h2>
+<p><code>python ~/.claude/scripts/cc-review/rail_measure.py --days 30</code> — 0 LLM, читает ledger панели.
+Поле <code>via</code>: <code>panel</code> = отработала подписка, <code>panel-orouter</code> = ушли в фолбэк.</p>
+</html>

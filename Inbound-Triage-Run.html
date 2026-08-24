@@ -1,0 +1,57 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Задачи и планирование</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Inbound-Triage-Actions.html">&larr; Inbound-Triage-Actions</a> · <a href="Inbound-Triage.html">Inbound-Triage &rarr;</a></span></div><title>Разбор входящего</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1c1a17;--mut:#6b6560;--line:#e2ddd6;--card:#fff;--acc:#8a4b1e;--ok:#2f6b3c;--warn:#8a6a12;--bad:#8c2f2f}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161513;--fg:#eae6e0;--mut:#9a938b;--line:#312e29;--card:#1e1c1a;--acc:#d59a63;--ok:#7fb98c;--warn:#d6b45c;--bad:#e08b8b}}
+:root[data-theme="dark"]{--bg:#161513;--fg:#eae6e0;--mut:#9a938b;--line:#312e29;--card:#1e1c1a;--acc:#d59a63;--ok:#7fb98c;--warn:#d6b45c;--bad:#e08b8b}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;padding:28px 20px 60px}
+.page{max-width:1080px;margin:0 auto}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:-.02em}
+.sub{color:var(--mut);font-size:13px;margin-bottom:24px}
+h2{font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);margin:34px 0 10px;font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:18px 0 6px}
+.k{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.k b{display:block;font-size:28px;line-height:1.1;letter-spacing:-.02em}
+.k span{color:var(--mut);font-size:12px}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
+th{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);color:var(--mut);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:8px;padding:12px 14px;margin:10px 0;font-size:13.5px}
+.note.bad{border-left-color:var(--bad)}
+.note.ok{border-left-color:var(--ok)}
+code{font-size:12.5px;background:rgba(128,128,128,.14);padding:1px 5px;border-radius:4px}
+</style>
+<div class="page">
+<h1>Разбор входящего</h1>
+<div class="sub">суббота, 22 августа 2026, 11:53 &middot; хаб A-2022BAYAREA &middot; окно 14 дней &middot; рельса: только Telegram (@***ySsd)</div>
+
+<div class="kpis">
+<div class="k"><b>20</b><span>ждали ответа</span></div>
+<div class="k"><b>9</b><span>дольше суток</span></div>
+<div class="k"><b>6</b><span>ответил сам</span></div>
+<div class="k"><b>4</b><span>тебе на стол</span></div>
+<div class="k"><b>9</b><span>молчим осознанно</span></div>
+<div class="k"><b>1</b><span>рельса из 2</span></div>
+</div>
+
+<div class="note bad"><b>Рельсы.</b> Открылся только Telegram. WhatsApp в сборщике вообще не заявлен, значит по нему мы сегодня НЕ СМОТРЕЛИ. Это «не заглядывали», а не «там пусто». Разбор WhatsApp по-прежнему руками через <code>/whatsapp-sync</code>.</div>
+
+<h2>Ответил сам</h2>
+<div class="wrap"><table><thead><tr><th>кто</th><th>хендл</th><th>тир</th><th>ждал</th><th>что я написал</th><th>почему</th></tr></thead><tbody><tr><td>****imir ***tcov</td><td>@********ker_pulse</td><td>A</td><td>1.1ч</td><td>бронь подтверждена: пт 28.08, 21:30 Владивосток + ответ по сути про AI в Китае</td><td>наш ноушоу 20.08 закрыт, слот жив</td></tr><tr><td>Santoshi (Lucy AI)</td><td>@*******ntos1111</td><td>B→A</td><td>15.8ч</td><td>честный ответ «мнения нет, я её не запускал» + почему MCP правильный ход</td><td>логин Lucy 11 дней ждёт рук Антона → аск #d203b120</td></tr><tr><td>Jiten</td><td>@****1234</td><td>A</td><td>13.8ч</td><td>что готовим + WhatsApp + слот</td><td>тёплый ангел Bay Area, сам написал первым за 2 года</td></tr><tr><td>Dmitrii Zhdanov</td><td>@****novme</td><td>B→A</td><td>5.2ч</td><td>три места, где ломается у всех + репо + признал наш долг с июня</td><td>собрал ровно то же самое, пилоты вкл. дочку Сбера</td></tr><tr><td>Mike | Cryptedge</td><td>@*******yptedge</td><td>A</td><td>56.0ч</td><td>снял старое обещание «инвесторы сами звонят», дал то, что реально есть</td><td>вернул нам наш же пост 2025 года</td></tr><tr><td>Gray / Slava</td><td>@****4gray</td><td>C</td><td>22.5ч</td><td>две живые строки + канал + репо, не шаблон</td><td>маркетолог Monaproof, чистил чаты</td></tr></tbody></table></div>
+
+<h2>Твои руки или твоё решение</h2>
+<div class="wrap"><table><thead><tr><th>кто</th><th>хендл</th><th>ждал</th><th>что там</th><th>почему не я</th></tr></thead><tbody><tr><td>MAD MAX</td><td>@*****n_max</td><td>73.6ч</td><td>KOL-раунд Konnex через MindoAI, просит занести деньги. Ты сам попросил детали 19.08. «Последний день раунда» был 19.08, то есть уже прошёл.</td><td>деньги = только ты</td></tr><tr><td>Mel B</td><td>@*****kovkk</td><td>23.4ч</td><td>просит выходы на ангелов в чужой группе, взамен пока ничего</td><td>циничный капер: вежливое нет или тишина</td></tr><tr><td>ALEXANDR FEFELOV</td><td>@******DR616G</td><td>24.6ч</td><td>«урок подтверждаю» — личное, не лаборатория</td><td>отдаю как есть</td></tr><tr><td>Edita</td><td>@****a_13</td><td>0.7ч</td><td>рекомендации по Брно + «Позвонила ✅» — личное</td><td>отдаю как есть</td></tr></tbody></table></div>
+
+<h2>Молчим осознанно</h2>
+<div class="wrap"><table><thead><tr><th>кто</th><th>хендл</th><th>ждал</th><th>что там</th><th>решение</th></tr></thead><tbody><tr><td>**rry **zey</td><td>@***002</td><td>37.3ч</td><td>движок дал ТИР A (инженер), по факту продажа платного медиа-охвата + инвайт в группу</td><td>шаблон НЕ ушёл, тир занижен вручную</td></tr><tr><td>Craig | VC</td><td>@***igVC</td><td>71.1ч</td><td>«Hey founders, let's connect!» веером в чужую группу</td><td>молчим</td></tr><tr><td>****cher ***erts</td><td>@*****ocked</td><td>58.7ч</td><td>реклама чужого проекта с дек-ссылкой в группе</td><td>молчим, ссылку не открывали</td></tr><tr><td>**nis **ot</td><td>@**148</td><td>44.8ч</td><td>группа, только медиа без текста</td><td>вслепую не отвечаем</td></tr><tr><td>ethen, Kiri Owl, М. Смирнов, Emily, Edita</td><td>5 шт</td><td>8-41ч</td><td>группы, текста нет или чужая тема</td><td>шаблон в чужую группу не шлём</td></tr></tbody></table></div>
+
+<h2>Букинг-контроль</h2>
+<div class="wrap"><table><thead><tr><th>кто</th><th>хендл</th><th>статус</th><th>что делать</th></tr></thead><tbody><tr><td>Micah / NOW I AM LAO</td><td>@*****tly007</td><td>мы отменили слот 17.08</td><td>ДОЛГ УЖЕ ЗАКРЫТ 21.08: извинились и дали новый слот, мяч у него. Робот call_reminders этого не видит, потому что не читает тред.</td></tr><tr><td>Kirill</td><td>@**snp</td><td>забукал 19.08</td><td>обновить карточку CRM: бронь доказана</td></tr><tr><td>8 забронированных звонков</td><td>Julius ×3, Kamil, Владимир ×2, Daniel, Василий</td><td>есть бронь</td><td>НИ ОДНОГО нет в очереди фоллоуапа: звонок состоится, а вести его некому</td></tr><tr><td>Аск от 19.08</td><td>#8054e6fe</td><td>73 часа без ответа</td><td>«звонки идут или до осени?» — ты с тех пор отговорил минимум 3 звонка, но словом не подтвердил</td></tr></tbody></table></div>
+
+<div class="note"><b>Движок ошибся дважды, оба раза в одну сторону.</b> <code>people_value.py</code> дал тир A продавцу платного медиа-охвата (совпадение по хендлу на GitHub засчиталось как «живой код»), а <code>call_reminders unbooked</code> назвал долгом перед Micah то, что мы закрыли ещё вчера, потому что он не читает переписку. Оба вердикта я переопределил руками. Это первые записанные случаи, механизм строить рано.</div>
+
+<div class="note ok"><b>Что доказано.</b> Бронь Владимира на 28.08 21:30 Владивосток видна в Calendly (создана 09:23, за минуту до его «попытался забукать»). Второй такой ложный экран ошибки за неделю: первым был Ярослав 18.08.</div>
+</div>

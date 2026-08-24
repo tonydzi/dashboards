@@ -1,0 +1,65 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Где мы · что нужно от Антона · как тестируем пилот — 20.08.2026</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--line:#252a34;--tx:#e6e9ef;--dim:#9aa3b2;--ok:#3fb950;--warn:#d29922;--bad:#f85149;--acc:#58a6ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.k{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.v{font-size:16px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:14px;display:block;overflow-x:auto}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}.acc{color:var(--acc)}
+code{background:#0b0d11;padding:1px 5px;border-radius:4px;font-size:13px}
+.tag{display:inline-block;background:#0b0d11;border:1px solid var(--line);border-radius:20px;padding:1px 9px;font-size:12px;color:var(--dim)}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Session-Brief-2026-08-06.html">&larr; Session-Brief-2026-08-06</a> · <a href="Session-Token-Audit.html">Session-Token-Audit &rarr;</a></span></div>
+<h1>Где мы стоим · что нужно лично от Антона · как тестируем пилот</h1>
+<div class="sub">20.08.2026, 07:2x UTC · собрано на MacBook-Anton (Mac16)</div>
+
+<h2>1. Та сессия шла НЕ на этом компе</h2>
+<div class="grid">
+<div class="card"><div class="k">Сессия про Голикова</div><div class="v">HP17-ZBook <span class="tag">Windows-ноут</span></div><div class="sub" style="margin:6px 0 0">Улики: пути <code>C:\Users\_\.claude\</code>, «8770 занят на HP17», имя сессии <code>AUTO-hp17-260814-llm-state-isolation</code>, frontmatter заметки <code>machine: HP17-ZBook</code>. Оборвалась на «продолжи?» — Remote Control отвалился вместе с ноутом.</div></div>
+<div class="card"><div class="k">Этот чат сейчас</div><div class="v">MacBook-Anton (Mac16)</div><div class="sub" style="margin:6px 0 0">A-Mac16-2019-PaloAlto, macOS 26.3.1, волт <code>/Users/anton/Obsidian/Anton-Knowledge</code>. Продукт Голикова доехал сюда синком, но <span class="warn">agy на маке не установлен</span> — гемини-нога тут физически не проверяется.</div></div>
+<div class="card"><div class="k">Что там было, одной строкой</div><div class="v">Аудит → ремонт → дословная копия</div><div class="sub" style="margin:6px 0 0">Док Василия проверен на закладки (чисто) · наши рельсы <code>llm_ask.py</code> залатаны 6 граблями · <code>llm_routing.json</code> оказался мёртв и восстановлен · продукт <code>llm-cli-golikov</code> собран байт-в-байт, claude+codex ✅, gemini ⚠️ ждёт логина.</div></div>
+</div>
+
+<h2>2. Что я доделал сам, пока собирал ответ</h2>
+<table>
+<tr><th>что</th><th>улика</th></tr>
+<tr><td>Принял висевшую посылку <code>inbox-debt-settle-20260819</code></td><td class="ok">2 файла установлены, md5 сходится, <code>_test_inbox_debt_settle.py</code> 12/12 GREEN</td></tr>
+<tr><td class="bad">Нашёл и починил слепоту сторожа урожая</td><td><code>harvest_watch.py</code> читал слово «закрыть» внутри ОПИСАНИЯ строки как «вердикт уже вынесен» и молча съедал созревшее. Съел ровно сегодняшнюю строку пилота. Фикс <code>закрыт(?!ь)</code>, регресс-кейс добавлен, тест 8/8, <span class="ok">мутант-проверен</span> (откат фикса → красный)</td></tr>
+<tr><td class="bad">Разблокировал git-канал флота</td><td>61 коммит Mac16 с 12.08 (8 суток!) не мог уехать: origin-гейт отбивал авто-снимок, удалявший строки из 2 .py — узел отставал. Файлы возвращены к флотской версии, история сведена одним осознанным коммитом (гранулярная сохранена в ветке <code>pre-squash-20260820</code>). <span class="ok">✅ опубликовано 8f8ea098</span>. Флот получил заодно substr_lint, onair-фиксы, auth-сторожа</td></tr>
+<tr><td>Снял урожай пилота, срок которого = сегодня</td><td>см. раздел 4</td></tr>
+</table>
+
+<h2>3. Что нужно ЛИЧНО от тебя — 7 решений (в очереди 02 висит 10 асков, 3 дубля)</h2>
+<table>
+<tr><th>#</th><th>что</th><th>сколько ждёт</th><th>твой ход</th></tr>
+<tr><td>1</td><td class="bad">Ночные роботы мертвы: бак недельного лимита Claude исчерпан, <code>resets Aug 21 17:00 PT</code>. Это НЕ логин — контент-воронка, Gmail-дайджест, FB-дневник падают с exit=126</td><td>4 часа</td><td>Решить: ждём завтрашнего сброса или перекладываем ночные рельсы на чужие подписки (Codex/Gemini/GLM). <span class="acc">Моя рекомендация: переложить — это ровно §6.3 «жги оплаченное»</span></td></tr>
+<tr><td>2</td><td>CLA Google съехал после переименования аккаунта → блокирует PR <code>google/adk-go#1299</code> и все будущие PR в Google. Бумага подписана, не сходится ИМЯ аккаунта</td><td>5 суток</td><td class="warn">ТВОИ РУКИ, 5 минут: cla.developers.google.com/clas → найти запись на твой gmail → вписать <code>tonydzi</code> → рескан PR. Дальше PR довожу сам</td></tr>
+<tr><td>3</td><td>Yvan (Omniscia, аудитор смарт-контрактов, 360+ клиентов) сказал ДА на advisors 14.08 и просит доступ к кодовой базе</td><td class="bad">6 суток молчания</td><td>Дать доступ / дать ограниченно (один публичный репо) / вежливо притормозить. Это тёплый лид, который остывает</td></tr>
+<tr><td>4</td><td>Репо <code>PaloAlto-AI-Research-Lab-Knowledge</code> (приватное, 5 внешних читателей) валит наш же leak_scan: 828 FAIL — хендлы, hostname'ы, LAN-IP, твой gmail, абсолютные пути</td><td>23 часа</td><td>(A) чистим HEAD · (B) HEAD + переписать историю force-push (ломает клоны у 5 человек) · <span class="acc">(C) пока приватное — вешаем гейт на будущие коммиты, чистку делаем отдельной сессией перед любым расширением доступа. Рекомендую C</span></td></tr>
+<tr><td>5</td><td>Пост в X про репо ratchet: 406 звёзд за сутки, а <code>ratchetui.exe</code> внутри — переименованный авто-апдейтер Notepad++ (доказано по PE-манифесту, бинарь не запускали). Наш issue уже публичный</td><td>7.6 суток</td><td>«+» = постим с именем проекта · «без имён» = обезличенный вариант · «NO» = не постим. Репутационный удар по живым людям — решаешь ты, не Наташа</td></tr>
+<tr><td>6</td><td>Show HN + r/Python залп флагмана <code>agent-runtime-integrity-bench</code>. Тексты готовы</td><td>7.6 суток</td><td>«+» и я ставлю окно (Reddit — только с хаба, §7.2). HN штрафует за самопиар — идём один раз и честно</td></tr>
+<tr><td>7</td><td>dev.to: аккаунта нет, заводить аккаунты мне запрещено. Первая статья готова целиком и canonical уже опубликован у нас</td><td>7.6 суток</td><td>На какую почту заводить + переводим ли dev.to в обычный режим §4.7 (публикую сам)</td></tr>
+</table>
+
+<h2>4. Пилот и как мы его тестируем</h2>
+<p class="sub">«Наш пилот» = <b>Hilum</b> — чужой бинарь v0.0.1 автора Александра Иванникова, который мы гоняем всерьёз, потому что мы потенциальный <b>покупатель</b> его платного мультихост-контура. Стенд подняли 19.08 здесь, на Mac16. Механика проверки — не «понравилось / не понравилось», а <b>пороги, названные ДО замера</b> (§5.7), и у каждой строки ОБЕ даты: старт и 🌾 урожай.</p>
+<table>
+<tr><th>#</th><th>что проверяем</th><th>🌾 когда</th><th>критерий вердикта (назван заранее)</th><th>статус</th></tr>
+<tr><td>1</td><td><code>set_tool_filter</code>: можно ли расширить набор тулов на лету</td><td>20.08 — сегодня</td><td><code>tools/list</code> после расширения вернул &gt;3 тула</td><td class="bad">❌ СНЯТ СЕГОДНЯ: расширения нет. Из профиля <code>explore</code> 3 → <b>2</b> тула (мы даже потеряли сам explore). Композит 94 → 20 — резать вниз умеет, расширять нет. <b>2 бага автору:</b> схема объявляет <code>additionalProperties:false</code>, но чужой аргумент принимается молча и тихо сбрасывает фильтр; и <code>active_tool_count</code> врёт (сказал 20 — отдал 2). <b>Что меняет:</b> экономия 34× цела, но surface надо планировать ДО старта сессии — на лету не добрать</td></tr>
+<tr><td>2</td><td>Переиндексация на bge-m3 (наводка автора) — корпус русский + код</td><td>22.08</td><td>тот же вопрос на русском даёт релевантнее текущей модели → мигрируем</td><td class="warn">стартует сегодня</td></tr>
+<tr><td>3</td><td>Тень <b>memory</b>: их <code>memory recall</code> против нашего <code>brain_ask</code> на одних вопросах</td><td>26.08</td><td>топ-K не хуже нашего И схема выдерживает наш корпус</td><td>идёт</td></tr>
+<tr><td>6</td><td><b>Мультихост-стресс</b>: <code>.hilum/</code> лежит в синкаемой папке и едет Syncthing'ом на флот</td><td>26.08</td><td>пережил конкурентную запись с 2+ узлов без порчи → его CAS работает</td><td>идёт <span class="tag">это главный вопрос сделки</span></td></tr>
+<tr><td>4/5</td><td>Тени <b>agent mailbox</b> и <b>presence</b> рядом с нашей шиной и heartbeat</td><td>29.08</td><td>ловит хоть один класс, который наша рельса роняет (потерянный ACK / «уснул vs партиция»)</td><td class="warn">старт 21.08</td></tr>
+<tr><td>7</td><td>Вердикт по <code>explore</code> — прижился ли вообще</td><td>02.09</td><td>оставляем при ≥20 прогонов и helped=yes ≥60% · снимаем при &lt;10 прогонов за две недели</td><td class="bad">⚠️ прибор показывает <b>1 прогон за 14 дней</b>. По этому порогу пилот идёт к «снимаем» не по качеству, а по неиспользованию</td></tr>
+<tr><td>8</td><td>Windows-бинарь (обещан автором 19.08) — 3 наших узла заблокированы физически</td><td>ревью 26.08</td><td>не пришёл → узлы остаются вне игры, фиксируем как цену</td><td>ждём автора</td></tr>
+</table>
+<p class="sub"><b>Кто нажимает кнопку урожая:</b> рутина <code>harvest-watch-daily</code> в 05:00 — она молчит, когда снимать нечего, и печатает список, когда созрело. Сегодня она молчала ложно; теперь чинена и краснеет честно. <b>Вердикт выносит суждение, а не робот</b> — робот только не даёт забыть.</p>
+<p class="sub">Отдельно: пилот с <b>Виталием (ContextOS)</b> — это другая история, у него критерий «каждая сторона отдала механизм, который другая реально внедрила, со ссылкой на артефакт». Он заперт на хаб (замок владельца 19.08) и с этого мака не ведётся. Скажи, если понимание нужно было про него.</p>
+</body></html>
