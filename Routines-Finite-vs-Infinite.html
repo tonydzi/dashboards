@@ -1,0 +1,109 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Routines-Audit-Nataly-2026-08-10.html">&larr; Routines-Audit-Nataly-2026-08-10</a> · <a href="Routines-Model-Plan.html">Routines-Model-Plan &rarr;</a></span></div><!doctype html>
+<meta charset="utf-8">
+<title>Рутины: бесконечные и конечные — 23.08.2026</title>
+<style>
+:root{--bg:#0f1216;--fg:#e6e9ef;--dim:#9aa4b2;--line:#232a33;--ok:#4ade80;--warn:#fbbf24;--bad:#f87171;--acc:#60a5fa}
+@media(prefers-color-scheme:light){:root{--bg:#fff;--fg:#12161c;--dim:#5b6674;--line:#e3e8ee;--ok:#15803d;--warn:#b45309;--bad:#b91c1c;--acc:#1d4ed8}}
+*{box-sizing:border-box}body{margin:0;padding:28px 20px 60px;background:var(--bg);color:var(--fg);
+font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;max-width:1080px;margin-inline:auto}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:19px;margin:34px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.sub{color:var(--dim);margin-bottom:22px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:18px 0}
+.c{border:1px solid var(--line);border-radius:10px;padding:14px}
+.c .n{font-size:30px;font-weight:650;line-height:1.1}.c .l{color:var(--dim);font-size:13px;margin-top:4px}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}
+code{background:rgba(127,127,127,.14);padding:1px 6px;border-radius:5px;font-size:13px}
+.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}.acc{color:var(--acc)}
+.bar{height:9px;background:rgba(127,127,127,.2);border-radius:5px;overflow:hidden;margin-top:6px}
+.bar>i{display:block;height:100%;background:var(--acc)}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);color:var(--dim)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+</style>
+
+<h1>Рутины: бесконечные и конечные</h1>
+<div class="sub">Хаб A-2022BAYAREA · замер 23 августа 2026, 22:55 · всё в таблицах — посчитано, не на глаз</div>
+
+<blockquote>«Рутина может съесть слона за 100 или за 1000 присестов, потихонечку. Поняла, что задачу выполнила — выключилась и сказала». — Антон, 23.08, голосом</blockquote>
+
+<h2>Что было до сегодня</h2>
+<div class="cards">
+  <div class="c"><div class="n">49</div><div class="l">включённых app-рутин</div></div>
+  <div class="c"><div class="n">192</div><div class="l">выключенных (кладбище)</div></div>
+  <div class="c"><div class="n">~160</div><div class="l">OS-рутин по флоту</div></div>
+  <div class="c"><div class="n bad">0</div><div class="l">рутин с концом</div></div>
+</div>
+<p>Все до одной — бесконечные: крон по расписанию, конца не предусмотрено. Класса «рутина, которая доедает задачу и выключается» у нас не существовало. Поэтому большие списочные работы делались одной героической сессией — месяц ручного вытаскивания YouTube-видео и бан от площадки.</p>
+
+<h2>Разбор: почему прошлая попытка не могла закончиться никогда</h2>
+<p>Рутина <code>YT-Transcript-Trickle-Hub</code> крутилась ежечасно с 5 августа. Логи писали бодрое «RUN DONE +3 ok».</p>
+<table>
+<tr><th>что считали</th><th>цифра</th><th>вывод</th></tr>
+<tr><td>прогонов с 05.08</td><td class="ok">453</td><td>расписание работало исправно</td></tr>
+<tr><td>строк в файле результатов</td><td class="bad">39</td><td>из ~1 100 ожидаемых</td></tr>
+<tr><td>счётчик «уже сделано» в последнем прогоне</td><td class="bad">33</td><td>за 19 суток вырос с 3 до 33</td></tr>
+<tr><td>цель</td><td>2 016 видео</td><td>1,6 % за 19 суток → конца нет в принципе</td></tr>
+</table>
+<p><b>Корень:</b> журнал прогресса лежал в <b>синкаемой</b> папке <code>_machine-bus\_transit\</code> и непрерывно затирался. Рутина каждый час честно бралась за одни и те же первые куски. Прибор при этом врал: логи рапортовали успех.</p>
+<p><b>Урок, записанный в канон:</b> журнал слона живёт строго локально, вне синка. <span class="acc">CLAUDE.md §4.5-бис</span></p>
+
+<h2>Что построено сегодня</h2>
+<div class="grid2">
+<div>
+<h3 style="font-size:16px;margin:0 0 6px">Движок — <code>elephant.py</code></h3>
+<table>
+<tr><td><code>new</code></td><td>завести слона: список, квота на прогон, имя OS-задачи</td></tr>
+<tr><td><code>feed</code></td><td>скормить работу (идемпотентно, дубли не плодятся)</td></tr>
+<tr><td><code>next</code></td><td>выдать порцию на сейчас</td></tr>
+<tr><td><code>mark</code></td><td>отметить кусок: сделан / пропущен / упал</td></tr>
+<tr><td><code>tick</code></td><td><b>сердце</b>: конец → гасит OS-задачу + доклад; затык → статус <span class="warn">ЗАСТРЯЛ</span> + доклад</td></tr>
+<tr><td><code>status</code></td><td>прогресс, осталось, ETA одной таблицей</td></tr>
+</table>
+<p style="font-size:13.5px;color:var(--dim)">0 LLM-токенов, только стандартная библиотека. Тест <code>_test_elephant.py</code>: 10 проверок, все зелёные — включая «доел → выключился» и «упавший кусок выбывает после 3 попыток, иначе слон не кончится никогда».</p>
+</div>
+<div>
+<h3 style="font-size:16px;margin:0 0 6px">Три исхода, о которых рутина сама говорит</h3>
+<table>
+<tr><td class="ok"><b>ГОТОВО</b></td><td>очередь пуста → статус <code>done</code> → задача Windows выключена самой рутиной → сообщение в TG-03 со счётом</td></tr>
+<tr><td class="warn"><b>ЗАСТРЯЛ</b></td><td>5 прогонов подряд без единого куска → статус <code>blocked</code> + сообщение. Не выключается: сама не выберется, нужен разбор</td></tr>
+<tr><td class="acc"><b>ЖУЁТ</b></td><td>нормальный ход. Молчит, если не просили докладывать — сторож, который всё ок, молчит</td></tr>
+</table>
+</div>
+</div>
+
+<h2>Первый слон — живой прямо сейчас</h2>
+<table>
+<tr><th>слон</th><th>очередь</th><th>темп</th><th>прогресс на 22:55</th><th>когда доест</th></tr>
+<tr><td><b>yt-watch-history</b><br><span style="color:var(--dim);font-size:13px">история YouTube-просмотров Антона</span></td>
+<td>2 238 видео</td><td>12 за прогон, 7 прогонов в ночь<br><span style="color:var(--dim);font-size:13px">~84 видео в сутки, 20 с между видео</span></td>
+<td>20 сделано, 16 с транскриптом<div class="bar"><i style="width:1%"></i></div></td>
+<td>~27 суток<br><span style="color:var(--dim);font-size:13px">против «месяц вручную и бан»</span></td></tr>
+</table>
+<p><b>Откуда очередь:</b> лайки 2 016 · база истории браузера 362 · Takeout Chrome 271 · живой профиль Chrome 139 · пилотная база 78 → 2 238 уникальных после дедупа.</p>
+<p><b>Что собирается по каждому видео:</b> ссылка, название, описание, канал, дата загрузки, длительность, просмотры, теги, категории, транскрипт с языком. Видео удалили — заметка всё равно пишется по названию и ссылке со статусом <code>unavailable</code>: факт «Антон это смотрел» не пропадает.</p>
+<p><b>Куда ложится:</b> <code>05-Resources\YT-Watch-History\&lt;год&gt;\&lt;video_id&gt;.md</code>, отдельно от его мыслей, с жёсткой пометкой в каждой заметке: <code>voice: not-anton</code> · <code>signal: anton-watched</code> · <code>layer: evidence</code>. Это чужой голос; сигнал Антона — сам выбор посмотреть.</p>
+<p><b>Две половины в одном прогоне:</b> конечная (ретро-очередь, кончится и выключится) + бесконечная (добор свежих просмотров из живого Chrome).</p>
+
+<h2>Чего не хватает — честно</h2>
+<table>
+<tr><th>дыра</th><th>что это значит</th><th>чей шаг</th></tr>
+<tr><td class="bad">База 15-летней истории на 64 496 событий отсутствует на диске</td><td>она описана в памяти от 11.07, но файла нет. Сейчас очередь собрана только из локальных остатков — это не 10 лет, это то, что уцелело</td><td>нужен свежий Google Takeout (YouTube → history). Логин с 2FA — шаг с руками Антона, скилл <code>/takeout-pull</code></td></tr>
+<tr><td class="warn">Старую задачу <code>YT-Transcript-Trickle-Hub</code> не удалось выключить</td><td><code>Access is denied</code> — создана под другими правами. Заглушена через свой .cmd: теперь пишет надгробие и выходит, вреда не делает</td><td>один заход из админского окна:<br><code>schtasks /Change /TN "YT-Transcript-Trickle-Hub" /DISABLE</code></td></tr>
+<tr><td class="warn">Классификация 943 файлов задач «канает на рутину / не канает» не сделана</td><td>автоскан дал мусор: большие числа в файлах оказались размерами и ID, а не списками работ. Выдавать это за анализ нельзя</td><td>это сам по себе слон — заводится тем же движком, если скажешь</td></tr>
+</table>
+
+<h2>Кандидаты в следующие слоны</h2>
+<table>
+<tr><th>кандидат</th><th>размер</th><th>почему слон, а не сессия</th></tr>
+<tr><td>Транскрипты 49 каналов из <code>YT-konspekty</code></td><td>~2 000 видео, лежат сырыми с 12.06</td><td>уже на диске, но не размечены и не подняты в RAG — работа списочная и конечная</td></tr>
+<tr><td>Острова графа волта</td><td>4 044 острова, 46 000 ссылок на проверку</td><td>висит с 15.07 как «vault-audit-fixes», ровно тот случай, что спотыкается месяцами</td></tr>
+<tr><td>Facebook: лента, сообщения, комментарии</td><td>не измерено</td><td>твой пример из голосовой; такой же ретро + ежедневный добор</td></tr>
+<tr><td>История браузера целиком</td><td>33 562 визита</td><td>соседний слой того же класса: что читал, а не что смотрел</td></tr>
+<tr><td>Классификация 943 задач</td><td>943 файла</td><td>ответ на твой же вопрос «какие канают на рутину» — забавно, но это тоже слон</td></tr>
+</table>
+
+<h2>Как посмотреть самому</h2>
+<p><code>python ~/.claude/scripts/elephant.py status</code> — все слоны одной таблицей: прогресс, осталось, ETA.<br>
+<code>python E:\Obsidian\_imports\youtube-history\yt_drip.py report</code> — что накоплено по YouTube.</p>
+<p style="color:var(--dim);font-size:13px;margin-top:26px">Соседи: <code>_Dashboards\Fleet-Routines.html</code> (кто из флота что крутит) · <code>_Dashboards\Task-Backlog.html</code> (реестр задач) · заметка раздела <code>05-Resources\YT-Watch-History\_YT-Watch-History-MOC.md</code></p>

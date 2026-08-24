@@ -1,0 +1,236 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Суд сирот 21.08</title><style>
+body{font-family:Segoe UI,system-ui,sans-serif;margin:0;background:#f6f7f9;color:#212121}
+header{background:#263238;color:#fff;padding:18px 24px}
+header h1{margin:0 0 6px;font-size:20px} header p{margin:0;opacity:.85;font-size:13px}
+.cards{display:flex;flex-wrap:wrap;gap:10px;padding:16px 24px}
+.card{background:#fff;border-radius:8px;padding:10px 16px;box-shadow:0 1px 3px rgba(0,0,0,.12);min-width:150px}
+.card b{font-size:22px;display:block}
+section{margin:8px 24px 20px;background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.12);overflow:hidden}
+section h2{margin:0;padding:10px 16px;font-size:15px;color:#fff;cursor:pointer}
+section p.sub{margin:0;padding:6px 16px;font-size:12px;color:#555;background:#fafafa;border-bottom:1px solid #eee}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+td,th{padding:5px 10px;border-bottom:1px solid #f0f0f0;text-align:left;vertical-align:top}
+th{background:#fafafa;position:sticky;top:0}
+td.n{font-family:Consolas,monospace;white-space:nowrap}
+.actions{margin:8px 24px 20px;background:#fff8e1;border-radius:8px;padding:12px 16px;font-size:13px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.actions li{margin:3px 0}
+details>summary{list-style:none} details>summary::-webkit-details-marker{display:none}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Мозг и волт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Nataly-Dashboards-Index.html">&larr; Nataly-Dashboards-Index</a> · <a href="RAG-Recall-Fix-2026-08-04.html">RAG-Recall-Fix-2026-08-04 &rarr;</a></span></div>
+<header><h1>⚖️ Суд движков-сирот — решения кофаундера, 21.08.2026</h1>
+<p>Вход: Orphan-Engines (ночной прогон Маяка 04:10, 328 «новорождённых») · суд: 13 агентов (12 судей Sonnet + скептики) + детерминированная сверка schtasks / scheduled-tasks / hooks / git-хуков хаба · улика: retro_candidates\sweep-final-20260821.json</p></header>
+<div class="cards">
+<div class="card" style="border-top:3px solid #e65100"><b>15</b>🟠 Настоящий разрыв</div>
+<div class="card" style="border-top:3px solid #1565c0"><b>24</b>🔵 Осознанно-ручной</div>
+<div class="card" style="border-top:3px solid #37474f"><b>4</b>⚫ Мёртвый</div>
+<div class="card" style="border-top:3px solid #6a1b9a"><b>1</b>❓ Не восстановить назначение</div>
+<div class="card" style="border-top:3px solid #616161"><b>6</b>⚪ Чужой узел (mac/Linux)</div>
+<div class="card" style="border-top:3px solid #2e7d32"><b>128</b>🟢 Жив</div>
+<div class="card" style="border-top:3px solid #263238"><b>178</b>уникальных движков</div></div>
+<div class="actions"><b>Сделано в этом заходе:</b><ul>
+<li>✅ 24 ручных инструмента вписаны в <code>scripts\_shared\manual_tools.txt</code> (уйдут из красного списка детектора)</li>
+<li>✅ Создана рутина <b>auto-hub-260821-shadow-harvest-daily</b> @05:18 — жнец теней: harvest_watch.py + просроченный флип engines_shadow (окно 04→18.08 истекло)</li>
+<li>✅ harvest_watch.py ПОЧИНЕН: падал на Windows (os.uname) — рутина хаба завтра бы крэшнулась; фикс проверен живым прогоном (нашёл 1 созревшую тень)</li>
+<li>✅ 2 мёртвых → <code>_imports\_scratch\hub-dead-20260821\</code> (+4 voice-twin recon → <code>_scratchoice-twin-recon-20260821\</code>); манифесты отката внутри</li>
+<li>✅ Строки-захваты: hub-leads-outreach (VC-граф + lead_thread_watch) · hub-connectors (merge_cards) · hub-infra-ops (3-ярусный авторемонт + жнец) · hub-alpha-insight (ab-cofounder)</li>
+<li>✅ Breakage-Journal: класс <code>orphan-detector-blind-to-windows-callers</code> (1-я строка) + грабля в deterministic-script-gotchas</li>
+<li>⛔ НЕ строил (решение): merge вызывателей в детектор (механизм после 3-й поломки, §5.10) · cw_gate nightly (PENDING в памяти, не критично §3.5) · 0 новых скиллов — всем хватило строк в существующих рельсах</li>
+</ul></div>
+<section><details open><summary><h2 style="background:#e65100">🟠 Настоящий разрыв — нужен исполнитель — 15</h2></summary>
+<p class="sub">Стадия без вызывателя; топ закрыт жнецом теней, остальное — бэклог</p><table><tr><th>движок</th><th>ув.</th><th>причина суда / кто зовёт</th><th>реальные вызыватели (сверка)</th></tr>
+<tr><td class="n">chat121_dump.py</td><td>high</td><td>approval_clock_tick.cmd, сам под Task Scheduler Approval-Clock-Tick</td><td>—</td></tr>
+<tr><td class="n">cloud_offload_map.py</td><td>low</td><td>скептик опроверг смерть: Дашборд 233KB реально опубликован (_dashboards_publish), свежий 0.2д разовый отчёт для решения Антона</td><td>—</td></tr>
+<tr><td class="n">cw_gate.py</td><td>high</td><td>ночная рутина хаба creator-watcher (см. память [[creator-watcher]], nightly PENDING)</td><td>—</td></tr>
+<tr><td class="n">debt_ledger.py</td><td>low</td><td>скептик опроверг смерть: Схтаска Content-Debt-Checker до сих пор зовёт debt_ledger.py check, свежий log от 20.08 23:20</td><td>—</td></tr>
+<tr><td class="n">dr_rails_board.py</td><td>low</td><td>рутина dr-runner после залпа (AUTO-dr-runner-daily) + /tt</td><td>—</td></tr>
+<tr><td class="n">engines_shadow.py</td><td>high</td><td>рутина engines-shadow-daily (уже названа); сверить flip/kill вердикт — дата урожая прошла</td><td>—</td></tr>
+<tr><td class="n">engines_shadow_commit.py</td><td>high</td><td>ночная задача на хабе (§4.6) &#x27;engines-shadow-commit-nightly&#x27;</td><td>—</td></tr>
+<tr><td class="n">github_reply_meter.py</td><td>low</td><td>contrib-watch daily (auto-mac16-260814-contrib-watch-daily) после contrib_watch.py — по доку</td><td>—</td></tr>
+<tr><td class="n">harvest_watch.py</td><td>med</td><td>ежедневная утренняя рутина хаба ~05:00 (закрывает CLAUDE.md §5.7)</td><td>—</td></tr>
+<tr><td class="n">mcp_wrapper_cleanup.ps1</td><td>high</td><td>mcp_daemons_watchdog.ps1 (строка ~100), сам под Task Scheduler MCP Daemons Watchdog</td><td>—</td></tr>
+<tr><td class="n">routine_verdicts.py</td><td>low</td><td>routine_verdicts_dashboard.py и skill:dash — по доку</td><td>—</td></tr>
+<tr><td class="n">sessions_results.py</td><td>high</td><td>Task Scheduler: Sessions Results Nightly -&gt; sessions_results_task.cmd (уже зовёт)</td><td>—</td></tr>
+<tr><td class="n">signal_dispatcher.py</td><td>low</td><td>периодический tick на хабе A-2022BAYAREA (DISPATCHER_OWNER)</td><td>—</td></tr>
+<tr><td class="n">win_portability_scan.py</td><td>med</td><td>nightly per-node сканер (наследник lint_path_hardcode CLAUDE.md §10.3) + deploy-gate хук</td><td>—</td></tr>
+<tr><td class="n">workflow_harvest.py</td><td>med</td><td>Завести .cmd + Task Scheduler на хабе по образцу workflow_harvest_sweep.command (launchd MACANTON)</td><td>—</td></tr>
+</table></details></section>
+<section><details open><summary><h2 style="background:#1565c0">🔵 Осознанно-ручной → manual_tools.txt — 24</h2></summary>
+<p class="sub">Вписаны в allowlist 21.08 — из красного списка уйдут</p><table><tr><th>движок</th><th>ув.</th><th>причина суда / кто зовёт</th><th>реальные вызыватели (сверка)</th></tr>
+<tr><td class="n">ab_harness.py</td><td>high</td><td>docstring прямо называет: руками или скиллом ретро</td><td>—</td></tr>
+<tr><td class="n">agent_chrome.sh</td><td>high</td><td>Доку называет вызывающих: skill dr-fanout, аутрич, watchdog agent_chrome_watch, вручную</td><td>—</td></tr>
+<tr><td class="n">agent_chrome_close.py</td><td>med</td><td>Внутренний хелпер, вызывается только через agent_chrome.sh stop</td><td>—</td></tr>
+<tr><td class="n">arch_status.py</td><td>high</td><td>Детектор уже поймал mentions skill:1, skill:arch — статус-ридер по запросу</td><td>—</td></tr>
+<tr><td class="n">build_devto_payload.py</td><td>high</td><td>докстринг: &#x27;Кто дёргает: руками при кросс-постинге&#x27;</td><td>—</td></tr>
+<tr><td class="n">claude_token_ladder.py</td><td>med</td><td>докстринг: потребитель claude_run.py (перебор при пустом баке) + CLI --status для сторожей/tt</td><td>—</td></tr>
+<tr><td class="n">dogfood_browser.py</td><td>med</td><td>Измерительный журнал 48ч dogfood-теста браузерной рельсы, ведётся по надобности</td><td>—</td></tr>
+<tr><td class="n">dr_leg_gate.py</td><td>high</td><td>Дверь-проверка, явно зовётся скиллом dr-fanout</td><td>—</td></tr>
+<tr><td class="n">gen_corpus.py</td><td>med</td><td>ступень A конвейера /goblin (скилл есть в реестре), судью зовёт сама</td><td>—</td></tr>
+<tr><td class="n">gh_env.py</td><td>high</td><td>докстринг называет существующих потребителей: public_surface_audit/pr_watch/github_reply_meter/hf_radar_nightly</td><td>—</td></tr>
+<tr><td class="n">judge_goblin.py</td><td>high</td><td>вызывается gen_corpus.py и /goblin шаг 5 — docstring называет обоих</td><td>—</td></tr>
+<tr><td class="n">leak_scan.py</td><td>high</td><td>mentions подтверждают: зовут скиллы journey и release-slice перед выпуском.</td><td>—</td></tr>
+<tr><td class="n">nightly_fetch.py</td><td>high</td><td>модуль nightly_run.py (main→nightly_fetch.main), уже под skill:sostav-comments</td><td>—</td></tr>
+<tr><td class="n">nightly_run.py</td><td>high</td><td>detector подтвердил: skill:sostav-comments, вызывает nightly_fetch и sostav_alpha</td><td>—</td></tr>
+<tr><td class="n">patch_gemini_rail_scope.py</td><td>high</td><td>Идемпотентный одноразовый патчер, зовёт /fleet-install и руки по доке</td><td>—</td></tr>
+<tr><td class="n">patch_repair_info.py</td><td>med</td><td>разовый идемпотентный патч бага repair_session.py, запускается вручную по флоту</td><td>—</td></tr>
+<tr><td class="n">persona.py</td><td>high</td><td>библиотека для ab_harness.py; ручной A/B эксперимент &#x27;персона на разных моделях&#x27;</td><td>—</td></tr>
+<tr><td class="n">public_surface_audit.py</td><td>high</td><td>mentions skill:tt; аудит публичной витрины перед &#x27;готово&#x27;</td><td>—</td></tr>
+<tr><td class="n">rail_measure.py</td><td>high</td><td>mentions skill:tt; замер панели (подписка/OpenRouter) перед /tt</td><td>—</td></tr>
+<tr><td class="n">routine_registry_collect.py</td><td>med</td><td>mentions skill:slot; докстринг: кто дёргает — skill:dash + разовая сессия auto-mac16-инвентаризации</td><td>—</td></tr>
+<tr><td class="n">session_backend_diff.py</td><td>high</td><td>Доку прямо: рутина GIT-S8 вручную, «в cron не стоит»</td><td>—</td></tr>
+<tr><td class="n">substr_lint.py</td><td>high</td><td>Детектор уже поймал mentions skill:tt, часть гейта /tt</td><td>—</td></tr>
+<tr><td class="n">task_rank.py</td><td>high</td><td>докстринг сам объясняет: cron живёт на Маяке 03:35, копия здесь — &#x27;parity + ручной fallback&#x27;</td><td>—</td></tr>
+<tr><td class="n">visible_rail_guard.py</td><td>high</td><td>докстринг даёт точную строку вызова из шапки каждого ночного .cmd-близнеца</td><td>—</td></tr>
+</table></details></section>
+<section><details open><summary><h2 style="background:#37474f">⚫ Мёртвый → _scratch / оставлен в бэкапе — 4</h2></summary>
+<p class="sub">2 перемещены в _imports\_scratch\hub-dead-20260821 (откат = mv назад); копии в бэкапах не тронуты</p><table><tr><th>движок</th><th>ув.</th><th>причина суда / кто зовёт</th><th>реальные вызыватели (сверка)</th></tr>
+<tr><td class="n">claude_desktop_healnow.ps1</td><td>high</td><td>одноразовый скрипт под инцидент 12.08.2026, самоудаляется после запуска</td><td>hook</td></tr>
+<tr><td class="n">publish_contact_gate.cmd</td><td>high</td><td>копия в _backup_fleet_tools_20260807; живой twin в _shared/, задача зовёт именно его</td><td>win-scheduler</td></tr>
+<tr><td class="n">retro_inventory.py</td><td>high</td><td>черновик в cc-review/review-inbox; живой файл — $IMPORTS_ROOT/retro_inventory.py, содержимое отличается</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">shadow_runner.py</td><td>med</td><td>Тестировал 24ч approval_clock/гейт Наташи для перехода в бой; оба сняты 05-06.08, нигде не зовётся (проверено grep)</td><td>—</td></tr>
+</table></details></section>
+<section><details open><summary><h2 style="background:#6a1b9a">❓ Не восстановить назначение — 1</h2></summary>
+<p class="sub">Оставлен как есть, помечен</p><table><tr><th>движок</th><th>ув.</th><th>причина суда / кто зовёт</th><th>реальные вызыватели (сверка)</th></tr>
+<tr><td class="n">llm_cli.py</td><td>low</td><td>библиотека-контракт ask(provider,prompt), потребителя не нашли, похоже дублирует llm_ask.py</td><td>—</td></tr>
+</table></details></section>
+<section><details open><summary><h2 style="background:#616161">⚪ Чужой узел (mac/Linux) — норма — 6</h2></summary>
+<p class="sub">Двойники других узлов, на хабе не запускаются</p><table><tr><th>движок</th><th>ув.</th><th>причина суда / кто зовёт</th><th>реальные вызыватели (сверка)</th></tr>
+<tr><td class="n">alpha_drain_run.py</td><td>high</td><td>кто дёргает: launchd ai.paloalto.alpha-drain-weekly -&gt; .command — рутина Mac16, не Windows</td><td>—</td></tr>
+<tr><td class="n">dr_tick_precheck.py</td><td>high</td><td>Вызывается launchd-таймером dr_runner_tick.command на mac16, не Windows-рельса</td><td>—</td></tr>
+<tr><td class="n">github_lane_freshness.py</td><td>high</td><td>launchd-тикер + захардкоженный /Users/anton путь в DEFAULT_JOURNAL — скрипт узла Mac16, не Windows</td><td>—</td></tr>
+<tr><td class="n">github_routines_registry.py</td><td>high</td><td>DEF_FLEET хардкодит MacBook-Anton.jsonl, потребитель — сессия auto-mac16-...: скрипт узла Mac16</td><td>—</td></tr>
+<tr><td class="n">tcc_seed_claude.sh</td><td>high</td><td>macOS-скрипт: TCC.db, Library/Application Support, SessionStart-хук Mac-узла, не Windows</td><td>—</td></tr>
+<tr><td class="n">telegram_mcp_sse.cmd</td><td>high</td><td>лаунчер для узла MyOwnPC-Natalia; на хабе своя задача зовёт другой run_sse.cmd</td><td>claude-scheduled-task, hook</td></tr>
+</table></details></section>
+<section><details><summary><h2 style="background:#2e7d32">🟢 Жив — ложный красный детектора — 128</h2></summary>
+<p class="sub">Зовут Windows Task Scheduler / scheduled-tasks / hooks / git-хуки; детектор на Маяке (Linux) их не видит</p><table><tr><th>движок</th><th>ув.</th><th>причина суда / кто зовёт</th><th>реальные вызыватели (сверка)</th></tr>
+<tr><td class="n">_spawn_runner.py</td><td>high</td><td>spawn_session.py (уже единственный вызывающий по доке)</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">_sql_hygiene.py</td><td>med</td><td>build_vc_graph.py/2/3.py, build_leads_db.py, build_unified_sql.py, crm-engine/*.py — вызвать в конце импорта</td><td>hook</td></tr>
+<tr><td class="n">alpha_post.py</td><td>high</td><td>нужен ежедневный крон после call_distill.py (гранола/файрflies) — &#x27;alpha-post-daily&#x27;</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">approval_clock_tick.cmd</td><td>high</td><td>Task Scheduler: Approval-Clock-Tick (уже зовёт этот файл, подтверждено)</td><td>win-scheduler</td></tr>
+<tr><td class="n">arxiv_ticket_ping_tick.cmd</td><td>high</td><td>Task Scheduler: ArXiv Ticket Ping (уже назначен)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">ask_server.py</td><td>high</td><td>Явно вызывается скиллом /ask как визуальный GUI-поиск по второму мозгу.</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">auto_improve.py</td><td>high</td><td>Доке прямо: &#x27;в cron НЕ ставится, пока shadow не показал ценность&#x27;</td><td>hook</td></tr>
+<tr><td class="n">build_dashboard.py</td><td>high</td><td>докстринг: &#x27;КТО ДЁРГАЕТ: руками после ab_judge.py&#x27; — явный ранбук</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">build_freeze.py</td><td>high</td><td>hooks/build_freeze_gate.py (PreToolUse hook, зарегистрирован)</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">bus_tg_peek.py</td><td>high</td><td>inbox_robot.cmd / pulse_tg_feed.py / robot_alert_guard.py (уже зовут, false-positive)</td><td>hook</td></tr>
+<tr><td class="n">call_distill.py</td><td>high</td><td>вызывается skill:fireflies-sync и skill:granola-sync (детектор подтверждён)</td><td>win-scheduler</td></tr>
+<tr><td class="n">canon_apply_task.cmd</td><td>high</td><td>Task Scheduler: Canon-Apply-Backstop (уже зовёт этот файл, подтверждено Actions)</td><td>win-scheduler</td></tr>
+<tr><td class="n">canon_intake.py</td><td>high</td><td>Вызывается скиллом /reality-show (приёмка бит-кандидатов канона)</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">canon_render.py</td><td>high</td><td>Вызывается скиллами /reality-show и /retro (рендер публичных реестров канона)</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">channel_judge.py</td><td>high</td><td>docstring называет вызывающего: задача Alpha Channel Judge Nightly + ручной --dry-run</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">channel_judge_nightly.cmd</td><td>low</td><td>сверить регистрацию Task Scheduler &#x27;Alpha Channel Judge Nightly&#x27; 05:20 Лиссабон</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">chatgpt_freshness_check.cmd</td><td>high</td><td>Task Scheduler: ChatGPT Vault Freshness (уже подключено)</td><td>win-scheduler</td></tr>
+<tr><td class="n">claude_desktop_watchdog.ps1</td><td>high</td><td>докстринг: &#x27;КТО ДЁРГАЕТ: Task Scheduler задача Claude-Desktop-Watchdog, каждые 5 мин&#x27;</td><td>win-scheduler, claude-scheduled-task, hook</td></tr>
+<tr><td class="n">claudeai_sync.py</td><td>high</td><td>Явно вызывается скиллом /claudeai-sync.</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">claudeai_sync_nightly.cmd</td><td>med</td><td>Task Scheduler &#x27;claudeai-sync-daily&#x27; (сверить регистрацию/heartbeat)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">coach_morning.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Coach Morning Weekly&#x27; (skill:coach)</td><td>win-scheduler, claude-scheduled-task, hook</td></tr>
+<tr><td class="n">connector_health_daily.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Connector Health Daily&#x27; (skill:mcp)</td><td>win-scheduler</td></tr>
+<tr><td class="n">consensus_config_guard.py</td><td>high</td><td>Task Scheduler: Consensus Config Guard (уже зовёт check --alert)</td><td>win-scheduler</td></tr>
+<tr><td class="n">content_debt_watch.py</td><td>high</td><td>ежедневная рутина content-debt-watch (аналог fb-watch-daily)</td><td>hook</td></tr>
+<tr><td class="n">content_drain_daily.cmd</td><td>high</td><td>Task Scheduler: Content-Drain-Daily</td><td>win-scheduler</td></tr>
+<tr><td class="n">content_factory_daily.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Content Factory Daily&#x27; (hub-content-factory)</td><td>win-scheduler, claude-scheduled-task, hook</td></tr>
+<tr><td class="n">content_miner.py</td><td>high</td><td>Вызывается скиллами /content-mine и /contrib-watch</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">copy_sweep.py</td><td>high</td><td>docstring прямо: зову сам перед вердиктом, либо руками при странности</td><td>hook</td></tr>
+<tr><td class="n">corpus_bench.py</td><td>high</td><td>вызывается skill:corpus-bench и еженедельной задачей corpus-bench-weekly</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">cron_heartbeat.py</td><td>high</td><td>уже вызывается в конце каждого MCP-крона (shared lib)</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">daily_community.py</td><td>high</td><td>ночная рутина &#x27;вопрос дня/факап дня&#x27; (CLAUDE.md §9.6) должна звать daily_community.py build</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">day_ledger.py</td><td>high</td><td>Явно вызывается скиллами /1, /ledger, /retro для сборки дневного леджера.</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">desktop_app_watchdog.py</td><td>med</td><td>уже в Windows Task Scheduler на хабе, self-gate HOST_ALLOWED=A-2022BAYAREA</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">devlog_collect.py</td><td>high</td><td>Task Scheduler: Devlog Collect Nightly (уже подключено)</td><td>win-scheduler, claude-scheduled-task</td></tr>
+<tr><td class="n">disabled_task_guard.py</td><td>high</td><td>Task Scheduler: disabled-task-guard</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">dr_fsm.py</td><td>high</td><td>Task Scheduler &#x27;DR FSM Shadow Bake&#x27; — переключить Execute с E:\Obsidian\_imports\dr_fsm.py bake на этот файл tick --live (см. свой докстринг: cron каждые 10 мин</td><td>win-scheduler</td></tr>
+<tr><td class="n">dr_headless_dispatch.py</td><td>high</td><td>докстринг: &#x27;КТО ДЁРГАЕТ рутина AUTO-&lt;узел&gt;-dr-runner-daily, руками — по надобности&#x27;</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">dr_runner.cmd</td><td>high</td><td>Task Scheduler: Claude DR Runner (hub) (уже подключено)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">dr_runner.py</td><td>high</td><td>dr_runner.cmd -&gt; Task Scheduler Claude DR Runner (hub)</td><td>hook</td></tr>
+<tr><td class="n">dr_to_content.py</td><td>high</td><td>Task Scheduler: DR To Content Daily (уже назначен, live, report ежедневно с 06.08)</td><td>win-scheduler, claude-scheduled-task, hook</td></tr>
+<tr><td class="n">faaa_weekly_sync.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude FAAA Weekly Sync&#x27; (skill:faaa-sync)</td><td>win-scheduler</td></tr>
+<tr><td class="n">facebook_diary_daily.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Facebook Diary Daily&#x27; (facebook-diary-auto)</td><td>win-scheduler</td></tr>
+<tr><td class="n">fb_reply_gate.py</td><td>high</td><td>Гейт вызывается скиллом /fb-reply перед постингом батча ответов на FB.</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">fb_watch_daily.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude FB Watch Daily&#x27; (skill:fb-watch)</td><td>win-scheduler</td></tr>
+<tr><td class="n">five_hard_monthly.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Five Hard Monthly&#x27; (skill:five-hard)</td><td>win-scheduler</td></tr>
+<tr><td class="n">fix_claude_app.ps1</td><td>high</td><td>Доку прямо: зовёт человек кнопкой ПОЧИНИТЬ CLAUDE.cmd на рабочем столе</td><td>hook</td></tr>
+<tr><td class="n">funnel_dashboard.py</td><td>high</td><td>Task Scheduler &#x27;Claude Voice Triage Daily&#x27; -&gt; scheduled-tasks\voice-triage\SKILL.md</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">funnel_feeder.py</td><td>low</td><td>funnel_feeder_tick.cmd -&gt; Windows Task Scheduler «funnel-feeder-tick»</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">funnel_feeder_tick.cmd</td><td>med</td><td>Windows Task Scheduler «funnel-feeder-tick» (self, каждые 2 часа)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">funnel_stall_watch.py</td><td>high</td><td>Task Scheduler, ночной прогон (сторож funnel-stall-watch)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">git_daemon_guard.ps1</td><td>high</td><td>Task Scheduler task &#x27;Claude Git Daemon Guard&#x27; -&gt; git_daemon_guard.vbs -&gt; этот .ps1</td><td>—</td></tr>
+<tr><td class="n">git_daemon_guard.vbs</td><td>high</td><td>Task Scheduler task &#x27;Claude Git Daemon Guard&#x27;</td><td>win-scheduler</td></tr>
+<tr><td class="n">git_daemon_hidden.vbs</td><td>high</td><td>Task Scheduler task &#x27;Claude Git Daemon&#x27;</td><td>win-scheduler</td></tr>
+<tr><td class="n">git_transport_monitor.py</td><td>med</td><td>Task Scheduler: Claude Git Transport Monitor (имя совпадает, командную строку не сверял)</td><td>win-scheduler</td></tr>
+<tr><td class="n">gmail_digest_morning.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Gmail Digest Morning&#x27; (skill:gmail упоминает этот твин)</td><td>win-scheduler, claude-scheduled-task</td></tr>
+<tr><td class="n">hanging_tasks_digest.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Hanging Tasks Digest&#x27; (hanging-tasks-dashboard)</td><td>win-scheduler</td></tr>
+<tr><td class="n">health_watchdog.py</td><td>high</td><td>Task Scheduler: ClaudeHealthArch / ClaudeHealthBrain / ClaudeHealthTgWatch (все уже зовут файл)</td><td>win-scheduler</td></tr>
+<tr><td class="n">health_weekly_sync.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Health Weekly Sync&#x27; (skill:health-sync)</td><td>win-scheduler</td></tr>
+<tr><td class="n">hn_watch.py</td><td>med</td><td>нужна еженедельная задача HN Watch либо вызов из скилла github-growth</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">hub_boot_report.cmd</td><td>high</td><td>Task Scheduler task &#x27;Hub Boot Self-Report&#x27;</td><td>win-scheduler</td></tr>
+<tr><td class="n">hub_yt_trickle.cmd</td><td>med</td><td>ночная задача-дрип для YouTube-транскриптов (см. память youtube-transcripts-liked-only-shadow)</td><td>win-scheduler</td></tr>
+<tr><td class="n">inbox_robot.cmd</td><td>high</td><td>Task Scheduler: inbox-robot (уже зовёт этот файл, подтверждено Actions)</td><td>win-scheduler, claude-scheduled-task, hook</td></tr>
+<tr><td class="n">intention_daily.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Intention Daily&#x27; (skill:intention)</td><td>win-scheduler</td></tr>
+<tr><td class="n">intention_mine.py</td><td>high</td><td>Вызывается скиллом /intention (майнер намерений из дневных сессий)</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">journey_site_index.py</td><td>high</td><td>Зовётся скиллом journey (mentions skill:journey) для сборки индекса сайта.</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">lead_thread_watch.py</td><td>high</td><td>полноценный сторож+ответчик TG-лидов; докстринг называет рутину lead-thread-reply 2х/сутки</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">listener.py</td><td>high</td><td>Task Scheduler: CRM-Sensors-Nightly (уже подключено)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">lobster_pulse.py</td><td>high</td><td>Task Scheduler: LobsterMonthlyPulse (уже назначен)</td><td>win-scheduler, claude-scheduled-task, hook</td></tr>
+<tr><td class="n">mcp_daemons_watchdog.cmd</td><td>high</td><td>Task Scheduler: MCP Daemons Watchdog</td><td>win-scheduler, claude-scheduled-task, hook</td></tr>
+<tr><td class="n">mcp_daemons_watchdog.ps1</td><td>high</td><td>mcp_daemons_watchdog.cmd -&gt; Task Scheduler MCP Daemons Watchdog</td><td>hook</td></tr>
+<tr><td class="n">medium_metrics.py</td><td>high</td><td>Task Scheduler &#x27;Pub-Metrics-Nightly&#x27; -&gt; collect_pub_metrics.cmd</td><td>—</td></tr>
+<tr><td class="n">micro_bench.py</td><td>high</td><td>Часть новой alpha-подсистемы (п.4-6 Крестникова): бенч промптов, зовётся auto_improve.py и вручную</td><td>hook</td></tr>
+<tr><td class="n">missed_jobs_catchup.ps1</td><td>high</td><td>Windows Task Scheduler «Claude Missed Jobs Catchup» (self, 09:10)</td><td>win-scheduler</td></tr>
+<tr><td class="n">nightly_run.cmd</td><td>med</td><td>Windows Task Scheduler задача, зовущая nightly_run.py (СОСТАВ nightly watcher)</td><td>win-scheduler</td></tr>
+<tr><td class="n">nightly_sync.cmd</td><td>high</td><td>Task Scheduler: ChatGPT Nightly Sync (уже подключено)</td><td>win-scheduler, claude-scheduled-task</td></tr>
+<tr><td class="n">no_modal_lane_scan.py</td><td>high</td><td>Докстринг сам называет вызовы: /tt, ночной регресс, руками при разборе зомби-сессий.</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">oauth_probe.py</td><td>high</td><td>Task Scheduler: oauth-probe (05:40 Lisbon)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">obsidian_backup_healthcheck.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Obsidian Backup Healthcheck&#x27; (skill:obsidian-backup)</td><td>win-scheduler</td></tr>
+<tr><td class="n">os_task_watchdog.ps1</td><td>high</td><td>Windows Task Scheduler, периодический прогон (мета-сторож cron&#x27;ов)</td><td>win-scheduler, claude-scheduled-task, hook</td></tr>
+<tr><td class="n">output_freshness.py</td><td>high</td><td>mentions skill:hk; докстринг: это цель задачи Планировщика &#x27;output-freshness&#x27; (S4U, менять нельзя)</td><td>win-scheduler, claude-scheduled-task, hook</td></tr>
+<tr><td class="n">pr_watch.py</td><td>high</td><td>mentions уже содержит skill:pr-reply — очередь ревью чужих PR</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">pr_watch_tick.cmd</td><td>high</td><td>Task Scheduler: Claude PR Watch Nightly (03:40)</td><td>win-scheduler</td></tr>
+<tr><td class="n">preference_sweep_daily.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Preference Sweep Daily&#x27; (hub-alpha-insight)</td><td>win-scheduler</td></tr>
+<tr><td class="n">ralph_loop.py</td><td>high</td><td>Экспериментальный харнес (alpha п.4/7 17.08), запускается сессией вручную, не в cron</td><td>hook</td></tr>
+<tr><td class="n">registry_dispatch.py</td><td>high</td><td>движок уже существующей рутины registry-dispatcher-daily 05:15 (CLAUDE.md §9.2)</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">registry_wake.py</td><td>med</td><td>утренняя задача «Claude Registry Wake» 05:00 Лиссабон (уже названа в доке)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">reindex_daily.cmd</td><td>med</td><td>Task Scheduler ежедневная задача реиндекса (ночное окно §4.6)</td><td>win-scheduler</td></tr>
+<tr><td class="n">repair_session.cmd</td><td>high</td><td>Task Scheduler: Claude Repair Session (tier1) (уже подключено)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">repair_session.py</td><td>high</td><td>repair_session.cmd (Windows Task Scheduler, частый тик, канон §4.6)</td><td>hook</td></tr>
+<tr><td class="n">repo_hygiene_gate.py</td><td>high</td><td>Task Scheduler: Repo Hygiene Gate</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">retro_lost_scan.py</td><td>high</td><td>Зовут скилл retro-lost руками (list/mark-done) и ночная рутина auto-hub-nightly.</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">routine_rights_census.py</td><td>med</td><td>ночная Windows-задача &#x27;Claude Routine Rights Census&#x27; (названа в доке)</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">routine_supervisor_run.cmd</td><td>high</td><td>Task Scheduler: Routine Supervisor (уже зовёт этот файл, подтверждено Actions)</td><td>win-scheduler</td></tr>
+<tr><td class="n">rule_liveness_nightly.cmd</td><td>high</td><td>Windows Task Scheduler «Claude Rule Liveness Nightly» (self, 02:40 Лиссабон)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">runbook_drill.py</td><td>med</td><td>ежемесячная Windows-задача для ранбук-дрели (упомянута, но не подтверждена)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">selfheal.py</td><td>high</td><td>докстринг: &#x27;КТО ЗОВЁТ: os_task_watchdog.ps1 (и далее прочие сторожа)&#x27; — ярус-0 авторемонта</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">session_unsticker_pregate.py</td><td>high</td><td>session_unsticker_tick.cmd (Task Scheduler, каждые 15 мин)</td><td>hook</td></tr>
+<tr><td class="n">session_unsticker_tick.cmd</td><td>high</td><td>уже зарегистрирован как Windows Task Scheduler task session-unsticker-tick</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">show_canon_check.py</td><td>high</td><td>Вызывается скиллом /reality-show (недельный медосмотр сериала)</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">show_canon_sync.py</td><td>high</td><td>Вызывается скиллом /reality-show</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">skill_gap_daily.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Skill Gap Daily&#x27; (skill:skill-gap)</td><td>win-scheduler</td></tr>
+<tr><td class="n">source_heartbeat.py</td><td>high</td><td>nightly_sync.cmd (stamp) -&gt; ChatGPT Nightly Sync; read — сторожа свежести</td><td>hook</td></tr>
+<tr><td class="n">spawn_slot_guard.py</td><td>high</td><td>гейт /slot при рождении сессии, mentions=skill:slot подтверждает</td><td>hook</td></tr>
+<tr><td class="n">subscription_utilization.py</td><td>high</td><td>Task Scheduler: Subscription Utilization Weekly</td><td>win-scheduler, claude-scheduled-task, hook</td></tr>
+<tr><td class="n">sync_monitor.py</td><td>high</td><td>Windows Task Scheduler, интервал ~20 мин (сторож Syncthing на хабе)</td><td>win-scheduler</td></tr>
+<tr><td class="n">task_hygiene.py</td><td>high</td><td>scheduled-tasks/task-hygiene-shadow (уже существует, false-positive орфан)</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">tg_bus_send.py</td><td>high</td><td>mentions skill:intention; шинный отправитель в обход хрупкого TG-MCP</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">tg_comments_collect.py</td><td>high</td><td>Вызывается /comments и ночным collect_pub_metrics.cmd (Pub-Metrics-Nightly)</td><td>—</td></tr>
+<tr><td class="n">tg_dm_team_send.py</td><td>high</td><td>Резервная рельса личек команде мимо MCP, CLI-инструмент по требованию</td><td>hook</td></tr>
+<tr><td class="n">tg_metrics_snapshot.py</td><td>high</td><td>Task Scheduler &#x27;Pub-Metrics-Nightly&#x27; -&gt; collect_pub_metrics.cmd</td><td>—</td></tr>
+<tr><td class="n">tg_relationships_weekly.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Tg Relationships Weekly&#x27; (hub-tg-rails)</td><td>win-scheduler</td></tr>
+<tr><td class="n">tg_weekly_digest.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Tg Weekly Digest&#x27; (hub-tg-rails)</td><td>win-scheduler</td></tr>
+<tr><td class="n">token_expiry_check.py</td><td>high</td><td>nightly_sync.cmd (chatgpt) или скилл local-chatgpt-token-heal — гейт перед Chrome-харвестом</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">token_spend_watchdog.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Token Spend Watchdog&#x27; (§6.3 token_audit)</td><td>win-scheduler</td></tr>
+<tr><td class="n">vault_backup.py</td><td>high</td><td>Doc требует запуск перед любой правкой волта, зовут 4 скилла.</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">vault_precommit_guard.py</td><td>high</td><td>git pre-commit хук волта (install_vault_hooks.py), уже установлен</td><td>git-hook</td></tr>
+<tr><td class="n">voice_ab_measure.py</td><td>med</td><td>периодический тик (кандидат: рядом с voice-triage/voice-dispatcher), в доке не назван</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">voice_dispatch.py</td><td>high</td><td>voice_dispatch_watch.cmd -&gt; Task Scheduler Claude Voice Dispatch Watch</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">voice_dispatch_watch.cmd</td><td>high</td><td>Task Scheduler: Claude Voice Dispatch Watch (уже подключено)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">voice_finalizer_build.py</td><td>high</td><td>Это деплой-скрипт: строит n8n-workflow вручную; сам workflow крутится в n8n</td><td>hook</td></tr>
+<tr><td class="n">voice_pull_tg.py</td><td>high</td><td>grep подтвердил: используется voice_sessions.py и voice_dispatch.py как TG-рельса в headless-режиме</td><td>hook</td></tr>
+<tr><td class="n">voice_sessions.py</td><td>high</td><td>mentions skill:voice-sessions — движок одноимённого скилла</td><td>claude-scheduled-task, hook</td></tr>
+<tr><td class="n">voice_task_promote.py</td><td>high</td><td>Task Scheduler &#x27;Claude Voice Triage Daily&#x27; -&gt; scheduled-tasks\voice-triage\SKILL.md</td><td>claude-scheduled-task</td></tr>
+<tr><td class="n">voice_triage.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Voice Triage Daily&#x27; (skill:voice-sessions)</td><td>win-scheduler, hook</td></tr>
+<tr><td class="n">wake_listener.py</td><td>high</td><td>Task Scheduler: wake-listener (постоянный процесс, уже запущен и подтверждён)</td><td>win-scheduler</td></tr>
+<tr><td class="n">weekly_brain_audio_digest.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Weekly Brain Audio Digest&#x27; (hub-alpha-insight)</td><td>win-scheduler</td></tr>
+<tr><td class="n">wisdom_distill_weekly.cmd</td><td>high</td><td>Windows Task Scheduler: &#x27;Claude Wisdom Distill Weekly&#x27; (skill:wisdom-distill)</td><td>win-scheduler</td></tr>
+<tr><td class="n">zalp_delta.py</td><td>high</td><td>Task Scheduler: Zalp1 Delta Board (уже назначен)</td><td>claude-scheduled-task</td></tr>
+</table></details></section>
+<p style="margin:0 24px 30px;font-size:11px;color:#777">Построено детерминированно из sweep-final-20260821.json · сессия sweep-решений кофаундера · строка Breakage-Journal и хаб-споуки перечислены выше</p></body></html>

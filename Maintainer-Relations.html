@@ -1,0 +1,40 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>Maintainer Relations</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{font-family:-apple-system,Segoe UI,sans-serif;background:#0f1115;color:#e6e6e6;margin:24px;font-size:14px}
+h1{font-size:20px} .sub{color:#9aa0a6;margin-bottom:16px}
+table{border-collapse:collapse;width:100%} th,td{padding:7px 10px;border-bottom:1px solid #2a2e37;text-align:left;vertical-align:top}
+th{color:#9aa0a6;font-weight:600;position:sticky;top:0;background:#0f1115}
+.hot{color:#4ade80}.warm{color:#facc15}.grave{color:#6b7280}
+.ball-ours{background:#7f1d1d;color:#fff;border-radius:4px;padding:1px 6px}
+.ball-theirs{background:#1e3a5f;color:#cbd5e1;border-radius:4px;padding:1px 6px}
+.ball-none{color:#6b7280}
+a{color:#7ab8ff;text-decoration:none}
+.done{background:#14351f;border:1px solid #1f5232;border-radius:8px;padding:10px 14px;margin:14px 0}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Mac16-Model-Routing.html">&larr; Mac16-Model-Routing</a> · <a href="Nightly-Bugs-MyOwnPC-Natalia.html">Nightly-Bugs-MyOwnPC-Natalia &rarr;</a></span></div>
+<h1>🤝 Отношения с мейнтейнерами</h1>
+<div class="sub">github_reply_meter --days 30 · 94 треда · 40 живых ответивших · собрано 2026-08-20 (MacBook-Anton)</div>
+<div class="done"><b>Исполнено 20.08:</b>
+<a href="https://github.com/UKGovernmentBEIS/inspect_ai/pull/4928#issuecomment-5365647770">inspect_ai#4928 — консенсус с ClaireXi99 (прогон на 2 ревизиях)</a> ·
+<a href="https://github.com/zilliztech/memsearch/issues/676#issuecomment-5365651270">memsearch#676 — PR-спека, PR обещан ≤23.08</a> ·
+<a href="https://github.com/anthropics/claude-code/issues/87783#issuecomment-5365663659">claude-code#87783 — ответ Stratogain (мяч висел 40ч)</a></div>
+<table>
+<tr><th>кто</th><th>компания</th><th>статус</th><th>последний обмен</th><th>чей мяч</th><th>следующий ход</th><th>когда</th></tr>
+<tr><td><b>bcherny</b></td><td>Anthropic (автор Claude Code)</td><td class="warm">🟡 триаж-штампы</td><td>20.08</td><td class="ball-none">ничей</td><td>замеренный repro в канонические #85974/#81836, когда флот словит</td><td>по событию</td></tr>
+<tr><td><b>seratch</b></td><td>OpenAI</td><td class="hot">🟢 тёплый: 2× спасибо, вклад в v0.19.3</td><td>15.08</td><td class="ball-none">ничей</td><td>новая находка sessions/memory, issue-match</td><td>git-s7/s9</td></tr>
+<tr><td><b>dragonstyle</b></td><td>UK AISI · inspect_ai</td><td class="hot">🟢 живой</td><td>11.08</td><td><span class="ball-theirs">их</span></td><td>same-day на maintainer's call в #4928</td><td>по событию</td></tr>
+<tr><td>arrdel</td><td>UK AISI</td><td class="hot">🟢</td><td>окно 10–19.08</td><td class="ball-none">—</td><td>через поток git-s7</td><td>постоянно</td></tr>
+<tr><td><b>eavanvalkenburg</b></td><td>Microsoft · agent-framework</td><td class="hot">🟢 (2.2ч латентность)</td><td>19.08</td><td><span class="ball-theirs">их (#7581)</span></td><td>same-day + прогон при ответе</td><td>watch ≤3д</td></tr>
+<tr><td><b>phernandez</b></td><td>Basic Machines · basic-memory</td><td class="hot">🟢</td><td>18.08</td><td><span class="ball-theirs">их (#1275)</span></td><td>failing-test PR к #1275 при ответе</td><td>по событию</td></tr>
+<tr><td>ClaireXi99</td><td>inspect_ai contributor</td><td class="hot">🟢 горячий — консенсус сегодня</td><td><b>20.08</b></td><td class="ball-none">закрыт</td><td>CTA инженер-тестер после мержа</td><td>после мержа</td></tr>
+<tr><td>ilipkanou</td><td>memsearch reporter</td><td class="hot">🟢 горячий — построил наш probe</td><td><b>20.08</b></td><td><span class="ball-ours">НАШ — PR обещан</span></td><td>PR по спеке из треда</td><td><b>≤23.08</b></td></tr>
+<tr><td>Stratogain</td><td>claude-code community</td><td class="hot">🟢 горячий — читает наш starter</td><td><b>20.08</b></td><td><span class="ball-theirs">их</span></td><td>ответ на его чтение 3 чеков</td><td>по событию</td></tr>
+<tr><td>punkpeye / pacocartones</td><td>fastmcp</td><td class="hot">🟢 5 тредов закрыто</td><td>13.08</td><td class="ball-none">ничей</td><td>следующая находка по радару</td><td>git-s9</td></tr>
+<tr><td>babyblueviper1 / moonbox3</td><td>Microsoft SK</td><td class="hot">🟢</td><td>06.08</td><td><span class="ball-theirs">их</span></td><td>ждём, не бампим</td><td>—</td></tr>
+<tr><td>doudouOUC</td><td>Qwen</td><td class="warm">🟡 ждём</td><td>18.08</td><td><span class="ball-theirs">их</span></td><td>тишина &gt;3д → 🪦</td><td>21.08</td></tr>
+<tr><td>anakin87</td><td>deepset</td><td class="warm">🟡</td><td>14.08 (бот)</td><td><span class="ball-ours">наш (бот-чек)</span></td><td>разобрать, что просит vercel-чек</td><td>21.08</td></tr>
+<tr><td>kkorpal · guglielmo-san</td><td>Google cookbook · MCP go-sdk</td><td class="grave">🪦 могилы (19–27д)</td><td>—</td><td class="ball-none">—</td><td>не воскрешаем</td><td>—</td></tr>
+<tr><td>deepujain, gingeard, chelsealong, Juwan-Hwang, VihaanAgarwal, SushantTusharJoshi, AmirF194, PiedPiper911, ken-talltree-io, ebarkhordar, Anai-Guo, dexhunter, hsusul</td><td>контрибьюторы (мы ревьюили их PR)</td><td class="hot">🟢 отвечают</td><td>авг</td><td class="ball-none">—</td><td>пул CTA «инженер-тестер»</td><td>по мержам</td></tr>
+</table>
+<p class="sub">Заметка-истина: 04-Projects/maintainer-relations-2026-08-20.md · карточки: person-bcherny/seratch/dragonstyle/eavanvalkenburg/phernandez</p>
+</body></html>

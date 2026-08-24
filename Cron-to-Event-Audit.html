@@ -1,0 +1,238 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Крон -&gt; Событийка: аудит поллеров</title>
+<style>
+ body{margin:0;background:#0f1115;color:#e6e6e6;font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+ .wrap{max-width:1240px;margin:0 auto;padding:28px}
+ h1{font-size:23px;margin:0 0 4px} .sub{color:#8a93a2;margin-bottom:22px;font-size:13px}
+ .grid{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+ .card{background:#171a21;border:1px solid #232734;border-radius:12px;padding:16px 18px;flex:1;min-width:160px}
+ .card .n{font-size:28px;font-weight:700} .card .l{color:#8a93a2;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+ table{width:100%;border-collapse:collapse;margin:8px 0 26px;font-size:13px}
+ th,td{text-align:left;padding:8px 9px;border-bottom:1px solid #232734;vertical-align:top}
+ th{color:#8a93a2;text-transform:uppercase;font-size:10.5px;letter-spacing:.04em;background:#12141a}
+ h2{font-size:16px;margin:30px 0 4px;color:#cdd3df} h3{font-size:14px;margin:20px 0 4px;color:#cdd3df}
+ .note{color:#8a93a2;font-size:12px;margin:2px 0 14px}
+ .A{color:#3ea6ff;font-weight:700} .B{color:#2ecc71;font-weight:700} .V{color:#e8b34a;font-weight:700}
+ .bad{color:#ff6b6b} .ok{color:#2ecc71} .dim{color:#8a93a2}
+ code{background:#12141a;border:1px solid #232734;border-radius:4px;padding:1px 5px;font-size:12px}
+ .box{background:#171a21;border:1px solid #232734;border-left:3px solid #3ea6ff;border-radius:8px;padding:14px 16px;margin:10px 0}
+ .box.warn{border-left-color:#e8b34a} .box.red{border-left-color:#ff6b6b}
+ .ba{display:flex;gap:14px;flex-wrap:wrap} .ba>div{flex:1;min-width:290px;background:#12141a;border:1px solid #232734;border-radius:8px;padding:12px 14px}
+ .ba .h{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#8a93a2;margin-bottom:6px}
+ .wide{overflow-x:auto}
+ ul{margin:6px 0 6px 18px;padding:0} li{margin:3px 0}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Connectors-Health.html">&larr; Connectors-Health</a> · <a href="DR-Delivery-Sessions.html">DR-Delivery-Sessions &rarr;</a></span></div><div class="wrap">
+
+<h1>⚡ Крон -&gt; Событийка: где поллинг стоит заменить триггером</h1>
+<div class="sub">Аудит-сессия <code>auto-hub-260819-cron-to-event-audit</code> · хаб A-2022BAYAREA · 19.08.2026 18:10 Лиссабон · приказ Антона 17:08<br>
+Все цифры взяты из логов, state-файлов и <code>token_audit</code>. Где замера нет — написано «нет замера», не выдумано.</div>
+
+<div class="grid">
+  <div class="card"><div class="l">Тиков в сутки (хаб+Маяк)</div><div class="n">9 066</div><div class="dim" style="font-size:11px">хаб 5 142 · Маяк 3 924</div></div>
+  <div class="card"><div class="l">Поллеров чаще 30 мин</div><div class="n">45 + 26</div><div class="dim" style="font-size:11px">хаб / Маяк</div></div>
+  <div class="card"><div class="l">Фон в токенах / сут</div><div class="n">679.4M</div><div class="dim" style="font-size:11px">60% всего расхода (замер 19.08)</div></div>
+  <div class="card"><div class="l">Экономия топ-1</div><div class="n">~15.6M</div><div class="dim" style="font-size:11px">токенов/сут, голосовая полоса</div></div>
+  <div class="card"><div class="l">Событийная рельса</div><div class="n ok">ЖИВА</div><div class="dim" style="font-size:11px">n8n WAKE-hub, исполнение 19.08 17:13</div></div>
+</div>
+
+<div class="box">
+<b>Главное за 30 секунд.</b> Рельсу «событие в Telegram -&gt; пробуждение хаба» <b>не надо изобретать, она уже работает</b>:
+воркфлоу n8n <code>WAKE hub on chat-03 bus msg</code> (ID <code>X7N18A5MtmTZLAZe</code>, 3 узла: TG-триггер -&gt; фильтр -&gt; HTTP)
+отстрелял сегодня минимум 5 раз, последнее исполнение <code>430644</code> в 17:13, принимающая сторона <code>\wake-listener</code> висит в Running на хабе.
+Вторая дверь, <code>Github PR webhook</code> (<code>rdHrKw3uuQ1IM48W</code>), <b>активна и имеет НОЛЬ исполнений</b> — построена и не подключена к репозиториям.
+Вопрос не «можно ли», а «почему остальные полосы до сих пор на будильнике».
+</div>
+
+<h2><span class="A">Корзина А</span> — перевести на событие <span class="dim" style="font-weight:400;font-size:13px">(источник доступен n8n, реакция нужна быстро, тиков впустую много)</span></h2>
+<div class="wide"><table>
+<tr><th>Полоса</th><th>Кто тикает сейчас</th><th>Тик</th><th>Событий реально</th><th>Впустую</th><th>Цена сейчас</th><th>Что даёт перевод</th><th>Риск</th></tr>
+
+<tr><td><b>Голосовые Антона</b><br><span class="dim">чат «00 Архив ГОЛОСА»</span></td>
+<td><code>voice-dispatcher</code> (LLM-сессия)<br><code>voice-triage</code> (LLM-сессия)<br><code>Claude Voice Backstop</code><br><code>Voice Dispatch Watch</code></td>
+<td>8/сут<br>1/сут<br>96/сут<br>4/сут</td>
+<td class="ok"><b>0.57/сут</b><br><span class="dim">4 голосовых за 7 дн,<br><code>voice_sessions.py status</code></span></td>
+<td class="bad"><b>~93%</b></td>
+<td class="bad"><b>17.7M ток/сут</b><br><span class="dim">10.1M dispatcher (5 зап.)<br>+ 7.6M triage (2 зап.)<br>замер token_audit 19.08</span></td>
+<td>сессия поднимается только по факту голосовой<br><b>≈15.6M ток/сут</b> экономии</td>
+<td>n8n лёг -&gt; голосовая ждёт<br><span class="dim">митигация: суточный крон-бэкстоп остаётся</span></td></tr>
+
+<tr><td><b>GitHub: входящее</b><br><span class="dim">чужие PR, комменты, issue</span></td>
+<td><code>Claude PR Watch Nightly</code><br><code>contrib_watch.py</code></td>
+<td>1/сут<br><span class="bad">не запланирован вообще</span></td>
+<td class="dim">потока нет замера<br>исторический факт: 5 PR<br>от 3 незнакомцев лежали 4 суток (05.08)</td>
+<td class="dim">н/д</td>
+<td>токенов мало,<br><b>структурно ломается SLA §4.7 «≤24ч»</b><br><span class="dim">ночной детект + утренний ответ</span></td>
+<td>детект за секунды,<br>SLA 24ч -&gt; минуты<br><span class="ok">дверь уже построена</span></td>
+<td>шум от ботов<br><span class="dim">фильтр по типу события</span></td></tr>
+
+<tr><td><b>Ответ Антона «+» / QQQ</b><br><span class="dim">чат 02 POLICE</span></td>
+<td><code>Claude Approval Reping</code> (хаб)<br><code>approval.py due</code> (Маяк)</td>
+<td>96/сут<br>96/сут<br><b>= 192/сут</b></td>
+<td class="dim">682 полезных поста<br>за 44 дня (лог 6118 строк)</td>
+<td class="bad"><b>57%</b><br><span class="dim">«nothing due» 2072<br>+ «quiet hours» 1407</span></td>
+<td>0 токенов (python),<br>но <b>ответ ждёт 0–15 мин</b><br><span class="dim">медиана ~7.5 мин</span></td>
+<td>«+» ловится за секунды;<br>тик остаётся только под ре-пинг -&gt; 1×/час<br><b>−72 тика/сут</b></td>
+<td>подписантов трое<br><span class="dim">фильтр по user_id, а не по чату</span></td></tr>
+
+<tr><td><b>Шина / инбокс</b><br><span class="dim">межмашинные пачки</span></td>
+<td><code>inbox_ack.py</code> (Маяк)<br><code>ClaudeBusWipeGuard</code><br><code>inbox-robot</code></td>
+<td><b>720/сут</b><br>96/сут<br>1/сут</td>
+<td class="dim">чистого замера потока нет;<br>в логе 3937 строк «квитировать нечего»</td>
+<td class="bad">высоко</td>
+<td>0 токенов, но 720 тиков —<br>самый частый поллер флота</td>
+<td>рельса УЖЕ работает (WAKE-hub);<br>тик -&gt; бэкстоп 1×/час<br><b>−696 тиков/сут</b></td>
+<td>потеря пачки при простое n8n<br><span class="dim">бэкстоп закрывает</span></td></tr>
+
+<tr><td><b>Лид-треды</b><br><span class="dim">внешние лиды в TG</span></td>
+<td><code>lead-thread-watch</code><br><code>lead-thread-reply</code> (LLM)</td>
+<td>12/сут<br>2/сут</td>
+<td class="dim">69 пингов<br>на 375 проверок</td>
+<td class="bad"><b>81.6%</b></td>
+<td class="dim">отдельного замера токенов нет</td>
+<td>ответ лиду в минутах, а не в полусутках</td>
+<td class="dim">⚠️ <b>ЗОНА СЕССИИ-СТРОИТЕЛЯ</b><br><code>auto-hub-260819-n8n-event-rail-build</code><br>здесь не трогаю</td></tr>
+
+<tr><td><b>Входящее от людей</b><br><span class="dim">личка TG / WA</span></td>
+<td><code>auto-hub-260806-inbound-triage-daily</code></td>
+<td>1/сут (2 прогона)</td>
+<td class="dim">потока нет замера</td>
+<td class="dim">низко <span class="dim">(вход почти всегда есть)</span></td>
+<td class="bad"><b>49.3M ток/сут</b><br><span class="dim">2-й едок фона</span></td>
+<td>выигрыш в ЛАТЕНТНОСТИ, не в тиках;<br>токены чинятся диетой, не событием</td>
+<td><b>слабый кандидат</b> — перевод не окупится токенами</td></tr>
+
+<tr><td><b>Звонки</b></td>
+<td><code>call-monitor-daemon</code><br><code>Granola / Fireflies Nightly Pull</code></td>
+<td>144/сут<br>1/сут</td>
+<td class="dim">нет замера</td>
+<td class="dim">н/д</td>
+<td>0 токенов</td>
+<td>у Fireflies есть webhook -&gt; пулл по факту звонка</td>
+<td class="dim">низкий приоритет</td></tr>
+</table></div>
+
+<h2><span class="B">Корзина Б</span> — оставить кроном <span class="dim" style="font-weight:400;font-size:13px">(событий нет: время само = событие)</span></h2>
+<div class="box warn">
+<b>Архитектурное правило, которое здесь важнее экономии.</b> Сторож-мертвец ловит <b>ОТСУТСТВИЕ</b> события.
+Его вход — сама тишина, а тишина не приходит вебхуком. Перевести такого сторожа на событийку значит просто его выключить.
+Второе: <b>§5.5 «сторож не живёт в том, что сторожит»</b> — n8n у нас сам под присмотром <code>Claude n8n Watchdog</code> (20 мин).
+Переселить сторожей флота в n8n значит замкнуть круг: n8n сторожит то, что сторожит n8n. Полоса ниже остаётся на кроне <b>намеренно</b>, а не по недосмотру.
+</div>
+<div class="wide"><table>
+<tr><th>Класс</th><th>Кто</th><th>Тиков/сут (оценка)</th><th>Почему остаётся</th></tr>
+<tr><td>Сторожа-мертвецы</td><td>Routine Supervisor · Mayak Dead-Man · hub-deadman · node-health-beat · Cron Watchdog · Proc Patrol · ack-watchdog · Fleet Deadman Ping · heartbeat-relay · beat-watch</td><td>~900</td><td>вход = тишина; событие невозможно по определению</td></tr>
+<tr><td>Сторожа сервисов</td><td>Syncthing Hub Watchdog · MCP Daemons Watchdog · Desktop Watchdog · Search UI / Second Brain / Dashboards Server Watchdog · headless-llm-watchdog · Claude n8n Watchdog</td><td>~800</td><td>сторожат процессы на ЭТОЙ машине; n8n до них не дотягивается и не должен</td></tr>
+<tr><td>Ночной тяжёлый фон</td><td>бэкапы · реиндекс мозга · регресс-сетка · ночные оптимизаторы · дайджесты · day-ledger</td><td>~60</td><td>расписание = сам смысл (§4.6, окно 23:00–06:00)</td></tr>
+<tr><td>Локальная ФС и git</td><td>Claude Git Sync · Canon Publish · Config Git Snapshot · Brain Shard Tick · fleet-pull</td><td>~460</td><td>источник = файлы на диске узла; волт и <code>secrets\</code> к n8n не подключаем (жёсткий барьер §3.4)</td></tr>
+</table></div>
+
+<h2><span class="V">Корзина В</span> — убить, уредить или починить</h2>
+<div class="wide"><table>
+<tr><th>Находка</th><th>Улика</th><th>Что предлагаю</th><th>Статус</th></tr>
+<tr><td class="bad"><b>12 задач «включены», но молчат 10 суток</b></td>
+<td>последний прогон у всех <b>09.08</b>, <code>result=0</code>, next armed на завтра:<br>Conflict Sweeper · MD Daily Optimizer · Dashboard Refresh · Missed Jobs Catchup · Rule Liveness · Session Archive · Skill Usage Scan · CLAUDE.md Guard · HealthArch · HealthBrain · HealthTgWatch · Declined Guard.<br>Версия «висит прошлый экземпляр и блокирует новый» <span class="ok">проверена и отвергнута</span>: в состоянии Running только 5 демонов, ни одной из этих задач.</td>
+<td>это <b>рецидив класса dead-scheduled-task</b> — по §5.10 идёт отдельной ремонтной сессией, а не заплаткой из аудита</td>
+<td class="dim">факт ✅ доказан<br>причина 🤔 гипотеза</td></tr>
+
+<tr><td class="bad"><b>Цикл ошибки в шине, 3386 повторов</b></td>
+<td><code>_inbox_ack_log.txt</code>: 3386 строк <code>REFUSING TO SEND: unknown target 'unknown'</code> и столько же парных AUTO-ACK от MacBook-Anton. <code>MACHINE_KEY</code> не разрешается — робот бьётся в стену и молчит об этом наружу</td>
+<td>починить <code>MACHINE_KEY</code> на MacBook-Anton; заодно это часть тех самых 720 тиков/сут</td>
+<td class="dim">не чинил: чужой узел</td></tr>
+
+<tr><td class="V"><b>Ложно-красный сторож голосовых</b></td>
+<td><code>voice-dispatch-watch</code> кричит «ВЫХОД ПРОТУХ, тишина 199ч, рельса встала» — а рабочая рельса <code>voice_sessions</code> / <code>voice-triage</code> сегодня в 10:00 разобрала <b>2 голосовые</b>. Сторож меряет реестр <code>voice_dispatch</code>, которым уже никто не пользуется</td>
+<td>перенацелить сторожа на живой реестр либо погасить: красный, который врёт, обесценивает все остальные красные</td>
+<td class="dim">кандидат, нужна своя проверка</td></tr>
+
+<tr><td class="V"><b>Pulse Live Refresh: 480 тиков/сут</b></td>
+<td>тик каждые 3 минуты — самый частый на хабе. <code>pulse_tg_state.json</code> двинулся один раз за последние 18 часов</td>
+<td>кандидат на 15 минут (−384 тика/сут) — но сперва назвать потребителя и доказать, что ему нужна 3-минутная свежесть</td>
+<td class="dim">не трогал: потребитель не проверен</td></tr>
+</table></div>
+<div class="note">⚠️ Я <b>ничего не выключил</b>, и причина названа: идёт заморозка стройки до 20.08, а правка расписаний флота по правилу канарейки требует одного узла-канарейки и проверки полного цикла. Все четыре строки выше — предложения, решает Антон.</div>
+
+<h2>Топ-3 «до -&gt; после» на реальных цифрах</h2>
+
+<h3>1. Голосовые Антона — самая дорогая пустая полоса флота</h3>
+<div class="ba">
+<div><div class="h">ДО (замер 19.08)</div>
+<ul>
+<li><code>voice-dispatcher</code> будит LLM-сессию <b>8 раз в сутки</b>: 8, 10, 12, 14, 16, 18, 20, 22</li>
+<li>фактически 19.08 отстрелял 5 раз = <b>10.1M токенов</b></li>
+<li>плюс <code>voice-triage</code>, 2 прогона = <b>7.6M</b></li>
+<li>плюс <code>Voice Backstop</code> 96 тиков и <code>Voice Dispatch Watch</code> 4</li>
+<li>вход за 7 дней: <b>4 голосовые</b> = 0.57 в сутки</li>
+<li>итого <b>17.7M токенов в сутки</b> на 0.57 голосовой</li>
+</ul></div>
+<div><div class="h">ПОСЛЕ</div>
+<ul>
+<li>n8n TG-триггер на чате «00 Архив ГОЛОСА» -&gt; тот же <code>wake-listener</code>, что уже принимает WAKE-hub</li>
+<li>сессия поднимается <b>только когда голосовая пришла</b>: ~0.6 сессии в сутки вместо 9</li>
+<li>крон остаётся, но <b>1×/сут в ночном окне</b>, как бэкстоп</li>
+<li>экономия <b>≈15.6M токенов/сут</b>, это ~87% полосы</li>
+<li>бонус: задержка разбора с 0–2 часов до секунд</li>
+</ul></div>
+</div>
+<div class="note"><b>Потребитель:</b> Антон — его голосовая и есть задача. <b>Рельса доклада:</b> та же, что сейчас — дайджест в приватную папку и пинг в 03. <b>Откат:</b> выключить один воркфлоу n8n и вернуть крону 8 запусков, две минуты.</div>
+
+<h3>2. GitHub-входящее — дверь построена и ни разу не открывалась</h3>
+<div class="ba">
+<div><div class="h">ДО</div>
+<ul>
+<li><code>Claude PR Watch Nightly</code> — один тик в 03:40</li>
+<li><code>contrib_watch.py</code> лежит на диске <b>без единого расписания</b></li>
+<li>реглумент §4.7 требует ответа постороннему инженеру <b>≤24ч</b></li>
+<li>ночной детект плюс утренний ответ = SLA ломается структурно, а не по лени</li>
+<li>факт 05.08: 5 PR от 3 незнакомцев пролежали 4 суток</li>
+<li>воркфлоу <code>Github PR webhook</code> активен, исполнений <b>0</b></li>
+</ul></div>
+<div><div class="h">ПОСЛЕ</div>
+<ul>
+<li>прописать webhook в наших репозиториях на уже существующий воркфлоу</li>
+<li>событие «чужой PR / коммент / issue» приходит <b>за секунды</b></li>
+<li>сессия <code>/pr-reply</code> или <code>/contrib-watch</code> поднимается по факту, а не по будильнику</li>
+<li>SLA <b>24ч -&gt; минуты</b>, ночной тик остаётся бэкстопом</li>
+<li>токенов почти не экономит, <b>платит репутацией по миссии №2</b></li>
+</ul></div>
+</div>
+<div class="note"><b>Потребитель:</b> живой внешний инженер, который ждёт ответа. <b>Рельса доклада:</b> строка в 03 и карточка в CRM, как сейчас в <code>/contrib-watch</code>. <b>Откат:</b> снять webhook в настройках репозитория.</div>
+
+<h3>3. Ответ Антона «+» в 02 POLICE — 192 тика в сутки ради 7 минут ожидания</h3>
+<div class="ba">
+<div><div class="h">ДО</div>
+<ul>
+<li><code>Claude Approval Reping</code> на хабе — 96 тиков/сут</li>
+<li><code>approval.py due</code> на Маяке — ещё 96 тиков/сут</li>
+<li>лог за 44 дня, 6118 строк: «nothing due» <b>2072</b>, «quiet hours» <b>1407</b> -&gt; <b>57% тиков заведомо впустую</b></li>
+<li>Антон жмёт «+», машина узнаёт через 0–15 минут</li>
+<li>в очереди <b>507</b> pending-записей</li>
+</ul></div>
+<div><div class="h">ПОСЛЕ</div>
+<ul>
+<li>n8n TG-триггер на чате 02 с фильтром по трём подписантам (Антон, Руслана, Наталья)</li>
+<li>«+» / QQQ / НЕТ ловится <b>за секунды</b>, ACK уходит сразу</li>
+<li>тик остаётся <b>только под ре-пинг и эскалацию</b>: 1×/час вместо 4×/час</li>
+<li><b>−72 тика/сут</b> на хабе, столько же можно снять на Маяке</li>
+<li>тихие часы отсекает фильтр n8n, а не 1407 холостых запусков питона</li>
+</ul></div>
+</div>
+<div class="note"><b>Потребитель:</b> та сессия, что задала вопрос и стоит в ожидании. <b>Рельса доклада:</b> ACK «✅ принял #id» в 02, как сейчас. <b>Откат:</b> вернуть крону 15 минут.</div>
+
+<h2>Ограничения архитектуры — что n8n НЕ получает</h2>
+<div class="box red">
+<ul>
+<li><b>Секреты и волт — никогда.</b> Триггер отдаёт наружу только факт «в чате X появилось сообщение id N». Тело, вложения, транскрипт читает уже локальная сессия своими рельсами, из-под своего <code>secrets\</code>.</li>
+<li><b>n8n не пишет во внешние чаты.</b> Всё исходящее по-прежнему идёт через <code>pub_registry.can_post</code> и <code>platform_gate.py</code> — одна дверь, один ledger.</li>
+<li><b>Дисквалификаторы облака §9.2 остаются локальными:</b> GPU, живые браузерные сессии Chrome и Firefox, IP-sensitive постинг (FB, Reddit, Threads) — только хаб, только своими руками.</li>
+<li><b>Сторожа не переезжают</b> — §5.5, разобрано выше.</li>
+<li><b>Единая точка отказа.</b> n8n падает — падают все переведённые полосы разом. Поэтому у каждого перевода крон остаётся бэкстопом (реже, но живой), а <code>Claude n8n Watchdog</code> с шагом 20 минут сторожит саму n8n снаружи.</li>
+<li><b>Заморозка стройки до 20.08</b> — имплементация начинается после неё либо по прямому слову Антона.</li>
+</ul>
+</div>
+
+<div class="note" style="margin-top:26px;border-top:1px solid #232734;padding-top:14px">
+<b>Что НЕ покрыто, честно.</b> Ноут ZBookG8 и машины Наташи с Русланой в инвентарь не входили — считал хаб и Маяк. Поток входящих GitHub-событий и сообщений в личку не замерен, там прямо написано «нет замера». Причина 10-суточного молчания 12 задач остаётся гипотезой; доказан только сам факт молчания.
+</div>
+
+</div></body></html>

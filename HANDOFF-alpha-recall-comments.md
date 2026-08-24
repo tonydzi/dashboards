@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Инфраструктура и рутины · [← GitHub-Outbound-Routines](GitHub-Outbound-Routines.html) · [HANDOFF-booking-session →](HANDOFF-booking-session.md)
+[все дашборды](index.html) · категория: Инфраструктура и рутины · [← GitHub-Routines-Grades](GitHub-Routines-Grades.html) · [HANDOFF-booking-session →](HANDOFF-booking-session.md)
 
 ---
 type: handoff

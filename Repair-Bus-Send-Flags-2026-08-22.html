@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Починка класса: флаги как текст (22.08.2026)</title>
+<style>
+:root{--paper:#fff;--ink:#111;--muted:#666;--line:#e3e3e3;--ok:#0a7d32;--bad:#b3261e;--warn:#8a6100;--chip:#f4f4f5}
+@media (prefers-color-scheme:dark){:root{--paper:#141416;--ink:#ececec;--muted:#9a9a9a;--line:#2c2c30;--ok:#4ade80;--bad:#ff6b60;--warn:#e0b34a;--chip:#1e1e22}}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;background:var(--paper);color:var(--ink);font-family:-apple-system,Segoe UI,Arial,sans-serif;line-height:1.5}
+h1{font-size:22px;margin:0 0 4px}
+h2{font-size:16px;margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.sub{color:var(--muted);font-size:13px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--chip)}
+.n{font-size:26px;font-weight:700;line-height:1.1}
+.lbl{color:var(--muted);font-size:12px;margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:12px}
+code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12px}
+.ok{color:var(--ok);font-weight:600}.bad{color:var(--bad);font-weight:600}.warn{color:var(--warn);font-weight:600}
+.wrap{overflow-x:auto}
+.foot{color:var(--muted);font-size:12px;margin-top:26px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Quarantine.html">&larr; Quarantine</a> · <a href="Scripts-Parity-Mac16-vs-Hub.html">Scripts-Parity-Mac16-vs-Hub &rarr;</a></span></div>
+
+<h1>Починка класса: «bus_send.py принимает флаги как ТЕКСТ»</h1>
+<div class="sub">Сессия <code>auto-hub-260822-repair-bus-send-flags-as-text</code> · хаб A-2022BAYAREA · 22 августа 2026, вечер · правило третьей поломки (§5.10)</div>
+
+<div class="grid">
+  <div class="card"><div class="n bad">47</div><div class="lbl">задач шины уехало человеком и пропало как работа (июль-август)</div></div>
+  <div class="card"><div class="n">3</div><div class="lbl">починки в одном заходе: гейт шины · ASCII-имя сессии · анти-петля журнала</div></div>
+  <div class="card"><div class="n ok">40/40</div><div class="lbl">тест гейтов шины (было 16)</div></div>
+  <div class="card"><div class="n ok">3/3</div><div class="lbl">внешних ломателя ответили, все находки закрыты</div></div>
+  <div class="card"><div class="n ok">0</div><div class="lbl">новых потерь возможно: отказ exit 2 вместо зелёного «OK»</div></div>
+</div>
+
+<h2>Корень (5 почему по СЕРИИ, не по одному случаю)</h2>
+<div class="wrap"><table>
+<tr><th>шаг</th><th>вопрос</th><th>ответ</th></tr>
+<tr><td>1</td><td>почему заказ не сделали?</td><td>тело начиналось с <code>--subject</code>, а инбокс-робот берёт только тело с <code>TASK:</code></td></tr>
+<tr><td>2</td><td>почему тело начиналось с флага?</td><td><code>_parse</code> склеивал все аргументы после <code>--to X</code> в текст</td></tr>
+<tr><td>3</td><td>почему отправка всё равно прошла?</td><td>гейт печатал ⚠️, но exit оставался 0 и обе рельсы рапортовали DUAL-SEND OK</td></tr>
+<tr><td>4</td><td>почему гейт был мягким?</td><td>жёстко блокировался только один узнанный промах («TASK» без двоеточия), остальное — предупреждение</td></tr>
+<tr><td>5 · <span class="bad">КОРЕНЬ</span></td><td>почему вообще возникает флаг в теле?</td><td><b>интерфейс ПОЛУфлаговый</b>: приняв <code>--to</code>, он учит вызывающего, что флаги тут работают, и молча съедает все остальные. Плюс: предупреждение рядом с зелёным exit проигрывает всегда</td></tr>
+</table></div>
+
+<h2>Что стало</h2>
+<div class="wrap"><table>
+<tr><th>вызов</th><th>было</th><th>стало</th></tr>
+<tr><td><code>--to X --subject Y --body Z</code></td><td class="bad">exit 0, тело «--subject Y…», задача потеряна</td><td class="ok">exit 2, ничего не ушло, печатается верная форма</td></tr>
+<tr><td><code>--to X --priority=high TASK: x</code></td><td class="bad">обходил даже первую версию гейта (знак «=»)</td><td class="ok">exit 2 (находка панели)</td></tr>
+<tr><td><code>--to X " --text ЗАКАЗ"</code></td><td class="bad">обходил: ведущий пробел в кавычках</td><td class="ok">exit 2 (находка панели)</td></tr>
+<tr><td><code>ALL "- пункт" / "--- разделитель" / "-1 узел"</code></td><td>проходило</td><td class="ok">проходит — живую прозу гейт не трогает</td></tr>
+<tr><td><code>--to X -- "--text буквально"</code></td><td>не существовало</td><td class="ok">POSIX-люк: текст с дефисом уходит как есть</td></tr>
+</table></div>
+
+<h2>Доказательства (не «должно работать», а замер)</h2>
+<div class="wrap"><table>
+<tr><th>проверка</th><th>результат</th></tr>
+<tr><td>тест гейтов шины <code>_test_bus_near_miss.py</code></td><td class="ok">40/40</td></tr>
+<tr><td>мутация: тот же тест против ДОфиксовой копии</td><td class="ok">9 красных из 40 — тест реально что-то держит</td></tr>
+<tr><td>мутация: против первой версии гейта</td><td class="ok">4 красных — находки панели закрыты по-настоящему</td></tr>
+<tr><td>регресс дуал-рельсы <code>test_bus_send_dual_rail.py</code></td><td class="ok">11/11</td></tr>
+<tr><td>живая канарейка: реальная отправка на ALL</td><td class="ok">обе рельсы OK, exit 0</td></tr>
+<tr><td>живые отказы обеих новых форм</td><td class="ok">exit 2, ноль отправок</td></tr>
+<tr><td>имя сессии починки против гейта-потребителя</td><td class="ok">6/6, мутант краснеет 5/6</td></tr>
+<tr><td>анти-петля журнала</td><td class="ok">2/2, мутант видит 5 «поломок» вместо 2</td></tr>
+</table></div>
+
+<h2>Раскатка на флот</h2>
+<div class="wrap"><table>
+<tr><th>посылка</th><th>узлы</th><th>хаб</th></tr>
+<tr><td><code>bus-send-flag-body-gate-20260822</code></td><td>6 (все)</td><td class="ok">applied, verify машинный</td></tr>
+<tr><td><code>selfheal-taskid-and-antiloop-20260822</code></td><td>6 (все)</td><td class="ok">applied, verify машинный</td></tr>
+</table></div>
+<p style="font-size:13px">Файлы едут сами: <code>~/.claude/scripts/*.py</code> внутри синкающейся шары <code>claude-home</code> (проверено по конфигу Syncthing: <code>!/scripts/*.py</code> стоит ПЕРЕД <code>/scripts</code>). Пиры применят посылку своим обычным сметанием; объявление ушло на обе рельсы шины.</p>
+
+<h2>Что осталось человеку</h2>
+<p style="font-size:14px">Труба заткнута, но <b class="warn">хвост из 47 старых сообщений</b> — реальные задачи, доехавшие человеком и не взятые роботом. Часть, вероятно, уже сделана глазами. Список: <code>00-System\Bus-Lost-Tasks-Behind-Flags.md</code>, карточка: <code>10-Tasks\task-2026-08-22-bus-lost-tasks-behind-flags.md</code>. Слепую переотправку 47 задач по флоту сам не делаю — это массовое действие (§3.3-бис).</p>
+
+<div class="foot">Собрано сессией починки. Журнал класса: <code>00-System\Breakage-Journal.md</code> · очередь: <code>selfheal.py repairs</code> (класс закрыт).</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Twins-Audit-20260809.html">&larr; Twins-Audit-20260809</a> · <a href="Vault-Audit-2026-07-07.html">Vault-Audit-2026-07-07 &rarr;</a></span></div><title>Пустая строка вместо NULL</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1d1d1b;--mut:#6b6b66;--line:#e2e2dc;--card:#fff;
+--red:#b3261e;--grn:#1e7a4b;--amb:#a8690a;--acc:#2f5d8a;--chip:#eeeee8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#16171a;--fg:#e9e9e6;--mut:#9b9b96;--line:#2c2e33;--card:#1e2024;
+--red:#f2857c;--grn:#63c795;--amb:#e6b45e;--acc:#8ab4e8;--chip:#26282d}}
+:root[data-theme="dark"]{--bg:#16171a;--fg:#e9e9e6;--mut:#9b9b96;--line:#2c2e33;--card:#1e2024;
+--red:#f2857c;--grn:#63c795;--amb:#e6b45e;--acc:#8ab4e8;--chip:#26282d}
+*{box-sizing:border-box}
+body{margin:0 auto;padding:28px 20px 60px;background:var(--bg);color:var(--fg);
+font:15px/1.55 -apple-system,"Segoe UI",Roboto,sans-serif;max-width:1060px}
+h1{font-size:23px;margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:16px;margin:34px 0 10px}
+.sub{color:var(--mut);font-size:13px;margin-bottom:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:14px}
+.k{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.k b{display:block;font-size:26px;line-height:1.15;font-variant-numeric:tabular-nums}
+.k span{color:var(--mut);font-size:12px;display:block;margin-top:4px}
+.red{color:var(--red)}.grn{color:var(--grn)}.amb{color:var(--amb)}
+.bar{height:10px;background:var(--chip);border-radius:5px;overflow:hidden;margin:6px 0 2px}
+.bar i{display:block;height:100%;background:var(--acc)}
+.wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-weight:600;color:var(--mut);border-bottom:1px solid var(--line);
+padding:7px 9px;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
+td{padding:8px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{font:12.5px ui-monospace,Consolas,monospace;background:var(--chip);padding:1px 5px;border-radius:4px}
+.mut{color:var(--mut);font-size:12.5px}
+.tag{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;border:1px solid var(--line);color:var(--mut)}
+.ok{color:var(--grn);border-color:var(--grn)}
+ul{margin:8px 0 0;padding-left:20px}li{margin:5px 0}
+</style>
+<h1>Пустая строка вместо NULL — что чинили в ночь на 20 августа</h1>
+<div class="sub">Хаб A-2022BAYAREA · база <code>E:\Obsidian\_imports\leads.db</code> · цифры сняты с живой базы и с бэкапа <code>13:58 pre-vcround-null-fix</code></div>
+<h2>Главное: насколько врал прибор</h2><div class="kpis">
+<div class="k"><b>81 537</b><span>строк в <code>vc_round</code></span></div>
+<div class="k"><b class="red">81 537</b><span>читатель с <code>IS NOT NULL</code> считал заполненными — было, это 100%</span></div>
+<div class="k"><b class="grn">8 062</b><span>реально пригодны для анализа (9.9%) — столько же он видит сейчас</span></div>
+<div class="k"><b class="red">73 475 → 0</b><span>строк, про которые прибор врал</span></div>
+</div>
+<div class="card"><b>Одной картинкой</b><div class="mut" style="margin-top:10px">было: «данные есть» на всю таблицу</div><div class="bar"><i style="width:100%"></i></div><div class="mut" style="margin-top:10px">стало: «данные есть» ровно там, где они есть</div><div class="bar"><i style="width:9.9%"></i></div></div>
+<h2>Писателей у <code>vc_*</code> было четыре, а починили три</h2><div class="wrap"><table><tr><th>Скрипт</th><th>Что писал</th><th>Когда починен</th></tr>
+<tr><td><code>build_vc_graph.py</code></td><td><code>f.get(key, '')</code> на пустых полях Airtable</td><td>19.08 днём, дневная сессия</td></tr>
+<tr><td><code>build_vc_graph2.py</code></td><td>литеральные <code>''</code> в <code>ins_round</code> (forms-rounds, signal)</td><td>19.08 днём, дневная сессия</td></tr>
+<tr><td><code>build_vc_graph3.py</code></td><td>литеральные <code>''</code> для архивных раундов</td><td>19.08 днём, дневная сессия</td></tr>
+<tr><td><code>warm_tw_bridge.py</code></td><td><code>SET tg_handle='', tg_src=''</code> — чистка своих прошлых вставок, рутина 04:15</td><td><b class="grn">19.08 ночью, эта сессия</b></td></tr>
+</table></div>
+<div class="card"><b>Почему четвёртый важнее самой находки.</b> Дневная починка была правильной и по корню. Но обход писателей шёл по имени роли — искали скрипты <code>build_*</code>, — а не по факту записи в таблицу. Четвёртый писатель это отдельная ночная рутина «VC Nightly Warm Refresh» в 04:15: она вернула бы <b>2 452</b> пустых ячейки примерно через четыре часа после того, как починку объявили закрытой. Контрфакт на копии 500 строк: старый SQL даёт 500 пустых ячеек, новый — 0. Живой прогон патченого скрипта: 1,2 с, 2 452 привязки на месте, реальные хендлы (2 614 и 5 847) целы, пустых ячеек 0.</div>
+<h2 class="amb">⛔ Что сознательно не тронуто</h2>
+<div class="card">Та же болезнь шире: <b>9 495 340</b> пустых ячеек в 8 таблицах, у них <b>16</b> живых писателей. Трогать их сегодня нельзя — там <code>''</code> местами <b>несёт смысл</b>: <code>leads.last_contact=''</code> означает «ни разу не контактировали» (5 469 строк), и <code>alpha/leadsignal_scan.py</code> отбирает дормантных инвесторов ровно по <code>last_contact = ''</code>. Замена на NULL молча выкинула бы эти строки из сигнала. Сначала разбор писателей и читателей, потом данные.</div>
+<div class="wrap"><table><tr><th>Таблица</th><th class="n">строк</th><th class="n">пустых ячеек</th><th>худшие колонки</th><th>писатели</th></tr>
+<tr><td><code>airtable_records</code></td><td class="n">907 456</td><td class="n red">5 154 361</td><td><code>handle</code> 893 754 · <code>email</code> 876 936 · <code>role</code> 867 065</td><td class="mut">fold_delta.py · load_airtable_to_db.py</td></tr>
+<tr><td><code>archive_contacts</code></td><td class="n">312 254</td><td class="n red">2 001 169</td><td><code>company</code> 300 376 · <code>phone</code> 299 929 · <code>email</code> 236 475</td><td class="mut">gdrive/wire_archive_contacts.py</td></tr>
+<tr><td><code>people</code></td><td class="n">292 510</td><td class="n red">1 462 368</td><td><code>vault_slug</code> 283 213 · <code>category</code> 280 040 · <code>status</code> 280 039</td><td class="mut">build_unified_sql.py · dedup_people.py · dialogs/match_members_to_crm.py · fb_audience.py</td></tr>
+<tr><td><code>companies</code></td><td class="n">88 549</td><td class="n red">470 333</td><td><code>location</code> 88 441 · <code>linkedin</code> 88 245 · <code>telegram</code> 85 322</td><td class="mut">build_unified_sql.py</td></tr>
+<tr><td><code>contacts</code></td><td class="n">80 789</td><td class="n red">247 409</td><td><code>org</code> 77 254 · <code>person_note</code> 76 370 · <code>relationship</code> 76 370</td><td class="mut">apple-contacts/build_contacts_db.py · browser-history/contacts_to_db.py · build_leads_db.py · gdrive/gold_extract.py</td></tr>
+<tr><td><code>vc_contact_match</code></td><td class="n">123 402</td><td class="n red">115 811</td><td><code>note</code> 115 811</td><td class="mut">build_warm_matches.py</td></tr>
+<tr><td><code>leads</code></td><td class="n">14 135</td><td class="n red">36 177</td><td><code>country</code> 7 450 · <code>crm_tg_id</code> 5 995 · <code>first_contact</code> 5 470</td><td class="mut">build_leads_db.py · crm-engine/drip.py · listener.py · retag.py · retag_v2.py</td></tr>
+<tr><td><code>works_at</code></td><td class="n">36 809</td><td class="n red">7 712</td><td><code>role</code> 7 712</td><td class="mut">build_unified_sql.py</td></tr>
+</table></div>
+<h2>Что теперь сторожит</h2>
+<div class="card"><code>E:\Obsidian\_imports\_test_sql_hygiene.py</code> — три проверки, ноль LLM, ноль сети:<ul><li>unit нормализатора <code>_sql_hygiene.null_empty_text</code> на синтетической базе, включая идемпотентность и <code>skip_cols</code>;</li><li>статический запрет: ни один скрипт в <code>_imports</code> не присваивает <code>''</code> в колонку <code>vc_*</code>;</li><li>живая инварианта: в <code>leads.db</code> в таблицах <code>vc_*</code> ноль пустых строк.</li></ul><span class="tag ok">красный тест пройден</span> подложенный старый писатель ловится, выход 1. &nbsp;<span class="tag">панель ломателей</span> три семьи моделей через OpenRouter, все возражения проверены по коду и закрыты.<div class="mut" style="margin-top:10px">Честная граница сторожа: живая проверка покрывает только <code>vc_*</code>. Восемь таблиц выше он не сторожит — там сначала нужен разбор писателей.</div></div>
+<div class="sub" style="margin-top:26px">Собрано автоматически 19.08.2026 23:46 · бэкапы: <code>_backups\leads.db.pre-warmbridge-nullfix-20260819</code> (1,33 ГБ), <code>_backups\warm_tw_bridge.py.bak-20260819-233805</code></div>

@@ -1,0 +1,205 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Robots-Sessions.html">&larr; Robots-Sessions</a> · <a href="Routine-Census-2026-08-21.html">Routine-Census-2026-08-21 &rarr;</a></span></div><title>Аудит рутин 22.08</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#fff; --ink:#1c2024; --dim:#5b6570; --line:#dfe3e8;
+  --green:#1a7f37; --amber:#9a6700; --red:#b42318; --blue:#0b5ed7;
+  --bar:#c9d1d9;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14171a; --card:#1c2126; --ink:#e6edf3; --dim:#9aa7b2; --line:#2c333a;
+  --green:#3fb950; --amber:#d29922; --red:#f85149; --blue:#58a6ff; --bar:#30363d;
+}}
+:root[data-theme="dark"]{
+  --bg:#14171a; --card:#1c2126; --ink:#e6edf3; --dim:#9aa7b2; --line:#2c333a;
+  --green:#3fb950; --amber:#d29922; --red:#f85149; --blue:#58a6ff; --bar:#30363d;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:22px 16px 60px;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:1060px;margin:0 auto}
+h1{font-size:26px;margin:0 0 4px}
+.sub{color:var(--dim);font-size:14px;margin-bottom:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:16px 18px;margin:0 0 16px}
+h2{font-size:17px;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.big{font-size:30px;font-weight:700;line-height:1.1}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.kpi .lbl{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+.kpi .note{color:var(--dim);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.scroll{overflow-x:auto}
+.tag{display:inline-block;padding:1px 7px;border-radius:20px;color:#fff;font-size:11px;
+  font-weight:600;white-space:nowrap}
+.g{background:var(--green)} .a{background:var(--amber)} .r{background:var(--red)} .b{background:var(--blue)}
+.barwrap{background:var(--bar);border-radius:4px;height:22px;display:flex;overflow:hidden;margin:10px 0 6px}
+.seg{height:100%;display:flex;align-items:center;justify-content:center;color:#fff;
+  font-size:11px;font-weight:600;white-space:nowrap}
+.legend{font-size:12px;color:var(--dim)}
+code{background:var(--bar);padding:1px 5px;border-radius:4px;font-size:12px}
+.quote{border-left:3px solid var(--amber);padding:6px 0 6px 12px;color:var(--dim);
+  font-style:italic;margin:10px 0}
+ul{margin:8px 0;padding-left:20px} li{margin:5px 0}
+.foot{color:var(--dim);font-size:12px;text-align:center;margin-top:26px}
+</style>
+
+<div class="wrap">
+<h1>Аудит рутин - что они делают и сколько стоят</h1>
+<div class="sub">Хаб A-2022BAYAREA · замер 22 августа 2026, окно 7 дней (16-22.08) · считано детерминированно из транскриптов и планировщиков, без оценок на глаз</div>
+
+<div class="card">
+<h2>Короткий ответ на твой вопрос</h2>
+<p><b>Двухчасовая рутина денег почти не сожгла - но и пользы не принесла, потому что была сломана.</b> Это <code>Claude DR Runner</code>: 116 пробуждений, из них 98 пустых (пустой тик стоит ноль), а 16 подряд падали с ошибкой и при этом писали в журнал «беру заказ». Заказ висел двое суток, тревоги не было. Починено и доказано прогоном сегодня.</p>
+<p><b>Деньги горят не там, где ты подумал.</b> Штатные рутины по расписанию - 13% расхода. Треть всего расхода - 89 <i>разовых</i> сессий за неделю, которые поднимаются сами. Из них 27 чинили наши же приборы, а не делали твою работу.</p>
+<div class="quote">«Как набрать кучу филиппинцев и сказать: решайте сами». Точный диагноз, но подчинённые не рутины по расписанию, а сессии-ремонтники, которых рутины плодят.</div>
+</div>
+
+<div class="grid" style="margin-bottom:16px">
+  <div class="kpi"><div class="lbl">Расход за 7 дней</div><div class="big">7241M</div>
+    <div class="note">выходных токенов, все слои</div></div>
+  <div class="kpi"><div class="lbl">Ты живьём</div><div class="big">49%</div>
+    <div class="note">3575M - работа с тобой в чате</div></div>
+  <div class="kpi"><div class="lbl">Роботы</div><div class="big">51%</div>
+    <div class="note">3667M - всё, что идёт без тебя</div></div>
+  <div class="kpi"><div class="lbl">Чинили сами себя</div><div class="big">775M</div>
+    <div class="note">27 сессий-ремонтников за неделю</div></div>
+</div>
+
+<div class="card">
+<h2>Куда ушли 7241M за неделю</h2>
+<div class="barwrap">
+  <div class="seg" style="width:49.4%;background:var(--blue)">Антон живьём 49%</div>
+  <div class="seg" style="width:32.7%;background:var(--red)">разовые сессии 33%</div>
+  <div class="seg" style="width:12.9%;background:var(--amber)">рутины 13%</div>
+  <div class="seg" style="width:5%;background:var(--green)">инбокс 5%</div>
+</div>
+<div class="legend">Разовые сессии - те самые <code>auto-hub-*</code>, что поднимаются по ходу дела. 89 штук за неделю, в среднем 26.6M каждая, это ~13 сессий в сутки.</div>
+<table style="margin-top:14px">
+<tr><th>Слой</th><th class="num">Токенов 7д</th><th class="num">Доля</th><th class="num">Штук</th><th>Что это</th></tr>
+<tr><td>Ты живьём</td><td class="num">3575M</td><td class="num">49%</td><td class="num">-</td><td>интерактивные сессии с тобой</td></tr>
+<tr><td><b>Разовые auto-сессии</b></td><td class="num"><b>2370M</b></td><td class="num"><b>33%</b></td><td class="num">89</td><td>поднимаются сами: починки, раскопки, контент, ДР</td></tr>
+<tr><td>Рутины по расписанию</td><td class="num">931M</td><td class="num">13%</td><td class="num">32</td><td>штатное расписание, у каждой свой час</td></tr>
+<tr><td>robot-inbox</td><td class="num">329M</td><td class="num">5%</td><td class="num">1</td><td>самый дорогой одиночный робот, 55M в сутки</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>Разовые сессии: работа против самолечения</h2>
+<p>89 сессий за неделю. Разделил по тому, кому достаётся результат.</p>
+<table>
+<tr><th>Класс</th><th class="num">Сессий</th><th class="num">Токенов</th><th class="num">Доля разовых</th><th>Вердикт</th></tr>
+<tr><td><b>Чинят наши же приборы</b><br><span class="legend">сторожа, гейты, линты, реестры, канарейки</span></td>
+    <td class="num">27</td><td class="num">775M</td><td class="num">33%</td>
+    <td><span class="tag r">это и есть трэш</span></td></tr>
+<tr><td><b>Делают твою работу</b><br><span class="legend">контент, лиды, ДР, посты, онбординг</span></td>
+    <td class="num">62</td><td class="num">1595M</td><td class="num">67%</td>
+    <td><span class="tag g">за это платим осознанно</span></td></tr>
+</table>
+<p style="margin-top:12px">Самые дорогие ремонтники недели: <code>mirror-mass-delete-gate</code> 102M · <code>rc-canary</code> 50M · <code>tg-rail-silent-undelivery</code> 49M · <code>routine-value-audit</code> 44M · <code>dig-browser-rail-down</code> 44M. Это совпадает с замером 22.08 из памяти: <b>88% поломок случаются в наших приборах, 2% - в работе</b>. Приборов больше, чем работы.</p>
+</div>
+
+<div class="card">
+<h2>Рутина, про которую ты спросил: каждые 2 часа</h2>
+<table>
+<tr><th>Что</th><th>Факт</th></tr>
+<tr><td>Имя</td><td><code>Claude DR Runner (hub)</code>, каждые 2 часа, окно 08:00-22:00 Лиссабон</td></tr>
+<tr><td>Зачем</td><td>исполнитель очереди дипресёрчей: берёт одобренные заказы и гонит их по рельсам Grok и Codex</td></tr>
+<tr><td>Чей бак жжёт</td><td>Grok + Codex, <b>не Claude</b> - это оплаченные подписки, которые иначе простаивают</td></tr>
+<tr><td>Цена пустого тика</td><td><b>ноль</b>: python спрашивает очередь и молча выходит</td></tr>
+<tr><td>Что показал журнал</td><td>116 пробуждений: <b>98 пустых</b> · <b>16 падений rc=2</b> · 2 прочих</td></tr>
+<tr><td>Поломка</td><td>раннер слал диспетчеру флаги <code>--timeout</code> и <code>--skip-existing</code>, которых у того <b>никогда не было</b>. Парсер умирал до работы, а в журнал уже было написано «беру 1 заказ». Заказ <code>DR26-08-21-MACRUS-01-0934</code> висел двое суток</td></tr>
+<tr><td>Почему не заметили</td><td>падение отдавало rc=2, но тревога об этом никому не приходила</td></tr>
+<tr><td>Статус</td><td><span class="tag g">починено 22.08</span> - флаги убраны, потолок времени теперь держит сам раннер; доказано прогоном: старая строка убивала парсер, новая доходит до логики</td></tr>
+</table>
+<p style="margin-top:10px"><b>Про Sonnet ты прав:</b> переключение её не спасло бы. Она не думала - она падала. Дешевле было бы то же самое, только тупее.</p>
+</div>
+
+<div class="card">
+<h2>Тиковый слой: 1778 срабатываний в сутки</h2>
+<p>72 задачи в планировщике Windows. Звучит страшно, но <b>41 из них не жжёт модель вообще</b> - это чистый python: посмотрел, ничего не случилось, вышел.</p>
+<table>
+<tr><th>Тип</th><th class="num">Задач</th><th>Смысл</th></tr>
+<tr><td><span class="tag g">0 токенов</span></td><td class="num">41</td><td>сторожа и синхронизаторы на чистом python - частота почти бесплатна</td></tr>
+<tr><td><span class="tag a">жгут модель</span></td><td class="num">26</td><td>у большинства стоит предгейт: сессия поднимается, только если есть работа</td></tr>
+<tr><td><span class="tag b">не определилось</span></td><td class="num">5</td><td>обёртка живёт вне <code>~/.claude/scripts</code>, проверить руками</td></tr>
+</table>
+<p style="margin-top:12px"><b>Найден дубль.</b> Два сторожа Claude Desktop работают параллельно и оба умеют убить и перезапустить приложение:</p>
+<ul>
+<li><code>Claude-Desktop-Watchdog</code> - каждые <b>5 минут</b>, 288 раз в сутки: лечит «не стартует после апдейта» и «зависло»</li>
+<li><code>Claude Desktop Watchdog</code> - каждые <b>15 минут</b>, 96 раз в сутки: лечит «CoworkVMService убивает приложение» и «зависший апдейт MSIX»</li>
+</ul>
+<p>Классы поломок разные, но зона одна и оба дёргают один процесс. Пока не доказано, что они не мешают друг другу, это ровно тот случай, который ты описал словами «сами себя дико поддевают».</p>
+</div>
+
+<div class="card">
+<h2>Штатное расписание: 32 рутины и их цена</h2>
+<div class="scroll">
+<table>
+<tr><th>Рутина</th><th>Когда</th><th class="num">7 дней</th><th>Что делает и кому это нужно</th><th>Вердикт</th></tr>
+<tr><td>lead-thread-reply</td><td>09:45, 18:45</td><td class="num">106M</td><td>отвечает в тредах с лидами и двигает их дальше</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>voice-dispatcher</td><td>09:00, 21:00</td><td class="num">101M</td><td>превращает твои голосовые в отдельные сессии</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>preference-sweep-daily</td><td>00:20</td><td class="num">80M</td><td>ищет в свежих чатах повторяющиеся предпочтения</td><td><span class="tag a">назвать потребителя</span></td></tr>
+<tr><td>fb-reply-daily</td><td>16:00</td><td class="num">79M</td><td>отвечает на комментарии в Facebook</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>journey-day-close-morning</td><td>05:15</td><td class="num">76M</td><td>дописывает главу книги за вчера на трёх языках</td><td><span class="tag a">дорого для книги</span></td></tr>
+<tr><td>content-drain-live</td><td>12:10</td><td class="num">74M</td><td>тянет два самых старых сида из контент-воронки</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>git-s7-vendor</td><td>Пн, Чт 14:00</td><td class="num">63M</td><td>разговоры с мейнтейнерами топ-экосистем (миссия №2)</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>claudeai-sync-daily</td><td>01:20</td><td class="num">56M</td><td>тянет новые чаты claude.ai в волт</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>git-s7-fast</td><td>10:00</td><td class="num">48M</td><td>быстрые мержи в небольших репозиториях</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>chatgpt-token-guard-nightly</td><td>01:00</td><td class="num">34M</td><td>сторож токена ChatGPT перед синком</td><td><span class="tag a">сторож не должен стоить 34M</span></td></tr>
+<tr><td>vibe-teach-daily</td><td>10:30</td><td class="num">33M</td><td>ежедневный пост обучающей серии</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>registry-dispatcher-daily</td><td>05:15</td><td class="num">29M</td><td>поднимает сессии по задачам реестра</td><td><span class="tag a">он и плодит разовые</span></td></tr>
+<tr><td>voice-triage</td><td>10:00</td><td class="num">28M</td><td>триаж новых голосовых и заметок</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>rc-cockpit-anton-daily</td><td>08:40</td><td class="num">25M</td><td>свежая кокпит-сессия для управления с телефона</td><td><span class="tag a">ты ей пользуешься?</span></td></tr>
+<tr><td>task-hygiene-shadow</td><td>05:10</td><td class="num">16M</td><td>считает гигиену реестра задач, ничего не меняет</td><td><span class="tag a">тень без даты урожая</span></td></tr>
+<tr><td>hanging-tasks-digest</td><td>05:52</td><td class="num">16M</td><td>сводка висячих задач тебе в Telegram</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>token-spend-watchdog</td><td>23:45</td><td class="num">11M</td><td>сторож расхода токенов</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>connector-health-daily</td><td>05:10</td><td class="num">10M</td><td>здоровье коннекторов</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>canon-writer-nightly</td><td>01:00</td><td class="num">6M</td><td>ночной писатель канона сериала</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>facebook-diary-daily</td><td>23:20</td><td class="num">6M</td><td>дневник дня из разговоров всех машин</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>content-miner-nightly</td><td>23:10</td><td class="num">6M</td><td>ночная страховка контент-майнера</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>robot-audit-weekly</td><td>Вс 23:10</td><td class="num">5M</td><td><b>менеджер рутин</b> - см. следующий блок</td><td><span class="tag r">мандат не перепрошит</span></td></tr>
+<tr><td>skill-gap-daily</td><td>Пн 00:50</td><td class="num">5M</td><td>ищет, каких скиллов не хватает</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>gmail-digest-morning</td><td>05:30</td><td class="num">5M</td><td>тихий сторож трёх почтовых ящиков</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>tg-relationships-weekly</td><td>Пн 02:00</td><td class="num">4M</td><td>дни рождения и важные лиды на неделю</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>health-weekly-sync</td><td>Пн 02:30</td><td class="num">4M</td><td>синк здоровья</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>day-ledger-nightly</td><td>04:40</td><td class="num">3M</td><td>сборка «что было сделано вчера»</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>faaa-weekly-sync</td><td>Пн 03:00</td><td class="num">2M</td><td>недельный синк ФААА</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>obsidian-backup-healthcheck</td><td>Пн 03:30</td><td class="num">2M</td><td>проверка бэкапа волта</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>reality-show-health-weekly</td><td>Пн 03:47</td><td class="num">2M</td><td>здоровье контент-сериала</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>tg-weekly-digest</td><td>Вс 23:30</td><td class="num">1M</td><td>недельный свод: сделано и зависло</td><td><span class="tag g">оставить</span></td></tr>
+<tr><td>hub-deploy-unpack-daily</td><td>23:20</td><td class="num">0M</td><td>распаковывает посылки деплоя</td><td><span class="tag r">посылка от 22.08 не распакована</span></td></tr>
+</table>
+</div>
+<p style="margin-top:12px"><b>Вывод по расписанию:</b> оно в целом здоровое. Шесть самых дорогих рутин делают именно ту работу, ради которой заведены - лиды, голосовые, контент, GitHub. 133M в сутки на всё расписание против 509M в сутки на твои живые сессии. Расписание - не то место, где надо резать.</p>
+</div>
+
+<div class="card">
+<h2>Где настоящая дыра: у рутин есть начальник, но без права увольнять</h2>
+<p>Ты сказал: «за всеми менеджерами должен смотреть один нормальный белый человек, и этим белым являюсь я один». Так и есть - и вот почему буквально.</p>
+<table>
+<tr><th></th><th>Что решили 21.08</th><th>Что стоит в коде сейчас</th></tr>
+<tr><td>Кто увольняет</td><td>менеджер <code>robot-audit-weekly</code> исполняет не-Tier-2 увольнения <b>сам</b></td><td><span class="tag r">«Review-only - сам НИЧЕГО не выключаешь»</span></td></tr>
+<tr><td>Роль Антона</td><td>«не в петле контроля», конец трубы</td><td><span class="tag r">«Выключить? ответь + или списком имён»</span></td></tr>
+<tr><td>Кто читает журнал</td><td>менеджер-рутина, не Антон</td><td>журнал мысли в режиме тени до 29.08</td></tr>
+</table>
+<p style="margin-top:12px">Решение <code>decision-2026-08-21-routine-org-model</code> принято по твоему мандату <code>/decide</code> и записано. Но <b>дверь менеджера не перепрошита</b>: его инструкция по-прежнему велит собрать список и спросить тебя. Следующий прогон - <b>завтра, воскресенье 23:10</b>, и он снова принесёт тебе список на утверждение.</p>
+<p>Отсюда и ощущение. Не потому, что рутин много, а потому, что <b>единственная точка принятия решения - ты</b>, и она вшита в инструкцию менеджера.</p>
+</div>
+
+<div class="card">
+<h2>Что предлагаю сделать</h2>
+<ul>
+<li><b>Перепрошить мандат менеджера</b> до завтрашнего прогона: увольняет сам по числовым правилам (ноль запусков за 30 дней · упала N раз подряд · нет приёмника), выключение на 30 дней вместо удаления, каждое увольнение в журнал, сторожа безопасности и Tier-2 не трогает. Тебе - одна строка постфактум.</li>
+<li><b>Ограничить самоплодящиеся сессии-ремонтники.</b> 27 починок за неделю - это класс, а не случайности. Правило третьей поломки у нас есть, но разовые сессии его обходят: каждая поломка сразу рождает сессию. Предлагаю потолок: не больше N ремонтников в сутки, остальное копится строкой в журнал поломок и чинится классом.</li>
+<li><b>Свести два сторожа десктопа в один</b> либо доказать, что они не дерутся.</li>
+<li><b>Назвать приёмника</b> у четырёх жёлтых: preference-sweep, journey-day-close, rc-cockpit, task-hygiene-shadow. Нет приёмника - выключаем, это твоё же правило.</li>
+<li><b>Починить hub-deploy-unpack-daily</b>: посылка от 22.08 висит нераспакованной, а рутина числится живой.</li>
+</ul>
+</div>
+
+<div class="foot">Собрано детерминированно: <code>token_audit.parse_day</code> за 7 дней · <code>schtasks /query</code> · дамп планировщика приложения · журнал <code>dr_runner.log</code>.<br>
+Хаб A-2022BAYAREA · 22 августа 2026, 21:30</div>
+</div>

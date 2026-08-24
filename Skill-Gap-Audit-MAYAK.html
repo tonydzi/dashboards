@@ -4,144 +4,76 @@
 <meta charset="UTF-8">
 <title>Skill-Gap Audit — МАЯК</title>
 <style>
-  body { font-family: -apple-system, Segoe UI, Arial, sans-serif; background:#0f1115; color:#e6e6e6; margin:0; padding:24px; }
-  h1 { font-size:20px; margin-bottom:4px; }
-  .meta { color:#9aa0a6; font-size:13px; margin-bottom:20px; }
-  table { border-collapse: collapse; width:100%; margin-bottom:24px; }
-  th, td { border:1px solid #2a2e35; padding:10px 12px; text-align:left; font-size:14px; vertical-align:top; }
-  th { background:#1a1d24; color:#fff; }
-  tr:nth-child(even) { background:#161920; }
-  .HIGH { color:#ff6b6b; font-weight:bold; }
-  .MED { color:#ffb454; font-weight:bold; }
-  .LOW { color:#7ee787; font-weight:bold; }
-  .WATCH { color:#4a90d9; font-weight:bold; }
-  .DONE { color:#7ee787; font-weight:bold; }
-  .tag { display:inline-block; background:#2a2e35; border-radius:4px; padding:2px 6px; font-size:11px; margin-right:4px; }
-  .note { background:#1a1d24; border-left:3px solid #4a90d9; padding:12px 16px; margin-bottom:20px; font-size:14px; }
-  .freeze { background:#1a1d24; border-left:3px solid #ff6b6b; padding:12px 16px; margin-bottom:20px; font-size:14px; }
-  .new { background:#1a1d24; border-left:3px solid #7ee787; padding:12px 16px; margin-bottom:20px; font-size:14px; }
-  .before { color:#ff6b6b; }
-  .after { color:#7ee787; }
+body { font-family: -apple-system, Segoe UI, Arial, sans-serif; background:#0f1115; color:#e6e6e6; margin:0; padding:24px; }
+h1 { font-size:20px; margin-bottom:4px; }
+.meta { color:#9aa0a6; font-size:13px; margin-bottom:20px; }
+table { border-collapse: collapse; width:100%; margin-bottom:24px; }
+th, td { border:1px solid #2a2e35; padding:10px 12px; text-align:left; font-size:14px; vertical-align:top; }
+th { background:#1a1d24; color:#fff; }
+tr:nth-child(even) { background:#161920; }
+.HIGH { color:#ff6b6b; font-weight:bold; }
+.MED { color:#ffb454; font-weight:bold; }
+.LOW { color:#7ee787; font-weight:bold; }
+.WATCH { color:#4a90d9; font-weight:bold; }
+.DONE { color:#7ee787; font-weight:bold; }
+.tag { display:inline-block; background:#2a2e35; border-radius:4px; padding:2px 6px; font-size:11px; margin-right:4px; }
+.note { background:#1a1d24; border-left:3px solid #4a90d9; padding:12px 16px; margin-bottom:20px; font-size:14px; }
+.alert { background:#1a1d24; border-left:3px solid #ff6b6b; padding:12px 16px; margin-bottom:20px; font-size:14px; }
+.new { background:#1a1d24; border-left:3px solid #7ee787; padding:12px 16px; margin-bottom:20px; font-size:14px; }
+.before { color:#ff6b6b; }
+.after { color:#7ee787; }
 </style>
 </head>
 <body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Selfheal-Phase1.html">&larr; Selfheal-Phase1</a> · <a href="Sync-Propagation-Audit.html">Sync-Propagation-Audit &rarr;</a></span></div>
+
 <h1>🔍 Skill-Gap Audit — МАЯК (fleet-anchor VPS)</h1>
-<div class="meta">Прогон: 2026-08-16 (пред. прогоны: 2026-08-09, 2026-08-02, 2026-07-26) · только сессии на этой машине (Маяк) · READ-ONLY аудит</div>
+<div class="meta">Прогон: 2026-08-23 04:03 (пред. прогоны: 2026-08-16, 2026-08-09, 2026-08-02, 2026-07-26) · только сессии на этой машине (Маяк) · READ-ONLY аудит</div>
 
 <div class="note">
-⚠️ Структурное наблюдение — 4-й прогон подряд с тем же выводом: из последних 40 файлов сессий на Маяке (окно
-2026-08-15 01:24 → 2026-08-16 04:00, ~27ч) — <b>0 ручных содержательных сессий Антона</b>. Всё это либо
-robot-триггеры (advisor-чат-робот, inbox-робот), либо ночные/дневные рутины со своим task-файлом/SKILL.md как
-промптом (vault-janitor, skill-gap, preference-sweep, arch-scan). Маяк — чистый автоматизационный якорь, не
-рабочее место; разрыв «Антон делает руками X, а скилла нет» тут структурно отсутствует. Зато нашёлся другой,
-более узкий разрыв — см. НОВОЕ ниже.
+⚠️ Структурное наблюдение — 5-й прогон подряд с тем же выводом: из последних ~60 файлов сессий на Маяке (окно 2026-08-19 09:00 → 2026-08-23 04:00) — <b>0 ручных содержательных сессий Антона</b>. Всё это либо robot-триггеры (advisor-чат-робот, inbox-робот, session-unsticker), либо ночные/дневные рутины со своим task-файлом/SKILL.md как промптом (vault-janitor, skill-gap, retro-lost). Единственный текст, похожий на "человек попросил" ("письмо по-чешски про велогида", 21.08 05:48) — разовый, не повторяется, не тянет на паттерн (порог ≥3). Маяк остаётся чистым автоматизационным якорём, не рабочим местом — разрыв «Антон делает руками X, а скилла нет» тут структурно отсутствует.
 </div>
 
-<div class="freeze">
-⛔ Заморозка стройки 06.08–20.08 всё ещё действует (<span class="tag">build-freeze-2026-08</span>, 4 дня
-до снятия): новых скиллов/движков не создаём. Починка/тесты — свободны, поэтому один из кандидатов ниже
-не заблокирован (это фикс существующего робота, не новая деталь).
+<div class="alert">
+🆕 ЭСКАЛАЦИЯ (не было в прогонах до 16.08): зомби <b>session-unsticker-hourly</b> НЕ самоисправился, как решил прошлый прогон (WATCH → "после 02:54 15.08 повторов не было, похоже самоисправилось"). Свежие файлы опровергают это: <b>18 сессий 21.08 + 8 сессий 22.08</b> (76 файлов с этим промптом всего в окне видимости), при том что шапка промпта каждый раз сама говорит «⏸️ ВЫКЛЮЧЕНА 05.08.2026 — работу забрала дешёвая рельса на Windows-узле» и является [HUB]-only рельсой (`session_unsticker_tick.cmd`, Windows Task). Она стреляет на Мая́ке (hostname `fleet-anchor`, реальные локальные файлы, не синк) каждые ~15 минут в отдельные часы, при этом в `crontab -l` Мая́ка записи «unsticker» НЕТ — источник триггера не найден дешёвыми инструментами (не OS cron, не systemd timer). Это не skill-gap, а живой баг/утечка токенов, требующая диагностики держателем скрипта (`session_unsticker_pregate.py`), не починки этим READ-ONLY аудитом.
 </div>
 
-<div class="new">
-🆕 НОВОЕ (не было в прогонах 26.07/02.08/09.08): daemon <span class="tag">advisor_bus_daemon.py</span>
-(создан 14.08, до этого не существовал) за 2 суток породил <b>49 сессий</b> «advisor-чат робот» — самый
-частый паттерн активности на Маяке за это окно (до 18 сессий за один день, каждые 15-90 мин). Промпт
-захардкожен ЛИТЕРАЛОМ внутри .py (строки 169-184), а не вынесен в файл, хотя у соседних роботов
-(vault-janitor, skill-gap) это уже решённый паттерн — промпт живёт в отдельном task-файле, скрипт только
-его читает. У session-unsticker-hourly решение ещё точнее: единый SKILL.md — источник правды для ОБЕИХ
-рельс (дешёвой и LLM), скрипт кормит его через --stdin. Advisor-daemon этот паттерн пропустил.
-</div>
-
-<h2 style="font-size:16px;">Найденные разрывы</h2>
 <table>
-<thead>
 <tr><th>Разрыв</th><th>Откуда видно</th><th>Оценка</th><th>Инфра уже есть?</th></tr>
-</thead>
-<tbody>
 <tr>
-<td><b>Декластер реестра задач (P0/P1-свалка)</b> — 4-й прогон подряд без движения, цифры хуже КАЖДЫЙ раз:
-122→308→412→<b>493</b> задач, 3→12→22→<b>32</b> P0, 41→155→217→<b>266</b> P1, «гниёт» 41→146→<b>208</b>
-(баннер SessionStart этой самой сессии, 16.08). Разбора руками так и не было ни разу за 7 недель.</td>
-<td>Баннер SessionStart КАЖДОЙ сессии на Маяке (26.07 «122/3/41» → 02.08 «308/12/155» → 09.08 «412/22/217»
-→ 16.08 «493/32/266»); 0 коммитов в <span class="tag">10-Tasks/</span> с формулировкой declutter/backlog
-с 26.07.</td>
-<td class="HIGH">HIGH (эскалация 4×, заморожено стройкой до 20.08)</td>
-<td><span class="tag">tasks_audit_ping.py</span> (cron, вс 04:00) считает P0/P1/протухшие/без-DoD, но только
-пингует цифры в 03 — решения не принимает. Дашборд <span class="tag">Task-Backlog.html</span> тоже только
-показывает. Кандидат №1 на 20.08 — приоритет продолжает расти, разрыв сам не закрывается.</td>
+<td>Декластер реестра задач (P0/P1-свалка)</td>
+<td>Баннер SessionStart этой сессии (23.08): <b>390</b> несделанных, <b>40</b> P0, 185 P1, 16 «гниёт». Тренд 5 прогонов: total 122→308→412→493→<b>390</b> (впервые снизился); но P0 продолжает расти 3→12→22→32→<b>40</b> — уже 5-й прогон эскалации по P0 конкретно.</td>
+<td class="HIGH">HIGH (эскалация 5×, заморозка стройки 06-20.08 снята — можно строить)</td>
+<td><code>tasks_audit_ping.py</code> (cron, вс 04:00) только пингует цифры, решений не принимает. Дашборд <code>Task-Backlog.html</code> только показывает.</td>
 </tr>
 <tr>
-<td><b>Промпт advisor-чат-робота захардкожен в .py, а не в файле-источнике правды</b> — 49 сессий за 2 суток,
-самый частый паттерн текущего окна; любая правка Библии/гейта требует правки Python-скрипта вместо правки
-одного task-файла или SKILL.md, как у остальных роботов.</td>
-<td>Строки 169-184 <span class="tag">advisor_bus_daemon.py</span> (литерал prompt=); сравнение с
-<span class="tag">mayak_janitor.sh</span> и <span class="tag">mayak_skill_gap.sh</span>, которые уже читают
-промпт из отдельного файла (<span class="tag">cat $TASK</span>).</td>
-<td class="MED">MED (высокий повтор, но риск = только «неудобно чинить», не «сломано сейчас»)</td>
-<td>Паттерн-решение уже существует ДВАЖДЫ во флоте (task-файл у janitor/skill-gap; SKILL.md+stdin у
-session-unsticker-hourly) — это тонкая обёртка, не новая деталь → НЕ под заморозкой (починка).</td>
+<td>Промпт advisor-чат-робота и inbox-робота всё ещё захардкожены в коде</td>
+<td>Проверено заново 23.08: <code>advisor_bus_daemon.py:169</code> (литерал <code>prompt = (...)</code>) и <code>mayak_inbox_robot.sh</code> (многострочный промпт прямо в команде claude -p) — байт-в-байт как на 16.08, правок не было.</td>
+<td class="MED">MED (3-й прогон без движения, риск = «неудобно чинить», не «сломано»)</td>
+<td>Паттерн-решение уже существует дважды во флоте (task-файл у janitor/skill-gap; SKILL.md+stdin у unsticker) — тонкая обёртка, не новая деталь.</td>
 </tr>
 <tr>
-<td><b>mayak_inbox_robot.sh</b> — тот же анти-паттерн (промпт-литерал внутри .sh), но частота низкая
-(1×/сутки после приказа 07.08 «было */10» → «раз в день»), поэтому боль тише.</td>
-<td>Строка 17 <span class="tag">mayak_inbox_robot.sh</span> — многострочный промпт прямо в команде.</td>
-<td class="LOW">LOW (риск тот же, частота низкая)</td>
-<td>Тот же готовый паттерн (task-файл), можно закрыть заодно с advisor-daemon одним заходом.</td>
+<td>session-unsticker-hourly зомби (см. алярм выше)</td>
+<td>76 файлов сессий с промптом «ВЫКЛЮЧЕНА 05.08» в окне 06.08-22.08; всплески НЕ единоразовые (06.08, 14.08, 15.08, затем снова 21-22.08).</td>
+<td class="WATCH">WATCH→ESCALATE (не скилл-гэп — живой баг источника триггера)</td>
+<td>Требует не скилла, а диагностики: что на Мая́ке продолжает будить эту рельсу, если ни cron, ни systemd её не держат.</td>
 </tr>
-<tr>
-<td><b>Зомби-всплеск session-unsticker-hourly на Маяке</b> — 6 сессий 01:24-02:54 15.08, хотя скилл помечен
-«⏸️ ВЫКЛЮЧЕНА 05.08» и является [HUB]-only (Windows-рельса). В текущем crontab Маяка записи нет — похоже,
-самоисправилось (после 02:54 15.08 повторов не было).</td>
-<td>6 файлов сессий подряд с идентичным описанием «ВЫКЛЮЧЕНА 05.08.2026» в шапке; отсутствие
-<span class="tag">unsticker</span> в <span class="tag">crontab -l</span> сейчас.</td>
-<td class="WATCH">WATCH (не скилл-гэп, разовая аномалия)</td>
-<td>Не требует скилла — требует единоразовой проверки, что источник (возможно устаревшая запись в
-ScheduleWakeup/scheduled_task, не в OS crontab) действительно погашен, а не просто не попал в это окно.</td>
-</tr>
-</tbody>
 </table>
 
-<h2 style="font-size:16px;">Топ-кандидаты: ДО → ПОСЛЕ</h2>
+<h3>Топ-кандидаты: ДО → ПОСЛЕ</h3>
+<p><b>1) /task-declutter</b> (разморожено с 20.08, приоритет растёт 5-й цикл подряд по P0)<br>
+<span class="before">ДО (23.08):</span> баннер SessionStart — «390 несделанных, 40 P0, 185 P1 … гниёт 16 … 155 без критерия «сделано»». P0 вырос в 13.3× с 26.07 (3→40), хотя общий счёт впервые снизился.<br>
+<span class="after">ПОСЛЕ:</span> одна команда → читает <code>audit-latest.json</code> (0 токенов), группирует по владельцу/возрасту/критерию, предлагает пакетное решение (kill/слить/понизить P0→P1/дописать критерий) с примерами, Антон жмёт «+» пакетом.<br>
+Делаем? — решает Антон.</p>
 
-<div class="note">
-<b>1) /task-declutter</b> (перенесено, приоритет растёт 4-й цикл подряд, заблокировано заморозкой до 20.08)<br><br>
-<span class="before">ДО (16.08):</span> баннер SessionStart — «493 несделанных, 32 P0, 266 P1 … гниёт 208 …
-112 без критерия «сделано»». За 7 недель без вмешательства реестр вырос в 4× по общему счёту и в 10.7× по P0.<br><br>
-<span class="after">ПОСЛЕ:</span> одна команда → читает <span class="tag">audit-latest.json</span> (0 токенов),
-группирует по владельцу/возрасту/критерию, предлагает пакетное решение (kill/слить/понизить P0→P1/дописать
-критерий) с примерами, Антон жмёт «+» пакетом.<br><br>
-<b>Делаем?</b> — решает Антон, не раньше 20.08.
-</div>
+<p><b>2) Вынести промпты advisor-daemon + inbox-robot в файл-источник правды</b> (не под заморозкой, чинить можно сейчас)<br>
+<span class="before">ДО:</span> правка Библии/гейта/тона ответа требует правки Python/shell кода, легко разойдётся с остальными роботами при следующей ревизии канона.<br>
+<span class="after">ПОСЛЕ:</span> промпт переезжает в отдельный <code>.md</code>-файл (как у vault-janitor/skill-gap), скрипт делает <code>cat $TASK</code>. 0 риска регрессии.<br>
+Делаем? — решает Антон.</p>
 
-<div class="note">
-<b>2) Вынести промпт advisor-чат-робота (+ заодно inbox-robot) в файл-источник правды</b> — НЕ под заморозкой,
-можно делать сейчас (починка существующего робота, не новая деталь).<br><br>
-<span class="before">ДО:</span> промпт живёт литералом в <span class="tag">advisor_bus_daemon.py</span> строки
-169-184 и в <span class="tag">mayak_inbox_robot.sh</span> строка 17 — правка Библии/гейта/тона ответа требует
-правки Python/shell кода, легко разойдётся с остальными роботами при следующей ревизии канона.<br><br>
-<span class="after">ПОСЛЕ:</span> промпт переезжает в <span class="tag">/home/anton/mayak_tasks/advisor-bus.md</span>
-(и аналогично <span class="tag">inbox-robot.md</span>), скрипты делают <span class="tag">cat $TASK</span> —
-как уже сделано у vault-janitor и skill-gap. 0 риска регрессии (текст промпта не меняется, меняется только
-откуда он читается).<br><br>
-<b>Делаем?</b> — маленький фикс, решает Антон; не «новая деталь», freeze не блокирует.
-</div>
+<p><b>3) Диагностика источника session-unsticker-hourly на Мая́ке</b> (новое, срочнее пункта 2 — это активная утечка токенов)<br>
+<span class="before">ДО:</span> рельса, помеченная выключенной и HUB-only, стреляет на Мая́ке каждые ~15 мин отдельными днями (18 раз 21.08), источник триггера не найден среди cron/systemd.<br>
+<span class="after">ПОСЛЕ:</span> найти реальный триггер (харнес-level scheduled task? остаточный процесс? другой узел пишет напрямую в этот projects-каталог?) и либо выключить его на Мая́ке, либо подтвердить что рельса тут ЖИВАЯ по замыслу (тогда снять «ВЫКЛЮЧЕНА» из шапки).<br>
+Делаем? — решает Антон; это не skill-gap-стройка, а отдельный inbox/incident-заход.</p>
 
-<h2 style="font-size:16px;">Что уже здорово покрыто (без разрыва)</h2>
-<table>
-<tr><th>Паттерн</th><th>Чем покрыт</th></tr>
-<tr><td>Структурный фолд CLAUDE.md при RED</td><td>skill <span class="tag">/canon-revision</span></td></tr>
-<tr><td>Раздача Deep Research по нескольким LLM</td><td>skill <span class="tag">/dr-fanout</span></td></tr>
-<tr><td>Чтение шины и обработка входящих</td><td>cron <span class="tag">40 6 mayak_inbox_robot.sh</span> — авто (1×/сутки, приказ 07.08)</td></tr>
-<tr><td>Ночная уборка волта</td><td>cron <span class="tag">0 3 vault-janitor</span> — авто, task-файл</td></tr>
-<tr><td>Еженедельный аудит разрывов скиллов (эта задача)</td><td>skill <span class="tag">/skill-gap</span>, task-файл</td></tr>
-<tr><td>Ответ advisor'у в его личном A2A-чате</td><td>daemon <span class="tag">advisor_bus_daemon.py</span> — авто, но промпт не вынесен (см. разрыв выше)</td></tr>
-<tr><td>Ящик советов из PR/issues advisors (другой конвейер)</td><td>skills <span class="tag">/advisor-intake</span>, <span class="tag">/advisor-mine</span></td></tr>
-<tr><td>Флот-сторожа (peer-watch/heartbeat/ack/bus-guard/manifest/onair-gc)</td><td>W1a-слой, ARMED</td></tr>
-<tr><td>DR-отчёты → дистилляция в заметку, регистрация чата</td><td><span class="tag">mayak_dr_collect.sh</span> + <span class="tag">dr_registry.py</span></td></tr>
-<tr><td>Задачи-делегация Наталье/Руслане</td><td>skill <span class="tag">/task</span></td></tr>
-</table>
-
-<div class="meta">Дашборд хаба (не трогать): Skill-Gap-Audit.html · этот файл — суффикс MAYAK, отдельная копия.</div>
 </body>
 </html>

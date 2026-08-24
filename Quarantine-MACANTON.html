@@ -26,15 +26,23 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Quarantine-HUB.html">&larr; Quarantine-HUB</a> · <a href="Quarantine-MACBOOK-ANTON.html">Quarantine-MACBOOK-ANTON &rarr;</a></span></div><div class="wrap">
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>MacBook-Anton</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
-<h2>✅ Доверенные — применятся сами <span class="cnt">1</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
-  <div class="top"><span class="id">portability-gates-unstick-20260819</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Три вечно-красных гейта портируемости + живой ghost-writer (замер Маяк 19.08). (1) _test_smoke_core проверял синтаксис через py_compile, а тот пишет .pyc рядом с исходником -&gt; на read-only дереве 4 исправные детали красились Permission denied; теперь compile() в памяти. (2) _test_session_slot требовал реестр приложения Claude, которого на headless-узле нет по устройству -&gt; SKIP ровно при отсутствии каталога приложения. (3) ОДИН файл бейслайна win_portability_scan на ДВА корня скана (scripts и content-factory): ключи относительны корню, --accept переписывает файл целиком -&gt; второй гейт красный НАВСЕГДА; добавлен --baseline, гейт content-factory носит свой файл, красная проба уехала во временный каталог. (4) orphan-scan несла жёсткие E:-пути без лесенки -&gt; на POSIX робот, armed с 11.07, каждую ночь создавал каталог-призрак, сканировал 0 файлов и выходил кодом 0; после лесенки 0 -&gt; 185673 файла, 40341 сирота, дашборд 4КБ-призрак -&gt; 30КБ у настоящего потребителя.</div>
-  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-19 08:40 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+<h2>✅ Доверенные — применятся сами <span class="cnt">2</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+  <div class="top"><span class="id">clobber-guard-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Дверь «занятое имя»: onair_fleet_guard блокирует перезапись спящего чужого файла из Bash (класс 14+ строк журнала; корень = дверь 20 дней не была зарегистрирована)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 23:24 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
-  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/portability-gates-unstick-20260819/install_portability_gates.py&quot;</code></div>
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/install_clobber_guard.py</code></div>
   
-</div><h2>🗑 Выброшенные <span class="cnt">3</span></h2><div class="card trusted">
+</div><div class="card trusted">
+  <div class="top"><span class="id">home-dir-guard-2026-08-24</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">home-dir-guard: SessionStart-сторож чужой рабочей папки (регистрация хука в локальном settings.json)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-24 08:43 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/home_dir_guard_install.py</code></div>
+  
+</div><h2>🗑 Выброшенные <span class="cnt">5</span></h2><div class="card trusted">
   <div class="top"><span class="id">_portability-selftest-bypass</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">самотест обхода</div>
   <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-05 00:58 · <span class="ok">подпись ✓</span></div>
@@ -58,7 +66,23 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/deploy-bus-rebase-20260806/install.py&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-18 14:32</div>
-</div><h2>📦 Уже применённые <span class="cnt">191</span></h2><div class="card trusted">
+</div><div class="card trusted">
+  <div class="top"><span class="id">grr-node-hardcode-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">github_routines_registry.py: имя узла из menv.machine_key(), не константа MacBook-Anton</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 19:00 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,sys,runpy;sys.path.insert(0,os.path.expanduser(&#x27;~/.claude/scripts/_shared&#x27;));import menv;runpy.run_path(os.path.join(menv.vault(),&#x27;_machine-bus&#x27;,&#x27;_deploy&#x27;,&#x27;payloads&#x27;,&#x27;grr-node-hardcode-20260822&#x27;,&#x27;install.py&#x27;),run_name=&#x27;__main__&#x27;)&quot;</code></div>
+  <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-23 23:20</div>
+</div><div class="card trusted">
+  <div class="top"><span class="id">class-counter-fix-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">selfheal.py: счётчик классов журнала поломок начал СЧИТАТЬ (широкое имя класса + пачка N случаев + нечёткое сопоставление семей). Живой замер: строк в счёте 321-&gt;468, классов, взявших порог 3, было 7 стало 17. Движок едет шарой claude-home (!/scripts/**/*.py), ставить руками нечего</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 22:44 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/selfheal.py scan --dry</code></div>
+  <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-23 23:20</div>
+</div><h2>📦 Уже применённые <span class="cnt">214</span></h2><div class="card trusted">
   <div class="top"><span class="id">canon-gate-0716</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">canon_write_gate.py roaming-leader canon gate</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-16 18:10 · <span class="ok">подпись ✓</span></div>
@@ -1585,6 +1609,190 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py fleet-pull-lock-20260819</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">portability-gates-unstick-20260819</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Три вечно-красных гейта портируемости + живой ghost-writer (замер Маяк 19.08). (1) _test_smoke_core проверял синтаксис через py_compile, а тот пишет .pyc рядом с исходником -&gt; на read-only дереве 4 исправные детали красились Permission denied; теперь compile() в памяти. (2) _test_session_slot требовал реестр приложения Claude, которого на headless-узле нет по устройству -&gt; SKIP ровно при отсутствии каталога приложения. (3) ОДИН файл бейслайна win_portability_scan на ДВА корня скана (scripts и content-factory): ключи относительны корню, --accept переписывает файл целиком -&gt; второй гейт красный НАВСЕГДА; добавлен --baseline, гейт content-factory носит свой файл, красная проба уехала во временный каталог. (4) orphan-scan несла жёсткие E:-пути без лесенки -&gt; на POSIX робот, armed с 11.07, каждую ночь создавал каталог-призрак, сканировал 0 файлов и выходил кодом 0; после лесенки 0 -&gt; 185673 файла, 40341 сирота, дашборд 4КБ-призрак -&gt; 30КБ у настоящего потребителя.</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-19 08:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/portability-gates-unstick-20260819/install_portability_gates.py&quot;</code></div>
+  
+</div><div class="card held">
+  <div class="top"><span class="id">selfheal-phantom-target-gate-20260819b</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
+  <div class="ttl">Gate for phantom targets in selfheal + door for the repair queue (root of class dead-scheduled-task)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-19 14:03 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">НЕВЕРНАЯ Ed25519-подпись — подделка пакета или signer != from (signer=A-2022BAYAREA, from=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>powershell -NoProfile -Command &quot;$p=\&quot;$env:OBSIDIAN_VAULT\_machine-bus\_deploy\payloads\selfheal-phantom-target-gate-20260819\&quot;; foreach($f in @(\&quot;selfheal.py\&quot;,\&quot;registry_dispatch.py\&quot;,\&quot;_test_breakage_journal.py\&quot;)){ Copy-Item -Force (Join-Path $p $f) (Join-Path \&quot;$env:USERPROFILE\.claude\scripts\&quot; $f) }&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">inbox-debt-settle-20260819</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">ROOT-FIX: рутина инбокса гасит долг, а не только читает (settle, 0 LLM, доказательство = DONE-маркер/NOTFORME)</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-19 21:08 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py inbox-debt-settle-20260819</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">skill-local-namespace-stignore-20260820</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Рельса local-* в skills/.stignore (Step 1 канона 14.07) + снос воскрешённых shadowing-копий</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-20 00:34 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/skill-local-namespace-stignore-20260820/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">radio-honest-exit-20260820</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Рация всех роботов: bus_ping недоставка=rc3 + лестница в post() + channel_owned (mtime не версия) — приказ Антона 20.08</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-20 13:21 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/radio-honest-exit-20260820/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">gate-action-not-substr-20260821</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Гейты судят ДЕЙСТВИЕ, а не подстроку: 8 тихих пропусков запуска + 2 ложных блока в cmd_action, плюс дыра питон-списка в blackbox_session_guard</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-20 18:49 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/claude_fleet.py pull</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">browser-rail-watch-20260821</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Сторож браузерной рельсы: класс browser-rail-down больше не молчит — на красной рельсе аск класса D в 02 POLICE + видимая цена простоя (карточку пишет только хаб)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-21 19:59 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/browser_rail_watch.py --install</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">tg-honest-exit-20260821</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Рельса @***ySsd не врёт нулём: недоставка=rc3, общий замок с TTL вместо своей копии, у детектора залипшего замка появился рот в 02</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-21 21:45 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/tg-honest-exit-20260821/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">argv-limit-prompt-transport-20260821</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Класс «тело промпта в argv» добит: dr_headless_dispatch codex/gemini=stdin + grok=--prompt-file, grok_review diff=--prompt-file; Windows режет 8191/32767 молча</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-21 22:28 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/claude_fleet.py pull</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">bus-send-flag-body-gate-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">bus_send.py: тело, начинающееся с флага = отказ exit 2 (класс закрыт, 3-я поломка)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 18:38 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,sys,subprocess;sys.exit(subprocess.run([sys.executable, os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99)+chr(108)+chr(97)+chr(117)+chr(100)+chr(101)+chr(47)+chr(115)+chr(99)+chr(114)+chr(105)+chr(112)+chr(116)+chr(115)+chr(47)+chr(95)+chr(116)+chr(101)+chr(115)+chr(116)+chr(95)+chr(98)+chr(117)+chr(115)+chr(95)+chr(110)+chr(101)+chr(97)+chr(114)+chr(95)+chr(109)+chr(105)+chr(115)+chr(115)+chr(46)+chr(112)+chr(121))]).returncode)&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">substr-gate-action-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">класс детектор-судит-подстроку: прогнать два теста гейтов (av_spawn_guard + taskId диспетчера); красный = на узле старая версия файла, зови хаб</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 18:44 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,subprocess,sys;h=os.path.expanduser;ts=[h(\&quot;~/.claude/hooks/_test_av_spawn_guard.py\&quot;),h(\&quot;~/.claude/scripts/_test_dispatch_taskid_ascii.py\&quot;)];sys.exit(max(subprocess.run([sys.executable,t]).returncode for t in ts))&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">selfheal-taskid-and-antiloop-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">selfheal.py: ASCII-taskId сессии починки (транслит) + отчёт о починке больше не считается поломкой</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 18:45 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,sys,subprocess;d=os.path.expanduser(chr(126)+\&quot;/.claude/scripts/\&quot;);sys.exit(max(subprocess.run([sys.executable,d+t]).returncode for t in [\&quot;_test_selfheal_taskid_ascii.py\&quot;,\&quot;_test_selfheal_antiloop.py\&quot;]))&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">grr-node-hardcode-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">github_routines_registry.py: имя узла из menv.machine_key(), не константа MacBook-Anton</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 19:00 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,sys,runpy;sys.path.insert(0,os.path.expanduser(&#x27;~/.claude/scripts/_shared&#x27;));import menv;runpy.run_path(os.path.join(menv.vault(),&#x27;_machine-bus&#x27;,&#x27;_deploy&#x27;,&#x27;payloads&#x27;,&#x27;grr-node-hardcode-20260822&#x27;,&#x27;install.py&#x27;),run_name=&#x27;__main__&#x27;)&quot;</code></div>
+  <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-23 23:20</div>
+</div><div class="card trusted">
+  <div class="top"><span class="id">grr-node-guard-20260822b</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">v2: сторож имени узла (реестр флота + разделители пути + чужой --fleet вслух); заменяет grr-node-hardcode-20260822</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 19:11 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,sys,runpy;sys.path.insert(0,os.path.expanduser(&#x27;~/.claude/scripts/_shared&#x27;));import menv;runpy.run_path(os.path.join(menv.vault(),&#x27;_machine-bus&#x27;,&#x27;_deploy&#x27;,&#x27;payloads&#x27;,&#x27;grr-node-guard-20260822b&#x27;,&#x27;install.py&#x27;),run_name=&#x27;__main__&#x27;)&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">stumble-larva-mac-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Личинка спотыканий (macOS): Stop-хук пишет строку в журнал поломок, когда прогон рутины споткнулся 3 раза одной семьёй (голосовая hub:5694)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 21:39 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/install_hooks.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">retro-lost-peer-light-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Рутина retro-lost ПИР-ЛАЙТ на СВОЁМ узле: 5 брошенных сессий в сутки (приказ Антона 22.08, hub:5697+5699; канарейка Маяк зелёная)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 21:47 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>Прочитай payload $VAULT/_machine-bus/_deploy/payloads/retro-lost-peer-light-20260822/PROMPT.md целиком. Создай У СЕБЯ задачу через MCP scheduled-tasks: create_scheduled_task(taskId=&#x27;retro-lost-peer-light&#x27;, description=строка description из payload, cronExpression=слот СВОЕГО узла из таблицы слотов payload, prompt=весь блок &#x27;## PROMPT&#x27; payload). Реестр задач НЕ синкается — задачу обязан создать ТЫ на СВОЁМ узле, хаб этого сделать не может. Проверь, что у тебя есть ~/.claude/scripts/retro_lost_scan.py и retro_lost_extract.py и что ~/.claude/skills/retro-lost/SKILL.md содержит секцию &#x27;ДВА ПРОФИЛЯ&#x27;.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">class-counter-fix-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">selfheal.py: счётчик классов журнала поломок начал СЧИТАТЬ (широкое имя класса + пачка N случаев + нечёткое сопоставление семей). Живой замер: строк в счёте 321-&gt;468, классов, взявших порог 3, было 7 стало 17. Движок едет шарой claude-home (!/scripts/**/*.py), ставить руками нечего</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 22:44 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/selfheal.py scan --dry</code></div>
+  <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-23 23:20</div>
+</div><div class="card trusted">
+  <div class="top"><span class="id">class-counter-fix-20260822b</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">ЗАМЕНА посылки class-counter-fix-20260822 (у той apply не доставлял: scripts/ корень на пиры НЕ едет, гейт lint_script_delivery -- selfheal.py LOCAL-ONLY). Счётчик классов журнала поломок начал СЧИТАТЬ: широкое имя класса + пачка N случаев + нечёткое сопоставление семей. Живой замер: строк в счёте 321-&gt;468, классов, взявших порог 3, было 7 стало 17</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 22:50 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$OBSIDIAN_VAULT/_machine-bus/_transit/DEPLOY-class-counter-apply.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">stignore-conflict-guard-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Замок .stignore: конфликт-копии движков не ездят по флоту + deny scripts/.git (узел HP17 влил 173 КБ в индекс, замер 22.08)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 23:10 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/stignore_fix.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">help-flag-lint-20260823</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Механизм против класса unparsed-flag-silently-runs-work: help_flag_lint.py + _test_help_flag_lint.py в регресс-сетке (ночной прогон). Ratchet-baseline: accept СЛИВАЕТ записи, не перезаписывает (деревья узлов разные). На узле нужен ОДИН accept, чтобы локальные скрипты узла попали в долг, иначе ночная сетка покраснеет на них.</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-23 00:06 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/help_flag_lint.py --accept</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">fleet-sheet-rail-20260823</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Sheets-рельса флота: поставить google-либы в python3 и доказать тестом (стол-и-витрина 22.08)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-23 21:54 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -m pip install google-api-python-client google-auth</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">change-ledger-door-20260823</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Дверь журнала правок вне git: change_ledger.py add/lint/show + тест</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-23 22:04 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil,pathlib; v=os.environ.get(&#x27;OBSIDIAN_VAULT&#x27;) or os.path.expanduser(&#x27;~/Obsidian/Anton-Knowledge&#x27;); s=pathlib.Path(v)/&#x27;_machine-bus/_deploy/payloads/change-ledger-door-20260823&#x27;; d=pathlib.Path(os.path.expanduser(&#x27;~/.claude/scripts&#x27;)); d.mkdir(parents=True,exist_ok=True); [shutil.copy2(s/f, d/f) for f in [&#x27;change_ledger.py&#x27;,&#x27;_test_change_ledger.py&#x27;]]; print(&#x27;copied to&#x27;, d)&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">llm-cli-golikov-fleet-20260824</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Продукт Голикова (llm_cli+serve): подписочный CLI как LLM-бэкенд — на все узлы</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-24 00:20 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$OBSIDIAN_VAULT/_machine-bus/_deploy/payloads/llm-cli-golikov-fleet-20260824/apply.py&quot;</code></div>
   
 </div>
 </div></body></html>

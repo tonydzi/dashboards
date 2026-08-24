@@ -1,0 +1,115 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Постинг: восстановление 21.08.2026</title>
+<style>
+:root{--bg:#0f1216;--card:#171c22;--line:#242c35;--tx:#e6edf3;--dim:#8b98a5;
+--ok:#3fb950;--bad:#f85149;--warn:#d29922;--acc:#58a6ff}
+*{box-sizing:border-box}body{margin:0;padding:22px;background:var(--bg);color:var(--tx);
+font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:15px;margin:26px 0 10px;color:var(--acc);
+text-transform:uppercase;letter-spacing:.06em}
+.sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.big{font-size:28px;font-weight:700;line-height:1.1}
+.lbl{color:var(--dim);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+th,td{padding:7px 9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}.dim{color:var(--dim)}
+.wrap{overflow-x:auto}
+.pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:12px;font-weight:600}
+.p-ok{background:rgba(63,185,80,.15);color:var(--ok)}
+.p-bad{background:rgba(248,81,73,.15);color:var(--bad)}
+.p-warn{background:rgba(210,153,34,.15);color:var(--warn)}
+code{background:#0b0e12;padding:1px 5px;border-radius:4px;font-size:12.5px;color:#a5d6ff}
+.note{border-left:3px solid var(--acc);padding:8px 12px;background:#12171d;margin:10px 0;
+border-radius:0 8px 8px 0;font-size:13.5px}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Контент и публикации</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Posting-Lanes-2026-08-24.html">&larr; Posting-Lanes-2026-08-24</a> · <a href="TG-Daemon-Status.html">TG-Daemon-Status &rarr;</a></span></div>
+
+<h1>Постинг: что стояло, что починено</h1>
+<div class="sub">Хаб A-2022BAYAREA · 21 августа 2026, 11:10 Лиссабон · всё ниже прочитано с диска и из каналов, не по памяти</div>
+
+<div class="grid">
+<div class="card"><div class="big ok">2</div><div class="lbl">полосы наружу: лонгриды + каскад, обе живые</div></div>
+<div class="card"><div class="big bad">8</div><div class="lbl">суток каскад стоял на СТОП-флаге (14 → 21.08)</div></div>
+<div class="card"><div class="big warn">148</div><div class="lbl">готовых постов в очереди</div></div>
+<div class="card"><div class="big ok">1</div><div class="lbl">пост ушёл сразу после снятия крана (t.me/PaloAltoAiRu/884)</div></div>
+</div>
+
+<h2>Что было сломано на самом деле</h2>
+<div class="wrap"><table>
+<tr><th>Узел трубы</th><th>Было</th><th>Корень</th><th>Стало</th></tr>
+<tr><td><b>Писатель дневника</b><br><span class="dim">facebook-diary-daily, 21:33</span></td>
+<td class="bad">20.08, ноль</td>
+<td>Модель ответила «OK» за 13 секунд вместо работы. Кран отдал exit=0 и <b>проштамповал heartbeat</b>, сторож промолчал.</td>
+<td class="ok">Пост за 20.08 дописан (3166 знаков). Ворота выхода: heartbeat только если черновик дня реально лёг.</td></tr>
+
+<tr><td><b>Писатель лаб-постов</b><br><span class="dim">content-drain-daily, 23:10</span></td>
+<td class="bad">20.08, ноль</td>
+<td>Упал на ВНЕШНЕЙ рельсе: <code>codex sandbox timeout</code>. Тоже exit=0, тоже heartbeat.</td>
+<td class="ok">Те же ворота выхода. За 21.08 черновики уже пишутся: 6 штук к 10:45.</td></tr>
+
+<tr><td><b>Робот-постовщик</b><br><span class="dim">Content-Distributor-Live, каждый час</span></td>
+<td class="bad">rc=7 восемь суток</td>
+<td><code>STOP-POSTING.flag</code>, стоп-кран Наташи от 14.08. Робот вёл себя честно: fail-closed, наружу ноль.</td>
+<td class="ok">Кран снят твоим явным словом 21.08. Тик отработал, пост в канале.</td></tr>
+
+<tr><td><b>Лонгрид-труба</b><br><span class="dim">@PaloAltoAi / @PaloAltoAiRu</span></td>
+<td class="ok">работала всё это время</td>
+<td>Флага она не читает вовсе. То есть fail-closed держал только каскад, а не «весь постинг».</td>
+<td class="ok">Работает: 21.08 три поста до полудня, 20.08 шесть.</td></tr>
+
+<tr><td><b>Сторож выходов</b><br><span class="dim">output_freshness</span></td>
+<td class="bad">за постами не следил</td>
+<td>29 выходов под присмотром, обоих писателей постов среди них НЕ было.</td>
+<td class="ok">31 выход. Обе полосы под сторожем, лимит 30 часов, лечение названо строкой.</td></tr>
+</table></div>
+
+<div class="note"><b>Один корень на три поломки.</b> Мы меряли <b>факт вызова</b> (кран отработал, exit=0), а не <b>факт выхода</b> (появился ли пост). 20.08 ты сам записал этот класс своими словами в журнал поломок и решил механизм не строить, а ждать третьего случая. Точный номер случая я грепом по журналу не доказал, поэтому «третий» не утверждаю. Механизм построен не по счётчику, а по твоему прямому приказу сегодня: обеспечить, чтобы посты писались и постились.</div>
+
+<h2>Неделя: писали против публиковали</h2>
+<div class="wrap"><table>
+<tr><th>День</th><th>Лаб-черновики</th><th>Дневник дня</th><th>Каскад опубликовал</th><th></th></tr>
+<tr><td>14.08 чт</td><td>6</td><td class="ok">да</td><td>4</td><td class="dim">до полудня, потом кран</td></tr>
+<tr><td>15.08 пт</td><td>6</td><td class="ok">да</td><td class="bad">0</td><td class="dim">кран</td></tr>
+<tr><td>16.08 сб</td><td>6</td><td class="ok">да</td><td class="bad">0</td><td class="dim">кран</td></tr>
+<tr><td>17.08 вс</td><td>6</td><td class="ok">да</td><td class="bad">0</td><td class="dim">кран</td></tr>
+<tr><td>18.08 пн</td><td>5</td><td class="ok">да</td><td>1</td><td class="dim">FB, руками</td></tr>
+<tr><td>19.08 вт</td><td>21</td><td class="ok">да</td><td class="bad">0</td><td class="dim">3 позиции явно blocked</td></tr>
+<tr><td>20.08 ср</td><td class="bad">0</td><td class="bad">НЕТ</td><td class="bad">0</td><td class="bad">оба писателя умерли зелёными</td></tr>
+<tr><td>21.08 чт</td><td>6</td><td class="dim">в 21:33</td><td class="ok">1</td><td class="ok">кран снят</td></tr>
+</table></div>
+<div class="sub">Итого за 8 дней: написано 56 лаб-черновиков и 7 дневников, каскадом опубликовано 6. Лонгрид-труба в эту таблицу не входит: она в общий леджер не пишет, отдельная дыра в учёте.</div>
+
+<h2>Режим постинга сейчас</h2>
+<div class="wrap"><table>
+<tr><th>Площадка</th><th>Режим</th><th>Потолок</th><th>Кто жмёт</th></tr>
+<tr><td>@PaloAltoAiRu</td><td><span class="pill p-ok">живой</span> тик каждый час, пауза ~90 минут между постами</td><td>сегодня 10, с 22.08 без потолка</td><td>робот</td></tr>
+<tr><td>@PaloAltoAi, @ClawEng</td><td><span class="pill p-ok">живой</span></td><td>нет</td><td>робот</td></tr>
+<tr><td>@ClawRus</td><td><span class="pill p-bad">СТОП</span>, подтверждён тобой 21.08</td><td>per_day=0, paused</td><td>никто</td></tr>
+<tr><td>Стена Антона, FB</td><td><span class="pill p-warn">только руки</span>, авторельсы нет</td><td>-</td><td>человек, скилл <code>/fb-post</code></td></tr>
+<tr><td>X, английский</td><td><span class="pill p-warn">только руки</span>, живая вкладка Chrome, бан-риск</td><td>-</td><td>человек, скилл <code>/x-post</code></td></tr>
+</table></div>
+
+<h2>Очередь: 148 готовых</h2>
+<div class="grid">
+<div class="card"><div class="big ok">25</div><div class="lbl">TG, уйдут роботом сами</div></div>
+<div class="card"><div class="big warn">63</div><div class="lbl">X, рельсы нет, нужны руки</div></div>
+<div class="card"><div class="big warn">25</div><div class="lbl">FB, рельсы нет, нужны руки</div></div>
+<div class="card"><div class="big bad">29</div><div class="lbl">HOLD: длиннее потолка FB в 2000 знаков</div></div>
+</div>
+<div class="note"><b>Главный затык теперь не кран, а рельсы.</b> 88 готовых постов из 148 физически некому отправить: у FB и X нет автоматической двери. Плюс 29 медиумов написаны на 2100-2700 знаков при потолке площадки 2000, они не пройдут гейт никогда, пока их не укоротят.</div>
+
+<h2>Что сделано сегодня</h2>
+<div class="wrap"><table>
+<tr><th>Деталь</th><th>Что делает</th><th>Доказано</th></tr>
+<tr><td><code>post_output_check.py</code></td><td>Ворота выхода: heartbeat только если черновик дня реально появился</td><td class="ok">на реальных днях: 19.08 → 0, 20.08 → 5</td></tr>
+<tr><td><code>_test_post_output_check.py</code></td><td>7 проверок, включая «заглушка на 2 байта не считается постом»</td><td class="ok">мутация (убрать порог) → тест краснеет</td></tr>
+<tr><td>Две строки в <code>output_freshness</code></td><td>Сторож видит возраст ВЫХОДА обоих писателей</td><td class="ok">оба показали STALE 37 и 46 часов, с лечением</td></tr>
+<tr><td>Правка двух <code>.cmd</code></td><td>Пустой прогон больше не штампует heartbeat, отдаёт 5</td><td class="ok">батч прогнан на обоих днях</td></tr>
+<tr><td>Пост за 20.08</td><td>Пропущенный дневник дописан</td><td class="ok">3166 знаков, ворота зелёные</td></tr>
+<tr><td><code>content_uncap_tomorrow.py</code> плюс задача 06:05</td><td>Снимает потолок с 22.08, решение с дверью, а не обещание</td><td class="ok">рано → rc=3 и файл не тронут; завтра → per_day=null</td></tr>
+</table></div>
+
+</body></html>

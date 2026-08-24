@@ -1,0 +1,83 @@
+<!doctype html><html lang=ru><head><meta charset=utf-8><title>Единый CRM+VC</title><style>
+*{box-sizing:border-box} body{font:14px/1.45 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#0e1116;color:#d7dde5}
+header{padding:18px 24px;background:#151a21;border-bottom:1px solid #232a33}
+h1{margin:0 0 4px;font-size:20px} .sub{color:#8b97a6;font-size:13px}
+.kpis{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
+.kpi{background:#1b222b;border:1px solid #283039;border-radius:10px;padding:10px 14px;min-width:120px}
+.kpi b{display:block;font-size:19px;color:#fff} .kpi span{color:#8b97a6;font-size:12px}
+.tabs{display:flex;gap:6px;padding:12px 24px 0;flex-wrap:wrap}
+.tab{padding:8px 16px;background:#1b222b;border:1px solid #283039;border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;color:#aeb8c4}
+.tab.on{background:#2a3a52;color:#fff}
+.wrap{padding:0 24px 40px} .bar{display:flex;gap:10px;align-items:center;padding:12px 0}
+input{flex:1;padding:9px 12px;background:#1b222b;border:1px solid #2d3742;border-radius:8px;color:#fff;font-size:14px}
+.count{color:#8b97a6;font-size:12px;white-space:nowrap}
+table{width:100%;border-collapse:collapse;font-size:13px} th,td{padding:7px 10px;text-align:left;border-bottom:1px solid #20272f;vertical-align:top}
+th{position:sticky;top:0;background:#151a21;cursor:pointer;user-select:none;color:#aeb8c4;white-space:nowrap}
+th:hover{color:#fff} tbody tr.dat{cursor:pointer} tbody tr.dat:hover td{background:#161c24}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+a{color:#5fa8ff;text-decoration:none} a:hover{text-decoration:underline}
+.who{color:#9aa6b3;font-size:12px} .star{color:#ffce4d}
+tr.exp td{background:#10151c;padding:10px 16px;border-bottom:2px solid #2a3a52}
+.kd{margin:4px 0;line-height:1.7} .kd b{color:#cdd6e0} .kn{color:#4ec9b0;font-weight:600}
+.exp .chip{display:inline-block;background:#1b2530;border:1px solid #2a3744;border-radius:6px;padding:1px 8px;margin:2px 4px 2px 0}
+.hint{color:#5a6675;font-size:11px;margin-left:6px}
+.sb{display:inline-block;padding:0 6px;border-radius:5px;font-size:10px;font-weight:600;margin-right:3px}
+.sb.VC{background:#2a3a52;color:#8fb8ff} .sb.CRM{background:#3a2a52;color:#c79fff}
+.sb.contacts{background:#2a4a3a;color:#7fd9a8} .sb.vault{background:#52432a;color:#e8c14d}
+.sb.TG{background:#243a4a;color:#6fd0e8} .sb.LOB{background:#3a2f1a;color:#e0a34d}
+.sb.SOS{background:#4a2a3a;color:#e87fb0} .sb.AIR{background:#1f3a2a;color:#5fd99a}
+.sb.APL{background:#33384a;color:#a8b4e8}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Top-10-Problems-Month-2026-08-13.html">&larr; Top-10-Problems-Month-2026-08-13</a> · <a href="V-Class-2024-vs-2026.html">V-Class-2024-vs-2026 &rarr;</a></span></div><header><h1>🗂 Единый граф сущностей (CRM + VC)</h1><div class=sub>Все люди и компании волта в одной базе. Клик по строке разворачивает вложенных: компания → люди + раунды; человек → компании + раунды. 🤝 = ты знаком. Бейджи = источники. <a href='VC-Graph-Dashboard.html'>→ детальный VC-граф</a></div><div class=kpis><div class=kpi><b>0</b><span>Компаний</span></div><div class=kpi><b>0</b><span>Людей (уник.)</span></div><div class=kpi><b>0</b><span>Дублей схлопнуто</span></div><div class=kpi><b>0</b><span>Связей работа</span></div><div class=kpi><b>0</b><span>Компаний в 2+ источниках</span></div><div class=kpi><b>0</b><span>Людей в 2+ источниках</span></div><div class=kpi><b>0</b><span>TG-группы</span></div><div class=kpi><b>0</b><span>LobsterDAO</span></div><div class=kpi><b>0</b><span>Airtable</span></div><div class=kpi><b>0</b><span>Apple</span></div><div class=kpi><b>0</b><span>СОСТАВ</span></div></div></header><div class=tabs><div class=tab data-t=companies onclick="tab('companies')">Компании</div><div class=tab data-t=people onclick="tab('people')">Люди</div></div><div class=wrap><div class=bar><input id=q placeholder='🔍 поиск по всем CRM+VC / напиши «знаком» для тёплых'><span class=count id=cnt></span></div><div class=hint style='padding:0 0 8px'>Показаны топ-3000 по связности на вкладку (полная база — 0 компаний / 0 людей в SQL).</div><div id=tbl></div></div><script>const DATA_JSON={"companies": [], "people": [], "stats": {"companies": 0, "people": 0, "dups": 0, "edges": 0, "xcomp": 0, "xppl": 0, "tgppl": 0, "lobppl": 0, "sosppl": 0, "airppl": 0, "aplppl": 0}, "cap": 3000};</script><script>
+const D=DATA_JSON, cur={t:'companies',sort:{},q:{}};
+const esc=s=>(''+(s==null?'':s)).replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+const tw=u=>{u=(''+u).replace(/^@/,'').replace(/.*\//,'');return u?'<a href="https://twitter.com/'+u+'" target="_blank">@'+u+'</a>':''};
+const tg=u=>{u=(''+u).replace(/^@/,'').replace(/.*\//,'');return u?'<a href="https://t.me/'+u+'" target="_blank">@'+u+'</a>':''};
+const web=u=>u?'<a href="'+(/^http/.test(u)?u:'https://'+u)+'" target="_blank">site</a>':'';
+const usd=a=>a==null?'':'$'+(a>=1e9?(a/1e9).toFixed(a>=1e10?0:1)+'B':a>=1e6?(a/1e6).toFixed(0)+'M':a>=1e3?(a/1e3).toFixed(0)+'k':a);
+const km=x=>x&&x.k?'<span class=kn>🤝</span> ':'';
+const chip=s=>'<span class=chip>'+s+'</span>';
+const knownCell=r=>r.known?'<span class=kn>🤝</span>':'';
+const srcCell=r=>(r.src||[]).map(s=>'<span class="sb '+s+'">'+s+'</span>').join('');
+const COLS={
+ companies:[['name','Компания',r=>esc(r.name)],['known','🤝',r=>knownCell(r)],['hc','Людей',r=>r.hc,1],['src','Источники',r=>srcCell(r)],['type','Тип',r=>esc(r.type)],['tw','Twitter',r=>tw(r.tw)],['tg','Telegram',r=>tg(r.tg)],['web','Сайт',r=>web(r.web)]],
+ people:[['name','Человек',r=>esc(r.name)],['known','🤝',r=>knownCell(r)],['nc','Компаний',r=>r.nc,1],['src','Источники',r=>srcCell(r)],['role','Роль',r=>esc(r.role)],['handle','Telegram',r=>tg(r.handle)]]
+};
+function kidsHtml(r){
+ const t=cur.t, K=r.kids||{}; let h='';
+ if(t=='companies'){
+   if(K.ppl&&K.ppl.length) h+='<div class=kd><b>Люди ('+K.ppl.length+'):</b> '+K.ppl.map(x=>chip(km(x)+esc(x.n))).join('')+'</div>';
+   if(K.rr&&K.rr.length) h+='<div class=kd><b>💰 Подняла раунды:</b> '+K.rr.map(x=>chip(esc(x.n)+(x.a!=null?' '+usd(x.a):''))).join('')+'</div>';
+   if(K.ri&&K.ri.length) h+='<div class=kd><b>📈 Инвестировала в раунды:</b> '+K.ri.map(x=>chip(esc(x.n)+(x.a!=null?' '+usd(x.a):''))).join('')+'</div>';
+ } else if(t=='people'){
+   if(K.co&&K.co.length) h+='<div class=kd><b>Компании (работает/работал):</b> '+K.co.map(x=>chip(esc(x.n)+(x.r?' <span class=hint>'+esc(x.r)+'</span>':''))).join('')+'</div>';
+   if(K.r&&K.r.length) h+='<div class=kd><b>📈 Инвестировал в раунды:</b> '+K.r.map(x=>chip(esc(x.n)+(x.a!=null?' '+usd(x.a):''))).join('')+'</div>';
+ }
+ return h||'<div class=kd hint>нет вложенных данных у этой строки</div>';
+}
+function toggle(tr){
+ const nx=tr.nextElementSibling;
+ if(nx&&nx.classList.contains('exp')){nx.remove();return}
+ document.querySelectorAll('tr.exp').forEach(e=>e.remove());
+ const r=D[cur.t].find(x=>x._id===+tr.dataset.i); if(!r)return;
+ const e=document.createElement('tr'); e.className='exp';
+ e.innerHTML='<td colspan=20>'+kidsHtml(r)+'</td>'; tr.after(e);
+}
+function render(){
+ const cols=COLS[cur.t]; let rows=D[cur.t].slice();
+ const qq=(cur.q[cur.t]||'').toLowerCase();
+ if(qq){
+   if(qq=='знаком'||qq=='warm') rows=rows.filter(r=>r.known);
+   else rows=rows.filter(r=>(''+r.name+' '+r.handle+' '+(r.role||'')+' '+(r.src||[]).join(' ')).toLowerCase().includes(qq));
+ }
+ const s=cur.sort[cur.t]; if(s){const[k,d]=s; rows.sort((a,b)=>{let x=a[k],y=b[k]; if(typeof x==='number'){x=+x||0;y=+y||0} else {x=(''+x).toLowerCase();y=(''+y).toLowerCase()} return x<y?-d:x>y?d:0})}
+ let html='<table><thead><tr>'+cols.map(c=>'<th class="'+(c[3]?'num':'')+'" onclick="sortBy(\''+c[0]+'\')">'+c[1]+(s&&s[0]===c[0]?(s[1]>0?' ▲':' ▼'):'')+'</th>').join('')+'</tr></thead><tbody>';
+ html+=rows.slice(0,1500).map(r=>'<tr class=dat data-i="'+r._id+'" onclick="if(event.target.tagName!=\'A\')toggle(this)">'+cols.map(c=>'<td class="'+(c[3]?'num':'')+'">'+c[2](r)+'</td>').join('')+'</tr>').join('');
+ html+='</tbody></table>';
+ document.getElementById('tbl').innerHTML=html;
+ document.getElementById('cnt').textContent=rows.length+' строк'+(rows.length>1500?' (показаны 1500)':'')+' · клик по строке = развернуть';
+}
+function sortBy(k){const s=cur.sort[cur.t]; cur.sort[cur.t]=(s&&s[0]===k)?[k,-s[1]]:[k,-1]; render()}
+function tab(t){cur.t=t; document.querySelectorAll('.tab').forEach(e=>e.classList.toggle('on',e.dataset.t===t)); document.getElementById('q').value=cur.q[t]||''; render()}
+document.getElementById('q').addEventListener('input',e=>{cur.q[cur.t]=e.target.value; render()});
+tab('companies');
+</script></body></html>

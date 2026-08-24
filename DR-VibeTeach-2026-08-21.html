@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Два ДР под серию Vibe-Teach — 21.08.2026</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#14161a; --dim:#5b6472; --line:#e2e6ec;
+    --ok:#1c7c4a; --bad:#b3261e; --warn:#8a6100; --accent:#1d4ed8; --hl:#fff6d6;
+  }
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+    --bg:#0f1115; --card:#171a20; --ink:#e8eaee; --dim:#9aa4b2; --line:#272c35;
+    --ok:#5dd39e; --bad:#ff8a80; --warn:#e0b054; --accent:#7aa2ff; --hl:#2a2413;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0f1115; --card:#171a20; --ink:#e8eaee; --dim:#9aa4b2; --line:#272c35;
+    --ok:#5dd39e; --bad:#ff8a80; --warn:#e0b054; --accent:#7aa2ff; --hl:#2a2413;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:22px}
+  h1{font-size:22px;margin:0 0 4px}
+  h2{font-size:17px;margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  h3{font-size:14px;margin:16px 0 6px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em}
+  .sub{color:var(--dim);margin:0 0 18px;font-size:13px}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .big{font-size:26px;font-weight:650;line-height:1.1}
+  .lbl{color:var(--dim);font-size:12.5px;margin-top:3px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12.5px;white-space:nowrap}
+  .ok{color:var(--ok);font-weight:600}
+  .bad{color:var(--bad);font-weight:600}
+  .warn{color:var(--warn);font-weight:600}
+  code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:12.5px}
+  .hl{background:var(--hl);padding:12px 14px;border-radius:8px;border:1px solid var(--line);margin:12px 0}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:4px 0}
+  .foot{color:var(--dim);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:10px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="DR-Synthesis-All-2026-08-04.html">&larr; DR-Synthesis-All-2026-08-04</a> · <a href="Foxpod-Alpha.html">Foxpod-Alpha &rarr;</a></span></div>
+
+<h1>Два исследования под серию Vibe-Teach</h1>
+<p class="sub">Хаб A-2022BAYAREA · вечер 21 августа 2026 · оба заказа synthesized · кворум честно не взят</p>
+
+<div class="grid">
+  <div class="card"><div class="big ok">2 / 6</div><div class="lbl">рельсы собраны по каждому заказу (порог кворума 4)</div></div>
+  <div class="card"><div class="big">111</div><div class="lbl">источников в лучшем отчёте после починки рельсы codex</div></div>
+  <div class="card"><div class="big bad">2</div><div class="lbl">своих же claim'а пришлось отозвать: «в русском никто не учит» и «вендоры мертвы»</div></div>
+  <div class="card"><div class="big warn">7</div><div class="lbl">канареек, чтобы довести рельсу codex до рабочей</div></div>
+</div>
+
+<h2>Состояние рельс веера на хабе</h2>
+<div class="hl"><strong>Поправка 22.08 00:45.</strong> Сначала я записал четыре рельсы как мёртвые. Гейт <code>rail_sweep</code> отбил вывод: обойдена была одна поверхность из двух. Живая проверка запросом через системный профиль Firefox показала, что аккаунты ЖИВЫ. Настоящая причина недобора кворума — <strong>нечем подать промпт в браузерную рельсу</strong>: Chrome-MCP не подключён, встроенная панель не рендерится без окна, а <code>firefox_selenium.py</code> умеет только открыть URL. Заведена задача P1 на постройку двери.</div>
+<div class="scroll">
+<table>
+<tr><th>Рельса</th><th>Статус</th><th>Что именно</th></tr>
+<tr><td>grok CLI</td><td class="ok">жива</td><td>55 КБ и 47 КБ, но БЕЗ веб-инструментов — отвечает по памяти и честно помечает NOT VERIFIED</td></tr>
+<tr><td>codex CLI</td><td class="ok">починена</td><td>была мертва по четырём причинам сразу; после починки 62 760 знаков / 111 источников</td></tr>
+<tr><td>gemini</td><td class="warn">CLI мёртв, веб жив</td><td>CLI: <code>no valid license (#3501)</code>. Веб через системный профиль Firefox открывается как «Google Gemini»</td></tr>
+<tr><td>claude.ai</td><td class="warn">CLI в лимите, веб жив</td><td>Недельный лимит у подписочной headless-рельсы. <code>claude.ai/new</code> в Firefox отдаёт «New chat - Claude» без редиректа на логин</td></tr>
+<tr><td>GLM chat.z.ai</td><td class="warn">панель молчит, профиль открывается</td><td>Во встроенной панели ответа нет и поле сменяется на Sign in. В системном профиле Firefox страница открывается</td></tr>
+<tr><td>Mistral</td><td class="warn">не проверено до конца</td><td><code>chat.mistral.ai/chat</code> открывается. Прежнее «аккаунта нет» не подтверждено</td></tr>
+</table>
+</div>
+
+<h2>Что перевернулось в выводах</h2>
+
+<div class="hl">
+<strong>Рынок обучения не-кодеров НЕ пустой ни в EN, ни в RU.</strong> Первая версия синтеза стояла на рельсе, которая рассуждала по памяти. Рельса с живыми страницами показала обратное.
+</div>
+
+<h3>Русский рынок — занят, с ценниками</h3>
+<div class="scroll">
+<table>
+<tr><th>Игрок</th><th>Цена</th><th>Что продаёт</th></tr>
+<tr><td><strong>AI Surfers / AI Agent Bootcamp</strong></td><td>74 900 / 119 900 / 189 900 ₽</td><td>Буквально наша ниша: агенты Claude Code предпринимателям и не-программистам, проекты по бизнес-процессам, 6–8 недель живых сессий</td></tr>
+<tr><td>Alexey Krol / CreatorPort</td><td>$583 / $720 / $960</td><td>ICP заявлен как не-программисты 40–60 — наш возраст</td></tr>
+<tr><td>ВШЭ ДПО · Яндекс Практикум · heg.ai · ClaudeCourse.ru · Zero2Claude.ru</td><td>каталожные</td><td>новичковый сегмент закрыт мейнстримом</td></tr>
+</table>
+</div>
+
+<h3>Английский рынок — крупные машины с лестницами</h3>
+<div class="scroll">
+<table>
+<tr><th>Игрок</th><th>Охват</th><th>Деньги</th></tr>
+<tr><td>Nick Saraev</td><td>2,30 млн просмотров курса по Claude Code</td><td>Maker School ~2 000 человек по $184/мес</td></tr>
+<tr><td>Nate Herk</td><td>440 600 в бесплатном сообществе</td><td>Plus $129/мес</td></tr>
+<tr><td>Simon Scrapes</td><td>675 130 просмотров</td><td>формулировка «для нормальных людей» уже занята им</td></tr>
+<tr><td>VC Inc</td><td>7 000+ бесплатно</td><td>$197/мес → ~$4 500/год → <strong>$30 000/год</strong></td></tr>
+<tr><td>Coursera (Вандербильт)</td><td>47 333 записавшихся, 4.7</td><td>бесплатный вход</td></tr>
+<tr><td>Maven (Dheeraj Sharma)</td><td>6 недель когорты</td><td>$1 597</td></tr>
+</table>
+</div>
+
+<div class="hl">
+<strong>Единственная реально пустая дверь: Grok Build.</strong> xAI запустил Build Mode 28.07.2026, рынка обучения ещё нет. Если где-то хотим быть первыми — здесь.
+</div>
+
+<h2>Экономика: что можно и что нельзя говорить</h2>
+<div class="scroll">
+<table>
+<tr><th>Кусок тезиса</th><th>Вердикт</th><th>Чем заменить</th></tr>
+<tr><td>Долина $10–15k/мес</td><td class="warn">занижено</td><td>BLS: $80.51/час в SF против $57.73 по США → <strong>$20 700</strong> и <strong>$14 800</strong>/мес. Для не-технического специалиста SF ~$15 800 — там $10–15k честно</td></tr>
+<tr><td>Филиппины/Индия ~$1k</td><td class="warn">только нижний край</td><td>медианы: Филиппины $1 300–1 350, Индия $2 700–2 900, Румыния $3 600, Польша $7 100–7 300. У сервисных гигантов реально ~$770</td></tr>
+<tr><td>Claude/Codex $200–500</td><td class="warn">это цена МЕСТА</td><td>вендоры сами: Anthropic $150–250 на разработчика в месяц, OpenAI Codex $100–200. Полная стоимость с надзором <strong>$1 900–4 000/мес</strong></td></tr>
+<tr><td>«дешевле филиппинца»</td><td class="bad">не выдерживает</td><td>против Долины выигрываем легко; против BPO — тот же порядок после оплаты проверки</td></tr>
+<tr><td>«90% сотрудников»</td><td class="bad">опровергнуто</td><td>Anthropic Economic Index: Claude в 75%+ задач лишь у <strong>~4% профессий</strong>, распределение 57% усиление / 43% автоматизация</td></tr>
+</table>
+</div>
+
+<h3>Безопасные цифры для постов</h3>
+<ul>
+<li>Klarna из филинга SEC: <strong>69% чатов</strong> за 12 месяцев до июня 2025, эквивалент 700+ FTE, ~$39 млн экономии 2024. Годовой отчёт: 80% чатов 2025.</li>
+<li>METR 2025: опытные разработчики на <strong>19% медленнее</strong> с AI, при этом уверены, что быстрее.</li>
+<li>NBER, 5 179 операторов поддержки: <strong>+14%</strong> в среднем, <strong>+34%</strong> у новичков.</li>
+<li>TheAgentCompany: лучшая модель полностью закрыла <strong>30,3%</strong> реальных рабочих задач.</li>
+<li>Octopus Energy 2026: автономная почта — <strong>4%</strong> объёма, CSAT 76% против 72% у людей.</li>
+</ul>
+
+<h3>Запрещено публиковать</h3>
+<ul>
+<li>«Klarna уволила 700 человек» — в филинге это расчёт от снятого объёма.</li>
+<li>«IBM заменила 8 000 мест» — прогноз сжался до «пары сотен» HR-позиций по словам CEO в 2025.</li>
+<li>«$200–500 — полная стоимость сотрудника».</li>
+<li>Сроки окупаемости без реального P&amp;L.</li>
+<li>«В русском никто не учит Claude Code».</li>
+</ul>
+
+<h3>Готовые сюжеты для рубрики «ошибка»</h3>
+<ul>
+<li><strong>Commonwealth Bank of Australia:</strong> объявил 45 сокращений под голосового бота, отменил и извинился — звонков стало больше, тимлиды сели на линию.</li>
+<li><strong>Air Canada:</strong> трибунал взыскал C$812.02 за выдуманную ботом политику. «Бот не отдельное лицо».</li>
+<li><strong>IBM AskHR:</strong> ранний «взрывной» запуск уронил NPS до −35, и только переделка подняла до +74.</li>
+</ul>
+
+<h2 style="color:var(--bad)">Развилка, которую решает Антон</h2>
+<div class="hl">
+Правило «БЕЗ КУПЮР» говорит: слова «90% сотрудников» не смягчать. Исследование говорит: эта цифра не подтверждена ничем и в платной рекламе попадает под FTC и модерацию Meta. Два твоих же правила смотрят в разные стороны — решение о публикации твоё.
+<ul>
+<li><strong>1.</strong> Оставить дословно и рядом строку «это моя ставка, а не замер — вот что измерено».</li>
+<li><strong>2.</strong> Сдвинуть объект на «90% рутинных ЗАДАЧ», сохранив дерзость.</li>
+<li><strong>3.</strong> Держать «90%» только в органике и никогда в платной рекламе.</li>
+</ul>
+Пока не решишь — идёт вариант 1, он не трогает твои слова.
+</div>
+
+<h2>Починка рельсы codex: журнал канареек</h2>
+<div class="scroll">
+<table>
+<tr><th>Попытка</th><th>Конфигурация</th><th>Результат</th></tr>
+<tr><td>v2</td><td>промпт аргументом, рабочая папка = scripts</td><td class="warn">25 218 б / 5 URL — но это пересказ НАШЕГО волта, не разведка</td></tr>
+<tr><td>v3, v4</td><td>аргумент + роль в шапке</td><td class="bad">35–56 б: длинная многострочная шапка в argv через npm-обёртку не доезжает</td></tr>
+<tr><td>v5</td><td>аргумент, пустая папка, без роли</td><td class="bad">20 972 б / 0 URL — ответ по памяти</td></tr>
+<tr><td>v6</td><td>stdin + роль внутри grok-контракта</td><td class="bad">801 б: модель отказалась — «два требования прямо конфликтуют». Наш промпт требовал веб-поиска и запрещал инструменты</td></tr>
+<tr><td>v7</td><td>stdin + свой контракт + пустая папка + свой CODEX_HOME</td><td class="ok">62 760 б / 111 источников ✅</td></tr>
+</table>
+</div>
+
+<p style="font-size:13.5px">Четыре условия обязательны все сразу: <code>tools.web_search=true</code> · свой <code>CODEX_HOME</code> без зеркала нашего канона · пустая рабочая папка · подача тела через stdin. Self-test зелёный, три мутанта краснеют.</p>
+
+<div class="foot">
+Собрано DR-раннером хаба. Синтезы: <code>03-Insights\insight-DR-DR26-08-21-HUB-01-1606-vibeteach-market.md</code> и <code>03-Insights\insight-DR-DR26-08-21-HUB-02-1609-synthetic-employee-economics.md</code>. Сырьё: <code>_originals\deep-research\DR26-08-21-HUB-0*</code>. Потребитель: <code>04-Projects\project-vibe-teach.md</code>, секция «Из ДР».
+</div>
+
+</body>
+</html>
