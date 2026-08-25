@@ -26,23 +26,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Флот и узлы</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Quarantine-HUB.html">&larr; Quarantine-HUB</a> · <a href="Quarantine-MACBOOK-ANTON.html">Quarantine-MACBOOK-ANTON &rarr;</a></span></div><div class="wrap">
 <h1>🛡️ Карантин входящих посылок</h1>
 <div class="sub">Машина <b>MacBook-Anton</b>. Посылки (фиксы/скрипты/задачи) с непроверенным происхождением держатся здесь и НЕ применяются вслепую. Две линзы одного механизма: тут — <b>безопасность</b>, в /alpha-review — <b>ценность</b>.</div>
-<h2>✅ Доверенные — применятся сами <span class="cnt">2</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
-  <div class="top"><span class="id">clobber-guard-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Дверь «занятое имя»: onair_fleet_guard блокирует перезапись спящего чужого файла из Bash (класс 14+ строк журнала; корень = дверь 20 дней не была зарегистрирована)</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 23:24 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 ~/.claude/scripts/install_clobber_guard.py</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">home-dir-guard-2026-08-24</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">home-dir-guard: SessionStart-сторож чужой рабочей папки (регистрация хука в локальном settings.json)</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-24 08:43 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 ~/.claude/scripts/home_dir_guard_install.py</code></div>
-  
-</div><h2>🗑 Выброшенные <span class="cnt">5</span></h2><div class="card trusted">
+<h2>🗑 Выброшенные <span class="cnt">5</span></h2><div class="card trusted">
   <div class="top"><span class="id">_portability-selftest-bypass</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">самотест обхода</div>
   <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-05 00:58 · <span class="ok">подпись ✓</span></div>
@@ -82,7 +66,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/selfheal.py scan --dry</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-23 23:20</div>
-</div><h2>📦 Уже применённые <span class="cnt">214</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">220</span></h2><div class="card trusted">
   <div class="top"><span class="id">canon-gate-0716</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">canon_write_gate.py roaming-leader canon gate</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-16 18:10 · <span class="ok">подпись ✓</span></div>
@@ -1763,6 +1747,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/stignore_fix.py</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">clobber-guard-20260822</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Дверь «занятое имя»: onair_fleet_guard блокирует перезапись спящего чужого файла из Bash (класс 14+ строк журнала; корень = дверь 20 дней не была зарегистрирована)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-22 23:24 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/install_clobber_guard.py</code></div>
+  
+</div><div class="card trusted">
   <div class="top"><span class="id">help-flag-lint-20260823</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Механизм против класса unparsed-flag-silently-runs-work: help_flag_lint.py + _test_help_flag_lint.py в регресс-сетке (ночной прогон). Ratchet-baseline: accept СЛИВАЕТ записи, не перезаписывает (деревья узлов разные). На узле нужен ОДИН accept, чтобы локальные скрипты узла попали в долг, иначе ночная сетка покраснеет на них.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-23 00:06 · <span class="ok">подпись ✓</span></div>
@@ -1793,6 +1785,46 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
   
   <div class="apply">примени: <code>python3 &quot;$OBSIDIAN_VAULT/_machine-bus/_deploy/payloads/llm-cli-golikov-fleet-20260824/apply.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">home-dir-guard-2026-08-24</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">home-dir-guard: SessionStart-сторож чужой рабочей папки (регистрация хука в локальном settings.json)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-24 08:43 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/home_dir_guard_install.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">session-reuse-warm-slots-20260824</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Переиспользование сессий вместо холодных задач (гейт + сторож апрувов)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-24 19:00 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/install_session_reuse.py --source A-2022BAYAREA</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">task-hygiene-parkedby-value-20260824</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">task_hygiene: метка парковки судится по ЗНАЧЕНИЮ parked_by, а не по наличию ключа (респред двигал дату живой открытой карточки)</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-24 20:11 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py task-hygiene-parkedby-value-20260824</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">scheduled-tasks-doctor-20260824</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">scheduled_tasks_doctor.py — найти сирот-рутин (реестр пер-аккаунтный, промпты живут на диске) и восстановить запись</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-24 23:08 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_apply.py scheduled-tasks-doctor-20260824</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">conflict-merge-20260825</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Исполнитель слияния sync-конфликтов: детекторы кричали, чинить было некому (LEFT 78 for review каждую ночь)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-25 13:08 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$OBSIDIAN_VAULT/_machine-bus/_transit/scripts-from-A-2022BAYAREA/install_conflict_merge.py&quot;</code></div>
   
 </div>
 </div></body></html>

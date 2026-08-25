@@ -42,7 +42,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-06 17:00</div>
-</div><h2>📦 Уже применённые <span class="cnt">231</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">235</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1889,6 +1889,38 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/home_dir_guard_install.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">session-reuse-warm-slots-20260824</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Переиспользование сессий вместо холодных задач (гейт + сторож апрувов)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-24 19:00 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/install_session_reuse.py --source A-2022BAYAREA</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">task-hygiene-parkedby-value-20260824</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">task_hygiene: метка парковки судится по ЗНАЧЕНИЮ parked_by, а не по наличию ключа (респред двигал дату живой открытой карточки)</div>
+  <div class="meta">источник: <b>FLEET-ANCHOR</b> · отправлено: 2026-08-24 20:11 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=FLEET-ANCHOR)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py task-hygiene-parkedby-value-20260824</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">scheduled-tasks-doctor-20260824</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">scheduled_tasks_doctor.py — найти сирот-рутин (реестр пер-аккаунтный, промпты живут на диске) и восстановить запись</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-24 23:08 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_apply.py scheduled-tasks-doctor-20260824</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">conflict-merge-20260825</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Исполнитель слияния sync-конфликтов: детекторы кричали, чинить было некому (LEFT 78 for review каждую ночь)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-25 13:08 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$OBSIDIAN_VAULT/_machine-bus/_transit/scripts-from-A-2022BAYAREA/install_conflict_merge.py&quot;</code></div>
   
 </div>
 </div></body></html>
