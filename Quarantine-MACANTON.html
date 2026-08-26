@@ -802,11 +802,11 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python ~/.claude/scripts/_shared/_test_revert_guard.py</code></div>
   
-</div><div class="card trusted">
-  <div class="top"><span class="id">regress-machine-key-20260804</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+</div><div class="card held">
+  <div class="top"><span class="id">regress-machine-key-20260804</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
   <div class="ttl">regress_run: имя узла под ГОЛЫМ env берётся из machine.env, а не из hostname — иначе ночной прогон пишет шард, который не читает ни один сторож</div>
-  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-04 07:35 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-04 07:35 · <span class="bad">подпись ✗</span></div>
+  <div class="rsn">НЕВЕРНАЯ Ed25519-подпись — подделка пакета или signer != from (signer=MacBook-Anton, from=MacBook-Anton)</div>
   
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/regress-machine-key-20260804/install.py&quot;</code></div>
   
@@ -842,11 +842,11 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/dr-fanout-5rails-20260804/install.py&quot;</code></div>
   
-</div><div class="card trusted">
-  <div class="top"><span class="id">proc-patrol-nokill-without-delta-260804</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+</div><div class="card held">
+  <div class="top"><span class="id">proc-patrol-nokill-without-delta-260804</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
   <div class="ttl">proc_patrol: НЕ убивать без дельта-замера + сверка бинаря перед SIGTERM (внешнее ревью)</div>
-  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-04 10:09 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-04 10:09 · <span class="bad">подпись ✗</span></div>
+  <div class="rsn">НЕВЕРНАЯ Ed25519-подпись — подделка пакета или signer != from (signer=MacBook-Anton, from=MacBook-Anton)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_proc_patrol.py</code></div>
   

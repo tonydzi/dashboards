@@ -28,127 +28,127 @@ a{color:var(--acc)}
 .mono{font-family:ui-monospace,Consolas,monospace;font-size:12px}
 </style><div class="wrap">
 <h1>🛰 Alpha-Flow — конвейер альфы</h1>
-<div class="sub">Снимок 2026-08-25 05:30 · машина A-2022BAYAREA · окно детектора
-2026-08-24 … 2026-08-26 (2 дн.) · 0 токенов.
+<div class="sub">Снимок 2026-08-26 05:30 · машина A-2022BAYAREA · окно детектора
+2026-08-25 … 2026-08-27 (2 дн.) · 0 токенов.
 Считает <span class="mono">alpha_flow.py</span>.</div>
 <div class="grid">
 <div class="card"><div class="num">35</div><div class="lbl">каналов подключено</div></div>
-<div class="card"><div class="num">216</div><div class="lbl">новых постов втянуто за сутки</div></div>
-<div class="card"><div class="num">217</div><div class="lbl">постов в окне (вчера+сегодня)</div></div>
-<div class="card"><div class="num ok">69</div><div class="lbl">выбрано детектором</div></div>
-<div class="card"><div class="num dim">148</div><div class="lbl">отброшено по правилу</div></div>
-<div class="card"><div class="num bad">51</div>
+<div class="card"><div class="num">143</div><div class="lbl">новых постов втянуто за сутки</div></div>
+<div class="card"><div class="num">145</div><div class="lbl">постов в окне (вчера+сегодня)</div></div>
+<div class="card"><div class="num ok">60</div><div class="lbl">выбрано детектором</div></div>
+<div class="card"><div class="num dim">85</div><div class="lbl">отброшено по правилу</div></div>
+<div class="card"><div class="num bad">52</div>
 <div class="lbl">дней с последней альфы В ВОЛТЕ</div></div>
 </div>
 <div class="eli"><b>🧒 Простыми словами.</b> Слева труба: из телеграм-каналов
 каждую ночь вытаскиваются посты. Детектор смотрит на каждый и говорит «беру» или «выбрасываю,
 вот по какому правилу». Справа — тарелка: сколько альфы реально доехало до волта.
-Сейчас труба качает (216 новых постов за сутки, 69 выбрано), а тарелка
-пустая уже 51 дней — значит обрыв не в добыче,
+Сейчас труба качает (143 новых постов за сутки, 60 выбрано), а тарелка
+пустая уже 52 дней — значит обрыв не в добыче,
 а на последнем шаге «судья → запись в волт».</div>
 <h2>Вчера / сегодня</h2><div class="scroll"><table>
 <tr><th>День</th><th>Каналов</th><th>Постов в окне</th><th>Выбрано</th><th>Отброшено</th></tr>
-<tr><td>2026-08-24 (вчера)</td><td>35</td>
-<td>59</td><td>24</td><td>35</td></tr>
-<tr><td><b>2026-08-25 (сегодня)</b></td><td>35</td>
-<td>217</td><td class="ok">69</td><td class="q">148</td></tr>
+<tr><td>2026-08-25 (вчера)</td><td>35</td>
+<td>217</td><td>69</td><td>148</td></tr>
+<tr><td><b>2026-08-26 (сегодня)</b></td><td>35</td>
+<td>145</td><td class="ok">60</td><td class="q">85</td></tr>
 </table></div>
 <div class="q" style="margin-top:6px">Пустая строка «вчера» = снимков за тот день ещё нет
 (история копится с первого прогона, задним числом не выдумывается).</div>
 <h2>Что отброшено и по какому правилу</h2><div class="scroll"><table>
 <tr><th>Правило</th><th>Постов</th><th>Что это значит</th></tr>
-<tr><td class="mono">too_short</td><td>84</td><td class="q">короче 60 символов (не пост, а реплика)</td></tr>
-<tr><td class="mono">off_topic</td><td>54</td><td class="q">ни одного альфа-ключевого слова — не наша тема</td></tr>
-<tr><td class="mono">low_signal</td><td>6</td><td class="q">тема наша, но нет тяги: мало пересылок/реакций/просмотров, нет ссылок и гайда</td></tr>
-<tr><td class="mono">over_top</td><td>2</td><td class="q">прошёл порог, но не влез в шортлист top-N</td></tr>
+<tr><td class="mono">too_short</td><td>43</td><td class="q">короче 60 символов (не пост, а реплика)</td></tr>
+<tr><td class="mono">off_topic</td><td>21</td><td class="q">ни одного альфа-ключевого слова — не наша тема</td></tr>
+<tr><td class="mono">low_signal</td><td>18</td><td class="q">тема наша, но нет тяги: мало пересылок/реакций/просмотров, нет ссылок и гайда</td></tr>
 <tr><td class="mono">promo</td><td>2</td><td class="q">промо/зазывалка в чат или рекламa</td></tr>
+<tr><td class="mono">over_top</td><td>1</td><td class="q">прошёл порог, но не влез в шортлист top-N</td></tr>
 </table></div>
 <h2>Каналы</h2><div class="scroll"><table>
 <tr><th>Канал</th><th>Ритм</th><th>Корпус</th><th>Свежий пост</th><th>+ за сутки</th>
 <th>В окне</th><th>Взято</th><th>Отчёт</th><th>Статус</th></tr>
-<tr><td><b>promptchat</b><br><span class="q">@*****t_chat</span></td>
-<td class="q">nightly</td><td>9774</td>
-<td class="q">2026-08-25</td>
-<td>150</td>
-<td>151</td><td class="ok">25</td>
-<td class="q">2026-08-25 04:45</td>
-<td><span class="pill p-ok">OK</span></td></tr>
 <tr><td><b>habr_ai</b><br><span class="q">@***r_ai</span></td>
-<td class="q">nightly</td><td>2919</td>
+<td class="q">nightly</td><td>2967</td>
 <td class="q">2026-08-25</td>
-<td>36</td>
-<td>36</td><td class="ok">25</td>
-<td class="q">2026-08-25 04:45</td>
+<td>48</td>
+<td>49</td><td class="ok">25</td>
+<td class="q">2026-08-26 04:45</td>
+<td><span class="pill p-ok">OK</span></td></tr>
+<tr><td><b>promptchat</b><br><span class="q">@*****t_chat</span></td>
+<td class="q">nightly</td><td>9814</td>
+<td class="q">2026-08-26</td>
+<td>40</td>
+<td>41</td><td class="ok">9</td>
+<td class="q">2026-08-26 04:45</td>
 <td><span class="pill p-ok">OK</span></td></tr>
 <tr><td><b>vibe_coding_community</b><br><span class="q">vibe_coding_community</span></td>
-<td class="q">nightly</td><td>2476</td>
-<td class="q">2026-08-24</td>
-<td>12</td>
-<td>12</td><td class="ok">4</td>
-<td class="q">2026-08-25 04:45</td>
-<td><span class="pill p-ok">OK</span></td></tr>
-<tr><td><b>promptdesign</b><br><span class="q">@******_design</span></td>
-<td class="q">nightly</td><td>1625</td>
-<td class="q">2026-08-24</td>
-<td>5</td>
-<td>5</td><td class="ok">5</td>
-<td class="q">2026-08-25 04:45</td>
-<td><span class="pill p-ok">OK</span></td></tr>
-<tr><td><b>neuro_channel</b><br><span class="q">neuro_channel</span></td>
-<td class="q">nightly</td><td>1599</td>
-<td class="q">2026-08-24</td>
-<td>3</td>
-<td>3</td><td class="ok">3</td>
-<td class="q">2026-08-25 04:45</td>
-<td><span class="pill p-ok">OK</span></td></tr>
-<tr><td><b>ai_newz</b><br><span class="q">@***newz</span></td>
-<td class="q">nightly</td><td>1576</td>
-<td class="q">2026-08-24</td>
-<td>2</td>
-<td>2</td><td class="ok">2</td>
-<td class="q">2026-08-25 04:45</td>
+<td class="q">nightly</td><td>2498</td>
+<td class="q">2026-08-25</td>
+<td>22</td>
+<td>22</td><td class="ok">2</td>
+<td class="q">2026-08-26 04:45</td>
 <td><span class="pill p-ok">OK</span></td></tr>
 <tr><td><b>data_secrets</b><br><span class="q">@******ecrets</span></td>
-<td class="q">nightly</td><td>1775</td>
-<td class="q">2026-08-24</td>
-<td>2</td>
-<td>2</td><td class="ok">2</td>
-<td class="q">2026-08-25 04:45</td>
+<td class="q">nightly</td><td>1787</td>
+<td class="q">2026-08-25</td>
+<td>12</td>
+<td>12</td><td class="ok">9</td>
+<td class="q">2026-08-26 04:45</td>
 <td><span class="pill p-ok">OK</span></td></tr>
 <tr><td><b>neural_chat</b><br><span class="q">neural_chat</span></td>
-<td class="q">nightly</td><td>1603</td>
-<td class="q">2026-08-24</td>
-<td>2</td>
-<td>2</td><td class="ok">1</td>
-<td class="q">2026-08-25 04:45</td>
+<td class="q">nightly</td><td>1611</td>
+<td class="q">2026-08-26</td>
+<td>8</td>
+<td>8</td><td class="ok">4</td>
+<td class="q">2026-08-26 04:45</td>
+<td><span class="pill p-ok">OK</span></td></tr>
+<tr><td><b>ai_newz</b><br><span class="q">@***newz</span></td>
+<td class="q">nightly</td><td>1579</td>
+<td class="q">2026-08-25</td>
+<td>3</td>
+<td>3</td><td class="ok">3</td>
+<td class="q">2026-08-26 04:45</td>
+<td><span class="pill p-ok">OK</span></td></tr>
+<tr><td><b>vibe_coding</b><br><span class="q">vibe_coding</span></td>
+<td class="q">nightly</td><td>547</td>
+<td class="q">2026-08-25</td>
+<td>3</td>
+<td>3</td><td class="ok">2</td>
+<td class="q">2026-08-26 04:45</td>
 <td><span class="pill p-ok">OK</span></td></tr>
 <tr><td><b>buyonhigh</b><br><span class="q">buyonhigh</span></td>
-<td class="q">nightly</td><td>10017</td>
-<td class="q">2026-08-24</td>
-<td>1</td>
-<td>1</td><td class="ok">0</td>
-<td class="q">2026-08-25 04:45</td>
-<td><span class="pill p-warn">ALL_DROPPED</span></td></tr>
-<tr><td><b>clawrus</b><br><span class="q">@ClawRus</span></td>
-<td class="q">nightly</td><td>1241</td>
-<td class="q">2026-08-24</td>
-<td>1</td>
-<td>1</td><td class="ok">1</td>
-<td class="q">2026-08-25 04:45</td>
+<td class="q">nightly</td><td>10019</td>
+<td class="q">2026-08-25</td>
+<td>2</td>
+<td>2</td><td class="ok">1</td>
+<td class="q">2026-08-26 04:45</td>
 <td><span class="pill p-ok">OK</span></td></tr>
-<tr><td><b>openclaw_lab</b><br><span class="q">@******aw_lab</span></td>
-<td class="q">nightly</td><td>294</td>
-<td class="q">2026-08-24</td>
-<td>1</td>
-<td>1</td><td class="ok">0</td>
-<td class="q">2026-08-25 04:45</td>
-<td><span class="pill p-warn">ALL_DROPPED</span></td></tr>
-<tr><td><b>vibe_coding</b><br><span class="q">vibe_coding</span></td>
-<td class="q">nightly</td><td>544</td>
-<td class="q">2026-08-24</td>
+<tr><td><b>promptdesign</b><br><span class="q">@******_design</span></td>
+<td class="q">nightly</td><td>1627</td>
+<td class="q">2026-08-25</td>
+<td>2</td>
+<td>2</td><td class="ok">2</td>
+<td class="q">2026-08-26 04:45</td>
+<td><span class="pill p-ok">OK</span></td></tr>
+<tr><td><b>clawrus</b><br><span class="q">@ClawRus</span></td>
+<td class="q">nightly</td><td>1242</td>
+<td class="q">2026-08-25</td>
 <td>1</td>
 <td>1</td><td class="ok">1</td>
-<td class="q">2026-08-25 04:45</td>
+<td class="q">2026-08-26 04:45</td>
+<td><span class="pill p-ok">OK</span></td></tr>
+<tr><td><b>neuro_channel</b><br><span class="q">neuro_channel</span></td>
+<td class="q">nightly</td><td>1600</td>
+<td class="q">2026-08-25</td>
+<td>1</td>
+<td>1</td><td class="ok">1</td>
+<td class="q">2026-08-26 04:45</td>
+<td><span class="pill p-ok">OK</span></td></tr>
+<tr><td><b>openclaw_hub</b><br><span class="q">@******aw_hub</span></td>
+<td class="q">nightly</td><td>76</td>
+<td class="q">2026-08-25</td>
+<td>1</td>
+<td>1</td><td class="ok">1</td>
+<td class="q">2026-08-26 04:45</td>
 <td><span class="pill p-ok">OK</span></td></tr>
 <tr><td><b>TochkiNadAI</b><br><span class="q">@*****iNadAI</span></td>
 <td class="q">weekly</td><td>2172</td>
@@ -269,12 +269,12 @@ a{color:var(--acc)}
 <td>0</td><td class="ok">0</td>
 <td class="q">2026-08-23 04:51</td>
 <td><span class="pill p-warn">EMPTY</span></td></tr>
-<tr><td><b>openclaw_hub</b><br><span class="q">@******aw_hub</span></td>
-<td class="q">nightly</td><td>75</td>
-<td class="q">2026-08-12</td>
+<tr><td><b>openclaw_lab</b><br><span class="q">@******aw_lab</span></td>
+<td class="q">nightly</td><td>294</td>
+<td class="q">2026-08-24</td>
 <td>—</td>
 <td>0</td><td class="ok">0</td>
-<td class="q">2026-08-25 04:45</td>
+<td class="q">2026-08-26 04:45</td>
 <td><span class="pill p-warn">EMPTY</span></td></tr>
 <tr><td><b>prog_ai</b><br><span class="q">@***g_ai</span></td>
 <td class="q">weekly</td><td>1717</td>
@@ -312,110 +312,110 @@ a{color:var(--acc)}
 <td class="q">2026-08-23 04:58</td>
 <td><span class="pill p-warn">EMPTY</span></td></tr>
 </table></div>
-<div class="q" style="margin-top:6px">EMPTY (в окне честно ноль постов): TochkiNadAI, abramov_aicreator, ai_for_devs, ai_product, ai_prompt_eng, anti_agi, av_vibe_coding, boris_again, claudedevolper, data_engi, denissexy, dulmaAi, edvardgrishin27, gonzo_ML, isyntez, llm_under_hood, nobilix, openclaw_hub, prog_ai, seeallochnaya, seokotenkov, sharipovnikita, yefimov_ai. Это НЕ ошибка и НЕ успех — просто пусто.</div>
+<div class="q" style="margin-top:6px">EMPTY (в окне честно ноль постов): TochkiNadAI, abramov_aicreator, ai_for_devs, ai_product, ai_prompt_eng, anti_agi, av_vibe_coding, boris_again, claudedevolper, data_engi, denissexy, dulmaAi, edvardgrishin27, gonzo_ML, isyntez, llm_under_hood, nobilix, openclaw_lab, prog_ai, seeallochnaya, seokotenkov, sharipovnikita, yefimov_ai. Это НЕ ошибка и НЕ успех — просто пусто.</div>
 <h2>Что выбрано в окне (топ-25 по очкам)</h2><div class="scroll"><table><tr><th>Канал</th><th>День</th><th>Очки</th><th>fwd/rx</th><th>Текст</th></tr>
-<tr><td>promptchat</td><td class="q">2026-08-24</td><td><b>616</b></td>
-<td class="q">551/145</td><td class="q">СДВГ&#x27;шники я тут бомбяо нашел Очень мне понравился скилл «/i-have-adhd», я что-то подобное делал и сам, но тут автора правда хорошо получилось (23к звезд). Раздражающая навязчивость агента куда-то испарилась, он перестал</td></tr>
-<tr><td>promptdesign</td><td class="q">2026-08-24</td><td><b>616</b></td>
-<td class="q">551/145</td><td class="q">СДВГ&#x27;шники я тут бомбяо нашел Очень мне понравился скилл «/i-have-adhd», я что-то подобное делал и сам, но тут автора правда хорошо получилось (23к звезд). Раздражающая навязчивость агента куда-то испарилась, он перестал</td></tr>
-<tr><td>data_secrets</td><td class="q">2026-08-24</td><td><b>472</b></td>
-<td class="q">355/330</td><td class="q">Вы не поверите, но Сэм Альтман признал, что он много лет зря разгонял хайп вокруг скорого появления AGI и переворота экономики Чего-то такого, конечно, следовало ожидать: ведь нам обещали сдвиг в экономике и AGI уже в 20</td></tr>
-<tr><td>ai_newz</td><td class="q">2026-08-24</td><td><b>374</b></td>
-<td class="q">248/364</td><td class="q">Индустрия перепродажи подписок на нейросети На площадке ggsel можно взять доступы к разным сервисам с хорошим дисконтом. Сразу стоит понимать суть схемы. Это не белый сервис, а продажа &quot;серых&quot; аккаунтов от частных селлер</td></tr>
-<tr><td>promptchat</td><td class="q">2026-08-24</td><td><b>353</b></td>
-<td class="q">309/65</td><td class="q">Все Mac mini с прилавков разобрали, а вот старых MacBook Pro M1 куча валяется по чуланам. Но, видимо, ненадолго: чуваки из Eigen Labs запустили Darkbloom. Это сеть, где ты можешь сдать мощности своего компьютера в аренду</td></tr>
-<tr><td>promptdesign</td><td class="q">2026-08-24</td><td><b>353</b></td>
-<td class="q">309/65</td><td class="q">Все Mac mini с прилавков разобрали, а вот старых MacBook Pro M1 куча валяется по чуланам. Но, видимо, ненадолго: чуваки из Eigen Labs запустили Darkbloom. Это сеть, где ты можешь сдать мощности своего компьютера в аренду</td></tr>
-<tr><td>ai_newz</td><td class="q">2026-08-24</td><td><b>253</b></td>
-<td class="q">170/239</td><td class="q">Huggingface пытается продаться за $13 миллиардов По сообщениям Business Insider, компания работает с банками чтобы оценить интерес покупателей. Никакую сделку пока что не заключили. Это всё происходит на фоне покупки Ope</td></tr>
-<tr><td>data_secrets</td><td class="q">2026-08-24</td><td><b>222</b></td>
-<td class="q">140/201</td><td class="q">Дженсен Хуанг собирается создать открытую модель, которая составит конкуренцию китайскому опенсорсу Nvidia вкладывает в эту идею порядка 7 миллиардов долларов. Они заключили крупную сделку со стартапом Poolside, который </td></tr>
-<tr><td>neural_chat</td><td class="q">2026-08-24</td><td><b>137</b></td>
-<td class="q">119/8</td><td class="q">📖 Вышел бесплатный курс по созданию harness для ИИ-агентов — он учит разрабатывать с нуля циклы, плагины и различные обвесы для кодинг-агентов. Как проходит обучение: делаем циклы → инструменты → системные промпты → песо</td></tr>
-<tr><td>neuro_channel</td><td class="q">2026-08-24</td><td><b>120</b></td>
-<td class="q">25/10</td><td class="q">Топ трендов HuggingFace за неделю — что приехало в опенсорс TL;DR Новое: Ornith-1.5 — линейка кодинг-моделей, которая сама придумывает себе задачи и на них же учится. DFlash 2 ускоряет выдачу Qwen3.8-27B втрое без потери</td></tr>
-<tr><td>promptchat</td><td class="q">2026-08-24</td><td><b>113</b></td>
-<td class="q">78/37</td><td class="q">Заприметил, что на OpenRouter&#x27;е появилась неопознанная пока модель в стелс-режиме. Рабочее название Ox Alpha, по бенчмаркам на уровне Fable. И кстати, пока ее можно бесплатно гонять - https://openrouter.ai/stealth/ox-alp</td></tr>
-<tr><td>promptdesign</td><td class="q">2026-08-24</td><td><b>113</b></td>
-<td class="q">78/37</td><td class="q">Заприметил, что на OpenRouter&#x27;е появилась неопознанная пока модель в стелс-режиме. Рабочее название Ox Alpha, по бенчмаркам на уровне Fable. И кстати, пока ее можно бесплатно гонять - https://openrouter.ai/stealth/ox-alp</td></tr>
-<tr><td>neuro_channel</td><td class="q">2026-08-24</td><td><b>97</b></td>
-<td class="q">68/9</td><td class="q">Мэтт Покок, автор Total TypeScript, выложил свои скиллы для работы с кодовым агентом. За сутки репозиторий собрал 2448 звёзд и вышел в тройку GitHub Trending, всего у него 233 тысячи. Собраны они вокруг четырёх типичных </td></tr>
-<tr><td>promptchat</td><td class="q">2026-08-24</td><td><b>91</b></td>
-<td class="q">45/45</td><td class="q">🚀 Как вывести сайт в топ Яндекса в 2026 году? За последний год SEO-продвижение сильно изменилось, и пробиться на первую страницу поисковой выдачи стало настоящим квестом. Алгоритмы поиска постоянно меняются, а привычные </td></tr>
-<tr><td>promptdesign</td><td class="q">2026-08-24</td><td><b>91</b></td>
-<td class="q">45/45</td><td class="q">🚀 Как вывести сайт в топ Яндекса в 2026 году? За последний год SEO-продвижение сильно изменилось, и пробиться на первую страницу поисковой выдачи стало настоящим квестом. Алгоритмы поиска постоянно меняются, а привычные </td></tr>
-<tr><td>vibe_coding</td><td class="q">2026-08-24</td><td><b>65</b></td>
-<td class="q">32/28</td><td class="q">Завайбкодил и уже опубликовал расширение для браузера Chrome, для копирования дизайна сайта в Lovarus. Как оно работает? 1. Устанавливаете расширение по ссылке. 2. Переходите на понравившийся сайт. 3. Нажимаете на иконку</td></tr>
-<tr><td>habr_ai</td><td class="q">2026-08-24</td><td><b>58</b></td>
-<td class="q">2/1</td><td class="q">AI-native Tiny Teams — правильный вектор или хайп 2026 года? В 2026 году из каждого утюга звучит тезис: несколько сильных инженеров с агентами теперь способны делать работу, для которой раньше требовалась полноценная про</td></tr>
-<tr><td>promptchat</td><td class="q">2026-08-24</td><td><b>50</b></td>
-<td class="q">25/37</td><td class="q">Меня немного пожурили за то, что невнятно донес важную информацию. Исправляюсь. С 1 сентября мы со Стасом Киреевым запускаем новый поток мастер-группы про ИИ. Начнем с самых основ и дойдем до создания своих проектов. Пря</td></tr>
-<tr><td>promptdesign</td><td class="q">2026-08-24</td><td><b>50</b></td>
-<td class="q">25/37</td><td class="q">Меня немного пожурили за то, что невнятно донес важную информацию. Исправляюсь. С 1 сентября мы со Стасом Киреевым запускаем новый поток мастер-группы про ИИ. Начнем с самых основ и дойдем до создания своих проектов. Пря</td></tr>
-<tr><td>habr_ai</td><td class="q">2026-08-24</td><td><b>36</b></td>
-<td class="q">4/0</td><td class="q">Агентная правка багов, ч. 2: ловим издержки Соавтор статьи — Сергей Левенец, CTO в команде ТестОпс. Искусственный интеллект заметно ускорил разработку, и очевидных выгод от этого много. Оборотная сторона — выросли издерж</td></tr>
-<tr><td>habr_ai</td><td class="q">2026-08-24</td><td><b>35</b></td>
-<td class="q">3/0</td><td class="q">От задачи до MR: как устроен конвейер разработки с ИИ-агентами в «Первой Форме» ИИ-агент может за минуты подготовить изменение, на которое у разработчика прежде уходил час. Но ускорение написания кода создаёт другую проб</td></tr>
-<tr><td>habr_ai</td><td class="q">2026-08-24</td><td><b>32</b></td>
-<td class="q">0/0</td><td class="q">[Перевод] Масштабирование LLM: от одного чипа до ЦОДа. Глава 5. Инференс Предыдущая глава Ну а теперь рассмотрим, как нам применить обученный трансформер. И применение уже обученной модели сильно отличается от тренировки</td></tr>
-<tr><td>habr_ai</td><td class="q">2026-08-24</td><td><b>32</b></td>
-<td class="q">0/0</td><td class="q">Как отправить данные из 1С в нейросеть и получить ответ обратно с настоящими именами и суммами В прошлой статье мы разбирали, как передать копию базы 1С подрядчику без реальных персональных данных. Но есть более локальны</td></tr>
-<tr><td>habr_ai</td><td class="q">2026-08-24</td><td><b>32</b></td>
-<td class="q">0/0</td><td class="q">[Перевод] Во сколько обойдётся крах искусственного интеллекта В мае 17 % совокупного прироста всего мирового рынка акций пришлось лишь на две компании — Micron и SK Hynix, производителей микросхем памяти. Не 17 % прирост</td></tr>
-<tr><td>habr_ai</td><td class="q">2026-08-24</td><td><b>31</b></td>
-<td class="q">5/0</td><td class="q">Unlimited-OCR от Baidu: читает страницу как картинку Как вы себе представляете работу OCR? Страничка сканируется, программа находит области с буквами, распознает их и выдает текст. Старый добрый Tesseract так и пашет. А </td></tr>
+<tr><td>data_secrets</td><td class="q">2026-08-25</td><td><b>639</b></td>
+<td class="q">538/346</td><td class="q">Кадры с World Humanoid Robot Games в Пекине можно разбирать на мемы бесконечно Вес на видео 16кг, если что 💪</td></tr>
+<tr><td>ai_newz</td><td class="q">2026-08-25</td><td><b>439</b></td>
+<td class="q">359/245</td><td class="q">Apple показали новую Mac Studio с M5 Ultra Увеличили пропускную способность по сравнению с M3 Ultra на 50%, до 1,2TB/s. Заявляют что GPU при этом быстрее в 4,5x, что даёт прирост в 3,5x при генерации изображений (FLUX.1)</td></tr>
+<tr><td>data_secrets</td><td class="q">2026-08-25</td><td><b>398</b></td>
+<td class="q">274/188</td><td class="q">Сбер открыл доступ к новому поколению моделей GigaEmbeddings Линейка включает три модели разного размера: 480M, 3B и 10B-A1.8B. Они переводят тексты в числовые векторы для семантического поиска, построения RAG-систем (Re</td></tr>
+<tr><td>data_secrets</td><td class="q">2026-08-25</td><td><b>338</b></td>
+<td class="q">214/357</td><td class="q">На собеседовании в Anthropic кандидатов спрашивают, как бы они отреагировали, если бы акции компании обрушились до нуля Что ни день – то очередной прикол от Дарио Амодеи. Еще недавно он был недоволен, что сотрудники прих</td></tr>
+<tr><td>data_secrets</td><td class="q">2026-08-25</td><td><b>308</b></td>
+<td class="q">218/225</td><td class="q">Нейросеть в роли ИБ-специалиста: GigaChat 3.5 Ultra успешно сдал профессиональный экзамен Модель ответила на 250 вопросов итогового теста программы «Информационная безопасность», превысив проходной балл на 14%. Знания пр</td></tr>
+<tr><td>ai_newz</td><td class="q">2026-08-25</td><td><b>307</b></td>
+<td class="q">212/242</td><td class="q">Новая линейка моделей GigaEmbeddings в открытом доступе Бесплатные модели под лицензией MIT, переводят текст в векторы для RAG-системы и поиска по смыслу. Стали сильнее на английском языке и особенно в задачах с кодом, п</td></tr>
+<tr><td>data_secrets</td><td class="q">2026-08-25</td><td><b>249</b></td>
+<td class="q">173/171</td><td class="q">Архитектура Qwen-4 уже почти здесь Model Scope запустили отсчет до выхода Qwen3.8-Flash-Next. Ее релизнут ровно через сутки, и это будет первая модель, построенная на архитектуре следующего поколения, на которой будет та</td></tr>
+<tr><td>promptchat</td><td class="q">2026-08-25</td><td><b>230</b></td>
+<td class="q">173/70</td><td class="q">Интересная штука вайбкодинг. Давно наблюдаю за одним дизайнером, Enzo, он много пишет про анимацию на React Native WebGPU. Вот его сайт с демками https://reactiive.io/demos - там интересно поковыряться для вдохновления и</td></tr>
+<tr><td>promptdesign</td><td class="q">2026-08-25</td><td><b>230</b></td>
+<td class="q">173/70</td><td class="q">Интересная штука вайбкодинг. Давно наблюдаю за одним дизайнером, Enzo, он много пишет про анимацию на React Native WebGPU. Вот его сайт с демками https://reactiive.io/demos - там интересно поковыряться для вдохновления и</td></tr>
+<tr><td>data_secrets</td><td class="q">2026-08-25</td><td><b>226</b></td>
+<td class="q">133/296</td><td class="q">Хайп зашел слишком далеко: прокуратура Алабамы расследует инцидент со взломом Hugging Face Генпрокурор штата уже выдал OpenAI повестку, в которой запрошены все документы, данные и информацию о взломе в июле, включая данн</td></tr>
+<tr><td>data_secrets</td><td class="q">2026-08-25</td><td><b>225</b></td>
+<td class="q">175/106</td><td class="q">Apple выпустили M6 и M5 Ultra Цены сильно выросли, но приросты в метриках есть. M6 – базовый чип, 12-core CPU, 12-core GPU, сдвоенный 16-core Neural Engine, до 32 ГБ unified memory, до 170 ГБ/с bandwidth. По цифрам Apple</td></tr>
+<tr><td>data_secrets</td><td class="q">2026-08-25</td><td><b>206</b></td>
+<td class="q">116/287</td><td class="q">У российских сайтов массово отзывают сертификаты безопасности. Разбираемся, что это значит, и как справляться. Не так давно вступили в силу новые правила международного консорциума CA/Browser Forum. Это организация, кото</td></tr>
+<tr><td>neural_chat</td><td class="q">2026-08-25</td><td><b>189</b></td>
+<td class="q">161/26</td><td class="q">🚀 Нашёл полезный сервис, который прокачивает GEO (Generative Engine Optimization) — продвижение вашего бренда в ответах нейросетей, как SEO для ИИ. Попасть в ответы ИИ можно, прогнав бренд по ChatGPT, Perplexity, Claude </td></tr>
+<tr><td>ai_newz</td><td class="q">2026-08-25</td><td><b>184</b></td>
+<td class="q">134/88</td><td class="q">Keenable вышли из стелса и зарелезили свой агентский поиск. Бьют exa по соотношению цена/качество! @***newz</td></tr>
+<tr><td>neural_chat</td><td class="q">2026-08-25</td><td><b>161</b></td>
+<td class="q">135/22</td><td class="q">🎮 Разраб выкатил опенсорс проект Godogen для генерации полноценных игр за один промпт — достаточно описать саму игру, а ИИ-агенты выполнят весь цикл разработки. → Godogen создаёт репо, генерирует игровые ассеты, пишет ко</td></tr>
+<tr><td>data_secrets</td><td class="q">2026-08-25</td><td><b>139</b></td>
+<td class="q">93/117</td><td class="q">Новые замеры собственного чипа OpenAI https://openai.com/index/jalapeno-first-results/ Заявляют, что Халапеньо превосходит Nvidia GB200 и GB300 по скорости и эффективности. Для высоко интерактивных нагрузок говорят о про</td></tr>
+<tr><td>vibe_coding_community</td><td class="q">2026-08-25</td><td><b>105</b></td>
+<td class="q">93/3</td><td class="q">Приглашаем разработчиков принять амбициозный вызов: создай популярный B2C AI-продукт за три месяца и получи до 15 млн рублей 🚀 Стартех.База является партнёром программы Sber500 × DISRUPT — первой в России программы по со</td></tr>
+<tr><td>promptchat</td><td class="q">2026-08-25</td><td><b>76</b></td>
+<td class="q">33/27</td><td class="q">12 недель до Demo Day в Y Combinator, и ноль лидов в пайплайне. У фаундеров Humoniq из батча YC S25 был крутой продукт и была одна важная дата в календаре. Между ними всего 12 недель, и заполнить их нужно было не слайдам</td></tr>
+<tr><td>promptdesign</td><td class="q">2026-08-25</td><td><b>76</b></td>
+<td class="q">33/27</td><td class="q">12 недель до Demo Day в Y Combinator, и ноль лидов в пайплайне. У фаундеров Humoniq из батча YC S25 был крутой продукт и была одна важная дата в календаре. Между ними всего 12 недель, и заполнить их нужно было не слайдам</td></tr>
+<tr><td>vibe_coding</td><td class="q">2026-08-25</td><td><b>72</b></td>
+<td class="q">46/24</td><td class="q">Vercel выпустила курс по построению рабочего каркаса ИИ-агента для кодинга Build Your Own AI Coding Agent Harness. Я решил скормить этот курс клоду, и попросить сравнить с тем, что у меня уже реализовано в Lovarus. Был п</td></tr>
+<tr><td>habr_ai</td><td class="q">2026-08-25</td><td><b>46</b></td>
+<td class="q">2/0</td><td class="q">От подписки к корпоративному AI: как мы собирали команду ИИ-разработчиков и преодолевали скепсис сотрудников Для тех, кто в блоге впервые: здесь я рассказывал про AI ready инфраструктуру, здесь — про её «железную» инжене</td></tr>
+<tr><td>buyonhigh</td><td class="q">2026-08-25</td><td><b>45</b></td>
+<td class="q">17/11</td><td class="q">Самое мощное яблоко Наконец-то Apple обновила Mac mini: теперь их два – на новом M6 и на M5 Pro. Предзаказ открыли сегондя, в продажу уходят 22 сентября. 🌈 Подробности анонса Железо тут вторично, интереснее тем, что Appl</td></tr>
+<tr><td>habr_ai</td><td class="q">2026-08-25</td><td><b>40</b></td>
+<td class="q">2/0</td><td class="q">Цели, сценарии, роли. Системность в управлении бизнесом Компании учатся создавать автономных агентов и поручать нейросетям рутинные операции. Однако на практике возникает системный вопрос: как объяснить ИИ многогранную, </td></tr>
+<tr><td>neuro_channel</td><td class="q">2026-08-25</td><td><b>40</b></td>
+<td class="q">13/25</td><td class="q">У меня две новости, одна личная, одна от Тибо. Личная: отписался сегодня от Anthropic. Составил им длинное сообщение, почему мне очень жаль и зачем надо общаться с пользователями, как это делает OpenAI. Для меня прям эпо</td></tr>
+<tr><td>habr_ai</td><td class="q">2026-08-25</td><td><b>35</b></td>
+<td class="q">3/0</td><td class="q">Как мы настраивали обвязку (harness) под модель: профиль GigaChat для Deep Agents Привет, Хабр! На связи команда GigaChain. В этой статье мы расскажем, как итеративно настраивали обвязку (harness) Deep Agents под особенн</td></tr>
 </table></div>
 <h2>Vault-майнеры (альфа из своего волта)</h2><div class="scroll"><table>
 <tr><th>Майнер</th><th>Отчёт детектора</th><th>Вердикт судьи</th><th>Статус</th></tr>
 <tr><td>bets</td><td class="q">2026-08-24 04:15</td>
 <td class="q">2026-08-24 05:06</td>
-<td><span class="pill p-ok">свежий</span></td></tr>
+<td><span class="pill p-bad">ПРОТУХ</span></td></tr>
 <tr><td>contradictions</td><td class="q">2026-08-24 04:15</td>
 <td class="q">2026-08-24 05:06</td>
-<td><span class="pill p-ok">свежий</span></td></tr>
+<td><span class="pill p-bad">ПРОТУХ</span></td></tr>
 <tr><td>stance</td><td class="q">2026-08-24 04:15</td>
 <td class="q">2026-08-24 05:06</td>
-<td><span class="pill p-ok">свежий</span></td></tr>
+<td><span class="pill p-bad">ПРОТУХ</span></td></tr>
 <tr><td>bridge</td><td class="q">2026-08-24 04:15</td>
 <td class="q">2026-08-24 05:06</td>
-<td><span class="pill p-ok">свежий</span></td></tr>
+<td><span class="pill p-bad">ПРОТУХ</span></td></tr>
 <tr><td>recurring</td><td class="q">2026-08-24 04:15</td>
 <td class="q">2026-08-24 05:06</td>
-<td><span class="pill p-ok">свежий</span></td></tr>
+<td><span class="pill p-bad">ПРОТУХ</span></td></tr>
 <tr><td>novelty</td><td class="q">2026-08-24 04:15</td>
 <td class="q">2026-08-24 05:06</td>
-<td><span class="pill p-ok">свежий</span></td></tr>
+<td><span class="pill p-bad">ПРОТУХ</span></td></tr>
 <tr><td>identity</td><td class="q">2026-08-24 04:15</td>
 <td class="q">2026-08-24 05:06</td>
-<td><span class="pill p-ok">свежий</span></td></tr>
+<td><span class="pill p-bad">ПРОТУХ</span></td></tr>
 <tr><td>openq</td><td class="q">2026-08-24 04:15</td>
 <td class="q">2026-08-24 05:06</td>
-<td><span class="pill p-ok">свежий</span></td></tr>
+<td><span class="pill p-bad">ПРОТУХ</span></td></tr>
 </table></div>
 <h2>Звонки → альфа</h2><div class="grid">
-<div class="card"><div class="num">296</div><div class="lbl">сырых записей звонков</div></div>
-<div class="card"><div class="num">516</div><div class="lbl">дистиллятов в волте</div></div>
-<div class="card"><div class="num">297</div><div class="lbl">заметок встреч</div></div>
-<div class="card"><div class="num">2397</div><div class="lbl">обязательств извлечено</div></div>
+<div class="card"><div class="num">297</div><div class="lbl">сырых записей звонков</div></div>
+<div class="card"><div class="num">519</div><div class="lbl">дистиллятов в волте</div></div>
+<div class="card"><div class="num">298</div><div class="lbl">заметок встреч</div></div>
+<div class="card"><div class="num">2418</div><div class="lbl">обязательств извлечено</div></div>
 <div class="card"><div class="num ok">5</div>
-<div class="lbl">альфа-пунктов из звонков за окно (1 из 2 звонков)</div></div>
-<div class="card"><div class="num ok">2481</div>
+<div class="lbl">альфа-пунктов из звонков за окно (2 из 2 звонков)</div></div>
+<div class="card"><div class="num ok">2493</div>
 <div class="lbl">дистиллятов в векторном индексе</div></div>
 </div>
-<div class="q" style="margin-top:8px">Последний звонок: 2026-08-24
-(2026-08-24-planerka-utro.md), 1 дн. назад.
-Всего чанков в индексе: 22231.
+<div class="q" style="margin-top:8px">Последний звонок: 2026-08-25
+(2026-08-25-planerka-utro.md), 1 дн. назад.
+Всего чанков в индексе: 22402.
 <br>⚠️ Свежесть считается по ДАТЕ ЗВОНКА, а не по mtime файла: mtime у дистиллятов
 массово переписан синком (замер 29.07: 210 «свежих» файлов, среди них звонки 2022 года).</div>
 <h2>Выход: сколько альфы легло в волт</h2><div class="scroll"><table>
 <tr><th>Показатель</th><th>Значение</th></tr>
 <tr><td>Промоушенов в волт за 30 дней</td><td class="bad">0</td></tr>
 <tr><td>Последний промоушен</td><td>2026-07-05T00:45:00+00:00</td></tr>
-<tr><td>MOC _Aiproduct-Alpha-MOC.md</td><td class="q">2026-08-03 18:54 (21 дн. назад)</td></tr>
-<tr><td>MOC _BuyOnHigh-Alpha-MOC.md</td><td class="q">2026-08-10 15:41 (15 дн. назад)</td></tr>
-<tr><td>MOC _Claudedev-Alpha-MOC.md</td><td class="q">2026-08-10 15:40 (15 дн. назад)</td></tr>
-<tr><td>MOC _ClawRus-Alpha-MOC.md</td><td class="q">2026-08-06 15:19 (19 дн. назад)</td></tr>
-<tr><td>MOC _Sharipovnikita-Alpha-MOC.md</td><td class="q">2026-07-30 22:50 (25 дн. назад)</td></tr>
+<tr><td>MOC _Aiproduct-Alpha-MOC.md</td><td class="q">2026-08-03 18:54 (22 дн. назад)</td></tr>
+<tr><td>MOC _BuyOnHigh-Alpha-MOC.md</td><td class="q">2026-08-10 15:41 (16 дн. назад)</td></tr>
+<tr><td>MOC _Claudedev-Alpha-MOC.md</td><td class="q">2026-08-10 15:40 (16 дн. назад)</td></tr>
+<tr><td>MOC _ClawRus-Alpha-MOC.md</td><td class="q">2026-08-06 15:19 (20 дн. назад)</td></tr>
+<tr><td>MOC _Sharipovnikita-Alpha-MOC.md</td><td class="q">2026-07-30 22:50 (26 дн. назад)</td></tr>
 </table></div>
 <h2>Как это читать</h2>
 <div class="q">Зелёный «канал OK» означает только одно: детектор отработал и что-то выбрал.

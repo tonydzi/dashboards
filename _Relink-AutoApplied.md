@@ -735,3 +735,12 @@
 - [[1772997827--щипцы-вакуум-и-потуги-при-неполном-раскрытии-шейки-матки]] ← добавлено в [[1766563213--травматичный-опыт-родов-некомпетентность-акушерки-и-халатность]]
 - [[2026-01-26 125218--лекция-нервные-клетки-по-большому-счёту-не-обновляются-у-вас]] ← добавлено в [[concept-gene-therapy-longevity]]
 
+## 2026-08-26 03:08 — авто-связано 7
+- [[insight-DR-DR26-07-23-MACANTON-01-1118-hf-hiring-lever]] ← добавлено в [[insight-2026-07-28-huggingface-kak-rychag-trudoustroystva]]
+- [[insight-DR-DR26-08-25-HUB-02-0712-fundraise-ease-three-storefronts]] ← добавлено в [[fundraise-intel]]
+- [[insight-DR-DR26-08-25-HUB-02-0712-fundraise-ease-three-storefronts]] ← добавлено в [[insight-DR-DR26-08-24-HUB-06-2040-packaging-playbook-weak-adoption]]
+- [[2026-08-21-planerka-vecher]] ← добавлено в [[2026-08-21-planerka-vecher-ZZW96W]]
+- [[2026-08-24-julius-vonshield-and-paloalto-ai-research-lab-7VQT5R]] ← добавлено в [[julien-swemmelaar]]
+- [[2026-08-24-planerka-vecher-635EMS]] ← добавлено в [[concept-travel-logistics]]
+- [[2026-08-21-planerka-vecher-ZZW96W]] ← добавлено в [[2026-04-30-monaproof-yaroslav-YZAMa1]]
+
