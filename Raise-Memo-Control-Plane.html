@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Инвест-мемо: рейз под control plane для флота агентов</title>
+<style>
+  :root{
+    --bg:#0d1117; --card:#161b22; --card2:#1c2333; --ink:#e6edf3; --dim:#8b949e;
+    --line:#30363d; --green:#3fb950; --red:#f85149; --amber:#d29922; --blue:#58a6ff; --violet:#bc8cff;
+    --good:#238636; --bad:#da3633;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 20px;font-size:14px}
+  .verdict{background:linear-gradient(135deg,#1c2333,#161b22);border:1px solid var(--violet);border-radius:12px;padding:18px 20px;margin-bottom:22px}
+  .verdict b{color:var(--violet)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin-bottom:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);margin:0 0 12px;font-weight:600}
+  .big{font-size:30px;font-weight:700;margin:2px 0}
+  .big.g{color:var(--green)} .big.a{color:var(--amber)} .big.b{color:var(--blue)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase}
+  .tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+  .real{background:rgba(63,185,80,.15);color:var(--green);border:1px solid rgba(63,185,80,.4)}
+  .fake{background:rgba(248,81,73,.13);color:var(--red);border:1px solid rgba(248,81,73,.35)}
+  .cond{background:rgba(210,153,34,.13);color:var(--amber);border:1px solid rgba(210,153,34,.35)}
+  .full{grid-column:1/-1}
+  ul{margin:6px 0;padding-left:20px} li{margin:5px 0}
+  .obj{background:var(--card2);border-left:3px solid var(--blue);border-radius:6px;padding:10px 12px;margin:8px 0}
+  .obj b{color:var(--blue)}
+  .cut{background:rgba(248,81,73,.08);border:1px solid rgba(248,81,73,.3);border-radius:10px;padding:14px 18px;margin-bottom:22px}
+  .cut b{color:var(--red)}
+  .act{counter-reset:a;list-style:none;padding:0}
+  .act li{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:12px 14px 12px 46px;position:relative;margin:8px 0}
+  .act li::before{counter-increment:a;content:counter(a);position:absolute;left:12px;top:12px;width:24px;height:24px;border-radius:50%;background:var(--good);color:#fff;font-weight:700;text-align:center;line-height:24px;font-size:13px}
+  .foot{color:var(--dim);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+  .pill{font-size:11px;color:var(--dim)}
+  .k{color:var(--dim)}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Pub-Registry-Metrics.html">&larr; Pub-Registry-Metrics</a> · <a href="Repair-Rethink-2026-08.html">Repair-Rethink-2026-08 &rarr;</a></span></div>
+<div class="wrap">
+  <h1>🎯 Инвест-мемо: рейз под «zero-trust boundary для флота агентов»</h1>
+  <p class="sub">DR26-08-25-HUB-03 · кворум 4/6 (grok · chatgpt/codex · mistral · glm) · 26.08.2026 · <span class="pill">gemini/claudeai не собраны — вердикт не меняют</span></p>
+
+  <div class="verdict">
+    🎙 <b>Вердикт одной строкой.</b> Тезис <b>инвестируем</b>, но сегодня наш актив доказывает <i>исследовательскую способность</i>, а не <i>существование control plane</i>. Просить <b>~$5M seed</b> (закрытие $3.5–6.5M) под формулировку <b>«zero-trust execution boundary для флота агентов»</b>, покупатель — <b>CISO</b>. Чек разблокирует не дек, а <b>один воспроизводимый WOW-артефакт за 2–4 недели</b> + <b>1–3 design-partner LOI</b>. Единогласно у 4/4.
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>💰 Сколько (консенсус 3/4)</h2>
+      <div class="big g">~$5M</div>
+      <div class="k">seed, post ~$22–26M · закрытие $3.5–6.5M</div>
+      <div style="margin-top:10px;font-size:13px">Stretch $8–11M+ <b>только</b> при named logos / design-partner / strategic lead.<br><span class="k">Mistral — выброс: $8–12M база. Держим как оптимистичный потолок, не план.</span></div>
+    </div>
+    <div class="card">
+      <h2>🧲 Комбо-премия</h2>
+      <div class="big b">+$1.5–3M</div>
+      <div class="k">к узкому «MCP аудит» ($3–5M)</div>
+      <div style="margin-top:10px;font-size:13px">Security-клин + флот как история расширения > узкий аудит. Mistral даёт ×2.5–3, остальные +$1.5–2.5M.</div>
+    </div>
+    <div class="card">
+      <h2>🎬 WOW-артефакт</h2>
+      <div class="big a">СЕЙЧАС НЕТ</div>
+      <div class="k">must-ship за 2–4 нед · цена ~$0</div>
+      <div style="margin-top:10px;font-size:13px">«30 CVE + 21k» без независимого воспроизведения = <b>слайд, а не ров</b>. Подтверждено проверкой волта: итемизированного списка у нас нет.</div>
+    </div>
+  </div>
+
+  <div class="card full" style="margin-bottom:22px">
+    <h2>🏰 Моат — единогласный расклад 4/4</h2>
+    <table>
+      <tr><th>Ров</th><th>Вердикт</th><th>Копируется за</th></tr>
+      <tr><td><b>Компаундящийся корпус угроз</b><br><span class="k">data-network-effect, тип CrowdStrike/Snyk</span></td><td><span class="tag real">РЕАЛЬНЫЙ — главный</span> Единственный, что seed платит заранее. Но в сыром виде — «ров-в-формировании». Ценный объект — не список CVE, а <b>граф</b> identity→право→ресурс→действие→решение→результат</td><td>сканер 2–8 нед;<br>threat-graph 12–24 мес</td></tr>
+      <tr><td><b>Switching-cost</b><br><span class="k">control plane, знающий весь флот</span></td><td><span class="tag fake">НЕ РОВ НА SEED</span> Внешнего флота нет, внутренний консенсус = dogfood. Реален только на Series A</td><td>12–24 мес</td></tr>
+      <tr><td><b>OSS / стандарт-легитимность</b></td><td><span class="tag cond">УСИЛИТЕЛЬ, не ров</span> Платят за авторство спеки / ответы мейнтейнеров, не за репо. Arcade $60M — авторы MCP auth spec</td><td>форк за недели</td></tr>
+      <tr><td><b>Скорость / вкус команды</b></td><td><span class="tag cond">ВРЕМЕННЫЙ</span> Seed не платит без артефакта</td><td>1–3 мес</td></tr>
+    </table>
+  </div>
+
+  <div class="cut">
+    ✂️ <b>Вырезать из ВСЕХ деков (4/4, glm: «убивает конверсию на 100%»):</b> «второй мозг / workspace сотрудникам» как второй продукт в питче рейза · «MCP аудит» первой строкой · «мы маленькая лаборатория» · «AI-agent DLP». <br><span class="k" style="color:var(--ink)">Мечта Антона «второй мозг + флот» = слайд рынка «почему сейчас» + история расширения + лучшая acqui-hire-история. НЕ предмет seed-чека.</span>
+  </div>
+
+  <div class="card full" style="margin-bottom:22px">
+    <h2>🛡️ Топ-возражения и как снимать</h2>
+    <div class="obj"><b>1. Купит/скопирует Wiz/CrowdStrike/PANW.</b> → Они покупают, не строят (PANW-Koi $400M, Cisco-Astrix, Snyk-Invariant). Другой SKU: deny <i>до</i> tool-call. Артефакт: 1 стр. «Wiz shipping vs наш deny-path» + цитата CISO.</div>
+    <div class="obj"><b>2. Фича, а не компания.</b> → Land: pre-action auth; expand: registry→graph→policy→IR. Категория land-grab это опровергает (Zenity $125M C, Arcade $60M A). Артефакт: 1 design-partner где вы единственный kill-switch.</div>
+    <div class="obj"><b>3. Нет внешнего adoption (самое смертельное).</b> → Не спорить. 3 design-partner LOI + 1 живой pilot. Runlayer без 8 логотипов был бы $4–6M, не $11M.</div>
+    <div class="obj"><b>4. Замок вокруг открытого стандарта MCP.</b> → Policy-object не MCP-specific; «we sit above AAIF, like Okta above OAuth». Артефакт: одна policy через MCP+A2A+REST.</div>
+    <div class="obj"><b>5. Команда без cyber-pedigree.</b> → research-output + named CISO-эдвайзор + 2 внешних воспроизведения. Прецедент: CodeIntegrity = Rose-Hulman, не Unit 8200.</div>
+  </div>
+
+  <div class="grid">
+    <div class="card full">
+      <h2>🚪 Кто скажет ДА первым (держим 3 двери)</h2>
+      <table>
+        <tr><th>Дверь</th><th>Кто</th><th>Оговорка</th></tr>
+        <tr><td><b>Профильный cyber-seed</b></td><td>SYN Ventures (лид CodeIntegrity/Arcade, форма без интро)</td><td class="k">⚠️ codex: portfolio-конфликт → идти за category-validation, не как за единственным лидом</td></tr>
+        <tr><td><b>Institutional lead</b></td><td>Paladin (чеки до $15M) · Cyberstarts · Shield Capital (лид Lasso+Pillar) · Ten Eleven · Ballistic · Team8</td><td class="k">часть с adjacent-конфликтами → чёткая отстройка</td></tr>
+        <tr><td><b>Быстрый signal</b></td><td>Boost VC ($500k, уже в CodeIntegrity) · PearX (дедлайн 04.10) · YC</td><td class="k">не полный раунд, но открывает</td></tr>
+        <tr><td><b>Ангелы-CISO</b></td><td>Michael Sutton (ex-CISO Zscaler), ex-CISO публичных компаний</td><td class="k">borrowed trust, не лид</td></tr>
+        <tr><td><b>⛔ НЕ первым чеком</b></td><td>Sequoia/a16z/Coatue/Khosla-Rabois/Felicis</td><td class="k">без логотипов конверсия низкая</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card full" style="margin-bottom:22px">
+    <h2>✅ 5 действий на 30 дней</h2>
+    <ol class="act">
+      <li><b>Произвести WOW</b> (2–4 нед, ~$0): стенд «4 агента × отравленная задача → boundary блокирует до side-effect + rollback + delegation-chain» + <b>2 независимых внешних воспроизведения</b> + <b>1 наш MCP-CVE, воспроизведённый на живом инстансе с CVE-id</b>. Обёртка: 90-сек видео + raw logs + one-command repro.</li>
+      <li><b>Собрать 1–3 design-partner LOI</b> — закрывает «нет adoption». Письмо CISO «пилотим 30 дней, scope X» из аудитории 169k / OSS-мейнтейнеров.</li>
+      <li><b>Найти named CISO-эдвайзора</b> (ex-CISO публичной компании). Advisor term sheet реальнее найма VP Sales.</li>
+      <li><b>Собрать дек</b> под одну формулировку; флот — в appendix «we run this on ourselves»; Dust/Gartner — TAM-слайд; 0 упоминаний «второго мозга» на traction-слайде.</li>
+      <li><b>Открыть 3 двери параллельно.</b> Первый питч — <b>после</b> WOW, не до.</li>
+    </ol>
+  </div>
+
+  <div class="card full">
+    <h2>🔀 Два бизнеса (инсайт Антона 26.08 — DR запущены)</h2>
+    <table>
+      <tr><th>Сегмент</th><th>У кого бюджет</th><th>Что продаём</th><th>Проверка</th></tr>
+      <tr><td><b>Enterprise</b></td><td>CISO (есть страх + бюджет)</td><td><b>Security control plane</b> — клин рейза (этот мемо)</td><td>—</td></tr>
+      <tr><td><b>SMB / mid-market</b></td><td>Владелец бизнеса<br><span class="k">CISO нет — «нет его в сети прачечных»</span></td><td><b>Второй мозг + оркестрация</b> между сотрудниками (+консалтинг для cash-flow?)</td><td class="k">DR26-08-26-HUB-01: правда ли «&lt;1% автоматизированы», кто продаёт SMB, венчурность</td></tr>
+    </table>
+    <p class="k" style="margin-top:10px">Карта конкурентов агентского секюрити с раундами в деталях → DR26-08-26-HUB-02 (в очереди). Оба веера по 6 рельсам, Firefox-first.</p>
+  </div>
+
+  <div class="foot">
+    Синтез Claude (Fable 5) из 4 DR-легов · кворум 4/6 · оригиналы: <span class="k">_machine-bus/_dr/queue/DR26-08-25-HUB-03-2301/results/</span> · мемо: <span class="k">02-Decisions/decision-DR26-08-25-HUB-03-control-plane-raise-memo.md</span> · извлечение: workflow wf_cc2070d6-50a (5 агентов)
+  </div>
+</div>
+</body>
+</html>

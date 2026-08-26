@@ -50,16 +50,16 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 .hidden{display:none}
 </style>
 <h1>Рутины флота — опись, статусы и план переезда</h1>
-<div class=sub>Собрано 2026-08-25 · приказ Антона 20.08.2026 · это ОПИСЬ (чтение): ничего не выключено, не перенесено, не почищено</div>
+<div class=sub>Собрано 2026-08-26 · приказ Антона 20.08.2026 · это ОПИСЬ (чтение): ничего не выключено, не перенесено, не почищено</div>
 <div class=alarm><b>⛔ Узлы, не сдавшие опись (3):</b> <span class=mn>HP17-ZBook <i>(peer, Anton)</i></span> <span class=mn>Наталья-ноут <i>(peer, Natalia)</i></span> <span class=mn>MacBook-Ruslana <i>(peer, Ruslana)</i></span><div class=sub>Их рутины в картине НЕ учтены — цифры ниже описывают только сдавшие узлы.</div></div>
-<div style="margin:10px 0"><span class=nb>✅ A-2022BAYAREA — 250 рутин, снято 2026-08-23T00:46:24</span> <span class=nb>✅ FLEET-ANCHOR — 67 рутин, снято 2026-08-25T02:43:43</span> <span class=nb>✅ MacBook-Anton — 170 рутин, снято 2026-08-20T22:57:44</span><span class=nb>🔗 обогащено github-данными: 16 рутин</span></div>
+<div style="margin:10px 0"><span class=nb>✅ A-2022BAYAREA — 250 рутин, снято 2026-08-23T00:46:24</span> <span class=nb>✅ FLEET-ANCHOR — 67 рутин, снято 2026-08-26T02:44:25</span> <span class=nb>✅ MacBook-Anton — 170 рутин, снято 2026-08-20T22:57:44</span><span class=nb>🔗 обогащено github-данными: 16 рутин</span></div>
 <div class=tiles>
 <div class=tile><b>487</b><span>всего рутин</span></div>
-<div class="tile green"><b>113</b><span>🟢 отработали (7д)</span></div>
+<div class="tile green"><b>114</b><span>🟢 отработали (7д)</span></div>
 <div class="tile orange"><b>36</b><span>🔇 молчат / нет прибора</span></div>
 <div class=tile><b>5</b><span>🔕 молчание допустимо</span></div>
 <div class=tile><b>2</b><span>🧳 задачи чужих узлов</span></div>
-<div class="tile red"><b>4</b><span>🔴 бежит, но падает</span></div>
+<div class="tile red"><b>3</b><span>🔴 бежит, но падает</span></div>
 <div class="tile orange"><b>0</b><span>выход протух</span></div>
 <div class=tile><b>67</b><span>✔ разовые, отработали</span></div>
 <div class="tile orange"><b>6</b><span>⏸ выключены</span></div>
@@ -787,7 +787,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p brk'>🔴 бежит, но падает</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> hub_deadman.py -- the MIRROR of mayak_deadman.py: Маяк watches the HUB. WHY: the hub is Anton&#x27;s home desktop -- he reboots it, it goes offline, it can sleep. Until now the chain was one-way (hub watched Маяк), so a dead hub routine was invisible. Symmetry closes the ring: nobody watches itself, and each node is watched from OUTSIDE. Signals (both already exist, nothing new invented): 1. presence -</div>
-<div class=meta><b>⏰</b> cron */20 * * * * (PT) · <b>статус:</b> бежит, но ПАДАЕТ (0.1ч): «hub_deadman: still unhealthy (already alerted) -- hub routines 0 failed/1 stale (DR-Queue-Robot)»</div>
+<div class=meta><b>⏰</b> cron */20 * * * * (PT) · <b>статус:</b> бежит, но ПАДАЕТ (0.1ч): «hub_deadman: still unhealthy (already alerted) -- hub routines 0 failed/2 stale (DR-Queue-Robot,TG Archive Rebuild Once)»</div>
 <div class=meta><b>кому:</b> пиры по шине · <b>выход:</b> <span class=lnk>/home/anton/hub_deadman.log</span></div>
 <div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>vault</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>hub_deadman.py</span> <span class=lnk>mayak_deadman.py</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="launchd"
@@ -897,7 +897,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> Canon changelog guard -- &quot;версию бампнули, строку в журнал не написали&quot; больше не проходит тихо. ROOT (measured 2026-08-02). v2.2.1, v2.2.2, v2.2.3 (all 25.07) were bumped in the CLAUDE.md header, published to the whole fleet, ACKed by all 5 nodes -- and left NO journal entry. Two of the three sessions reported to Anton &quot;+ строка в changelog&quot;; the row did not exist. It surfaced only 27.07, by acci</div>
-<div class=meta><b>⏰</b> cron 35 23 * * * (PT) · <b>статус:</b> выход свежий, 3.1ч</div>
+<div class=meta><b>⏰</b> cron 35 23 * * * (PT) · <b>статус:</b> выход свежий, 3.2ч</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/.claude/logs/_canon_changelog_guard.log</span></div>
 <div class=meta><b>переносимость:</b> чистая логика без железа — переживёт офлайн хаба (§7.1 п.2)</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>syncthing</span></div><div class='rel'>🔗 зависит: <span class=lnk>backup.sh</span> <span class=lnk>canon_changelog_guard.py</span> <span class=lnk>canon_write_gate.py</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="crontab"
@@ -952,7 +952,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> hub_down_flip_reminder.py — runs ON MAYAK. Reminds Anton to flip the outreach baton when the HUB has shown no sign of life for ~24h (his 2026-07-16 instruction: &quot;сам мне напомни, если вдруг хаб сутки не показывает признаков жизни&quot;). WHY this lives on Mayak, not hub: a dead hub can&#x27;t remind about its own death. Mayak is the always-on cloud node; it judges hub-silence by the freshness of the hub&#x27;s s</div>
-<div class=meta><b>⏰</b> cron 17 * * * * (PT) · <b>статус:</b> выход свежий, 0.4ч</div>
+<div class=meta><b>⏰</b> cron 17 * * * * (PT) · <b>статус:</b> выход свежий, 0.5ч</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/.claude/scripts/_hub_down_reminder.log</span></div>
 <div class=meta><b>переносимость:</b> чистая логика без железа — переживёт офлайн хаба (§7.1 п.2)</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>flip_outreach_to_mayak.sh</span> <span class=lnk>hub_down_flip_reminder.py</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
@@ -963,7 +963,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> lead_reply_watch.py -- idea #5 (option B): surface ONLY real lead/contact replies from the bb mailbox, silently ignore everything else (Anton doesn&#x27;t read email). HUB-SIDE by design: the hub already has IMAP creds (mail_bus.env) + leads.db + a direct rail to chat 03, so n8n would only add a VPS-&gt;hub hop. n8n = not-brain; the deterministic sender&lt;-&gt;leads.db match lives here in hub code. Flow: poll </div>
-<div class=meta><b>⏰</b> cron */30 * * * * (PT) · <b>статус:</b> выход свежий, 0.1ч</div>
+<div class=meta><b>⏰</b> cron */30 * * * * (PT) · <b>статус:</b> выход свежий, 0.0ч</div>
 <div class=meta><b>кому:</b> пиры по шине · <b>выход:</b> <span class=lnk>/home/anton/lead_reply.log</span></div>
 <div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>vault</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>bus_send.py</span> <span class=lnk>lead_reply_watch.py</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
@@ -1007,7 +1007,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> revert_guard.py — детектор «волны ресинк-отката» + пофайловый вердикт внутри волны. КЛАСС: узел со сброшенным индексом Syncthing / распакованным поверх живой синк-зоны бэкапом объявляет своё СТАРОЕ дерево «новыми правками» → свежие файлы на всех пирах затираются старьём. Инцидент 15.07: хаб (EEAETB6) раздал _imports состоянием 04.07 (единый mtime = распаковка архива); съело прод-фиксы дважды. Обна</div>
-<div class=meta><b>⏰</b> cron 10 */4 * * * (PT) · <b>статус:</b> выход в окне 7д, 90.6ч</div>
+<div class=meta><b>⏰</b> cron 10 */4 * * * (PT) · <b>статус:</b> выход в окне 7д, 114.6ч</div>
 <div class=meta><b>кому:</b> пиры по шине · <b>выход:</b> <span class=lnk>/home/anton/.claude/logs/revert_guard.log</span></div>
 <div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>vault</span> <span class='p pm'>syncthing</span></div><div class='rel'>🔗 зависит: <span class=lnk>bus_send.py</span> <span class=lnk>claude_fleet.py</span> <span class=lnk>revert_guard.py</span> <span class=lnk>rule_home_guard.py</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
@@ -1981,7 +1981,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> ack_coverage_watch.py -- СТОРОЖ МОЛЧАНИЯ: узел, которому пишут, а он не отвечает. ЗАЧЕМ. Замер 29-30.07: из 148 адресных сообщений в TG-03 квитанцию получили 33 (22%). MacBook-Ruslana 0 из 24, Наталья 0 из 9, хаб 34%, ноут 20%. Это держалось неделями и НИКТО не заметил -- потому что молчание не производит событий: у сломанного узла и у здорового одинаково пусто. Табло `ack_census.py` показывает ка</div>
-<div class=meta><b>⏰</b> cron 17 */6 * * * (PT) · <b>статус:</b> выход свежий, 2.4ч</div>
+<div class=meta><b>⏰</b> cron 17 */6 * * * (PT) · <b>статус:</b> выход свежий, 2.5ч</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/.claude/scripts/_ack_coverage_log.txt</span></div>
 <div class=meta><b>переносимость:</b> рельса мессенджера завязана на аккаунт/IP — IP-sensitive, §7.2</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>telegram</span> <span class='p pm'>secrets</span></div><div class='rel'>🔗 зависит: <span class=lnk>ack_census.py</span> <span class=lnk>ack_coverage_watch.py</span> <span class=lnk>ack_watchdog.py</span> <span class=lnk>bus_latency.py</span> <span class=lnk>inbox_debt.py</span> <span class=lnk>install_ack_fast_lane.py</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
@@ -2314,7 +2314,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p brk'>🔴 бежит, но падает</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> W1a bus-guard (keep the machine-bus MESSAGE rail tiny). ARMED 2026-07-11 (Phase B, #w1a-arm). SCOPE FIX: Mayak&#x27;s MACHINE_BUS_DIR=/root/machine-bus is a superset that ALSO contains the _session-archive-inbound staging pipeline (peers&#x27; session transcripts, ~600MB, a different consumer). BUS_GUARD_EXCLUDE spares that subtree so arming only polices genuine stray large payloads on the message rail (roo</div>
-<div class=meta><b>⏰</b> cron 17 * * * * (PT) · <b>статус:</b> бежит, но ПАДАЕТ (0.4ч): «BOT FAIL: HTTP 400 Bad Request: text is too long»</div>
+<div class=meta><b>⏰</b> cron 17 * * * * (PT) · <b>статус:</b> бежит, но ПАДАЕТ (0.5ч): «BOT FAIL: HTTP 400 Bad Request: text is too long»</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/.claude/scripts/_bus_guard.log</span></div>
 <div class=meta><b>переносимость:</b> чистая логика без железа — переживёт офлайн хаба (§7.1 п.2)</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>bus_guard.py</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="launchd"
@@ -2611,7 +2611,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p sil'>🔇 молчит</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> Сторож palo-alto.ai: сигналит ТОЛЬКО при смене картины (зелёное -&gt; молчит). Паспорт: E:\Obsidian\Anton-Knowledge\00-System\Palo-Alto-Site-Passport.md</div>
-<div class=meta><b>⏰</b> cron 25 */6 * * * (PT) · <b>статус:</b> лог пуст, mtime 488.3ч назад</div>
+<div class=meta><b>⏰</b> cron 25 */6 * * * (PT) · <b>статус:</b> лог пуст, mtime 512.3ч назад</div>
 <div class=meta><b>кому:</b> пиры по шине · <b>выход:</b> <span class=lnk>/home/anton/.claude/scripts/_palo_alto_site_watch.log</span></div>
 <div class=meta><b>переносимость:</b> чистая логика без железа — переживёт офлайн хаба (§7.1 п.2)</div>
 <div class=meta><b>нужно:</b> <span class='dim'>нет особых</span></div><div class='rel'>🔗 зависит: <span class=lnk>bus_send.py</span> <span class=lnk>palo_alto_site_check.py</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
@@ -3715,7 +3715,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>daemon</span></div>
 <div class="why und"><b>зачем:</b> ⚠ не документировано</div>
-<div class=meta><b>⏰</b> постоянно (uptime 24-20:21:33, pid 3572509) · <b>статус:</b> процесс живой, uptime 24-20:21:33</div>
+<div class=meta><b>⏰</b> постоянно (uptime 25-20:22:16, pid 3572509) · <b>статус:</b> процесс живой, uptime 25-20:22:16</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>⚠ не документировано</span></div>
 <div class=meta><b>переносимость:</b> чистая логика без железа — переживёт офлайн хаба (§7.1 п.2)</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>ssh_peer</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="launchd"
@@ -3798,18 +3798,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <div class=meta><b>⏰</b> cron 10 3 * * * (PT) · <b>статус:</b> бежит, но ПАДАЕТ (23.6ч): «PermissionError: [Errno 13] Permission denied: &#x27;/root/Obsidian/_imports/_brain_oai.npy.tmp&#x27;»</div>
 <div class=meta><b>кому:</b> RAG/второй мозг · <b>выход:</b> <span class=lnk>/home/anton/reindex.log</span></div>
 <div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
-<div class=meta><b>нужно:</b> <span class='p pm'>vault</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
- data-st="broken" data-mv="hub" data-tmp="0"
- data-n8="no" data-llm="claude-cli"
- data-txt="cron:mayak_janitor.sh vault-janitor nightly (sonnet) — bucket a2 (doctrine v2, 2026-07-25)">
-<div class=hd><span class=id>cron:mayak_janitor.sh</span>
-<span class='p brk'>🔴 бежит, но падает</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
-<span class='p eng'>crontab</span></div>
-<div class="why"><b>зачем:</b> vault-janitor nightly (Sonnet) — bucket a2 (doctrine v2, 2026-07-25)</div>
-<div class=meta><b>⏰</b> cron 0 3 * * * (PT) · <b>статус:</b> бежит, но ПАДАЕТ (23.6ч): «Также поймал и исправил свою ошибку в реальном времени: сначала написал в очереди «корень пофикшен», через минуту-полторы увидел о»</div>
-<div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/janitor_nightly.log</span></div>
-<div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
-<div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>vault</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>routine_stamp.sh</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="launchd"
+<div class=meta><b>нужно:</b> <span class='p pm'>vault</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="launchd"
  data-st="ok" data-mv="local-only" data-tmp="0"
  data-n8="no" data-llm="none"
  data-txt="ai.paloalto.activitywatch ⚠ не документировано">
@@ -3894,7 +3883,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> automations_shard_mayak.py — пер-машинный реестр рутин Маяка (FLEET-ANCHOR). Близнец automations_shard.py (Mac/launchd) для Linux/cron: снимает НАТИВНЫЙ планировщик этой ОС (crontab anton + root, systemd-таймеры не-дистровые) и пишет таблицу в волт 00-System/System-Automations-MAYAK.md (имя файла — исторический ключ шарда, см. TASK #a6b481ff от MacBook-Anton 2026-07-10). Статус-слой v1: расписание</div>
-<div class=meta><b>⏰</b> cron 5 3 * * * (PT) · <b>статус:</b> выход свежий, 23.6ч</div>
+<div class=meta><b>⏰</b> cron 5 3 * * * (PT) · <b>статус:</b> выход свежий, 23.7ч</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/.claude/logs/automations_shard.log</span></div>
 <div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>vault</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>automations_shard.py</span> <span class=lnk>automations_shard_mayak.py</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="crontab"
@@ -3909,6 +3898,17 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/Users/anton/.claude/_engines_shadow.cron.log</span></div>
 <div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>vault</span> <span class='p pm'>syncthing</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>claude_fleet.py</span> <span class=lnk>engines_shadow.py</span> <span class=lnk>status.sh</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
+ data-st="ok" data-mv="hub" data-tmp="0"
+ data-n8="no" data-llm="claude-cli"
+ data-txt="cron:mayak_janitor.sh vault-janitor nightly (sonnet) — bucket a2 (doctrine v2, 2026-07-25)">
+<div class=hd><span class=id>cron:mayak_janitor.sh</span>
+<span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
+<span class='p eng'>crontab</span></div>
+<div class="why"><b>зачем:</b> vault-janitor nightly (Sonnet) — bucket a2 (doctrine v2, 2026-07-25)</div>
+<div class=meta><b>⏰</b> cron 0 3 * * * (PT) · <b>статус:</b> выход свежий, 23.7ч</div>
+<div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/janitor_nightly.log</span></div>
+<div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
+<div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>vault</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>routine_stamp.sh</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
  data-st="ok" data-mv="mayak" data-tmp="0"
  data-n8="no" data-llm="none"
  data-txt="cron:mayak_onair_gc.sh w1a on air board gc (archive past-grace expired claims). armed (idempotent + tg announce off by default -&gt; safe exception to the two-phase rule). hourly.">
@@ -3938,7 +3938,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> tasks_audit_ping.py -- ЧИТАТЕЛЬ аудита реестра задач (kill-review 2026-07-17). Корень, который закрывает: ночной аудит tasks_index.py 10 дней честно писал &quot;32 stale&quot;, и НИКТО ЕГО НЕ ЧИТАЛ (провал connect-rule: у аудита не было потребителя). Этот скрипт = недостающий потребитель. Раз в неделю читает audit-latest.json и пингует в 03 ТОЛЬКО если есть на что ругаться. Молчание = всё чисто (не спамим з</div>
-<div class=meta><b>⏰</b> cron 0 4 * * 0 (PT) · <b>статус:</b> выход в окне 7д, 46.7ч</div>
+<div class=meta><b>⏰</b> cron 0 4 * * 0 (PT) · <b>статус:</b> выход в окне 7д, 70.7ч</div>
 <div class=meta><b>кому:</b> дашборд Task-Backlog.html; пиры по шине; реестр задач · <b>выход:</b> <span class=lnk>/home/anton/tasks_audit_ping.log</span></div>
 <div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>vault</span></div><div class='rel'>🔗 зависит: <span class=lnk>bus_send.py</span> <span class=lnk>tasks_audit_ping.py</span> <span class=lnk>tasks_index.py</span></div></div><div class="r" data-node="A-2022BAYAREA" data-eng="claude-task"
