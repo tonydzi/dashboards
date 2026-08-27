@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Прочее · [← Windowless-MyOwnPC-Natalia](Windowless-MyOwnPC-Natalia.html) · [grusha-torso-artur-2026-08-14 →](grusha-torso-artur-2026-08-14.html)
+[все дашборды](index.html) · категория: Прочее · [← Windowless-MyOwnPC-Natalia](Windowless-MyOwnPC-Natalia.html) · [git25-redo-2026-08-26 →](git25-redo-2026-08-26.md)
 
 # Паспорт: tracker_write.py — запись размещений в трекер в момент публикации
 

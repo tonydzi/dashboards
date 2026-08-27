@@ -42,7 +42,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-06 17:00</div>
-</div><h2>📦 Уже применённые <span class="cnt">235</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">236</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1921,6 +1921,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 &quot;$OBSIDIAN_VAULT/_machine-bus/_transit/scripts-from-A-2022BAYAREA/install_conflict_merge.py&quot;</code></div>
+  
+</div><div class="card held">
+  <div class="top"><span class="id">scheduled-tasks-doctor-20260826-v2</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
+  <div class="ttl">scheduled_tasks_doctor v2 (md5 69af78cb) — ЗАМЕНЯЕТ пустую посылку scheduled-tasks-doctor-20260826, у которой apply ничего не доставлял</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-27 06:27 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">НЕВЕРНАЯ Ed25519-подпись — подделка пакета или signer != from (signer=MacBook-Anton, from=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import os,shutil,pathlib; v=os.environ.get(\&quot;OBSIDIAN_VAULT\&quot;) or os.path.expanduser(\&quot;~/Obsidian/Anton-Knowledge\&quot;); s=pathlib.Path(v)/\&quot;_machine-bus/_deploy/payloads/scheduled-tasks-doctor-20260826/scheduled_tasks_doctor.py\&quot;; d=pathlib.Path(os.path.expanduser(\&quot;~/.claude/scripts/scheduled_tasks_doctor.py\&quot;)); d.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(s,d); print(\&quot;delivered\&quot;,d)&quot;</code></div>
   
 </div>
 </div></body></html>
