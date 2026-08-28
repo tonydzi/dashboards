@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сведение двух ДР: SMB-рынок + карта агент-секюрити</title>
+<style>
+  :root{
+    --bg:#0d1117;--card:#161b22;--card2:#1c2333;--ink:#e6edf3;--dim:#8b949e;
+    --line:#30363d;--green:#3fb950;--red:#f85149;--amber:#d29922;--blue:#58a6ff;--violet:#bc8cff;--good:#238636;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:24px}
+  .wrap{max-width:1200px;margin:0 auto}
+  h1{font-size:25px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 20px;font-size:14px}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);margin:22px 0 12px;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .flag{background:rgba(210,153,34,.1);border:1px solid var(--amber);border-radius:10px;padding:14px 18px;margin:16px 0}
+  .flag b{color:var(--amber)}
+  .verdict{background:linear-gradient(135deg,#1c2333,#161b22);border:1px solid var(--violet);border-radius:12px;padding:16px 20px;margin-bottom:8px}
+  .verdict b{color:var(--violet)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:11px;text-transform:uppercase}
+  .tag{display:inline-block;padding:2px 7px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+  .yes{background:rgba(63,185,80,.15);color:var(--green);border:1px solid rgba(63,185,80,.4)}
+  .no{background:rgba(248,81,73,.13);color:var(--red);border:1px solid rgba(248,81,73,.35)}
+  .mid{background:rgba(210,153,34,.13);color:var(--amber);border:1px solid rgba(210,153,34,.35)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  ul{margin:6px 0;padding-left:18px}li{margin:4px 0}
+  .empty{background:rgba(63,185,80,.07);border:1px dashed var(--green);border-radius:10px;padding:14px 18px;margin:10px 0}
+  .empty b{color:var(--green)}
+  .foot{color:var(--dim);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:12px}
+  .warn{color:var(--amber)}
+  code{background:var(--card2);padding:1px 5px;border-radius:4px;font-size:12px}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Исследования и альфа</span><span style="margin-left:auto;display:flex;gap:12px"><a href="DR-Registry.html">&larr; DR-Registry</a> · <a href="DR-Synthesis-All-2026-08-04.html">DR-Synthesis-All-2026-08-04 &rarr;</a></span></div>
+<div class="wrap">
+  <h1>🔭 Сведение двух ДР: SMB-рынок + карта агент-секюрити</h1>
+  <p class="sub">DR26-08-26-HUB-01 (SMB) + HUB-02 (конкуренты) · по 2/6 рельс (chatgpt/codex + grok) · 27.08.2026 · <span class="warn">браузерные рельсы не добраны — ядро данных сошлось независимо</span></p>
+
+  <div class="verdict">
+    🎙 <b>Один вывод на оба ДР.</b> Твоя догадка «&lt;1% автоматизированы» — <b>опровергнута</b> (реально ~17–20%); горизонтальный «второй мозг для каждого SMB» — <b>слабейшая упаковка</b>, не запускать. НО карта конкурентов нашла <b>ровно нашу пустую клетку</b>: диспетчерская для гетерогенного мультимашинного флота. Клин рейза = enterprise-security подтверждён вдвойне; SMB = денежная нога, не история рейза.
+  </div>
+
+  <div class="flag">
+    ⚠️ <b>Расхождение с мемо HUB-03 — важное, требует твоего решения.</b> Мемо HUB-03 сказал «покупатель = <b>CISO</b>». Карта конкурентов (HUB-02) уточняет: на <b>seed</b> первый, кто подпишет чек, — <b>CTO / Head of AI Platform / SRE</b> (там, где флот уже крутится), а <b>CISO и банк = серия B</b>. Это не отмена, а уточнение последовательности: платформенный лид платит первым, CISO — на расширении. В деке имеет смысл вести обоих: «покупает platform-лид, бюджет растёт в security».
+  </div>
+
+  <h2>📊 ДР-1 · SMB-рынок: проверка гипотезы «&lt;1%»</h2>
+  <table>
+    <tr><th>Утверждение</th><th>Вердикт</th><th>Цифра</th></tr>
+    <tr><td>«&lt;1% хоть как-то автоматизированы»</td><td><span class="tag no">ЛОЖЬ</span></td><td>~17–20% фирм США/ЕС (10+ сотр.); до 38–55% у крупных (Census/Eurostat)</td></tr>
+    <tr><td>«&lt;1% глубже персонального ChatGPT»</td><td><span class="tag no">СКОРЕЕ ЛОЖЬ</span></td><td>17,7% малых бизнесов платили AI-поставщику (JPMorgan, медиана $28/мес)</td></tr>
+    <tr><td>«&lt;1% автономный multi-agent production»</td><td><span class="tag mid">НЕ ДОКАЗАНА</span></td><td>репрезентативных данных нет — оба отказались выдумывать</td></tr>
+    <tr><td>Горизонтальный «второй мозг для SMB»</td><td><span class="tag no">НЕ ЗАПУСКАТЬ</span></td><td>враг не Glean, а Copilot (30M мест)+Gemini; AI-native &lt;$50/мес → GRR 23% (за год уходит ¾)</td></tr>
+    <tr><td>SMB как денежная нога / консалтинг</td><td><span class="tag mid">ДАТЧИК, НЕ EQUITY</span></td><td>services &gt;30–50% выручки = стрижка оценки; «слой исключений для владельца», не мозг сотруднику</td></tr>
+  </table>
+  <p style="font-size:13px;color:var(--dim)">Прачечная из 20 точек уже платит ~$2–8k/мес за софт-стек. AI ей продаст дилер оборудования или voice-агент — НЕ «второй мозг сотрудника». Grok делает прачечную <i>отрицательным контролем</i>.</p>
+
+  <h2>🗺️ ДР-2 · Карта агент-секюрити: три полки заняты, одна пуста</h2>
+  <div class="grid2">
+    <div class="card">
+      <b style="color:var(--red)">Занято (раздавят):</b>
+      <ul>
+        <li><b>Firewall / guardrails</b> — Lakera, Prompt, Aim, Straiker (201 вендор, ~$1.3B)</li>
+        <li><b>AI-SPM</b> — Noma $132M, Protect AI→PANW $634M, Apex→Tenable</li>
+        <li><b>NHI / identity</b> — Oasis→Cyera ~$1B, Astrix→Cisco, Keycard</li>
+        <li><b>MCP gateway</b> — Runlayer $42M, Archestra, Pomerium (коммодитизируется)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b style="color:var(--green)">Пусто (наш клин):</b>
+      <div class="empty">
+        <b>«Пустая клетка №12»</b> — диспетчерская для <b>гетерогенного мультимашинного</b> флота: разные модели/фреймворки/машины, единый causal-журнал действий и handoff, бюджеты (деньги/права/риск), fleet-wide kill/rollback, memory provenance — в <b>OSS-first self-hosted</b> слое. Ни один вендор не нашёл такого продукта у конкурентов.
+      </div>
+    </div>
+  </div>
+
+  <h2>💰 Деньги категории + M&A</h2>
+  <p style="font-size:13.5px">Датированные транши: <b>2024 ≥$370M · 2025 ≥$330M · 2026 YTD ≥$592M</b> (объём ~удвоился). Живая карта: 398 вендоров, $11.2 млрд, 35 приобретений (19 в 2026). Платформы скупают «галочку CISO»: PANW→Protect AI $634.5M · Cyera→Oasis ~$1B · CrowdStrike→Pangea $212M · Check Point→Lakera $202M · SentinelOne→Prompt ~$180M · OpenAI→Promptfoo · Fortinet→Virtue. <b>Окно для нового объекта (MCP/A2A/multi-host) = 18–36 мес.</b></p>
+
+  <h2>🎯 Позиционирование + инвесторы</h2>
+  <div class="grid2">
+    <div class="card">
+      <b>Формулировка (консенсус):</b>
+      <p style="font-size:13px">«OSS flight recorder + policy runtime для гетерогенного self-hosted мультиагентного флота: детерминированный pre-execution контроль, бюджеты, fleet-wide kill/rollback, cross-agent lineage, memory provenance.»</p>
+      <p style="font-size:13px">MVP = <b>4 кнопки: inventory · policy · kill · log</b>. Анти-колок: «мы сидим на флоте, который Prisma AIRS / Entra Agent ID не видят: cross-model, cross-machine, с бюджетами и human gates».</p>
+    </div>
+    <div class="card">
+      <b>Кому слать чек:</b>
+      <p style="font-size:13px"><span class="tag no">⛔ НЕ первыми</span> IL-cyber (YL, Cyberstarts, Team8) — для no-name без 8200 конверсия низкая.</p>
+      <p style="font-size:13px"><span class="tag yes">✅ Слать</span> Ballistic («лучший под вас»), Work-Bench, Boldstart, YC, EU deep-tech, ангелы-CISO из Protect-AI/HiddenLayer-сети. a16z-seed — при вирусном MCP-артефакте. SYN — прецедент CodeIntegrity.</p>
+      <p style="font-size:12px;color:var(--dim)">Доказанные пути без pedigree: Protect AI (OSS Huntr→PANW), Lakera (research+Gandalf), Promptfoo (a16z seed OSS-команде).</p>
+    </div>
+  </div>
+
+  <h2>✅ 5 proof-points, которых требует seed (консенсус)</h2>
+  <ol style="font-size:13.5px">
+    <li><b>Production dogfood с цифрами</b> — N машин, M агентов, млн tool calls, сработавший kill-switch, MTTK, $ срезанные бюджетом. ⚠️ «мы сами пользуемся» ≠ moat.</li>
+    <li><b>2–3 платящих design-партнёра</b> — пилот $15–40k &gt; логотип F500 без пилота.</li>
+    <li><b>Пересылаемый CISO OSS/research-артефакт</b> — ⭐ у нас есть семя <code>github.com/tonydzi/leash-poc</code>.</li>
+    <li><b>Измеримый контроль на ОПАСНЫХ действиях</b> (exfil/delete/$/эскалация прав) — не «jailbreak %».</li>
+    <li><b>Слайд non-overlap</b> vs Prisma AIRS / Cisco AI Defense / Zenity / Entra Agent ID / Invariant.</li>
+  </ol>
+
+  <div class="foot">
+    Синтез из 4 DR-легов (2 ДР × chatgpt/codex + grok) · субагенты 27.08.2026 · заметки: <span style="color:var(--dim)">insight-DR-DR26-08-26-HUB-01 (SMB) · insight-DR-DR26-08-26-HUB-02 (карта) · decision-DR26-08-25-HUB-03 (мемо)</span> · ⚠️ по 2/6 рельс, chatgpt дал фактуру (SEC-первоисточники), grok — стратегию; спорные суммы сверять по первоисточнику
+  </div>
+</div>
+</body>
+</html>

@@ -25,13 +25,13 @@ select,input{font:12px inherit;padding:4px 6px;border:1px solid var(--border);bo
 .r{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--border);border-radius:7px;padding:9px 11px;margin:0 0 7px;overflow-x:auto}
 .r[data-st=ok]{border-left-color:var(--green)}.r[data-st=silent]{border-left-color:var(--dim)}
 .r[data-st=stale]{border-left-color:var(--amber)}.r[data-st=orphan]{border-left-color:var(--red)}
-.r[data-st=broken]{border-left-color:var(--red)}.r[data-st=manual]{border-left-color:var(--link)}.r[data-st=spent]{border-left-color:#3d444d}.r[data-st=off]{border-left-color:var(--amber)}.r[data-st=mentioned]{border-left-color:var(--amber)}
+.r[data-st=broken]{border-left-color:var(--red)}.r[data-st=vendor],.r[data-st=stub],.r[data-st=silence-ok]{border-left-color:#3d444d;opacity:.75}.r[data-st=foreign]{border-left-color:var(--violet)}.r[data-st=manual]{border-left-color:var(--link)}.r[data-st=spent]{border-left-color:#3d444d}.r[data-st=off]{border-left-color:var(--amber)}.r[data-st=mentioned]{border-left-color:var(--amber)}
 .hd{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:4px}
 .id{font-weight:600;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;margin-right:4px}
 .p{font-size:11px;border-radius:10px;padding:1px 8px;background:#21262d;color:var(--ink);white-space:nowrap}
 .p.ok{background:rgba(63,185,80,.15);color:var(--green)}.p.sil{background:#21262d;color:var(--dim)}
 .p.stl{background:rgba(210,153,34,.15);color:var(--amber)}.p.orp{background:rgba(248,81,73,.15);color:var(--red)}
-.p.brk{background:rgba(248,81,73,.18);color:var(--red)}.p.man{background:rgba(47,129,247,.15);color:var(--link)}.p.spt{background:rgba(139,148,158,.18);color:var(--dim)}.p.off{background:rgba(248,81,73,.10);color:var(--amber)}.p.men{background:rgba(210,153,34,.15);color:var(--amber)}
+.p.brk{background:rgba(248,81,73,.18);color:var(--red)}.p.vnd{background:#1b2027;color:var(--dim)}.p.frn{background:rgba(163,113,247,.15);color:var(--violet)}.p.man{background:rgba(47,129,247,.15);color:var(--link)}.p.spt{background:rgba(139,148,158,.18);color:var(--dim)}.p.off{background:rgba(248,81,73,.10);color:var(--amber)}.p.men{background:rgba(210,153,34,.15);color:var(--amber)}
 .p.mvh{background:rgba(47,129,247,.15);color:var(--link)}.p.mvm{background:rgba(163,113,247,.15);color:var(--violet)}
 .p.mvl{background:#21262d;color:var(--dim)}.p.tmp{background:rgba(210,153,34,.15);color:var(--amber)}
 .p.n8y{background:rgba(63,185,80,.13);color:var(--green)}.p.n8n{background:#1b2027;color:var(--dim)}
@@ -50,14 +50,16 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 .hidden{display:none}
 </style>
 <h1>Рутины флота — опись, статусы и план переезда</h1>
-<div class=sub>Собрано 2026-08-27 · приказ Антона 20.08.2026 · это ОПИСЬ (чтение): ничего не выключено, не перенесено, не почищено</div>
+<div class=sub>Собрано 2026-08-28 · приказ Антона 20.08.2026 · это ОПИСЬ (чтение): ничего не выключено, не перенесено, не почищено</div>
 <div class=alarm><b>⛔ Узлы, не сдавшие опись (3):</b> <span class=mn>HP17-ZBook <i>(peer, Anton)</i></span> <span class=mn>Наталья-ноут <i>(peer, Natalia)</i></span> <span class=mn>MacBook-Ruslana <i>(peer, Ruslana)</i></span><div class=sub>Их рутины в картине НЕ учтены — цифры ниже описывают только сдавшие узлы.</div></div>
-<div style="margin:10px 0"><span class=nb>✅ A-2022BAYAREA — 250 рутин, снято 2026-08-23T00:46:24</span> <span class=nb>✅ FLEET-ANCHOR — 67 рутин, снято 2026-08-27T02:44:46</span> <span class=nb>✅ MacBook-Anton — 170 рутин, снято 2026-08-20T22:57:44</span><span class=nb>🔗 обогащено github-данными: 16 рутин</span></div>
+<div style="margin:10px 0"><span class=nb>✅ A-2022BAYAREA — 250 рутин, снято 2026-08-23T00:46:24</span> <span class=nb>✅ FLEET-ANCHOR — 67 рутин, снято 2026-08-28T02:43:53</span> <span class=nb>✅ MacBook-Anton — 170 рутин, снято 2026-08-20T22:57:44</span><span class=nb>🔗 обогащено github-данными: 16 рутин</span></div>
 <div class=tiles>
 <div class=tile><b>487</b><span>всего рутин</span></div>
-<div class="tile green"><b>115</b><span>🟢 отработали (7д)</span></div>
+<div class="tile green"><b>114</b><span>🟢 отработали (7д)</span></div>
 <div class="tile orange"><b>36</b><span>🔇 молчат / нет прибора</span></div>
-<div class="tile red"><b>2</b><span>🔴 бежит, но падает</span></div>
+<div class=tile><b>5</b><span>🔕 молчание допустимо</span></div>
+<div class=tile><b>2</b><span>🧳 задачи чужих узлов</span></div>
+<div class="tile red"><b>3</b><span>🔴 бежит, но падает</span></div>
 <div class="tile orange"><b>0</b><span>выход протух</span></div>
 <div class=tile><b>67</b><span>✔ разовые, отработали</span></div>
 <div class="tile orange"><b>6</b><span>⏸ выключены</span></div>
@@ -72,7 +74,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <select id=fnode><option value="">узел: все</option><option value='A-2022BAYAREA'>A-2022BAYAREA</option><option value='FLEET-ANCHOR'>FLEET-ANCHOR</option><option value='MacBook-Anton'>MacBook-Anton</option></select>
 <select id=feng><option value="">движок: все</option><option value='claude-task'>claude-task</option><option value='crontab'>crontab</option><option value='daemon'>daemon</option><option value='launchd'>launchd</option></select>
 <select id=fllm><option value="">LLM: все</option><option>claude-cli</option><option>claude-session</option><option>codex</option><option>gemini</option><option>grok</option><option>llm_ask</option><option>none</option><option>openrouter</option></select>
-<select id=fst><option value="">статус: все</option><option value=ok>🟢 отработала</option><option value=silent>🔇 молчит</option><option value=stale>протух</option><option value=spent>✔ разовая отработала</option><option value=off>⏸ выключена</option><option value=manual>✋ ручной запуск</option><option value=mentioned>❔ не доказан</option><option value=broken>🔴 бежит, но падает</option><option value=orphan>🪦 сирота</option></select>
+<select id=fst><option value="">статус: все</option><option value=ok>🟢 отработала</option><option value=silent>🔇 молчит</option><option value=stale>протух</option><option value=spent>✔ разовая отработала</option><option value=off>⏸ выключена</option><option value=manual>✋ ручной запуск</option><option value=mentioned>❔ не доказан</option><option value=broken>🔴 бежит, но падает</option><option value=vendor>🏷 vendor</option><option value=silence-ok>🔕 молчание ок</option><option value=foreign>🧳 чужого узла</option><option value=orphan>🪦 сирота</option></select>
 <select id=fmv><option value="">переносимость: все</option><option value=hub>🏠 хаб</option><option value=mayak>🗼 Маяк</option><option value=local-only>📌 только тут</option></select>
 <select id=ftmp><option value="">временность: все</option><option value=1>⏳ только временные</option><option value=0>только постоянные</option></select>
 <select id=fn8><option value="">n8n: все</option><option value=yes>✔ дублируема</option><option value=no>✘ нет</option></select>
@@ -895,7 +897,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> Canon changelog guard -- &quot;версию бампнули, строку в журнал не написали&quot; больше не проходит тихо. ROOT (measured 2026-08-02). v2.2.1, v2.2.2, v2.2.3 (all 25.07) were bumped in the CLAUDE.md header, published to the whole fleet, ACKed by all 5 nodes -- and left NO journal entry. Two of the three sessions reported to Anton &quot;+ строка в changelog&quot;; the row did not exist. It surfaced only 27.07, by acci</div>
-<div class=meta><b>⏰</b> cron 35 23 * * * (PT) · <b>статус:</b> выход свежий, 3.2ч</div>
+<div class=meta><b>⏰</b> cron 35 23 * * * (PT) · <b>статус:</b> выход свежий, 3.1ч</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/.claude/logs/_canon_changelog_guard.log</span></div>
 <div class=meta><b>переносимость:</b> чистая логика без железа — переживёт офлайн хаба (§7.1 п.2)</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>syncthing</span></div><div class='rel'>🔗 зависит: <span class=lnk>backup.sh</span> <span class=lnk>canon_changelog_guard.py</span> <span class=lnk>canon_write_gate.py</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="crontab"
@@ -950,7 +952,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> hub_down_flip_reminder.py — runs ON MAYAK. Reminds Anton to flip the outreach baton when the HUB has shown no sign of life for ~24h (his 2026-07-16 instruction: &quot;сам мне напомни, если вдруг хаб сутки не показывает признаков жизни&quot;). WHY this lives on Mayak, not hub: a dead hub can&#x27;t remind about its own death. Mayak is the always-on cloud node; it judges hub-silence by the freshness of the hub&#x27;s s</div>
-<div class=meta><b>⏰</b> cron 17 * * * * (PT) · <b>статус:</b> выход свежий, 0.5ч</div>
+<div class=meta><b>⏰</b> cron 17 * * * * (PT) · <b>статус:</b> выход свежий, 0.4ч</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/.claude/scripts/_hub_down_reminder.log</span></div>
 <div class=meta><b>переносимость:</b> чистая логика без железа — переживёт офлайн хаба (§7.1 п.2)</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>flip_outreach_to_mayak.sh</span> <span class=lnk>hub_down_flip_reminder.py</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
@@ -1005,7 +1007,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> revert_guard.py — детектор «волны ресинк-отката» + пофайловый вердикт внутри волны. КЛАСС: узел со сброшенным индексом Syncthing / распакованным поверх живой синк-зоны бэкапом объявляет своё СТАРОЕ дерево «новыми правками» → свежие файлы на всех пирах затираются старьём. Инцидент 15.07: хаб (EEAETB6) раздал _imports состоянием 04.07 (единый mtime = распаковка архива); съело прод-фиксы дважды. Обна</div>
-<div class=meta><b>⏰</b> cron 10 */4 * * * (PT) · <b>статус:</b> выход в окне 7д, 138.6ч</div>
+<div class=meta><b>⏰</b> cron 10 */4 * * * (PT) · <b>статус:</b> выход в окне 7д, 162.6ч</div>
 <div class=meta><b>кому:</b> пиры по шине · <b>выход:</b> <span class=lnk>/home/anton/.claude/logs/revert_guard.log</span></div>
 <div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>vault</span> <span class='p pm'>syncthing</span></div><div class='rel'>🔗 зависит: <span class=lnk>bus_send.py</span> <span class=lnk>claude_fleet.py</span> <span class=lnk>revert_guard.py</span> <span class=lnk>rule_home_guard.py</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
@@ -1046,7 +1048,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
  data-n8="no" data-llm="none"
  data-txt="ai.paloalto.machine-env кладёт machine_key в окружение launchd при каждом входе в систему. зачем (замер 2026-08-01): окружение launchd пустое. все скрипты флота определяют узел лестницей env machine_key -&gt; computername -&gt; hostname; на macos computername нет, а hostname здесь &#x27;macbookpro.home&#x27; и в реестре флота узел зовётся &#x27;macbook-anton&#x27;. итог: под launchd каждый робот считал себя другой машиной -&gt; · machine_bus.me = &#x27;u">
 <div class=hd><span class=id>ai.paloalto.machine-env</span>
-<span class='p sil'>silence-ok</span><span class='p mvl'>📌 только тут</span><span class='p n8n' title='нужны локальные: mac_only, secrets'>n8n ✘</span>
+<span class='p vnd'>🔕 молчание допустимо</span><span class='p mvl'>📌 только тут</span><span class='p n8n' title='нужны локальные: mac_only, secrets'>n8n ✘</span>
 <span class='p eng'>launchd</span></div>
 <div class="why"><b>зачем:</b> Кладёт MACHINE_KEY в окружение launchd при каждом входе в систему. ЗАЧЕМ (замер 2026-08-01): окружение launchd ПУСТОЕ. Все скрипты флота определяют узел лестницей env MACHINE_KEY -&gt; COMPUTERNAME -&gt; hostname; на macOS COMPUTERNAME нет, а hostname здесь &#x27;MacBookPro.home&#x27; и в реестре флота узел зовётся &#x27;MacBook-Anton&#x27;. Итог: под launchd каждый робот считал себя ДРУГОЙ машиной -&gt; · machine_bus.ME = &#x27;u</div>
 <div class=meta><b>⏰</b> демон (KeepAlive/RunAtLoad) · <b>статус:</b> однострел на логин (RunAtLoad): проверка = launchctl getenv MACHINE_KEY</div>
@@ -1255,7 +1257,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
  data-n8="yes" data-llm="claude-session"
  data-txt="auto-mayak-260818-deploy-backlog-drain разгрести 25 непринятых deploy-пакетов fleet-anchor (oldest 486ч): применить/notforme поимённо">
 <div class=hd><span class=id>auto-mayak-260818-deploy-backlog-drain</span>
-<span class='p sil'>foreign</span><span class='p mvm'>🗼 → Маяк</span><span class='p tmp'>⏳ временная · разовая (fireAt); дата в имени 2026-08-18</span><span class='p n8y'>n8n ✔</span>
+<span class='p frn'>🧳 задача чужого узла</span><span class='p mvm'>🗼 → Маяк</span><span class='p tmp'>⏳ временная · разовая (fireAt); дата в имени 2026-08-18</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>claude-task</span></div>
 <div class="why"><b>зачем:</b> Разгрести 25 непринятых deploy-пакетов FLEET-ANCHOR (oldest 486ч): применить/NOTFORME поимённо</div>
 <div class=meta><b>⏰</b> разовая: 2026-08-18 15:12 · <b>статус:</b> задача чужого узла: cwd /home/anton/CLAUDE-Mayak-July26 на этой машине нет</div>
@@ -1266,7 +1268,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
  data-n8="yes" data-llm="claude-session"
  data-txt="auto-mayak-260819-fleet-merge-49 отменена — работа выполнена вживую на маяке 19.08 08:35">
 <div class=hd><span class=id>auto-mayak-260819-fleet-merge-49</span>
-<span class='p sil'>foreign</span><span class='p mvm'>🗼 → Маяк</span><span class='p tmp'>⏳ временная · разовая (fireAt); дата в имени 2026-08-19</span><span class='p n8y'>n8n ✔</span>
+<span class='p frn'>🧳 задача чужого узла</span><span class='p mvm'>🗼 → Маяк</span><span class='p tmp'>⏳ временная · разовая (fireAt); дата в имени 2026-08-19</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>claude-task</span></div>
 <div class="why"><b>зачем:</b> ОТМЕНЕНА — работа выполнена вживую на Маяке 19.08 08:35</div>
 <div class=meta><b>⏰</b> разовая: 2026-08-19 00:45  [ВЫКЛЮЧЕНА] · <b>статус:</b> задача чужого узла: cwd /home/anton/CLAUDE-Mayak-July26 на этой машине нет</div>
@@ -1753,7 +1755,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
  data-n8="no" data-llm="none"
  data-txt="com.google.googleupdater.wake ⚠ не документировано">
 <div class=hd><span class=id>com.google.GoogleUpdater.wake</span>
-<span class='p sil'>vendor</span><span class='p mvl'>📌 только тут</span><span class='p n8n' title='нужны локальные: mac_only'>n8n ✘</span>
+<span class='p vnd'>🏷 vendor-агент</span><span class='p mvl'>📌 только тут</span><span class='p n8n' title='нужны локальные: mac_only'>n8n ✘</span>
 <span class='p eng'>launchd</span></div>
 <div class="why und"><b>зачем:</b> ⚠ не документировано</div>
 <div class=meta><b>⏰</b> каждые 60 мин · <b>статус:</b> vendor-агент — молчание не наша проблема</div>
@@ -1979,7 +1981,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> ack_coverage_watch.py -- СТОРОЖ МОЛЧАНИЯ: узел, которому пишут, а он не отвечает. ЗАЧЕМ. Замер 29-30.07: из 148 адресных сообщений в TG-03 квитанцию получили 33 (22%). MacBook-Ruslana 0 из 24, Наталья 0 из 9, хаб 34%, ноут 20%. Это держалось неделями и НИКТО не заметил -- потому что молчание не производит событий: у сломанного узла и у здорового одинаково пусто. Табло `ack_census.py` показывает ка</div>
-<div class=meta><b>⏰</b> cron 17 */6 * * * (PT) · <b>статус:</b> выход свежий, 2.5ч</div>
+<div class=meta><b>⏰</b> cron 17 */6 * * * (PT) · <b>статус:</b> выход свежий, 2.4ч</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/.claude/scripts/_ack_coverage_log.txt</span></div>
 <div class=meta><b>переносимость:</b> рельса мессенджера завязана на аккаунт/IP — IP-sensitive, §7.2</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>telegram</span> <span class='p pm'>secrets</span></div><div class='rel'>🔗 зависит: <span class=lnk>ack_census.py</span> <span class=lnk>ack_coverage_watch.py</span> <span class=lnk>ack_watchdog.py</span> <span class=lnk>bus_latency.py</span> <span class=lnk>inbox_debt.py</span> <span class=lnk>install_ack_fast_lane.py</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
@@ -2009,7 +2011,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
  data-n8="no" data-llm="none"
  data-txt="ai.paloalto.tg-fast-peek tg_fast_peek.command — fast lane for chat 03 (2026-07-07, anton: &quot;надо везде починить 03&quot;). every 60 s: 0-token telethon peek of the bus group. fires the inbox robot only on a confident new message addressed to this machine (&quot;wake &lt;n&gt;:&quot;). error-class verdicts (&quot;wake:&quot; = fail-open / lock busy) are deliberately ignored here — the 20-min slow lane (inbox_robot launchd tick) keeps fail-open + the circ">
 <div class=hd><span class=id>ai.paloalto.tg-fast-peek</span>
-<span class='p sil'>silence-ok</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
+<span class='p vnd'>🔕 молчание допустимо</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>launchd</span></div>
 <div class="why"><b>зачем:</b> tg_fast_peek.command — FAST LANE for chat 03 (2026-07-07, Anton: &quot;надо ВЕЗДЕ починить 03&quot;). Every 60 s: 0-token Telethon peek of the bus group. Fires the inbox robot ONLY on a CONFIDENT new message addressed to this machine (&quot;WAKE &lt;n&gt;:&quot;). Error-class verdicts (&quot;WAKE:&quot; = fail-open / lock busy) are deliberately IGNORED here — the 20-min slow lane (inbox_robot launchd tick) keeps fail-open + the circ</div>
 <div class=meta><b>⏰</b> каждые 1 мин · <b>статус:</b> fast-lane; функция продублирована slow-lane inbox-robot (20-мин тик, свой лог)</div>
@@ -2312,7 +2314,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p brk'>🔴 бежит, но падает</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> W1a bus-guard (keep the machine-bus MESSAGE rail tiny). ARMED 2026-07-11 (Phase B, #w1a-arm). SCOPE FIX: Mayak&#x27;s MACHINE_BUS_DIR=/root/machine-bus is a superset that ALSO contains the _session-archive-inbound staging pipeline (peers&#x27; session transcripts, ~600MB, a different consumer). BUS_GUARD_EXCLUDE spares that subtree so arming only polices genuine stray large payloads on the message rail (roo</div>
-<div class=meta><b>⏰</b> cron 17 * * * * (PT) · <b>статус:</b> бежит, но ПАДАЕТ (0.5ч): «BOT FAIL: HTTP 400 Bad Request: text is too long»</div>
+<div class=meta><b>⏰</b> cron 17 * * * * (PT) · <b>статус:</b> бежит, но ПАДАЕТ (0.4ч): «BOT FAIL: HTTP 400 Bad Request: text is too long»</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/.claude/scripts/_bus_guard.log</span></div>
 <div class=meta><b>переносимость:</b> чистая логика без железа — переживёт офлайн хаба (§7.1 п.2)</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>bus_guard.py</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="launchd"
@@ -2466,7 +2468,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> regress_run.py - регресс-сетка: прогнать ВСЕ наши тесты и сказать, что сломалось со вчера. Зачем (Антон 28.07): у нас были внешние ЛОМАТЕЛИ (Codex/Grok/Gemini смотрят свежий код), но не было сетки, которая смотрит НАЗАД. Тесты лежали россыпью, никто их не запускал скопом, поэтому «тест есть» и «тест зелёный» были неразличимы. Что делает: находит `_test_*.py` / `test_*.py` в ~/.claude/scripts и $IM</div>
-<div class=meta><b>⏰</b> cron 40 02 * * * (PT) · <b>статус:</b> выход свежий, 24.0ч</div>
+<div class=meta><b>⏰</b> cron 40 02 * * * (PT) · <b>статус:</b> выход свежий, 23.9ч</div>
 <div class=meta><b>кому:</b> пиры по шине · <b>выход:</b> <span class=lnk>/home/anton/.claude/scripts/_regress_cron.log</span></div>
 <div class=meta><b>переносимость:</b> рельса мессенджера завязана на аккаунт/IP — IP-sensitive, §7.2</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>telegram</span> <span class='p pm'>whatsapp</span> <span class='p pm'>secrets</span> <span class='p pm'>vault</span> <span class='p pm'>syncthing</span></div><div class='rel'>🔗 зависит: <span class=lnk>_test_consensus.py</span> <span class=lnk>_test_regress_run.py</span> <span class=lnk>_test_voice_finalizer.py</span> <span class=lnk>bus_send.py</span> <span class=lnk>canon_changelog.py</span> <span class=lnk>coverage_map.py</span> <span class=lnk>fleet_services.py</span> <span class=lnk>regress_fresh.py</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="crontab"
@@ -2609,7 +2611,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p sil'>🔇 молчит</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> Сторож palo-alto.ai: сигналит ТОЛЬКО при смене картины (зелёное -&gt; молчит). Паспорт: E:\Obsidian\Anton-Knowledge\00-System\Palo-Alto-Site-Passport.md</div>
-<div class=meta><b>⏰</b> cron 25 */6 * * * (PT) · <b>статус:</b> лог пуст, mtime 536.3ч назад</div>
+<div class=meta><b>⏰</b> cron 25 */6 * * * (PT) · <b>статус:</b> лог пуст, mtime 560.3ч назад</div>
 <div class=meta><b>кому:</b> пиры по шине · <b>выход:</b> <span class=lnk>/home/anton/.claude/scripts/_palo_alto_site_watch.log</span></div>
 <div class=meta><b>переносимость:</b> чистая логика без железа — переживёт офлайн хаба (§7.1 п.2)</div>
 <div class=meta><b>нужно:</b> <span class='dim'>нет особых</span></div><div class='rel'>🔗 зависит: <span class=lnk>bus_send.py</span> <span class=lnk>palo_alto_site_check.py</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
@@ -3713,7 +3715,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>daemon</span></div>
 <div class="why und"><b>зачем:</b> ⚠ не документировано</div>
-<div class=meta><b>⏰</b> постоянно (uptime 26-20:22:36, pid 3572509) · <b>статус:</b> процесс живой, uptime 26-20:22:36</div>
+<div class=meta><b>⏰</b> постоянно (uptime 27-20:21:43, pid 3572509) · <b>статус:</b> процесс живой, uptime 27-20:21:43</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>⚠ не документировано</span></div>
 <div class=meta><b>переносимость:</b> чистая логика без железа — переживёт офлайн хаба (§7.1 п.2)</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>ssh_peer</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="launchd"
@@ -3785,7 +3787,18 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <div class=meta><b>нужно:</b> <span class='p pm'>secrets</span></div><div class='rel'>🔗 зависит: <span class=lnk>dr_registry.py</span> <span class=lnk>dr_start.py</span></div></div></section><section class=grp data-g="ungrouped">
 <h3>Без группы (⚠ группа не определена по имени/цели) <span class=cnt>153 частей</span></h3>
 <div class=gnote>Это ОДНА группа: выключаешь одну часть — остальные 152 продолжают жить и ждать её выход.</div>
-<div class="r" data-node="MacBook-Anton" data-eng="launchd"
+<div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
+ data-st="broken" data-mv="hub" data-tmp="0"
+ data-n8="yes" data-llm="none"
+ data-txt="cron:brain_embed_openai.py ⚠ не документировано">
+<div class=hd><span class=id>cron:brain_embed_openai.py</span>
+<span class='p brk'>🔴 бежит, но падает</span><span class='p mvh'>🏠 → хаб</span><span class='p n8y'>n8n ✔</span>
+<span class='p eng'>crontab</span></div>
+<div class="why und"><b>зачем:</b> ⚠ не документировано</div>
+<div class=meta><b>⏰</b> cron 10 3 * * * (PT) · <b>статус:</b> бежит, но ПАДАЕТ (23.6ч): «PermissionError: [Errno 13] Permission denied: &#x27;/root/Obsidian/_imports/_brain_oai.npy.tmp&#x27;»</div>
+<div class=meta><b>кому:</b> RAG/второй мозг · <b>выход:</b> <span class=lnk>/home/anton/reindex.log</span></div>
+<div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
+<div class=meta><b>нужно:</b> <span class='p pm'>vault</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="launchd"
  data-st="ok" data-mv="local-only" data-tmp="0"
  data-n8="no" data-llm="none"
  data-txt="ai.paloalto.activitywatch ⚠ не документировано">
@@ -3870,21 +3883,10 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> automations_shard_mayak.py — пер-машинный реестр рутин Маяка (FLEET-ANCHOR). Близнец automations_shard.py (Mac/launchd) для Linux/cron: снимает НАТИВНЫЙ планировщик этой ОС (crontab anton + root, systemd-таймеры не-дистровые) и пишет таблицу в волт 00-System/System-Automations-MAYAK.md (имя файла — исторический ключ шарда, см. TASK #a6b481ff от MacBook-Anton 2026-07-10). Статус-слой v1: расписание</div>
-<div class=meta><b>⏰</b> cron 5 3 * * * (PT) · <b>статус:</b> выход свежий, 23.7ч</div>
+<div class=meta><b>⏰</b> cron 5 3 * * * (PT) · <b>статус:</b> выход свежий, 23.6ч</div>
 <div class=meta><b>кому:</b> ⚠ не документировано · <b>выход:</b> <span class=lnk>/home/anton/.claude/logs/automations_shard.log</span></div>
 <div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
-<div class=meta><b>нужно:</b> <span class='p pm'>vault</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>automations_shard.py</span> <span class=lnk>automations_shard_mayak.py</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
- data-st="ok" data-mv="hub" data-tmp="0"
- data-n8="yes" data-llm="none"
- data-txt="cron:brain_embed_openai.py ⚠ не документировано">
-<div class=hd><span class=id>cron:brain_embed_openai.py</span>
-<span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8y'>n8n ✔</span>
-<span class='p eng'>crontab</span></div>
-<div class="why und"><b>зачем:</b> ⚠ не документировано</div>
-<div class=meta><b>⏰</b> cron 10 3 * * * (PT) · <b>статус:</b> выход свежий, 23.6ч</div>
-<div class=meta><b>кому:</b> RAG/второй мозг · <b>выход:</b> <span class=lnk>/home/anton/reindex.log</span></div>
-<div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
-<div class=meta><b>нужно:</b> <span class='p pm'>vault</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="crontab"
+<div class=meta><b>нужно:</b> <span class='p pm'>vault</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>automations_shard.py</span> <span class=lnk>automations_shard_mayak.py</span></div></div><div class="r" data-node="MacBook-Anton" data-eng="crontab"
  data-st="ok" data-mv="hub" data-tmp="0"
  data-n8="no" data-llm="none"
  data-txt="cron:engines_shadow.py engines_shadow.py — теневой git-канал движков (_imports), волна 1. что делает: возит движки (*.py/*.ps1/*.cmd/*.bat из $imports_root) в git параллельно боевому syncthing и считает метрику «git vs sync-conflict». боевую доставку не трогает: syncthing остаётся единственной рельсой до решения о флипе. почему отдельно от claude_fleet.py: тот возит ~/.claude (боевой канал, p0-фикс 01.08). здесь другое ">
@@ -3925,7 +3927,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8n' title='нужны локальные: secrets'>n8n ✘</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> mayak_retro_lost.sh — ПИР-ЛАЙТ облегчённое ретро потерянных сессий Маяка (cron 04:20 UTC).</div>
-<div class=meta><b>⏰</b> cron 20 4 * * * (PT) · <b>статус:</b> выход свежий, 22.3ч</div>
+<div class=meta><b>⏰</b> cron 20 4 * * * (PT) · <b>статус:</b> выход свежий, 22.2ч</div>
 <div class=meta><b>кому:</b> Антон (очередь одобрений); пиры по шине · <b>выход:</b> <span class=lnk>/home/anton/retro_lost.log</span></div>
 <div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>secrets</span> <span class='p pm'>vault</span> <span class='p pm'>syncthing</span> <span class='p pm'>ssh_peer</span></div><div class='rel'>🔗 зависит: <span class=lnk>approval.py</span> <span class=lnk>machine_bus.py</span> <span class=lnk>mayak_retro_lost.sh</span> <span class=lnk>retro_lost_extract.py</span> <span class=lnk>retro_lost_scan.py</span> <span class=lnk>routine_stamp.sh</span></div></div><div class="r" data-node="FLEET-ANCHOR" data-eng="crontab"
@@ -3936,7 +3938,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
 <span class='p ok'>🟢 отработала</span><span class='p mvh'>🏠 → хаб</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>crontab</span></div>
 <div class="why"><b>зачем:</b> tasks_audit_ping.py -- ЧИТАТЕЛЬ аудита реестра задач (kill-review 2026-07-17). Корень, который закрывает: ночной аудит tasks_index.py 10 дней честно писал &quot;32 stale&quot;, и НИКТО ЕГО НЕ ЧИТАЛ (провал connect-rule: у аудита не было потребителя). Этот скрипт = недостающий потребитель. Раз в неделю читает audit-latest.json и пингует в 03 ТОЛЬКО если есть на что ругаться. Молчание = всё чисто (не спамим з</div>
-<div class=meta><b>⏰</b> cron 0 4 * * 0 (PT) · <b>статус:</b> выход в окне 7д, 94.7ч</div>
+<div class=meta><b>⏰</b> cron 0 4 * * 0 (PT) · <b>статус:</b> выход в окне 7д, 118.7ч</div>
 <div class=meta><b>кому:</b> дашборд Task-Backlog.html; пиры по шине; реестр задач · <b>выход:</b> <span class=lnk>/home/anton/tasks_audit_ping.log</span></div>
 <div class=meta><b>переносимость:</b> нужен волт/gh — есть на хабе; переносимо без потерь</div>
 <div class=meta><b>нужно:</b> <span class='p pm'>vault</span></div><div class='rel'>🔗 зависит: <span class=lnk>bus_send.py</span> <span class=lnk>tasks_audit_ping.py</span> <span class=lnk>tasks_index.py</span></div></div><div class="r" data-node="A-2022BAYAREA" data-eng="claude-task"
@@ -5099,7 +5101,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
  data-n8="yes" data-llm="none"
  data-txt="com.google.keystone.agent ⚠ не документировано">
 <div class=hd><span class=id>com.google.keystone.agent</span>
-<span class='p sil'>vendor</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8y'>n8n ✔</span>
+<span class='p vnd'>🏷 vendor-агент</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>launchd</span></div>
 <div class="why und"><b>зачем:</b> ⚠ не документировано</div>
 <div class=meta><b>⏰</b> ⚠ не документировано · <b>статус:</b> vendor-агент — молчание не наша проблема</div>
@@ -5110,7 +5112,7 @@ tr.y td:nth-child(3){color:var(--green);font-weight:600}tr.n td:nth-child(3){col
  data-n8="yes" data-llm="none"
  data-txt="com.google.keystone.xpcservice ⚠ не документировано">
 <div class=hd><span class=id>com.google.keystone.xpcservice</span>
-<span class='p sil'>vendor</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8y'>n8n ✔</span>
+<span class='p vnd'>🏷 vendor-агент</span><span class='p mvm'>🗼 → Маяк</span><span class='p n8y'>n8n ✔</span>
 <span class='p eng'>launchd</span></div>
 <div class="why und"><b>зачем:</b> ⚠ не документировано</div>
 <div class=meta><b>⏰</b> ⚠ не документировано · <b>статус:</b> vendor-агент — молчание не наша проблема</div>

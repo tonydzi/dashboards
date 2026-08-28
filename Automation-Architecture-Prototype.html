@@ -1,0 +1,146 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Agent-Sessions.html">&larr; Agent-Sessions</a> · <a href="Browser-History-Dashboard.html">Browser-History-Dashboard &rarr;</a></span></div><!doctype html>
+<meta charset="utf-8">
+<title>Карта автоматизации: путь к офферу и рейзу</title>
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --panel2:#1c2230; --ink:#e6edf3; --dim:#9aa7b4;
+    --line:#2d3542; --a:#4da3ff; --b:#7ee787; --c:#ff7b72; --gold:#e3b341;
+    --auto:#1f6f43; --semi:#8a6d1f; --stop:#7d2b28;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:22px 20px 60px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--dim);margin:0 0 20px;font-size:13px}
+  h2{font-size:16px;margin:26px 0 10px;padding-left:10px;border-left:3px solid var(--a)}
+  h2.b{border-color:var(--b)} h2.c{border-color:var(--c)}
+  .lanes{display:grid;grid-template-columns:1fr;gap:14px}
+  .lane{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .lane .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;
+    padding:2px 8px;border-radius:20px;margin-bottom:6px}
+  .tA{background:#12324f;color:#7cc0ff} .tB{background:#123420;color:#8be09a} .tC{background:#3a1614;color:#ff9d96}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+  .step{flex:1;min-width:120px;background:var(--panel2);border:1px solid var(--line);
+    border-radius:8px;padding:9px 10px;position:relative}
+  .step .n{font-size:11px;color:var(--dim)}
+  .step .t{font-weight:650;font-size:13px;margin:2px 0 6px}
+  .step .who{font-size:11px;font-weight:700;border-radius:5px;padding:2px 6px;display:inline-block}
+  .auto{background:var(--auto);color:#c6f6d5} .semi{background:var(--semi);color:#f6e6b8} .stop{background:var(--stop);color:#f6c6c2}
+  .step .rail{display:block;font-size:10.5px;color:var(--dim);margin-top:6px}
+  .arrow{align-self:center;color:var(--line);font-size:18px;flex:0}
+  .note{font-size:12.5px;color:var(--dim);margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+  .bottleneck{color:var(--c);font-weight:600}
+  .funnel{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px;margin-top:10px}
+  .fstep{background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:8px;text-align:center}
+  .fstep .big{font-size:19px;font-weight:700;color:var(--gold)}
+  .fstep .lbl{font-size:11px;color:var(--dim)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 18px;font-size:12px;color:var(--dim)}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+  .warn{background:#2a1e10;border:1px solid #5a4320;border-radius:8px;padding:10px 12px;
+    font-size:12.5px;color:#f0d9a8;margin-top:10px}
+  .have{color:var(--b)} .build{color:var(--gold)}
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12.5px}
+  td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:var(--dim);font-weight:600}
+</style>
+
+<h1>Карта автоматизации — путь к офферу и рейзу</h1>
+<p class="sub">Прототип архитектуры · 27.08.2026 · три конвейера, одна цель · это НЕ код, а карта решений</p>
+
+<div class="legend">
+  <span><i class="dot auto"></i> робот делает сам (0 рук)</span>
+  <span><i class="dot semi"></i> полу-авто (робот готовит, человек жмёт)</span>
+  <span><i class="dot stop"></i> СТОП: только человек / нельзя автоматизировать</span>
+  <span class="have">● уже есть</span>
+  <span class="build">● строим</span>
+</div>
+
+<h2>Труба A — ОБЪЁМ: воронка подачи на mid-роли</h2>
+<div class="lane">
+  <span class="tag tA">цель: mid Applied AI · Solutions Architect · Forward-Deployed · DevRel · НЕ frontier top</span>
+  <div class="flow">
+    <div class="step"><div class="n">1 · DISCOVER</div><div class="t">мониторить борды</div>
+      <span class="who auto">робот</span><span class="rail have">● jobs_watch.py: 11 ATS, 0 токенов, ночью</span>
+      <span class="rail build">● расширить: +Lever +агрегаторы, до ~50 компаний</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">2 · SCORE</div><div class="t">отсеять по профилю</div>
+      <span class="who auto">робот</span><span class="rail build">● детермин. скоринг: роль-матч · seniority · релокация (0 LLM); ✅ work-auth НЕ фильтр — у Антона O-1 США; спорное → Sonnet</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">3 · TAILOR</div><div class="t">резюме+cover под вакансию</div>
+      <span class="who semi">робот-драфт</span><span class="rail build">● шаблон + подстановка; голос Антона = Fable; ТОЛЬКО топ-скор, не 1000 подряд (токены)</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">4 · APPLY</div><div class="t">нажать submit</div>
+      <span class="who stop">человек</span><span class="rail">⛔ перс.данные в форму + аккаунты + captcha = Tier-2/прохибит; массовая автоподача = бан</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">5 · TRACK</div><div class="t">воронка-CRM</div>
+      <span class="who auto">робот</span><span class="rail build">● статусы: подано→просмотр→скрин→звонок→онсайт→оффер</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">6 · FOLLOW-UP</div><div class="t">касание рекрутёра</div>
+      <span class="who semi">робот-драфт</span><span class="rail build">● черновик, отправка = апрув Антона</span></div>
+  </div>
+  <div class="note"><span class="bottleneck">Узкое горлышко = шаг 4 (submit).</span> Всё вокруг него робот. Сам submit — рука человека ЛИБО я по одной через браузер с апрувом. Это граница закона, не лень архитектуры.</div>
+  <div class="warn">📊 <b>Числовая модель — ГИПОТЕЗА, не факт (замерим после первой сотни).</b> Индустрийные ориентиры холодной ATS-заявки senior-уровня: отклик→скрин ~2–5%, скрин→звонок ~40%. Твоё «1000→50 звонков» (5%) достижимо только если бить прицельно по подходящим ролям (O-1 снимает визовый барьер US), а не веером. Веер даёт ~1–2%.</div>
+  <div class="funnel">
+    <div class="fstep"><div class="big">1000</div><div class="lbl">подано (прицельно)</div></div>
+    <div class="fstep"><div class="big">~40</div><div class="lbl">скрин HR (~4%)</div></div>
+    <div class="fstep"><div class="big">~50</div><div class="lbl">звонков цель</div></div>
+    <div class="fstep"><div class="big">?</div><div class="lbl">онсайт — замер</div></div>
+    <div class="fstep"><div class="big">1+</div><div class="lbl">оффер</div></div>
+  </div>
+</div>
+
+<h2 class="b">Труба B — ЗАМЕТНОСТЬ: frontier top-роли (уже крутится, НЕ трогаем массой)</h2>
+<div class="lane">
+  <span class="tag tB">цель: Anthropic / OpenAI Applied AI · DevRel — берут через референс, НЕ через отклик</span>
+  <div class="flow">
+    <div class="step"><div class="n">1</div><div class="t">OSS-вклад чинит чужой issue</div><span class="who auto">робот</span><span class="rail have">● maintainer-weekly, /issue-match</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">2</div><div class="t">ответ мейнтейнера = траст</div><span class="who semi">робот-драфт</span><span class="rail have">● /pr-reply, /contrib-watch</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">3</div><div class="t">контент из каждого шага</div><span class="who auto">робот</span><span class="rail have">● content-factory, тройка постов</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">4</div><div class="t">референс / интро</div><span class="who stop">человек</span><span class="rail">● тёплый путь, не холодная заявка</span></div>
+  </div>
+  <div class="note">Эта труба уже описана в <b>mission-llm-hire-weekly-plan W0–W6</b> + Mission-Pulse. Массовая подача её только ИСПОРТИТ (спам ≠ громкость, §1.5). Оставляем как есть, синхронизируем с Трубой A только реестром компаний.</div>
+</div>
+
+<h2 class="c">Security — КОРПУС + WOW (кормит и рейз, и Трубу B)</h2>
+<div class="lane">
+  <span class="tag tC">white-hat = scope. Ломаем СВОЙ стенд, не чужой прод. Ноль атак на чужие системы.</span>
+  <table>
+    <tr><th>Что</th><th>РУТИНА (корпус, вширь)</th><th>WOW (заголовок, вглубь)</th></tr>
+    <tr><td>Ритм</td><td>раз в сутки, авто</td><td>один раз, руками, 2–4 нед</td></tr>
+    <tr><td>Цель</td><td>«200 воспроизведённых дыр» = ров</td><td>«взлом named-продукта за 4 ч» = то, что перескажут</td></tr>
+    <tr><td>Что ломаем</td><td>новые MCP-серверы из реестра, в одноразовом контейнере, свои фейк-данные</td><td>Notion-класс / Copilot Studio на trial-аккаунте, свои данные</td></tr>
+    <tr><td>Выход</td><td>corpus + responsible disclosure мейнтейнеру</td><td>90-сек видео: атака → наша граница ловит → откат</td></tr>
+  </table>
+  <div class="flow" style="margin-top:12px">
+    <div class="step"><div class="n">1 · DISCOVER</div><div class="t">новые MCP из реестра</div><span class="who auto">робот</span><span class="rail build">● MCP registry + GitHub topic</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">2 · ISOLATE</div><div class="t">одноразовый контейнер</div><span class="who auto">робот</span><span class="rail build">● свои фейк-данные, ноль чужого</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">3 · PROBE</div><div class="t">agent-leash против него</div><span class="who auto">робот</span><span class="rail have">● agent-leash уже есть</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">4 · CLASSIFY</div><div class="t">класс уязвимости</div><span class="who auto">робот</span><span class="rail build">● детектор 0 LLM</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">5 · DISCLOSE</div><div class="t">мейнтейнеру, окно на фикс</div><span class="who stop">человек</span><span class="rail">⛔ исходящее от лица Антона = апрув; сначала фикс, потом публикация</span></div>
+  </div>
+  <div class="warn">⚠️ <b>Граница white-hat:</b> ❌ рутина, атакующая чужие репо в проде = CFAA, бан, суд — НЕ строим. ✅ рутина на СВОём изолированном стенде + coordinated disclosure = легально. Разница = кому принадлежит система, которую ломаешь.</div>
+</div>
+
+<h2>Что уже стоит vs что строим (одним взглядом)</h2>
+<div class="lane">
+  <table>
+    <tr><th>Кусок</th><th>Статус</th><th>Труба</th></tr>
+    <tr><td>jobs_watch.py — монитор 11 ATS, ночная рутина</td><td class="have">● есть, работает</td><td>A</td></tr>
+    <tr><td>Скоринг вакансий под профиль (0 LLM)</td><td class="build">● строим</td><td>A</td></tr>
+    <tr><td>Tailor резюме/cover (шаблон + Fable)</td><td class="build">● строим</td><td>A</td></tr>
+    <tr><td>Воронка-CRM статусов подачи</td><td class="build">● строим</td><td>A</td></tr>
+    <tr><td>maintainer-weekly, /issue-match, /pr-reply</td><td class="have">● есть</td><td>B</td></tr>
+    <tr><td>agent-leash (zero-trust аудит MCP)</td><td class="have">● есть</td><td>Sec</td></tr>
+    <tr><td>Security рутина: discover→isolate→probe→disclose</td><td class="build">● строим</td><td>Sec</td></tr>
+    <tr><td>WOW: точечный взлом named-продукта на видео</td><td class="build">● строим (руками, 2–4 нед)</td><td>Sec</td></tr>
+  </table>
+  <div class="note">Порядок по плечу: <b>WOW-взлом</b> (переворачивает и рейз, и даёт контент Трубе B) → <b>security-рутина</b> (корпус) → <b>скоринг+CRM Трубы A</b> (объём). Труба A без work-auth упрётся в потолок — сначала стоит замерить реальную конверсию на первых 100 подачах, потом решать про 1000.</div>
+</div>
