@@ -1,5 +1,3 @@
-[все дашборды](index.html) · категория: Флот и узлы · [← Mission-Pulse-2026-07-27](Mission-Pulse-2026-07-27.md) · [Mission-Pulse-2026-08-10 →](Mission-Pulse-2026-08-10.md)
-
 ---
 title: "Mission-Pulse 2026-08-03 — итог W3, открытие W4"
 type: dashboard

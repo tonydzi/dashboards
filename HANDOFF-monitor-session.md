@@ -1,5 +1,3 @@
-[все дашборды](index.html) · категория: Инфраструктура и рутины · [← HANDOFF-booking-session](HANDOFF-booking-session.md) · [HANDOFF-s6-devlog-lane-natalia →](HANDOFF-s6-devlog-lane-natalia.md)
-
 # HANDOFF — сборка и запуск «Автономного монитора звонков BB Platinum»
 
 > **Инструкция твоему Claude на ХАБЕ (вставь это целиком и продолжай):**
