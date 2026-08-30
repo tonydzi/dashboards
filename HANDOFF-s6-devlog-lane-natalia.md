@@ -59,7 +59,7 @@ tags: [handoff, content-factory, dev-log, geo, S6, follower]
 - GEO: `02-Decisions\decision-geo-distribution-playbook.md` §5(репо)/§3(llms.txt)/§4(чеклист).
 - Стиль: `08-Templates\style-reality-show.md` (дев-лог = сырьё без драмы).
 - Источники-данные (у тебя есть): `01-Conversations\Claude\Retros\` · `02-Decisions\`.
-- Публичный репо (смотреть, НЕ пушить): `github.com/Palo-Alto-AI-Research-Lab/clawrush`.
+- Публичный репо (смотреть, НЕ пушить): `github.com/tonydzi/clawrush`.
 - Твоя рабочая папка (greenfield): `_imports\content-factory\devlog\`.
 - Бэкап перед записью: `python E:\Obsidian\_imports\vault_backup.py`.
 - Связь с хабом: шина (`/bus` или `/03`) — отчёт о готовности каркаса.

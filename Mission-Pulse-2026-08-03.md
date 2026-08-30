@@ -42,7 +42,7 @@ related: ["[[mission-llm-hire-weekly-plan]]", "[[decision-2026-07-27-oss-lane-ro
 - `supermemoryai/supermemory#1348` ← **@******tish007**
 - `eugeniughelbur/obsidian-second-brain#171` ← **@*******ghelbur**
 
-**Слой B — упоминание в коде чужого репо (11 хитов / 7 репо).** ⚠️ Честно: минимум 5 из 7 выглядят как **машинные радары/дайджесты**, а не человеческое внимание — `duanyytop/agents-radar` (digests/2026-07-31, 08-02), `borq168/radar-forge` (digests), `Klausc06/ai-trends` (`data/repos/Palo-Alto-AI-Research-Lab-the-journey.json` — буквально дамп нашей карточки), `YSheldon/0dayWatchDog` (авто-репорт), `TeleAI-UAGI/Awesome-Agent-Memory`, `Yigtwxx/awesome-rag-production`. Денилист скраперов их не поймал — это третий кандидат на правку.
+**Слой B — упоминание в коде чужого репо (11 хитов / 7 репо).** ⚠️ Честно: минимум 5 из 7 выглядят как **машинные радары/дайджесты**, а не человеческое внимание — `duanyytop/agents-radar` (digests/2026-07-31, 08-02), `borq168/radar-forge` (digests), `Klausc06/ai-trends` (`data/repos/tonydzi-the-journey.json` — буквально дамп нашей карточки), `YSheldon/0dayWatchDog` (авто-репорт), `TeleAI-UAGI/Awesome-Agent-Memory`, `Yigtwxx/awesome-rag-production`. Денилист скраперов их не поймал — это третий кандидат на правку.
 Настоящее исключение в слое B: **`eugeniughelbur/obsidian-second-brain`** — 4 хита, из них `adapters/codex-cli/adapter.sh`, `adapters/agent-skills/adapter.sh`, `adapters/OWNERS.md`, `CHANGELOG.md`. Человек **встроил нас в свои адаптеры** и завёл про это issue. Это самый сильный внешний сигнал недели.
 
 **Слой C — рефереры трафика:** `gist.github.com` ×1 (внешний, засчитан) · `palo-alto.ai` ×4 (наш домен → вычтено).
