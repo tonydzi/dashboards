@@ -1,3 +1,5 @@
+[все дашборды](index.html) · категория: Флот и узлы · [← Mission-Pulse-2026-08-03](Mission-Pulse-2026-08-03.md) · [Mission-Pulse-Dossier-2026-08-12 →](Mission-Pulse-Dossier-2026-08-12.md)
+
 ---
 title: "Mission-Pulse 2026-08-10 — W4 закрыта, W5 (ЗАЯВКИ) стартует завтра"
 date: 2026-08-10

@@ -1,4 +1,4 @@
-[все дашборды](index.html) · категория: Инфраструктура и рутины · [← Waiting-Sessions](Waiting-Sessions.html) · [extra-tasks-2026-07-08 →](extra-tasks-2026-07-08.html)
+[все дашборды](index.html) · категория: Инфраструктура и рутины · [← Watchdog-Door-Audit-2026-08-29](Watchdog-Door-Audit-2026-08-29.html) · [extra-tasks-2026-07-08 →](extra-tasks-2026-07-08.html)
 
 # 🔗 Авто-релинк — что связано автоматически (visibility, не требует действий)
 
@@ -743,4 +743,44 @@
 - [[2026-08-24-julius-vonshield-and-paloalto-ai-research-lab-7VQT5R]] ← добавлено в [[julien-swemmelaar]]
 - [[2026-08-24-planerka-vecher-635EMS]] ← добавлено в [[concept-travel-logistics]]
 - [[2026-08-21-planerka-vecher-ZZW96W]] ← добавлено в [[2026-04-30-monaproof-yaroslav-YZAMa1]]
+
+## 2026-08-29 03:19 — авто-связано 28
+- [[insight-DR-DR26-08-25-MACANTON-03-0740-алексей-кроль-и-creatorport-ai-бизнес-модель-ворон]] ← добавлено в [[insight-DR-DR26-07-28-HUB-27-2339-алексей-кроль-и-creatorport-ai-бизнес-модель-курсы]]
+- [[insight-DR-DR26-08-25-MACANTON-04-0740-дисклеймер-для-самодельной-детской-площадки-в-синт]] ← добавлено в [[concept-windmill-park-project]]
+- [[insight-DR-DR26-08-25-MACANTON-04-0740-дисклеймер-для-самодельной-детской-площадки-в-синт]] ← добавлено в [[1770856178--поиск-брёвен-для-эко-детской-площадки-в-синтре-португалия]]
+- [[insight-DR-DR26-08-25-MACANTON-05-0740-партизанское-продвижение-github-профиля-инженера-д]] ← добавлено в [[insight-DR-DR26-07-28-HUB-03-2338-быстрое-продвижение-github-профиля-белые-и-серые-м]]
+- [[insight-DR-DR26-08-25-MACANTON-06-0740-b2b-что-реально-повышает-конверсию-да-забуканный-з]] ← добавлено в [[insight-DR-DR26-07-26-MACANTON-01-2334-от-тёплого-да-к-забуканному-звонку-тайминги-слот-ф]]
+- [[insight-DR-DR26-08-25-MACANTON-07-0740-как-некодер-лоу-код-контрибьютор-строит-карьеру-и-]] ← добавлено в [[insight-DR-DR26-07-16-MACANTON-01-1533-anthropic-oss-contribution-map]]
+- [[insight-DR-DR26-08-25-MACANTON-08-0740-как-переписывать-ai-текст-чтобы-он-читался-как-тек]] ← добавлено в [[insight-DR-DR26-07-30-MACANTON-01-1456-antislop-humanizer-skill]]
+- [[insight-DR-DR26-08-25-MACANTON-08-0740-как-переписывать-ai-текст-чтобы-он-читался-как-тек]] ← добавлено в [[insight-2026-07-31-antislop-vneshnie-standarty-humanizer-rutext]]
+- [[insight-DR-DR26-08-25-MACANTON-09-0740-сравнение-новых-llm-2026-glm-mimo-kimi-k3-claude-f]] ← добавлено в [[insight-2026-08-04-fb-comments-llm-tool-recommendations]]
+- [[insight-DR-DR26-08-25-MACANTON-09-0740-сравнение-новых-llm-2026-glm-mimo-kimi-k3-claude-f]] ← добавлено в [[insight-DR-DR26-08-04-ZB-01-1437-kitayskie-llm-kak-4-ya-para-glaz]]
+- [[insight-DR-DR26-08-25-MACANTON-10-0740-лимиты-deep-research-в-chatgpt-plus-pro-на-август-]] ← добавлено в [[GPT]]
+- [[insight-DR-DR26-08-25-MACANTON-10-0740-лимиты-deep-research-в-chatgpt-plus-pro-на-август-]] ← добавлено в [[2026-05-28 095353--использую-две-платные-максимальные-pro-версии-chatgpt-по-200]]
+- [[insight-DR-DR26-08-25-MACANTON-11-0740-тизер-как-самодостаточная-польза-для-telegram-чата]] ← добавлено в [[DR26-08-06-NAT-03-1526-SYNTHESIS]]
+- [[insight-DR-DR26-08-25-MACANTON-12-0740-гранты-и-nonprofit-скидки-от-google-microsoft-aws-]] ← добавлено в [[insight-DR-DR26-07-05-ZB-01-non-profit-feasibility-оформление-vs-реальные-дона]]
+- [[insight-DR-DR26-08-25-MACANTON-13-0740-регистрация-nonprofit-501-c-3-в-калифорнии-процесс]] ← добавлено в [[insight-DR-DR26-08-10-HUB-01-1449-nonprofit-online-registration-platforms]]
+- [[insight-DR-DR26-08-25-MACANTON-13-0740-регистрация-nonprofit-501-c-3-в-калифорнии-процесс]] ← добавлено в [[decision-anton-nonprofit-engineer-education-2026-07-02]]
+- [[insight-DR-DR26-08-25-MACANTON-14-0740-первые-команды-и-первый-урок-для-новичков-в-claude]] ← добавлено в [[project-vibe-teach]]
+- [[insight-DR-DR26-08-25-MACANTON-14-0740-первые-команды-и-первый-урок-для-новичков-в-claude]] ← добавлено в [[insight-DR-DR26-08-21-HUB-01-1606-vibeteach-market]]
+- [[insight-DR-DR26-08-25-MACANTON-15-0740-venice-ai-vs-fanvue-сравнение-финансирования-оценк]] ← добавлено в [[insight-DR-DR26-08-24-HUB-01-0830-nsfw-ai-moat]]
+- [[insight-DR-DR26-08-25-MACANTON-15-0740-venice-ai-vs-fanvue-сравнение-финансирования-оценк]] ← добавлено в [[insight-DR-DR26-08-24-HUB-02-1401-company-dossiers]]
+- [[insight-DR-DR26-08-25-MACANTON-16-0740-google-antigravity-2-0-архитектура-интерфейсы-desk]] ← добавлено в [[insight-DR-DR26-06-29-LEG-02-architecting-multi-vendor-llm-collaboration-claude]]
+- [[insight-DR-DR26-08-25-MACANTON-16-0740-google-antigravity-2-0-архитектура-интерфейсы-desk]] ← добавлено в [[insight-DR-DR26-08-02-ZB-04-2324-multi-llm-coding-orchestration-claude-code-as-orch]]
+- [[insight-DR-DR26-08-25-MACANTON-17-0742-huggingface-vendor-cookbook-contributions-as-a-hir]] ← добавлено в [[insight-DR-DR26-07-23-MACANTON-01-1118-hf-hiring-lever]]
+- [[insight-DR-DR26-08-25-MACANTON-17-0742-huggingface-vendor-cookbook-contributions-as-a-hir]] ← добавлено в [[insight-2026-07-28-huggingface-kak-rychag-trudoustroystva]]
+- [[insight-DR-DR26-08-25-MACANTON-18-0745-catchclub-connectli-рынок-конкуренция-и-фандрайзин]] ← добавлено в [[DR26-08-19-MACANTON-01-0013-SYNTHESIS-catchclub-connectli]]
+- [[2026-08-27-planerka-vecher-MFMERZ]] ← добавлено в [[2026-08-26-planerka-vecher-6BQ799]]
+- [[2026-08-28-planerka-utro-BTQ6Y7]] ← добавлено в [[2026-08-27-planerka-utro-WFF9WK]]
+- [[2026-08-24-julius-vonshield-and-paloalto-ai-research-lab]] ← добавлено в [[2026-08-24-julius-vonshield-and-paloalto-ai-research-lab-7VQT5R]]
+
+## 2026-08-30 03:12 — авто-связано 8
+- [[insight-DR-DR26-08-28-MACANTON-01-1114-dual-agent-codex-cli-claude-code-над-общим-волтом-]] ← добавлено в [[insight-DR-DR26-08-16-MACANTON-01-0731-codex-claude-dual-agent-delta]]
+- [[insight-DR-DR26-08-28-MACANTON-01-1114-dual-agent-codex-cli-claude-code-над-общим-волтом-]] ← добавлено в [[insight-2026-08-16-codex-claude-one-vault-delta]]
+- [[2026-08-24-planerka-vecher]] ← добавлено в [[2026-08-24-planerka-vecher-635EMS]]
+- [[2026-08-25-planerka-utro]] ← добавлено в [[2026-08-25-planerka-utro-H59J7M]]
+- [[2026-08-27-planerka-vecher]] ← добавлено в [[2026-08-27-planerka-vecher-MFMERZ]]
+- [[2026-08-28-planerka-utro]] ← добавлено в [[2026-08-28-planerka-utro-BTQ6Y7]]
+- [[2026-08-28-planerka-vecher]] ← добавлено в [[2026-08-28-planerka-vecher-VMGH43]]
+- [[beat-2026-08-28-two-sessions-one-judge-merge]] ← добавлено в [[reglament-koordinatsiya-sessiy-pered-pravkoy-sensitive-failov]]
 

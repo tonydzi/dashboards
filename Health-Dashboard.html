@@ -13,7 +13,7 @@ h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 20px}
 .card{background:var(--card);border-radius:12px;padding:16px}.card h3{margin:0 0 12px;font-size:15px;font-weight:600}
 @media(max-width:760px){.grid{grid-template-columns:1fr}}
 .full{grid-column:1/-1}
-</style></head><body>
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Люди, привычки, быт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Glossary-Anton-Speech.html">&larr; Glossary-Anton-Speech</a> · <a href="LLM-Desktop-Apps.html">LLM-Desktop-Apps &rarr;</a></span></div>
 <h1>🩺 Health — Второй Мозг здоровья</h1>
 <p class="sub" id="sub"></p>
 <div class="kpis" id="kpis"></div>
@@ -24,7 +24,7 @@ h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 20px}
 <div class="card full"><h3>Категории</h3><canvas id="cCat"></canvas></div>
 </div>
 <script>
-const D={"kpi": {"msgs": 1927, "notes": 904, "anton": 1003, "fwd": 273, "media": 460, "links": 255, "chats": 7, "first": "2021-03-06", "last": "2026-07-11"}, "per_chat": {"labels": ["HEALTH Кровь Давление / blood & pr", "Воздержание от пищи / Fasting / Го", "Successful healing head MEDICINE H", "LONGEVITY Weight Loss Похудение ВО", "MEDICINE for MIND / DRUGS for MIND", "MEDICINE HEALTH main", "Health VITAMINS BADs БАДы"], "values": [42, 450, 18, 230, 23, 134, 7]}, "per_year": {"labels": ["2021", "2022", "2023", "2024", "2025", "2026"], "values": [202, 213, 97, 429, 637, 349]}, "per_cat": {"labels": ["blood-pressure", "fasting-community", "neuro-head", "longevity-diet", "nootropics-mind", "medicine-general", "supplements"], "values": [42, 450, 18, 230, 23, 134, 7]}, "origin": {"labels": ["Антон", "внешние", "переслано"], "values": [312, 405, 187]}};
+const D={"kpi": {"msgs": 1965, "notes": 911, "anton": 1003, "fwd": 273, "media": 460, "links": 255, "chats": 7, "first": "2021-03-06", "last": "2026-08-30"}, "per_chat": {"labels": ["HEALTH Кровь Давление / blood & pr", "Воздержание от пищи / Fasting / Го", "Successful healing head MEDICINE H", "LONGEVITY Weight Loss Похудение ВО", "MEDICINE for MIND / DRUGS for MIND", "MEDICINE HEALTH main", "Health VITAMINS BADs БАДы"], "values": [42, 457, 18, 230, 23, 134, 7]}, "per_year": {"labels": ["2021", "2022", "2023", "2024", "2025", "2026"], "values": [202, 213, 97, 429, 637, 387]}, "per_cat": {"labels": ["blood-pressure", "fasting-community", "neuro-head", "longevity-diet", "nootropics-mind", "medicine-general", "supplements"], "values": [42, 457, 18, 230, 23, 134, 7]}, "origin": {"labels": ["Антон", "внешние", "переслано"], "values": [312, 412, 187]}};
 document.getElementById('sub').textContent=`Сообщений ${D.kpi.msgs} · ценных заметок ${D.kpi.notes} · период ${D.kpi.first} — ${D.kpi.last}`;
 const K=[['notes','Ценных заметок'],['msgs','Сообщений'],['anton','От Антона'],['fwd','Переслано'],['media','С вложением'],['links','Со ссылкой'],['chats','Чатов']];
 document.getElementById('kpis').innerHTML=K.map(([k,l])=>`<div class="kpi"><div class="n">${D.kpi[k]}</div><div class="l">${l}</div></div>`).join('');

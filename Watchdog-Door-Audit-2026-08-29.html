@@ -1,0 +1,150 @@
+<div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Waiting-Sessions.html">&larr; Waiting-Sessions</a> · <a href="_Relink-AutoApplied.md">_Relink-AutoApplied &rarr;</a></span></div><title>Watchdog Door Audit</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1d1d1b;--mut:#6b6b66;--card:#fff;--line:#e2e2dd;
+--red:#b3261e;--redbg:#fdeceb;--green:#1a7f4b;--greenbg:#eaf6ef;
+--amber:#8a6100;--amberbg:#fdf3e0;--grey:#5a5a56;--greybg:#f0f0ec;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#16171a;--fg:#e8e8e4;--mut:#9a9a94;--card:#1e1f23;--line:#31333a;
+--redbg:#3a1d1b;--red:#ff8a80;--greenbg:#16301f;--green:#7ee2a8;
+--amberbg:#33280f;--amber:#f0c060;--greybg:#26272b;--grey:#b0b0aa;}}
+:root[data-theme="dark"]{--bg:#16171a;--fg:#e8e8e4;--mut:#9a9a94;--card:#1e1f23;--line:#31333a;
+--redbg:#3a1d1b;--red:#ff8a80;--greenbg:#16301f;--green:#7ee2a8;
+--amberbg:#33280f;--amber:#f0c060;--greybg:#26272b;--grey:#b0b0aa;}
+*{box-sizing:border-box}
+body{margin:0;padding:28px 20px 60px;background:var(--bg);color:var(--fg);
+font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:25px;margin:0 0 4px;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:13.5px;margin-bottom:22px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin-bottom:26px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.kpi b{display:block;font-size:27px;line-height:1.15;font-weight:650}
+.kpi span{color:var(--mut);font-size:12.5px}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:960px}
+th,td{padding:11px 13px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:13.5px}
+th{background:var(--greybg);font-weight:620;font-size:12.5px;color:var(--mut);
+text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.n{font-weight:600}
+code{font:12.3px/1.4 ui-monospace,Consolas,monospace;background:var(--greybg);padding:1.5px 5px;border-radius:4px;word-break:break-all}
+.b{display:inline-block;padding:2.5px 9px;border-radius:20px;font-size:11.5px;font-weight:650;white-space:nowrap}
+.red{background:var(--redbg);color:var(--red)}
+.green{background:var(--greenbg);color:var(--green)}
+.amber{background:var(--amberbg);color:var(--amber)}
+.grey{background:var(--greybg);color:var(--grey)}
+.note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--amber);
+border-radius:8px;padding:15px 18px;margin:22px 0 0}
+.note h3{margin:0 0 8px;font-size:14.5px}
+.note p{margin:7px 0;font-size:13.5px}
+.eli{border-left-color:var(--green)}
+h2{font-size:16.5px;margin:30px 0 12px}
+</style>
+<div class="wrap">
+<h1>Аудит дверей сторожей — узел ZBOOKG8-2023PaloAlto</h1>
+<div class="sub">29.08.2026 · сид root5 (перезапуск сида 14.08; одобрение Антона «+» 14.08 01:46) ·
+два вопроса к каждому сторожу: (1) пингует ли он ТУ ЖЕ дверь, что дёргает потребитель?
+(2) сторожит ли ВОЗРАСТ и СОДЕРЖИМОЕ выхода, а не порт, exit-код или факт запуска?</div>
+
+<div class="kpis">
+<div class="kpi"><b>1</b><span>сторож врал — найден и починен</span></div>
+<div class="kpi"><b>31</b><span>ложных «restarted» за 28–29.08</span></div>
+<div class="kpi"><b>0</b><span>тревог ушло наружу до починки</span></div>
+<div class="kpi"><b>+0</b><span>новых сторожей (правило «+1 = −1»)</span></div>
+<div class="kpi"><b>3 / 5</b><span>находок панели подтвердил, 2 отбил</span></div>
+<div class="kpi"><b>3/15</b><span>выходов протухли по output_freshness</span></div>
+</div>
+
+<div class="scroll"><table>
+<tr><th>Сторож</th><th>Q1 — та ли дверь?</th><th>Q2 — что сторожит?</th><th>Вердикт</th><th>Улика</th></tr>
+<tr><td class='n'>MCP Daemons Watchdog<br><code>mcp_daemons_watchdog_ZBOOKG8-2023PAL.cmd</code></td><td>БЫЛО: нет. Одна TCP-проба; дверь потребителя (реальный MCP-вызов) не трогалась</td><td>БЫЛО: факт запуска. Результат перезапуска не проверялся вообще</td><td><span class='b red'>ВРАЛ / починено</span></td><td><b>ВРАЛ. Починено 29.08.</b> ЗАМЕР: 31 строка «restarted» подряд за 28-29.08, порт 8765 не поднялся НИ РАЗУ, наружу ушло 0 тревог. Корень: шардирование 05.08 заморозило узел за день до общей починки 06.08. Настоящая причина смерти демона — мёртвая авторизация Telegram-сессии, её сторож не лечит в принципе. СТАЛО: две пробы + HTTP-проба + проверка перезапуска через 10с + счётчик подряд-неудач + эскалация в 03 после третьей. Break-тест пройден, эскалация доставлена (message_id 63137).</td></tr>
+<tr><td class='n'>Claude Git Daemon Serve Watchdog<br><code>git_daemon_serve_watchdog.cmd</code></td><td>ДА. Делает настоящий git ls-remote — ту же операцию, что и потребитель</td><td>Содержимое ответа (readiness), а не занятость порта</td><td><span class='b green'>честный</span></td><td><b>ЭТАЛОН.</b> В шапке прямым текстом: «порт-only = false-green», поэтому пробует реальный fetch и убивает залипшего держателя порта. Класс «слушает, но не обслуживает» закрыт 29.06.</td></tr>
+<tr><td class='n'>output_freshness<br><code>output_freshness.py (через housekeeping_daily)</code></td><td>ДА. Смотрит артефакт у ПОТРЕБИТЕЛЯ, а не факт запуска писателя</td><td>ВОЗРАСТ ВЫХОДА, ровно по §5.5</td><td><span class='b green'>честный</span></td><td><b>ЭТАЛОН и сейчас честно КРАСНЫЙ:</b> 3 из 15 выходов протухли (search-catalog-weekly — 20 суток; у fb-diary-writer и content-drain-writer нет stamp-файлов). Прибор работает; неразобранное красное — долг владельцев, не дефект сторожа.</td></tr>
+<tr><td class='n'>TG Channels Check Hourly<br><code>tg_channels_check.py</code></td><td>ЧАСТИЧНО и ЧЕСТНО: Telethon-рельса пробуется настоящим вызовом; MCP скриптом непробиваем в принципе, и это написано в шапке</td><td>Свежесть FATAL в логе MCP (окно 48ч) + живой процесс</td><td><span class='b amber'>граница метода</span></td><td>Не врёт: сам объявляет границу («настоящий вердикт MCP даёт только скилл /tg-check в сессии»). НО побочно от находки №1: mcp_errors.log не менялся с 14.08 при мёртвом демоне — «нет свежих фаталов» здесь значит «демон не доживает до ошибки», а не «всё хорошо». Дыру закрывает починенный сторож MCP.</td></tr>
+<tr><td class='n'>Claude-Desktop-Watchdog<br><code>claude_desktop_watchdog.ps1</code></td><td>ДА (после починки 26.08)</td><td>Возраст выхода + state-файл; есть тормоз MAX_REVIVES_6H</td><td><span class='b green'>честный</span></td><td>Класс «сторож судит прокси, а не предмет» разобран 26.08 (Breakage-Journal), тест _test_desktop_watchdog_freshness.py 13/13 + два мутанта. Именно отсюда взят образец счётчика подряд-неудач, применённый теперь к MCP-сторожу.</td></tr>
+<tr><td class='n'>watchdog_ping.py → n8n dead-man<br><code>n8n.palo-alto.ai/webhook/watchdog-hb</code></td><td>ДА, живая проверка внешнего приёмника</td><td>Молчание источника (dead-man switch)</td><td><span class='b green'>честный</span></td><td>Проверено живым запросом 29.08: HTTP 200. Гипотеза «эндпоинт умер и все пинги тонут молча» — <b>не подтвердилась</b>.</td></tr>
+<tr><td class='n'>ack-watchdog<br><code>_shared/ack_watchdog.py (+ шим в scripts/)</code></td><td>ДА, после разбора 31.07</td><td>Возраст неотвеченного ACK</td><td><span class='b green'>честный</span></td><td>Класс «писатель и читатель на РАЗНЫХ файлах» закрыт шимом; ценой были 354 записи с nudged:0. Шим оставлен намеренно: удаление вернуло бы копию синком.</td></tr>
+<tr><td class='n'>Session Wait Watchdog<br><code>session_wait_watchdog.py</code></td><td>ДА, читает сами транскрипты сессий</td><td>Возраст последней активности + тип ожидания</td><td><span class='b green'>честный</span></td><td>Честно объявляет свой false positive (долгий Bash неотличим от ожидания разрешения) и гасит его порогом 15 мин + капом в 3 пинга.</td></tr>
+<tr><td class='n'>Quarantine-Watch<br><code>quarantine_watch.py</code></td><td>ДА, идёт через approval.py, а не в пустоту</td><td>Новые held-пакеты</td><td><span class='b green'>честный</span></td><td>Остаточный корень «немой аск без id» закрыт 26.07: без id вопрос невидим для approval.py due/check.</td></tr>
+<tr><td class='n'>Syncthing Watchdog Periodic<br><code>syncthing_watchdog.ps1</code></td><td>ДА, живой REST /rest/system/ping и /rest/system/connections</td><td>Число реально подключённых пиров, а не факт процесса</td><td><span class='b green'>честный</span></td><td>Считает connected-пиров через API — это предмет, а не прокси. Ровно то, чего не хватало в инциденте «стоял с 0 пиров 4 часа».</td></tr>
+<tr><td class='n'>TG Heartbeat<br><code>tg_heartbeat.py</code></td><td>ДА, шлёт через ту же Telethon-рельсу, что и шина</td><td>Статус двух каналов от tg_channels_check</td><td><span class='b amber'>граница метода</span></td><td>Транспорт настоящий. Наследует ограничение строки выше: MCP-половина статуса — прокси. Это граница метода, а не дефект сторожа.</td></tr>
+<tr><td class='n'>Прочие 20+ гардов узла<br><code>cron_watchdog, revert_guard, memory_guard, dupgen_guardian, proc_patrol, orphan_engines, browser_rail_watch, oauth_probe, robot_watchdog, session_approvals_doctor и др.</code></td><td>поштучно живым прогоном НЕ проверялось</td><td>по тексту: у 19 из 23 есть работа с возрастом или выходом</td><td><span class='b grey'>не доказано</span></td><td><b>Честная граница аудита:</b> это ТЕКСТОВЫЙ разбор — он ищет слова, а не понимает логику; та же оговорка, что в Watchdog-Symmetry-Audit 06.08. Зелёное по тексту слабее красного по замеру. Не-нулевые коды прошлых прогонов (Revert Guard=5, Fleet Manifest=1, Orphan Engines=1, Regress Grid=1, Token Audit=1) НЕ разбирались — кандидаты в следующий заход.</td></tr>
+</table></div>
+
+<h2>Что именно починено — по одному, с break-тестом</h2>
+<div class="note">
+<h3>MCP Daemons Watchdog — класс «сторож лечит вслепую и рапортует успех»</h3>
+<p><b>Корень (доказан, не гипотеза):</b> 05.08 файл сторожа отшардировали по хостам после клоббера
+синка. Общая починка сторожа приехала 06.08 — <b>на день позже</b>. Узел остался на старой слепой
+версии: одна TCP-проба → перезапуск → строка «restarted» → выход 0. Проверки «а поднялся ли демон»
+не было вообще.</p>
+<p><b>Замер:</b> 17 строк 28.08 плюс 14 строк 29.08, каждые 30 минут; порт 8765 не поднялся ни разу.
+Настоящая причина смерти демона — <code>Telegram client 'default' is not authorized</code>, мёртвая
+сессия. Такое сторож вылечить не может в принципе, а значит обязан был кричать, а не лечить.</p>
+<p><b>Починка (правим дверь существующего, новых сущностей 0):</b> обёртка узла теперь зовёт общий
+закалённый <code>mcp_daemons_watchdog.ps1</code> от 06.08 — две пробы вместо одной, HTTP-проба
+поверх TCP (виден зомби «слушает, но не обслуживает»), перезапуск проверяется через 10 секунд.
+Добавлено сверху: счётчик подряд-неудач на диске (отдельный на порт) и эскалация в чат 03 после
+третьей подряд, не чаще раза в 12 часов. Образец счётчика взят у desktop-сторожа
+(MAX_REVIVES_6H), а не изобретён заново.</p>
+<p><b>Break-тест — убил предмет, сторож обязан покраснеть:</b> живой порт 8768 → молчит, exit 0.
+Мёртвый порт 9999 → вердикт с уликами. Три подряд неудачных оживления → эскалация ушла и
+<b>доставлена в 03, message_id 63137</b>. Выздоровление обнуляет счётчик (проверено: 7 → 0).
+Синтаксис ps1 чист.</p>
+<p><b>Канарейка поймала дефект в самой починке:</b> первый прогон боевой обёртки выплюнул мусор —
+cmd.exe читает .cmd в OEM-кодировке, и кириллица в комментариях превращалась в команды, которые он
+пытался выполнить. Переписано ASCII-only, код возврата внутреннего сторожа проброшен наружу.
+Повторный прогон чист: exit 1 при мёртвом 8765, тишина по 8768.</p>
+</div>
+
+<div class="note">
+<h3>Сторонние глаза: панель вернула BLOCK — и это окупилось</h3>
+<p>Панель ломателей (3 из 3 headless-рельс ответили за 62с) нашла 5 дефектов. Проверил каждый по
+коду, а не на слово: <b>два оказались неверны</b> — «состояние пишется в System32» (все пути
+абсолютные через <code>$env:USERPROFILE</code>) и «сторож 8765 убьёт обёртку живого 8768»
+(<code>mcp_wrapper_cleanup.ps1</code> фильтрует строго по <code>*telegram_mcp_sse.cmd*</code>).</p>
+<p><b>Одна находка оказалась настоящей и попала ровно в тот класс, который я чинил:</b> если демон
+ФЛАПАЕТ, живая проба обнуляет счётчик, но штамп «уже кричали» остаётся — и следующая, уже
+настоящая, смерть молчит до конца 12-часового окна. Сторож снова замолкает, только изящнее.
+Починено: выздоровление снимает И счётчик, И штамп, поэтому окно тишины живёт только на
+НЕПРЕРЫВНОЙ беде. Break-тест: счётчик 3 + штамп → демон ожил → 0 и штампа нет (PASS).</p>
+<p>Две оставшиеся находки — латентные, не текущий отказ, записаны честно: (1) осиротевший
+дочерний процесс может удерживать сокет после убийства cmd-родителя (сейчас не наш случай:
+замер показал 0 процессов сервера и 0 слушателей порта); (2) теоретическая гонка двух копий
+задачи за файл счётчика — прогон ~25с против интервала 30 мин, и оба порта идут последовательно
+в одной обёртке.</p>
+</div>
+
+<div class="note">
+<h3>Что НЕ починено и почему — говорю прямо</h3>
+<p><b>Сам Telegram-MCP на этом узле мёртв</b> (мёртвая авторизация сессии). Это не дефект сторожа,
+а отдельная работа: нужен новый session string. Теперь об этом будет громко — починенный сторож
+доложит в 03 на третьем подряд провале, то есть в ближайшие полтора часа. До сегодня об этом не
+знал никто.</p>
+<p><b>Красное у output_freshness не разбиралось:</b> search-catalog-weekly протух 20 суток, у
+fb-diary-writer и content-drain-writer нет stamp-файлов. Прибор честен, долг за владельцами — вне
+рамок этого сида.</p>
+<p><b>Не-нулевые коды прошлых прогонов</b> (Revert Guard = 5, Fleet Manifest = 1, Orphan Engines = 1,
+Regress Grid = 1, Token Audit = 1) не разбирались. На Mac16 ровно такой exit 1 оказался легальным
+сигналом, а не поломкой, поэтому гадать не буду — это следующий заход.</p>
+<p><b>Граница метода:</b> поштучно живым прогоном проверены 11 сторожей. Остальные разобраны по
+тексту, а текст ищет слова, а не понимает логику. Зелёное по тексту слабее красного по замеру.</p>
+</div>
+
+<div class="note eli">
+<h3>🧒 Простыми словами</h3>
+<p>У нас есть сторожа — маленькие программы, которые проверяют, живы ли другие программы. Я проверял
+не «работает ли сторож», а <b>в ту ли дверь он стучит</b>. Потому что сторож может бодро стучать в
+стену и всем докладывать, что дома всё хорошо.</p>
+<p>Одного такого поймал. Он каждые полчаса «чинил» телеграмного помощника: выключал и включал
+заново и писал в тетрадку «починил». <b>Тридцать один раз подряд за два дня.</b> А помощник ни разу
+не включился — у него просроченный пропуск, и выключением-включением это не лечится вообще никак.
+Сторож этого не проверял: включил и ушёл, довольный собой.</p>
+<p>Теперь он считает свои неудачи. Три раза подряд не вышло — кричит в общий чат: «я не справляюсь,
+нужен человек». Я это специально сломал и проверил, что крик доходит — дошёл. Новых сторожей не
+заводил: починил дверь у старого.</p>
+<p>Ещё пригодилась канарейка — правило проверять на одной машине, прежде чем раздавать всем. Моя же
+починка с первого раза выдала мусор, потому что Windows не понял русские буквы в служебном файле.
+Переписал латиницей — стало чисто.</p>
+</div>
+</div>
