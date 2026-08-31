@@ -1,3 +1,5 @@
+[все дашборды](index.html) · категория: Прочее · [← Holo-Engine-Product-Study](Holo-Engine-Product-Study.html) · [Hotels-Brno-Route-15-16-Aug →](Hotels-Brno-Route-15-16-Aug.html)
+
 # Holo Engine (hiholo.ai) — разбор продукта лида Кирилла Казакова
 
 **Дата замера:** 13.08.2026, 07:25 UTC · узел MyOwnPC-Natalia
