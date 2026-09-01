@@ -42,7 +42,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>STEP 1 (gate): python3 ~/.claude/scripts/_shared/canon_verify.py /root/machine-bus/_transit/canon-from-hub ; exit!=0 -&gt; НЕ применять, посылку в HELD, алерт в 03. STEP 2: read /root/machine-bus/_transit/canon-from-hub/CLAUDE.md -&gt; merge -&gt; write ACK-&lt;node&gt;.json {applied_md5:&#x27;02e6f294b167ac6cad6d44a054db1f60&#x27;} рядом</code></div>
   
-</div><h2>✅ Доверенные — применятся сами <span class="cnt">11</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+</div><h2>✅ Доверенные — применятся сами <span class="cnt">16</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">gh-fleet-full-pat-20260802</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">GitHub-classic-PAT-fleet-full</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-02 23:59 · <span class="ok">подпись ✓</span></div>
@@ -130,6 +130,46 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/chrome_login_shield.py --install-schedule</code></div>
   
+</div><div class="card trusted">
+  <div class="top"><span class="id">judge-llm-fuses-260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">judge_sessions_llm: предохранители против ночного LLM-жора (887 вызовов/ночь)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-31 15:11 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 $OBSIDIAN_VAULT/_machine-bus/_transit/scripts-from-ZBOOKG8-2023PAL/install_judge_fuses.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">elephant-announce-mouth-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">elephant.py: доклады слонов не доезжали в TG-03 (announce звал bus_send с несуществующим --text)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-31 08:41 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/fleet_tools_sync.py --kind scripts --source MacBook-Anton --apply</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">interpreter-pin-posixfix-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Дверь interpreter-pin v3: re-exec в пин узла (лечит ложь селфтеста под python 3.9), USERPROFILE-фолбэк на POSIX, чужая ОС судится warn вместо 20 ложных F1 (Mac16 31.08)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-31 14:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$BUS/_deploy/payloads/interpreter-pin-posixfix-20260831/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">approval-reply-ear-260901-nix</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">УХО КАНАЛА 02: локальный читатель ответов Антона (mac/linux)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-01 12:22 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/install_approval_reply_ear.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dr-rails-live-search-20260901</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">DR-рельсы: живой веб-поиск codex/grok (контракт запрещал ВСЕ инструменты) + русский детектор самопризнания в dr_leg_gate</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-01 15:57 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py dr-rails-live-search-20260901</code></div>
+  
 </div><h2>🗑 Выброшенные <span class="cnt">6</span></h2><div class="card trusted">
   <div class="top"><span class="id">stignore-include-20260731</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">Активировать общие правила игнора claude-imports: .stignore c #include на каждом узле (движок stignore_ensure.py в корне шары, тест 13 кейсов)</div>
@@ -178,7 +218,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/stignore_fix.py</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-30 06:44</div>
-</div><h2>📦 Уже применённые <span class="cnt">198</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">201</span></h2><div class="card trusted">
   <div class="top"><span class="id">engine-visibility-20260720</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">consensus.py ENGINE-VISIBILITY (консенсус #94389335, tier-1, accepts FLEET-ANCHOR+MacBook-Anton, committed хабом 20.07). (1) провал подписи -&gt; строка в stderr + счётчик sigfail-&lt;MACHINE&gt;.json (dark mode СОХРАНЁН, леджер не падает); (2) CLI-гигиена: -h/--help голым и после любого verb, propose отказывает subject на &#x27;-&#x27; (инцидент #4b814fec). Сторож _shared/consensus_config_guard.py CLASS C читает счётчик и алармит на РОСТ -- едет сам синком _shared.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-07-20 20:53 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1276,7 +1316,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
 </div><div class="card trusted">
   <div class="top"><span class="id">git-identity-tonydzi-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
-  <div class="ttl">Флагман GitHub переименован Palo-Alto-AI-Research-Lab -&gt; tonydzi (06.08). Прежний noreply-адрес содержал ИМЯ и протух: новые коммиты перестанут линковаться к аккаунту. Ставим форму с ID, она переименование переживает.</div>
+  <div class="ttl">Флагман GitHub переименован tonydzi -&gt; tonydzi (06.08). Прежний noreply-адрес содержал ИМЯ и протух: новые коммиты перестанут линковаться к аккаунту. Ставим форму с ID, она переименование переживает.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 20:28 · <span class="ok">подпись ✓</span></div>
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
@@ -1761,6 +1801,30 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
   
   <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/deploy_apply.py&quot; 260830-tt-gap-provocation</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">token-ledger-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Токен-аудит v2: дедуп по message.id + флотовый журнал _token-ledger; поставить ночное расписание</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-31 15:10 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/token_audit.py --install --force</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">inbox-debt-truth-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Правда о долгах инбокса: scan учитывает pay-леджер + окно --days N; фикс импорта bus_tg_peek в robot_alert_guard (peek commit падал каждый чистый тик)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-31 22:21 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py inbox-debt-truth-20260831</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">authoring-lease-20260901</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Отпечаток автора на снапшот-коммитах: лиза .git/claude-authoring + хук PostToolUse (класс snapshot-robot-hijacks-authorship, 3 случая)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-01 11:41 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/install_authoring_lease.py&quot; --account bb</code></div>
   
 </div>
 </div></body></html>

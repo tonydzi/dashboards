@@ -34,30 +34,6 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>1) забери дверь из шины: _transit/scripts-from-ZBOOKG8-2023PAL/_test_interpreter_pin.py -&gt; ~/.claude/scripts/ (дубль в _deploy/payloads/interpreter-pin-20260829/ с md5); 2) python3 ~/.claude/scripts/_test_interpreter_pin.py --fix -- пришпилит голые python/python3 в settings.json к machine.env:PYTHON_EXE (бэкап, идемпотентно); 3) нет PYTHON_EXE -&gt; сперва допиши его в ~/.claude/machine.env АБСОЛЮТНЫМ путём к питону С ПАКЕТАМИ ФЛОТА (на venv-узле -- на сам venv); 4) дальше дверь сама едет в ночной regress_run.py</code></div>
   
-</div><h2>✅ Доверенные — применятся сами <span class="cnt">3</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
-  <div class="top"><span class="id">ff-login-shield-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Щит логинов Firefox: user.js анти-разлогин + суточный backup куки в secrets/</div>
-  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-31 01:03 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
-  
-  <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/ff_login_shield.py</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">ff-login-shield-20260831-v2</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Щит логинов FF v2 (кроссплатформенный apply/verify + self-schedule под свою ОС; заменяет ff-login-shield-20260831)</div>
-  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-31 02:44 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
-  
-  <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/ff_login_shield.py --install-schedule</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">chrome-login-shield-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Щит логинов Chrome (verify+backup+restore, кросс-ОС)</div>
-  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-31 03:21 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
-  
-  <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/chrome_login_shield.py --install-schedule</code></div>
-  
 </div><h2>🗑 Выброшенные <span class="cnt">2</span></h2><div class="card trusted">
   <div class="top"><span class="id">_portability-selftest-bypass</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">самотест обхода</div>
@@ -74,7 +50,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-06 17:00</div>
-</div><h2>📦 Уже применённые <span class="cnt">249</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">259</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -1500,7 +1476,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
 </div><div class="card trusted">
   <div class="top"><span class="id">git-identity-tonydzi-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
-  <div class="ttl">Флагман GitHub переименован Palo-Alto-AI-Research-Lab -&gt; tonydzi (06.08). Прежний noreply-адрес содержал ИМЯ и протух: новые коммиты перестанут линковаться к аккаунту. Ставим форму с ID, она переименование переживает.</div>
+  <div class="ttl">Флагман GitHub переименован tonydzi -&gt; tonydzi (06.08). Прежний noreply-адрес содержал ИМЯ и протух: новые коммиты перестанут линковаться к аккаунту. Ставим форму с ID, она переименование переживает.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 20:28 · <span class="ok">подпись ✓</span></div>
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
@@ -2065,6 +2041,86 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
   
   <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/deploy_apply.py&quot; 260830-tt-gap-provocation</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">ff-login-shield-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Щит логинов Firefox: user.js анти-разлогин + суточный backup куки в secrets/</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-31 01:03 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/ff_login_shield.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">ff-login-shield-20260831-v2</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Щит логинов FF v2 (кроссплатформенный apply/verify + self-schedule под свою ОС; заменяет ff-login-shield-20260831)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-31 02:44 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/ff_login_shield.py --install-schedule</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">chrome-login-shield-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Щит логинов Chrome (verify+backup+restore, кросс-ОС)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-31 03:21 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/chrome_login_shield.py --install-schedule</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">token-ledger-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Токен-аудит v2: дедуп по message.id + флотовый журнал _token-ledger; поставить ночное расписание</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-31 15:10 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/token_audit.py --install --force</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">judge-llm-fuses-260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">judge_sessions_llm: предохранители против ночного LLM-жора (887 вызовов/ночь)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-31 15:11 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 $OBSIDIAN_VAULT/_machine-bus/_transit/scripts-from-ZBOOKG8-2023PAL/install_judge_fuses.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">elephant-announce-mouth-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">elephant.py: доклады слонов не доезжали в TG-03 (announce звал bus_send с несуществующим --text)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-31 08:41 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/fleet_tools_sync.py --kind scripts --source MacBook-Anton --apply</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">inbox-debt-truth-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Правда о долгах инбокса: scan учитывает pay-леджер + окно --days N; фикс импорта bus_tg_peek в robot_alert_guard (peek commit падал каждый чистый тик)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-08-31 22:21 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py inbox-debt-truth-20260831</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">interpreter-pin-posixfix-20260831</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Дверь interpreter-pin v3: re-exec в пин узла (лечит ложь селфтеста под python 3.9), USERPROFILE-фолбэк на POSIX, чужая ОС судится warn вместо 20 ложных F1 (Mac16 31.08)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-08-31 14:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$BUS/_deploy/payloads/interpreter-pin-posixfix-20260831/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">authoring-lease-20260901</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Отпечаток автора на снапшот-коммитах: лиза .git/claude-authoring + хук PostToolUse (класс snapshot-robot-hijacks-authorship, 3 случая)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-01 11:41 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/install_authoring_lease.py&quot; --account bb</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dr-rails-live-search-20260901</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">DR-рельсы: живой веб-поиск codex/grok (контракт запрещал ВСЕ инструменты) + русский детектор самопризнания в dr_leg_gate</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-01 15:57 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py dr-rails-live-search-20260901</code></div>
   
 </div>
 </div></body></html>
