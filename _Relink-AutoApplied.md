@@ -784,3 +784,11 @@
 - [[2026-08-28-planerka-vecher]] ← добавлено в [[2026-08-28-planerka-vecher-VMGH43]]
 - [[beat-2026-08-28-two-sessions-one-judge-merge]] ← добавлено в [[reglament-koordinatsiya-sessiy-pered-pravkoy-sensitive-failov]]
 
+## 2026-09-02 03:08 — авто-связано 6
+- [[insight-DR-DR26-08-20-MACANTON-02-2259-n8n-2-x-недоиспользуемые-фичи-и-антипаттерны-под-а]] ← добавлено в [[decision-mcp-stack-tailored-2026]]
+- [[insight-DR-DR26-08-29-MACANTON-01-0742-meta-reusable-deep-research-methodology-template-a]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-01-0740-deep-research-template-no-topic-given-applied-to-u]]
+- [[insight-DR-DR26-08-29-MACANTON-03-0742-резонансы-шумана-и-магнитосфера-земли-физика-измер]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-02-0740-резонансы-шумана-и-магнитосфера-земли-физика-измер]]
+- [[insight-DR-DR26-08-29-MACANTON-05-0742-дисклеймер-для-самодельной-детской-площадки-у-мель]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-04-0740-дисклеймер-для-самодельной-детской-площадки-в-синт]]
+- [[insight-DR-DR26-08-29-MACANTON-05-0742-дисклеймер-для-самодельной-детской-площадки-у-мель]] ← добавлено в [[1771696178--переводы-объявлений-на-португальский-и-английский-для-соседей]]
+- [[insight-DR-DR26-08-29-MACANTON-06-0742-партизанское-продвижение-github-профиля-инженера-д]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-05-0740-партизанское-продвижение-github-профиля-инженера-д]]
+
