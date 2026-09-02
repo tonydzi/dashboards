@@ -50,7 +50,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 -c &quot;import os,shutil,sys;v=os.environ.get(chr(39)+chr(39)) or os.path.expanduser(chr(126)+chr(47)+chr(46)+chr(99));print(1)&quot;</code></div>
   <div class="dec">🗳 решение: <b>discarded</b> · 2026-08-06 17:00</div>
-</div><h2>📦 Уже применённые <span class="cnt">260</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">267</span></h2><div class="card trusted">
   <div class="top"><span class="id">deploy-mechanism</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">РњРµС…Р°РЅРёР·Рј СЂР°СЃРєР°С‚РєРё С„РёРєСЃРѕРІ (deploy_check С…СѓРє)</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:44 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -2129,6 +2129,62 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>sh &quot;$OBSIDIAN_VAULT/_machine-bus/_transit/abzacy-door-20260901/install.sh&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dr-claude-rail-20260901</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">DR: рельса claude берёт токен из store + получает OUTPUT_CONTRACT (2 корневых фикса, замер 0056: 1654б/0 URL -&gt; 35351б/28 URL)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-01 17:39 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 $OBSIDIAN_VAULT/_machine-bus/_transit/dr-claude-rail-20260901/install_dr_claude_rail.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">limit-reaper-win-20260902</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Жнец лимитов: порт macOS-only -&gt; кросс-ОС + schtasks на Windows-узлах (волна 01.09 убила 12+ one-shot app-сессий на Windows без сторожа)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-02 11:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 $OBSIDIAN_VAULT/_machine-bus/_transit/limit-reaper-win-20260902/install_limit_reaper.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">voice-thought-260902</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Голосовая-гипотеза ≠ авто-ДР: kind thought + утренняя пачка ДР-кандидатов (skills/voice-sessions)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-02 11:54 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 -c &quot;import shutil,os; d=os.path.expanduser(&#x27;~/.claude/skills/voice-sessions&#x27;); os.makedirs(d, exist_ok=True); v=os.environ[&#x27;OBSIDIAN_VAULT&#x27;]; shutil.copy(v+&#x27;/_machine-bus/_transit/voice-thought-fix-260902/SKILL.md&#x27;, d+&#x27;/SKILL.md&#x27;)&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">selfheal-class-per-target-260902</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Класс поломки = ДЕФЕКТ, а не канал эскалации: selfheal ключует класс журнала целью (&lt;цель&gt;-dead-task); пер-целевые классы сравниваются точно, без difflib</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-02 12:22 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$OBSIDIAN_VAULT/_machine-bus/_transit/selfheal-class-per-target-260902/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">tt-class-is-defect-260902</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">/tt: имя класса поломки = ПРЕДМЕТ РЕМОНТА, а не канал (дверь правила §5.10)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-02 12:32 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$OBSIDIAN_VAULT/_machine-bus/_transit/tt-class-is-defect-260902/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">ladder-wire-win-20260902</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Лестница токенов: self-wire секции claude_account_ladder на узле (ноут был слеп к своему bb; хаб уже ок; идемпотентно, не затирает готовое)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-02 13:10 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 $OBSIDIAN_VAULT/_machine-bus/_transit/ladder-wire-win-20260902/install_ladder_wire.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">s4u-probe-20260902</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">S4U-probe: detector of night tasks that silently got LogonType=Interactive and would NOT run when logged off (shows + prints the elevated cure, never repairs itself)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-02 15:22 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python &quot;$OBSIDIAN_VAULT/_machine-bus/_transit/s4u-probe-20260902/install.py&quot;</code></div>
   
 </div>
 </div></body></html>
