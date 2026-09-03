@@ -38,7 +38,7 @@
   code{background:#0c0f13;padding:1px 5px;border-radius:4px;font-size:12px;color:#cfe3ff}
 </style>
 </head>
-<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Инфраструктура и рутины</span><span style="margin-left:auto;display:flex;gap:12px"><a href="HANDOFF-s6-devlog-lane-natalia.md">&larr; HANDOFF-s6-devlog-lane-natalia</a> · <a href="Hanging-Tasks-Natalia-2026-07-27.html">Hanging-Tasks-Natalia-2026-07-27 &rarr;</a></span></div>
+<body>
 
 <h1>🧭 Висячие задачи — что РЕАЛЬНО открыто</h1>
 <div class="sub">Аудит на <b>2026-07-16, 09:35 (Лиссабон)</b> · RECALL по каждой против живого состояния · машина A-2022BAYAREA (хаб)</div>
@@ -71,7 +71,9 @@ const ITEMS = [
  {o:'anton',p:'hi', t:'Finance: лимиты закупок без апрува', v:'live',
   w:'Конфликт в Библии: Кондричева 300 / Лавренюк 150 (04-25) ПРОТИВ Оксана 500 / Лена ∞ (11-25). Деньги → решаешь ты. Дай актуальные цифры — впишу канон. (bible-as-prompt)'},
  {o:'anton',p:'hi', t:'arXiv: залить Le Chatelier → Submit', v:'carried',
-  w:'Эндорсмент-трек идёт; финальный Submit жмёшь ты. Блокер W2 ~25.07. (retro 07-15 arxiv)'},
+  w:'Эндорсмент-трек идёт; финальный Submit жмёшь ты. Блокер W2 ~25.07. (retro 07-15 arxiv) ⚠️ УСТАРЕЛО: Submit сделан 23.07 — актуальная строка ниже, в 🟡 (уборка памяти 02-09).'},
+ {o:'anton',p:'med', t:'Hetzner: ротация пароля аккаунта ждёт твоего «+»', v:'live',
+  w:'Открытый хвост из access-offboarding-2026-07 (⏸️ «ПАУЗА по команде Антона»): захват Hetzner-аккаунта почти закрыт, но пароль всё ещё старый `9-upJCPWhWeRjc3d` — его знает внешняя dev-команда, которую мы offboardим. Внутрь они не попадут (упрутся в 2FA), но чистый захват = сменить на подготовленный новый (30 сек работы, ждёт «+» с 14.07 = 7 недель). Логин-почта ******tdevops@gmail.com у Сергея/Олега, 2FA её нейтрализует; смена логин-почты — отдельный шаг позже. Указатель демоутнут в MEMORY-archive (проект июля закрыт) — чтобы хвост не потерялся, вешаю сюда. (уборка памяти 02-09)'},
  {o:'anton',p:'med', t:'2 provisional патента → подача', v:'carried',
   w:'Тайминг «патент vs arXiv» решён (decision 07-15); подача — по твоему «+». (retro 07-15)'},
  {o:'anton',p:'med', t:'ChatGPT-токен в bearer.txt', v:'carried',
@@ -144,6 +146,10 @@ const ITEMS = [
   w:'Библия reglament-avtonomiya-skillov-flota + CLAUDE.md супер-правило + hooks — после сборки писателя. (retro 07-15)'},
  {o:'me',p:'low', t:'Cowork: 3 RESULT-отчёта из _cowork-inbox не вплетены в волт', v:'carried',
   w:'Cowork RETIRED 21.07, но папка _cowork-inbox держит 3 больших RESULT-отчёта, ещё не забранных в волт (/relink+_originals). Хвост при демоуте cowork-vs-cc-division из MEMORY в архив (memory-tidy 07-23).'},
+ {o:'me',p:'hi', t:'🔴 arXiv: статья висит в модерации 41 день, обещанная эскалация в **lp@arxiv.org так и не ушла', v:'live',
+  w:'ЗАМЕРЕНО ЖИВЬЁМ 02.09 во время уборки памяти: arXiv API `all:Dziatkovskii` = opensearch:totalResults 0, то есть постоянного ID нет до сих пор. Статья Le Chatelier подана 23.07 (submit/7825136, cs.MA primary + cross-list cs.CE/cs.CR), статус после сабмита был «on hold». Сам файл arxiv-endorse-watch ещё 29.07 назначил: «Эскалация 30.07 (>7 дней тишины) → **lp@arxiv.org». Следов письма нет нигде в волте (grep help@arxiv даёт только _DR-Registry и старые транскрипты) — то есть сторож досчитал до порога, а руку никто не приложил: прошло 41 день вместо 7. Живой индекс это скрывал — строка читалась как «только что подали». Действие: письмо в **lp@arxiv.org со ссылкой на submit/7825136 (короткое исходящее по делу = класс C, делаю сам), затем вписать ID в mission-llm-hire-weekly-plan W2. Наверху в 🔴 висит старая строка «arXiv: залить → Submit» — она про уже сделанный шаг, помечена устаревшей. (уборка памяти 02-09)'},
+ {o:'me',p:'low', t:'Hetzner Robot: доступ к noahotc (dedicated) так и не проверен', v:'carried',
+  w:'Второй открытый хвост из access-offboarding-2026-07 (🟡 в файле): robot.hetzner.com — это Hetzner Robot/dedicated, а не Cloud, поэтому наш HCLOUD_TOKEN им не управляет (видит только fleet-anchor). Проверка доступа к noahotc с 14.07 не сделана. Пока не проверено, offboarding внешней команды закрыт не полностью. Указатель демоутнут в MEMORY-archive (проект июля закрыт) — вешаю сюда, чтобы хвост не потерялся. (уборка памяти 02-09)'},
 
  // ⏳ МАШИНЫ / ВНЕШНЕЕ
  {o:'mach',p:'med', t:'Бриф при старте сессии: вердикт Наташи просрочен с 13.08', v:'live',
