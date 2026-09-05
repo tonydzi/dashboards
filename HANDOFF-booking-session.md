@@ -1,3 +1,5 @@
+[все дашборды](index.html) · категория: Инфраструктура и рутины · [← HANDOFF-alpha-recall-comments](HANDOFF-alpha-recall-comments.md) · [HANDOFF-monitor-session →](HANDOFF-monitor-session.md)
+
 # HANDOFF — продолжение сессии «бот-бронировщик звонков»
 
 > **Инструкция твоему Claude (вставь это целиком и продолжай):**

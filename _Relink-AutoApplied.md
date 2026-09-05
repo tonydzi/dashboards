@@ -792,3 +792,30 @@
 - [[insight-DR-DR26-08-29-MACANTON-05-0742-дисклеймер-для-самодельной-детской-площадки-у-мель]] ← добавлено в [[1771696178--переводы-объявлений-на-португальский-и-английский-для-соседей]]
 - [[insight-DR-DR26-08-29-MACANTON-06-0742-партизанское-продвижение-github-профиля-инженера-д]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-05-0740-партизанское-продвижение-github-профиля-инженера-д]]
 
+## 2026-09-03 03:16 — авто-связано 12
+- [[insight-2026-09-02-github-landscape-second-brain]] ← добавлено в [[decision-opensource-secondbrain-charm]]
+- [[insight-DR-DR26-08-29-MACANTON-07-0742-как-переписывать-ai-сгенерированный-текст-в-челове]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-08-0740-как-переписывать-ai-текст-чтобы-он-читался-как-тек]]
+- [[insight-DR-DR26-08-29-MACANTON-07-0742-как-переписывать-ai-сгенерированный-текст-в-челове]] ← добавлено в [[insight-DR-DR26-07-30-MACANTON-01-1456-antislop-humanizer-skill]]
+- [[insight-DR-DR26-08-29-MACANTON-09-0742-истории-успеха-некодеров-и-low-code-contributors-н]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-07-0740-как-некодер-лоу-код-контрибьютор-строит-карьеру-и-]]
+- [[insight-DR-DR26-08-29-MACANTON-10-0742-сравнение-новых-ллм-2026-glm-mimo-kimi-k3-vs-claud]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-09-0740-сравнение-новых-llm-2026-glm-mimo-kimi-k3-claude-f]]
+- [[insight-DR-DR26-08-29-MACANTON-11-0742-лимиты-deep-research-в-chatgpt-plus-pro-на-август-]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-10-0740-лимиты-deep-research-в-chatgpt-plus-pro-на-август-]]
+- [[insight-DR-DR26-08-29-MACANTON-13-0743-тизер-как-сжатая-польза-как-делать-короткие-посты-]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-11-0740-тизер-как-самодостаточная-польза-для-telegram-чата]]
+- [[insight-DR-DR26-08-29-MACANTON-14-0743-гранты-и-nonprofit-льготы-сша-2026-что-реально-дос]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-12-0740-гранты-и-nonprofit-скидки-от-google-microsoft-aws-]]
+- [[insight-DR-DR26-08-29-MACANTON-14-0743-гранты-и-nonprofit-льготы-сша-2026-что-реально-дос]] ← добавлено в [[decision-nonprofit-fiscal-sponsorship-2026-07-05]]
+- [[insight-DR-DR26-08-29-MACANTON-15-0743-регистрация-nonprofit-501-c-3-в-калифорнии-сервисы]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-13-0740-регистрация-nonprofit-501-c-3-в-калифорнии-процесс]]
+- [[insight-DR-DR26-08-29-MACANTON-15-0743-регистрация-nonprofit-501-c-3-в-калифорнии-сервисы]] ← добавлено в [[insight-DR-DR26-08-10-HUB-01-1449-nonprofit-online-registration-platforms]]
+- [[insight-DR-DR26-08-29-MACANTON-16-0743-первые-команды-и-минимальный-онбординг-новичков-в-]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-14-0740-первые-команды-и-первый-урок-для-новичков-в-claude]]
+
+## 2026-09-04 03:11 — авто-связано 11
+- [[insight-DR-DR26-08-29-MACANTON-17-0743-google-antigravity-2-0-архитектура-интерфейсы-cli-]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-16-0740-google-antigravity-2-0-архитектура-интерфейсы-desk]]
+- [[insight-DR-DR26-08-29-MACANTON-18-0743-venice-ai-vs-fanvue-проверка-фактов-про-unicorn-ст]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-15-0740-venice-ai-vs-fanvue-сравнение-финансирования-оценк]]
+- [[insight-DR-DR26-08-29-MACANTON-18-0743-venice-ai-vs-fanvue-проверка-фактов-про-unicorn-ст]] ← добавлено в [[insight-DR-DR26-08-24-HUB-01-0830-nsfw-ai-moat]]
+- [[insight-DR-DR26-08-29-MACANTON-19-0743-почему-у-древних-статуй-отбиты-носы-и-лица-эрозия-]] ← добавлено в [[insight-DR-DR26-08-29-MACANTON-20-0743-почему-у-древних-статуй-по-всему-миру-часто-отбит-]]
+- [[insight-DR-DR26-08-29-MACANTON-20-0743-почему-у-древних-статуй-по-всему-миру-часто-отбит-]] ← добавлено в [[insight-DR-DR26-08-29-MACANTON-19-0743-почему-у-древних-статуй-отбиты-носы-и-лица-эрозия-]]
+- [[insight-DR-DR26-08-29-MACANTON-21-0747-catchclub-connectli-рынок-платных-telegram-клубов-]] ← добавлено в [[insight-DR-DR26-08-25-MACANTON-18-0745-catchclub-connectli-рынок-конкуренция-и-фандрайзин]]
+- [[insight-DR-DR26-08-29-MACANTON-21-0747-catchclub-connectli-рынок-платных-telegram-клубов-]] ← добавлено в [[DR26-08-19-MACANTON-01-0013-SYNTHESIS-catchclub-connectli]]
+- [[insight-DR-DR26-08-29-MACANTON-22-0759-eu-entity-для-non-dilutive-funding-eic-horizon-выб]] ← добавлено в [[insight-DR-DR26-08-24-MACANTON-02-1025-выбор-eu-юрисдикции-не-португалия-для-второго-юрли]]
+- [[insight-DR-DR26-08-30-MACANTON-01-aaa-gitbook-история-platinum-engineering-и-ai-crm-]] ← добавлено в [[Platinum-Engineering]]
+- [[insight-DR-DR26-08-30-MACANTON-01-aaa-gitbook-история-platinum-engineering-и-ai-crm-]] ← добавлено в [[insight-DR-DR26-08-30-MACANTON-02-несовпадение-содержания-файл-озаглавлен-успех-на-g]]
+- [[insight-DR-DR26-08-30-MACANTON-02-несовпадение-содержания-файл-озаглавлен-успех-на-g]] ← добавлено в [[insight-DR-DR26-08-30-MACANTON-01-aaa-gitbook-история-platinum-engineering-и-ai-crm-]]
+

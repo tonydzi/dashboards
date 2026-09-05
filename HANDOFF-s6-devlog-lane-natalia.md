@@ -1,3 +1,5 @@
+[все дашборды](index.html) · категория: Инфраструктура и рутины · [← HANDOFF-monitor-session](HANDOFF-monitor-session.md) · [Hanging-Tasks-Dashboard →](Hanging-Tasks-Dashboard.html)
+
 ---
 title: "HANDOFF — S6 Дев-лог / GEO-лейн (для Натальи, ноут MYOWNPC)"
 type: handoff
