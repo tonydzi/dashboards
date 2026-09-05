@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Массовая чистка спама — масштаб</title>
+<style>
+:root{--bg:#0f1216;--card:#161b22;--ink:#e6edf3;--dim:#8b949e;--line:#30363d;--red:#f85149;--amber:#d29922;--green:#3fb950;--blue:#58a6ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:18px}
+h1{font-size:20px;margin:0 0 4px}h2{font-size:15px;color:var(--dim);margin:22px 0 10px;text-transform:uppercase;letter-spacing:.5px}
+.sub{color:var(--dim);margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.big{font-size:30px;font-weight:700}.k{color:var(--dim);font-size:13px}
+.red{color:var(--red)}.amber{color:var(--amber)}.green{color:var(--green)}.blue{color:var(--blue)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}th{color:var(--dim);font-weight:600}
+.bar{height:9px;border-radius:5px;background:var(--blue);display:inline-block;vertical-align:middle}
+.warn{background:#2d1a12;border:1px solid var(--amber);border-radius:10px;padding:12px 14px;margin:16px 0}
+.ok{background:#12211a;border:1px solid var(--green);border-radius:10px;padding:12px 14px;margin:16px 0}
+code{background:#0b0e12;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12px}
+.mono{font-family:ui-monospace,Menlo,monospace}
+</style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Прочее</span><span style="margin-left:auto;display:flex;gap:12px"><a href="TRIZ-vs-AK47.html">&larr; TRIZ-vs-AK47</a> · <a href="Top-10-Problems-Month-2026-08-13.html">Top-10-Problems-Month-2026-08-13 &rarr;</a></span></div>
+
+<h1>🧹 Массовая чистка нашего спама — масштаб под правило</h1>
+<p class="sub">Правило: холодные треды (последний контакт &gt;3 мес) → удалить ВСЕ наши сообщения после последней реплики лида. Свежие (≤3 мес) не трогаем. READ-ONLY замер архива хаба · cutoff 2026-06-05.</p>
+
+<div class="grid">
+  <div class="card"><div class="big red">13 803</div><div class="k">тредов под чистку</div></div>
+  <div class="card"><div class="big red">62 738</div><div class="k">наших сообщений — навсегда</div></div>
+  <div class="card"><div class="big amber">12 653</div><div class="k">из них «осмысленных» (calendly/интро/фоллоуап)</div></div>
+  <div class="card"><div class="big green">5 270</div><div class="k">тредов защищено правилом 3 мес</div></div>
+</div>
+
+<div class="warn">⚠️ <b>62 738 необратимых удалений</b> у обеих сторон (revoke). Из них <b>12 653 выглядят осмысленными</b> — правило сносит и их (архив <span class="mono">dm_messages.db</span> хранит текст, но живой тред теряет). Твои <b>4 рабочих аккаунта</b> под пулемётной очередью удалений = риск flood-wait/бана → раскатка порциями, не залпом.</div>
+
+<h2>По аккаунтам</h2>
+<table>
+<tr><th>аккаунт</th><th>сообщений</th><th></th></tr>
+<tr><td class="mono">@*****numvc1</td><td>27 218</td><td><span class="bar" style="width:100%"></span></td></tr>
+<tr><td class="mono">@***ySsd</td><td>26 683</td><td><span class="bar" style="width:98%"></span></td></tr>
+<tr><td class="mono">@***yDzi</td><td>8 508</td><td><span class="bar" style="width:31%"></span></td></tr>
+<tr><td class="mono">@*0*0AA</td><td>329</td><td><span class="bar" style="width:2%"></span></td></tr>
+</table>
+
+<h2>Размер хвоста (сколько наших сообщений в треде)</h2>
+<table>
+<tr><th>хвост</th><th>тредов</th></tr>
+<tr><td>1 сообщение</td><td>3 453</td></tr>
+<tr><td>2</td><td>2 809</td></tr>
+<tr><td>3–5</td><td>4 148</td></tr>
+<tr><td>6–10</td><td>2 010</td></tr>
+<tr><td>11+</td><td>1 151</td></tr>
+</table>
+
+<h2>🐤 Канарейка — первые 10 (самые холодные, 2019–2020)</h2>
+<p class="sub">Пробная порция: древние треды, крошечные хвосты. С них начинаем — если revoke и матч верны, аккаунты живы, раскатываем дальше порциями.</p>
+<table>
+<tr><th>тред</th><th>peer_id</th><th>наших</th><th>осмысл.</th><th>последний контакт</th><th>аккаунт</th></tr>
+<tr><td>julia-savytska</td><td class="mono">281904164</td><td>1</td><td>0</td><td>2019-09-21</td><td class="mono">@***ySsd</td></tr>
+<tr><td>lead-418916675</td><td class="mono">418916675</td><td>1</td><td>0</td><td>2019-12-09</td><td class="mono">@***yDzi</td></tr>
+<tr><td>lead-1061730044</td><td class="mono">1061730044</td><td>2</td><td>0</td><td>2019-12-10</td><td class="mono">@***yDzi</td></tr>
+<tr><td>haritonov-danil</td><td class="mono">320545271</td><td>1</td><td>0</td><td>2019-12-31</td><td class="mono">@***yDzi</td></tr>
+<tr><td>mikhail-kudryashev</td><td class="mono">981039921</td><td>1</td><td>1</td><td>2020-02-05</td><td class="mono">@***yDzi</td></tr>
+<tr><td>lead-831872582</td><td class="mono">831872582</td><td>1</td><td>0</td><td>2020-02-15</td><td class="mono">@***yDzi</td></tr>
+<tr><td>lead-599906450</td><td class="mono">599906450</td><td>9</td><td>0</td><td>2020-02-16</td><td class="mono">@***yDzi</td></tr>
+<tr><td>lead-539981564</td><td class="mono">539981564</td><td>4</td><td>0</td><td>2020-03-20</td><td class="mono">@***yDzi</td></tr>
+<tr><td>anthony-vippond</td><td class="mono">528093361</td><td>3</td><td>0</td><td>2020-04-13</td><td class="mono">@***yDzi</td></tr>
+<tr><td>lead-127013668</td><td class="mono">127013668</td><td>1</td><td>0</td><td>2020-04-14</td><td class="mono">@***yDzi</td></tr>
+</table>
+
+<div class="ok">✅ Манифест собран (read-only): полный список 13 803 тредов × сообщения лежит на хабе <span class="mono">%TEMP%\mass_manifest.json</span>. Ничего не удалено. Кнопку «стереть» жмёшь ты — я готовлю исполнитель dry-run-first (сначала показывает, что снесёт, потом с флагом удаляет порциями + verify).</div>
+
+</body></html>
