@@ -8,7 +8,7 @@
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;padding:22px}
 h1{font-size:22px;margin:0 0 4px}
 .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
-.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));margin-bottom:22px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-bottom:22px}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
 .kpi b{display:block;font-size:26px;line-height:1.1}
 .kpi span{color:var(--dim);font-size:12px}
@@ -16,124 +16,158 @@ h1{font-size:22px;margin:0 0 4px}
 .card.h{border-left:4px solid var(--hot)}
 .card.mh{border-left:4px solid var(--hi)}
 .card.m{border-left:4px solid var(--med)}
+.card.q{border-left:4px solid #55606f}
 .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--dim);margin-right:6px}
 .tag.hot{background:#3a1416;color:#ff8a8c;border-color:#5a1f22}
 .tag.hi{background:#3a2c10;color:#ffce70;border-color:#5c471a}
 .tag.med{background:#12283f;color:#8ec6ff;border-color:#1d3f61}
 .tag.new{background:#123024;color:#7ee2b0;border-color:#1c4a37}
+h2{font-size:15px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin:26px 0 10px;font-weight:600}
 h3{margin:8px 0 6px;font-size:16px}
 .why{color:var(--dim);font-size:13.5px;margin:6px 0}
 ul{margin:6px 0 0 18px;padding:0;font-size:13px;color:var(--dim)}
 li{margin:2px 0}
 table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
 th{color:var(--dim);font-weight:500}
 .foot{color:var(--dim);font-size:12px;margin-top:18px;border-top:1px solid var(--line);padding-top:12px}
 .eli{background:#141b16;border:1px solid #1f3a2a;border-radius:10px;padding:14px;margin-top:18px}
 .note{background:#151822;border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:14px;font-size:13.5px;color:var(--dim)}
 code{background:#0b0d11;padding:1px 5px;border-radius:4px;font-size:12.5px}
+.wrap{overflow-x:auto}
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Secrets-Junction-Audit-2026-07-20.html">&larr; Secrets-Junction-Audit-2026-07-20</a> · <a href="Token-Audit-2026-07-05.html">Token-Audit-2026-07-05 &rarr;</a></span></div>
 
 <h1>Skill-Gap Audit</h1>
-<div class="sub">Прогон 2026-08-31 01:00 (Лиссабон) &middot; хаб A-2022BayArea &middot; корпус 336 сессий за 14 дней (17.08&ndash;30.08), 6 машин &middot; read-only</div>
+<div class="sub">Прогон <b>2026-09-07 00:54</b> (Лиссабон) &middot; хаб A-2022BAYAREA &middot; корпус <b>380 сессий</b> за 14 дней (24.08&ndash;07.09), 6 машин &middot; read-only &middot; скан отдан Sonnet-субагенту, ранжирование моё</div>
 
 <div class="grid">
-  <div class="kpi"><b>336</b><span>сессий в окне: 204 ручных (5 человеческих машин) + 132 автомат. пинга Маяка (FLEET-ANCHOR)</span></div>
-  <div class="kpi"><b>174</b><span>установленных скиллов (+10 с 24.08) &mdash; сверено с каждым кластером, ни один не покрыл флаги</span></div>
-  <div class="kpi"><b>3</b><span>HIGH-пробела &mdash; все три перенос с прошлого прогона, ни одного НОВОГО HIGH</span></div>
-  <div class="kpi"><b>0</b><span>новых HIGH &rarr; в чат 03 сегодня только дежурный понедельничный heartbeat</span></div>
+  <div class="kpi"><b>380</b><span>сессий в окне (все машины)</span></div>
+  <div class="kpi"><b>183</b><span>установленных скилла (+9 за неделю)</span></div>
+  <div class="kpi"><b>51</b><span>задача в реестре хаба</span></div>
+  <div class="kpi"><b>4</b><span>пробела HIGH (1 новый)</span></div>
+</div>
+
+<h2>HIGH &mdash; строить</h2>
+
+<div class="card h">
+  <span class="tag hot">HIGH</span><span class="tag new">НОВЫЙ</span><span class="tag">дешёвая обёртка</span>
+  <h3>/codex-onboard &mdash; поднять Codex CLI на машине и проверить, что он видит волт</h3>
+  <div class="why">5 сессий на <b>4 разных машинах</b> за 5 дней (31.08&ndash;04.09). Каждый раз человек руками выясняет одно и то же: поставить Codex, дать ему AGENTS.md, проверить пути волта после синка.</div>
+  <ul>
+    <li>31.08 HP17-ZBook &mdash; «+AINATIVE business with СС and CODEX»</li>
+    <li>02.09 MacBook-Anton &mdash; «+Кодекс и инструкции»</li>
+    <li>02.09 MyOwnPC-Natalia &mdash; «Проверка совместимости кодекса с Volt»</li>
+    <li>03.09 MacBook-Ruslana &mdash; «Проверка кодекса и волта»</li>
+    <li>04.09 MacBook-Ruslana &mdash; «Codex и Vault: структура папок и синхронизация»</li>
+  </ul>
+  <div class="why"><b>Покрытия нет:</b> <code>grep -ril codex skills/*/SKILL.md</code> даёт 30 файлов, но Codex-специфичных дверей ровно две &mdash; <code>/codex-mirror</code> (только пересев канона в <code>~/.codex/AGENTS.md</code>) и <code>/codex-review</code> (только парное ревью кода). Ни одна не ставит Codex на новую машину и не проверяет пути волта.</div>
+  <div class="why"><b>Цена:</b> склейка двух готовых кусков &mdash; маппинг путей из <code>/codex-mirror</code> + пер-машинный профиль узла из <code>/migrate</code> и <code>/follower-onboard</code>. Новой инфры не нужно.</div>
+  <div class="why"><b>Честная оговорка:</b> кластер может оказаться КОНЕЧНЫМ (раскатка Codex по флоту закончится). Но пиры продолжают приходить (Виталий, Джитен, Кирилл), а <code>/peer-onboard</code> и <code>/follower-onboard</code> существуют ровно по той же логике.</div>
 </div>
 
 <div class="card h">
-  <span class="tag hot">HIGH</span><span class="tag">перенос с 10.08, 17.08, 24.08</span><span class="tag">инфра готова</span>
-  <h3>/publish-longform &mdash; одна дверь для лонгрида наружу (Habr / HackerNoon / Medium / Dev.to / Reddit / X)</h3>
-  <div class="why">Не построен 21&nbsp;день подряд. Это окно &mdash; самая широкая улика за всё время: кластер расползся с «постинг руками» на «строить голос под площадку руками, DR-веером, по одной сессии на площадку».</div>
+  <span class="tag hot">HIGH</span><span class="tag">перенос с 10.08 &middot; 28 дней</span><span class="tag">инфра готова</span>
+  <h3>/publish-longform &mdash; одна дверь: готовый лонгрид &rarr; Habr / HackerNoon / Medium / Dev.to / Reddit / X</h3>
+  <div class="why">Пятая неделя подряд. Форма не изменилась, плотность держится.</div>
   <ul>
-    <li>28.08 (машина Наташи, один день, 10 сессий): «Восстановление постинга на платформы» &middot; «Дистрибуция контента» &middot; «Популярные посты на Хабр» &middot; «Medium post 14» &middot; «Переделка постов о диприсерчах» &middot; «Fiction chapter posting structure» &middot; «Серия постов про Claude Code для предпринимателей» &middot; «Посты из голосовых Антона» &middot; «Факап дня» &middot; «Инсайт дня: пост»</li>
-    <li>28.08 (ноут Антона, тот же день, отдельная сессия): «Построить ГОЛОС-REDDIT через DR-веер» &middot; «Построить ГОЛОС-X (Twitter) через DR-веер» &middot; «Dev.to голос и стратегия» &middot; «HackerNoon: голос, гайд, модерация, план статей» &middot; «Hacker News: стратегия подачи Show HN»</li>
-    <li>Скилла по-прежнему нет: <code>ls skills/ | grep -E "publish|habr|hacker|medium|devto|longform|reddit"</code> &rarr; пусто (174 скилла)</li>
-    <li>Каждая площадка сейчас = отдельная ручная DR-fanout сессия с нуля; дешёвый скилл &mdash; параметризованная обёртка над уже существующим <code>/dr-fanout</code> + <code>distributor.py</code>, а не новый движок</li>
+    <li>01.09 Natalia &mdash; «Одинаковые посты в региональных чатах», «Fiction chapter posting structure»</li>
+    <li>03.09 Natalia &mdash; «Дистрибуция контента», «Популярные посты на Хабр»</li>
+    <li>06.09 Natalia &mdash; «Medium post 14», «Regional chat setup and posting»</li>
+    <li>05.09 HP17-ZBook &mdash; «Раскатать страницу Антона на максимум площадок», «Р+Конвейер зеркал: 8 работ + письма в 2 журнала»</li>
   </ul>
+  <div class="why"><b>Покрытия нет:</b> <code>grep -riEl "habr|hackernoon|devto|medium\.com|longform"</code> бьёт только в dr-fanout / episode / fb-post / intention / x-post &mdash; единой двери «взять готовый текст и разложить по N площадкам» по-прежнему нет.</div>
 </div>
 
 <div class="card h">
-  <span class="tag hot">HIGH</span><span class="tag">перенос с 17.08, 24.08</span><span class="tag">инфра готова</span>
-  <h3>/follower-task-sweep &mdash; сводка «что адресовано лично мне» по чатам 02 / 03 / 121 / 00</h3>
-  <div class="why">Самая частая повторяющаяся ручная сессия во всём корпусе: 9 из 14 дней, всегда одна и та же машина, всегда новая сессия с нуля.</div>
+  <span class="tag hot">HIGH</span><span class="tag">перенос с 18.08 &middot; 4-я неделя</span><span class="tag">инфры нет</span>
+  <h3>/concierge (бывш. /parcel) &mdash; посылки + подбор товара, цены, услуги для Русланы</h3>
+  <div class="why">Кластер снова расширился: от «отследить посылку» к бытовому консьержу &mdash; цены, поставщики, шоурумы, записи.</div>
   <ul>
-    <li>MyOwnPC-Natalia, дословно по дням: 17.08 «17 авг Задачи по чатам 02, 03, 121, 00» &middot; 18.08 «сверь задачи по чатам 02, 03,» &middot; 19.08 «19 августа задачи по чатам 02, 03, 121, 00» &middot; 24.08 «24 авг задачи» &middot; 25.08 «Синхронизация задач по чатам» &middot; 26.08 «Синхронизация задач по чатам» &middot; 27.08 «Задачи по чатам 02, 03, 121, 00» &middot; 28.08 «Задачи по чатам 02, 03, 121, 00» &middot; 29.08 «Задачи по чатам 02, 03, 121, 00»</li>
-    <li>Форма уже существует: <code>/agenda</code> Антона делает ровно это для календаря; <code>tg_bus_read.py</code>/<code>bus.py</code> уже умеют читать все 4 чата &mdash; не хватает тонкой обёртки, нацеленной на человека-фолловера вместо Антона</li>
-    <li>Скилла нет: <code>ls skills/ | grep -E "follower|sweep"</code> &rarr; только <code>/follower-onboard</code> (про добавление машины в синк, не то)</li>
+    <li>24.08 &mdash; «Идентификация посылки», «Размеры коробки для велосипеда»</li>
+    <li>27.08 &mdash; «Бесплатная доставка мыла на Amazon», «Оформление детского беговела и велосипеда»</li>
+    <li>01.09 &mdash; «Запрос плитки у поставщика»</li>
+    <li>06.09 &mdash; «Sklum Portugal showroom check», «Ревизия резины 19 дюймов Mercedes», «Решетки для туннелей», «Запись Артура на серфинг»</li>
   </ul>
+  <div class="why"><b>Покрытия нет:</b> <code>grep -riEl "parcel|tracking number|carrier|17track"</code> &rarr; 0 попаданий. Трек-рельсы (17track, API перевозчиков) в системе не существует.</div>
 </div>
 
 <div class="card h">
-  <span class="tag hot">HIGH</span><span class="tag">перенос с 18.08, 24.08</span><span class="tag">инфра готова</span>
-  <h3>/parcel &mdash; посылки и товарный поиск Русланы (трек-номер &rarr; статус; «найди и сравни цены»)</h3>
-  <div class="why">Третья неделя подряд как самый плотный некрытый кластер одной машины &mdash; логистика/покупки/доставка не остывают.</div>
-  <ul>
-    <li>18.08&ndash;30.08 (MacBook-Ruslana): «Проверка цен в документе» &middot; «Ссылки на Charger 16 и Seeker 16» &middot; «Поиск брусьев 18&times;18 и 20&times;20» &middot; «Размеры коробки для велосипеда» &middot; «Идентификация посылки» &middot; «Бесплатная доставка мыла на Amazon» &middot; «Оформление детского беговела и велосипеда» &middot; «Проводы и сырое молоко» &middot; «Билеты в Сан-Франциско»</li>
-    <li>Рельсы трекинга (17track / сайты перевозчиков) как не было, так и нет; скилла тоже нет</li>
-  </ul>
+  <span class="tag hot">HIGH</span><span class="tag hi">повышен с MED-HIGH</span><span class="tag">апгрейд /hk, не новый скилл</span>
+  <h3>/hk + сторож дрейфа канона &mdash; узел молча отстаёт, и никто не кричит</h3>
+  <div class="why"><b>Повышаю до HIGH: сигнал ухудшился.</b> Проверил <code>_canon_drift_state.json</code> сам, не на веру:</div>
+  <div class="wrap"><table>
+    <tr><th>прогон</th><th>узлов с <code>behind_since</code></th><th>кто</th></tr>
+    <tr><td>31.08</td><td>1</td><td>A-2022BAYAREA (с 15.08)</td></tr>
+    <tr><td><b>07.09</b></td><td><b>2</b></td><td>A-2022BAYAREA (05.09 02:05Z), FLEET-ANCHOR (05.09 02:30Z)</td></tr>
+  </table></div>
+  <div class="why">Дрейф моложе по возрасту, но расползся на второй узел &mdash; и по-прежнему без пуш-алерта. Плюс самая плотная сессионная улика за всё время наблюдения кластера: 12 сессий про рутины за окно &mdash; «Р++Пропавшие GitHub рутины» (27.08), «*Анализ рутин» (30.08), «Маяк рутины и статусы» (02.09), «Р+++Анализ рутин и GitHub» (04.09), «реестры ВСЕГО Daily routines registry» (04.09), «Р+!!!ГИТХАБ КАЧАЕМ!!! Потерянные рутины гида» (04.09), «Р+Рутины для задач» (05.09).</div>
+  <div class="why"><code>/hk</code> сегодня &mdash; только read-only экран. Слоя «сам заметил и крикнул в 03» нет.</div>
 </div>
 
-<div class="card mh">
-  <span class="tag hi">MED-HIGH</span><span class="tag">апгрейд /hk, не новый скилл</span><span class="tag">перенос с 10.08, 24.08</span>
-  <h3>/hk &rarr; доктор рутин + вынос отставания канона на глаза</h3>
-  <div class="why">Перепроверил в этом заходе (не только перенёс на слово): <code>_canon_drift_state.json</code> сейчас показывает отставание («behind_since») только у ХАБА самого (с 15.08, ~16 дней) &mdash; остальные 5 узлов сейчас БЕЗ поля behind_since, то есть не в хвосте. Картина мягче, чем на 18.08 («4 узла в отставании»), но сам хаб копит долг канона уже 16 дней и это никто не выводит на глаза без ручного grep.</div>
+<h2>MED &mdash; в дашборде, в TG не толкаю</h2>
+
+<div class="card m">
+  <span class="tag med">MED / WATCH</span><span class="tag new">новый</span>
+  <h3>/arxiv &mdash; подача статей в arXiv: категория, сабмит, постоянный ID, трекинг</h3>
+  <div class="why">4 сессии, 2 машины, но всего за <b>2 дня</b> (04&ndash;05.09) &mdash; это всплеск первой волны, а не доказанный повтор. Держу на WATCH, а не в стройке.</div>
   <ul>
-    <li>Это апгрейд существующего экрана <code>/hk</code>, а не новая запчасть &mdash; дешевле нового робота</li>
-    <li>Держу MED-HIGH, не понижаю: даже улучшившаяся картина = хаб сам отстаёт от собственного канона 16 дней без сигнала</li>
+    <li>04.09 &mdash; «Решить категорию arXiv и подготовить сабмит Le Chatelier», «arXiv публикация: исследование и рекомендации»</li>
+    <li>05.09 &mdash; «Поймать анонс arXiv + постоянный ID статьи», «!!!3я статья в АрХив: draft next articles»</li>
   </ul>
+  <div class="why"><b>Покрытия нет:</b> <code>grep -ril arxiv</code> &rarr; только <code>taste-check</code>, и там про РЕГИСТР речи (P25), не про механику подачи. Строить пришлось бы с нуля.</div>
+</div>
+
+<div class="card q">
+  <span class="tag">ЗАТИХ</span><span class="tag hi">понижен с HIGH</span>
+  <h3>/follower-task-sweep &mdash; свод задач Наташе по чатам 02 / 03 / 121 / 00</h3>
+  <div class="why">Шёл ежедневно по 01.09 включительно («24 авг задачи» &rarr; … &rarr; «1 сент Синхронизация задач по чатам»), потом <b>ноль сессий этого шаблона 02.09&ndash;07.09</b> &mdash; при том что сессии у Наташи в эти дни были (контент, постинг).</div>
+  <div class="why">По названиям НЕЛЬЗЯ отличить «работа ушла в другую дверь» от «работа просто перестала делаться». Транскрипты не читались (read-only бюджет). Понижаю до наблюдения и <b>отдельно спрашиваю Наташу</b>, а не строю.</div>
 </div>
 
 <div class="card m">
-  <span class="tag med">MED</span><span class="tag">перенос с 18.08, 24.08</span>
-  <h3>/translate &mdash; переводы Русланы с глоссарием и авто-филингом</h3>
-  <div class="why">Кластер продолжился и в этом окне: 20.08 «Перевод», 28.08 «Перевод чата покупки» + «Скачивание и перевод голосовых сообщений», 30.08 «Перевод чатов».</div>
-  <ul>
-    <li>Само действие тривиально (модель просто переводит) &mdash; скилл добавил бы только глоссарий терминов, голос и «куда положить результат»</li>
-    <li>Держим в дашборде, в чат не толкаем: цена постройки близка к пользе (АК-47 §5.1)</li>
-  </ul>
+  <span class="tag med">MED</span><span class="tag">АК-47: цена стройки почти равна пользе</span>
+  <h3>/translate &mdash; перевод чата или переписки по требованию</h3>
+  <div class="why">28.08 «Перевод чата покупки», «Скачивание и перевод голосовых сообщений»; 31.08 «Перевод чатов»; 01.09 «Переводы чатов ассистанса Дениса»; 06.09 «Перевод чата покупки». Кластер живой, но действие тривиальное &mdash; держу на MED четвёртую неделю.</div>
 </div>
 
-<div class="card m">
-  <span class="tag med">MED</span><span class="tag new">НОВОЕ 28.08</span><span class="tag">нужна ясность, не строю вслепую</span>
-  <h3>Явный запрос от Наташи: «мне надо сделать скилл по подбору» (28.08)</h3>
-  <div class="why">Единственный явный текстовый запрос НА скилл во всём окне &mdash; сильный сигнал по приоритету, но заголовок сессии не говорит, подбор ЧЕГО (советников? кандидатов? контента? товаров под /parcel?). Строить угадывая нельзя &mdash; АК-47 требует понятной спеки.</div>
-  <ul>
-    <li>В памяти узла (<code>grep -ril "подбор" MEMORY-домены</code>) следов постройки не нашёл &mdash; похоже, запрос повис без разбора</li>
-    <li>Действие не моё: прочитать транскрипт той сессии (машина MyOwnPC-Natalia, 28.08) и уточнить у Наташи/Антона предмет подбора, прежде чем поднимать рейтинг</li>
-  </ul>
+<div class="card q">
+  <span class="tag">НУЖНО УТОЧНИТЬ</span>
+  <h3>«скилл по подбору» &mdash; дословная просьба Наташи от 28.08</h3>
+  <div class="why">«мне надо сделать скилл по подбору». За 10 дней ни одного повтора и ни одной уточняющей сессии. Предмет подбора из названия не восстанавливается: советники? кандидаты? контент? товары? <b>Вслепую не строю</b> &mdash; вопрос Наташе.</div>
 </div>
 
-<h3 style="margin-top:26px">Кластеры, которые ПОКРЫТЫ (проверено в этом прогоне, скилл не нужен)</h3>
-<table>
-<tr><th>Кластер</th><th>Сессий</th><th>Чем покрыт</th></tr>
-<tr><td>Advisor 1:1 звонки (Бычковский, Васильев, Пшенин, Камиль-волна-2)</td><td>4</td><td>/fa, /local-advisor-intake, /local-advisor-mine</td></tr>
-<tr><td>Мониторинг вакансий топ-LLM + TG-каналы вакансий (Миссия №2)</td><td>3</td><td>scheduled tasks <code>jobs-watch-daily</code> (04:30) + <code>jobs-tg-nightly</code> (04:20) &mdash; уже построены и живы</td></tr>
-<tr><td>Переиспользование/автозапуск сессий</td><td>3</td><td>/slot, /nsr, /chip, registry-dispatcher-daily</td></tr>
-<tr><td>Инбокс шины, посылки, пиры</td><td>&mdash;</td><td>/inbox + хук deploy_check</td></tr>
-<tr><td>Комментарии на звонки / баг-репорты</td><td>&mdash;</td><td>/comment-to-call, /rep-reply</td></tr>
-<tr><td>Разбор входящих лидов, рейтинг, CRM VIP</td><td>&mdash;</td><td>/triage, /pipeline, активная стройка §4.1 23.08 &mdash; не пробел</td></tr>
-<tr><td>Мониторинг чата СОСТАВ</td><td>&mdash;</td><td>/watch-channel, /mine-channel</td></tr>
-<tr><td>Онбординг нового пира</td><td>&mdash;</td><td>/peer-onboard, /follower-onboard</td></tr>
-</table>
-
+<h2>Выглядело пробелом, но покрыто (не переспрашивать)</h2>
 <div class="note">
-<b>⚠️ Наблюдение вне мандата этого прогона (не чиню, только называю):</b> в корпусе видно, что на Маяке (FLEET-ANCHOR) 23.08 и 30.08 прошла своя сессия «Skill-Gap Auditor, еженедельный Sonnet-аудит» &mdash; то есть похожая еженедельная ревизия пробелов скиллов идёт СЕЙЧАС на двух узлах независимо (хаб A-2022BAYAREA, эта задача, и Маяк). Не разбирался, дублируют ли они выход или разный охват &mdash; вне read-only мандата этого прогона; стоит свериться отдельно, не приоритет сегодня.
+<b>Мониторинг вакансий, массовая подача, ответы рекрутёров</b> (01.09 «Мониторинг HR вакансий» &times;2, 05.09 «!!!!Подача кандидатуры на вакансии», «!!!!Коллизии при подаче вакансий») &rarr; <code>jobs-watch-daily</code>, <code>jobs-tg-nightly</code>, <code>pipe-a-apply-daily</code>, <code>pipe-a-inbox-watch</code>.<br><br>
+<b>Волна OSS-вкладов на GitHub</b> (04.09, 15+ сессий за день: adk-python-community, openai-agents-js, huggingface/cookbook, Qwen-Agent, xAI cookbook) &rarr; <code>/github-growth</code>, <code>/issue-match</code>, <code>/pr-reply</code>, <code>/contrib-watch</code>.<br><br>
+<b>Advisor 1:1</b> (04.09 Пшенин, Бычковский, Камиль, Васильев) &rarr; <code>/fa</code>, <code>/local-advisor-intake</code>, <code>/local-advisor-mine</code>.<br><br>
+<b>FB-комменты и звонки</b> &rarr; <code>/fb-reply</code>, <code>/fb-watch</code>, <code>/comment-to-call</code>, задача <code>fb-reply-daily</code>.<br><br>
+<b>Онбординг пиров</b> (02.09 Виталий, 04.09 «Модули и инструкции для нового пира») &rarr; <code>/peer-onboard</code>, <code>/follower-onboard</code>.<br><br>
+<b>DR-волны</b> &rarr; <code>/alfa-search-recall-deepresearch</code>, <code>/dr-fanout</code>. &nbsp; <b>Бэкап и конфликты волта</b> &rarr; <code>/obsidian-backup</code>, <code>/sync-check</code>.<br><br>
+<b>Надоедливые запросы подтверждения</b> (28.08 «+Надоедливое окошко», 02.09 «Р++Постоянные запросы подтверждения») &rarr; встроенный скилл <code>fewer-permission-prompts</code> уже стоит. Строить нечего &mdash; надо просто позвать.
+</div>
+
+<h2>Заметки вне мандата</h2>
+<div class="note">
+<b>1. Firefox и браузер &mdash; это не пробел скилла, это незакрытый баг.</b> 6 сессий за окно («+БРАУЗЕРЫ!!» 28.08, «Р++Смена браузера на Firefox» 02.09, «Р+Firefox профиль вход» и «Р+Firefox синхронизация» 05.09, «Р+!!!FB!!! Постоянные разлогинивания браузера» 05.09). Дверь <code>/firefox</code> есть, а корень живёт: класс <code>browser-rail-down</code> уже висит P0 в реестре задач (48-я поломка). Скилл тут не поможет &mdash; нужна починка класса.<br><br>
+<b>2. Два аудитора пробелов работают параллельно.</b> Эта хабовая <code>skill-gap-daily</code> и отдельный «Skill-Gap Auditor» на FLEET-ANCHOR. Отмечено третью неделю подряд, не сведено (read-only мандат). Кандидат в отдельную задачу: погасить один из двух.<br><br>
+<b>3. Робо-пинги FLEET-ANCHOR исключены из кластеризации</b> (97 из 380 сессий окна): TOKSYNC_OK, inbox-робот, Vault Janitor, alpha-judge, плюс два новых шаблона &mdash; форматирование голосовых (03.09 &times;7) и антидубль-страж посылок (04&ndash;05.09 &times;3). Это автоматика, а не ручной труд.
 </div>
 
 <div class="eli">
-<b>🧒 Простыми словами</b><br>
-Я снова посмотрел, какую работу мы делаем руками одно и то же каждую неделю, а помощника под неё нет.<br><br>
-Три старые дырки всё ещё не закрыты, и они не остывают: «выложить длинную статью наружу» (28.08 Наташа и Антон в один день закрывали Хабр, Medium, Reddit, X, Dev.to, HackerNews &mdash; по одной ручной сессии на каждую), «Наташе каждый день собирать, что ей написали в четырёх чатах» (9 из 14 дней подряд) и «Руслана ищет посылки и цены».<br><br>
-Новое: Наташа прямым текстом попросила скилл 28.08, но не сказала подробно какой &mdash; надо у неё спросить, прежде чем строить.<br><br>
-Строить пока не строю &mdash; это только список «что взять первым», решение по-прежнему за тобой. Сегодня понедельник, новых HIGH нет &mdash; в чат уйдёт короткая строка-напоминалка, без тревоги.
+🧒 <b>Простыми словами.</b> Раз в неделю я смотрю, какую работу люди делают руками снова и снова, и проверяю, есть ли на неё готовая кнопка.
+
+На этой неделе новая находка одна: <b>четыре разных компьютера за пять дней по отдельности разбирались, как подружить Codex с нашей общей папкой знаний</b>. Кнопки нет, а собрать её дёшево, потому что половина деталей уже лежит в других кнопках.
+
+Три старые находки никуда не делись: разложить лонгрид по площадкам, посылки и покупки для Русланы, и сторож «узел молча отстал». Последний стал хуже: отстающих узлов теперь два вместо одного.
+
+Одна старая находка (свод задач для Наташи) вдруг затихла, и я не знаю почему: то ли переехала, то ли просто перестала делаться. Это надо спросить, а не угадывать.
 </div>
 
 <div class="foot">
-Read-only аудит. Ничего не построено. Прочитан <code>_canon_drift_state.json</code> напрямую для /hk, а не пересказан со слов прошлого прогона.<br>
-Источники: <code>_imports/_session_digest.md</code> (336 сессий, 14д, vault_sessions.py digest 14) &middot; <code>~/.claude/skills/*/SKILL.md</code> (174) &middot; <code>mcp__scheduled-tasks__list_scheduled_tasks</code> (38 задач) &middot; <code>_canon_drift_state.json</code> &middot; <code>_imports/skill_gap_state.json</code> (прошлый прогон 24.08) &middot; memory RECALL (MEMORY.md, new-skills-2026-06-19.md, machine-migration.md, declined-decisions.md).
+Источник корпуса: <code>python E:\Obsidian\_imports\vault_sessions.py digest 14</code> &rarr; <code>_session_digest.md</code> (380 сессий, все машины, авто-прогоны отфильтрованы).<br>
+Скиллы: <code>C:\Users\Anton\.claude\skills\*\SKILL.md</code> (183). Задачи: <code>scheduled-tasks list</code> (51).<br>
+Read-only: этот прогон ничего не построил и не отправил лидам. Состояние: <code>E:\Obsidian\_imports\skill_gap_state.json</code>.
 </div>
+
 </body></html>
