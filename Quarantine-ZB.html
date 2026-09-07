@@ -34,7 +34,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>1) забери дверь из шины: _transit/scripts-from-ZBOOKG8-2023PAL/_test_interpreter_pin.py -&gt; ~/.claude/scripts/ (дубль в _deploy/payloads/interpreter-pin-20260829/ с md5); 2) python3 ~/.claude/scripts/_test_interpreter_pin.py --fix -- пришпилит голые python/python3 в settings.json к machine.env:PYTHON_EXE (бэкап, идемпотентно); 3) нет PYTHON_EXE -&gt; сперва допиши его в ~/.claude/machine.env АБСОЛЮТНЫМ путём к питону С ПАКЕТАМИ ФЛОТА (на venv-узле -- на сам venv); 4) дальше дверь сама едет в ночной regress_run.py</code></div>
   
-</div><h2>✅ Доверенные — применятся сами <span class="cnt">9</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+</div><h2>✅ Доверенные — применятся сами <span class="cnt">5</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">hooks-payload-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">SELF-CARRYING груз для 5 посылок-призраков: block_dangerous_bash + canon_growth_guard + skill_usage_hook + task_surface_hook (файлы лежат в _transit/DEPLOY-*)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:17 · <span class="ok">подпись ✓</span></div>
@@ -67,22 +67,6 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 ~/.claude/scripts/_shared/ff_login_shield.py --install-schedule</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">patrol-muzzle-in-code-20260903-v2</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">P0 v2: намордник патруля в коде — verify судит ДЕЙСТВИЕ и работает на cmd.exe (в v1 стоял grep, которого в cmd.exe нет)</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-03 13:59 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_probe_muzzle.py&quot;</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">session-reaper-liveness-20260903-v3</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">v3: доказательство ДОСТАВКИ второго прибора живости (в v2 verify был тавтологией — --self-test есть и в старой версии)</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-03 22:15 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_probe_reaper_liveness.py&quot;</code></div>
-  
-</div><div class="card trusted">
   <div class="top"><span class="id">shell-lane-roots-20260903</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">Класс &#x27;команда посылки не исполнима на целевой ОС&#x27; закрыт ЦЕЛИКОМ: выбор шелла по диалекту (shell_lane), одна дверь исполнения run_step, симметричный гейт портируемости, судья чужой-ОС смотрит нормализованную строку, verify_env даёт HOME и PATH интерпретатора, переносимые проверки verify_probe. Замеры: 2095 из 3062 шагов ложно числились чужой ОС; 8 из 8 неисполнимых посылок хаба стали исполнимы (старейшая висела 38 дней). Ломатель 14/14, сетки 59+28+52+26 зелёные.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-03 22:32 · <span class="ok">подпись ✓</span></div>
@@ -90,23 +74,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/shell-lane-roots-20260903/install.py&quot;</code></div>
   
-</div><div class="card trusted">
-  <div class="top"><span class="id">apply-wave-tools-20260904</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Труба А: инструменты волн в дом скилла + матрица рельс (Ashby работает / GH code-gate / Lever hCaptcha / Workable Turnstile) + кап по датам (пул 12 против 587)</div>
-  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-04 03:16 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
-  
-  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/apply-wave-tools-20260904/install.py&quot;</code></div>
-  
-</div><div class="card trusted">
-  <div class="top"><span class="id">memory-home-resolver-20260904</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">memory_index_check + _shared/output_freshness: дом памяти и VAULT по лестнице env-&gt;machine.env; литералы чужих узлов (HP17, D:\OBSIDIAN) убраны</div>
-  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-04 19:20 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
-  
-  <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_memory_home_resolution.py</code></div>
-  
-</div><h2>📦 Уже применённые <span class="cnt">311</span></h2><div class="card trusted">
+</div><h2>📦 Уже применённые <span class="cnt">324</span></h2><div class="card trusted">
   <div class="top"><span class="id">windowless-s4u</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Ð§Ñ‘Ñ€Ð½Ñ‹Ðµ Ð¾ÐºÐ½Ð°: flip Ð·Ð°Ð´Ð°Ñ‡ Ð² S4U</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:50 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -2419,12 +2387,28 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/session_reaper.py&quot; --self-test</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">patrol-muzzle-in-code-20260903-v2</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">P0 v2: намордник патруля в коде — verify судит ДЕЙСТВИЕ и работает на cmd.exe (в v1 стоял grep, которого в cmd.exe нет)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-03 13:59 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_probe_muzzle.py&quot;</code></div>
+  
+</div><div class="card trusted">
   <div class="top"><span class="id">node-env-seed-20260903</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Корневые пути узла сеются в окружение ОС из machine.env. Закрывает класс: под планировщиком env голый, 64 файла читают IMPORTS_ROOT, сеют его 9 обёрток из 254 -- робот угадывает путь и пишет в несинкаемый запас с зелёным exit. verify намеренно вызывает --apply: он идемпотентен и читает факт из реестра ПОСЛЕ записи, поэтому узел чинится без человека.</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-03 22:05 · <span class="ok">подпись ✓</span></div>
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/install_from_transit.py node-env-seed-20260903/env_seed_os.py env_seed_os.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">session-reaper-liveness-20260903-v3</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">v3: доказательство ДОСТАВКИ второго прибора живости (в v2 verify был тавтологией — --self-test есть и в старой версии)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-03 22:15 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$HOME/.claude/scripts/_probe_reaper_liveness.py&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">registry-guard-retro-reaper-20260904</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
@@ -2489,6 +2473,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/sweep-guard-no-forged-marker-20260904/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">apply-wave-tools-20260904</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Труба А: инструменты волн в дом скилла + матрица рельс (Ashby работает / GH code-gate / Lever hCaptcha / Workable Turnstile) + кап по датам (пул 12 против 587)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-04 03:16 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/apply-wave-tools-20260904/install.py&quot;</code></div>
   
 </div><div class="card trusted">
   <div class="top"><span class="id">firefox-deautomate-win-20260903</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
@@ -2593,6 +2585,86 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/hooks/memory_write_guard.py --install</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">memory-home-resolver-20260904</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">memory_index_check + _shared/output_freshness: дом памяти и VAULT по лестнице env-&gt;machine.env; литералы чужих узлов (HP17, D:\OBSIDIAN) убраны</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-04 19:20 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_memory_home_resolution.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">harvest-watch-blind-to-bullets-20260907</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">harvest_watch: bullets judged, harvest column by fact, header by structure, real verdict formulas</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-07 06:39 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/verify_probe.py contains ~/.claude/scripts/harvest_watch.py def_scan_bullets</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">laser-focus-domain-gate-20260907</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">github_targets: домен-гейт core/adjacent/off + own_pain первыми (лазерный фокус, приказ Антона 07.09)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-07 00:37 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 $MACHINE_BUS_DIR/_deploy/payloads/laser-focus-domain-gate-20260907/install.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">accounts-paths-lint-20260907</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">accounts_paths_lint + ловец ручного логина в nightly_sync + sweep призраков codex</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-07 00:56 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_accounts_paths_lint.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">browser-counter-roots-20260907</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Три корня счётчика браузеров: класс задачи (метрика была недостижима), blocked считался успехом (+2.6пп Chrome), регресс-сетка не запускалась ни разу</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-07 01:01 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/browser-counter-roots-20260907/install.py&quot;</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">nightly-sync-enabled-gate-20260907</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">nightly_sync: --account и голый запуск больше не обходят enabled=false (корень двойной вытяжки и гонки за bearer)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-07 01:16 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 $IMPORTS_ROOT/chatgpt/_test_nightly_sync_enabled_gate.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">accounts-lint-join-cross-node-20260907</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">accounts_paths_lint: join у аккаунта ЧУЖОГО узла больше не ложное жёлтое (браузерный реестр машинно-локален); свой join = RED и наконец покрыт тестом</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-07 01:16 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_accounts_paths_lint.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">memory-inject-lint-skip-trash-20260907</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">memory_inject_lint: не судить .stversions/sync-conflict (130 ложных на Mac16) + baseline на узле</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-07 01:27 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_memory_inject_lint.py &amp;&amp; python3 ~/.claude/scripts/memory_inject_lint.py --baseline</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">fleet-sheet-taskscheduler-alias-20260907</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">fleet_sheet: алиас taskscheduler-&gt;os-scheduler (без него 458 дублей в книге флота при пуше рельсы A с Windows)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-07 01:37 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_fleet_sheet.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">dr-queue-registry-terminal-skip-20260907</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">dr_queue: заказ, закрытый реестром (applied/parked/dead), больше не выдаётся раннерам как живая работа</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-07 10:03 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/verify_probe.py contains ~/.claude/scripts/dr_queue.py registry_terminal_ids</code></div>
   
 </div>
 </div></body></html>
