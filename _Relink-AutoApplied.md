@@ -819,3 +819,19 @@
 - [[insight-DR-DR26-08-30-MACANTON-01-aaa-gitbook-история-platinum-engineering-и-ai-crm-]] ← добавлено в [[insight-DR-DR26-08-30-MACANTON-02-несовпадение-содержания-файл-озаглавлен-успех-на-g]]
 - [[insight-DR-DR26-08-30-MACANTON-02-несовпадение-содержания-файл-озаглавлен-успех-на-g]] ← добавлено в [[insight-DR-DR26-08-30-MACANTON-01-aaa-gitbook-история-platinum-engineering-и-ai-crm-]]
 
+## 2026-09-08 03:20 — авто-связано 14
+- [[insight-2026-09-05-github-target-universe]] ← добавлено в [[insight-DR-DR26-08-11-HUB-02-2212-асимметрия-слияния-pr-почему-mid-size-инфра-oss-ме]]
+- [[insight-DR-DR26-09-03-HUB-01-2037-бульварное-чтиво-как-метод-перенос-таблоидных-real]] ← добавлено в [[insight-DR-DR26-07-06-HUB-02-приёмы-вовлекающих-вставок-вопросов-для-сериализов]]
+- [[insight-DR-DR26-09-03-HUB-01-2037-бульварное-чтиво-как-метод-перенос-таблоидных-real]] ← добавлено в [[insight-DR-DR26-07-02-HUB-06-authentic-narrative-engineering-for-solo-build-in-]]
+- [[2026-09-04-andrey-1-on-1-with-tony-54T44N]] ← добавлено в [[insight-DR-DR26-08-29-MACANTON-06-0742-партизанское-продвижение-github-профиля-инженера-д]]
+- [[2026-08-31-dmitrii-zhdanov-1-on-1-with-tony-Y0tFRA]] ← добавлено в [[concept-second-brain]]
+- [[2026-08-31-dmitrii-zhdanov-1-on-1-with-tony-Y0tFRA]] ← добавлено в [[insight-DR-DR26-07-01-HUB-01-рекомендации-anthropic-для-системных-подсказок-cla]]
+- [[insight-DR-DR26-09-03-HUB-01-2037-бульварное-чтиво-как-метод-перенос-таблоидных-real]] ← добавлено в [[insight-DR-DR26-09-02-MACANTON-02-0343-storytelling-playbook]]
+- [[insight-DR-DR26-09-03-HUB-01-2037-бульварное-чтиво-как-метод-перенос-таблоидных-real]] ← добавлено в [[decision-content-pipeline-reality-show]]
+- [[insight-DR-DR26-09-03-HUB-01-2037-бульварное-чтиво-как-метод-перенос-таблоидных-real]] ← добавлено в [[reglament-vsegda-rasskazyvay-istoriyu-storytelling]]
+- [[insight-DR-DR26-09-06-MACANTON-01-0753-cloakbrowser-claude-интеграция-mcp-mcr-неоднозначн]] ← добавлено в [[insight-DR-DR26-08-04-ZB-13-2207-браузерные-mcp-серверы-сверх-firefox-карта-агентск]]
+- [[insight-DR-DR26-09-06-MACANTON-01-0753-cloakbrowser-claude-интеграция-mcp-mcr-неоднозначн]] ← добавлено в [[insight-dr26-08-04-zb-02-sintez-agentnye-brauzery-i-control-plane]]
+- [[batch-2026-09-06]] ← добавлено в [[apply-playbook]]
+- [[seed-apply-session]] ← добавлено в [[apply-playbook]]
+- [[2026-08-31-planerka-utro-9YQF2R]] ← добавлено в [[reglament-domeny-strogo-101domain]]
+
