@@ -835,3 +835,16 @@
 - [[seed-apply-session]] ← добавлено в [[apply-playbook]]
 - [[2026-08-31-planerka-utro-9YQF2R]] ← добавлено в [[reglament-domeny-strogo-101domain]]
 
+## 2026-09-09 03:18 — авто-связано 4
+- [[batch-2026-09-08]] ← добавлено в [[apply-playbook]]
+- [[2026-09-03-pavel-osokin-1-on-1-with-tony-R19WGW]] ← добавлено в [[2026-09-03-pavel-osokin-1-on-1-with-tony-ou1MXj]]
+- [[2026-09-08-ihar-paliashchuk-1-on-1-with-tony-MT0V44]] ← добавлено в [[2026-09-08-ihar-paliashchuk-1-on-1-with-tony-3DOMLG]]
+- [[2026-09-04-andrey-1-on-1-with-tony-0fqYdN]] ← добавлено в [[concept-second-brain]]
+
+## 2026-09-10 03:12 — авто-связано 5
+- [[batch-2026-09-09]] ← добавлено в [[concept-anton-job-search-pipeline]]
+- [[2023-08-24-naina-kunar-and-anton-from-platinum-vc-D6lGmu]] ← добавлено в [[naina-kunar]]
+- [[2023-01-30-mikhail-zenchenkov-and-b2b-platinum-department]] ← добавлено в [[2023-01-30-mikhail-zenchenkov-and-b2b-platinum-department-qVS3t3]]
+- [[2023-08-29-aditya-desai-and-anton-from-platinum-vc]] ← добавлено в [[aditya-desai]]
+- [[2026-08-30-plutus-ugc-platform-creator-management-automation-tools-and-]] ← добавлено в [[2026-08-30-plutus-ugc-platform-creator-management-automation-tools-and--BpDejz]]
+
