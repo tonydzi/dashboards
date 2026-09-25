@@ -34,7 +34,7 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   
   <div class="apply">примени: <code>1) забери дверь из шины: _transit/scripts-from-ZBOOKG8-2023PAL/_test_interpreter_pin.py -&gt; ~/.claude/scripts/ (дубль в _deploy/payloads/interpreter-pin-20260829/ с md5); 2) python3 ~/.claude/scripts/_test_interpreter_pin.py --fix -- пришпилит голые python/python3 в settings.json к machine.env:PYTHON_EXE (бэкап, идемпотентно); 3) нет PYTHON_EXE -&gt; сперва допиши его в ~/.claude/machine.env АБСОЛЮТНЫМ путём к питону С ПАКЕТАМИ ФЛОТА (на venv-узле -- на сам venv); 4) дальше дверь сама едет в ночной regress_run.py</code></div>
   
-</div><h2>✅ Доверенные — применятся сами <span class="cnt">5</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
+</div><h2>✅ Доверенные — применятся сами <span class="cnt">7</span></h2><div class="hint">Валидная подпись или известная машина флота. deploy_check предложит их к установке как обычно.</div><div class="card trusted">
   <div class="top"><span class="id">hooks-payload-20260806</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">SELF-CARRYING груз для 5 посылок-призраков: block_dangerous_bash + canon_growth_guard + skill_usage_hook + task_surface_hook (файлы лежат в _transit/DEPLOY-*)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-08-06 15:17 · <span class="ok">подпись ✓</span></div>
@@ -51,14 +51,6 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 &quot;$MACHINE_BUS_DIR/_deploy/payloads/shell-lane-roots-20260903/install.py&quot;</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">chatbook-disk-source-20260910</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Книга чатов: экспортёр перечисляет транскрипты С ДИСКА (карточка приложения ротируется), счётчик реплик перестал считать нажатия харнесса, порог &#x27;Антон говорил&#x27; 3-&gt;1</div>
-  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-10 20:45 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
-  
-  <div class="apply">примени: <code>python3 ~/.claude/scripts/verify_probe.py run python3 &quot;$IMPORTS/claude_sessions/export_sessions_md.py&quot;</code></div>
-  
-</div><div class="card trusted">
   <div class="top"><span class="id">codex-skills-bridge-20260911</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
   <div class="ttl">Мост умений Claude-&gt;Codex: скиллы junction&#x27;ами + второй дом зеркала ~/AGENTS.md (его читает grok-CLI)</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-11 12:59 · <span class="ok">подпись ✓</span></div>
@@ -67,14 +59,38 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python %USERPROFILE%\.claude\scripts\codex_skills_bridge.py sync &amp;&amp; python %USERPROFILE%\.claude\scripts\codex_mirror.py publish</code></div>
   
 </div><div class="card trusted">
-  <div class="top"><span class="id">debt-fleet-watch-mine-20260915</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
-  <div class="ttl">Сторож долгов: кредиторская половина (--mine) — показывает ТВОИ посылки, умершие на чужих узлах; за результат отвечает отправитель (§4.2 Connect)</div>
-  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-15 09:04 · <span class="ok">подпись ✓</span></div>
-  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  <div class="top"><span class="id">fleet-ssh-20260920</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">SSH между всем флотом: fleet_ssh.py all (sshd на узле, ключи через шину, алиасы, матрица); Windows -&gt; окно UAC, нажать Да</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-21 07:54 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
   
-  <div class="apply">примени: <code>python3 ~/.claude/scripts/debt_fleet_watch.py --hours 48 --mine</code></div>
+  <div class="apply">примени: <code>python3 /_deploy/payloads/fleet-ssh-20260920/fleet_ssh.py all --post</code></div>
   
-</div><h2>📦 Уже применённые <span class="cnt">424</span></h2><div class="card trusted">
+</div><div class="card trusted">
+  <div class="top"><span class="id">fleet-ssh-20260921</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">SSH между всем флотом v2: fleet_ssh.py all из payload (самоустановка в ~/.claude/scripts, Windows: комплект на C: перед UAC); verify = sshd слушает + дескриптор</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-21 15:08 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 /_machine-bus/_deploy/payloads/fleet-ssh-20260920/fleet_ssh.py all --post</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">root-fixes-20260915-win</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Три корня 15.09 (Windows): ночной дворник sync-конфликтов (48.6д долга), авто-лиза памяти 1800-&gt;240с, счётчик поломок сверяется с семьёй</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-15 16:13 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python %USERPROFILE%\.claude\scripts\_shared\apply_root_fixes_20260915.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">robot-profile-scrub-20260923</span><span class="bdg" style="background:#37d399">✅ доверенный</span></div>
+  <div class="ttl">Робо-профиль не держит личных сессий: сторож + гвард в firefox_selenium.make_driver (корень ChatGPT/Google-разлогинов Антона)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-23 05:22 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python %OBSIDIAN_VAULT%\_machine-bus\_deploy\payloads\robot-profile-scrub-20260923\install.py</code></div>
+  
+</div><h2>📦 Уже применённые <span class="cnt">448</span></h2><div class="card trusted">
   <div class="top"><span class="id">windowless-s4u</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Ð§Ñ‘Ñ€Ð½Ñ‹Ðµ Ð¾ÐºÐ½Ð°: flip Ð·Ð°Ð´Ð°Ñ‡ Ð² S4U</div>
   <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-07-06 00:50 · <span class="mut">без подписи (HMAC не подключён)</span></div>
@@ -3299,6 +3315,14 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py claim-keeps-signature-20260910</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">chatbook-disk-source-20260910</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Книга чатов: экспортёр перечисляет транскрипты С ДИСКА (карточка приложения ротируется), счётчик реплик перестал считать нажатия харнесса, порог &#x27;Антон говорил&#x27; 3-&gt;1</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-10 20:45 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/verify_probe.py run python3 &quot;$IMPORTS/claude_sessions/export_sessions_md.py&quot;</code></div>
+  
+</div><div class="card trusted">
   <div class="top"><span class="id">packs-bench-20260910</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">Стенд чужих паков: packs_bench.py + клон и установка osint-skills(29) / gtm-engineer-skills(12) / gstack(5) на HP17, замер пользы против цены контекста, урожай 24.09</div>
   <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-10 19:39 · <span class="ok">подпись ✓</span></div>
@@ -3459,12 +3483,196 @@ h2{font-size:15px;margin:22px 0 6px;border-bottom:1px solid var(--line);padding-
   <div class="apply">примени: <code>python3 ~/.claude/scripts/fleet_tools_sync.py --source ZBOOKG8-2023PAL --apply</code></div>
   
 </div><div class="card trusted">
+  <div class="top"><span class="id">debt-fleet-watch-mine-20260915</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Сторож долгов: кредиторская половина (--mine) — показывает ТВОИ посылки, умершие на чужих узлах; за результат отвечает отправитель (§4.2 Connect)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-15 09:04 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/debt_fleet_watch.py --hours 48 --mine</code></div>
+  
+</div><div class="card trusted">
   <div class="top"><span class="id">pr-watch-foreign-thread-260915</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
   <div class="ttl">pr_watch: чужой тред без @-упоминания ≠ наш мяч (author + mentions_us в снимке, блок 👀); красный тест</div>
   <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-15 13:48 · <span class="ok">подпись ✓</span></div>
   <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
   
   <div class="apply">примени: <code>python3 ~/.claude/scripts/_test_pr_watch_foreign_thread.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">brain-graph-ppr-20260916</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Второй мозг: графовая полоса Personalized PageRank включена дефолтом (шаг 8 программы) - прогнать пробу и убедиться, что полоса жива на этом узле</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-16 23:15 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/verify_probe.py run python3 ~/.claude/scripts/_probe_brain_graph_lane.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">claude-autostart-race-fix-20260920</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Claude Desktop: Another program is currently using this file = гонка двух автозапусков; оставить один лаунчер</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-21 07:54 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>powershell -NoProfile -ExecutionPolicy Bypass -File /_deploy/payloads/fleet-ssh-20260920/claude_autostart_race_fix.ps1</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">claude-md-writer-gate-20260915</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">claude_md_daily: издатель манифеста больше не блокируется собственным md5 (дедлок, 4 ночи без записи) + гейт регресса по версии и размеру</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-15 13:27 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/verify_probe.py exists ~/.claude/scripts/_shared/claude_md_daily.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">door-gate-deploy-20260915</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">DOOR GATE: посылка обязана назвать вызывателя груза (класс built-part-never-wired, 3-я поломка)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-15 16:36 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_door_gate.py --selftest</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">fleet-routines-see-app-tasks-20260921</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Коллектор рутин флота был слеп к задачам приложения Claude Desktop: снимок узла нёс только планировщик ОС (замер ZBOOKG8 21.09: 124 в снимке при 141 задаче приложения на диске), из-за чего перепись сбора LLM объявляла &#x27;ни одной рутины сбора&#x27; на узлах, где они есть. После фикса снимок 265. Груз уехал курьером publish_scripts --kind scripts.</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-21 15:34 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/verify_probe.py run python3 ~/.claude/scripts/fleet_routines_collect.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">login-shield-loud-and-vss-20260916</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Щиты логинов: провал бэкапа кук = красный exit + VSS-фолбэк Chrome (корни разлогинов 15-16.09)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-16 14:44 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/verify_probe.py run ~/.claude/scripts/_shared/ff_login_shield.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">rail-plan-20260921</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">План рельс на старте сессии + честная сверка план-факт на ретро (приказ Антона 21.09: мало жжём чужие LLM, причина недобора называется вслух, forgot обязывает править дверь)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-21 10:11 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 /_deploy/payloads/rail-plan-20260921/apply.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">session-groups-refresh-win-20260915</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Иконки сессий (Windows): посылка отстала на 4 дня — не было hook-режима и SKILL.md, установщик не проводил дверь; + маркер ретро Р+ -&gt; Р</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-15 13:43 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python %IMPORTS_ROOT%/fleet/session-groups/install_session_groups.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">spawn-queue-prompt-dedup-20260921</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">spawn_queue.add: дедуп по sha256(prompt) — переза́каз того же класса под новой датой в task-id отбивается rc3 (класс duplicate-prompt-two-sessions, 9 датированных случаев; замер хаба 21.09: 8 пар байт-в-байт дублей в pending)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-21 07:38 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>взять с хаба A-2022BAYAREA файлы ~/.claude/scripts/spawn_queue.py и оба сопровождающих .py (проба и красно-зелёный контур), положить в свой ~/.claude/scripts/, прежде сохранив свой spawn_queue.py в .bak-prededup</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">ff-human-profile-session-guard-20260921</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Firefox: человеческий профиль с сессией Google/claude/z.ai не клонируется (копия = разлогин Антона), шим на канон движка, гвард копии в dr_ff_rail, чистка яда user.js</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-21 09:13 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 $MACHINE_BUS_DIR/_deploy/payloads/ff-human-profile-session-guard-20260921/_apply_ff_session_guard_20260921.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">llm-harvest-census-truthfix-20260921</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Перепись сбора: два ложных зелёных закрыты (вендорское имя != сборщик; syncthing != сбор диалогов)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-21 21:34 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/fleet_tools_sync.py --apply</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">llm-harvest-census-breakerfix-20260921</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Перепись сбора v3 после панели ломателей: сторож не считается сборщиком, разделители _ - . нормализованы, freshness = проверка а не забор</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-21 21:51 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/fleet_tools_sync.py --apply</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">fleet-collector-schedule-20260922</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Коллектор снимков рутин НА РАСПИСАНИЕ на каждом узле (корень 22.09: перепись llm-harvest-census судила по снимкам, обновлявшимся случайными ручными прогонами; расписание стояло на 2 узлах из 6, у MacBook-Ruslana снимка нет вовсе)</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-22 11:48 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python3 /_machine-bus/_deploy/payloads/fleet-collector-schedule-20260922/install_collector_schedule.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">hook-doctor-20260922</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Сторож слоя 4: РЕАЛЬНО ли бегут хуки из settings.json (класс hook-calls-nonexistent-mode, 9 суток тишины 11-20.09)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-22 08:32 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/install_hook_doctor.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">py39-union-lint-20260921</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Прибор класса py39-union-type-syntax: рельса умирает TypeError на int|None, а py_compile этот класс НЕ ловит</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-21 14:40 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py py39-union-lint-20260921</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">fleet-collector-schedule-20260922-win</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Коллектор снимков рутин НА РАСПИСАНИЕ (Windows): корень 22.09 — перепись судила по снимкам, обновлявшимся вручную; расписание стояло на 2 узлах из 6</div>
+  <div class="meta">источник: <b>ZBOOKG8-2023PAL</b> · отправлено: 2026-09-22 11:50 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=ZBOOKG8-2023PAL)</div>
+  
+  <div class="apply">примени: <code>python %OBSIDIAN_VAULT%\_machine-bus\_deploy\payloads\fleet-collector-schedule-20260922\install_collector_schedule.py</code></div>
+  
+</div><div class="card held">
+  <div class="top"><span class="id">dr-browser-only-20260922</span><span class="bdg" style="background:#ff6b8b">⛔ КАРАНТИН</span> <span class="ap">применён</span></div>
+  <div class="ttl">ДР-запрет CLI: codex+claude вне ДР, ноги ChatGPT/Claude только веб; headless ПОКА grok/mistral/glm/gemini (anton голосом 22.09)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-23 06:35 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">НЕВЕРНАЯ Ed25519-подпись — подделка пакета или signer != from (signer=A-2022BAYAREA, from=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python ~/.claude/scripts/deploy_payload_install.py dr-browser-only-20260922</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">bus-send-flag-body-20260923</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Шина: флаг больше не утекает в ТЕЛО сообщения (класс bus-send-flag-leaks-into-body, 5-й случай, задачи терялись молча)</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-23 05:33 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/deploy_payload_install.py bus-send-flag-body-20260923</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">liveness-newcomer-fix-260916</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">liveness: newcomer_merged_90d снова считает внешние смерженные PR (поле было 0 на всех 1884 репо)</div>
+  <div class="meta">источник: <b>MacBook-Anton</b> · отправлено: 2026-09-22 13:32 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=MacBook-Anton)</div>
+  
+  <div class="apply">примени: <code>Создать ~/.claude/scripts/github_universe/ если её нет и скопировать туда ВСЕ три файла из курьерской капли $MACHINE_BUS_DIR/_transit/scripts-from-MacBook-Anton/github_universe/ — их имена и md5 лежат в CHECKSUMS.txt груза этой посылки. Штатный установщик подпапки НЕ умеет (режет имена со слэшем как path traversal), поэтому шаг ручной.</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">robot-profile-scrub-20260923b</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">REV B (после панели Codex+Grok): робо-профиль не держит личных сессий + guard() больше НЕ молчит при занятом профиле и сбое проверки</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-23 05:49 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python %OBSIDIAN_VAULT%\_machine-bus\_deploy\payloads\robot-profile-scrub-20260923b\install.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">routine-registry-watch-20260922</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Сторож видит ВСЕ рутины: читает живой реестр приложения (lastRunAt+cronExpression), а не только heartbeat-файлы. Замер на хабе 22.09: 23 из 41 включённой рутины были НЕВИДИМЫ (56%) -- рутина без heartbeat падала в not_wired, который печатается, но НЕ краснеет; raise-outreach-daily так молчала 16-19.09 четверо суток без тревоги. Предпосылка &#x27;lastRunAt not readable headless&#x27; из шапки сторожа неверна. Врезка встаёт РЯДОМ с heartbeat-слоем, ничего не отключая; install читает cron_watchdog.cmd и правит ту копию, которая реально бежит; заодно переводит _test_cron_watchdog.py на живую копию (на хабе тест месяцами мерил мёртвый дубль 525 строк). Канарейка = хаб A-2022BAYAREA: 14/14 тестов, регрессия на реальном инциденте, verify PASS, повторный install идемпотентен, registry=40 в боевом прогоне.</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-22 18:38 · <span class="ok">подпись ✓</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python %OBSIDIAN_VAULT%\_machine-bus\_deploy\payloads\routine-registry-watch-20260922\install_registry_watch.py</code></div>
+  
+</div><div class="card trusted">
+  <div class="top"><span class="id">robot-profile-roots-20260923</span><span class="bdg" style="background:#37d399">✅ доверенный</span> <span class="ap">применён</span></div>
+  <div class="ttl">Сторож робо-профилей был слеп к боевым каталогам узла: корни берутся у драйвера + per-node robot_profile_roots.json, незарегистрированный профиль = громкий RED, пустая область = снять всё. На хабе нашлось 399 кук живых сессий ЛИЧНЫХ аккаунтов Антона в 5 профилях -- корень разлогинов ChatGPT/Gmail</div>
+  <div class="meta">источник: <b>A-2022BAYAREA</b> · отправлено: 2026-09-23 15:34 · <span class="mut">без подписи (HMAC не подключён)</span></div>
+  <div class="rsn">валидная Ed25519-подпись флота (signer=A-2022BAYAREA)</div>
+  
+  <div class="apply">примени: <code>python3 ~/.claude/scripts/verify_probe.py run python3 $OBSIDIAN_VAULT/_machine-bus/_deploy/payloads/robot-profile-roots-20260923/install_robot_profile_roots.py</code></div>
   
 </div>
 </div></body></html>
