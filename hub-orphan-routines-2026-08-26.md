@@ -231,7 +231,7 @@
 - `auto-hub-260818-rc-anton-live` · 2026-08-18 · RC-сессия для управления Антоном с телефона (страховка к ресюмнутой Anton-2)
 - `auto-hub-260818-rc-cockpit-anton` · 2026-08-18 · RC-кокпит Антона 18.08: живая сессия, видимая с телефона, продолжение очереди сессии Anton-2
 - `auto-hub-260819-chip-debt-triage-autolaunch` · 2026-08-19 · Разбор 110 ненажатых чипов + автозапуск живых
-- `auto-hub-260819-daniel-ospina-vhodyashchiy-kontakt` · 2026-08-19 · Daniel Ospina (@_Daniel_Ospina) — живой входящий, строит Tortoise (graph-memory для агентов)
+- `auto-hub-260819-daniel-ospina-vhodyashchiy-kontakt` · 2026-08-19 · ***iel ***ina (@_Daniel_Ospina) — живой входящий, строит Tortoise (graph-memory для агентов)
 - `auto-hub-260819-github-2fa-lab-account` · 2026-08-19 · Включить 2FA на GitHub-аккаунте Palo-Alto-AI-Research-Lab (дедлайн GitHub: 13.08.2026)
 - `auto-hub-260819-hackernoon-hacker-news-content-strateg` · 2026-08-19 · HackerNoon / Hacker News — контент-стратегия (голосовая задача №54 от 28.07)
 - `auto-hub-260819-kirill-gruppa-robot-s-haba` · 2026-08-19 · AUTO — лид Кирилл: найти/поднять группу, перевести общение робота с Маяка на хаб, вести проактивно. Из голосовой hub:549

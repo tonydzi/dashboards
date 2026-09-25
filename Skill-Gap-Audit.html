@@ -1,147 +1,130 @@
-<!doctype html>
-<html lang="ru"><head><meta charset="utf-8">
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Skill-Gap Audit</title>
+<title>Skill-Gap Audit — 21.09.2026</title>
 <style>
-:root{--bg:#0f1115;--card:#171a21;--line:#262b36;--fg:#e6e9ef;--dim:#9aa4b2;--hi:#ffb020;--hot:#ff4d4f;--ok:#33c481;--med:#4aa3ff}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;padding:22px}
-h1{font-size:22px;margin:0 0 4px}
-h2{font-size:16px;margin:26px 0 10px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+:root{--bg:#0f1115;--card:#171a21;--fg:#e8eaed;--dim:#9aa0a6;--hi:#ffd166;--red:#ff6b6b;--grn:#4ade80;--blu:#60a5fa;--brd:#2a2f3a}
+*{box-sizing:border-box}body{margin:0;padding:24px;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,Segoe UI,Roboto,sans-serif}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:26px 0 10px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
 .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
-.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.card h3{margin:0 0 6px;font-size:15px}
-.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;margin-right:6px;font-weight:600}
-.HIGH{background:rgba(255,77,79,.15);color:var(--hot)}
-.MED{background:rgba(74,163,255,.15);color:var(--med)}
-.WATCH{background:rgba(154,164,178,.15);color:var(--dim)}
-.NEW{background:rgba(255,176,32,.18);color:var(--hi)}
-.OK{background:rgba(51,196,129,.15);color:var(--ok)}
-.ev{color:var(--dim);font-size:12.5px;margin:8px 0 0;padding-left:16px}
-.ev li{margin:2px 0}
-.why{font-size:13px;margin:8px 0 0;color:#c7cedb}
-.kpi{display:flex;gap:20px;flex-wrap:wrap;margin:0 0 18px}
-.kpi div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px}
-.kpi b{display:block;font-size:22px;line-height:1.2}
-.kpi span{font-size:12px;color:var(--dim)}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase}
-.note{background:rgba(255,176,32,.07);border:1px solid rgba(255,176,32,.28);border-radius:10px;padding:13px 16px;margin:18px 0;font-size:13.5px}
-.refut{background:rgba(51,196,129,.06);border:1px solid rgba(51,196,129,.25);border-radius:10px;padding:13px 16px;margin:18px 0;font-size:13.5px}
-code{background:#0b0d11;padding:1px 5px;border-radius:4px;font-size:12.5px}
-.eli{background:#12161d;border-left:3px solid var(--hi);padding:12px 16px;margin:22px 0 0;border-radius:0 8px 8px 0;font-size:14px}
-.good{color:var(--ok)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:8px}
+.kpi{background:var(--card);border:1px solid var(--brd);border-radius:10px;padding:12px}
+.kpi b{display:block;font-size:22px}.kpi span{color:var(--dim);font-size:12px}
+.card{background:var(--card);border:1px solid var(--brd);border-left:4px solid var(--brd);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.HIGH{border-left-color:var(--red)}.MED{border-left-color:var(--hi)}.WATCH{border-left-color:var(--blu)}.OK{border-left-color:var(--grn)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;background:#252a35;color:var(--dim);margin-right:6px}
+.tag.r{background:#3a1f22;color:#ff9b9b}.tag.y{background:#3a331f;color:#ffdf9b}.tag.b{background:#1f2c3a;color:#9bc9ff}
+ul{margin:8px 0 0;padding-left:20px}li{margin:3px 0}
+code{background:#0b0d11;padding:1px 5px;border-radius:4px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}td,th{padding:6px 8px;border-bottom:1px solid var(--brd);text-align:left}
+th{color:var(--dim);font-weight:500}
+.eli{background:#12241c;border:1px solid #1f4030;border-radius:10px;padding:14px 16px;margin-top:22px}
+.warn{color:var(--hi)}.bad{color:var(--red)}.good{color:var(--grn)}
 </style></head><body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Качество и аудиты</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Secrets-Junction-Audit-2026-07-20.html">&larr; Secrets-Junction-Audit-2026-07-20</a> · <a href="Token-Audit-2026-07-05.html">Token-Audit-2026-07-05 &rarr;</a></span></div>
 
-<h1>Skill-Gap Audit &mdash; какой скилл строить дальше</h1>
-<div class="sub">Прогон 2026-09-14 00:54 &middot; узел A-2022BAYAREA (хаб) &middot; окно 14 дней (31.08&ndash;14.09) &middot; корпус 342 сессии, 6 машин &middot; read-only</div>
+<h1>Skill-Gap Audit — какой скилл строить дальше</h1>
+<div class="sub">Прогон 21.09.2026 00:54 · узел A-2022BAYAREA · окно 14 дней (07–21.09) · корпус 293 сессии, из них живых ~191, 6 машин · read-only</div>
 
-<div class="kpi">
-  <div><b>236</b><span>скиллов на полке</span></div>
-  <div><b>106</b><span>звали за 30 дн</span></div>
-  <div><b>52</b><span>живых рутин</span></div>
-  <div><b>13</b><span>кластеров работы</span></div>
-  <div><b>1</b><span>НОВЫЙ HIGH-пробел</span></div>
-  <div><b>~41K</b><span>токенов/сессия &mdash; цена полки</span></div>
-</div>
-
-<div class="note">
-<b>&#9888; Главное за неделю &mdash; не пробел, а то, что предложения не превращаются в стройку.</b><br>
-Четыре HIGH-пробела прошлых смен (<code>publish-longform</code> 35 дней, <code>concierge</code>, <code>hk-routine-doctor</code>, <code>codex-onboard</code>) не построены <b>ни один</b>. При этом 10.09 за один день поставлено <b>46 чужих скиллов</b> из паков. Полка выросла 189 &rarr; 236 за неделю <i>без единого</i> построенного по этому аудиту.<br><br>
-Вывод: узкое место &mdash; не &laquo;мы не знаем, что строить&raquo;, а &laquo;у предложения нет исполнителя&raquo;. Пока это так, каждый новый HIGH-пробел здесь &mdash; ещё одна строка в очередь, которую никто не разбирает.
-</div>
-
-<h2>&#128293; Пробелы &mdash; ранжировано</h2>
 <div class="grid">
+<div class="kpi"><b>0</b><span>НОВЫХ HIGH-пробелов</span></div>
+<div class="kpi"><b class="bad">2</b><span>HIGH перенесены, оба не построены</span></div>
+<div class="kpi"><b class="bad">42</b><span>дня старшему HIGH</span></div>
+<div class="kpi"><b>206</b><span>своих скиллов на полке</span></div>
+<div class="kpi"><b>711</b><span>рутин по флоту (5 узлов сдали)</span></div>
+<div class="kpi"><b class="warn">42 011</b><span>токенов/сессия — цена полки</span></div>
+<div class="kpi"><b class="warn">177</b><span>описаний нарушают контракт 400</span></div>
+</div>
+<div class="sub">254 папки в <code>skills/</code>, из них 206 наших — остальное общие и плагинные. Счётчик вызовов скиллов в этом прогоне честно мёртв: за 20.09 он записал 2 вызова на 21 852 транскрипта, он мерит вызов, а не использование. Поэтому числу «сколько скиллов молчат» здесь НЕ верим и его не приводим.</div>
 
-  <div class="card">
-    <h3>/sell-brain &mdash; продажа платного второго мозга</h3>
-    <span class="tag HIGH">HIGH</span><span class="tag NEW">НОВЫЙ</span><span class="tag OK">рельсы готовы</span>
-    <p class="why">Цена &middot; оффер &middot; волны W1&ndash;W2 &middot; превращение бесплатного пира в платящего. Сейчас каждый заход собирается с нуля.</p>
-    <p class="why"><b>Двери нет.</b> Проверено лично, не со слов сканера: <code>/pipeline</code> = лиды и фоллоуапы, <code>/fundraise</code> = раунд для нас, <code>/worth</code> = сколько человек стоит внимания, <code>/brain-onboard</code> = техническая доставка. Про <i>цену и оффер платнику</i> &mdash; ни одного.</p>
-    <ul class="ev">
-      <li>HP17-ZBook 10.09 &mdash; &laquo;&#128176; !!! ПРОДАЖИ!!!!!!!!!! Первое платное предложение по второму мозгу!! Исследование рынка второго мозга&raquo;</li>
-      <li>HP17-ZBook 10.09 &mdash; &laquo;&#128176; Платники второго мозга: волны W1-W2&raquo;</li>
-      <li>PaloAlto-Desktop 11.09 &mdash; &laquo;&#129504; 2мозг Андрею (мак+MCP)&raquo;</li>
-    </ul>
-    <p class="why"><b>Почему HIGH:</b> это деньги, тема новая и уже на 2 машинах, а рельсы под ней стоят &mdash; скилл = тонкая склейка <code>/worth</code> + <code>/pipeline</code> + <code>/brain-onboard</code> плюс прайс и шаблон оффера. АК-47 проходит.</p>
-  </div>
-
-  <div class="card">
-    <h3>/publish-longform &mdash; готовый лонгрид &rarr; Habr / HN / Medium / Dev.to</h3>
-    <span class="tag HIGH">HIGH</span><span class="tag WATCH">35 дней без стройки</span>
-    <p class="why">Носится с 10.08, подтверждался 17.08 &middot; 18.08 &middot; 24.08 &middot; 31.08 &middot; 07.09 &mdash; и снова живой на этой неделе.</p>
-    <ul class="ev">
-      <li>HP17-ZBook 10.09 &mdash; &laquo;Hacker News: стратегия подачи Show HN&raquo;</li>
-      <li>HP17-ZBook 10.09 &mdash; &laquo;Конвейер зеркал: 8 работ + письма в 2 журнала&raquo;</li>
-      <li>MyOwnPC-Natalia 12.09 &mdash; &laquo;Популярные посты на Хабр&raquo;</li>
-    </ul>
-    <p class="why"><b>Честно:</b> 5 недель в HIGH без единой попытки постройки &mdash; это уже не &laquo;пробел&raquo;, а сигнал, что предложение некому взять. Либо назначить исполнителя, либо снять из HIGH и признать, что руками дешевле.</p>
-  </div>
-
-  <div class="card">
-    <h3>/codex-onboard &mdash; поднять Codex на машине и проверить, что он видит волт</h3>
-    <span class="tag MED">MED &darr; с HIGH</span>
-    <p class="why">Прошлая смена дала HIGH с оговоркой &laquo;кластер может быть КОНЕЧНЫМ&raquo;. Оговорка сбывается: 11.09 прошла разовая &laquo;Миграция рутин и скиллов в Кодекс&raquo;, полка общая через junction, <code>/codex-mirror</code> закрывает зеркало канона.</p>
-    <p class="why">Понижен. Новые пиры продолжают приходить, но их закрывает <code>/peer-onboard</code>.</p>
-  </div>
-
-  <div class="card">
-    <h3>/concierge &mdash; посылки Русланы + поиск товара/цены/услуги</h3>
-    <span class="tag WATCH">WATCH &darr; с HIGH</span>
-    <p class="why">Свежих следов в окне 07&ndash;14.09 нет ни на одной машине. Держу в списке, но без новых улик поднимать рейтинг нечем.</p>
-  </div>
-
-  <div class="card">
-    <h3>/hk + сторож канон-дрейфа &mdash; узел молча отстаёт</h3>
-    <span class="tag WATCH">WATCH &darr; с HIGH</span>
-    <p class="why">Частично закрыто рутинами: кран-сторож кричит в 03 &mdash; видно в этом же прогоне (4 задачи не в порядке, <code>canon-writer-nightly</code> молчит 72ч и это <b>обнаружено</b>). Механизм крика работает; отдельный скилл пока не нужен.</p>
-  </div>
-
+<h2>Вердикт прогона</h2>
+<div class="card HIGH">
+<span class="tag r">ГЛАВНОЕ</span><b>Узкое место — не «что строить», а «кто строит».</b>
+<ul>
+<li>За неделю на полке появилось <b>16 новых скиллов</b> (по git, не по датам файлов): call-prep, hyper-research, interview-prep, interview-debrief, job-inbox, llm-pact, read-with-ai, teach-podcast и 8 штук screenpipe-*. <b>Ни одного</b> из них по предложениям этого аудита.</li>
+<li><code>/publish-longform</code> висит в HIGH <b>42 дня</b> (с 10.08), предлагался 7 прогонов подряд.</li>
+<li><code>/sell-brain</code> предложен 14.09 — за 7 дней не построен.</li>
+<li>Вывод: рельса «аудит предложил → кто-то собрал» <b>не существует</b>. Продолжать предлагать в неё — писать в /dev/null. Нужен либо названный исполнитель (узел + рутина), либо честное закрытие обоих предложений.</li>
+</ul>
 </div>
 
-<div class="refut">
-<b class="good">&#10003; Снято в этом прогоне</b> (чтобы следующая смена не предлагала заново):<br><br>
-<b>&laquo;Нет двери для поиска источников вакансий&raquo;</b> &mdash; <b>опровергнуто</b>. Кластер подач (9 сессий, 3 машины, 07&ndash;10.09) выглядел непокрытым, потому что сканер смотрел только полку скиллов. В реестре рутин дверь есть, и не одна: <code>jobs-tg-nightly</code> (ночной парсер TG-каналов с вакансиями) и <code>jobs-watch-daily</code> (ATS-борды frontier-LLM), плюс <code>pipe-a-apply-daily</code> на подаче и <code>pipe-a-inbox-watch</code> на ответах. Ручного скилл-двойника у сорсинга нет, но по АК-47 это не повод строить.
-</div>
+<h2>Ранжированные пробелы</h2>
 
-<h2>&#128203; Все 13 кластеров недели</h2>
+<div class="card HIGH">
+<span class="tag r">HIGH</span><span class="tag">перенос, 42 дня</span><span class="tag">инфра готова</span>
+<b>/publish-longform — одна дверь: готовый лонгрид → Habr / HackerNoon / Medium / Dev.to / Reddit / Show HN</b>
+<p>Улики в окне: 10.09 «Dev.to голос и стратегия», 10.09 «Hacker News: стратегия подачи Show HN», 10.09 «3я статья в АрХив», 18.09 «Текст статьи Medium», 19.09 «Medium post 14». Две машины: HP17-ZBook и MyOwnPC-Natalia.</p>
+<p><b>Уточнение этого прогона</b> (перепроверено по 711 рутинам флота, а не только по полке скиллов): это НЕ «двери нет», это <b>дверь россыпью по трём узлам</b>.</p>
 <table>
-<tr><th>Кластер</th><th>Сессий / машин</th><th>Покрытие</th></tr>
-<tr><td>Контент-дистрибуция (ежедневная)</td><td>20 / 4</td><td>&#10003; /social-daily /content-mine /episode /devrel-wave</td></tr>
-<tr><td>Подача на вакансии</td><td>9 / 3</td><td>&#10003; /apply + 4 рутины (сорсинг закрыт рутинами)</td></tr>
-<tr><td>Аудит сессий и рутин</td><td>8 / 3</td><td>&#10003; по частям: /slot /session-groups /elephant /routine-opt</td></tr>
-<tr><td>DR-веер</td><td>6 / 2</td><td>&#10003; /dr-fanout /alfa-search-recall-deepresearch</td></tr>
-<tr><td>GitHub / OSS вклады</td><td>6 / 2</td><td>&#10003; /pr-reply /contrib-watch /share-fix /gh-discussions</td></tr>
-<tr><td>Шина, инбокс, долги</td><td>5 / 3</td><td>&#10003; /inbox</td></tr>
-<tr><td>Полка скиллов и Codex</td><td>5 / 2</td><td>&#10003; /skill-gap /skillify /skill-forge /codex-mirror</td></tr>
-<tr><td>Голосовые &rarr; сессии</td><td>4 / 2</td><td>&#10003; /voice-sessions</td></tr>
-<tr><td>Майнинг альфы VIP (FB/TG)</td><td>4 / 2</td><td>&#10003; /local-fb-alpha /community-alpha /alpha-judge</td></tr>
-<tr><td>Онбординг пиров</td><td>3 / 1</td><td>&#10003; /peer-onboard /follower-onboard</td></tr>
-<tr><td>WhatsApp: 2 аккаунта, диалоги</td><td>3 / 1</td><td>&#10003; /whatsapp-pair /whatsapp-sync</td></tr>
-<tr><td>Firefox: профиль, синк, стабильность</td><td>3 / 2</td><td>&#10003; /firefox</td></tr>
-<tr><td><b>Продажи второго мозга</b></td><td><b>3 / 2</b></td><td><b>&#10007; двери нет &rarr; /sell-brain</b></td></tr>
+<tr><th>Площадка</th><th>Дверь</th><th>Узел</th><th>Состояние</th></tr>
+<tr><td>Dev.to</td><td><code>devto-publish-rhythm</code>, <code>auto-hp17-260806-dr-runner-devto</code></td><td>ZBOOKG8</td><td class="good">закрыта</td></tr>
+<tr><td>Medium</td><td><code>Medium-repost-reminder-post3</code>, <code>auto-hp17-260805-new-medium-backfill-logic</code></td><td>Natalia / ZBOOKG8</td><td class="warn">полдвери: напоминалка, не конвейер</td></tr>
+<tr><td>Reddit</td><td><code>Claude Reddit Warmup Lead</code>, <code>Natasha Reddit Push</code></td><td>хаб</td><td class="warn">только прогрев</td></tr>
+<tr><td>Лонгрид (свой)</td><td><code>Claude Daily Longread Stub</code> + <code>daily_longread.py</code></td><td>хаб</td><td class="good">закрыта</td></tr>
+<tr><td>Habr</td><td>—</td><td>—</td><td class="bad">пусто (0 из 711)</td></tr>
+<tr><td>HackerNoon / Show HN</td><td>—</td><td>—</td><td class="bad">пусто (0 из 711)</td></tr>
 </table>
+<p>То есть просить надо не «скилл с нуля», а <b>тонкую обёртку-маршрутизатор</b> поверх четырёх живых рутин плюс две новые ноги (Habr, HN). Это заметно дешевле, чем заявка выглядела все 42 дня — и, возможно, именно поэтому её никто не брал.</p>
+</div>
 
-<h2>&#129529; Вне мандата, но замерено (наблюдение, не предложение)</h2>
-<div class="grid">
-  <div class="card">
-    <h3>Описания скиллов жгут 41K токенов каждой сессии</h3>
-    <p class="why">Прибор <code>skill_desc_audit.py</code>: свои 190 скиллов = 143 186 символов &asymp; <b>40 910 токенов на КАЖДУЮ сессию</b>. Контракт &sect;9.3-тер = 400 символов, нарушают <b>176 из 190</b>. Приведение к контракту вернуло бы <b>19 547 токенов/сессия</b>.</p>
-    <p class="why">Хуже длины &mdash; форма: <b>145 описаний без кавычек</b>, из них 68 свёрнутых блоков <code>&gt;-</code>. Харнес показывает вместо такого описания заголовок из тела, и триггеры до модели не доезжают &mdash; скилл просто не зовут сам.</p>
-  </div>
-  <div class="card">
-    <h3>133 скилла моложе окна &mdash; судить нельзя, но и потребителя у них нет</h3>
-    <p class="why">Счётчик говорит &laquo;молчат 141&raquo;, но <b>133 из них моложе 30 дней</b> (паки от 10.09) &mdash; вердикт &laquo;мёртв&raquo; к ним неприменим, и я его не выношу. Настоящих кандидатов в утиль всего <b>3</b>: <code>local-repo-intel</code>, <code>local-chatgpt-token-heal</code>, <code>local-llm-wave</code>.</p>
-    <p class="why">Но &sect;9.3-тер требует у каждого поставленного скилла <b>названного и оповещённого потребителя</b>. У 46 скиллов из паков 10.09 его нет &mdash; ноль вызовов за 4 дня это подтверждает.</p>
-  </div>
+<div class="card HIGH">
+<span class="tag r">HIGH · остаётся</span><span class="tag">условие понижения НЕ сработало</span>
+<b>/sell-brain — цена, оффер и волны платников второго мозга</b>
+<p>Прошлая смена (14.09) поставила HIGH и записала условие: «одноразовый всплеск монетизации; если на следующей неделе продажных сессий не появится — понижать до MED». <b>Условие НЕ сработало — гап остаётся HIGH.</b> Улики: 09.09 «Консалтинг продажи и стратегия», 14.09 «ПРОДАЖИ!!! Первое платное предложение по второму мозгу», <b>15.09 «💰 Платники второго мозга: волны W1-W2»</b> (HP17-ZBook, уже после прошлого аудита).</p>
+<p class="warn">⚠️ Этот пункт я в первом заходе чуть не понизил ошибочно: первый греп по дайджесту сессию 15.09 <b>не увидел</b> — <code>grep -i</code> в Git Bash на Windows не складывает регистр кириллицы, и «Платники» с заглавной П провалилось мимо фильтра. Поймал второй заход через <code>python re.I</code>. Считать кириллицу грепом с <code>-i</code> здесь нельзя.</p>
+<p>Честная поправка к силе сигнала: за 16–21.09 (6 дней) новых продажных сессий нет. Условие понижения переезжает на следующий прогон: не появится продажной сессии до 28.09 — понижаем.</p>
+<p>Пробел при этом <b>настоящий</b> и перепроверен по обеим поверхностям: слов «прода / платник / монетиз / pricing» нет ни в одном из 206 скиллов и ни в одной из 711 рутин флота. <code>/pipeline</code> = лиды, <code>/worth</code> = ценность человека, <code>/fundraise</code> = наш раунд, <code>/brain-onboard</code> = техническая выдача мозга пиру бесплатно. Цену продукта платящему клиенту не держит никто.</p>
+<p><b>Решение прогона:</b> HIGH, второй прогон подряд, не построен 7 дней.</p>
+</div>
+
+<h2>Что проверено, а что нет</h2>
+<div class="card OK">
+<ul>
+<li><b>Проверено двумя разными методами:</b> улики по продажам (греп дайджеста → и повторно python-фильтром по датам, который и поймал ошибку первого); рост полки (даты файлов → и повторно <code>git log --diff-filter=A</code>, 16 новых скиллов поимённо); покрытие пробелов (полка скиллов → и повторно сырой греп по 5 JSON реестра рутин флота); цена полки (живой прогон <code>skill_desc_audit.py</code>, не экстраполяция).</li>
+<li><b>Опровергнуто в сессии:</b> вердикт субагента «нет двери для конвейера второй памяти» (дверь есть, но она параметр, а не скилл) и мой собственный первый вывод «продажных сессий за неделю ноль» (была одна, 15.09).</li>
+<li><b>НЕ проверено:</b> тела 293 сессий — аудит по заголовкам и однострочным сводкам, как задано контрактом рутины (экономия токенов); узлы, не сдавшие реестр рутин (2 из 6) — их двери могли не попасть в кросс-карту; счётчик вызовов скиллов мёртв, поэтому «какие скиллы никто не зовёт» в этом прогоне не считалось вообще.</li>
+</ul>
+</div>
+
+<div class="card WATCH">
+<span class="tag b">WATCH</span><span class="tag">12 сессий, но за 2 дня</span>
+<b>Конвейер экспериментов «Вторая память» (embedder / reranker / hybrid-swap)</b>
+<p>16–17.09 дала 12 сессий: <code>AUTO-hub-sm-T04 bge-m3-embedder</code>, <code>T06 чанкование</code>, <code>T07 sqlite-vec</code>, <code>T09 bitemporal-edges</code>, диаризация ScreenPipe. Субагент-сканер назвал это PARTIAL «двери нет» — <b>опровергнуто в сессии</b>: это конечная программа со своими сидами, а сменная деталь уже вынесена ПАРАМЕТРОМ (<code>brain_emb_backends.py</code> + <code>BRAIN_EMB_BACKEND</code>, память <code>measure-before-you-swap-embedder</code>). По АК-47 скилл поверх разовой программы не строим.</p>
+<p>Триггер на повышение: если в следующем окне снова пойдут прогоны «померить другой бэкенд» — тогда тонкая обёртка <code>/brain-bench</code> над уже готовой линейкой.</p>
+</div>
+
+<div class="card WATCH">
+<span class="tag b">WATCH</span><span class="tag">3 сессии</span>
+<b>MCP-agent security research</b>
+<p>07.09 «bb agent architecture and security», 10.09 «Демонстрация уязвимостей MCP агентов», 13.09 «Исследование CodeIndexer». Повтор низкий; на полке уже <code>/security-review</code>, <code>/find-exposed-servers</code>, <code>/find-leaks-in-the-wild</code>, <code>/secrets-in-git-history</code>, <code>/guard</code>, <code>/quarantine</code>. Отдельной двери не заслуживает.</p>
+</div>
+
+<h2>Покрытые кластеры (проверено по ОБЕИМ поверхностям)</h2>
+<div class="card OK">
+<table>
+<tr><th>Кластер</th><th>Сессий</th><th>Чем закрыт</th></tr>
+<tr><td>Флот / инфра / рутины / сессии</td><td>~40</td><td>/fleet /slot /nsr /elephant /routine-opt /deflate /migrate + десятки auto-hub-*, session-unsticker-hourly</td></tr>
+<tr><td>Найм / интервью / резюме</td><td>~25</td><td>/apply /cv /cv-outreach /interview-prep /interview-debrief /job-inbox + pipe-a-apply-daily, jobs-tg-nightly, jobs-watch-daily, hiring-ask-daily</td></tr>
+<tr><td>Контент-фабрика (посты, тройка, девлог)</td><td>~20</td><td>/social-daily /content-mine /episode /fb-post /x-post /tg-post /taste-check + daily-troika-posts, content-factory-daily, devlog-collect-nightly</td></tr>
+<tr><td>GitHub / OSS</td><td>~12</td><td>/pr-reply /rep-reply /share-fix /issue-match /contrib-watch /gh-discussions + git-s4-pretakeoff-radar, git-s7-fast, git-s7-vendor</td></tr>
+<tr><td>ДР-веер / Alpha Protocol</td><td>~10</td><td>/dr-fanout /alfa /hyper-research /dr-teasers + dr-daily-digest, dr-teasers-daily</td></tr>
+<tr><td>Лиды / CRM / онбординг пиров</td><td>~10</td><td>/peer-onboard /fa /triage /telegram-lead-outreach /pipeline + lead-thread-reply, peer-*-coach-tick</td></tr>
+<tr><td>Инбокс / долги шины / бэкапы</td><td>6</td><td>/inbox /ledger /obsidian-backup + hub-deploy-unpack-daily, hanging-tasks-digest</td></tr>
+<tr><td>Полка скиллов / marketplace</td><td>5</td><td>/skill-gap /skillify /skill-forge + skill-gap-daily</td></tr>
+<tr><td>Голосовые → сессии</td><td>4</td><td>/voice-sessions + voice-dispatcher, voice-sessions-runner, voice-triage</td></tr>
+<tr><td>Рейз / крипто</td><td>3</td><td>/fundraise /gonka-fundraise /raise-sourcing /raise-sync + raise-outreach-daily</td></tr>
+<tr><td>Личные разовые поручения (плитка, тормозные ручки, почта)</td><td>~7</td><td>двери не надо — АК-47, задачи не пересекаются</td></tr>
+</table>
+</div>
+
+<h2>Вне мандата, но замерено</h2>
+<div class="card MED">
+<span class="tag y">долг полки</span>
+<b>Полка стоит 42 011 токенов КАЖДОЙ сессии — и две трети этой цены лишние.</b>
+<p>206 описаний = 147 038 символов. Контракт ≤400 символов нарушают <b>177</b>. Приведение к контракту снимает 68 684 символа ≈ <b>19 624 токена с каждой сессии</b>. Плюс форма: 145 описаний <b>без кавычек</b>, из них 68 — свёрнутые блоки, которые харнес показывает заголовком, так что триггеры до модели не доезжают и скилл не зовут сам.</p>
+<p>Это не пробел, а долг: строить нечего, надо подрезать. Прибор готов: <code>python ~/.claude/scripts/skill_desc_audit.py</code>. Дешевле любого нового скилла и окупается в тот же день.</p>
 </div>
 
 <div class="eli">
-<b>&#129490; Простыми словами.</b> Я посмотрел, чем все компьютеры занимались две недели, и разложил работу на 13 кучек. Двенадцать кучек уже имеют свою кнопку &mdash; скилл, который эту работу делает. Новая кучка ровно одна: мы начали <b>продавать</b> второй мозг за деньги, а кнопки &laquo;как назначить цену и сделать предложение&raquo; у нас нет. Её стоит сделать, и она дешёвая &mdash; рядом уже лежат все детали.<br><br>
-И ещё одна честная вещь: четыре кнопки, которые я советовал сделать раньше, так никто и не сделал &mdash; самой старой уже 35 дней. Зато за один день поставили 46 чужих кнопок. Получается, советовать я умею, а строить по этим советам некому. Это чинить важнее, чем придумывать новый совет.
+🧒 <b>Простыми словами.</b> Раз в неделю я смотрю, какую работу мы делаем руками часто, и спрашиваю: «а есть ли для неё кнопка?». На этой неделе новых дырок нет. Но старая дырка — кнопка «разложить готовую статью по всем сайтам» — висит уже 42 дня, и её никто не делает. Я посмотрел внимательнее и нашёл хорошую новость: половина кнопки уже есть, просто кусочки лежат на разных компьютерах. Собрать их вместе гораздо легче, чем мы думали. Вторая старая кнопка — «продавать второй мозг за деньги» — тоже не сделана, ей уже неделя. Я сперва решил, что она не нужна, но проверил второй раз и увидел: 15 сентября про это всё-таки была работа, просто мой первый поиск её пропустил из-за заглавной русской буквы. Так что кнопка нужна. И ещё: наша полка с кнопками стала такой длинной, что откусывает много места в каждом разговоре; две трети можно отрезать, просто укоротив подписи.
 </div>
 
 </body></html>
