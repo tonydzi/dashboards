@@ -33,6 +33,8 @@ not written as a demo — and it runs on its own: nothing here phones home to th
 
 **See how the whole thing fits together → [SYSTEM.md](https://github.com/tonydzi/tonydzi/blob/main/SYSTEM.md)**
 
+**Want your machine in the fleet? → [Join the fleet](https://github.com/tonydzi/join-the-fleet)** (15 minutes, one link, no account with us)
+
 Its closest neighbours in the **in public** layer: [`awesome-verified-agents`](https://github.com/tonydzi/awesome-verified-agents) · [`cofounder`](https://github.com/tonydzi/cofounder) · [`agent-control-plane-casebook`](https://github.com/tonydzi/agent-control-plane-casebook)
 
 <!--ecosystem-map:end-->
