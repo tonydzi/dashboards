@@ -3,7 +3,7 @@
 ---
 type: handoff
 from_machine: Nataly-Win-NB (MyOwnPC-Natalia)
-from_operator: Наталья @*****ya_Le
+from_operator: [colleague] @*****ya_Le
 to: Антон (любая его машина)
 created: 2026-08-06
 topic: Альфа из комментов под FB-постом про recall - разбор и внедрение

@@ -8,7 +8,7 @@ authored_by: claude-code
 date: 2026-06-30
 machine: PaloAlto-Desktop (hub)
 operator: Anton
-assigned_to: Наталья (MYOWNPC, follower)
+assigned_to: [colleague] (MYOWNPC, follower)
 session_role: S6 (дев-лог / документационный GEO-лейн)
 status: ready-to-start (контракт S1 §7 финален; S2/S3 интегрированы)
 tags: [handoff, content-factory, dev-log, geo, S6, follower]
