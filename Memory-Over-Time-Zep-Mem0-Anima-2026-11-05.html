@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memory Over Time</title>
+<style>
+:root{--canvas:#010409;--panel:#161b22;--border:#30363d;--ink:#e6edf3;--dim:#8b949e;--link:#2f81f7;--green:#3fb950;--amber:#d29922;--red:#f85149;--blue:#58a6ff;--violet:#bc8cff}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--canvas:#ffffff;--panel:#f6f8fa;--border:#d0d7de;--ink:#1f2328;--dim:#59636e;--link:#0969da;--green:#1a7f37;--amber:#9a6700;--red:#cf222e;--blue:#0969da;--violet:#8250df}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:1060px;margin:0 auto;padding:28px 16px 60px}
+h1{font-size:28px;margin:0 0 6px;letter-spacing:-.01em}
+h2{font-size:20px;margin:38px 0 10px;padding-top:6px;border-top:1px solid var(--border)}
+h3{font-size:16px;margin:18px 0 6px}
+p{margin:8px 0}
+.sub{color:var(--dim);margin:0 0 18px}
+a{color:var(--link)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
+.kpi b{display:block;font-size:22px}
+.kpi span{color:var(--dim);font-size:13px}
+.tbl{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:10px 0}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{padding:9px 11px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{background:var(--panel);font-size:13px;color:var(--dim);font-weight:600}
+tr:last-child td{border-bottom:0}
+.ok{color:var(--green);font-weight:600}.bad{color:var(--red);font-weight:600}.warn{color:var(--amber);font-weight:600}.na{color:var(--dim)}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:20px;border:1px solid var(--border);color:var(--dim);margin-right:4px}
+code{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:13px}
+pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px;overflow-x:auto;font-size:13px}
+ul{margin:6px 0 6px 20px;padding:0}li{margin:3px 0}
+.svgwrap{overflow-x:auto}
+.foot{color:var(--dim);font-size:13px;margin-top:40px}
+.q{border-left:3px solid var(--blue);padding:4px 0 4px 12px;margin:10px 0}
+.q b{display:block}
+@media print{body{background:#fff;color:#111}.card,.kpi,th,pre,code{background:#f6f8fa!important}h2{break-before:auto}.tbl{overflow:visible}}
+</style>
+</head>
+<body><div style="font:13px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#161b22;border-bottom:1px solid #30363d;color:#8b949e;padding:8px 14px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center"><a href="index.html" style="color:#2f81f7;text-decoration:none;font-weight:600">&#8962; все дашборды</a><span style="color:#6e7681">/</span><span>Мозг и волт</span><span style="margin-left:auto;display:flex;gap:12px"><a href="Memory-AB-Demo.html">&larr; Memory-AB-Demo</a> · <a href="Nataly-Dashboards-Index.html">Nataly-Dashboards-Index &rarr;</a></span></div><div class="wrap">
+
+<h1>Memory over time: one object, many events</h1>
+<p class="sub">How Graphiti (Zep's open core), Mem0 and our plain-file fact history keep the full story of a thing that changes. Measured on the hub on 5 November 2026. Built for conversations with the Zep, Mem0 and Anima Labs teams.</p>
+
+<div class="grid">
+ <div class="kpi"><b class="ok">3 / 3</b><span>Our fact history: timeline, late fact, retraction</span></div>
+ <div class="kpi"><b class="warn">2 / 3</b><span>Graphiti temporal core with a perfect judge: retraction leaves the room empty</span></div>
+ <div class="kpi"><b class="warn">old + new coexist</b><span>Mem0 open source 2.2.1: no closing of the old fact in our test</span></div>
+ <div class="kpi"><b class="na">not tested</b><span>Zep Cloud, Mem0 Platform temporal features, Anima Connectome on this scenario</span></div>
+</div>
+
+<div class="card">
+<b>The question in plain words.</b> A hotel room changes guests many times. A good memory must answer three things: who is in the room now, who was in it on 7 October, and what happens when a record turns out to be wrong. Most "memory" demos only show the first question. Zep's founder argues that plain retrieval keeps both the old and the new location of a user and makes the model guess. We agree with that diagnosis, and we wanted to see how much machinery it takes to fix it.
+</div>
+
+<h2>1. The scenario</h2>
+<div class="svgwrap card">
+<svg viewBox="0 0 980 190" width="100%" style="min-width:760px" role="img" aria-label="Room 402 timeline">
+ <defs><style>.t{fill:var(--ink);font:13px sans-serif}.d{fill:var(--dim);font:12px sans-serif}</style></defs>
+ <line x1="30" y1="95" x2="950" y2="95" stroke="var(--border)" stroke-width="2"/>
+ <!-- 1 Oct .. 31 Oct ; x = 30 + (day-1)*30 -->
+ <rect x="30" y="72" width="120" height="46" rx="6" fill="var(--panel)" stroke="var(--dim)"/><text class="t" x="44" y="100">vacant</text>
+ <rect x="150" y="72" width="120" height="46" rx="6" fill="var(--panel)" stroke="var(--blue)"/><text class="t" x="164" y="100">Ivanov</text>
+ <rect x="270" y="72" width="90" height="46" rx="6" fill="var(--panel)" stroke="var(--dim)"/><text class="t" x="282" y="100">vacant</text>
+ <rect x="360" y="72" width="240" height="46" rx="6" fill="var(--panel)" stroke="var(--violet)"/><text class="t" x="372" y="100">Sidorov (reported late)</text>
+ <rect x="600" y="72" width="350" height="46" rx="6" fill="var(--panel)" stroke="var(--amber)" stroke-dasharray="5 4"/><text class="t" x="612" y="100">Petrova (later found to be an operator error)</text>
+ <text class="d" x="30" y="140">1 Oct</text><text class="d" x="150" y="140">5 Oct</text><text class="d" x="270" y="140">9 Oct</text><text class="d" x="360" y="140">12 Oct</text><text class="d" x="600" y="140">20 Oct</text>
+ <text class="d" x="30" y="40">S1: four changes arrive in order</text>
+ <text class="d" x="360" y="40">S2: a fact about 12 Oct arrives after 20 Oct</text>
+ <text class="d" x="600" y="170">S3: the Petrova record is withdrawn</text>
+</svg>
+</div>
+
+<h2>2. Results on the same scenario</h2>
+<div class="tbl"><table>
+<tr><th>System and mode</th><th>S1 four changes, ask "who was there on date X"</th><th>S2 late fact inserted in the middle</th><th>S3 wrong record withdrawn</th><th>Old versions kept</th></tr>
+<tr><td><b>Our fact history</b><br><span class="na">append-only JSONL, 302 lines of Python, no LLM on write</span></td><td class="ok">4 / 4 dates correct</td><td class="ok">correct: 13 Oct Sidorov, 25 Oct Petrova</td><td class="ok">falls back to Sidorov</td><td class="ok">5 versions, the withdrawn one marked</td></tr>
+<tr><td><b>Graphiti 0.31.2 temporal core</b><br><span class="na">real upstream code and embedded graph; contradictions fed by a perfect judge, no LLM</span></td><td class="ok">4 / 4 dates correct</td><td class="ok">correct</td><td class="bad">room shows nobody</td><td class="ok">yes, closed edges stay</td></tr>
+<tr><td><b>Mem0 open source 2.2.1</b><br><span class="na">native extraction with local Qwen3-4B, 5 episodes (3 Nov)</span></td><td class="warn" colspan="2">"prefers coffee" and "changed to tea from 2 Nov" stored as two live memories; nothing closes the old one</td><td class="na">not tested</td><td class="warn">both kept, no validity window</td></tr>
+<tr><td><b>Zep Cloud, Mem0 Platform</b></td><td class="na" colspan="4">Not measured. Mem0 Platform documents state keys, <code>latest_only</code> and expiration; Zep Cloud adds the LLM judge and Konig. Our numbers say nothing about them.</td></tr>
+<tr><td><b>Anima Labs Connectome</b></td><td class="na" colspan="4">Not measured on this scenario. Connectome keeps an append-only Chronicle and writes "as of that moment" summaries; it targets continuity of an agent's story, not fact-level current state.</td></tr>
+</table></div>
+
+<div class="card">
+<b>Why Graphiti fails S3.</b> Graphiti has no "withdraw" operation. When a new edge closes an old one, it writes the end date into the old edge itself. If the new edge later turns out to be wrong and is deleted, the old edge stays closed, so nothing is true "now". Our design never stores the end date. It derives the end date at read time from whatever newer facts are still live, so withdrawing a fact automatically reopens the previous one. A code review on 3 November showed why this matters for us: computing the end date at write time produced two live facts when two machines wrote at once.
+</div>
+
+<div class="card">
+<b>Fairness note.</b> In S1 and S2 Graphiti was given a perfect judge: every earlier edge of the same relation was offered as a contradiction candidate. In production an LLM picks the candidates, and a public bug report describes that judge retiring unrelated facts. So the Graphiti row is its best case. Zep's managed service may handle withdrawal through a new episode that the LLM interprets; we did not test that path.
+</div>
+
+<h2>3. What each design pays for its answer</h2>
+<div class="tbl"><table>
+<tr><th></th><th>Ours</th><th>Graphiti / Zep</th><th>Mem0</th><th>Anima Connectome</th></tr>
+<tr><td>Unit of memory</td><td>subject · attribute · value · valid from</td><td>edge between entities, four timestamps</td><td>free-text memory string</td><td>event in an append-only log, plus summaries</td></tr>
+<tr><td>Who decides that a fact changed</td><td>the writer names subject and attribute</td><td>an LLM judge on every write</td><td>ADD-only extraction; platform adds state keys</td><td>nobody; history is kept as narrative</td></tr>
+<tr><td>Storage</td><td>JSONL files, synced between machines</td><td>graph database (Neo4j, FalkorDB, Kuzu, Konig)</td><td>vector store plus SQLite history</td><td>Rust log plus context compiler</td></tr>
+<tr><td>LLM calls per write</td><td>0</td><td>several (extract, dedupe, date, contradict)</td><td>1 to 2</td><td>at summary time</td></tr>
+<tr><td>"What did we know on date K"</td><td>yes, <code>--known-at</code></td><td>yes, created_at and expired_at</td><td>no</td><td>partly, as-of summaries</td></tr>
+<tr><td>Where it is stronger than ours</td><td></td><td>reads raw conversations, hybrid search, multi-tenant enterprise, scale</td><td>zero-config extraction, large community, managed platform</td><td>agent identity over months, compression under token pressure</td></tr>
+</table></div>
+
+<h2>4. Retrieval baseline, measured honestly (3 November)</h2>
+<p>Separate from the time question: does each system find the right note at all? 40 real notes, 24 answerable questions, 7 supporting notes. Recall@k means the right note is in the first k results.</p>
+<div class="tbl"><table>
+<tr><th>Configuration</th><th>R@1</th><th>R@5</th><th>R@10</th></tr>
+<tr><td>Mem0 open source, local E5, no extraction</td><td>19</td><td>23</td><td>24</td></tr>
+<tr><td>Our dense layer, same E5, no reranker</td><td>19</td><td>23</td><td>24</td></tr>
+<tr><td>Our system as deployed, with cross-encoder</td><td>17</td><td>21</td><td>24</td></tr>
+<tr><td>Anima Connectome embeddings (Jina)</td><td>n/a</td><td>23</td><td>23</td></tr>
+<tr><td>Graphiti / Zep</td><td colspan="3" class="na">not measured: the local 4B model broke Graphiti's structured output; a Gemini run on 5 Nov failed on the API side</td></tr>
+</table></div>
+<p>On a larger synthetic set of 69 questions, our dense layer scored R@5 0.928 and the deployed reranked version 0.884. <b>Our own reranker made search worse.</b> We publish that because the point of this page is the time dimension, not a claim that our search beats theirs. On plain retrieval, Mem0's open-source search equals our dense layer.</p>
+
+<h2>5. What their own public issues say about time</h2>
+<div class="tbl"><table>
+<tr><th>Repo</th><th>Issue</th><th>What it means in plain words</th></tr>
+<tr><td>graphiti</td><td><a href="https://github.com/getzep/graphiti/issues/1728">#1728</a></td><td>The contradiction judge searches the whole graph. In one production graph 41% of facts were marked invalid; three of four audited were collateral damage.</td></tr>
+<tr><td>graphiti</td><td><a href="https://github.com/getzep/graphiti/issues/1166">#1166</a></td><td>Edges have history, node attributes are overwritten. A company's old employee count is lost.</td></tr>
+<tr><td>graphiti</td><td><a href="https://github.com/getzep/graphiti/issues/2012">#2012</a></td><td>A fact with a future end date is stored as already expired.</td></tr>
+<tr><td>mem0</td><td><a href="https://github.com/mem0ai/mem0/issues/4956">#4956</a>, <a href="https://github.com/mem0ai/mem0/issues/5867">#5867</a></td><td>ADD-only extraction can surface stale or conflicting facts for things that change.</td></tr>
+<tr><td>mem0</td><td><a href="https://github.com/mem0ai/mem0/issues/7535">#7535</a></td><td>Search can rank an outdated memory above its update; ranking has no recency term.</td></tr>
+<tr><td>mem0</td><td><a href="https://github.com/mem0ai/mem0/issues/5352">#5352</a></td><td>Most discussed workaround thread: time-blindness and semantic conflicts in the open-source version.</td></tr>
+</table></div>
+
+<h2>6. Our approach in one picture</h2>
+<pre>assert room-402 guest "Ivanov" --valid-at 2026-10-05 --reason checkin --source pms
+  → one JSON line; nothing is overwritten, no end date is written
+
+read "who was in room-402 on 2026-10-07"
+  → gather every line from every machine, sort by valid date,
+    a fact is live until the next live fact on the same attribute
+  → Ivanov, 5 Oct to 9 Oct, closed by "checkout"
+
+retract &lt;id&gt; --reason "operator error"
+  → one more line; the previous fact becomes current again on read</pre>
+<p>Four ideas carry it: append-only lines, the end date derived on read, a reason and source on every fact, and merge across machines at read time. Tests: 30 checks green, including deliberately broken copies that must fail.</p>
+
+<h2>7. Questions we would like to discuss</h2>
+<h3>Zep</h3>
+<div class="q"><b>How should a wrong fact be withdrawn so that the previous one comes back?</b>Deleting the closing edge leaves the earlier edge closed. Is the intended path a new episode, and how does the judge treat it?</div>
+<div class="q"><b>How do you bound the contradiction search?</b>Issue #1728 reports 41% invalid facts in one graph. Do you scope candidates by relation type or by entity pair?</div>
+<div class="q"><b>Will node attributes get the same history as edges?</b>Issue #1166.</div>
+<div class="q"><b>What is the smallest honest benchmark for memory that changes over time?</b>Which version, model and top-k pins would you want an outsider to use to reproduce Zep?</div>
+<h3>Mem0</h3>
+<div class="q"><b>When "coffee" and "tea from 2 Nov" both live, who decides which one is current in open source?</b>Platform has state keys and <code>latest_only</code>. Is any of that coming to the open-source SDK?</div>
+<div class="q"><b>Does Dream close old facts or delete them?</b>If it supersedes, can a user still ask what was true last month?</div>
+<div class="q"><b>Should recency enter the ranking score?</b>Issue #7535.</div>
+<div class="q"><b>Is there a "what did the agent know at time K" question in DolphinBench?</b></div>
+<h3>Anima Labs</h3>
+<div class="q"><b>Where do current facts live when the story is a narrative?</b>If a user moved city, does the agent read it from the tail, from a summary, or from somewhere structured?</div>
+<div class="q"><b>How do you correct an "as of that moment" summary that turned out to be wrong?</b></div>
+<div class="q"><b>Would a small fact layer next to the Chronicle help, or does it break the continuity you want?</b></div>
+
+<h2>8. Method and limits</h2>
+<ul>
+<li>One synthetic object with five facts. This tests mechanics, not quality at scale.</li>
+<li>Graphiti: version 0.31.2, embedded Kuzu, upstream <code>_apply_temporal_invalidation</code>, oracle candidates, no LLM. A deliberately broken run that skips invalidation fails S1, S2 and S3, so the test can turn red.</li>
+<li>Mem0: open-source 2.2.1, local Qwen3-4B as extractor, five episodes, 3 November. A small local model is not the vendor's production extractor.</li>
+<li>Retrieval table: frozen corpus, SHA256 recorded, rerun independently by two agents on 3 November.</li>
+<li>Nothing here measures Zep Cloud, Mem0 Platform or Anima's production stack.</li>
+</ul>
+<p class="foot">**ton ******ovskii · github.com/tonydzi · prepared with an AI coding agent; every number above comes from a run on our hub on 3 or 5 November 2026.</p>
+</div></body></html>
