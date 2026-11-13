@@ -1,5 +1,55 @@
 # dashboards
 
+A public gallery of live status pages (dashboards) from Palo Alto AI Research Lab: plain web pages that show real numbers from our AI operation.
+
+**Who it's for:** anyone who wants to see how a multi-agent AI operation looks in numbers, and our own team members who open a panel by link.
+**What you get:** 400+ self-contained web pages with real figures. Customer and contact data is never published.
+
+## Quick start
+1. Open the gallery: https://tonydzi.github.io/dashboards/
+2. Click any panel. Each one is a single web page that needs no login.
+3. To keep a copy, clone the repo and open any `.html` file in a browser.
+
+**Done when:** the gallery loads and a panel you click opens with charts or tables.
+
+> Want an AI agent to do it for you? Paste this to Claude Code / Codex / Cursor:
+> "Read the 'For AI agents' section of https://github.com/tonydzi/dashboards and set it up for me."
+
+## For AI agents
+
+### Preconditions
+- Nothing to install and no code to run. This repo is a published output of an automated build, not a source of truth.
+- Any browser, or `git` to clone. No accounts or keys.
+- Ask the human: which panel or topic they want, since there are hundreds. File names describe the topic (for example `Brain-Health.html`).
+
+### Use
+```bash
+git clone https://github.com/tonydzi/dashboards
+cd dashboards
+```
+Open a file such as `index.html` or any `<Name>.html` in a browser, or read the live version at https://tonydzi.github.io/dashboards/. To search by topic, list file names (`ls *.html`) and read the matching page.
+
+### Configure
+Nothing to configure. Pages are generated elsewhere and published here as they are; do not hand-edit them.
+
+### Verify
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" https://tonydzi.github.io/dashboards/
+ls *.html | wc -l
+```
+Expected: `200`, then a number of HTML files (396 when checked; the published-panel count in the Russian text below may differ because it is stamped at build time). Run here: both matched.
+
+### Uninstall / rollback
+Delete the cloned folder. Nothing else was changed.
+
+### Rules for the agent
+- Treat the numbers as a snapshot dated by each page, not as live truth; the underlying systems are not in this repo.
+- This repo is a published surface and is not meant to be edited by hand; do not push changes here.
+- Do not try to recover hidden or masked data (CRM, contacts, names with asterisks). It is withheld on purpose.
+- Do not copy real figures into your own reports without naming the page and its date.
+
+## Details
+
 Живые дашборды лаборатории Palo Alto AI Research Lab.
 
 **Витрина: https://tonydzi.github.io/dashboards/**
