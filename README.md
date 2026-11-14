@@ -3,7 +3,7 @@
 A public gallery of live status pages (dashboards) from Palo Alto AI Research Lab: plain web pages that show real numbers from our AI operation.
 
 **Who it's for:** anyone who wants to see how a multi-agent AI operation looks in numbers, and our own team members who open a panel by link.
-**What you get:** 400+ self-contained web pages with real figures. Customer and contact data is never published.
+**What you get:** about 400 self-contained web pages with real figures. Customer and contact data is never published.
 
 ## Quick start
 1. Open the gallery: https://tonydzi.github.io/dashboards/
@@ -27,17 +27,18 @@ A public gallery of live status pages (dashboards) from Palo Alto AI Research La
 git clone https://github.com/tonydzi/dashboards
 cd dashboards
 ```
-Open a file such as `index.html` or any `<Name>.html` in a browser, or read the live version at https://tonydzi.github.io/dashboards/. To search by topic, list file names (`ls *.html`) and read the matching page.
+Open a file such as `index.html` or any `<Name>.html` in a browser, or read the live version at https://tonydzi.github.io/dashboards/. To search by topic, list the `.html` file names (`ls *.html`, PowerShell: `Get-ChildItem *.html`) and read the matching page.
 
 ### Configure
 Nothing to configure. Pages are generated elsewhere and published here as they are; do not hand-edit them.
 
 ### Verify
+Same on Windows, macOS and Linux (run the second line inside the cloned folder):
 ```bash
-curl -s -o /dev/null -w "%{http_code}\n" https://tonydzi.github.io/dashboards/
-ls *.html | wc -l
+python -c "import urllib.request as u; print(u.urlopen('https://tonydzi.github.io/dashboards/').status)"
+python -c "import glob; print(len(glob.glob('*.html')))"
 ```
-Expected: `200`, then a number of HTML files (396 when checked; the published-panel count in the Russian text below may differ because it is stamped at build time). Run here: both matched.
+Expected: `200`, then a number of HTML files (396 when checked on 2026-11-14, including `index.html`; the Russian text below says 403 panels because that number is stamped at build time, so a difference of a few is normal). A count of 0 means you are not inside the clone. Run here: the 200 matched; the file count matched 396.
 
 ### Uninstall / rollback
 Delete the cloned folder. Nothing else was changed.
